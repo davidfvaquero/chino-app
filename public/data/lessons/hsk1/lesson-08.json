@@ -1,0 +1,37 @@
+{
+  "id": "hsk1-08",
+  "title": "Weather & feelings",
+  "intro": "Learn words for weather, feelings, and daily routines.",
+  "vocabulary": [
+    { "hanzi": "太", "pinyin": "tài", "english": "too (much)", "example": { "hanzi": "太热了", "pinyin": "tài rè le", "english": "It's too hot" } },
+    { "hanzi": "天气", "pinyin": "tiānqì", "english": "weather", "example": { "hanzi": "今天天气很好", "pinyin": "jīntiān tiānqì hěn hǎo", "english": "The weather is very good today" } },
+    { "hanzi": "听", "pinyin": "tīng", "english": "listen; hear", "example": { "hanzi": "听音乐", "pinyin": "tīng yīnyuè", "english": "listen to music" } },
+    { "hanzi": "同学", "pinyin": "tóngxué", "english": "fellow student; schoolmate", "example": { "hanzi": "我的同学", "pinyin": "wǒ de tóngxué", "english": "my classmate" } },
+    { "hanzi": "喂", "pinyin": "wèi", "english": "hello (on the phone)", "example": { "hanzi": "喂，你好", "pinyin": "wèi, nǐ hǎo", "english": "Hello? (on phone)" } },
+    { "hanzi": "我", "pinyin": "wǒ", "english": "I; me", "example": { "hanzi": "我很好", "pinyin": "wǒ hěn hǎo", "english": "I'm fine" } },
+    { "hanzi": "我们", "pinyin": "wǒmen", "english": "we; us", "example": { "hanzi": "我们是同学", "pinyin": "wǒmen shì tóngxué", "english": "We are classmates" } },
+    { "hanzi": "五", "pinyin": "wǔ", "english": "five", "example": { "hanzi": "五个苹果", "pinyin": "wǔ gè píngguǒ", "english": "five apples" } },
+    { "hanzi": "喜欢", "pinyin": "xǐhuan", "english": "to like", "example": { "hanzi": "我喜欢你", "pinyin": "wǒ xǐhuan nǐ", "english": "I like you" } },
+    { "hanzi": "下", "pinyin": "xià", "english": "fall; below", "example": { "hanzi": "下面", "pinyin": "xiàmiàn", "english": "below; underneath" } },
+    { "hanzi": "下午", "pinyin": "xiàwǔ", "english": "afternoon", "example": { "hanzi": "下午三点", "pinyin": "xiàwǔ sān diǎn", "english": "3 PM" } },
+    { "hanzi": "下雨", "pinyin": "xiàyǔ", "english": "to rain", "example": { "hanzi": "明天下雨", "pinyin": "míngtiān xiàyǔ", "english": "It will rain tomorrow" } },
+    { "hanzi": "先生", "pinyin": "xiānsheng", "english": "Mr.; Sir", "example": { "hanzi": "王先生", "pinyin": "Wáng xiānsheng", "english": "Mr. Wang" } },
+    { "hanzi": "现在", "pinyin": "xiànzài", "english": "now", "example": { "hanzi": "现在几点？", "pinyin": "xiànzài jǐ diǎn?", "english": "What time is it now?" } },
+    { "hanzi": "想", "pinyin": "xiǎng", "english": "think; believe; would like to", "example": { "hanzi": "我想去", "pinyin": "wǒ xiǎng qù", "english": "I would like to go" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 天气 mean?", "options": ["time", "weather", "temperature"], "answer": "weather" },
+    { "type": "choose", "prompt": "Which word means 'afternoon'?", "options": ["上午", "下午", "晚上"], "answer": "下午" },
+    { "type": "listen", "audio": "下雨", "pinyin": "xiàyǔ", "prompt": "Listen and choose what you hear.", "options": ["下雨", "下雪", "下去"], "answer": "下雨" },
+    { "type": "match", "prompt": "Match each word to its meaning.", "pairs": [
+      { "hanzi": "喜欢", "english": "like" },
+      { "hanzi": "现在", "english": "now" },
+      { "hanzi": "同学", "english": "classmate" },
+      { "hanzi": "天气", "english": "weather" }
+    ]},
+    { "type": "order", "prompt": "Make the phrase 'listen to music'.", "tokens": ["音乐", "听"], "answer": "听音乐" },
+    { "type": "listen", "audio": "现在", "pinyin": "xiànzài", "prompt": "Listen and choose what you hear.", "options": ["现在", "想在", "现代"], "answer": "现在" },
+    { "type": "choose", "prompt": "What does 太 mean in '太热了'?", "options": ["very", "too (much)", "a little"], "answer": "too (much)" },
+    { "type": "order", "prompt": "Put the characters in order to say 'It will rain tomorrow'.", "tokens": ["下雨", "明天"], "answer": "明天下雨" }
+  ]
+}

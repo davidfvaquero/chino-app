@@ -1,0 +1,37 @@
+{
+  "id": "hsk1-06",
+  "title": "Places & travel",
+  "intro": "Learn words for places, travel, and common locations.",
+  "vocabulary": [
+    { "hanzi": "朋友", "pinyin": "péngyou", "english": "friend", "example": { "hanzi": "我的好朋友", "pinyin": "wǒ de hǎo péngyou", "english": "my good friend" } },
+    { "hanzi": "漂亮", "pinyin": "piàoliang", "english": "pretty; beautiful", "example": { "hanzi": "很漂亮", "pinyin": "hěn piàoliang", "english": "very beautiful" } },
+    { "hanzi": "苹果", "pinyin": "píngguǒ", "english": "apple", "example": { "hanzi": "吃苹果", "pinyin": "chī píngguǒ", "english": "eat an apple" } },
+    { "hanzi": "七", "pinyin": "qī", "english": "seven", "example": { "hanzi": "七天", "pinyin": "qī tiān", "english": "seven days" } },
+    { "hanzi": "钱", "pinyin": "qián", "english": "money; coin", "example": { "hanzi": "多少钱？", "pinyin": "duōshao qián?", "english": "How much money?" } },
+    { "hanzi": "前面", "pinyin": "qiánmiàn", "english": "in front", "example": { "hanzi": "前面的人", "pinyin": "qiánmiàn de rén", "english": "the person in front" } },
+    { "hanzi": "请", "pinyin": "qǐng", "english": "please; invite; to treat someone", "example": { "hanzi": "请坐", "pinyin": "qǐng zuò", "english": "please sit down" } },
+    { "hanzi": "去", "pinyin": "qù", "english": "go; to leave", "example": { "hanzi": "我去北京", "pinyin": "wǒ qù Běijīng", "english": "I go to Beijing" } },
+    { "hanzi": "热", "pinyin": "rè", "english": "heat; hot", "example": { "hanzi": "今天很热", "pinyin": "jīntiān hěn rè", "english": "It's very hot today" } },
+    { "hanzi": "人", "pinyin": "rén", "english": "person; man; people", "example": { "hanzi": "三个人", "pinyin": "sān gè rén", "english": "three people" } },
+    { "hanzi": "认识", "pinyin": "rènshi", "english": "recognize; know (a person)", "example": { "hanzi": "认识你", "pinyin": "rènshi nǐ", "english": "know you / meet you" } },
+    { "hanzi": "三", "pinyin": "sān", "english": "three", "example": { "hanzi": "三本书", "pinyin": "sān běn shū", "english": "three books" } },
+    { "hanzi": "商店", "pinyin": "shāngdiàn", "english": "shop; store", "example": { "hanzi": "去商店", "pinyin": "qù shāngdiàn", "english": "go to the store" } },
+    { "hanzi": "上", "pinyin": "shàng", "english": "above; up", "example": { "hanzi": "上面", "pinyin": "shàngmiàn", "english": "above; on top" } },
+    { "hanzi": "上午", "pinyin": "shàngwǔ", "english": "late morning (before noon)", "example": { "hanzi": "上午十点", "pinyin": "shàngwǔ shí diǎn", "english": "10 AM" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 朋友 mean?", "options": ["friend", "enemy", "stranger"], "answer": "friend" },
+    { "type": "choose", "prompt": "Which word means 'apple'?", "options": ["香蕉", "苹果", "西瓜"], "answer": "苹果" },
+    { "type": "listen", "audio": "请坐", "pinyin": "qǐng zuò", "prompt": "Listen and choose what you hear.", "options": ["请坐", "去坐", "请走"], "answer": "请坐" },
+    { "type": "match", "prompt": "Match each word to its meaning.", "pairs": [
+      { "hanzi": "去", "english": "go" },
+      { "hanzi": "钱", "english": "money" },
+      { "hanzi": "商店", "english": "shop" },
+      { "hanzi": "认识", "english": "know (a person)" }
+    ]},
+    { "type": "order", "prompt": "Make the phrase 'go to the store'.", "tokens": ["商店", "去"], "answer": "去商店" },
+    { "type": "listen", "audio": "苹果", "pinyin": "píngguǒ", "prompt": "Listen and choose what you hear.", "options": ["苹果", "朋友", "漂亮"], "answer": "苹果" },
+    { "type": "choose", "prompt": "What does 上午 mean?", "options": ["afternoon", "morning", "evening"], "answer": "morning" },
+    { "type": "order", "prompt": "Put the characters in order to say 'good friend'.", "tokens": ["友", "朋", "好"], "answer": "好朋友" }
+  ]
+}

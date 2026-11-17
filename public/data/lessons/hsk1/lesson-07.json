@@ -1,0 +1,37 @@
+{
+  "id": "hsk1-07",
+  "title": "Study & work",
+  "intro": "Learn words for study, work, and everyday activities.",
+  "vocabulary": [
+    { "hanzi": "少", "pinyin": "shǎo", "english": "few; little", "example": { "hanzi": "很少", "pinyin": "hěn shǎo", "english": "very few / rarely" } },
+    { "hanzi": "谁", "pinyin": "shéi", "english": "who", "example": { "hanzi": "谁是老师？", "pinyin": "shéi shì lǎoshī?", "english": "Who is the teacher?" } },
+    { "hanzi": "什么", "pinyin": "shénme", "english": "what?", "example": { "hanzi": "这是什么？", "pinyin": "zhè shì shénme?", "english": "What is this?" } },
+    { "hanzi": "十", "pinyin": "shí", "english": "ten", "example": { "hanzi": "十本书", "pinyin": "shí běn shū", "english": "ten books" } },
+    { "hanzi": "时候", "pinyin": "shíhou", "english": "time", "example": { "hanzi": "有时候", "pinyin": "yǒu shíhou", "english": "sometimes" } },
+    { "hanzi": "是", "pinyin": "shì", "english": "be; is; are; am", "example": { "hanzi": "我是学生", "pinyin": "wǒ shì xuésheng", "english": "I am a student" } },
+    { "hanzi": "书", "pinyin": "shū", "english": "book; letter", "example": { "hanzi": "看书", "pinyin": "kàn shū", "english": "read a book" } },
+    { "hanzi": "水", "pinyin": "shuǐ", "english": "water", "example": { "hanzi": "喝水", "pinyin": "hē shuǐ", "english": "drink water" } },
+    { "hanzi": "水果", "pinyin": "shuǐguǒ", "english": "fruit", "example": { "hanzi": "吃水果", "pinyin": "chī shuǐguǒ", "english": "eat fruit" } },
+    { "hanzi": "睡觉", "pinyin": "shuì jiào", "english": "to sleep; go to bed", "example": { "hanzi": "早点睡觉", "pinyin": "zǎo diǎn shuì jiào", "english": "go to bed early" } },
+    { "hanzi": "说", "pinyin": "shuō", "english": "speak", "example": { "hanzi": "说中文", "pinyin": "shuō zhōngwén", "english": "speak Chinese" } },
+    { "hanzi": "四", "pinyin": "sì", "english": "four", "example": { "hanzi": "四个人", "pinyin": "sì gè rén", "english": "four people" } },
+    { "hanzi": "岁", "pinyin": "suì", "english": "years old; age", "example": { "hanzi": "十岁", "pinyin": "shí suì", "english": "ten years old" } },
+    { "hanzi": "他", "pinyin": "tā", "english": "he; him", "example": { "hanzi": "他是老师", "pinyin": "tā shì lǎoshī", "english": "He is a teacher" } },
+    { "hanzi": "她", "pinyin": "tā", "english": "she", "example": { "hanzi": "她很漂亮", "pinyin": "tā hěn piàoliang", "english": "She is very beautiful" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 书 mean?", "options": ["water", "book", "fruit"], "answer": "book" },
+    { "type": "choose", "prompt": "Which word means 'who'?", "options": ["什么", "谁", "怎么"], "answer": "谁" },
+    { "type": "listen", "audio": "睡觉", "pinyin": "shuì jiào", "prompt": "Listen and choose what you hear.", "options": ["睡觉", "说书", "水果"], "answer": "睡觉" },
+    { "type": "match", "prompt": "Match each word to its meaning.", "pairs": [
+      { "hanzi": "是", "english": "be; is" },
+      { "hanzi": "书", "english": "book" },
+      { "hanzi": "水", "english": "water" },
+      { "hanzi": "岁", "english": "years old" }
+    ]},
+    { "type": "order", "prompt": "Make the phrase 'read a book'.", "tokens": ["书", "看"], "answer": "看书" },
+    { "type": "listen", "audio": "他是老师", "pinyin": "tā shì lǎoshī", "prompt": "Listen and choose what you hear.", "options": ["他是老师", "她是学生", "他是学生"], "answer": "他是老师" },
+    { "type": "choose", "prompt": "What does 什么 mean?", "options": ["who", "what", "where"], "answer": "what" },
+    { "type": "order", "prompt": "Put the characters in order to say 'drink water'.", "tokens": ["水", "喝"], "answer": "喝水" }
+  ]
+}
