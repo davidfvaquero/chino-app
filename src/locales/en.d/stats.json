@@ -1,0 +1,19 @@
+{
+  "stats": {
+    "title": "Statistics",
+    "summary": {
+      "known": "Known words",
+      "learning": "Learning",
+      "total": "Words in review",
+      "minutes": "Study time (min)",
+      "days": "Days studied"
+    },
+    "chart": {
+      "title": "Study time, last 14 days",
+      "empty": "No study data yet. Finish a lesson, a review or some practice and your chart shows up here.",
+      "axis": "max {minutes} min",
+      "bar": "{date}: {minutes} min",
+      "aria": "Bar chart of study minutes for the last {days} days, busiest day {minutes} minutes"
+    }
+  }
+}
