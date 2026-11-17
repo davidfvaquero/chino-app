@@ -1,0 +1,50 @@
+{
+  "backupScreen": {
+    "title": "Backup & restore",
+    "dataNotice": "Your progress (review cards, streak, achievements, settings) lives only in this browser. There is no account and no cloud. Download a backup file to keep it safe, or import one to move your progress to another browser or restore it.",
+    "export": {
+      "title": "Download a backup",
+      "button": "Download backup",
+      "filename": "chino-app-backup-{date}.json",
+      "success": "Backup downloaded: {count} cards, streak {streak}.",
+      "error": "Could not build the backup file."
+    },
+    "import": {
+      "title": "Restore from a file",
+      "hint": "Pick a chino-app backup file (.json). You will see what it holds before anything changes.",
+      "button": "Choose file",
+      "cancel": "Cancel",
+      "preview": {
+        "title": "This file contains",
+        "cards": "{count} review cards",
+        "streak": "streak {streak} days",
+        "lessons": "{lessons} lessons finished",
+        "points": "{points} points"
+      },
+      "confirm": {
+        "title": "Confirm import",
+        "replace": "Replace: your current data is deleted and replaced by the file. This cannot be undone.",
+        "merge": "Merge: keeps the newest entry per card; nothing local is deleted.",
+        "button": "Replace everything",
+        "buttonMerge": "Merge into my data"
+      },
+      "success": "Import done: {imported} entries written, {skipped} kept.",
+      "error": {
+        "corrupt": "That file is not valid JSON — it is not a backup.",
+        "invalidType": "That file does not look like a backup.",
+        "wrongApp": "That backup belongs to a different app.",
+        "unknownVersion": "That backup was made by a newer version of the app.",
+        "badTimestamp": "That backup file is incomplete.",
+        "missingStores": "That backup file is incomplete.",
+        "unknownStore": "That backup holds data this app does not know.",
+        "storeNotObject": "That backup file is damaged.",
+        "nonSerializableValue": "That backup file is damaged.",
+        "applyFailed": "Import failed and your data was left untouched."
+      }
+    },
+    "mode": {
+      "replace": "Replace",
+      "merge": "Merge (keep newest)"
+    }
+  }
+}
