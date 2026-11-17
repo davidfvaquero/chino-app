@@ -9,6 +9,8 @@
     "dev": "node scripts/dev.mjs",
     "build": "node scripts/build.mjs",
     "test": "node --test tests/",
+    "data": "node scripts/build-data.mjs",
+    "test:data": "node --test tests/data-sanity.test.mjs",
     "icons": "node scripts/gen-icons.mjs"
   },
   "engines": {
