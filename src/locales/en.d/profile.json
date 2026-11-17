@@ -1,0 +1,29 @@
+{
+  "profileScreen": {
+    "title": "Profile & Progress",
+    "streak": {
+      "current": "Current streak",
+      "best": "Best streak",
+      "days": "{count} day",
+      "days_plural": "{count} days"
+    },
+    "points": "Points",
+    "level": "Level {level}",
+    "achievements": {
+      "title": "Achievements",
+      "unlocked": "Unlocked",
+      "locked": "Locked",
+      "empty": "No achievements yet — keep learning to unlock them!",
+      "unlockAt": "Unlocked {date}"
+    },
+    "language": {
+      "label": "Language",
+      "current": "Current: {name}"
+    },
+    "emptyState": {
+      "title": "Welcome to Chino!",
+      "description": "Start a lesson, review a card or practice strokes to build your streak and unlock achievements.",
+      "startLearning": "Start learning"
+    }
+  }
+}

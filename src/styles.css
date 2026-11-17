@@ -158,6 +158,125 @@ body {
   font-size: 0.8125rem;
 }
 
+/* Profile screen */
+.streak-display {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+.streak-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+.streak-label {
+  color: var(--fg-soft);
+  font-size: 1rem;
+}
+.streak-best {
+  margin: 0;
+  color: var(--fg-soft);
+  font-size: 0.875rem;
+}
+
+.points-level {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.points-level > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.points-level .label {
+  font-size: 0.75rem;
+  color: var(--fg-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.points-level .value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.achievements-header {
+  margin-bottom: 0.75rem;
+}
+.achievements-group {
+  margin-bottom: 1rem;
+}
+.achievements-group:last-child {
+  margin-bottom: 0;
+}
+.group-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  color: var(--fg-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.achievements-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.achievement-card {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  transition: border-color 0.15s, background 0.15s;
+}
+.achievement-card.unlocked {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+}
+.achievement-card.locked {
+  opacity: 0.6;
+}
+.achievement-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.achievement-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+.achievement-name {
+  font-weight: 600;
+  color: var(--fg);
+}
+.achievement-desc {
+  font-size: 0.75rem;
+  color: var(--fg-soft);
+  line-height: 1.4;
+}
+.achievement-unlocked {
+  font-size: 0.6875rem;
+  color: var(--accent);
+}
+.achievements-grid .empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--fg-soft);
+  font-size: 0.875rem;
+  padding: 1rem;
+}
+
+.language-current {
+  margin: 0.25rem 0 0.75rem;
+  color: var(--fg-soft);
+  font-size: 0.875rem;
+}
+
 @media (min-width: 40rem) {
   /* Wide screens: keep the phone-like layout but centred. */
   .app {
