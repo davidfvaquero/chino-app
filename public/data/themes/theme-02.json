@@ -1,0 +1,29 @@
+{
+  "id": "theme-02",
+  "title": "Family",
+  "icon": "👨‍👩‍👧",
+  "words": [
+    { "hanzi": "家", "pinyin": "jiā", "english": "home; family" },
+    { "hanzi": "家人", "pinyin": "jiā rén", "english": "family members" },
+    { "hanzi": "爸爸", "pinyin": "bà ba", "english": "dad" },
+    { "hanzi": "妈妈", "pinyin": "mā ma", "english": "mom" },
+    { "hanzi": "哥哥", "pinyin": "gē ge", "english": "older brother" },
+    { "hanzi": "姐姐", "pinyin": "jiě jie", "english": "older sister" },
+    { "hanzi": "弟弟", "pinyin": "dì di", "english": "younger brother" },
+    { "hanzi": "妹妹", "pinyin": "mèi mei", "english": "younger sister" },
+    { "hanzi": "儿子", "pinyin": "ér zi", "english": "son" },
+    { "hanzi": "女儿", "pinyin": "nǚ ér", "english": "daughter" },
+    { "hanzi": "丈夫", "pinyin": "zhàng fu", "english": "husband" },
+    { "hanzi": "妻子", "pinyin": "qī zi", "english": "wife" },
+    { "hanzi": "爷爷", "pinyin": "yé ye", "english": "grandpa (father's side)" },
+    { "hanzi": "奶奶", "pinyin": "nǎi nai", "english": "grandma (father's side)" }
+  ],
+  "phrases": [
+    { "hanzi": "这是我的妈妈。", "pinyin": "zhè shì wǒ de mā ma", "english": "this is my mom." },
+    { "hanzi": "我家有四口人。", "pinyin": "wǒ jiā yǒu sì kǒu rén", "english": "there are four people in my family." },
+    { "hanzi": "你有兄弟姐妹吗？", "pinyin": "nǐ yǒu xiōng dì jiě mèi ma", "english": "do you have siblings?" },
+    { "hanzi": "我有一个姐姐。", "pinyin": "wǒ yǒu yí gè jiě jie", "english": "I have an older sister." },
+    { "hanzi": "他很像他爸爸。", "pinyin": "tā hěn xiàng tā bà ba", "english": "he looks a lot like his dad." },
+    { "hanzi": "我们全家都很好。", "pinyin": "wǒ men quán jiā dōu hěn hǎo", "english": "my whole family is doing well." }
+  ]
+}

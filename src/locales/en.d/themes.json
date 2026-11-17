@@ -1,0 +1,21 @@
+{
+  "themes": {
+    "title": "Vocabulary themes",
+    "listIntro": "Pick a theme to see its words and useful phrases. Tap a row to hear it, add single cards, or send the whole theme to your review deck.",
+    "back": "Back to themes",
+    "travel": "Travel",
+    "words": "Words",
+    "phrases": "Phrases",
+    "counts": "{words} words · {phrases} phrases",
+    "addAll": "Add whole theme to review",
+    "addedAll": "Added {added} new cards ({total} in this theme).",
+    "addOne": "Add to review",
+    "addedOne": "Added ✓",
+    "play": "Play audio",
+    "markStudied": "Mark as studied",
+    "studied": "Studied ✓",
+    "soonTitle": "Not ready yet",
+    "soon": "This theme has no content yet. Come back later.",
+    "loadError": "Could not load the themes. Check your connection and try again."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "theme-01",
+  "title": "Greetings & politeness",
+  "icon": "👋",
+  "words": [
+    { "hanzi": "你好", "pinyin": "nǐ hǎo", "english": "hello" },
+    { "hanzi": "您好", "pinyin": "nín hǎo", "english": "hello (polite)" },
+    { "hanzi": "早上好", "pinyin": "zǎo shang hǎo", "english": "good morning" },
+    { "hanzi": "晚上好", "pinyin": "wǎn shang hǎo", "english": "good evening" },
+    { "hanzi": "晚安", "pinyin": "wǎn ān", "english": "good night" },
+    { "hanzi": "再见", "pinyin": "zài jiàn", "english": "goodbye" },
+    { "hanzi": "谢谢", "pinyin": "xiè xie", "english": "thank you" },
+    { "hanzi": "不客气", "pinyin": "bú kè qi", "english": "you're welcome" },
+    { "hanzi": "对不起", "pinyin": "duì bu qǐ", "english": "sorry" },
+    { "hanzi": "没关系", "pinyin": "méi guān xi", "english": "it's okay" },
+    { "hanzi": "请", "pinyin": "qǐng", "english": "please" },
+    { "hanzi": "请问", "pinyin": "qǐng wèn", "english": "excuse me (may I ask)" },
+    { "hanzi": "是", "pinyin": "shì", "english": "yes; to be" },
+    { "hanzi": "不", "pinyin": "bù", "english": "no; not" }
+  ],
+  "phrases": [
+    { "hanzi": "你好吗？", "pinyin": "nǐ hǎo ma", "english": "how are you?" },
+    { "hanzi": "我很好，谢谢。", "pinyin": "wǒ hěn hǎo, xiè xie", "english": "I'm fine, thanks." },
+    { "hanzi": "你叫什么名字？", "pinyin": "nǐ jiào shén me míng zi", "english": "what is your name?" },
+    { "hanzi": "我叫小明。", "pinyin": "wǒ jiào Xiǎo Míng", "english": "my name is Xiao Ming." },
+    { "hanzi": "很高兴认识你。", "pinyin": "hěn gāo xìng rèn shi nǐ", "english": "nice to meet you." },
+    { "hanzi": "再见，明天见！", "pinyin": "zài jiàn, míng tiān jiàn", "english": "goodbye, see you tomorrow!" }
+  ]
+}
