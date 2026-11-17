@@ -1,0 +1,56 @@
+{
+  "id": "reading-06",
+  "title": "我的一天",
+  "type": "dialogue",
+  "topic": "My day",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你每天几点起床？",
+      "pinyin": "Nǐ měitiān jǐ diǎn qǐchuáng?",
+      "english": "What time do you wake up every day?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我七点起床，先喝水。",
+      "pinyin": "Wǒ qī diǎn qǐchuáng, xiān hē shuǐ.",
+      "english": "I wake up at 7, drink water first."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "早饭吃什么？",
+      "pinyin": "Zǎofàn chī shénme?",
+      "english": "What do you eat for breakfast?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "吃面包，喝牛奶。七点半上班。",
+      "pinyin": "Chī miànbāo, hē niúnǎi. Qī diǎn bàn shàngbān.",
+      "english": "Eat bread, drink milk. Start work at 7:30."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "中午在公司吃饭吗？",
+      "pinyin": "Zhōngwǔ zài gōngsī chīfàn ma?",
+      "english": "Do you eat lunch at the company?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，十二点吃米饭。下午休息一点。",
+      "pinyin": "Shì de, shí'èr diǎn chī mǐfàn. Xiàwǔ xiūxi yīdiǎn.",
+      "english": "Yes, eat rice at 12. Rest a bit in the afternoon."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "几点下班？晚上做什么？",
+      "pinyin": "Jǐ diǎn xiàbān? Wǎnshàng zuò shénme?",
+      "english": "What time off work? What do you do in the evening?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "六点下班。回家做饭，看书，十点睡觉。",
+      "pinyin": "Liù diǎn xiàbān. Huíjiā zuòfàn, kànshū, shí diǎn shuìjiào.",
+      "english": "Off at 6. Go home cook, read, sleep at 10."
+    }
+  ]
+}

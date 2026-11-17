@@ -1,0 +1,56 @@
+{
+  "id": "reading-04",
+  "title": "今天天气",
+  "type": "dialogue",
+  "topic": "Weather & days",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "今天天气怎么样？",
+      "pinyin": "Jīntiān tiānqì zěnmeyàng?",
+      "english": "How is the weather today?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "今天晴天，很热。",
+      "pinyin": "Jīntiān qíngtiān, hěn rè.",
+      "english": "Today is sunny, very hot."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "明天下雨吗？",
+      "pinyin": "Míngtiān xiàyǔ ma?",
+      "english": "Will it rain tomorrow?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "不下雨，是多云。",
+      "pinyin": "Bù xiàyǔ, shì duōyún.",
+      "english": "No rain, it will be cloudy."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "后天冷不冷？",
+      "pinyin": "Hòutiān lěng bu lěng?",
+      "english": "Will the day after tomorrow be cold?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "后天不冷，很舒服。",
+      "pinyin": "Hòutiān bù lěng, hěn shūfu.",
+      "english": "The day after tomorrow won't be cold, very comfortable."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "那我们后天去公园吧。",
+      "pinyin": "Nà wǒmen hòutiān qù gōngyuán ba.",
+      "english": "Then let's go to the park the day after tomorrow."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好主意！星期六见。",
+      "pinyin": "Hǎo zhǔyì! Xīngqīliù jiàn.",
+      "english": "Good idea! See you Saturday."
+    }
+  ]
+}
