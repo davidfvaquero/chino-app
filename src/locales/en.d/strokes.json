@@ -1,0 +1,29 @@
+{
+  "strokes": {
+    "searchLabel": "Search a character",
+    "searchPlaceholder": "Type a character, e.g. 你",
+    "searchButton": "Show",
+    "searchResults": "Matching characters",
+    "searchNoHanzi": "Type a Chinese character to see its strokes.",
+    "boardLabel": "Stroke order diagram",
+    "loading": "Loading strokes…",
+    "notFound": "No stroke data for “{char}”.",
+    "loadError": "Could not load the stroke data. Check your connection.",
+    "progress": "Stroke {current} / {total}",
+    "play": "Play",
+    "pause": "Pause",
+    "replay": "Repeat",
+    "animationDone": "All strokes drawn. Now try it yourself!",
+    "practice": "Practice",
+    "practiceExit": "Stop practice",
+    "practiceHint": "Trace stroke {current} of {total} along the dashed guide.",
+    "practiceWrong": "Not quite — follow the dashed guide, in order.",
+    "practiceDone": "Nice! You traced every stroke.",
+    "speak": "Hear it",
+    "speakUnsupported": "This device has no speech voice for Chinese.",
+    "speakError": "Could not play the audio.",
+    "addToReview": "Add to review",
+    "addedToReview": "Added to your review deck.",
+    "reviewError": "Could not add it to the review deck."
+  }
+}
