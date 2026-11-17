@@ -1,0 +1,27 @@
+{
+  "learn": {
+    "lessons": {
+      "loading": "Loading lessons…",
+      "error": "Could not load the lessons: {message}",
+      "empty": "No lessons yet.",
+      "start": "Start",
+      "done": "Completed · {score}/{total}",
+      "partial": "In progress · {answered}/{total}",
+      "next": "Next",
+      "vocabulary": "Vocabulary",
+      "addToReview": "Add to review",
+      "added": "Added ✓",
+      "exerciseProgress": "Exercise {current} of {total}",
+      "playAudio": "Play",
+      "correct": "Correct!",
+      "incorrect": "Not quite",
+      "continue": "Continue",
+      "check": "Check",
+      "orderHint": "Tap the words in the right order.",
+      "matchHint": "Tap a word, then tap its meaning.",
+      "result": "Lesson complete",
+      "resultScore": "You got {score} of {total} right.",
+      "finish": "Finish"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "level": "hsk1",
+  "title": "HSK 1",
+  "source": "public/data/hsk/1.json",
+  "wordCount": 150,
+  "wordsPerLesson": 15,
+  "note": "Fixed 10-lesson plan for HSK1. `range` is the suggested slice of the 150 HSK1 words (1-based, inclusive) for a lesson that is still to be written; the filler tasks write lesson-02.json .. lesson-10.json without touching this index. Lesson 1 is already written by hand (`curated: true`) and its vocabulary is authoritative. See docs/lesson-schema.md.",
+  "lessons": [
+    { "id": "hsk1-01", "title": "Greetings & numbers", "file": "lesson-01.json", "range": { "from": 1, "to": 15 }, "curated": true },
+    { "id": "hsk1-02", "title": "People & family", "file": "lesson-02.json", "range": { "from": 16, "to": 30 } },
+    { "id": "hsk1-03", "title": "Everyday things", "file": "lesson-03.json", "range": { "from": 31, "to": 45 } },
+    { "id": "hsk1-04", "title": "Food & drink", "file": "lesson-04.json", "range": { "from": 46, "to": 60 } },
+    { "id": "hsk1-05", "title": "Time & dates", "file": "lesson-05.json", "range": { "from": 61, "to": 75 } },
+    { "id": "hsk1-06", "title": "Places & travel", "file": "lesson-06.json", "range": { "from": 76, "to": 90 } },
+    { "id": "hsk1-07", "title": "Study & work", "file": "lesson-07.json", "range": { "from": 91, "to": 105 } },
+    { "id": "hsk1-08", "title": "Weather & feelings", "file": "lesson-08.json", "range": { "from": 106, "to": 120 } },
+    { "id": "hsk1-09", "title": "Verbs in action", "file": "lesson-09.json", "range": { "from": 121, "to": 135 } },
+    { "id": "hsk1-10", "title": "Describing the world", "file": "lesson-10.json", "range": { "from": 136, "to": 150 } }
+  ]
+}
