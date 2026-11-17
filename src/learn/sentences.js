@@ -6,6 +6,7 @@ import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import { speak, isTtsAvailable } from '../audio.js';
 import { addToReview } from '../srs.js';
+import { pinyinHtml } from '../tone.js';
 
 const BASE = '/data/sentences';
 const SHARD_SIZE = 50; // items per page (client-side pagination after load)
@@ -54,7 +55,7 @@ function renderSentence(s, container) {
   const card = h('div', { class: 'sentence-card card' },
     h('div', { class: 'sentence-row' },
       h('span', { class: 'sentence-hanzi', text: s.zh }),
-      h('span', { class: 'sentence-pinyin', text: s.pinyin }),
+      h('span', { class: 'sentence-pinyin', html: pinyinHtml(s.pinyin) }),
     ),
     h('div', { class: 'sentence-en', text: s.en }),
     h('div', { class: 'sentence-actions' },

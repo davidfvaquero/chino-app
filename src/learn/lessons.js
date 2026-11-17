@@ -23,6 +23,7 @@ import { h, reset } from '../dom.js';
 import storage from '../storage.js';
 import { addToReview } from '../srs.js';
 import { speak } from '../audio.js';
+import { pinyinHtml } from '../tone.js';
 import { gradeExercise, summarize } from './exercises.js';
 
 export const titleKey = 'hubs.learn.lessons';
@@ -170,10 +171,16 @@ async function renderLesson(container, ctx, lessonId) {
           'div',
           { class: 'vocab-item field' },
           h('span', { class: 'hanzi', text: word.hanzi }),
-          h('span', { class: 'pinyin', text: word.pinyin }),
+          h('span', { class: 'pinyin', html: pinyinHtml(word.pinyin) }),
           h('span', { class: 'english', text: word.english }),
           word.example
-            ? h('span', { class: 'example', text: `${word.example.hanzi} · ${word.example.pinyin} · ${word.example.english}` })
+            ? h(
+                'span',
+                { class: 'example' },
+                `${word.example.hanzi} · `,
+                h('span', { html: pinyinHtml(word.example.pinyin) }),
+                ` · ${word.example.english}`,
+              )
             : null,
           button,
         ),

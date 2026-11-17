@@ -17,6 +17,7 @@ import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import { getDueCards, answer as saveAnswer, grade, RATINGS } from '../srs.js';
 import { speak, isTtsAvailable } from '../audio.js';
+import { pinyinHtml } from '../tone.js';
 
 export const titleKey = 'screens.review.title';
 
@@ -129,7 +130,7 @@ export function render(container, ctx = {}) {
       h(
         'div',
         { class: 'card' },
-        h('p', { style: PINYIN, text: card.pinyin ?? '' }),
+        h('p', { style: PINYIN, html: pinyinHtml(card.pinyin ?? '') }),
         ...(defs.length ? [h('p', { text: defs.join('; ') })] : []),
       ),
     );

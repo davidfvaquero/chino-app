@@ -17,6 +17,7 @@ import { href } from '../router.js';
 import { search } from '../dictionary.js';
 import { addToReview, listCards, cardId } from '../srs.js';
 import { speak } from '../audio.js';
+import { pinyinHtml } from '../tone.js';
 
 export const titleKey = 'screens.dictionary.title';
 
@@ -33,7 +34,6 @@ const CSS = `
 .dict-row { display: flex; flex-direction: column; gap: 0.35rem; }
 .dict-head { display: flex; align-items: baseline; gap: 0.5rem; }
 .dict-hanzi { font-size: 1.6rem; font-weight: 600; }
-.dict-trad { color: var(--fg-soft); font-size: 1rem; }
 .dict-head .dict-audio { margin-left: auto; }
 .dict-pinyin { margin: 0; font-size: 1rem; }
 .dict-defs { margin: 0; padding-left: 1.1rem; color: var(--fg-soft); font-size: 0.95rem; }
@@ -176,12 +176,9 @@ export function render(container, ctx = {}) {
         'div',
         { class: 'dict-head' },
         h('span', { class: 'dict-hanzi', text: hanzi }),
-        entry.trad && entry.trad !== hanzi
-          ? h('span', { class: 'dict-trad', text: entry.trad })
-          : null,
         audio,
       ),
-      h('p', { class: 'dict-pinyin', text: entry.pinyinTone || entry.pinyinNum || '' }),
+      h('p', { class: 'dict-pinyin', html: pinyinHtml(entry.pinyinTone || entry.pinyinNum || '') }),
       h('ul', { class: 'dict-defs' }, ...(entry.defs ?? []).map((def) => h('li', { text: def }))),
       h('div', { class: 'dict-actions' }, ...strokes, add),
     );

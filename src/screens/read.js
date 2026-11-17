@@ -13,6 +13,7 @@ import { h, reset } from '../dom.js';
 import * as dictionary from '../dictionary.js';
 import { addToReview } from '../srs.js';
 import { speak, isTtsAvailable } from '../audio.js';
+import { pinyinHtml } from '../tone.js';
 import { normalizeReading, tokenizeLine, wordPanel, reviewEntryFrom } from '../reading/model.js';
 import { loadIndex, loadReading } from '../reading/data.js';
 
@@ -73,7 +74,7 @@ async function renderReader(container, ctx, id) {
     panel.append(
       h('h3', { class: 'panel-hanzi', text: vm.hanzi }),
       vm.found
-        ? h('p', { class: 'pinyin', text: vm.pinyin })
+        ? h('p', { class: 'pinyin', html: pinyinHtml(vm.pinyin) })
         : h('p', { class: 'muted', text: t('read.notFound', { word }) }),
       ...(vm.english.length
         ? [h('ul', { class: 'defs' }, ...vm.english.map((d) => h('li', { text: d })))]
@@ -190,7 +191,7 @@ async function buildLine(line, index, ttsOk, showWord) {
     { class: 'line', 'data-line': index + 1 },
     line.speaker ? h('span', { class: 'speaker', text: line.speaker }) : null,
     h('p', { class: 'hanzi' }, ...body),
-    h('p', { class: 'pinyin', text: line.pinyin, hidden: true }),
+    h('p', { class: 'pinyin', html: pinyinHtml(line.pinyin), hidden: true }),
     h('p', { class: 'english muted', text: line.english }),
     ttsOk
       ? h('button', {

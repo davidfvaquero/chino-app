@@ -18,6 +18,7 @@ import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import storage from '../storage.js';
 import { speak } from '../audio.js';
+import { pinyinHtml } from '../tone.js';
 import { gradeExercise, summarize } from './exercises.js';
 
 export const titleKey = 'hubs.learn.tones';
@@ -155,7 +156,7 @@ export async function render(container, ctx) {
       section.append(
         h('div', { class: 'vocab-item field' },
           h('span', { class: 'hanzi', text: word.hanzi }),
-          h('span', { class: 'pinyin', text: word.pinyin }),
+          h('span', { class: 'pinyin', html: pinyinHtml(word.pinyin) }),
           h('span', { class: 'tone', text: toneDisplay }),
           h('span', { class: 'english', text: word.english }),
           h('button', {
