@@ -1,0 +1,45 @@
+{
+  "dictation": {
+    "title": "Dictation",
+    "intro": "Listen to a word and write it down. Ten questions per round: type the pinyin, then pick the character you hear.",
+    "sourceLabel": "Words from",
+    "source": {
+      "hsk1": "HSK 1 words",
+      "srs": "My review cards"
+    },
+    "sourceCount": "{count} words",
+    "toneModeLabel": "Pinyin answers",
+    "toneMode": {
+      "numbers": "Tone numbers (ni3 hao3)",
+      "marks": "Tone marks (nǐ hǎo)",
+      "none": "No tones (ni hao)"
+    },
+    "start": "Start round",
+    "emptySource": "No words available for this source yet. Add some cards to your review deck first.",
+    "error": "Could not load the words. Check your connection and try again.",
+    "progress": "Question {current} of {total}",
+    "scoreSoFar": "Score {score}/{answered}",
+    "mode": {
+      "pinyin": "Write the pinyin you hear",
+      "choose": "Pick the character you hear"
+    },
+    "play": "Play audio",
+    "repeat": "Repeat",
+    "ttsUnavailable": "This browser has no speech available, so the word is shown instead of played.",
+    "answerPlaceholder": "Type the pinyin",
+    "check": "Check",
+    "showAnswer": "Show answer",
+    "correct": "Correct!",
+    "incorrect": "Not quite.",
+    "addToReview": "Add to review",
+    "added": "Added to review",
+    "next": "Next",
+    "result": {
+      "title": "Round complete",
+      "score": "You got {correct} of {total} right ({percent}%).",
+      "missed": "Words to review",
+      "playAgain": "Play again",
+      "back": "Back to Learn"
+    }
+  }
+}
