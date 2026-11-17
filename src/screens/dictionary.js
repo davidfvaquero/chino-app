@@ -1,11 +1,246 @@
 /**
- * Dictionary screen (phase 1 task): search CC-CEDICT by hanzi/pinyin/English.
- * Contract: titleKey + render(container, ctx) — see src/main.js.
+ * Dictionary screen — search CC-CEDICT (src/dictionary.js) and send words to
+ * the review deck (src/srs.js). Audio via src/audio.js.
+ *
+ * Contract: `titleKey` + `render(container, ctx)` (see src/main.js). No literal
+ * UI text: every string comes from t() with a dict.* key
+ * (src/locales/en.d/dict.json).
+ *
+ * Testability hooks on the container element:
+ *   container.dataset.state  = 'empty' | 'loading' | 'none' | 'results' | 'error'
+ *   .dict-row[data-id]       one per result, data-added="true" when in the deck
+ *   .dict-add[data-added]    the "Add to review" button
  */
-import { placeholder } from './placeholder.js';
+import { t } from '../i18n.js';
+import { h, reset } from '../dom.js';
+import { href } from '../router.js';
+import { search } from '../dictionary.js';
+import { addToReview, listCards, cardId } from '../srs.js';
+import { speak } from '../audio.js';
 
 export const titleKey = 'screens.dictionary.title';
 
-export function render(container, ctx) {
-  placeholder(container, titleKey, 'screens.dictionary.hint', ctx);
+/** Wait this long after the last keystroke before searching. */
+export const DEBOUNCE_MS = 250;
+/** Max results shown for one query. */
+export const RESULT_LIMIT = 20;
+
+const STYLE_ID = 'dict-style';
+const CSS = `
+.dict-search { margin: 0 0 0.75rem; }
+.dict-status { margin: 0 0 0.75rem; }
+.dict-results { margin: 0; padding: 0; list-style: none; }
+.dict-row { display: flex; flex-direction: column; gap: 0.35rem; }
+.dict-head { display: flex; align-items: baseline; gap: 0.5rem; }
+.dict-hanzi { font-size: 1.6rem; font-weight: 600; }
+.dict-trad { color: var(--fg-soft); font-size: 1rem; }
+.dict-head .dict-audio { margin-left: auto; }
+.dict-pinyin { margin: 0; font-size: 1rem; }
+.dict-defs { margin: 0; padding-left: 1.1rem; color: var(--fg-soft); font-size: 0.95rem; }
+.dict-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.dict-actions button, .dict-actions a {
+  display: inline-flex; align-items: center; min-height: 2.4rem; padding: 0 0.6rem;
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg);
+  color: inherit; font: inherit; font-size: 0.9rem; text-decoration: none;
+}
+.dict-strokes { font-size: 1.15rem; }
+.dict-add[data-added="true"] { opacity: 0.6; }
+`;
+
+function ensureStyles(doc) {
+  if (doc.getElementById(STYLE_ID)) return;
+  const style = doc.createElement('style');
+  style.id = STYLE_ID;
+  style.textContent = CSS;
+  doc.head.append(style);
+}
+
+/** Ids already in the review deck (so a result can render as "added"). */
+async function deckIds() {
+  try {
+    return new Set((await listCards()).map((card) => card.id));
+  } catch (err) {
+    console.error('dictionary: cannot read the deck', err);
+    return new Set();
+  }
+}
+
+export function render(container, ctx = {}) {
+  ensureStyles(document);
+
+  const state = { seq: 0, timer: null, alive: true };
+
+  const input = h('input', {
+    type: 'search',
+    class: 'field',
+    name: 'q',
+    autocomplete: 'off',
+    'aria-label': t('dict.searchLabel'),
+    placeholder: t('dict.placeholder'),
+  });
+  const status = h('p', {
+    class: 'pill dict-status',
+    role: 'status',
+    'aria-live': 'polite',
+    hidden: true,
+  });
+  const list = h('ul', { class: 'dict-results', 'aria-label': t('dict.results') });
+  const form = h(
+    'form',
+    {
+      class: 'dict-search',
+      onsubmit: (event) => {
+        event.preventDefault();
+        clearTimeout(state.timer);
+        run(input.value.trim());
+      },
+    },
+    input,
+  );
+
+  reset(container).append(h('section', { class: 'dict' }, form, status, list));
+  container.focus({ preventScroll: true });
+
+  const setState = (name) => {
+    container.dataset.state = name;
+  };
+  const setStatus = (key, params) => {
+    status.textContent = key ? t(key, params) : '';
+    status.hidden = !key;
+  };
+
+  /** One result row: hanzi (simp/trad), pinyin, meanings, audio, strokes, add. */
+  function row(entry, isAdded) {
+    const hanzi = entry.simp || entry.trad || '';
+    const audio = h('button', {
+      type: 'button',
+      class: 'dict-audio',
+      text: t('dict.audio'),
+      'aria-label': t('dict.audioFor', { hanzi }),
+      onclick: async () => {
+        const result = await speak(hanzi);
+        if (!result.ok) {
+          setStatus(result.reason === 'empty' ? 'dict.audioEmpty' : 'dict.audioUnavailable');
+        }
+      },
+    });
+
+    const add = h('button', {
+      type: 'button',
+      class: 'dict-add',
+      text: t(isAdded ? 'dict.added' : 'dict.addToReview'),
+      disabled: isAdded,
+      'data-added': String(Boolean(isAdded)),
+      onclick: async () => {
+        add.disabled = true;
+        try {
+          await addToReview({
+            id: entry.id,
+            simp: entry.simp,
+            trad: entry.trad,
+            pinyin: entry.pinyinTone,
+            pinyinNumeric: entry.pinyinNum,
+            defs: entry.defs,
+            source: 'dict',
+          });
+          add.textContent = t('dict.added');
+          add.dataset.added = 'true';
+          node.dataset.added = 'true';
+          setStatus('dict.addedToReview', { hanzi });
+        } catch (err) {
+          console.error('dictionary: add to review failed', err);
+          add.disabled = false;
+          setStatus('dict.addError');
+        }
+      },
+    });
+
+    const strokes = [...hanzi].map((char) =>
+      h('a', {
+        class: 'dict-strokes',
+        href: href(`learn/strokes/${encodeURIComponent(char)}`),
+        'data-hanzi': char,
+        'aria-label': t('dict.strokesFor', { char }),
+        text: char,
+      }),
+    );
+
+    const node = h(
+      'li',
+      {
+        class: 'card dict-row',
+        'data-id': String(entry.id),
+        'data-added': String(Boolean(isAdded)),
+      },
+      h(
+        'div',
+        { class: 'dict-head' },
+        h('span', { class: 'dict-hanzi', text: hanzi }),
+        entry.trad && entry.trad !== hanzi
+          ? h('span', { class: 'dict-trad', text: entry.trad })
+          : null,
+        audio,
+      ),
+      h('p', { class: 'dict-pinyin', text: entry.pinyinTone || entry.pinyinNum || '' }),
+      h('ul', { class: 'dict-defs' }, ...(entry.defs ?? []).map((def) => h('li', { text: def }))),
+      h('div', { class: 'dict-actions' }, ...strokes, add),
+    );
+    return node;
+  }
+
+  async function run(query) {
+    const seq = (state.seq += 1);
+    list.replaceChildren();
+    if (!query) {
+      setState('empty');
+      setStatus('dict.empty');
+      return;
+    }
+    setState('loading');
+    setStatus('dict.loading');
+
+    let results;
+    try {
+      results = await search(query, { limit: RESULT_LIMIT });
+    } catch (err) {
+      if (seq !== state.seq || !state.alive) return;
+      console.error('dictionary: search failed', err);
+      setState('error');
+      setStatus('dict.error');
+      return;
+    }
+    if (seq !== state.seq || !state.alive) return;
+
+    if (!results.length) {
+      setState('none');
+      setStatus('dict.noResults', { query });
+      return;
+    }
+
+    const added = await deckIds();
+    if (seq !== state.seq || !state.alive) return;
+
+    setState('results');
+    setStatus(null);
+    list.replaceChildren(...results.map((entry) => row(entry, added.has(cardId(entry)))));
+  }
+
+  input.addEventListener('input', () => {
+    clearTimeout(state.timer);
+    const query = input.value.trim();
+    if (!query) {
+      run('');
+      return;
+    }
+    state.timer = setTimeout(() => run(query), DEBOUNCE_MS);
+  });
+
+  setState('empty');
+  setStatus('dict.empty');
+  input.focus({ preventScroll: true });
+
+  return () => {
+    state.alive = false;
+    clearTimeout(state.timer);
+  };
 }

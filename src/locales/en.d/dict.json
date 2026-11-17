@@ -1,0 +1,20 @@
+{
+  "dict": {
+    "searchLabel": "Search the dictionary",
+    "placeholder": "Hanzi, pinyin or English",
+    "results": "Search results",
+    "empty": "Type a word to search the dictionary.",
+    "loading": "Searching…",
+    "noResults": "No results for \"{query}\".",
+    "error": "Search failed. Check your connection and try again.",
+    "audio": "Play",
+    "audioFor": "Play the audio for {hanzi}",
+    "audioEmpty": "There is nothing to play.",
+    "audioUnavailable": "Audio is not available in this browser.",
+    "strokesFor": "Stroke order for {char}",
+    "addToReview": "Add to review",
+    "added": "Added ✓",
+    "addedToReview": "{hanzi} added to your review deck.",
+    "addError": "Could not add the word to your review deck."
+  }
+}
