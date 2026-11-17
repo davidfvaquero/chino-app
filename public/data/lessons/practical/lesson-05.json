@@ -1,0 +1,33 @@
+{
+  "id": "practical-05",
+  "title": "Money & Prices: 块/元/毛, 多少钱, Bargaining",
+  "intro": "Handle money: yuan (元/块), jiao (毛), asking prices, and basic bargaining phrases.",
+  "vocabulary": [
+    { "hanzi": "钱", "pinyin": "qián", "english": "money", "example": { "hanzi": "多少钱？", "pinyin": "duō shao qián?", "english": "How much money?" } },
+    { "hanzi": "元", "pinyin": "yuán", "english": "yuan (formal unit)", "example": { "hanzi": "十元", "pinyin": "shí yuán", "english": "ten yuan" } },
+    { "hanzi": "块", "pinyin": "kuài", "english": "yuan (spoken unit)", "example": { "hanzi": "五块钱", "pinyin": "wǔ kuài qián", "english": "five yuan" } },
+    { "hanzi": "毛", "pinyin": "máo", "english": "jiao (0.1 yuan)", "example": { "hanzi": "五毛", "pinyin": "wǔ máo", "english": "fifty cents (0.5 yuan)" } },
+    { "hanzi": "分", "pinyin": "fēn", "english": "fen (0.01 yuan)", "example": { "hanzi": "一分", "pinyin": "yī fēn", "english": "one cent" } },
+    { "hanzi": "多少钱", "pinyin": "duō shao qián", "english": "how much does it cost?", "example": { "hanzi": "这个多少钱？", "pinyin": "zhè ge duō shao qián?", "english": "How much is this?" } },
+    { "hanzi": "贵", "pinyin": "guì", "english": "expensive", "example": { "hanzi": "太贵了", "pinyin": "tài guì le", "english": "too expensive" } },
+    { "hanzi": "便宜", "pinyin": "pián yi", "english": "cheap", "example": { "hanzi": "很便宜", "pinyin": "hěn pián yi", "english": "very cheap" } },
+    { "hanzi": "可以", "pinyin": "kě yǐ", "english": "can; may", "example": { "hanzi": "可以便宜点吗？", "pinyin": "kě yǐ pián yi diǎn ma?", "english": "Can it be cheaper?" } },
+    { "hanzi": "便宜点", "pinyin": "pián yi diǎn", "english": "a little cheaper", "example": { "hanzi": "能不能便宜点？", "pinyin": "néng bu néng pián yi diǎn?", "english": "Can you make it cheaper?" } },
+    { "hanzi": "成交", "pinyin": "chéng jiāo", "english": "deal; transaction completed", "example": { "hanzi": "成交！", "pinyin": "chéng jiāo!", "english": "Deal!" } },
+    { "hanzi": "不买了", "pinyin": "bú mǎi le", "english": "not buying anymore", "example": { "hanzi": "太贵了，不买了", "pinyin": "tài guì le, bú mǎi le", "english": "Too expensive, not buying" } },
+    { "hanzi": "零钱", "pinyin": "líng qián", "english": "change (small money)", "example": { "hanzi": "有零钱吗？", "pinyin": "yǒu líng qián ma?", "english": "Do you have change?" } },
+    { "hanzi": "发票", "pinyin": "fā piào", "english": "receipt; invoice", "example": { "hanzi": "要发票吗？", "pinyin": "yào fā piào ma?", "english": "Do you need a receipt?" } },
+    { "hanzi": "现金", "pinyin": "xiàn jīn", "english": "cash", "example": { "hanzi": "现金还是微信？", "pinyin": "xiàn jīn hái shì wēi xìn?", "english": "Cash or WeChat Pay?" } },
+    { "hanzi": "扫码", "pinyin": "sǎo mǎ", "english": "scan QR code to pay", "example": { "hanzi": "扫码付款", "pinyin": "sǎo mǎ fù kuǎn", "english": "scan to pay" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What is the spoken word for 'yuan'?", "options": ["元", "块", "毛"], "answer": "块" },
+    { "type": "choose", "prompt": "How much is 五毛?", "options": ["5 yuan", "0.5 yuan", "0.05 yuan"], "answer": "0.5 yuan" },
+    { "type": "listen", "audio": "多少钱？", "pinyin": "duō shao qián?", "prompt": "Listen and choose what you hear.", "options": ["多少钱？", "几块钱？", "多少人？"], "answer": "多少钱？" },
+    { "type": "match", "prompt": "Match each money unit to its value.", "pairs": [ { "hanzi": "元", "english": "yuan (formal)" }, { "hanzi": "块", "english": "yuan (spoken)" }, { "hanzi": "毛", "english": "0.1 yuan (jiao)" }, { "hanzi": "分", "english": "0.01 yuan (fen)" } ] },
+    { "type": "order", "prompt": "Arrange to say 'Can it be cheaper?'.", "tokens": ["吗", "点", "便宜", "可以"], "answer": "可以便宜点吗" },
+    { "type": "order", "prompt": "Make 'This is too expensive.'.", "tokens": ["了", "贵", "太", "这"], "answer": "这太贵了" },
+    { "type": "choose", "prompt": "What do you say to agree on a price?", "options": ["成交！", "不买了", "太贵了"], "answer": "成交！" },
+    { "type": "listen", "audio": "现金还是微信？", "pinyin": "xiàn jīn hái shì wēi xìn?", "prompt": "Listen and choose what you hear.", "options": ["现金还是微信？", "扫码还是现金？", "微信还是支付宝？"], "answer": "现金还是微信？" }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "level": "practical",
+  "title": "Practical Chinese",
+  "source": "hand-curated",
+  "wordCount": 120,
+  "wordsPerLesson": 24,
+  "lessons": [
+    { "id": "practical-01", "title": "Numbers 0-10 & Counting", "file": "lesson-01.json", "curated": true },
+    { "id": "practical-02", "title": "Numbers 11-99, Hundreds & Thousands", "file": "lesson-02.json", "curated": true },
+    { "id": "practical-03", "title": "Dates: Year, Month, Day, Weekdays", "file": "lesson-03.json", "curated": true },
+    { "id": "practical-04", "title": "Telling Time: 点, 半, 分", "file": "lesson-04.json", "curated": true },
+    { "id": "practical-05", "title": "Money & Prices: 块/元/毛, 多少钱, Bargaining", "file": "lesson-05.json", "curated": true }
+  ]
+}

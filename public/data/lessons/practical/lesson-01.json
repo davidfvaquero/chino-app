@@ -1,0 +1,33 @@
+{
+  "id": "practical-01",
+  "title": "Numbers 0-10 & Counting",
+  "intro": "Learn to count from zero to ten and use basic measure words for counting objects.",
+  "vocabulary": [
+    { "hanzi": "零", "pinyin": "líng", "english": "zero", "example": { "hanzi": "零度", "pinyin": "líng dù", "english": "zero degrees" } },
+    { "hanzi": "一", "pinyin": "yī", "english": "one", "example": { "hanzi": "一个人", "pinyin": "yī gè rén", "english": "one person" } },
+    { "hanzi": "二", "pinyin": "èr", "english": "two", "example": { "hanzi": "两个人", "pinyin": "liǎng gè rén", "english": "two people" } },
+    { "hanzi": "三", "pinyin": "sān", "english": "three", "example": { "hanzi": "三本书", "pinyin": "sān běn shū", "english": "three books" } },
+    { "hanzi": "四", "pinyin": "sì", "english": "four", "example": { "hanzi": "四只猫", "pinyin": "sì zhī māo", "english": "four cats" } },
+    { "hanzi": "五", "pinyin": "wǔ", "english": "five", "example": { "hanzi": "五个苹果", "pinyin": "wǔ gè píngguǒ", "english": "five apples" } },
+    { "hanzi": "六", "pinyin": "liù", "english": "six", "example": { "hanzi": "六月", "pinyin": "liù yuè", "english": "June" } },
+    { "hanzi": "七", "pinyin": "qī", "english": "seven", "example": { "hanzi": "七天", "pinyin": "qī tiān", "english": "seven days" } },
+    { "hanzi": "八", "pinyin": "bā", "english": "eight", "example": { "hanzi": "八点", "pinyin": "bā diǎn", "english": "eight o'clock" } },
+    { "hanzi": "九", "pinyin": "jiǔ", "english": "nine", "example": { "hanzi": "九岁", "pinyin": "jiǔ suì", "english": "nine years old" } },
+    { "hanzi": "十", "pinyin": "shí", "english": "ten", "example": { "hanzi": "十块钱", "pinyin": "shí kuài qián", "english": "ten yuan" } },
+    { "hanzi": "个", "pinyin": "gè", "english": "general measure word", "example": { "hanzi": "一个", "pinyin": "yī gè", "english": "one (item)" } },
+    { "hanzi": "本", "pinyin": "běn", "english": "measure word for books", "example": { "hanzi": "三本书", "pinyin": "sān běn shū", "english": "three books" } },
+    { "hanzi": "只", "pinyin": "zhī", "english": "measure word for animals", "example": { "hanzi": "一只猫", "pinyin": "yī zhī māo", "english": "one cat" } },
+    { "hanzi": "岁", "pinyin": "suì", "english": "years old", "example": { "hanzi": "五岁", "pinyin": "wǔ suì", "english": "five years old" } },
+    { "hanzi": "多少", "pinyin": "duōshao", "english": "how many; how much", "example": { "hanzi": "多少人？", "pinyin": "duōshao rén?", "english": "How many people?" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 零 mean?", "options": ["zero", "one", "ten"], "answer": "zero" },
+    { "type": "choose", "prompt": "Which character means 'five'?", "options": ["四", "五", "六"], "answer": "五" },
+    { "type": "listen", "audio": "三本书", "pinyin": "sān běn shū", "prompt": "Listen and choose what you hear.", "options": ["三本书", "三只猫", "三个苹果"], "answer": "三本书" },
+    { "type": "match", "prompt": "Match each number to its character.", "pairs": [ { "hanzi": "一", "english": "one" }, { "hanzi": "五", "english": "five" }, { "hanzi": "八", "english": "eight" }, { "hanzi": "十", "english": "ten" } ] },
+    { "type": "order", "prompt": "Put the characters in order to count 1-2-3.", "tokens": ["三", "一", "二"], "answer": "一二三" },
+    { "type": "order", "prompt": "Make the phrase 'two people'.", "tokens": ["人", "两", "个"], "answer": "两个人" },
+    { "type": "choose", "prompt": "Which measure word is used for books?", "options": ["个", "本", "只"], "answer": "本" },
+    { "type": "listen", "audio": "八点", "pinyin": "bā diǎn", "prompt": "Listen and choose what you hear.", "options": ["八点", "九点", "十点"], "answer": "八点" }
+  ]
+}

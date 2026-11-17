@@ -1,0 +1,33 @@
+{
+  "id": "practical-04",
+  "title": "Telling Time: 点, 半, 分",
+  "intro": "Ask and tell time using 点 (o'clock), 半 (half past), and 分 (minutes).",
+  "vocabulary": [
+    { "hanzi": "点", "pinyin": "diǎn", "english": "o'clock", "example": { "hanzi": "三点", "pinyin": "sān diǎn", "english": "three o'clock" } },
+    { "hanzi": "半", "pinyin": "bàn", "english": "half past", "example": { "hanzi": "三点半", "pinyin": "sān diǎn bàn", "english": "half past three" } },
+    { "hanzi": "分", "pinyin": "fēn", "english": "minute", "example": { "hanzi": "三点十分", "pinyin": "sān diǎn shí fēn", "english": "3:10" } },
+    { "hanzi": "刻", "pinyin": "kè", "english": "quarter (15 minutes)", "example": { "hanzi": "三点一刻", "pinyin": "sān diǎn yī kè", "english": "3:15 (quarter past three)" } },
+    { "hanzi": "差", "pinyin": "chà", "english": "lacking; minutes to the hour", "example": { "hanzi": "差五分三点", "pinyin": "chà wǔ fēn sān diǎn", "english": "5 minutes to three (2:55)" } },
+    { "hanzi": "现在", "pinyin": "xiàn zài", "english": "now", "example": { "hanzi": "现在几点？", "pinyin": "xiàn zài jǐ diǎn?", "english": "What time is it now?" } },
+    { "hanzi": "几点", "pinyin": "jǐ diǎn", "english": "what time", "example": { "hanzi": "你几点走？", "pinyin": "nǐ jǐ diǎn zǒu?", "english": "What time do you leave?" } },
+    { "hanzi": "上午", "pinyin": "shàng wǔ", "english": "morning (before noon)", "example": { "hanzi": "上午九点", "pinyin": "shàng wǔ jiǔ diǎn", "english": "9 AM" } },
+    { "hanzi": "下午", "pinyin": "xià wǔ", "english": "afternoon", "example": { "hanzi": "下午三点", "pinyin": "xià wǔ sān diǎn", "english": "3 PM" } },
+    { "hanzi": "晚上", "pinyin": "wǎn shang", "english": "evening", "example": { "hanzi": "晚上八点", "pinyin": "wǎn shang bā diǎn", "english": "8 PM" } },
+    { "hanzi": "中午", "pinyin": "zhōng wǔ", "english": "noon", "example": { "hanzi": "中午十二点", "pinyin": "zhōng wǔ shí èr diǎn", "english": "12 PM (noon)" } },
+    { "hanzi": "半夜", "pinyin": "bàn yè", "english": "midnight", "example": { "hanzi": "半夜两点", "pinyin": "bàn yè liǎng diǎn", "english": "2 AM" } },
+    { "hanzi": "早", "pinyin": "zǎo", "english": "early", "example": { "hanzi": "早一点", "pinyin": "zǎo yī diǎn", "english": "a bit earlier" } },
+    { "hanzi": "晚", "pinyin": "wǎn", "english": "late", "example": { "hanzi": "晚一点", "pinyin": "wǎn yī diǎn", "english": "a bit later" } },
+    { "hanzi": "准时", "pinyin": "zhǔn shí", "english": "on time", "example": { "hanzi": "请准时", "pinyin": "qǐng zhǔn shí", "english": "please be on time" } },
+    { "hanzi": "迟到", "pinyin": "chí dào", "english": "late (arrive late)", "example": { "hanzi": "不要迟到", "pinyin": "bú yào chí dào", "english": "don't be late" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 点 mean in time expressions?", "options": ["minute", "hour/o'clock", "half"], "answer": "hour/o'clock" },
+    { "type": "choose", "prompt": "How do you say '3:30'?", "options": ["三点三十", "三点半", "半三点"], "answer": "三点半" },
+    { "type": "listen", "audio": "现在几点？", "pinyin": "xiàn zài jǐ diǎn?", "prompt": "Listen and choose what you hear.", "options": ["现在几点？", "现在几分？", "几点现在？"], "answer": "现在几点？" },
+    { "type": "match", "prompt": "Match each time word to its meaning.", "pairs": [ { "hanzi": "半", "english": "half past" }, { "hanzi": "分", "english": "minute" }, { "hanzi": "刻", "english": "quarter (15 min)" }, { "hanzi": "差", "english": "minutes to the hour" } ] },
+    { "type": "order", "prompt": "Arrange to form '3:15'.", "tokens": ["刻", "一", "点", "三"], "answer": "三点一刻" },
+    { "type": "order", "prompt": "Make '5 minutes to 4' (差五分四点).", "tokens": ["点", "四", "分", "五", "差"], "answer": "差五分四点" },
+    { "type": "choose", "prompt": "What is 上午九点 in English?", "options": ["9 PM", "9 AM", "9:00"], "answer": "9 AM" },
+    { "type": "listen", "audio": "下午三点半", "pinyin": "xià wǔ sān diǎn bàn", "prompt": "Listen and choose what you hear.", "options": ["下午三点半", "上午三点半", "晚上三点半"], "answer": "下午三点半" }
+  ]
+}

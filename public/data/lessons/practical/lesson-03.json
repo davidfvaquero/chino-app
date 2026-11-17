@@ -1,0 +1,34 @@
+{
+  "id": "practical-03",
+  "title": "Dates: Year, Month, Day, Weekdays",
+  "intro": "Express calendar dates and days of the week using Chinese date format (year-month-day).",
+  "vocabulary": [
+    { "hanzi": "年", "pinyin": "nián", "english": "year", "example": { "hanzi": "今年", "pinyin": "jīn nián", "english": "this year" } },
+    { "hanzi": "月", "pinyin": "yuè", "english": "month", "example": { "hanzi": "一月", "pinyin": "yī yuè", "english": "January" } },
+    { "hanzi": "日", "pinyin": "rì", "english": "day (formal)", "example": { "hanzi": "生日", "pinyin": "shēng rì", "english": "birthday" } },
+    { "hanzi": "号", "pinyin": "hào", "english": "day of month (spoken)", "example": { "hanzi": "十五号", "pinyin": "shí wǔ hào", "english": "the 15th" } },
+    { "hanzi": "星期", "pinyin": "xīng qī", "english": "week", "example": { "hanzi": "这个星期", "pinyin": "zhè ge xīng qī", "english": "this week" } },
+    { "hanzi": "周", "pinyin": "zhōu", "english": "week (alternative)", "example": { "hanzi": "下周", "pinyin": "xià zhōu", "english": "next week" } },
+    { "hanzi": "天", "pinyin": "tiān", "english": "day", "example": { "hanzi": "明天", "pinyin": "míng tiān", "english": "tomorrow" } },
+    { "hanzi": "今天", "pinyin": "jīn tiān", "english": "today", "example": { "hanzi": "今天几号？", "pinyin": "jīn tiān jǐ hào?", "english": "What's today's date?" } },
+    { "hanzi": "明天", "pinyin": "míng tiān", "english": "tomorrow", "example": { "hanzi": "明天见", "pinyin": "míng tiān jiàn", "english": "see you tomorrow" } },
+    { "hanzi": "昨天", "pinyin": "zuó tiān", "english": "yesterday", "example": { "hanzi": "昨天很忙", "pinyin": "zuó tiān hěn máng", "english": "yesterday was busy" } },
+    { "hanzi": "星期一", "pinyin": "xīng qī yī", "english": "Monday", "example": { "hanzi": "星期一上班", "pinyin": "xīng qī yī shàng bān", "english": "work on Monday" } },
+    { "hanzi": "星期二", "pinyin": "xīng qī èr", "english": "Tuesday", "example": { "hanzi": "星期二见", "pinyin": "xīng qī èr jiàn", "english": "see you Tuesday" } },
+    { "hanzi": "星期三", "pinyin": "xīng qī sān", "english": "Wednesday", "example": { "hanzi": "星期三休息", "pinyin": "xīng qī sān xiū xi", "english": "rest on Wednesday" } },
+    { "hanzi": "星期四", "pinyin": "xīng qī sì", "english": "Thursday", "example": { "hanzi": "星期四开会", "pinyin": "xīng qī sì kāi huì", "english": "meeting Thursday" } },
+    { "hanzi": "星期五", "pinyin": "xīng qī wǔ", "english": "Friday", "example": { "hanzi": "星期五下班早", "pinyin": "xīng qī wǔ xià bān zǎo", "english": "off early Friday" } },
+    { "hanzi": "星期六", "pinyin": "xīng qī liù", "english": "Saturday", "example": { "hanzi": "星期六不上班", "pinyin": "xīng qī liù bù shàng bān", "english": "no work Saturday" } },
+    { "hanzi": "星期日", "pinyin": "xīng qī rì", "english": "Sunday", "example": { "hanzi": "星期日休息", "pinyin": "xīng qī rì xiū xi", "english": "rest on Sunday" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 年 mean?", "options": ["month", "year", "day"], "answer": "year" },
+    { "type": "choose", "prompt": "How do you say 'March'?", "options": ["一月", "三月", "三十"], "answer": "三月" },
+    { "type": "listen", "audio": "今天几号？", "pinyin": "jīn tiān jǐ hào?", "prompt": "Listen and choose what you hear.", "options": ["今天几号？", "明天几号？", "昨天几号？"], "answer": "今天几号？" },
+    { "type": "match", "prompt": "Match each weekday to its English.", "pairs": [ { "hanzi": "星期一", "english": "Monday" }, { "hanzi": "星期三", "english": "Wednesday" }, { "hanzi": "星期五", "english": "Friday" }, { "hanzi": "星期日", "english": "Sunday" } ] },
+    { "type": "order", "prompt": "Arrange to form '2024-03-15'.", "tokens": ["日", "五", "十", "三", "月", "零", "二", "四", "二", "年"], "answer": "二零二四年三月十五日" },
+    { "type": "order", "prompt": "Make 'next Monday'.", "tokens": ["一", "下", "星", "期"], "answer": "下星期一" },
+    { "type": "choose", "prompt": "Which means 'the 20th'?", "options": ["二十日", "二十号", "both are correct"], "answer": "both are correct" },
+    { "type": "listen", "audio": "下周五", "pinyin": "xià zhōu wǔ", "prompt": "Listen and choose what you hear.", "options": ["下周五", "这周五", "上周五"], "answer": "下周五" }
+  ]
+}
