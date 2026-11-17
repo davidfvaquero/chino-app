@@ -1,0 +1,20 @@
+{
+  "pinyinchart": {
+    "title": "Pinyin Chart",
+    "intro": "Every Mandarin syllable is an initial (the consonant it starts with) plus a final (the vowel part). Find the initial's row and the final's column: the cell is the syllable. Tap a syllable to see its four tones — each tone is a different word, so we play a real character for each one.",
+    "tableLabel": "Pinyin syllables by initial and final",
+    "cornerLabel": "initial \\ final",
+    "noInitial": "— (no initial)",
+    "cellLabel": "Syllable {syllable}",
+    "tone1": "1st tone",
+    "tone2": "2nd tone",
+    "tone3": "3rd tone",
+    "tone4": "4th tone",
+    "playTone": "Play the {hanzi} audio",
+    "noAudio": "No audio",
+    "pickHint": "Tap a syllable to hear its tones.",
+    "loadError": "Could not load the pinyin chart.",
+    "speakUnsupported": "Audio is not available in this browser.",
+    "speakError": "Could not play the audio."
+  }
+}
