@@ -1,0 +1,36 @@
+{
+  "id": "hsk1-04",
+  "title": "Food & drink",
+  "intro": "Learn words for food, drinks, eating, and buying things.",
+  "vocabulary": [
+    { "hanzi": "叫", "pinyin": "jiào", "english": "to be called; to call", "example": { "hanzi": "我叫王明", "pinyin": "wǒ jiào Wáng Míng", "english": "My name is Wang Ming" } },
+    { "hanzi": "今天", "pinyin": "jīntiān", "english": "today", "example": { "hanzi": "今天很好", "pinyin": "jīntiān hěn hǎo", "english": "Today is good" } },
+    { "hanzi": "九", "pinyin": "jiǔ", "english": "nine", "example": { "hanzi": "九月", "pinyin": "jiǔ yuè", "english": "September" } },
+    { "hanzi": "开", "pinyin": "kāi", "english": "to open; to start; to drive", "example": { "hanzi": "开门", "pinyin": "kāi mén", "english": "open the door" } },
+    { "hanzi": "看", "pinyin": "kàn", "english": "to see; to look at; to watch", "example": { "hanzi": "看书", "pinyin": "kàn shū", "english": "read a book" } },
+    { "hanzi": "看见", "pinyin": "kànjiàn", "english": "to see; to catch sight of", "example": { "hanzi": "我看见你了", "pinyin": "wǒ kànjiàn nǐ le", "english": "I saw you" } },
+    { "hanzi": "块", "pinyin": "kuài", "english": "lump; piece; yuan (money)", "example": { "hanzi": "十块钱", "pinyin": "shí kuài qián", "english": "10 yuan" } },
+    { "hanzi": "来", "pinyin": "lái", "english": "to come; to arrive; next", "example": { "hanzi": "来中国", "pinyin": "lái Zhōngguó", "english": "come to China" } },
+    { "hanzi": "老师", "pinyin": "lǎoshī", "english": "teacher", "example": { "hanzi": "我的老师", "pinyin": "wǒ de lǎoshī", "english": "my teacher" } },
+    { "hanzi": "了", "pinyin": "le", "english": "completed action marker", "example": { "hanzi": "我吃了", "pinyin": "wǒ chī le", "english": "I ate" } },
+    { "hanzi": "冷", "pinyin": "lěng", "english": "cold", "example": { "hanzi": "今天很冷", "pinyin": "jīntiān hěn lěng", "english": "It's cold today" } },
+    { "hanzi": "里", "pinyin": "lǐ", "english": "inside; in; mile", "example": { "hanzi": "在里面", "pinyin": "zài lǐmiàn", "english": "inside" } },
+    { "hanzi": "六", "pinyin": "liù", "english": "six", "example": { "hanzi": "六月", "pinyin": "liù yuè", "english": "June" } },
+    { "hanzi": "妈妈", "pinyin": "māma", "english": "mom; mum", "example": { "hanzi": "我的妈妈", "pinyin": "wǒ de māma", "english": "my mom" } },
+    { "hanzi": "吗", "pinyin": "ma", "english": "question particle", "example": { "hanzi": "你好吗？", "pinyin": "nǐ hǎo ma?", "english": "How are you?" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 妈妈 mean?", "options": ["dad", "mom", "teacher"], "answer": "mom" },
+    { "type": "choose", "prompt": "Which word means 'teacher'?", "options": ["妈妈", "老师", "爸爸"], "answer": "老师" },
+    { "type": "listen", "audio": "今天", "pinyin": "jīntiān", "prompt": "Listen and choose what you hear.", "options": ["今天", "明天", "昨天"], "answer": "今天" },
+    { "type": "match", "prompt": "Match each word to its meaning.", "pairs": [
+      { "hanzi": "妈妈", "english": "mom" },
+      { "hanzi": "老师", "english": "teacher" },
+      { "hanzi": "六", "english": "six" },
+      { "hanzi": "冷", "english": "cold" }
+    ]},
+    { "type": "order", "prompt": "Make the phrase 'six yuan'.", "tokens": ["块", "六"], "answer": "六块" },
+    { "type": "choose", "prompt": "What does 吗 do in a sentence?", "options": ["makes it a question", "means 'mother'", "means 'horse'"], "answer": "makes it a question" },
+    { "type": "listen", "audio": "老师", "pinyin": "lǎoshī", "prompt": "Listen and choose what you hear.", "options": ["老师", "老是", "老鼠"], "answer": "老师" }
+  ]
+}

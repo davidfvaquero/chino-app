@@ -1,0 +1,36 @@
+{
+  "id": "hsk1-03",
+  "title": "Everyday things",
+  "intro": "Learn common objects, actions, and words for daily life.",
+  "vocabulary": [
+    { "hanzi": "高兴", "pinyin": "gāoxìng", "english": "happy; glad", "example": { "hanzi": "我很高兴", "pinyin": "wǒ hěn gāoxìng", "english": "I'm very happy" } },
+    { "hanzi": "个", "pinyin": "ge", "english": "general measure word", "example": { "hanzi": "一个苹果", "pinyin": "yī ge píngguǒ", "english": "one apple" } },
+    { "hanzi": "工作", "pinyin": "gōngzuò", "english": "work; a job", "example": { "hanzi": "我的工作", "pinyin": "wǒ de gōngzuò", "english": "my job" } },
+    { "hanzi": "狗", "pinyin": "gǒu", "english": "dog", "example": { "hanzi": "一只狗", "pinyin": "yī zhī gǒu", "english": "a dog" } },
+    { "hanzi": "汉语", "pinyin": "Hànyǔ", "english": "Chinese language", "example": { "hanzi": "说汉语", "pinyin": "shuō Hànyǔ", "english": "speak Chinese" } },
+    { "hanzi": "好", "pinyin": "hǎo", "english": "good; fine", "example": { "hanzi": "很好", "pinyin": "hěn hǎo", "english": "very good" } },
+    { "hanzi": "号", "pinyin": "hào", "english": "number; day of a month", "example": { "hanzi": "一号", "pinyin": "yī hào", "english": "the 1st (day)" } },
+    { "hanzi": "喝", "pinyin": "hē", "english": "to drink", "example": { "hanzi": "喝水", "pinyin": "hē shuǐ", "english": "drink water" } },
+    { "hanzi": "和", "pinyin": "hé", "english": "and; with", "example": { "hanzi": "你和我", "pinyin": "nǐ hé wǒ", "english": "you and I" } },
+    { "hanzi": "很", "pinyin": "hěn", "english": "very; quite", "example": { "hanzi": "很好", "pinyin": "hěn hǎo", "english": "very good" } },
+    { "hanzi": "后面", "pinyin": "hòumian", "english": "back; behind", "example": { "hanzi": "在后面", "pinyin": "zài hòumian", "english": "at the back" } },
+    { "hanzi": "回", "pinyin": "huí", "english": "to return; to reply; to go back", "example": { "hanzi": "回家", "pinyin": "huí jiā", "english": "go home" } },
+    { "hanzi": "会", "pinyin": "huì", "english": "know how to; can", "example": { "hanzi": "我会说汉语", "pinyin": "wǒ huì shuō Hànyǔ", "english": "I can speak Chinese" } },
+    { "hanzi": "几", "pinyin": "jǐ", "english": "how many; several; a few", "example": { "hanzi": "几个人？", "pinyin": "jǐ ge rén?", "english": "How many people?" } },
+    { "hanzi": "家", "pinyin": "jiā", "english": "family; home", "example": { "hanzi": "我的家", "pinyin": "wǒ de jiā", "english": "my home / my family" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 狗 mean?", "options": ["cat", "dog", "bird"], "answer": "dog" },
+    { "type": "choose", "prompt": "Which word means 'home' or 'family'?", "options": ["家", "狗", "工作"], "answer": "家" },
+    { "type": "listen", "audio": "喝水", "pinyin": "hē shuǐ", "prompt": "Listen and choose what you hear.", "options": ["喝水", "吃饭", "看书"], "answer": "喝水" },
+    { "type": "match", "prompt": "Match each word to its meaning.", "pairs": [
+      { "hanzi": "狗", "english": "dog" },
+      { "hanzi": "工作", "english": "work" },
+      { "hanzi": "汉语", "english": "Chinese language" },
+      { "hanzi": "高兴", "english": "happy" }
+    ]},
+    { "type": "order", "prompt": "Make the phrase 'go home'.", "tokens": ["家", "回"], "answer": "回家" },
+    { "type": "choose", "prompt": "What does 几 mean?", "options": ["many", "how many/several", "all"], "answer": "how many/several" },
+    { "type": "listen", "audio": "高兴", "pinyin": "gāoxìng", "prompt": "Listen and choose what you hear.", "options": ["高兴", "高", "工作"], "answer": "高兴" }
+  ]
+}

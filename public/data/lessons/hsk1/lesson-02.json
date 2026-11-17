@@ -1,0 +1,36 @@
+{
+  "id": "hsk1-02",
+  "title": "People & family",
+  "intro": "Learn words for family members, people, and common everyday objects.",
+  "vocabulary": [
+    { "hanzi": "点", "pinyin": "diǎn", "english": "a dot; a little; o'clock", "example": { "hanzi": "一点", "pinyin": "yī diǎn", "english": "a little; 1 o'clock" } },
+    { "hanzi": "电脑", "pinyin": "diànnǎo", "english": "computer", "example": { "hanzi": "我的电脑", "pinyin": "wǒ de diànnǎo", "english": "my computer" } },
+    { "hanzi": "电视", "pinyin": "diànshì", "english": "television; TV", "example": { "hanzi": "看电视", "pinyin": "kàn diànshì", "english": "watch TV" } },
+    { "hanzi": "电影", "pinyin": "diànyǐng", "english": "movie; film", "example": { "hanzi": "看电影", "pinyin": "kàn diànyǐng", "english": "watch a movie" } },
+    { "hanzi": "东西", "pinyin": "dōngxi", "english": "things; stuff", "example": { "hanzi": "买东西", "pinyin": "mǎi dōngxi", "english": "buy things / go shopping" } },
+    { "hanzi": "都", "pinyin": "dōu", "english": "all; both", "example": { "hanzi": "我们都去", "pinyin": "wǒmen dōu qù", "english": "we all go" } },
+    { "hanzi": "读", "pinyin": "dú", "english": "to read; to study", "example": { "hanzi": "读书", "pinyin": "dú shū", "english": "read a book; study" } },
+    { "hanzi": "对不起", "pinyin": "duìbuqǐ", "english": "sorry", "example": { "hanzi": "对不起，我不知道", "pinyin": "duìbuqǐ, wǒ bù zhīdào", "english": "Sorry, I don't know" } },
+    { "hanzi": "多", "pinyin": "duō", "english": "many; much", "example": { "hanzi": "很多人", "pinyin": "hěn duō rén", "english": "many people" } },
+    { "hanzi": "多少", "pinyin": "duōshao", "english": "how much?; how many?", "example": { "hanzi": "多少钱？", "pinyin": "duōshao qián?", "english": "How much money?" } },
+    { "hanzi": "儿子", "pinyin": "érzi", "english": "son", "example": { "hanzi": "我的儿子", "pinyin": "wǒ de érzi", "english": "my son" } },
+    { "hanzi": "二", "pinyin": "èr", "english": "two", "example": { "hanzi": "二月", "pinyin": "èr yuè", "english": "February" } },
+    { "hanzi": "饭店", "pinyin": "fàndiàn", "english": "restaurant; hotel", "example": { "hanzi": "去饭店", "pinyin": "qù fàndiàn", "english": "go to a restaurant" } },
+    { "hanzi": "飞机", "pinyin": "fēijī", "english": "airplane", "example": { "hanzi": "坐飞机", "pinyin": "zuò fēijī", "english": "take a plane" } },
+    { "hanzi": "分钟", "pinyin": "fēnzhōng", "english": "minute", "example": { "hanzi": "五分钟", "pinyin": "wǔ fēnzhōng", "english": "five minutes" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 儿子 mean?", "options": ["son", "daughter", "father"], "answer": "son" },
+    { "type": "choose", "prompt": "Which word means 'computer'?", "options": ["电视", "电脑", "电影"], "answer": "电脑" },
+    { "type": "listen", "audio": "对不起", "pinyin": "duìbuqǐ", "prompt": "Listen and choose what you hear.", "options": ["对不起", "没关系", "谢谢"], "answer": "对不起" },
+    { "type": "match", "prompt": "Match each word to its meaning.", "pairs": [
+      { "hanzi": "儿子", "english": "son" },
+      { "hanzi": "电脑", "english": "computer" },
+      { "hanzi": "电影", "english": "movie" },
+      { "hanzi": "飞机", "english": "airplane" }
+    ]},
+    { "type": "order", "prompt": "Make the phrase 'watch TV'.", "tokens": ["电视", "看"], "answer": "看电视" },
+    { "type": "choose", "prompt": "What does 多少 mean?", "options": ["many", "how much/how many", "all"], "answer": "how much/how many" },
+    { "type": "listen", "audio": "飞机", "pinyin": "fēijī", "prompt": "Listen and choose what you hear.", "options": ["飞机", "电脑", "电影"], "answer": "飞机" }
+  ]
+}
