@@ -1,0 +1,80 @@
+[
+  {
+    "id": "first_review",
+    "nameKey": "gamification.ach.first_review.name",
+    "descKey": "gamification.ach.first_review.desc",
+    "rule": { "event": "review_done", "count": 1 }
+  },
+  {
+    "id": "reviews_100",
+    "nameKey": "gamification.ach.reviews_100.name",
+    "descKey": "gamification.ach.reviews_100.desc",
+    "rule": { "event": "review_done", "count": 100 }
+  },
+  {
+    "id": "first_lesson",
+    "nameKey": "gamification.ach.first_lesson.name",
+    "descKey": "gamification.ach.first_lesson.desc",
+    "rule": { "event": "lesson_done", "count": 1 }
+  },
+  {
+    "id": "lessons_10",
+    "nameKey": "gamification.ach.lessons_10.name",
+    "descKey": "gamification.ach.lessons_10.desc",
+    "rule": { "event": "lesson_done", "count": 10 }
+  },
+  {
+    "id": "readings_5",
+    "nameKey": "gamification.ach.readings_5.name",
+    "descKey": "gamification.ach.readings_5.desc",
+    "rule": { "event": "reading_done", "count": 5 }
+  },
+  {
+    "id": "strokes_50",
+    "nameKey": "gamification.ach.strokes_50.name",
+    "descKey": "gamification.ach.strokes_50.desc",
+    "rule": { "event": "stroke_done", "count": 50 }
+  },
+  {
+    "id": "drawings_10",
+    "nameKey": "gamification.ach.drawings_10.name",
+    "descKey": "gamification.ach.drawings_10.desc",
+    "rule": { "event": "draw_used", "count": 10 }
+  },
+  {
+    "id": "spoken_20",
+    "nameKey": "gamification.ach.spoken_20.name",
+    "descKey": "gamification.ach.spoken_20.desc",
+    "rule": { "event": "speak_done", "count": 20 }
+  },
+  {
+    "id": "streak_3",
+    "nameKey": "gamification.ach.streak_3.name",
+    "descKey": "gamification.ach.streak_3.desc",
+    "rule": { "streak": 3 }
+  },
+  {
+    "id": "streak_7",
+    "nameKey": "gamification.ach.streak_7.name",
+    "descKey": "gamification.ach.streak_7.desc",
+    "rule": { "streak": 7 }
+  },
+  {
+    "id": "streak_30",
+    "nameKey": "gamification.ach.streak_30.name",
+    "descKey": "gamification.ach.streak_30.desc",
+    "rule": { "streak": 30 }
+  },
+  {
+    "id": "points_100",
+    "nameKey": "gamification.ach.points_100.name",
+    "descKey": "gamification.ach.points_100.desc",
+    "rule": { "points": 100 }
+  },
+  {
+    "id": "points_1000",
+    "nameKey": "gamification.ach.points_1000.name",
+    "descKey": "gamification.ach.points_1000.desc",
+    "rule": { "points": 1000 }
+  }
+]
