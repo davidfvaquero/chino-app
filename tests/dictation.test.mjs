@@ -334,20 +334,33 @@ test('loadSrs: maps review cards from the storage store', async () => {
   assert.equal(words[1].id, 'd2');
 });
 
-test('loadThemesIndex / loadTheme: absent theme data degrades to nothing', async () => {
+test('loadThemesIndex / loadTheme: the shipped shape (bare array + words) and the empty case', async () => {
   const empty = fetchJsonOf({});
   assert.deepEqual(await loadThemesIndex({ base: new URL('file:///data/'), fetchJson: empty }), []);
   await assert.rejects(() => loadTheme('food', { base: new URL('file:///data/'), fetchJson: empty }));
 
+  // exactly how public/data/themes ships today: a bare array, words (no items)
   const withThemes = fetchJsonOf({
-    'themes/index.json': { themes: [{ id: 'food', title: 'Food' }, { slug: 'travel', title: 'Travel' }] },
-    'themes/food.json': { items: [{ hanzi: '饭', pinyin: 'fàn', pinyinNumeric: 'fan4', english: 'rice' }] },
+    'themes/index.json': [
+      { id: 'theme-01', title: 'Greetings & politeness', icon: '👋' },
+      { id: 'theme-02', title: 'Family' },
+    ],
+    'themes/theme-01.json': { id: 'theme-01', words: [{ hanzi: '你好', pinyin: 'nǐ hǎo', english: 'hello' }] },
   });
   const base = new URL('file:///data/');
   const themes = await loadThemesIndex({ base, fetchJson: withThemes });
-  assert.deepEqual(themes.map((theme) => theme.id), ['food', undefined]);
-  const words = await loadTheme('food', { base, fetchJson: withThemes });
-  assert.deepEqual(words, [{ id: '饭|fàn', hanzi: '饭', pinyin: 'fàn', pinyinNumeric: 'fan4', english: 'rice' }]);
+  assert.deepEqual(themes.map((theme) => theme.id), ['theme-01', 'theme-02']);
+  const words = await loadTheme('theme-01', { base, fetchJson: withThemes });
+  assert.deepEqual(words, [{ id: '你好|nǐ hǎo', hanzi: '你好', pinyin: 'nǐ hǎo', pinyinNumeric: '', english: 'hello' }]);
+  // the wrapped shape keeps working too
+  const wrapped = fetchJsonOf({
+    'themes/index.json': { themes: [{ id: 'food', title: 'Food' }, { slug: 'travel', title: 'Travel' }] },
+    'themes/food.json': { items: [{ hanzi: '饭', pinyin: 'fàn', pinyinNumeric: 'fan4', english: 'rice' }] },
+  });
+  assert.deepEqual((await loadThemesIndex({ base, fetchJson: wrapped })).map((theme) => theme.id ?? theme.slug), ['food', 'travel']);
+  assert.deepEqual(await loadTheme('food', { base, fetchJson: wrapped }), [
+    { id: '饭|fàn', hanzi: '饭', pinyin: 'fàn', pinyinNumeric: 'fan4', english: 'rice' },
+  ]);
 });
 
 test('loadSources: HSK1 + review deck, with counts and loaders', async () => {

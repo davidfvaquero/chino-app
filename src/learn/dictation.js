@@ -368,7 +368,8 @@ export async function loadSrs({ store = storage } = {}) {
 export async function loadThemesIndex({ base = DATA_BASE, fetchJson = defaultFetchJson } = {}) {
   try {
     const data = await fetchJson(new URL('themes/index.json', base));
-    const list = data.themes ?? data.items ?? [];
+    // The data task ships a bare array; accept a wrapped list too.
+    const list = Array.isArray(data) ? data : data.themes ?? data.items ?? [];
     return Array.isArray(list) ? list.filter((theme) => theme && (theme.id || theme.slug)) : [];
   } catch {
     return []; // no theme data shipped yet: the option simply does not appear
