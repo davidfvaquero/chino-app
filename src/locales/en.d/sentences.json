@@ -1,0 +1,18 @@
+{
+  "sentences": {
+    "title": "Everyday phrases",
+    "filterPlaceholder": "Filter by hanzi, pinyin or English...",
+    "random": "Random",
+    "playAudio": "Play audio",
+    "audioUnsupported": "Text-to-speech not available in this browser",
+    "addToReview": "Add to review",
+    "addedToReview": "Added to review deck",
+    "alreadyInReview": "Already in review deck",
+    "attribution": "Sentences from Tatoeba (CC BY 2.0 FR)",
+    "viewCredits": "View credits",
+    "noResults": "No sentences match your filter",
+    "pageInfo": "Page {page} of {totalPages} ({total} sentences)",
+    "prev": "Previous",
+    "next": "Next"
+  }
+}
