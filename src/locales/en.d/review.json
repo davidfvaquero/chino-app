@@ -1,0 +1,31 @@
+{
+  "review": {
+    "remaining": "{count} due",
+    "showAnswer": "Show answer",
+    "audio": "Play audio",
+    "audioUnavailable": "Audio is not available in this browser",
+    "rate": "How well did you know it?",
+    "ratings": {
+      "again": "Again",
+      "hard": "Hard",
+      "good": "Good",
+      "easy": "Easy"
+    },
+    "interval": {
+      "days": "{n}d",
+      "months": "{n}mo",
+      "years": "{n}y"
+    },
+    "empty": {
+      "title": "Nothing due",
+      "body": "No cards are waiting for you right now. Add words from the dictionary and they will show up here.",
+      "action": "Go to the dictionary"
+    },
+    "done": {
+      "title": "Session complete",
+      "body": "Cards reviewed this session: {count}.",
+      "again": "Check for more",
+      "action": "Go to the dictionary"
+    }
+  }
+}
