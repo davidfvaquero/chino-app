@@ -1,0 +1,24 @@
+{
+  "id": "tones",
+  "titleKey": "tones.lesson.title",
+  "introKey": "tones.lesson.intro",
+  "vocabulary": [
+    { "hanzi": "妈", "pinyin": "mā", "english": "mother (1st tone)", "tone": 1 },
+    { "hanzi": "麻", "pinyin": "má", "english": "hemp; numb (2nd tone)", "tone": 2 },
+    { "hanzi": "马", "pinyin": "mǎ", "english": "horse (3rd tone)", "tone": 3 },
+    { "hanzi": "骂", "pinyin": "mà", "english": "scold (4th tone)", "tone": 4 },
+    { "hanzi": "吗", "pinyin": "ma", "english": "question particle (neutral tone)", "tone": 0 }
+  ],
+  "exercises": [
+    { "type": "listen", "audio": "mā", "pinyin": "mā", "promptKey": "tones.exercise.listenPrompt", "options": ["1st tone (mā)", "2nd tone (má)", "3rd tone (mǎ)", "4th tone (mà)", "Neutral (ma)"], "answer": "1st tone (mā)" },
+    { "type": "listen", "audio": "má", "pinyin": "má", "promptKey": "tones.exercise.listenPrompt", "options": ["1st tone (mā)", "2nd tone (má)", "3rd tone (mǎ)", "4th tone (mà)", "Neutral (ma)"], "answer": "2nd tone (má)" },
+    { "type": "listen", "audio": "mǎ", "pinyin": "mǎ", "promptKey": "tones.exercise.listenPrompt", "options": ["1st tone (mā)", "2nd tone (má)", "3rd tone (mǎ)", "4th tone (mà)", "Neutral (ma)"], "answer": "3rd tone (mǎ)" },
+    { "type": "listen", "audio": "mà", "pinyin": "mà", "promptKey": "tones.exercise.listenPrompt", "options": ["1st tone (mā)", "2nd tone (má)", "3rd tone (mǎ)", "4th tone (mà)", "Neutral (ma)"], "answer": "4th tone (mà)" },
+    { "type": "listen", "audio": "ma", "pinyin": "ma", "promptKey": "tones.exercise.listenPrompt", "options": ["1st tone (mā)", "2nd tone (má)", "3rd tone (mǎ)", "4th tone (mà)", "Neutral (ma)"], "answer": "Neutral (ma)" },
+    { "type": "choose", "promptKey": "tones.exercise.chooseTone1", "options": ["mā", "má", "mǎ", "mà", "ma"], "answer": "mā" },
+    { "type": "choose", "promptKey": "tones.exercise.chooseTone2", "options": ["mā", "má", "mǎ", "mà", "ma"], "answer": "má" },
+    { "type": "choose", "promptKey": "tones.exercise.chooseTone3", "options": ["mā", "má", "mǎ", "mà", "ma"], "answer": "mǎ" },
+    { "type": "choose", "promptKey": "tones.exercise.chooseTone4", "options": ["mā", "má", "mǎ", "mà", "ma"], "answer": "mà" },
+    { "type": "choose", "promptKey": "tones.exercise.chooseTone0", "options": ["mā", "má", "mǎ", "mà", "ma"], "answer": "ma" }
+  ]
+}

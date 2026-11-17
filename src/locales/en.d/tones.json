@@ -1,0 +1,39 @@
+{
+  "tones": {
+    "lesson": {
+      "title": "Tones & Pinyin",
+      "intro": "Mandarin Chinese has four tones plus a neutral tone. The same syllable with different tones means completely different words. This lesson teaches the basics of pinyin (initials and finals) and the five tones using the classic \"ma\" examples."
+    },
+    "exercise": {
+      "listenPrompt": "Listen and choose the tone you hear.",
+      "chooseTone1": "Which pinyin represents the 1st tone (high flat)?",
+      "chooseTone2": "Which pinyin represents the 2nd tone (rising)?",
+      "chooseTone3": "Which pinyin represents the 3rd tone (dipping)?",
+      "chooseTone4": "Which pinyin represents the 4th tone (falling)?",
+      "chooseTone0": "Which pinyin represents the neutral tone (light, short)?"
+    },
+    "explanation": {
+      "pinyinTitle": "Pinyin Basics",
+      "initialsTitle": "Initials (Consonants)",
+      "finalsTitle": "Finals (Vowels)",
+      "initialsDesc": "Pinyin syllables start with an initial consonant sound. There are 21 initials in Mandarin. Some common ones: b, p, m, f, d, t, n, l, g, k, h, j, q, x, zh, ch, sh, r, z, c, s.",
+      "finalsDesc": "Finals are the vowel part of a syllable. They can be simple vowels (a, o, e, i, u, ü) or compound finals (ai, ei, ao, ou, an, en, ang, eng, etc.). Every syllable has exactly one final.",
+      "tonesTitle": "The Five Tones",
+      "tone1Desc": "1st tone: High and flat (ˉ) — mā (mother). Your voice stays high and level.",
+      "tone2Desc": "2nd tone: Rising (ˊ) — má (hemp). Your voice rises like asking a question.",
+      "tone3Desc": "3rd tone: Dipping (ˇ) — mǎ (horse). Your voice dips down then up.",
+      "tone4Desc": "4th tone: Falling (ˋ) — mà (scold). Your voice falls sharply like saying \"No!\".",
+      "tone0Desc": "Neutral tone: Light and short (no mark) — ma (question particle). Quick and unstressed.",
+      "playTone": "Play {tone}"
+    },
+    "vocabulary": {
+      "toneLabel": "Tone",
+      "hanziLabel": "Character",
+      "pinyinLabel": "Pinyin",
+      "meaningLabel": "Meaning"
+    },
+    "nav": {
+      "back": "Back to Learn"
+    }
+  }
+}
