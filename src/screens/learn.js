@@ -13,7 +13,7 @@ import { h, reset } from '../dom.js';
 
 export const titleKey = 'screens.learn.title';
 
-const AREAS = ['lessons', 'tones', 'strokes', 'sentences'];
+const AREAS = ['lessons', 'tones', 'strokes', 'sentences', 'pinyin-chart', 'themes', 'dictation'];
 
 const load = (area) => import(`../learn/${area}.js`);
 

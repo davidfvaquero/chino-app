@@ -22,6 +22,7 @@ import { h } from './dom.js';
 import { icon } from './icons.js';
 import { createRouter, navigate } from './router.js';
 import { registerServiceWorker, watchInstallPrompt } from './pwa.js';
+import { attach as attachStats } from './stats.js';
 import * as dictionary from './screens/dictionary.js';
 import * as review from './screens/review.js';
 import * as learn from './screens/learn.js';
@@ -117,6 +118,7 @@ async function boot() {
   });
 
   watchInstallPrompt();
+  attachStats();
   renderChrome();
   await router.start();
   registerServiceWorker();

@@ -11,7 +11,7 @@ import { h, reset } from '../dom.js';
 
 export const titleKey = 'screens.extras.title';
 
-const AREAS = ['profile', 'draw', 'pronounce'];
+const AREAS = ['profile', 'draw', 'pronounce', 'backup', 'stats'];
 
 const load = (area) => import(`../extras/${area}.js`);
 
