@@ -1,0 +1,56 @@
+{
+  "locale": {
+    "name": "English"
+  },
+  "app": {
+    "title": "Chino",
+    "short_name": "Chino",
+    "description": "Free, offline-first web app to learn Mandarin Chinese: dictionary, flashcards, HSK lessons and readings."
+  },
+  "nav": {
+    "label": "Main navigation",
+    "dictionary": "Dictionary",
+    "review": "Review",
+    "learn": "Learn",
+    "read": "Read",
+    "extras": "Extras"
+  },
+  "common": {
+    "comingSoon": "Coming soon",
+    "loading": "Loading…"
+  },
+  "screens": {
+    "dictionary": {
+      "title": "Dictionary",
+      "hint": "Search CC-CEDICT by hanzi, pinyin or English and add words to your review deck."
+    },
+    "review": {
+      "title": "Review",
+      "hint": "Spaced-repetition flashcards will show up here."
+    },
+    "learn": {
+      "title": "Learn",
+      "hint": "HSK lessons, tones, stroke order and everyday phrases will live here."
+    },
+    "read": {
+      "title": "Read",
+      "hint": "Short graded readings and dialogues will live here."
+    },
+    "extras": {
+      "title": "Extras / Profile",
+      "hint": "Settings, streaks, drawing search and extra practice tools will live here."
+    }
+  },
+  "profile": {
+    "language": "Language",
+    "storage": "Storage",
+    "storageEngine": "{driver}",
+    "offlineReady": "Offline ready",
+    "install": "Install app",
+    "installUnavailable": "Install is not available in this browser (already installed?)"
+  },
+  "errors": {
+    "routeMissing": "Screen \"{screen}\" does not exist.",
+    "localeUnknown": "Language \"{code}\" is not loaded."
+  }
+}

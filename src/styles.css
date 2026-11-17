@@ -1,0 +1,172 @@
+/* Mobile-first shell styles. No framework, no dependencies. */
+
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f5f5f4;
+  --fg: #1c1b1a;
+  --fg-soft: #5f5c58;
+  --line: #e3e1df;
+  --accent: #b3261e;
+  --accent-fg: #ffffff;
+  --tabbar-h: 3.75rem;
+  --radius: 0.9rem;
+  --pad: 1rem;
+  font-size: 16px;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131211;
+    --bg-soft: #1e1c1b;
+    --fg: #f2f0ee;
+    --fg-soft: #b3aeaa;
+    --line: #302d2b;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: calc(env(safe-area-inset-top) + 0.75rem) var(--pad) 0.75rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.screen {
+  flex: 1;
+  padding: var(--pad);
+  padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + var(--pad));
+  outline: none;
+}
+
+.screen h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.screen p {
+  margin: 0 0 0.75rem;
+  color: var(--fg-soft);
+  line-height: 1.5;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--bg-soft);
+  color: var(--fg-soft);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.card {
+  margin: 0 0 0.75rem;
+  padding: 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+}
+
+.field {
+  display: block;
+  width: 100%;
+  min-height: 2.75rem;
+  margin-top: 0.35rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+}
+
+.tabbar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.15rem;
+  padding: 0.35rem 0.35rem calc(0.35rem + env(safe-area-inset-bottom));
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  min-height: 3rem;
+  padding: 0.25rem 0.1rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--fg-soft);
+  font: inherit;
+  font-size: 0.6875rem;
+  cursor: pointer;
+}
+
+.tab[aria-current="page"] {
+  color: var(--accent);
+  background: var(--bg-soft);
+}
+
+.tab svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.status {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 0.75rem);
+  transform: translateX(-50%);
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 0.8125rem;
+}
+
+@media (min-width: 40rem) {
+  /* Wide screens: keep the phone-like layout but centred. */
+  .app {
+    max-width: 40rem;
+    margin: 0 auto;
+    border-inline: 1px solid var(--line);
+  }
+  .app-header,
+  .tabbar {
+    max-width: 40rem;
+  }
+}
