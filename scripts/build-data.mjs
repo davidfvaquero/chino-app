@@ -439,7 +439,7 @@ async function buildHsk() {
       const p = line.split('\t');
       if (p.length < 5) continue;
       const [hanzi, trad, num, marks, english] = p;
-      items.push({ hanzi, trad, pinyin: marks, pinyinNumeric: num, english });
+      items.push({ level, hanzi, trad, pinyin: marks, pinyinNumeric: num, english });
     }
     const obj = { level, source: SOURCES.hsk, license: SOURCES.hsk.license, count: items.length, items };
     total += writeJson(path.join(OUT, 'hsk', `${level}.json`), obj);
