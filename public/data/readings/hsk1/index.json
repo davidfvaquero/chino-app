@@ -1,0 +1,8 @@
+[
+  { "id": "reading-01", "title": "你好！", "topic": "Greetings & introductions" },
+  { "id": "reading-02", "title": "我的家", "topic": "Family" },
+  { "id": "reading-03", "title": "吃饭", "topic": "Food & drinks" },
+  { "id": "reading-04", "title": "今天天气", "topic": "Weather & days" },
+  { "id": "reading-05", "title": "买东西", "topic": "Shopping & numbers" },
+  { "id": "reading-06", "title": "我的一天", "topic": "My day" }
+]

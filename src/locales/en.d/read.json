@@ -1,0 +1,18 @@
+{
+  "read": {
+    "loading": "Loading…",
+    "empty": "No readings yet.",
+    "error": "Could not load the reading.",
+    "back": "All readings",
+    "togglePinyin": "Pinyin",
+    "tapWord": "Tap a word to see its meaning.",
+    "playLine": "Play line {n}",
+    "playAll": "Read aloud",
+    "notFound": "No dictionary entry for “{word}”.",
+    "addToReview": "Add to review",
+    "added": "Added to review",
+    "close": "Close",
+    "markDone": "Mark as read",
+    "audioUnsupported": "Audio is not available in this browser."
+  }
+}
