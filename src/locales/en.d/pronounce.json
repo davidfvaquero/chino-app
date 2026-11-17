@@ -1,0 +1,16 @@
+{
+  "pronounce": {
+    "title": "Pronunciation practice",
+    "targetLabel": "Say this:",
+    "recordBtn": "Record",
+    "recording": "Listening...",
+    "playModelBtn": "Play model",
+    "feedbackCorrect": "Correct!",
+    "feedbackTryAgain": "Try again",
+    "feedbackHeard": "Heard: {text}",
+    "noSupport": "Speech recognition not supported in this browser.",
+    "permissionDenied": "Microphone permission denied. You can still listen to the model.",
+    "noSpeech": "No speech detected. Please try again.",
+    "error": "Recognition error. Please try again."
+  }
+}
