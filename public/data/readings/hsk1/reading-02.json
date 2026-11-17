@@ -1,0 +1,56 @@
+{
+  "id": "reading-02",
+  "title": "我的家",
+  "type": "dialogue",
+  "topic": "Family",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你家有几口人？",
+      "pinyin": "Nǐ jiā yǒu jǐ kǒu rén?",
+      "english": "How many people are in your family?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我家有四口人：爸爸、妈妈、哥哥和我。",
+      "pinyin": "Wǒ jiā yǒu sì kǒu rén: bàba, māma, gēge hé wǒ.",
+      "english": "There are four people in my family: dad, mom, older brother, and me."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你哥哥多大？",
+      "pinyin": "Nǐ gēge duō dà?",
+      "english": "How old is your older brother?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "他二十岁。他在北京上大学。",
+      "pinyin": "Tā èrshí suì. Tā zài Běijīng shàng dàxué.",
+      "english": "He is twenty years old. He studies at university in Beijing."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你爸爸妈妈做什么工作？",
+      "pinyin": "Nǐ bàba māma zuò shénme gōngzuò?",
+      "english": "What work do your dad and mom do?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "爸爸是医生，妈妈是老师。",
+      "pinyin": "Bàba shì yīshēng, māma shì lǎoshī.",
+      "english": "Dad is a doctor, mom is a teacher."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你爱你的家人吗？",
+      "pinyin": "Nǐ ài nǐ de jiārén ma?",
+      "english": "Do you love your family?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，我很爱他们。",
+      "pinyin": "Shì de, wǒ hěn ài tāmen.",
+      "english": "Yes, I love them very much."
+    }
+  ]
+}
