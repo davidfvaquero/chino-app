@@ -66,7 +66,25 @@ the licence asks for it.
 - **Extensibility:** the folder already contains levels 1–6; adding the newer
   HSK 3.0 lists only requires dropping another JSON in the same shape.
 
-## 5. Software libraries
+## 5. Make Me a Hanzi — radicals & decomposition (`public/data/radicals/`)
+
+- **Source:** Make Me a Hanzi, <https://github.com/skishore/makemeahanzi>
+  (`dictionary.txt`, generated from the same Arphic fonts as the stroke data).
+- **Licences:** the stroke/character graphics derive from the **Arphic Public
+  License** (Arphic PL) — <https://www.arphic.com.tw/> ; the Make Me a Hanzi
+  *code* is **LGPL**. Combined, this repository lists the project as
+  *Arphic Public License / LGPL*.
+- **Copyright:** © Arphic Technology Co., Ltd. (fonts) and the Make Me a Hanzi
+  authors.
+- **Changes made:** extracted the 214 Kangxi radicals with number, symbol, pinyin,
+  English meaning, and stroke count; parsed Ideographic Description Sequences
+  (IDS) from the `decomposition` field for characters present in the app's
+  dataset (HSK vocab + frequent characters), sharded by Unicode range; built a
+  reverse index mapping each component/radical to the characters containing it.
+  The 214 radical definitions (pinyin, meaning, stroke count) are compiled from
+  standard Unicode Kangxi Radicals block references (public domain).
+
+## 6. Software libraries
 
 - **None bundled for data processing.** `scripts/build-data.mjs` uses only the
   Node.js standard library plus the system `bunzip2` to unpack Tatoeba's `.bz2`
