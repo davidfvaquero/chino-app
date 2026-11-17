@@ -1,0 +1,23 @@
+{
+  "hardwords": {
+    "title": "Hard words",
+    "intro": "Words you miss most in review, worst first.",
+    "misses": "{count} misses",
+    "audio": "Play audio",
+    "audioUnavailable": "Audio is not available in this browser",
+    "practice": "Practice",
+    "back": "Back to list",
+    "showAnswer": "Show answer",
+    "remaining": "{count} left",
+    "again": "Again",
+    "good": "Good",
+    "empty": {
+      "title": "No hard words yet",
+      "body": "Words you miss 3 times or more in review will show up here. Keep going, you are doing fine."
+    },
+    "done": {
+      "title": "Practice complete",
+      "body": "Words practiced: {count}."
+    }
+  }
+}

@@ -175,3 +175,16 @@ test('getDueCards/answer are the primary names; dueCards/gradeCard are aliases',
   assert.equal(await deck.countDue(T0), 0);
 });
 
+
+test('lapses: legacy card without the field counts as 0; only again adds one', async () => {
+  const store = createStorage(memoryDriver());
+  const deck = createDeck(store);
+  const { card } = await deck.addToReview({ id: 99, simp: '难', pinyin: 'nán', english: ['hard'] }, { now: T0 });
+  const { lapses, ...legacy } = card;
+  await store.set('srs', card.id, legacy);
+  assert.equal((await deck.answer(card.id, 'good', T0)).lapses, 0, 'good keeps 0');
+  assert.equal((await deck.answer(card.id, 'again', T0)).lapses, 1);
+  assert.equal((await deck.answer(card.id, 'hard', T0)).lapses, 1, 'hard is not a lapse');
+  assert.equal((await deck.answer(card.id, 'again', T0)).lapses, 2);
+  assert.equal((await store.get('srs', card.id)).lapses, 2, 'persisted');
+});
