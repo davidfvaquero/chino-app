@@ -71,6 +71,12 @@ export function normalizeCharacter(value) {
   return match ? match[0] : '';
 }
 
+/** Every CJK character of a route segment / search box, in order. */
+export function hanziCharacters(value) {
+  if (value === undefined || value === null) return [];
+  return String(value).match(/[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/gu) || [];
+}
+
 export function isValidStrokeEntry(entry) {
   if (!entry || typeof entry !== 'object') return false;
   if (typeof entry.character !== 'string' || entry.character.trim() === '') return false;
@@ -331,10 +337,135 @@ function svgEl(tag, attrs = {}, ...children) {
   return node;
 }
 
+/**
+ * SVG diagram of `upTo` strokes of a set, the last one accented. Shared with
+ * the multi-character sheet (src/learn/strokes-sheet.js) so the drawing lives
+ * in one place.
+ */
+export function strokeDiagramSvg(set, { upTo = set?.strokes?.length ?? 0, accent = upTo - 1 } = {}) {
+  const svg = svgEl('svg', {
+    viewBox: `0 0 ${VIEW_BOX_SIZE} ${VIEW_BOX_SIZE}`,
+    preserveAspectRatio: 'xMidYMid meet',
+    'aria-hidden': 'true',
+  });
+  (set?.strokes ?? []).slice(0, upTo).forEach((path, index) => {
+    svg.append(
+      svgEl('path', {
+        class: index === accent ? 'stroke-part stroke-part-new' : 'stroke-part',
+        d: path,
+        'data-index': index,
+      }),
+    );
+  });
+  return svg;
+}
+
+/**
+ * Tiny reusable stroke-by-stroke animation (median pen lines). Returns the SVG
+ * plus play/pause/toggle/stop so a host screen only wires buttons.
+ */
+export function createStrokeAnimation(set, { perStrokeMs = ANIM_PER_STROKE_MS, tickMs = TICK_MS } = {}) {
+  const svg = svgEl('svg', {
+    viewBox: `0 0 ${VIEW_BOX_SIZE} ${VIEW_BOX_SIZE}`,
+    preserveAspectRatio: 'xMidYMid meet',
+    'aria-hidden': 'true',
+  });
+  const inks = (set?.medians ?? []).map((median, index) =>
+    svgEl('path', {
+      class: 'stroke-pen',
+      d: medianToPath(median),
+      'data-index': index,
+      style: 'stroke-dasharray:1;stroke-dashoffset:1',
+    }),
+  );
+  inks.forEach((ink) => svg.append(ink));
+
+  let state = 'idle';
+  let timer = null;
+  let lastTick = 0;
+  let elapsed = 0;
+
+  const paint = (index, progress) => {
+    const ink = inks[index];
+    if (!ink) return;
+    const length = Math.max(1, pathLengthFromMedian(set.medians[index]));
+    ink.style.strokeDasharray = String(length);
+    ink.style.strokeDashoffset = String(length * (1 - clamp01(progress)));
+  };
+
+  const stop = () => {
+    clearTimeout(timer);
+    timer = null;
+  };
+
+  function tick() {
+    if (state !== 'playing') return;
+    if (!inks.length) {
+      state = 'done';
+      return;
+    }
+    const now = Date.now();
+    elapsed += (now - lastTick) / perStrokeMs;
+    lastTick = now;
+    if (elapsed >= inks.length) {
+      inks.forEach((_, index) => paint(index, 1));
+      stop();
+      state = 'done';
+      return;
+    }
+    const done = Math.floor(elapsed);
+    for (let index = 0; index < done; index += 1) paint(index, 1);
+    paint(done, elapsed - done);
+    timer = setTimeout(tick, tickMs);
+  }
+
+  const play = () => {
+    stop();
+    if (!inks.length) return;
+    elapsed = 0;
+    lastTick = Date.now();
+    inks.forEach((_, index) => paint(index, 0));
+    state = 'playing';
+    tick();
+  };
+
+  const pause = () => {
+    if (state !== 'playing') return;
+    stop();
+    state = 'paused';
+  };
+
+  const toggle = () => {
+    if (state === 'playing') pause();
+    else if (state === 'paused') {
+      state = 'playing';
+      lastTick = Date.now();
+      tick();
+    } else play();
+  };
+
+  return {
+    svg,
+    play,
+    pause,
+    toggle,
+    stop: () => {
+      stop();
+      state = 'idle';
+    },
+    state: () => state,
+  };
+}
+
 /** Wires the whole screen into `container`; resolves once the character is loaded. */
 export async function render(container, ctx = {}) {
+  const characters = hanziCharacters(ctx?.route?.segments?.[1]);
+  if (characters.length > 1) {
+    const sheet = await import('./strokes-sheet.js');
+    return sheet.render(container, ctx);
+  }
   const app = createStrokeApp(container, ctx);
-  const character = normalizeCharacter(ctx?.route?.segments?.[1]);
+  const character = characters[0] ?? '';
   if (character) await app.show(character);
   else app.showSearch();
   return () => app.destroy();
@@ -727,21 +858,25 @@ function createStrokeApp(container, ctx) {
 
   function onSubmit(event) {
     event.preventDefault();
-    const character = normalizeCharacter(input.value);
-    input.value = character || input.value;
-    if (!character) {
+    const characters = hanziCharacters(input.value);
+    if (!characters.length) {
       setHint('strokes.searchNoHanzi');
       return;
     }
-    ctx.navigate?.(`learn/strokes/${encodeURIComponent(character)}`);
+    const capped = characters.slice(0, 20);
+    const tooMany = characters.length > capped.length;
+    if (tooMany) setHint('strokesSheet.tooMany', { max: 20 });
+    input.value = capped.join('');
+    ctx.navigate?.(`learn/strokes/${encodeURIComponent(capped.join(''))}${tooMany ? '?overflow=1' : ''}`);
   }
 
   function onSearchInput() {
     clearTimeout(state.searchTimer);
     state.searchTimer = setTimeout(async () => {
-      const query = normalizeCharacter(input.value);
+      const characters = hanziCharacters(input.value);
       results.replaceChildren();
-      if (!query) return;
+      if (characters.length !== 1) return;
+      const query = characters[0];
       let hits = [];
       try {
         hits = await defaultLoader.search(query, { limit: 12 });

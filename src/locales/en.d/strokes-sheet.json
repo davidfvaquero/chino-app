@@ -1,0 +1,34 @@
+{
+  "strokesSheet": {
+    "title": "Stroke sheet",
+    "inputLabel": "Characters to look up",
+    "inputPlaceholder": "Type or paste up to 20 characters, e.g. 戴维德",
+    "show": "Show strokes",
+    "tooMany": "Only the first {max} characters are shown.",
+    "empty": "Type at least one Chinese character.",
+    "loading": "Loading strokes…",
+    "noData": "No stroke data for “{char}”. The other characters still work.",
+    "strokesCount": "{count} strokes",
+    "stepLabel": "Step {number}",
+    "approxLabel": "approx. stroke types:",
+    "play": "Play",
+    "pause": "Pause",
+    "copy": "Copy as text",
+    "copied": "Summary copied.",
+    "copyError": "Could not copy the summary.",
+    "addAll": "Add all to review",
+    "added": "Added {count} to your review deck.",
+    "reviewError": "Could not add them to the review deck.",
+    "summaryLine": "{char}: {count} strokes",
+    "summaryNoData": "{char}: no stroke data",
+    "types": {
+      "horizontal": "horizontal",
+      "vertical": "vertical",
+      "left-falling": "left-falling",
+      "right-falling": "right-falling",
+      "dot": "dot",
+      "turn": "turn",
+      "hook": "hook"
+    }
+  }
+}
