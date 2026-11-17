@@ -1,15 +1,22 @@
 /**
- * Build: copies the static site into dist/ (relative paths only, so it can be
- * served from any folder), generates manifest.webmanifest from en.json and
- * stamps sw.js with a content hash. No bundler: the browser loads the ES
- * modules as-is.
+ * Build: copies the static site into OUT_DIR (default dist/), merges the
+ * per-module locale shards into one locales/<code>.json per language, generates
+ * manifest.webmanifest from the merged en locale and stamps sw.js with a
+ * content hash. No bundler: the browser loads the ES modules as-is.
+ *
+ * Parallel builds: `OUT_DIR=/tmp/x npm run build` writes only under that path,
+ * so two builds with different OUT_DIRs never touch each other's files.
  */
 import { createHash } from 'node:crypto';
 import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { manifestFromLocale } from './manifest.mjs';
+import { listLocaleCodes, loadMergedLocale } from './build-locales.mjs';
 
 const root = new URL('../', import.meta.url);
-const dist = new URL('../dist/', import.meta.url);
+const outDir = resolve(process.env.OUT_DIR ?? fileURLToPath(new URL('../dist/', import.meta.url)));
+const dist = pathToFileURL(`${outDir}/`);
 
 const exists = async (url) => {
   try {
@@ -46,14 +53,29 @@ if (await exists(new URL('public/', root))) {
   await cp(new URL('public/', root), dist, { recursive: true });
 }
 
-// 4. manifest generated from the locale file (single source of truth for copy)
-const locale = JSON.parse(await readFile(new URL('src/locales/en.json', root), 'utf8'));
+// 4. merge every locale: <code>.json + <code>.d/*.json -> one <code>.json.
+//    A key defined in two files throws here (build fails) instead of letting
+//    one module silently overwrite another's text. The shards themselves are
+//    dropped from the output: only the merged file is served.
+const srcLocales = new URL('src/locales/', root);
+const distLocales = new URL('src/locales/', dist);
+const locales = new Map();
+for (const code of await listLocaleCodes(srcLocales)) {
+  const dict = await loadMergedLocale(srcLocales, code);
+  locales.set(code, dict);
+  await writeFile(new URL(`${code}.json`, distLocales), `${JSON.stringify(dict, null, 2)}\n`);
+  await rm(new URL(`${code}.d/`, distLocales), { recursive: true, force: true });
+}
+console.log(`build: merged locales: ${[...locales.keys()].join(', ')}`);
+
+// 5. manifest generated from the merged locale (single source of truth for copy)
+const locale = locales.get('en') ?? {};
 await writeFile(
   new URL('manifest.webmanifest', dist),
   `${JSON.stringify(manifestFromLocale(locale, 'en'), null, 2)}\n`,
 );
 
-// 5. stamp sw.js with a content hash: every build rotates the caches, otherwise
+// 6. stamp sw.js with a content hash: every build rotates the caches, otherwise
 // a changed asset would sit behind the already-installed service worker forever.
 const hash = createHash('sha256');
 for (const file of (await list(dist)).sort()) {
@@ -66,7 +88,7 @@ const swDist = swSource.replace("const VERSION = 'dev';", `const VERSION = '${ve
 if (swDist === swSource) throw new Error('build: could not stamp sw.js (VERSION marker missing)');
 await writeFile(new URL('sw.js', dist), swDist);
 
-// 6. sanity check: every file the service worker precaches must exist
+// 7. sanity check: every file the service worker precaches must exist
 const precached = [...swDist.matchAll(/'\.\/([^']+)'/g)].map((m) => m[1]);
 const missing = [];
 for (const rel of precached) {
@@ -78,5 +100,4 @@ if (missing.length > 0) {
 }
 
 const files = await list(dist);
-console.log(`build: dist/ ready — ${files.length} files (sw version ${version})`);
-for (const file of files.sort()) console.log(`  ${file}`);
+console.log(`build: ${outDir} ready — ${files.length} files (sw version ${version})`);

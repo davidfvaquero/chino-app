@@ -6,8 +6,9 @@
   "description": "Free, offline-first PWA to learn Mandarin Chinese (shell).",
   "license": "MIT",
   "scripts": {
-    "dev": "node scripts/dev.mjs",
+    "dev": "node scripts/serve.mjs .",
     "build": "node scripts/build.mjs",
+    "serve": "node scripts/serve.mjs",
     "test": "node --test tests/",
     "data": "node scripts/build-data.mjs",
     "test:data": "node --test tests/data-sanity.test.mjs",

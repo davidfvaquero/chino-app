@@ -1,0 +1,15 @@
+{
+  "hubs": {
+    "learn": {
+      "lessons": "HSK lessons",
+      "tones": "Tones & pinyin",
+      "strokes": "Stroke order",
+      "sentences": "Everyday phrases"
+    },
+    "extras": {
+      "profile": "Profile & progress",
+      "draw": "Draw a character",
+      "pronounce": "Pronunciation practice"
+    }
+  }
+}

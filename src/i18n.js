@@ -27,6 +27,65 @@ export function registerLocale(code, dictionary) {
   return code;
 }
 
+/**
+ * Deep-merges locale dictionaries into one object.
+ *
+ * `sources` is a list of `{ name, dict }`; `name` is the file it came from and
+ * is only used to make collision errors readable.
+ *
+ * A locale is split over several files (see docs/CONVENTIONS.md): the shared
+ * `src/locales/<code>.json` plus one `src/locales/<code>.d/<area>.json` per
+ * module. Objects merge recursively (so `en.d/tones.json` can add `tones.*`
+ * next to the shared keys), but a *leaf* key written by two files is a
+ * collision: it throws by default, which is what makes `npm run build` fail
+ * instead of one module silently overwriting another's text.
+ *
+ * Pass `onDuplicate(key, previousName, nextName)` to collect collisions instead
+ * of throwing.
+ */
+export function mergeDictionaries(sources, { onDuplicate } = {}) {
+  const merged = {};
+  const origin = new Map(); // dotted key -> the file that wrote it
+  const fail = (key, previous, next) => {
+    if (typeof onDuplicate === 'function') onDuplicate(key, previous, next);
+    else throw new Error(`duplicate locale key "${key}" (${previous} and ${next})`);
+  };
+  const isObject = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
+  const at = (path) => path.reduce((node, part) => (isObject(node) ? node[part] : undefined), merged);
+
+  for (const { name = '<dict>', dict } of sources) {
+    const walk = (obj, parents) => {
+      for (const [part, value] of Object.entries(obj ?? {})) {
+        const path = [...parents, part];
+        const key = path.join('.');
+        if (isObject(value)) {
+          const existing = at(path);
+          if (existing !== undefined && !isObject(existing)) {
+            fail(key, origin.get(key) ?? name, name);
+          }
+          const parent = at(parents);
+          if (!isObject(parent[part])) parent[part] = {};
+          walk(value, path);
+        } else {
+          if (origin.has(key)) {
+            fail(key, origin.get(key), name);
+            continue;
+          }
+          const parent = at(parents);
+          if (isObject(parent[part])) {
+            fail(key, origin.get(key) ?? name, name);
+            continue;
+          }
+          parent[part] = value;
+          origin.set(key, name);
+        }
+      }
+    };
+    walk(dict, []);
+  }
+  return merged;
+}
+
 export function availableLocales() {
   return [...dictionaries.keys()].sort();
 }
