@@ -1,0 +1,109 @@
+{
+  "id": "theme-01",
+  "title": "Saludos y cortesía",
+  "icon": "👋",
+  "words": [
+    {
+      "hanzi": "你好",
+      "pinyin": "nǐ hǎo",
+      "english": "hola"
+    },
+    {
+      "hanzi": "您好",
+      "pinyin": "nín hǎo",
+      "english": "hola (formal)"
+    },
+    {
+      "hanzi": "早上好",
+      "pinyin": "zǎo shang hǎo",
+      "english": "buenos días"
+    },
+    {
+      "hanzi": "晚上好",
+      "pinyin": "wǎn shang hǎo",
+      "english": "buenas tardes"
+    },
+    {
+      "hanzi": "晚安",
+      "pinyin": "wǎn ān",
+      "english": "buenas noches"
+    },
+    {
+      "hanzi": "再见",
+      "pinyin": "zài jiàn",
+      "english": "adiós"
+    },
+    {
+      "hanzi": "谢谢",
+      "pinyin": "xiè xie",
+      "english": "gracias"
+    },
+    {
+      "hanzi": "不客气",
+      "pinyin": "bú kè qi",
+      "english": "de nada"
+    },
+    {
+      "hanzi": "对不起",
+      "pinyin": "duì bu qǐ",
+      "english": "perdón"
+    },
+    {
+      "hanzi": "没关系",
+      "pinyin": "méi guān xi",
+      "english": "no pasa nada"
+    },
+    {
+      "hanzi": "请",
+      "pinyin": "qǐng",
+      "english": "por favor"
+    },
+    {
+      "hanzi": "请问",
+      "pinyin": "qǐng wèn",
+      "english": "disculpa (¿puedo preguntar?)"
+    },
+    {
+      "hanzi": "是",
+      "pinyin": "shì",
+      "english": "sí; ser"
+    },
+    {
+      "hanzi": "不",
+      "pinyin": "bù",
+      "english": "no; negación"
+    }
+  ],
+  "phrases": [
+    {
+      "hanzi": "你好吗？",
+      "pinyin": "nǐ hǎo ma",
+      "english": "¿cómo estás?"
+    },
+    {
+      "hanzi": "我很好，谢谢。",
+      "pinyin": "wǒ hěn hǎo, xiè xie",
+      "english": "Estoy bien, gracias."
+    },
+    {
+      "hanzi": "你叫什么名字？",
+      "pinyin": "nǐ jiào shén me míng zi",
+      "english": "¿cómo te llamas?"
+    },
+    {
+      "hanzi": "我叫小明。",
+      "pinyin": "wǒ jiào Xiǎo Míng",
+      "english": "Me llamo Xiao Ming."
+    },
+    {
+      "hanzi": "很高兴认识你。",
+      "pinyin": "hěn gāo xìng rèn shi nǐ",
+      "english": "Mucho gusto."
+    },
+    {
+      "hanzi": "再见，明天见！",
+      "pinyin": "zài jiàn, míng tiān jiàn",
+      "english": "¡Adiós, hasta mañana!"
+    }
+  ]
+}

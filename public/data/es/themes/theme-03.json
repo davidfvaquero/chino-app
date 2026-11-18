@@ -1,0 +1,149 @@
+{
+  "id": "theme-03",
+  "title": "Comida y bebida",
+  "icon": "🍚",
+  "words": [
+    {
+      "hanzi": "饭",
+      "pinyin": "fàn",
+      "english": "arroz cocido; comida"
+    },
+    {
+      "hanzi": "面",
+      "pinyin": "miàn",
+      "english": "fideos"
+    },
+    {
+      "hanzi": "水",
+      "pinyin": "shuǐ",
+      "english": "agua"
+    },
+    {
+      "hanzi": "茶",
+      "pinyin": "chá",
+      "english": "té"
+    },
+    {
+      "hanzi": "咖啡",
+      "pinyin": "kā fēi",
+      "english": "café"
+    },
+    {
+      "hanzi": "牛奶",
+      "pinyin": "niú nǎi",
+      "english": "leche"
+    },
+    {
+      "hanzi": "果汁",
+      "pinyin": "guǒ zhī",
+      "english": "zumo"
+    },
+    {
+      "hanzi": "啤酒",
+      "pinyin": "pí jiǔ",
+      "english": "cerveza"
+    },
+    {
+      "hanzi": "肉",
+      "pinyin": "ròu",
+      "english": "carne"
+    },
+    {
+      "hanzi": "鱼",
+      "pinyin": "yú",
+      "english": "pescado"
+    },
+    {
+      "hanzi": "蛋",
+      "pinyin": "dàn",
+      "english": "huevo"
+    },
+    {
+      "hanzi": "菜",
+      "pinyin": "cài",
+      "english": "verdura; plato"
+    },
+    {
+      "hanzi": "水果",
+      "pinyin": "shuǐ guǒ",
+      "english": "fruta"
+    },
+    {
+      "hanzi": "面包",
+      "pinyin": "miàn bāo",
+      "english": "pan"
+    },
+    {
+      "hanzi": "饺子",
+      "pinyin": "jiǎo zi",
+      "english": "empanadilla"
+    },
+    {
+      "hanzi": "汤",
+      "pinyin": "tāng",
+      "english": "sopa"
+    },
+    {
+      "hanzi": "筷子",
+      "pinyin": "kuài zi",
+      "english": "palillos"
+    },
+    {
+      "hanzi": "碗",
+      "pinyin": "wǎn",
+      "english": "cuenco"
+    }
+  ],
+  "phrases": [
+    {
+      "hanzi": "我饿了。",
+      "pinyin": "wǒ è le",
+      "english": "Tengo hambre."
+    },
+    {
+      "hanzi": "我渴了。",
+      "pinyin": "wǒ kě le",
+      "english": "Tengo sed."
+    },
+    {
+      "hanzi": "我想吃饭。",
+      "pinyin": "wǒ xiǎng chī fàn",
+      "english": "Quiero comer."
+    },
+    {
+      "hanzi": "这个很好吃。",
+      "pinyin": "zhè ge hěn hǎo chī",
+      "english": "Esto está delicioso."
+    },
+    {
+      "hanzi": "请给我一杯水。",
+      "pinyin": "qǐng gěi wǒ yì bēi shuǐ",
+      "english": "Por favor, dame un vaso de agua."
+    },
+    {
+      "hanzi": "我不吃肉。",
+      "pinyin": "wǒ bù chī ròu",
+      "english": "No como carne."
+    },
+    {
+      "hanzi": "早餐吃什么？",
+      "pinyin": "zǎo cān chī shén me",
+      "english": "¿qué desayunas?"
+    },
+    {
+      "hanzi": "我喜欢喝茶。",
+      "pinyin": "wǒ xǐ huān hē chá",
+      "english": "Me gusta beber té."
+    },
+    {
+      "hanzi": "这个汤很好喝。",
+      "pinyin": "zhè ge tāng hěn hǎo hē",
+      "english": "Esta sopa está buenísima."
+    },
+    {
+      "hanzi": "请给我筷子。",
+      "pinyin": "qǐng gěi wǒ kuài zi",
+      "english": "Por favor, dame palillos."
+    }
+  ]
+}

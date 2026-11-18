@@ -1,0 +1,109 @@
+{
+  "id": "theme-02",
+  "title": "Familia",
+  "icon": "👨‍👩‍👧",
+  "words": [
+    {
+      "hanzi": "家",
+      "pinyin": "jiā",
+      "english": "hogar; familia"
+    },
+    {
+      "hanzi": "家人",
+      "pinyin": "jiā rén",
+      "english": "miembros de la familia"
+    },
+    {
+      "hanzi": "爸爸",
+      "pinyin": "bà ba",
+      "english": "papá"
+    },
+    {
+      "hanzi": "妈妈",
+      "pinyin": "mā ma",
+      "english": "mamá"
+    },
+    {
+      "hanzi": "哥哥",
+      "pinyin": "gē ge",
+      "english": "hermano mayor"
+    },
+    {
+      "hanzi": "姐姐",
+      "pinyin": "jiě jie",
+      "english": "hermana mayor"
+    },
+    {
+      "hanzi": "弟弟",
+      "pinyin": "dì di",
+      "english": "hermano menor"
+    },
+    {
+      "hanzi": "妹妹",
+      "pinyin": "mèi mei",
+      "english": "hermana menor"
+    },
+    {
+      "hanzi": "儿子",
+      "pinyin": "ér zi",
+      "english": "hijo"
+    },
+    {
+      "hanzi": "女儿",
+      "pinyin": "nǚ ér",
+      "english": "hija"
+    },
+    {
+      "hanzi": "丈夫",
+      "pinyin": "zhàng fu",
+      "english": "esposo"
+    },
+    {
+      "hanzi": "妻子",
+      "pinyin": "qī zi",
+      "english": "esposa"
+    },
+    {
+      "hanzi": "爷爷",
+      "pinyin": "yé ye",
+      "english": "abuelo (paterno)"
+    },
+    {
+      "hanzi": "奶奶",
+      "pinyin": "nǎi nai",
+      "english": "abuela (paterna)"
+    }
+  ],
+  "phrases": [
+    {
+      "hanzi": "这是我的妈妈。",
+      "pinyin": "zhè shì wǒ de mā ma",
+      "english": "Esta es mi mamá."
+    },
+    {
+      "hanzi": "我家有四口人。",
+      "pinyin": "wǒ jiā yǒu sì kǒu rén",
+      "english": "En mi familia somos cuatro."
+    },
+    {
+      "hanzi": "你有兄弟姐妹吗？",
+      "pinyin": "nǐ yǒu xiōng dì jiě mèi ma",
+      "english": "¿tienes hermanos?"
+    },
+    {
+      "hanzi": "我有一个姐姐。",
+      "pinyin": "wǒ yǒu yí gè jiě jie",
+      "english": "Tengo una hermana mayor."
+    },
+    {
+      "hanzi": "他很像他爸爸。",
+      "pinyin": "tā hěn xiàng tā bà ba",
+      "english": "Se parece mucho a su papá."
+    },
+    {
+      "hanzi": "我们全家都很好。",
+      "pinyin": "wǒ men quán jiā dōu hěn hǎo",
+      "english": "Toda mi familia está bien."
+    }
+  ]
+}

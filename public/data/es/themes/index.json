@@ -1,0 +1,66 @@
+[
+  {
+    "id": "theme-01",
+    "title": "Saludos y cortesía",
+    "icon": "👋"
+  },
+  {
+    "id": "theme-02",
+    "title": "Familia",
+    "icon": "👨‍👩‍👧"
+  },
+  {
+    "id": "theme-03",
+    "title": "Comida y bebida",
+    "icon": "🍚"
+  },
+  {
+    "id": "theme-04",
+    "title": "Restaurante",
+    "icon": "🍜",
+    "travel": true
+  },
+  {
+    "id": "theme-05",
+    "title": "Compras",
+    "icon": "🛍️"
+  },
+  {
+    "id": "theme-06",
+    "title": "Transporte y viajes",
+    "icon": "✈️",
+    "travel": true
+  },
+  {
+    "id": "theme-07",
+    "title": "Hotel",
+    "icon": "🏨",
+    "travel": true
+  },
+  {
+    "id": "theme-08",
+    "title": "Direcciones y lugares",
+    "icon": "🧭",
+    "travel": true
+  },
+  {
+    "id": "theme-09",
+    "title": "Salud",
+    "icon": "🩺"
+  },
+  {
+    "id": "theme-10",
+    "title": "Escuela y trabajo",
+    "icon": "🎓"
+  },
+  {
+    "id": "theme-11",
+    "title": "El tiempo",
+    "icon": "☀️"
+  },
+  {
+    "id": "theme-12",
+    "title": "Aficiones",
+    "icon": "⚽"
+  }
+]
