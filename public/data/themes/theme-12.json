@@ -1,0 +1,30 @@
+{
+  "id": "theme-12",
+  "title": "Hobbies",
+  "icon": "⚽",
+  "words": [
+    { "hanzi": "爱好", "pinyin": "ài hào", "english": "hobby" },
+    { "hanzi": "运动", "pinyin": "yùn dòng", "english": "exercise; sports" },
+    { "hanzi": "踢球", "pinyin": "tī qiú", "english": "play soccer" },
+    { "hanzi": "打球", "pinyin": "dǎ qiú", "english": "play ball (basketball, etc.)" },
+    { "hanzi": "游泳", "pinyin": "yóu yǒng", "english": "swim" },
+    { "hanzi": "跑步", "pinyin": "pǎo bù", "english": "run; jog" },
+    { "hanzi": "听音乐", "pinyin": "tīng yīn yuè", "english": "listen to music" },
+    { "hanzi": "看书", "pinyin": "kàn shū", "english": "read books" },
+    { "hanzi": "看电影", "pinyin": "kàn diàn yǐng", "english": "watch movies" },
+    { "hanzi": "唱歌", "pinyin": "chàng gē", "english": "sing" },
+    { "hanzi": "跳舞", "pinyin": "tiào wǔ", "english": "dance" },
+    { "hanzi": "画画", "pinyin": "huà huà", "english": "draw; paint" },
+    { "hanzi": "照相", "pinyin": "zhào xiàng", "english": "take photos" },
+    { "hanzi": "旅行", "pinyin": "lǚ xíng", "english": "travel" },
+    { "hanzi": "上网", "pinyin": "shàng wǎng", "english": "go online" }
+  ],
+  "phrases": [
+    { "hanzi": "你喜欢什么运动？", "pinyin": "nǐ xǐ huan shén me yùn dòng", "english": "what sports do you like?" },
+    { "hanzi": "我喜欢踢足球。", "pinyin": "wǒ xǐ huan tī zú qiú", "english": "I like playing soccer." },
+    { "hanzi": "周末我们去游泳吧。", "pinyin": "zhōu mò wǒ men qù yóu yǒng ba", "english": "let's go swimming this weekend." },
+    { "hanzi": "他在听音乐。", "pinyin": "tā zài tīng yīn yuè", "english": "he's listening to music." },
+    { "hanzi": "我爱好看书。", "pinyin": "wǒ ài hào kàn shū", "english": "my hobby is reading." },
+    { "hanzi": "我们一起去旅行吧。", "pinyin": "wǒ men yì qǐ qù lǚ xíng ba", "english": "let's travel together." }
+  ]
+}

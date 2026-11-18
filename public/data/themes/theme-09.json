@@ -1,0 +1,30 @@
+{
+  "id": "theme-09",
+  "title": "Health",
+  "icon": "🩺",
+  "words": [
+    { "hanzi": "医生", "pinyin": "yī shēng", "english": "doctor" },
+    { "hanzi": "医院", "pinyin": "yī yuàn", "english": "hospital" },
+    { "hanzi": "药", "pinyin": "yào", "english": "medicine" },
+    { "hanzi": "病", "pinyin": "bìng", "english": "illness" },
+    { "hanzi": "疼", "pinyin": "téng", "english": "painful; to hurt" },
+    { "hanzi": "头疼", "pinyin": "tóu téng", "english": "headache" },
+    { "hanzi": "肚子疼", "pinyin": "dù zi téng", "english": "stomachache" },
+    { "hanzi": "发烧", "pinyin": "fā shāo", "english": "fever" },
+    { "hanzi": "感冒", "pinyin": "gǎn mào", "english": "cold (illness)" },
+    { "hanzi": "咳嗽", "pinyin": "ké sòu", "english": "cough" },
+    { "hanzi": "喉咙痛", "pinyin": "hóu lóng tòng", "english": "sore throat" },
+    { "hanzi": "过敏", "pinyin": "guò mǐn", "english": "allergy" },
+    { "hanzi": "休息", "pinyin": "xiū xi", "english": "rest" },
+    { "hanzi": "喝水", "pinyin": "hē shuǐ", "english": "drink water" },
+    { "hanzi": "吃药", "pinyin": "chī yào", "english": "take medicine" }
+  ],
+  "phrases": [
+    { "hanzi": "我不舒服。", "pinyin": "wǒ bù shū fu", "english": "I don't feel well." },
+    { "hanzi": "我头疼。", "pinyin": "wǒ tóu téng", "english": "I have a headache." },
+    { "hanzi": "我发烧了。", "pinyin": "wǒ fā shāo le", "english": "I have a fever." },
+    { "hanzi": "请去医院看看。", "pinyin": "qǐng qù yī yuàn kàn kan", "english": "please go to the hospital to check." },
+    { "hanzi": "多喝水，多休息。", "pinyin": "duō hē shuǐ, duō xiū xi", "english": "drink more water, rest more." },
+    { "hanzi": "这个药怎么吃？", "pinyin": "zhè ge yào zěn me chī", "english": "how do I take this medicine?" }
+  ]
+}
