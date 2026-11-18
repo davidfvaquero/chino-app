@@ -1,0 +1,16 @@
+{
+  "id": "le-completed",
+  "title": "了 — acción completada",
+  "level": "HSK1",
+  "explanation": "了 después de un verbo marca la acción como completada o realizada. No es un marcador de pasado: marca la culminación respecto al contexto. Con un número + clasificador significa «ya».",
+  "structure": "Sujeto + verbo + 了 (+ objeto)  |  Sujeto + verbo + núm. + clasificador + 了",
+  "examples": [
+    { "hanzi": "我吃了。", "pinyin": "wǒ chī le", "english": "Comí / he comido." },
+    { "hanzi": "他买了书。", "pinyin": "tā mǎi le shū", "english": "Él compró un libro." },
+    { "hanzi": "我们看了电影。", "pinyin": "wǒmen kàn le diànyǐng", "english": "Vimos una película." },
+    { "hanzi": "我吃了两个苹果。", "pinyin": "wǒ chī le liǎng gè píngguǒ", "english": "Comí dos manzanas." },
+    { "hanzi": "她去了北京。", "pinyin": "tā qù le běijīng", "english": "Ella fue a Pekín." },
+    { "hanzi": "做完了。", "pinyin": "zuò wán le", "english": "Terminé de hacerlo." }
+  ],
+  "notes": "El 了 final de frase marca un cambio de estado: 我饿了 (tengo hambre ahora). El 了 verbal y el 了 final pueden combinarse: 我吃了两个苹果了 (ya me he comido dos manzanas)."
+}

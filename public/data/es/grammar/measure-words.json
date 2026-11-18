@@ -1,0 +1,229 @@
+{
+  "measureWords": [
+    {
+      "character": "个",
+      "pinyin": "gè",
+      "usage": "clasificador general para personas y cosas",
+      "examples": [
+        { "hanzi": "一个人", "pinyin": "yí gè rén", "english": "una persona" },
+        { "hanzi": "三个苹果", "pinyin": "sān gè píngguǒ", "english": "tres manzanas" }
+      ]
+    },
+    {
+      "character": "本",
+      "pinyin": "běn",
+      "usage": "libros, cuadernos y otros volúmenes encuadernados",
+      "examples": [
+        { "hanzi": "一本书", "pinyin": "yì běn shū", "english": "un libro" },
+        { "hanzi": "两本词典", "pinyin": "liǎng běn cídiǎn", "english": "dos diccionarios" }
+      ]
+    },
+    {
+      "character": "杯",
+      "pinyin": "bēi",
+      "usage": "vasos o tazas de una bebida",
+      "examples": [
+        { "hanzi": "一杯水", "pinyin": "yì bēi shuǐ", "english": "un vaso de agua" },
+        { "hanzi": "两杯咖啡", "pinyin": "liǎng bēi kāfēi", "english": "dos tazas de café" }
+      ]
+    },
+    {
+      "character": "张",
+      "pinyin": "zhāng",
+      "usage": "cosas planas: papel, entradas, mesas, camas, caras",
+      "examples": [
+        { "hanzi": "一张纸", "pinyin": "yì zhāng zhǐ", "english": "una hoja de papel" },
+        { "hanzi": "两张票", "pinyin": "liǎng zhāng piào", "english": "dos entradas" }
+      ]
+    },
+    {
+      "character": "只",
+      "pinyin": "zhī",
+      "usage": "animales (sobre todo aves y animales pequeños), o uno de un par",
+      "examples": [
+        { "hanzi": "一只猫", "pinyin": "yì zhī māo", "english": "un gato" },
+        { "hanzi": "两只手", "pinyin": "liǎng zhī shǒu", "english": "dos manos" }
+      ]
+    },
+    {
+      "character": "条",
+      "pinyin": "tiáo",
+      "usage": "cosas largas y finas: ríos, carreteras, peces, pantalones",
+      "examples": [
+        { "hanzi": "一条河", "pinyin": "yì tiáo hé", "english": "un río" },
+        { "hanzi": "两条裤子", "pinyin": "liǎng tiáo kùzi", "english": "dos pantalones" }
+      ]
+    },
+    {
+      "character": "件",
+      "pinyin": "jiàn",
+      "usage": "prendas de ropa, asuntos y piezas de negocio",
+      "examples": [
+        { "hanzi": "一件衣服", "pinyin": "yí jiàn yīfu", "english": "una prenda de ropa" },
+        { "hanzi": "一件事", "pinyin": "yí jiàn shì", "english": "un asunto" }
+      ]
+    },
+    {
+      "character": "位",
+      "pinyin": "wèi",
+      "usage": "clasificador de cortesía para personas",
+      "examples": [
+        { "hanzi": "一位老师", "pinyin": "yí wèi lǎoshī", "english": "un profesor (cortés)" },
+        { "hanzi": "两位客人", "pinyin": "liǎng wèi kèrén", "english": "dos invitados" }
+      ]
+    },
+    {
+      "character": "瓶",
+      "pinyin": "píng",
+      "usage": "botellas de algo",
+      "examples": [
+        { "hanzi": "一瓶水", "pinyin": "yì píng shuǐ", "english": "una botella de agua" },
+        { "hanzi": "三瓶啤酒", "pinyin": "sān píng píjiǔ", "english": "tres botellas de cerveza" }
+      ]
+    },
+    {
+      "character": "家",
+      "pinyin": "jiā",
+      "usage": "familias y negocios: tiendas, hoteles, empresas",
+      "examples": [
+        { "hanzi": "一家商店", "pinyin": "yì jiā shāngdiàn", "english": "una tienda" },
+        { "hanzi": "两家公司", "pinyin": "liǎng jiā gōngsī", "english": "dos empresas" }
+      ]
+    },
+    {
+      "character": "块",
+      "pinyin": "kuài",
+      "usage": "piezas o trozos, y unidades de dinero (yuanes)",
+      "examples": [
+        { "hanzi": "三块钱", "pinyin": "sān kuài qián", "english": "tres yuanes" },
+        { "hanzi": "一块蛋糕", "pinyin": "yí kuài dàngāo", "english": "un trozo de tarta" }
+      ]
+    },
+    {
+      "character": "辆",
+      "pinyin": "liàng",
+      "usage": "vehículos con ruedas: coches, autobuses, bicicletas",
+      "examples": [
+        { "hanzi": "一辆车", "pinyin": "yí liàng chē", "english": "un coche" },
+        { "hanzi": "两辆公共汽车", "pinyin": "liǎng liàng gōnggòng qìchē", "english": "dos autobuses" }
+      ]
+    },
+    {
+      "character": "台",
+      "pinyin": "tái",
+      "usage": "máquinas y aparatos: ordenadores, televisiones, neveras",
+      "examples": [
+        { "hanzi": "一台电脑", "pinyin": "yì tái diànnǎo", "english": "un ordenador" },
+        { "hanzi": "两台电视", "pinyin": "liǎng tái diànshì", "english": "dos televisiones" }
+      ]
+    },
+    {
+      "character": "部",
+      "pinyin": "bù",
+      "usage": "películas y obras de arte; también teléfonos y coches",
+      "examples": [
+        { "hanzi": "一部电影", "pinyin": "yí bù diànyǐng", "english": "una película" },
+        { "hanzi": "两部手机", "pinyin": "liǎng bù shǒujī", "english": "dos teléfonos" }
+      ]
+    },
+    {
+      "character": "双",
+      "pinyin": "shuāng",
+      "usage": "cosas que vienen en pares: zapatos, calcetines, palillos",
+      "examples": [
+        { "hanzi": "一双鞋", "pinyin": "yì shuāng xié", "english": "un par de zapatos" },
+        { "hanzi": "两双袜子", "pinyin": "liǎng shuāng wàzi", "english": "dos pares de calcetines" }
+      ]
+    },
+    {
+      "character": "群",
+      "pinyin": "qún",
+      "usage": "grupos o multitudes de personas o animales",
+      "examples": [
+        { "hanzi": "一群人", "pinyin": "yì qún rén", "english": "una multitud de personas" },
+        { "hanzi": "一群鸟", "pinyin": "yì qún niǎo", "english": "una bandada de pájaros" }
+      ]
+    },
+    {
+      "character": "次",
+      "pinyin": "cì",
+      "usage": "veces que ocurre un evento",
+      "examples": [
+        { "hanzi": "一次机会", "pinyin": "yí cì jīhuì", "english": "una oportunidad" },
+        { "hanzi": "我去过两次。", "pinyin": "wǒ qù guo liǎng cì", "english": "He estado allí dos veces." }
+      ]
+    },
+    {
+      "character": "遍",
+      "pinyin": "biàn",
+      "usage": "veces que se hace una acción de principio a fin",
+      "examples": [
+        { "hanzi": "再听一遍", "pinyin": "zài tīng yí biàn", "english": "escuchar una vez más" },
+        { "hanzi": "读了三遍", "pinyin": "dú le sān biàn", "english": "leerlo tres veces" }
+      ]
+    },
+    {
+      "character": "顿",
+      "pinyin": "dùn",
+      "usage": "comidas y regaños o palizas",
+      "examples": [
+        { "hanzi": "一顿饭", "pinyin": "yí dùn fàn", "english": "una comida" },
+        { "hanzi": "三顿饭", "pinyin": "sān dùn fàn", "english": "tres comidas" }
+      ]
+    },
+    {
+      "character": "场",
+      "pinyin": "chǎng",
+      "usage": "eventos, espectáculos y deportes",
+      "examples": [
+        { "hanzi": "一场比赛", "pinyin": "yì chǎng bǐsài", "english": "un partido" },
+        { "hanzi": "一场雨", "pinyin": "yì chǎng yǔ", "english": "un chaparrón" }
+      ]
+    },
+    {
+      "character": "间",
+      "pinyin": "jiān",
+      "usage": "habitaciones",
+      "examples": [
+        { "hanzi": "一间卧室", "pinyin": "yì jiān wòshì", "english": "un dormitorio" },
+        { "hanzi": "两间教室", "pinyin": "liǎng jiān jiàoshì", "english": "dos aulas" }
+      ]
+    },
+    {
+      "character": "把",
+      "pinyin": "bǎ",
+      "usage": "cosas con mango: cuchillos, paraguas, sillas",
+      "examples": [
+        { "hanzi": "一把刀", "pinyin": "yì bǎ dāo", "english": "un cuchillo" },
+        { "hanzi": "一把伞", "pinyin": "yì bǎ sǎn", "english": "un paraguas" }
+      ]
+    },
+    {
+      "character": "架",
+      "pinyin": "jià",
+      "usage": "aeronaves e instrumentos grandes: aviones, pianos",
+      "examples": [
+        { "hanzi": "一架飞机", "pinyin": "yí jià fēijī", "english": "un avión" },
+        { "hanzi": "一架钢琴", "pinyin": "yí jià gāngqín", "english": "un piano" }
+      ]
+    },
+    {
+      "character": "头",
+      "pinyin": "tóu",
+      "usage": "animales grandes: vacas, cerdos, elefantes",
+      "examples": [
+        { "hanzi": "一头牛", "pinyin": "yì tóu niú", "english": "una vaca" },
+        { "hanzi": "两头猪", "pinyin": "liǎng tóu zhū", "english": "dos cerdos" }
+      ]
+    },
+    {
+      "character": "封",
+      "pinyin": "fēng",
+      "usage": "cartas y mensajes",
+      "examples": [
+        { "hanzi": "一封信", "pinyin": "yì fēng xìn", "english": "una carta" },
+        { "hanzi": "两封邮件", "pinyin": "liǎng fēng yóujiàn", "english": "dos correos electrónicos" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "you-have",
+  "title": "有 — tener",
+  "level": "HSK1",
+  "explanation": "有 significa «tener/poseer» o «hay». La negación es 没有 (nunca 不有). Nunca lleva 了 para indicar acción completada.",
+  "structure": "Sujeto + 有 + sustantivo          (posesión)\n有 + sustantivo                   (existencia: «hay»)",
+  "examples": [
+    { "hanzi": "我有车。", "pinyin": "wǒ yǒu chē", "english": "Tengo coche." },
+    { "hanzi": "他没有妹妹。", "pinyin": "tā méi yǒu mèimei", "english": "Él no tiene hermana menor." },
+    { "hanzi": "这里有三个人。", "pinyin": "zhèlǐ yǒu sān gè rén", "english": "Aquí hay tres personas." },
+    { "hanzi": "你有时间吗？", "pinyin": "nǐ yǒu shíjiān ma", "english": "¿Tienes tiempo?" },
+    { "hanzi": "我有两个哥哥。", "pinyin": "wǒ yǒu liǎng gè gēge", "english": "Tengo dos hermanos mayores." },
+    { "hanzi": "学校有图书馆。", "pinyin": "xuéxiào yǒu túshūguǎn", "english": "La escuela tiene biblioteca." }
+  ],
+  "notes": "La negación es siempre 没有 (méi yǒu), nunca 不有. 有 no se combina con 了. Para «haber hecho», usa verbo + 了, no 有 + verbo."
+}

@@ -1,0 +1,16 @@
+{
+  "id": "hen-adjective",
+  "title": "很 + adjetivo",
+  "level": "HSK1",
+  "explanation": "En chino los adjetivos son verbos de estado: no necesitan 是. 很 antes de un adjetivo une el sujeto con la cualidad. 很 a menudo se debilita a «muy», pero es obligatorio gramaticalmente en frases simples.",
+  "structure": "Sujeto + 很 + adjetivo",
+  "examples": [
+    { "hanzi": "我很忙。", "pinyin": "wǒ hěn máng", "english": "Estoy ocupado." },
+    { "hanzi": "中文不难。", "pinyin": "zhōngwén bù nán", "english": "El chino no es difícil." },
+    { "hanzi": "这本书很贵。", "pinyin": "zhè běn shū hěn guì", "english": "Este libro es caro." },
+    { "hanzi": "今天很冷。", "pinyin": "jīntiān hěn lěng", "english": "Hoy hace frío." },
+    { "hanzi": "他很高。", "pinyin": "tā hěn gāo", "english": "Él es alto." },
+    { "hanzi": "很好吃。", "pinyin": "hěn hǎochī", "english": "Está delicioso." }
+  ],
+  "notes": "Nunca digas 我是忙. Para «no», quita 很: 我不忙 (no 我不很忙). Para «realmente/muy», usa 真 o 非常: 真忙, 非常忙. 很 es el enlace neutro por defecto."
+}

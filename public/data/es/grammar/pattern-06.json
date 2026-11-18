@@ -1,0 +1,16 @@
+{
+  "id": "zai-location",
+  "title": "在 — ubicación",
+  "level": "HSK1",
+  "explanation": "在 significa «en/sobre» e indica ubicación. Para la existencia, usa 在 + lugar. Para una acción en un lugar, la frase de lugar va ANTES del verbo (a diferencia del inglés).",
+  "structure": "Sujeto + 在 + lugar          (existencia)\nSujeto + 在 + lugar + verbo      (acción en un lugar)",
+  "examples": [
+    { "hanzi": "我在北京。", "pinyin": "wǒ zài běijīng", "english": "Estoy en Pekín." },
+    { "hanzi": "书在桌子上。", "pinyin": "shū zài zhuōzi shàng", "english": "El libro está sobre la mesa." },
+    { "hanzi": "我在家吃饭。", "pinyin": "wǒ zài jiā chī fàn", "english": "Como en casa." },
+    { "hanzi": "他在公司工作。", "pinyin": "tā zài gōngsī gōngzuò", "english": "Él trabaja en la empresa." },
+    { "hanzi": "我们在学校学中文。", "pinyin": "wǒmen zài xuéxiào xué zhōngwén", "english": "Estudiamos chino en la escuela." },
+    { "hanzi": "猫在椅子下。", "pinyin": "māo zài yǐzi xià", "english": "El gato está debajo de la silla." }
+  ],
+  "notes": "Orden de palabras: el lugar antes del verbo (我在家吃饭, no 我吃饭在家). Palabras de posición habituales: 上 (sobre), 下 (debajo), 里 (dentro), 旁边 (al lado), 前面 (delante), 后面 (detrás)."
+}
