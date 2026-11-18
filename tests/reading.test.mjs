@@ -101,18 +101,23 @@ test('reviewEntryFrom maps a dictionary entry to the srs.addToReview shape', () 
 
 // ---------------------------------------------------------------- data
 
-test('index.json lists 6 pre-defined readings with id/title/topic', async () => {
+test('index.json lists 20 pre-defined readings with id/title/topic', async () => {
   const readings = await loadIndex({ fetch: fileFetch });
-  assert.equal(readings.length, 6);
+  assert.equal(readings.length, 20);
   for (const r of readings) {
     assert.match(r.id, /^reading-\d{2}$/);
     assert.ok(r.title, `missing title for ${r.id}`);
     assert.ok(r.topic, `missing topic for ${r.id}`);
   }
-  assert.equal(readings[0].id, 'reading-01');
+  // The first six are frozen: the content tasks write 07..20 around them.
+  const [r1, r2, r3, r4, r5, r6] = readings;
+  assert.deepEqual(
+    [r1.title, r2.title, r3.title, r4.title, r5.title, r6.title],
+    ['你好！', '我的家', '吃饭', '今天天气', '买东西', '我的一天'],
+  );
   assert.deepEqual(
     readings.map((r) => r.id),
-    ['reading-01', 'reading-02', 'reading-03', 'reading-04', 'reading-05', 'reading-06'],
+    Array.from({ length: 20 }, (_, i) => `reading-${String(i + 1).padStart(2, '0')}`),
   );
 });
 

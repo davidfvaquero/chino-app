@@ -61,7 +61,16 @@ async function renderList(container, ctx) {
 }
 
 async function renderReader(container, ctx, id) {
-  const reading = normalizeReading(await loadReading(id));
+  // Pre-defined id whose file has not been written yet: announce it, do not throw.
+  const raw = await loadReading(id).catch(() => null);
+  if (!raw) {
+    reset(container).append(
+      h('p', { class: 'muted', text: t('common.comingSoon') }),
+      h('button', { type: 'button', class: 'pill', text: t('read.back'), onclick: () => ctx.navigate('read') }),
+    );
+    return;
+  }
+  const reading = normalizeReading(raw);
   reset(container);
 
   const panel = h('aside', { class: 'word-panel', hidden: true, 'data-role': 'panel' });

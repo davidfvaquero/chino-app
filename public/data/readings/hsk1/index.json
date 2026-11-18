@@ -4,5 +4,19 @@
   { "id": "reading-03", "title": "吃饭", "topic": "Food & drinks" },
   { "id": "reading-04", "title": "今天天气", "topic": "Weather & days" },
   { "id": "reading-05", "title": "买东西", "topic": "Shopping & numbers" },
-  { "id": "reading-06", "title": "我的一天", "topic": "My day" }
+  { "id": "reading-06", "title": "我的一天", "topic": "My day" },
+  { "id": "reading-07", "title": "认识你", "topic": "Introducing yourself" },
+  { "id": "reading-08", "title": "咖啡店", "topic": "At the café" },
+  { "id": "reading-09", "title": "问路", "topic": "Asking for directions" },
+  { "id": "reading-10", "title": "我的家人", "topic": "My family" },
+  { "id": "reading-11", "title": "早上七点", "topic": "Daily routine" },
+  { "id": "reading-12", "title": "买衣服", "topic": "Shopping for clothes" },
+  { "id": "reading-13", "title": "明天下雨吗？", "topic": "Weather" },
+  { "id": "reading-14", "title": "在酒店", "topic": "At the hotel" },
+  { "id": "reading-15", "title": "我的爱好", "topic": "Hobbies" },
+  { "id": "reading-16", "title": "一条消息", "topic": "A message" },
+  { "id": "reading-17", "title": "坐出租车", "topic": "In a taxi" },
+  { "id": "reading-18", "title": "打电话", "topic": "On the phone" },
+  { "id": "reading-19", "title": "看医生", "topic": "At the doctor" },
+  { "id": "reading-20", "title": "生日聚会", "topic": "A party" }
 ]

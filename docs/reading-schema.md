@@ -7,9 +7,10 @@ into the site root by the build, and are fetched at runtime as
 
 ## Index — `public/data/readings/hsk1/index.json`
 
-A flat array with one entry per reading. The six entries are **pre-defined**:
-other tasks write `reading-02.json` … `reading-06.json` matching the ids already
-listed here and must not edit the index.
+A flat array with one entry per reading. The twenty entries are **pre-defined**:
+the first six (`reading-01` … `reading-06`) already have their JSON file, and
+other tasks write `reading-07.json` … `reading-20.json` with the id/title/topic
+already listed here. Nobody but the index owner edits this file.
 
 ```json
 [
@@ -24,7 +25,9 @@ listed here and must not edit the index.
 | `title` | string | yes      | Short label shown in the list (hanzi is fine)    |
 | `topic` | string | yes      | One-line theme, shown as the card subtitle       |
 
-The list order is the file order. No other fields are read by the screen.
+The list order is the file order. No other fields are read by the screen. An id
+whose file is still missing is listed normally (the reader shows "coming soon"
+if you open it), so the index can run ahead of the content tasks.
 
 ## Reading — `public/data/readings/hsk1/<id>.json`
 
