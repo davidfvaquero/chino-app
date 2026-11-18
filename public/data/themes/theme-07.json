@@ -1,0 +1,39 @@
+{
+  "id": "theme-07",
+  "title": "Hotel",
+  "icon": "🏨",
+  "words": [
+    { "hanzi": "酒店", "pinyin": "jiǔ diàn", "english": "hotel" },
+    { "hanzi": "房间", "pinyin": "fáng jiān", "english": "room" },
+    { "hanzi": "床", "pinyin": "chuáng", "english": "bed" },
+    { "hanzi": "被子", "pinyin": "bèi zi", "english": "quilt; blanket" },
+    { "hanzi": "枕头", "pinyin": "zhěn tou", "english": "pillow" },
+    { "hanzi": "浴室", "pinyin": "yù shì", "english": "bathroom" },
+    { "hanzi": "毛巾", "pinyin": "máo jīn", "english": "towel" },
+    { "hanzi": "肥皂", "pinyin": "féi zào", "english": "soap" },
+    { "hanzi": "牙刷", "pinyin": "yá shuā", "english": "toothbrush" },
+    { "hanzi": "牙膏", "pinyin": "yá gāo", "english": "toothpaste" },
+    { "hanzi": "钥匙", "pinyin": "yào shi", "english": "key" },
+    { "hanzi": "前台", "pinyin": "qián tái", "english": "front desk; reception" },
+    { "hanzi": "服务员", "pinyin": "fú wù yuán", "english": "staff; attendant" },
+    { "hanzi": "入住", "pinyin": "rù zhù", "english": "check-in" },
+    { "hanzi": "退房", "pinyin": "tuì fáng", "english": "check-out" },
+    { "hanzi": "预订", "pinyin": "yù dìng", "english": "reservation" },
+    { "hanzi": "单人间", "pinyin": "dān rén jiān", "english": "single room" },
+    { "hanzi": "双人间", "pinyin": "shuāng rén jiān", "english": "double room" },
+    { "hanzi": "空调", "pinyin": "kōng tiáo", "english": "air conditioner" },
+    { "hanzi": " wifi", "pinyin": "wai fai", "english": "Wi-Fi" }
+  ],
+  "phrases": [
+    { "hanzi": "我有预订。", "pinyin": "wǒ yǒu yù dìng", "english": "I have a reservation." },
+    { "hanzi": "我想住两晚。", "pinyin": "wǒ xiǎng zhù liǎng wǎn", "english": "I'd like to stay two nights." },
+    { "hanzi": "多少钱一晚？", "pinyin": "duō shǎo qián yì wǎn", "english": "How much per night?" },
+    { "hanzi": "请给我钥匙。", "pinyin": "qǐng gěi wǒ yào shi", "english": "Please give me the key." },
+    { "hanzi": "房间里有空调吗？", "pinyin": "fáng jiān lǐ yǒu kōng tiáo ma", "english": "Does the room have air conditioning?" },
+    { "hanzi": "wifi密码是什么？", "pinyin": "wai fai mì mǎ shì shén me", "english": "What's the Wi-Fi password?" },
+    { "hanzi": "我要退房。", "pinyin": "wǒ yào tuì fáng", "english": "I'd like to check out." },
+    { "hanzi": "毛巾不干净。", "pinyin": "máo jīn bù gān jìng", "english": "The towel isn't clean." },
+    { "hanzi": "请帮我叫出租车。", "pinyin": "qǐng bāng wǒ jiào chū zū chē", "english": "Please call a taxi for me." },
+    { "hanzi": "早餐几点开始？", "pinyin": "zǎo cān jǐ diǎn kāi shǐ", "english": "What time does breakfast start?" }
+  ]
+}

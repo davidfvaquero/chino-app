@@ -1,0 +1,39 @@
+{
+  "id": "theme-04",
+  "title": "Restaurant",
+  "icon": "🍜",
+  "words": [
+    { "hanzi": "餐厅", "pinyin": "cān tīng", "english": "restaurant" },
+    { "hanzi": "菜单", "pinyin": "cài dān", "english": "menu" },
+    { "hanzi": "服务员", "pinyin": "fú wù yuán", "english": "waiter; waitress" },
+    { "hanzi": "点菜", "pinyin": "diǎn cài", "english": "to order food" },
+    { "hanzi": "买单", "pinyin": "mǎi dān", "english": "to pay the bill" },
+    { "hanzi": "筷子", "pinyin": "kuài zi", "english": "chopsticks" },
+    { "hanzi": "勺子", "pinyin": "sháo zi", "english": "spoon" },
+    { "hanzi": "盘子", "pinyin": "pán zi", "english": "plate" },
+    { "hanzi": "碗", "pinyin": "wǎn", "english": "bowl" },
+    { "hanzi": "杯子", "pinyin": "bēi zi", "english": "cup; glass" },
+    { "hanzi": "辣", "pinyin": "là", "english": "spicy" },
+    { "hanzi": "咸", "pinyin": "xián", "english": "salty" },
+    { "hanzi": "甜", "pinyin": "tián", "english": "sweet" },
+    { "hanzi": "酸", "pinyin": "suān", "english": "sour" },
+    { "hanzi": "好吃", "pinyin": "hǎo chī", "english": "delicious" },
+    { "hanzi": "不好吃", "pinyin": "bù hǎo chī", "english": "not tasty" },
+    { "hanzi": "推荐", "pinyin": "tuī jiàn", "english": "to recommend" },
+    { "hanzi": "份", "pinyin": "fèn", "english": "portion; serving" },
+    { "hanzi": "位子", "pinyin": "wèi zi", "english": "seat; table" },
+    { "hanzi": "预订", "pinyin": "yù dìng", "english": "reservation" }
+  ],
+  "phrases": [
+    { "hanzi": "请给我菜单。", "pinyin": "qǐng gěi wǒ cài dān", "english": "Please give me the menu." },
+    { "hanzi": "我想点菜。", "pinyin": "wǒ xiǎng diǎn cài", "english": "I'd like to order." },
+    { "hanzi": "你推荐什么？", "pinyin": "nǐ tuī jiàn shén me", "english": "What do you recommend?" },
+    { "hanzi": "这个不辣。", "pinyin": "zhè ge bù là", "english": "This isn't spicy." },
+    { "hanzi": "很好吃！", "pinyin": "hěn hǎo chī", "english": "Very delicious!" },
+    { "hanzi": "买单，谢谢。", "pinyin": "mǎi dān, xiè xie", "english": "Check, please." },
+    { "hanzi": "我要一份米饭。", "pinyin": "wǒ yào yí fèn mǐ fàn", "english": "I want a portion of rice." },
+    { "hanzi": "请给我筷子和勺子。", "pinyin": "qǐng gěi wǒ kuài zi hé sháo zi", "english": "Please give me chopsticks and a spoon." },
+    { "hanzi": "这里有人吗？", "pinyin": "zhè lǐ yǒu rén ma", "english": "Is this seat taken?" },
+    { "hanzi": "我们要两个位子。", "pinyin": "wǒ men yào liǎng ge wèi zi", "english": "We need a table for two." }
+  ]
+}

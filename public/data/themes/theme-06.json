@@ -1,0 +1,39 @@
+{
+  "id": "theme-06",
+  "title": "Transport & travel",
+  "icon": "✈️",
+  "words": [
+    { "hanzi": "飞机", "pinyin": "fēi jī", "english": "airplane" },
+    { "hanzi": "火车", "pinyin": "huǒ chē", "english": "train" },
+    { "hanzi": "地铁", "pinyin": "dì tiě", "english": "subway; metro" },
+    { "hanzi": "公交车", "pinyin": "gōng jiāo chē", "english": "bus" },
+    { "hanzi": "出租车", "pinyin": "chū zū chē", "english": "taxi" },
+    { "hanzi": "车站", "pinyin": "chē zhàn", "english": "station" },
+    { "hanzi": "机场", "pinyin": "jī chǎng", "english": "airport" },
+    { "hanzi": "票", "pinyin": "piào", "english": "ticket" },
+    { "hanzi": "护照", "pinyin": "hù zhào", "english": "passport" },
+    { "hanzi": "行李", "pinyin": "xíng lǐ", "english": "luggage" },
+    { "hanzi": "时间", "pinyin": "shí jiān", "english": "time" },
+    { "hanzi": "早", "pinyin": "zǎo", "english": "early" },
+    { "hanzi": "晚", "pinyin": "wǎn", "english": "late" },
+    { "hanzi": "快", "pinyin": "kuài", "english": "fast" },
+    { "hanzi": "慢", "pinyin": "màn", "english": "slow" },
+    { "hanzi": "远", "pinyin": "yuǎn", "english": "far" },
+    { "hanzi": "近", "pinyin": "jìn", "english": "near" },
+    { "hanzi": "坐", "pinyin": "zuò", "english": "to sit; to take (transport)" },
+    { "hanzi": "走", "pinyin": "zǒu", "english": "to walk; to go" },
+    { "hanzi": "到", "pinyin": "dào", "english": "to arrive" }
+  ],
+  "phrases": [
+    { "hanzi": "怎么去机场？", "pinyin": "zěn me qù jī chǎng", "english": "How do I get to the airport?" },
+    { "hanzi": "我要买火车票。", "pinyin": "wǒ yào mǎi huǒ chē piào", "english": "I want to buy a train ticket." },
+    { "hanzi": "几点出发？", "pinyin": "jǐ diǎn chū fā", "english": "What time does it depart?" },
+    { "hanzi": "这个站在哪里？", "pinyin": "zhè ge zhàn zài nǎ lǐ", "english": "Where is this station?" },
+    { "hanzi": "请带我去车站。", "pinyin": "qǐng dài wǒ qù chē zhàn", "english": "Please take me to the station." },
+    { "hanzi": "飞机晚点了。", "pinyin": "fēi jī wǎn diǎn le", "english": "The flight is delayed." },
+    { "hanzi": "我的行李丢了。", "pinyin": "wǒ de xíng lǐ diū le", "english": "My luggage is lost." },
+    { "hanzi": "坐地铁很快。", "pinyin": "zuò dì tiě hěn kuài", "english": "Taking the subway is fast." },
+    { "hanzi": "这里到北京多远？", "pinyin": "zhè lǐ dào Běi jīng duō yuǎn", "english": "How far is it to Beijing from here?" },
+    { "hanzi": "我走路去。", "pinyin": "wǒ zǒu lù qù", "english": "I'll walk there." }
+  ]
+}

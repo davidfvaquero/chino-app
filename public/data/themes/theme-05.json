@@ -1,0 +1,39 @@
+{
+  "id": "theme-05",
+  "title": "Shopping",
+  "icon": "🛍️",
+  "words": [
+    { "hanzi": "商店", "pinyin": "shāng diàn", "english": "shop; store" },
+    { "hanzi": "超市", "pinyin": "chāo shì", "english": "supermarket" },
+    { "hanzi": "市场", "pinyin": "shì chǎng", "english": "market" },
+    { "hanzi": "钱", "pinyin": "qián", "english": "money" },
+    { "hanzi": "价格", "pinyin": "jià gé", "english": "price" },
+    { "hanzi": "贵", "pinyin": "guì", "english": "expensive" },
+    { "hanzi": "便宜", "pinyin": "pián yí", "english": "cheap" },
+    { "hanzi": "买", "pinyin": "mǎi", "english": "to buy" },
+    { "hanzi": "卖", "pinyin": "mài", "english": "to sell" },
+    { "hanzi": "看", "pinyin": "kàn", "english": "to look at" },
+    { "hanzi": "试", "pinyin": "shì", "english": "to try on" },
+    { "hanzi": "衣服", "pinyin": "yī fu", "english": "clothes" },
+    { "hanzi": "鞋", "pinyin": "xié", "english": "shoes" },
+    { "hanzi": "包", "pinyin": "bāo", "english": "bag" },
+    { "hanzi": "尺码", "pinyin": "chǐ mǎ", "english": "size" },
+    { "hanzi": "颜色", "pinyin": "yán sè", "english": "color" },
+    { "hanzi": "红", "pinyin": "hóng", "english": "red" },
+    { "hanzi": "蓝", "pinyin": "lán", "english": "blue" },
+    { "hanzi": "黑", "pinyin": "hēi", "english": "black" },
+    { "hanzi": "白", "pinyin": "bái", "english": "white" }
+  ],
+  "phrases": [
+    { "hanzi": "这个多少钱？", "pinyin": "zhè ge duō shǎo qián", "english": "How much is this?" },
+    { "hanzi": "太贵了。", "pinyin": "tài guì le", "english": "It's too expensive." },
+    { "hanzi": "能便宜一点吗？", "pinyin": "néng pián yí yì diǎn ma", "english": "Can you make it cheaper?" },
+    { "hanzi": "我要买这个。", "pinyin": "wǒ yào mǎi zhè ge", "english": "I'll buy this one." },
+    { "hanzi": "我可以试穿吗？", "pinyin": "wǒ kě yǐ shì chuān ma", "english": "Can I try it on?" },
+    { "hanzi": "有大一点的吗？", "pinyin": "yǒu dà yì diǎn de ma", "english": "Do you have a larger size?" },
+    { "hanzi": "我不喜欢这个颜色。", "pinyin": "wǒ bù xǐ huān zhè ge yán sè", "english": "I don't like this color." },
+    { "hanzi": "请给我一个袋子。", "pinyin": "qǐng gěi wǒ yí ge dài zi", "english": "Please give me a bag." },
+    { "hanzi": "我付现金。", "pinyin": "wǒ fù xiàn jīn", "english": "I'll pay cash." },
+    { "hanzi": "收据给我吧。", "pinyin": "shōu jù gěi wǒ ba", "english": "Give me the receipt, please." }
+  ]
+}

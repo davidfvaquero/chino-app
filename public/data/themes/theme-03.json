@@ -1,0 +1,37 @@
+{
+  "id": "theme-03",
+  "title": "Food & drink",
+  "icon": "🍚",
+  "words": [
+    { "hanzi": "饭", "pinyin": "fàn", "english": "cooked rice; meal" },
+    { "hanzi": "面", "pinyin": "miàn", "english": "noodles" },
+    { "hanzi": "水", "pinyin": "shuǐ", "english": "water" },
+    { "hanzi": "茶", "pinyin": "chá", "english": "tea" },
+    { "hanzi": "咖啡", "pinyin": "kā fēi", "english": "coffee" },
+    { "hanzi": "牛奶", "pinyin": "niú nǎi", "english": "milk" },
+    { "hanzi": "果汁", "pinyin": "guǒ zhī", "english": "juice" },
+    { "hanzi": "啤酒", "pinyin": "pí jiǔ", "english": "beer" },
+    { "hanzi": "肉", "pinyin": "ròu", "english": "meat" },
+    { "hanzi": "鱼", "pinyin": "yú", "english": "fish" },
+    { "hanzi": "蛋", "pinyin": "dàn", "english": "egg" },
+    { "hanzi": "菜", "pinyin": "cài", "english": "vegetable; dish" },
+    { "hanzi": "水果", "pinyin": "shuǐ guǒ", "english": "fruit" },
+    { "hanzi": "面包", "pinyin": "miàn bāo", "english": "bread" },
+    { "hanzi": "饺子", "pinyin": "jiǎo zi", "english": "dumpling" },
+    { "hanzi": "汤", "pinyin": "tāng", "english": "soup" },
+    { "hanzi": "筷子", "pinyin": "kuài zi", "english": "chopsticks" },
+    { "hanzi": "碗", "pinyin": "wǎn", "english": "bowl" }
+  ],
+  "phrases": [
+    { "hanzi": "我饿了。", "pinyin": "wǒ è le", "english": "I'm hungry." },
+    { "hanzi": "我渴了。", "pinyin": "wǒ kě le", "english": "I'm thirsty." },
+    { "hanzi": "我想吃饭。", "pinyin": "wǒ xiǎng chī fàn", "english": "I want to eat." },
+    { "hanzi": "这个很好吃。", "pinyin": "zhè ge hěn hǎo chī", "english": "This is delicious." },
+    { "hanzi": "请给我一杯水。", "pinyin": "qǐng gěi wǒ yì bēi shuǐ", "english": "Please give me a glass of water." },
+    { "hanzi": "我不吃肉。", "pinyin": "wǒ bù chī ròu", "english": "I don't eat meat." },
+    { "hanzi": "早餐吃什么？", "pinyin": "zǎo cān chī shén me", "english": "What do you eat for breakfast?" },
+    { "hanzi": "我喜欢喝茶。", "pinyin": "wǒ xǐ huān hē chá", "english": "I like to drink tea." },
+    { "hanzi": "这个汤很好喝。", "pinyin": "zhè ge tāng hěn hǎo hē", "english": "This soup tastes great." },
+    { "hanzi": "请给我筷子。", "pinyin": "qǐng gěi wǒ kuài zi", "english": "Please give me chopsticks." }
+  ]
+}
