@@ -1,0 +1,37 @@
+{
+  "games": {
+    "loading": "Loading…",
+    "error": "Could not load the game: {message}",
+    "matching": {
+      "title": "Matching",
+      "desc": "Tap to match hanzi with English meanings.",
+      "mistakes": "Mistakes",
+      "time": "Time",
+      "matched": "Matched",
+      "hintSelectHanzi": "Tap a Chinese character to select it.",
+      "hintSelectMatch": "Now tap its English meaning.",
+      "score": "Score",
+      "complete": "Round complete!",
+      "playAgain": "Play again",
+      "back": "Back to games"
+    },
+    "memory": {
+      "title": "Memory",
+      "desc": "Flip cards to find matching hanzi/meaning pairs.",
+      "mistakes": "Mistakes",
+      "time": "Time",
+      "matched": "Matched",
+      "hintFirst": "Tap a card to flip it.",
+      "hintSecond": "Tap another card to find the match.",
+      "score": "Score",
+      "complete": "Round complete!",
+      "playAgain": "Play again",
+      "back": "Back to games"
+    }
+  },
+  "hubs": {
+    "learn": {
+      "games": "Memory games"
+    }
+  }
+}
