@@ -1,0 +1,159 @@
+{
+  "id": "theme-05",
+  "title": "Compras",
+  "icon": "🛍️",
+  "words": [
+    {
+      "hanzi": "商店",
+      "pinyin": "shāng diàn",
+      "english": "tienda; comercio"
+    },
+    {
+      "hanzi": "超市",
+      "pinyin": "chāo shì",
+      "english": "supermercado"
+    },
+    {
+      "hanzi": "市场",
+      "pinyin": "shì chǎng",
+      "english": "mercado"
+    },
+    {
+      "hanzi": "钱",
+      "pinyin": "qián",
+      "english": "dinero"
+    },
+    {
+      "hanzi": "价格",
+      "pinyin": "jià gé",
+      "english": "precio"
+    },
+    {
+      "hanzi": "贵",
+      "pinyin": "guì",
+      "english": "caro"
+    },
+    {
+      "hanzi": "便宜",
+      "pinyin": "pián yí",
+      "english": "barato"
+    },
+    {
+      "hanzi": "买",
+      "pinyin": "mǎi",
+      "english": "comprar"
+    },
+    {
+      "hanzi": "卖",
+      "pinyin": "mài",
+      "english": "vender"
+    },
+    {
+      "hanzi": "看",
+      "pinyin": "kàn",
+      "english": "mirar"
+    },
+    {
+      "hanzi": "试",
+      "pinyin": "shì",
+      "english": "probarse"
+    },
+    {
+      "hanzi": "衣服",
+      "pinyin": "yī fu",
+      "english": "ropa"
+    },
+    {
+      "hanzi": "鞋",
+      "pinyin": "xié",
+      "english": "zapatos"
+    },
+    {
+      "hanzi": "包",
+      "pinyin": "bāo",
+      "english": "bolsa"
+    },
+    {
+      "hanzi": "尺码",
+      "pinyin": "chǐ mǎ",
+      "english": "talla"
+    },
+    {
+      "hanzi": "颜色",
+      "pinyin": "yán sè",
+      "english": "color"
+    },
+    {
+      "hanzi": "红",
+      "pinyin": "hóng",
+      "english": "rojo"
+    },
+    {
+      "hanzi": "蓝",
+      "pinyin": "lán",
+      "english": "azul"
+    },
+    {
+      "hanzi": "黑",
+      "pinyin": "hēi",
+      "english": "negro"
+    },
+    {
+      "hanzi": "白",
+      "pinyin": "bái",
+      "english": "blanco"
+    }
+  ],
+  "phrases": [
+    {
+      "hanzi": "这个多少钱？",
+      "pinyin": "zhè ge duō shǎo qián",
+      "english": "¿cuánto cuesta esto?"
+    },
+    {
+      "hanzi": "太贵了。",
+      "pinyin": "tài guì le",
+      "english": "Es demasiado caro."
+    },
+    {
+      "hanzi": "能便宜一点吗？",
+      "pinyin": "néng pián yí yì diǎn ma",
+      "english": "¿puedes bajar el precio?"
+    },
+    {
+      "hanzi": "我要买这个。",
+      "pinyin": "wǒ yào mǎi zhè ge",
+      "english": "Me llevo este."
+    },
+    {
+      "hanzi": "我可以试穿吗？",
+      "pinyin": "wǒ kě yǐ shì chuān ma",
+      "english": "¿puedo probármelo?"
+    },
+    {
+      "hanzi": "有大一点的吗？",
+      "pinyin": "yǒu dà yì diǎn de ma",
+      "english": "¿tienes una talla más grande?"
+    },
+    {
+      "hanzi": "我不喜欢这个颜色。",
+      "pinyin": "wǒ bù xǐ huān zhè ge yán sè",
+      "english": "No me gusta este color."
+    },
+    {
+      "hanzi": "请给我一个袋子。",
+      "pinyin": "qǐng gěi wǒ yí ge dài zi",
+      "english": "Por favor, dame una bolsa."
+    },
+    {
+      "hanzi": "我付现金。",
+      "pinyin": "wǒ fù xiàn jīn",
+      "english": "Pago en efectivo."
+    },
+    {
+      "hanzi": "收据给我吧。",
+      "pinyin": "shōu jù gěi wǒ ba",
+      "english": "Dame el recibo, por favor."
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "id": "theme-06",
+  "title": "Transporte y viajes",
+  "icon": "✈️",
+  "words": [
+    {
+      "hanzi": "飞机",
+      "pinyin": "fēi jī",
+      "english": "avión"
+    },
+    {
+      "hanzi": "火车",
+      "pinyin": "huǒ chē",
+      "english": "tren"
+    },
+    {
+      "hanzi": "地铁",
+      "pinyin": "dì tiě",
+      "english": "metro"
+    },
+    {
+      "hanzi": "公交车",
+      "pinyin": "gōng jiāo chē",
+      "english": "autobús"
+    },
+    {
+      "hanzi": "出租车",
+      "pinyin": "chū zū chē",
+      "english": "taxi"
+    },
+    {
+      "hanzi": "车站",
+      "pinyin": "chē zhàn",
+      "english": "estación"
+    },
+    {
+      "hanzi": "机场",
+      "pinyin": "jī chǎng",
+      "english": "aeropuerto"
+    },
+    {
+      "hanzi": "票",
+      "pinyin": "piào",
+      "english": "billete"
+    },
+    {
+      "hanzi": "护照",
+      "pinyin": "hù zhào",
+      "english": "pasaporte"
+    },
+    {
+      "hanzi": "行李",
+      "pinyin": "xíng lǐ",
+      "english": "equipaje"
+    },
+    {
+      "hanzi": "时间",
+      "pinyin": "shí jiān",
+      "english": "tiempo"
+    },
+    {
+      "hanzi": "早",
+      "pinyin": "zǎo",
+      "english": "temprano"
+    },
+    {
+      "hanzi": "晚",
+      "pinyin": "wǎn",
+      "english": "tarde"
+    },
+    {
+      "hanzi": "快",
+      "pinyin": "kuài",
+      "english": "rápido"
+    },
+    {
+      "hanzi": "慢",
+      "pinyin": "màn",
+      "english": "lento"
+    },
+    {
+      "hanzi": "远",
+      "pinyin": "yuǎn",
+      "english": "lejos"
+    },
+    {
+      "hanzi": "近",
+      "pinyin": "jìn",
+      "english": "cerca"
+    },
+    {
+      "hanzi": "坐",
+      "pinyin": "zuò",
+      "english": "sentarse; tomar (transporte)"
+    },
+    {
+      "hanzi": "走",
+      "pinyin": "zǒu",
+      "english": "caminar; ir"
+    },
+    {
+      "hanzi": "到",
+      "pinyin": "dào",
+      "english": "llegar"
+    }
+  ],
+  "phrases": [
+    {
+      "hanzi": "怎么去机场？",
+      "pinyin": "zěn me qù jī chǎng",
+      "english": "¿cómo llego al aeropuerto?"
+    },
+    {
+      "hanzi": "我要买火车票。",
+      "pinyin": "wǒ yào mǎi huǒ chē piào",
+      "english": "Quiero comprar un billete de tren."
+    },
+    {
+      "hanzi": "几点出发？",
+      "pinyin": "jǐ diǎn chū fā",
+      "english": "¿a qué hora sale?"
+    },
+    {
+      "hanzi": "这个站在哪里？",
+      "pinyin": "zhè ge zhàn zài nǎ lǐ",
+      "english": "¿dónde está esta estación?"
+    },
+    {
+      "hanzi": "请带我去车站。",
+      "pinyin": "qǐng dài wǒ qù chē zhàn",
+      "english": "Por favor, llévame a la estación."
+    },
+    {
+      "hanzi": "飞机晚点了。",
+      "pinyin": "fēi jī wǎn diǎn le",
+      "english": "El vuelo va con retraso."
+    },
+    {
+      "hanzi": "我的行李丢了。",
+      "pinyin": "wǒ de xíng lǐ diū le",
+      "english": "He perdido mi equipaje."
+    },
+    {
+      "hanzi": "坐地铁很快。",
+      "pinyin": "zuò dì tiě hěn kuài",
+      "english": "El metro es rápido."
+    },
+    {
+      "hanzi": "这里到北京多远？",
+      "pinyin": "zhè lǐ dào Běi jīng duō yuǎn",
+      "english": "¿qué tan lejos está Beijing de aquí?"
+    },
+    {
+      "hanzi": "我走路去。",
+      "pinyin": "wǒ zǒu lù qù",
+      "english": "Voy caminando."
+    }
+  ]
+}

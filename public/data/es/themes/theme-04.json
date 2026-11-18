@@ -1,0 +1,159 @@
+{
+  "id": "theme-04",
+  "title": "Restaurante",
+  "icon": "🍜",
+  "words": [
+    {
+      "hanzi": "餐厅",
+      "pinyin": "cān tīng",
+      "english": "restaurante"
+    },
+    {
+      "hanzi": "菜单",
+      "pinyin": "cài dān",
+      "english": "menú"
+    },
+    {
+      "hanzi": "服务员",
+      "pinyin": "fú wù yuán",
+      "english": "camarero; camarera"
+    },
+    {
+      "hanzi": "点菜",
+      "pinyin": "diǎn cài",
+      "english": "pedir comida"
+    },
+    {
+      "hanzi": "买单",
+      "pinyin": "mǎi dān",
+      "english": "pagar la cuenta"
+    },
+    {
+      "hanzi": "筷子",
+      "pinyin": "kuài zi",
+      "english": "palillos"
+    },
+    {
+      "hanzi": "勺子",
+      "pinyin": "sháo zi",
+      "english": "cuchara"
+    },
+    {
+      "hanzi": "盘子",
+      "pinyin": "pán zi",
+      "english": "plato"
+    },
+    {
+      "hanzi": "碗",
+      "pinyin": "wǎn",
+      "english": "cuenco"
+    },
+    {
+      "hanzi": "杯子",
+      "pinyin": "bēi zi",
+      "english": "taza; vaso"
+    },
+    {
+      "hanzi": "辣",
+      "pinyin": "là",
+      "english": "picante"
+    },
+    {
+      "hanzi": "咸",
+      "pinyin": "xián",
+      "english": "salado"
+    },
+    {
+      "hanzi": "甜",
+      "pinyin": "tián",
+      "english": "dulce"
+    },
+    {
+      "hanzi": "酸",
+      "pinyin": "suān",
+      "english": "ácido"
+    },
+    {
+      "hanzi": "好吃",
+      "pinyin": "hǎo chī",
+      "english": "delicioso"
+    },
+    {
+      "hanzi": "不好吃",
+      "pinyin": "bù hǎo chī",
+      "english": "no está rico"
+    },
+    {
+      "hanzi": "推荐",
+      "pinyin": "tuī jiàn",
+      "english": "recomendar"
+    },
+    {
+      "hanzi": "份",
+      "pinyin": "fèn",
+      "english": "ración; porción"
+    },
+    {
+      "hanzi": "位子",
+      "pinyin": "wèi zi",
+      "english": "asiento; mesa"
+    },
+    {
+      "hanzi": "预订",
+      "pinyin": "yù dìng",
+      "english": "reserva"
+    }
+  ],
+  "phrases": [
+    {
+      "hanzi": "请给我菜单。",
+      "pinyin": "qǐng gěi wǒ cài dān",
+      "english": "Por favor, dame el menú."
+    },
+    {
+      "hanzi": "我想点菜。",
+      "pinyin": "wǒ xiǎng diǎn cài",
+      "english": "Quiero pedir."
+    },
+    {
+      "hanzi": "你推荐什么？",
+      "pinyin": "nǐ tuī jiàn shén me",
+      "english": "¿qué me recomiendas?"
+    },
+    {
+      "hanzi": "这个不辣。",
+      "pinyin": "zhè ge bù là",
+      "english": "Esto no pica."
+    },
+    {
+      "hanzi": "很好吃！",
+      "pinyin": "hěn hǎo chī",
+      "english": "¡Está muy rico!"
+    },
+    {
+      "hanzi": "买单，谢谢。",
+      "pinyin": "mǎi dān, xiè xie",
+      "english": "La cuenta, por favor."
+    },
+    {
+      "hanzi": "我要一份米饭。",
+      "pinyin": "wǒ yào yí fèn mǐ fàn",
+      "english": "Quiero una ración de arroz."
+    },
+    {
+      "hanzi": "请给我筷子和勺子。",
+      "pinyin": "qǐng gěi wǒ kuài zi hé sháo zi",
+      "english": "Por favor, dame palillos y una cuchara."
+    },
+    {
+      "hanzi": "这里有人吗？",
+      "pinyin": "zhè lǐ yǒu rén ma",
+      "english": "¿está ocupado este asiento?"
+    },
+    {
+      "hanzi": "我们要两个位子。",
+      "pinyin": "wǒ men yào liǎng ge wèi zi",
+      "english": "Queremos una mesa para dos."
+    }
+  ]
+}
