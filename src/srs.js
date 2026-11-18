@@ -12,6 +12,7 @@
  *     english:       string[] meanings (the review UI reads this as `defs`)
  *     defs:          string[] alias of english
  *     source:        string   where the card came from: 'dict' | 'lesson' | 'reading' | ...
+ *     sourceDetail:  string|null  optional finer origin (theme/lesson id); null when absent
  *     addedAt:       number   epoch ms when first added
  *     reviews:       number   how many times it was answered
  *     ease:          number   SM-2 ease factor, never below 1.3
@@ -23,13 +24,13 @@
  *     lastRating:    string|null
  *   }
  *
- * addToReview() also accepts `{ id?, hanzi|simp, pinyin, english|defs, source, ... }`
+ * addToReview() also accepts `{ id?, hanzi|simp, pinyin, english|defs, source, sourceDetail, ... }`
  * with `hanzi`/`english` as the canonical names — every entry shape works.
  *
  * Two layers, so the algorithm is testable on its own:
  *  - pure: `grade(card, rating, now)` -> next card, `nextDue(card, rating, now)`.
- *  - async deck API: `addToReview`, `getDueCards`, `answer`, `countDue`.
- *    Persistence goes through src/storage.js ONLY (store 'srs'), never
+ *  - async deck API: `addToReview`, `getDueCards` (optional source/sourceDetail
+ *    filter), `answer`, `countDue`, `countDueBySource`. Persistence goes through src/storage.js ONLY (store 'srs'), never
  *    IndexedDB/localStorage directly. `createDeck(store)` binds the API to any
  *    storage instance — tests pass an in-memory one.
  */
@@ -124,6 +125,7 @@ export function makeCard(entry = {}, now = Date.now()) {
     english,
     defs: english,
     source: entry.source ?? 'dict',
+    sourceDetail: entry.sourceDetail ?? null,
     addedAt: now,
     reviews: 0,
     ...newCardState(now),
@@ -139,13 +141,35 @@ export function createDeck(store = storage) {
 
   const listCards = async () => (await store.list('srs')).map((row) => row.value).filter(Boolean);
 
-  /** Cards due at or before `now`, soonest first (ties broken by id, stable). */
-  const getDueCards = async (now = Date.now()) =>
-    (await listCards())
+  /**
+   * Cards due at or before `now`, soonest first (ties broken by id, stable).
+   *
+   * Accepts either a plain `now` (legacy call: `getDueCards(Date.now())`) or an
+   * options object `{ now?, source?, sourceDetail? }`. When `source` (and/or
+   * `sourceDetail`) is given, only matching cards are returned; a card with no
+   * source counts as 'unknown'. Omitting the filters keeps the old behavior.
+   */
+  const getDueCards = async (nowOrOptions = Date.now()) => {
+    const opts = typeof nowOrOptions === 'object' && nowOrOptions !== null ? nowOrOptions : { now: nowOrOptions };
+    const now = opts.now ?? Date.now();
+    return (await listCards())
       .filter((card) => (card.due ?? 0) <= now)
+      .filter((card) => opts.source === undefined || (card.source || 'unknown') === opts.source)
+      .filter((card) => opts.sourceDetail === undefined || card.sourceDetail === opts.sourceDetail)
       .sort((a, b) => (a.due ?? 0) - (b.due ?? 0) || String(a.id).localeCompare(String(b.id)));
+  };
 
   const countDue = async (now = Date.now()) => (await getDueCards(now)).length;
+
+  /** Due cards grouped by source: `{ [source]: n }`; cards without one -> 'unknown'. */
+  const countDueBySource = async (now = Date.now()) => {
+    const counts = {};
+    for (const card of await getDueCards(now)) {
+      const key = card.source || 'unknown';
+      counts[key] = (counts[key] ?? 0) + 1;
+    }
+    return counts;
+  };
 
   /** Adds an entry to the deck. Idempotent: an existing id is left untouched. */
   const addToReview = async (entry = {}, { now = Date.now() } = {}) => {
@@ -173,7 +197,7 @@ export function createDeck(store = storage) {
     return { total: cards.length, due: cards.filter((card) => (card.due ?? 0) <= now).length };
   };
 
-  return { addToReview, getDueCards, answer, gradeCard: answer, countDue, getCard, listCards, removeCard, deckStats };
+  return { addToReview, getDueCards, answer, gradeCard: answer, countDue, countDueBySource, getCard, listCards, removeCard, deckStats };
 }
 
 const deck = createDeck();
@@ -182,6 +206,7 @@ export const addToReview = deck.addToReview;
 export const getDueCards = deck.getDueCards;
 export const answer = deck.answer;
 export const countDue = deck.countDue;
+export const countDueBySource = deck.countDueBySource;
 export const getCard = deck.getCard;
 export const listCards = deck.listCards;
 export const removeCard = deck.removeCard;

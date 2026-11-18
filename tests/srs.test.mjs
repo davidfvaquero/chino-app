@@ -188,3 +188,47 @@ test('lapses: legacy card without the field counts as 0; only again adds one', a
   assert.equal((await deck.answer(card.id, 'again', T0)).lapses, 2);
   assert.equal((await store.get('srs', card.id)).lapses, 2, 'persisted');
 });
+
+test('getDueCards: legacy number call keeps returning every due card', async () => {
+  const deck = createDeck(createStorage(memoryDriver()));
+  await deck.addToReview({ id: 'a', simp: '一', pinyin: 'yī', english: ['one'], source: 'lesson' }, { now: T0 });
+  await deck.addToReview({ id: 'b', simp: '二', pinyin: 'èr', english: ['two'], source: 'dict' }, { now: T0 });
+  assert.deepEqual((await deck.getDueCards(T0)).map((c) => c.id), ['da', 'db']);
+  assert.deepEqual((await deck.getDueCards()).map((c) => c.id), ['da', 'db'], 'no-arg call still uses now');
+});
+
+test('getDueCards: filters by source, then by source + sourceDetail', async () => {
+  const deck = createDeck(createStorage(memoryDriver()));
+  await deck.addToReview({ id: 'l1', simp: '三', pinyin: 'sān', english: ['three'], source: 'lesson', sourceDetail: 'lesson-01' }, { now: T0 });
+  await deck.addToReview({ id: 'l2', simp: '四', pinyin: 'sì', english: ['four'], source: 'lesson', sourceDetail: 'lesson-02' }, { now: T0 });
+  await deck.addToReview({ id: 'r1', simp: '五', pinyin: 'wǔ', english: ['five'], source: 'reading' }, { now: T0 });
+
+  const lessons = await deck.getDueCards({ now: T0, source: 'lesson' });
+  assert.deepEqual(lessons.map((c) => c.id), ['dl1', 'dl2'], 'only lesson cards');
+
+  const l1 = await deck.getDueCards({ now: T0, source: 'lesson', sourceDetail: 'lesson-01' });
+  assert.deepEqual(l1.map((c) => c.id), ['dl1'], 'detail narrows the source');
+
+  assert.deepEqual((await deck.getDueCards({ source: 'reading' })).map((c) => c.id), ['dr1'], 'now defaults to Date.now()');
+});
+
+test('getDueCards: a card without a source counts as "unknown"', async () => {
+  const store = createStorage(memoryDriver());
+  const deck = createDeck(store);
+  await store.set('srs', 'legacy', { id: 'legacy', hanzi: '六', due: T0, source: undefined });
+  assert.deepEqual((await deck.getDueCards({ now: T0, source: 'unknown' })).map((c) => c.id), ['legacy']);
+});
+
+test('countDueBySource groups due cards by source, sourceless as "unknown"', async () => {
+  const store = createStorage(memoryDriver());
+  const deck = createDeck(store);
+  await deck.addToReview({ id: 'x1', simp: '七', pinyin: 'qī', english: ['seven'], source: 'lesson' }, { now: T0 });
+  await deck.addToReview({ id: 'x2', simp: '八', pinyin: 'bā', english: ['eight'], source: 'lesson' }, { now: T0 });
+  await deck.addToReview({ id: 'x3', simp: '九', pinyin: 'jiǔ', english: ['nine'], source: 'reading' }, { now: T0 });
+  await deck.addToReview({ id: 'x4', simp: '十', pinyin: 'shí', english: ['ten'], source: 'reading' }, { now: T0 + 10 * DAY_MS });
+  await store.set('srs', 'legacy', { id: 'legacy', hanzi: '零', due: T0, source: undefined });
+
+  assert.deepEqual(await deck.countDueBySource(T0), { lesson: 2, reading: 1, unknown: 1 });
+  assert.deepEqual(await deck.countDueBySource(T0 + 10 * DAY_MS), { lesson: 2, reading: 2, unknown: 1 });
+  assert.deepEqual(await deck.countDueBySource(-1), {});
+});
