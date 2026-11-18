@@ -1,0 +1,19 @@
+{
+  "games": {
+    "timed": {
+      "title": "Timed Quiz",
+      "desc": "60 seconds to answer as many as you can.",
+      "playAudio": "Play audio",
+      "streak": "Streak",
+      "streakLabel": "Streak",
+      "score": "Score",
+      "finalScore": "Final Score",
+      "bestScore": "Best Score",
+      "bestStreak": "Best Streak",
+      "time": "Time",
+      "complete": "Time's up!",
+      "playAgain": "Play again",
+      "back": "Back to games"
+    }
+  }
+}
