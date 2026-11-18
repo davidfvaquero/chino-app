@@ -1,0 +1,56 @@
+{
+  "id": "reading-14",
+  "title": "在酒店",
+  "type": "dialogue",
+  "topic": "At the hotel",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你好，我有预订。",
+      "pinyin": "Nǐ hǎo, wǒ yǒu yùdìng.",
+      "english": "Hello, I have a reservation."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "请问您的名字？",
+      "pinyin": "Qǐngwèn nín de míngzi?",
+      "english": "May I ask your name?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我叫王明。单人间，住两晚。",
+      "pinyin": "Wǒ jiào Wáng Míng. Dānrénjiān, zhù liǎng wǎn.",
+      "english": "My name is Wang Ming. Single room, staying two nights."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好的，王先生。这是您的钥匙，305房间。",
+      "pinyin": "Hǎo de, Wáng xiānsheng. Zhè shì nín de yàoshi, 305 fángjiān.",
+      "english": "OK, Mr. Wang. Here is your key, room 305."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "早餐几点开始？",
+      "pinyin": "Zǎocān jǐ diǎn kāishǐ?",
+      "english": "What time does breakfast start?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "早上七点到九点半。在一楼餐厅。",
+      "pinyin": "Zǎoshang qī diǎn dào jiǔ diǎn bàn. Zài yī lóu cāntīng.",
+      "english": "7:00 to 9:30 AM. In the first floor restaurant."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢。WiFi密码是什么？",
+      "pinyin": "Xièxie. WiFi mìmǎ shì shénme?",
+      "english": "Thanks. What is the WiFi password?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "密码写在桌子上的卡片上。祝您住得愉快！",
+      "pinyin": "Mìmǎ xiě zài zhuōzi shàng de kǎipiàn shàng. Zhù nín zhù de yúkuài!",
+      "english": "The password is on the card on the desk. Hope you have a pleasant stay!"
+    }
+  ]
+}

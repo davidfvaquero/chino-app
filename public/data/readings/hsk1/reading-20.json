@@ -1,0 +1,56 @@
+{
+  "id": "reading-20",
+  "title": "生日聚会",
+  "type": "dialogue",
+  "topic": "A party",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "生日快乐！这是给你的礼物。",
+      "pinyin": "Shēngrì kuàilè! Zhè shì gěi nǐ de lǐwù.",
+      "english": "Happy birthday! This is a gift for you."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "哇，谢谢！我打开看看。",
+      "pinyin": "Wa, xièxie! Wǒ dǎkāi kànkan.",
+      "english": "Wow, thanks! Let me open it and see."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "是一本中文书。适合初学者。",
+      "pinyin": "Shì yī běn Zhōngwén shū. Shìhé chūxuézhě.",
+      "english": "It's a Chinese book. Suitable for beginners."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "太完美了！我正想学中文呢。",
+      "pinyin": "Tài wánměi le! Wǒ zhèng xiǎng xué Zhōngwén ne.",
+      "english": "Too perfect! I was just wanting to learn Chinese."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "来，切蛋糕吧。大家一起唱歌。",
+      "pinyin": "Lái, qiē dàngāo ba. Dàjiā yīqǐ chànggē.",
+      "english": "Come, let's cut the cake. Everyone sing together."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好！许愿、吹蜡烛、吃蛋糕！",
+      "pinyin": "Hǎo! Xǔyuàn, chuī làzhú, chī dàngāo!",
+      "english": "OK! Make a wish, blow candles, eat cake!"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "蛋糕很好吃。这是谁做的？",
+      "pinyin": "Dàngāo hěn hǎochī. Zhè shì shéi zuò de?",
+      "english": "The cake is delicious. Who made it?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我妈妈做的。她做饭最好吃。",
+      "pinyin": "Wǒ māma zuò de. Tā zuòfàn zuì hǎochī.",
+      "english": "My mom made it. Her cooking is the best."
+    }
+  ]
+}

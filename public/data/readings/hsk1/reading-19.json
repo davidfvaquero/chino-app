@@ -1,0 +1,56 @@
+{
+  "id": "reading-19",
+  "title": "看医生",
+  "type": "dialogue",
+  "topic": "At the doctor",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "医生，我头疼、喉咙痛，还有点发烧。",
+      "pinyin": "Yīshēng, wǒ tóuténg, hóulóng tòng, hái yǒudiǎn fāshāo.",
+      "english": "Doctor, I have a headache, sore throat, and a slight fever."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "量一下体温。张开嘴，我看看。",
+      "pinyin": "Liáng yīxià tǐwēn. Zhāngkāi zuǐ, wǒ kànkan.",
+      "english": "Take your temperature. Open your mouth, let me see."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "三十八度五。",
+      "pinyin": "Sānshíbā dù wǔ.",
+      "english": "38.5 degrees."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是感冒。开点药，多喝水，多休息。",
+      "pinyin": "Shì gǎnmào. Kāi diǎn yào, duō hē shuǐ, duō xiūxi.",
+      "english": "It's a cold. Prescribing medicine, drink more water, rest more."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "吃几天好？",
+      "pinyin": "Chī jǐ tiān hǎo?",
+      "english": "How many days to get better?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "通常三到五天。如果不退烧再来。",
+      "pinyin": "Tōngcháng sān dào wǔ tiān. Rúguǒ bù tuìshāo zài lái.",
+      "english": "Usually 3 to 5 days. If fever doesn't go down, come again."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢医生。去哪里拿药？",
+      "pinyin": "Xièxie yīshēng. Qù nǎli ná yào?",
+      "english": "Thanks doctor. Where to get the medicine?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "一楼药房。拿着这个单子去。",
+      "pinyin": "Yī lóu yàofáng. Názhe zhège dānzi qù.",
+      "english": "First floor pharmacy. Take this slip there."
+    }
+  ]
+}
