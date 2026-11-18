@@ -1,0 +1,56 @@
+{
+  "id": "reading-03",
+  "title": "吃饭",
+  "type": "dialogue",
+  "topic": "Comida y bebida",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你饿吗？我们去吃饭吧。",
+      "pinyin": "Nǐ è ma? Wǒmen qù chīfàn ba.",
+      "english": "¿Tienes hambre? Vamos a comer."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好啊！你想吃什么？",
+      "pinyin": "Hǎo a! Nǐ xiǎng chī shénme?",
+      "english": "¡Claro! ¿Qué quieres comer?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我想吃米饭和菜。你呢？",
+      "pinyin": "Wǒ xiǎng chī mǐfàn hé cài. Nǐ ne?",
+      "english": "Quiero comer arroz y platos. ¿Y tú?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我喝茶，不喝酒。",
+      "pinyin": "Wǒ hē chá, bù hē jiǔ.",
+      "english": "Yo tomo té, no bebo alcohol."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "这个菜很好吃。你也吃一点。",
+      "pinyin": "Zhège cài hěn hǎochī. Nǐ yě chī yīdiǎn.",
+      "english": "Este plato está muy rico. Prueba un poco."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "谢谢。我不客气了。",
+      "pinyin": "Xièxie. Wǒ bù kèqi le.",
+      "english": "Gracias. Entonces no voy a hacer cumplidos."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "吃饱了吗？",
+      "pinyin": "Chī bǎo le ma?",
+      "english": "¿Estás lleno?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "饱了，很好吃。买单！",
+      "pinyin": "Bǎo le, hěn hǎochī. Mǎidān!",
+      "english": "Estoy lleno, estaba muy rico. ¡La cuenta, por favor!"
+    }
+  ]
+}

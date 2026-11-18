@@ -1,0 +1,68 @@
+{
+  "id": "reading-10",
+  "title": "我的家人",
+  "type": "dialogue",
+  "topic": "Mi familia",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你家有几口人？",
+      "pinyin": "Nǐ jiā yǒu jǐ kǒu rén?",
+      "english": "¿Cuántas personas hay en tu familia?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我家有五口人：爸爸、妈妈、哥哥、妹妹和我。",
+      "pinyin": "Wǒ jiā yǒu wǔ kǒu rén: bàba, māma, gēge, mèimei hé wǒ.",
+      "english": "En mi familia hay cinco personas: papá, mamá, mi hermano mayor, mi hermana menor y yo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你哥哥多大？他在做什么工作？",
+      "pinyin": "Nǐ gēge duō dà? Tā zài zuò shénme gōngzuò?",
+      "english": "¿Cuántos años tiene tu hermano mayor? ¿En qué trabaja?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "他二十五岁。他是医生，在医院工作。",
+      "pinyin": "Tā èrshíwǔ suì. Tā shì yīshēng, zài yīyuàn gōngzuò.",
+      "english": "Tiene veinticinco años. Es médico y trabaja en un hospital."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你妹妹呢？她多大了？",
+      "pinyin": "Nǐ mèimei ne? Tā duō dà le?",
+      "english": "¿Y tu hermana menor? ¿Cuántos años tiene?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "她十八岁。她是学生，在大学学习汉语。",
+      "pinyin": "Tā shíbā suì. Tā shì xuésheng, zài dàxué xuéxí Hànyǔ.",
+      "english": "Tiene dieciocho. Es estudiante y estudia chino en la universidad."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你爸爸妈妈呢？",
+      "pinyin": "Nǐ bàba māma ne?",
+      "english": "¿Y tus papás?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "爸爸是老师，妈妈在家做饭。他们都很好。",
+      "pinyin": "Bàba shì lǎoshī, māma zài jiā zuòfàn. Tāmen dōu hěn hǎo.",
+      "english": "Papá es maestro y mamá cocina en casa. Los dos están muy bien."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你很爱你的家人吗？",
+      "pinyin": "Nǐ hěn ài nǐ de jiārén ma?",
+      "english": "¿Quieres mucho a tu familia?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，我非常爱他们。我们一起吃饭、看电视。",
+      "pinyin": "Shì de, wǒ fēicháng ài tāmen. Wǒmen yìqǐ chīfàn, kàn diànshì.",
+      "english": "Sí, los quiero mucho. Comemos y vemos la tele juntos."
+    }
+  ]
+}

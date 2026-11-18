@@ -1,0 +1,56 @@
+{
+  "id": "reading-08",
+  "title": "咖啡店",
+  "type": "dialogue",
+  "topic": "En la cafetería",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你好，我想喝咖啡。",
+      "pinyin": "Nǐ hǎo, wǒ xiǎng hē kāfēi.",
+      "english": "Hola, quisiera tomar café."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好，我们有咖啡、茶和牛奶。你要什么？",
+      "pinyin": "Hǎo, wǒmen yǒu kāfēi, chá hé niúnǎi. Nǐ yào shénme?",
+      "english": "Vale, tenemos café, té y leche. ¿Qué quieres?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我要一杯咖啡，不加糖。",
+      "pinyin": "Wǒ yào yī bēi kāfēi, bù jiā táng.",
+      "english": "Quiero una taza de café, sin azúcar."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "一杯咖啡，不加糖。二十块钱。",
+      "pinyin": "Yī bēi kāfēi, bù jiā táng. Èrshí kuài qián.",
+      "english": "Una taza de café, sin azúcar. Veinte yuanes."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "给你二十块。",
+      "pinyin": "Gěi nǐ èrshí kuài.",
+      "english": "Aquí tienes veinte yuanes."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "谢谢。你的咖啡。请慢用。",
+      "pinyin": "Xièxie. Nǐ de kāfēi. Qǐng màn yòng.",
+      "english": "Gracias. Tu café. Disfrútalo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢。这个咖啡很好喝。",
+      "pinyin": "Xièxie. Zhège kāfēi hěn hǎo hē.",
+      "english": "Gracias. Este café está muy rico."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "很高兴你喜欢。欢迎下次再来！",
+      "pinyin": "Hěn gāoxìng nǐ xǐhuan. Huānyíng xiàcì zài lái!",
+      "english": "Me alegra que te guste. ¡Vuelve pronto!"
+    }
+  ]
+}

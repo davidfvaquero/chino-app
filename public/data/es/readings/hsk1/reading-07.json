@@ -1,0 +1,56 @@
+{
+  "id": "reading-07",
+  "title": "认识你",
+  "type": "dialogue",
+  "topic": "Presentarte",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你好！你叫什么名字？",
+      "pinyin": "Nǐ hǎo! Nǐ jiào shénme míngzi?",
+      "english": "¡Hola! ¿Cómo te llamas?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我叫李明。你呢？",
+      "pinyin": "Wǒ jiào Lǐ Míng. Nǐ ne?",
+      "english": "Me llamo Li Ming. ¿Y tú?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我叫张伟。很高兴认识你。",
+      "pinyin": "Wǒ jiào Zhāng Wěi. Hěn gāoxìng rènshi nǐ.",
+      "english": "Me llamo Zhang Wei. Mucho gusto."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我也很高兴认识你。你是哪国人？",
+      "pinyin": "Wǒ yě hěn gāoxìng rènshi nǐ. Nǐ shì nǎ guó rén?",
+      "english": "Yo también me alegro de conocerte. ¿De qué país eres?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我是美国人。你是中国人吗？",
+      "pinyin": "Wǒ shì Měiguó rén. Nǐ shì Zhōngguó rén ma?",
+      "english": "Soy estadounidense. ¿Eres chino?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，我是中国人。我住在北京。",
+      "pinyin": "Shì de, wǒ shì Zhōngguó rén. Wǒ zhù zài Běijīng.",
+      "english": "Sí, soy chino. Vivo en Pekín."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "北京很好。我也想去北京。",
+      "pinyin": "Běijīng hěn hǎo. Wǒ yě xiǎng qù Běijīng.",
+      "english": "Pekín es genial. Yo también quiero ir a Pekín."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "欢迎你来北京！再见。",
+      "pinyin": "Huānyíng nǐ lái Běijīng! Zàijiàn.",
+      "english": "¡Bienvenido a Pekín! Adiós."
+    }
+  ]
+}

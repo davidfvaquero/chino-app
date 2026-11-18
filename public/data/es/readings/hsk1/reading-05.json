@@ -1,0 +1,56 @@
+{
+  "id": "reading-05",
+  "title": "买东西",
+  "type": "dialogue",
+  "topic": "Compras y números",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你好，这个多少钱？",
+      "pinyin": "Nǐ hǎo, zhège duōshao qián?",
+      "english": "Hola, ¿cuánto cuesta esto?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "这个十块钱。那个二十块。",
+      "pinyin": "Zhège shí kuài qián. Nàge èrshí kuài.",
+      "english": "Esto cuesta diez yuanes. Eso, veinte."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "太贵了。便宜一点可以吗？",
+      "pinyin": "Tài guì le. Piányi yīdiǎn kěyǐ ma?",
+      "english": "Es demasiado caro. ¿Puede ser un poco más barato?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "这个八块，那个十五块。",
+      "pinyin": "Zhège bā kuài, nàge shíwǔ kuài.",
+      "english": "Este, ocho yuanes; ese, quince."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好，我买这个和那个。一共多少？",
+      "pinyin": "Hǎo, wǒ mǎi zhège hé nàge. Yīgòng duōshao?",
+      "english": "Bien, me llevo este y ese. ¿Cuánto es en total?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "一共二十三块钱。",
+      "pinyin": "Yīgòng èrshísān kuài qián.",
+      "english": "En total, veintitrés yuanes."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "给你三十块。找七块。",
+      "pinyin": "Gěi nǐ sānshí kuài. Zhǎo qī kuài.",
+      "english": "Aquí tienes treinta yuanes. Devuélveme siete."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "谢谢，欢迎下次再来！",
+      "pinyin": "Xièxie, huānyíng xiàcì zài lái!",
+      "english": "Gracias, ¡vuelve pronto!"
+    }
+  ]
+}

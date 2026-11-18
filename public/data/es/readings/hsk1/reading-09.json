@@ -1,0 +1,56 @@
+{
+  "id": "reading-09",
+  "title": "问路",
+  "type": "dialogue",
+  "topic": "Pedir direcciones",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "对不起，请问火车站怎么走？",
+      "pinyin": "Duìbuqǐ, qǐngwèn huǒchēzhàn zěnme zǒu?",
+      "english": "Disculpa, ¿cómo se va a la estación de tren?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "火车站在前面。直走，然后左转。",
+      "pinyin": "Huǒchēzhàn zài qiánmiàn. Zhí zǒu, ránhòu zuǒ zhuǎn.",
+      "english": "La estación de tren está adelante. Sigue recto y luego gira a la izquierda."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "远不远？走路要几分钟？",
+      "pinyin": "Yuǎn bu yuǎn? Zǒulù yào jǐ fēnzhōng?",
+      "english": "¿Está lejos? ¿Cuántos minutos se tarda andando?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "不远。走路十分钟就到。",
+      "pinyin": "Bù yuǎn. Zǒulù shí fēnzhōng jiù dào.",
+      "english": "No está lejos. En diez minutos andando llegas."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢。那医院在哪儿？",
+      "pinyin": "Xièxie. Nà yīyuàn zài nǎr?",
+      "english": "Gracias. ¿Y dónde está el hospital?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "医院在火车站右边。很近。",
+      "pinyin": "Yīyuàn zài huǒchēzhàn yòubian. Hěn jìn.",
+      "english": "El hospital está a la derecha de la estación. Muy cerca."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好的，我明白了。再见！",
+      "pinyin": "Hǎo de, wǒ míngbai le. Zàijiàn!",
+      "english": "Vale, ya lo entiendo. ¡Adiós!"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "再见，祝你一路平安。",
+      "pinyin": "Zàijiàn, zhù nǐ yílù píng'ān.",
+      "english": "Adiós, que tengas buen viaje."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "reading-02",
+  "title": "我的家",
+  "type": "dialogue",
+  "topic": "La familia",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你家有几口人？",
+      "pinyin": "Nǐ jiā yǒu jǐ kǒu rén?",
+      "english": "¿Cuántas personas hay en tu familia?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我家有四口人：爸爸、妈妈、哥哥和我。",
+      "pinyin": "Wǒ jiā yǒu sì kǒu rén: bàba, māma, gēge hé wǒ.",
+      "english": "En mi familia hay cuatro personas: papá, mamá, mi hermano mayor y yo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你哥哥多大？",
+      "pinyin": "Nǐ gēge duō dà?",
+      "english": "¿Cuántos años tiene tu hermano mayor?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "他二十岁。他在北京上大学。",
+      "pinyin": "Tā èrshí suì. Tā zài Běijīng shàng dàxué.",
+      "english": "Tiene veinte años. Estudia en la universidad en Pekín."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你爸爸妈妈做什么工作？",
+      "pinyin": "Nǐ bàba māma zuò shénme gōngzuò?",
+      "english": "¿En qué trabajan tu papá y tu mamá?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "爸爸是医生，妈妈是老师。",
+      "pinyin": "Bàba shì yīshēng, māma shì lǎoshī.",
+      "english": "Papá es médico y mamá es maestra."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你爱你的家人吗？",
+      "pinyin": "Nǐ ài nǐ de jiārén ma?",
+      "english": "¿Quieres a tu familia?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，我很爱他们。",
+      "pinyin": "Shì de, wǒ hěn ài tāmen.",
+      "english": "Sí, los quiero mucho."
+    }
+  ]
+}

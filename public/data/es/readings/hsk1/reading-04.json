@@ -1,0 +1,56 @@
+{
+  "id": "reading-04",
+  "title": "今天天气",
+  "type": "dialogue",
+  "topic": "El tiempo y los días",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "今天天气怎么样？",
+      "pinyin": "Jīntiān tiānqì zěnmeyàng?",
+      "english": "¿Qué tiempo hace hoy?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "今天晴天，很热。",
+      "pinyin": "Jīntiān qíngtiān, hěn rè.",
+      "english": "Hoy hace sol y mucho calor."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "明天下雨吗？",
+      "pinyin": "Míngtiān xiàyǔ ma?",
+      "english": "¿Va a llover mañana?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "不下雨，是多云。",
+      "pinyin": "Bù xiàyǔ, shì duōyún.",
+      "english": "No va a llover, estará nublado."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "后天冷不冷？",
+      "pinyin": "Hòutiān lěng bu lěng?",
+      "english": "¿Hará frío pasado mañana?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "后天不冷，很舒服。",
+      "pinyin": "Hòutiān bù lěng, hěn shūfu.",
+      "english": "Pasado mañana no hará frío, estará muy agradable."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "那我们后天去公园吧。",
+      "pinyin": "Nà wǒmen hòutiān qù gōngyuán ba.",
+      "english": "Entonces vamos al parque pasado mañana."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好主意！星期六见。",
+      "pinyin": "Hǎo zhǔyì! Xīngqīliù jiàn.",
+      "english": "¡Buena idea! Nos vemos el sábado."
+    }
+  ]
+}
