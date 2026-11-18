@@ -63,6 +63,10 @@ the licence asks for it.
   vocabulary published by **Hanban / Confucius Institute Headquarters (汉办)**;
   used here for study purposes as free reference data.
 - **Changes made:** parsed to JSON with `{level, hanzi, trad, pinyin, pinyinNumeric, english}`.
+- **Pinyin:** taken from the hskhsk.com list and contrasted against **CC-CEDICT**
+  (the same source as the dictionary). Readings match except for tone sandhi
+  (e.g. 一起 yìqǐ, 一下 yíxià), `ü` written as `v` (e.g. 女 nǚ), and the
+  multi-reading 长 cháng/zhǎng — all kept as the HSK list gives them.
 - **Extensibility:** the folder already contains levels 1–6; adding the newer
   HSK 3.0 lists only requires dropping another JSON in the same shape.
 

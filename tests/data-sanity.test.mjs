@@ -134,6 +134,23 @@ test('HSK levels 1-6 are present with the expected shape', () => {
   }
 });
 
+test('HSK 2 has ~150 valid new words and no duplicates with HSK 1', () => {
+  const hsk1 = read('hsk/1.json');
+  const hsk2 = read('hsk/2.json');
+  assert.equal(hsk2.level, 2);
+  assert.ok(hsk2.items.length >= 145 && hsk2.items.length <= 155, `HSK2 has ~150 words (got ${hsk2.items.length})`);
+  const hsk1Words = new Set(hsk1.items.map((it) => it.hanzi));
+  const seen = new Set();
+  for (const it of hsk2.items) {
+    assert.equal(it.level, 2, `${it.hanzi} has level 2`);
+    assert.ok(it.hanzi && it.pinyin && it.english, `${it.hanzi} has hanzi/pinyin/english`);
+    assert.ok(!seen.has(it.hanzi), `${it.hanzi} is not repeated inside HSK2`);
+    assert.ok(!hsk1Words.has(it.hanzi), `${it.hanzi} is not duplicated from HSK1`);
+    seen.add(it.hanzi);
+  }
+});
+
+
 test('short Tatoeba sentences have zh/pinyin/en and are <= 12 chars', () => {
   const idx = read('sentences/index.json');
   assert.ok(idx.count > 1000, 'a few thousand sentences');
