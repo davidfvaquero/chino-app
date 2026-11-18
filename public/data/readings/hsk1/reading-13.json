@@ -1,0 +1,62 @@
+{
+  "id": "reading-13",
+  "title": "明天下雨吗？",
+  "type": "dialogue",
+  "topic": "Weather",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "今天天气怎么样？",
+      "pinyin": "Jīntiān tiānqì zěnmeyàng?",
+      "english": "How is the weather today?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "今天晴天，很热。太阳很大。",
+      "pinyin": "Jīntiān qíngtiān, hěn rè. Tàiyáng hěn dà.",
+      "english": "Today is sunny, very hot. The sun is strong."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "明天下雨吗？我要去公园。",
+      "pinyin": "Míngtiān xiàyǔ ma? Wǒ yào qù gōngyuán.",
+      "english": "Will it rain tomorrow? I want to go to the park."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "明天不下雨，是多云。不热也不冷，很舒服。",
+      "pinyin": "Míngtiān bù xiàyǔ, shì duōyún. Bù rè yě bù lěng, hěn shūfu.",
+      "english": "Tomorrow no rain, it's cloudy. Not hot, not cold, very comfortable."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "太好了！那后天呢？后天冷不冷？",
+      "pinyin": "Tài hǎo le! Nà hòutiān ne? Hòutiān lěng bu lěng?",
+      "english": "Great! Then what about the day after tomorrow? Will it be cold?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "后天可能下雨，有点冷。你要带伞。",
+      "pinyin": "Hòutiān kěnéng xiàyǔ, yǒudiǎn lěng. Nǐ yào dài sǎn.",
+      "english": "Day after tomorrow might rain, a bit cold. You should bring an umbrella."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好的，我带伞。星期六我们去公园吧？",
+      "pinyin": "Hǎo de, wǒ dài sǎn. Xīngqīliù wǒmen qù gōngyuán ba?",
+      "english": "OK, I'll bring an umbrella. Saturday we go to the park?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好主意！星期六早上九点在公园见。",
+      "pinyin": "Hǎo zhǔyì! Xīngqīliù zǎoshang jiǔ diǎn zài gōngyuán jiàn.",
+      "english": "Good idea! Saturday 9 AM meet at the park."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "没问题，星期六见！",
+      "pinyin": "Méi wèntí, Xīngqīliù jiàn!",
+      "english": "No problem, see you Saturday!"
+    }
+  ]
+}

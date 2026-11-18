@@ -1,0 +1,68 @@
+{
+  "id": "reading-10",
+  "title": "我的家人",
+  "type": "dialogue",
+  "topic": "My family",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你家有几口人？",
+      "pinyin": "Nǐ jiā yǒu jǐ kǒu rén?",
+      "english": "How many people are in your family?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我家有五口人：爸爸、妈妈、哥哥、妹妹和我。",
+      "pinyin": "Wǒ jiā yǒu wǔ kǒu rén: bàba, māma, gēge, mèimei hé wǒ.",
+      "english": "There are five people in my family: dad, mom, older brother, younger sister, and me."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你哥哥多大？他在做什么工作？",
+      "pinyin": "Nǐ gēge duō dà? Tā zài zuò shénme gōngzuò?",
+      "english": "How old is your older brother? What work does he do?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "他二十五岁。他是医生，在医院工作。",
+      "pinyin": "Tā èrshíwǔ suì. Tā shì yīshēng, zài yīyuàn gōngzuò.",
+      "english": "He is 25 years old. He is a doctor, works at a hospital."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你妹妹呢？她多大了？",
+      "pinyin": "Nǐ mèimei ne? Tā duō dà le?",
+      "english": "What about your younger sister? How old is she?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "她十八岁。她是学生，在大学学习汉语。",
+      "pinyin": "Tā shíbā suì. Tā shì xuésheng, zài dàxué xuéxí Hànyǔ.",
+      "english": "She is 18. She is a student, studying Chinese at university."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你爸爸妈妈呢？",
+      "pinyin": "Nǐ bàba māma ne?",
+      "english": "What about your dad and mom?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "爸爸是老师，妈妈在家做饭。他们都很好。",
+      "pinyin": "Bàba shì lǎoshī, māma zài jiā zuòfàn. Tāmen dōu hěn hǎo.",
+      "english": "Dad is a teacher, mom cooks at home. They are both well."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你很爱你的家人吗？",
+      "pinyin": "Nǐ hěn ài nǐ de jiārén ma?",
+      "english": "Do you love your family very much?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，我非常爱他们。我们一起吃饭、看电视。",
+      "pinyin": "Shì de, wǒ fēicháng ài tāmen. Wǒmen yìqǐ chīfàn, kàn diànshì.",
+      "english": "Yes, I love them very much. We eat and watch TV together."
+    }
+  ]
+}

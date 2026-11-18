@@ -1,0 +1,56 @@
+{
+  "id": "reading-09",
+  "title": "问路",
+  "type": "dialogue",
+  "topic": "Asking for directions",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "对不起，请问火车站怎么走？",
+      "pinyin": "Duìbuqǐ, qǐngwèn huǒchēzhàn zěnme zǒu?",
+      "english": "Excuse me, how do I get to the train station?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "火车站在前面。直走，然后左转。",
+      "pinyin": "Huǒchēzhàn zài qiánmiàn. Zhí zǒu, ránhòu zuǒ zhuǎn.",
+      "english": "The train station is ahead. Go straight, then turn left."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "远不远？走路要几分钟？",
+      "pinyin": "Yuǎn bu yuǎn? Zǒulù yào jǐ fēnzhōng?",
+      "english": "Is it far? How many minutes to walk?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "不远。走路十分钟就到。",
+      "pinyin": "Bù yuǎn. Zǒulù shí fēnzhōng jiù dào.",
+      "english": "Not far. Ten minutes walk and you're there."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢。那医院在哪儿？",
+      "pinyin": "Xièxie. Nà yīyuàn zài nǎr?",
+      "english": "Thanks. Then where is the hospital?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "医院在火车站右边。很近。",
+      "pinyin": "Yīyuàn zài huǒchēzhàn yòubian. Hěn jìn.",
+      "english": "The hospital is to the right of the train station. Very close."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好的，我明白了。再见！",
+      "pinyin": "Hǎo de, wǒ míngbai le. Zàijiàn!",
+      "english": "OK, I understand. Goodbye!"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "再见，祝你一路平安。",
+      "pinyin": "Zàijiàn, zhù nǐ yílù píng'ān.",
+      "english": "Goodbye, have a safe trip."
+    }
+  ]
+}

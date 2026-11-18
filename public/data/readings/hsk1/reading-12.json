@@ -1,0 +1,56 @@
+{
+  "id": "reading-12",
+  "title": "买衣服",
+  "type": "dialogue",
+  "topic": "Shopping for clothes",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你好，我想买衣服。",
+      "pinyin": "Nǐ hǎo, wǒ xiǎng mǎi yīfu.",
+      "english": "Hello, I want to buy clothes."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好，我们有衬衫、裤子、裙子和鞋。你要买什么？",
+      "pinyin": "Hǎo, wǒmen yǒu chènshān, kùzi, qúnzi hé xié. Nǐ yào mǎi shénme?",
+      "english": "OK, we have shirts, pants, skirts, and shoes. What do you want to buy?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我要买一件蓝色的衬衫。多少钱？",
+      "pinyin": "Wǒ yào mǎi yī jiàn lán sè de chènshān. Duōshao qián?",
+      "english": "I want to buy a blue shirt. How much?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "这件衬衫八十块钱。你要试穿吗？",
+      "pinyin": "Zhè jiàn chènshān bāshí kuài qián. Nǐ yào shìchuān ma?",
+      "english": "This shirt is 80 yuan. Do you want to try it on?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好，我试穿一下。... 这件有点大。有小一点的吗？",
+      "pinyin": "Hǎo, wǒ shìchuān yíxià. ... Zhè jiàn yǒudiǎn dà. Yǒu xiǎo yīdiǎn de ma?",
+      "english": "OK, let me try it on. ... This one is a bit big. Do you have a smaller one?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "有，这件是小号的。也是八十块。",
+      "pinyin": "Yǒu, zhè jiàn shì xiǎo hào de. Yě shì bāshí kuài.",
+      "english": "Yes, this one is size small. Also 80 yuan."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "这件合适。我买这件。给你一百块。",
+      "pinyin": "Zhè jiàn héshì. Wǒ mǎi zhè jiàn. Gěi nǐ yībǎi kuài.",
+      "english": "This one fits. I'll buy this one. Here's 100 yuan."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "找您二十块。谢谢，欢迎下次再来！",
+      "pinyin": "Zhǎo nín èrshí kuài. Xièxie, huānyíng xiàcì zài lái!",
+      "english": "Your change is 20 yuan. Thanks, welcome back next time!"
+    }
+  ]
+}
