@@ -1,0 +1,37 @@
+{
+  "id": "hsk1-09",
+  "title": "Verbos en acción",
+  "intro": "Aprende verbos esenciales y palabras para las actividades diarias y la educación.",
+  "vocabulary": [
+    { "hanzi": "小", "pinyin": "xiǎo", "english": "pequeño; joven", "example": { "hanzi": "小朋友", "pinyin": "xiǎo péngyou", "english": "niño; pequeño" } },
+    { "hanzi": "小姐", "pinyin": "xiǎojie", "english": "señorita", "example": { "hanzi": "这位小姐", "pinyin": "zhè wèi xiǎojie", "english": "esta señorita" } },
+    { "hanzi": "些", "pinyin": "xiē", "english": "algunos; unos", "example": { "hanzi": "这些", "pinyin": "zhè xiē", "english": "estos" } },
+    { "hanzi": "写", "pinyin": "xiě", "english": "escribir; redactar", "example": { "hanzi": "写字", "pinyin": "xiě zì", "english": "escribir caracteres" } },
+    { "hanzi": "谢谢", "pinyin": "xièxie", "english": "gracias", "example": { "hanzi": "谢谢你", "pinyin": "xièxie nǐ", "english": "gracias" } },
+    { "hanzi": "星期", "pinyin": "xīngqī", "english": "semana", "example": { "hanzi": "星期一", "pinyin": "xīngqī yī", "english": "lunes" } },
+    { "hanzi": "学生", "pinyin": "xuésheng", "english": "estudiante; alumno", "example": { "hanzi": "大学生", "pinyin": "dà xuésheng", "english": "estudiante universitario" } },
+    { "hanzi": "学习", "pinyin": "xuéxí", "english": "aprender; estudiar", "example": { "hanzi": "学习中文", "pinyin": "xuéxí zhōngwén", "english": "estudiar chino" } },
+    { "hanzi": "学校", "pinyin": "xuéxiào", "english": "escuela", "example": { "hanzi": "去学校", "pinyin": "qù xuéxiào", "english": "ir a la escuela" } },
+    { "hanzi": "一", "pinyin": "yī", "english": "uno; una vez; un", "example": { "hanzi": "一个", "pinyin": "yī gè", "english": "uno (clasificador)" } },
+    { "hanzi": "衣服", "pinyin": "yīfu", "english": "ropa", "example": { "hanzi": "买衣服", "pinyin": "mǎi yīfu", "english": "comprar ropa" } },
+    { "hanzi": "医生", "pinyin": "yīshēng", "english": "médico", "example": { "hanzi": "好医生", "pinyin": "hǎo yīshēng", "english": "buen médico" } },
+    { "hanzi": "医院", "pinyin": "yīyuàn", "english": "hospital", "example": { "hanzi": "去医院", "pinyin": "qù yīyuàn", "english": "ir al hospital" } },
+    { "hanzi": "椅子", "pinyin": "yǐzi", "english": "silla", "example": { "hanzi": "坐椅子", "pinyin": "zuò yǐzi", "english": "sentarse en una silla" } },
+    { "hanzi": "一点儿", "pinyin": "yìdiǎnr", "english": "un poco; unos pocos", "example": { "hanzi": "一点儿水", "pinyin": "yìdiǎnr shuǐ", "english": "un poco de agua" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 学习?", "options": ["enseñar", "estudiar", "jugar"], "answer": "estudiar" },
+    { "type": "choose", "prompt": "¿Qué palabra significa «médico»?", "options": ["老师", "医生", "学生"], "answer": "医生" },
+    { "type": "listen", "audio": "写字", "pinyin": "xiě zì", "prompt": "Escucha y elige lo que oyes.", "options": ["写字", "睡觉", "谢谢"], "answer": "写字" },
+    { "type": "match", "prompt": "Une cada palabra con su significado.", "pairs": [
+      { "hanzi": "学生", "english": "estudiante" },
+      { "hanzi": "学校", "english": "escuela" },
+      { "hanzi": "写", "english": "escribir" },
+      { "hanzi": "医生", "english": "médico" }
+    ]},
+    { "type": "order", "prompt": "Forma la frase «estudiar chino».", "tokens": ["中文", "学习"], "answer": "学习中文" },
+    { "type": "listen", "audio": "医院", "pinyin": "yīyuàn", "prompt": "Escucha y elige lo que oyes.", "options": ["医院", "医生", "椅子"], "answer": "医院" },
+    { "type": "choose", "prompt": "¿Qué significa 一点儿?", "options": ["mucho", "un poco / unos pocos", "muchos"], "answer": "un poco / unos pocos" },
+    { "type": "order", "prompt": "Ordena los caracteres para decir «comprar ropa».", "tokens": ["衣服", "买"], "answer": "买衣服" }
+  ]
+}
