@@ -8,7 +8,7 @@ import { speak, isTtsAvailable } from '../audio.js';
 import { addToReview } from '../srs.js';
 import { pinyinHtml } from '../tone.js';
 
-const BASE = '/data/sentences';
+const BASE = typeof document === 'undefined' ? '/data/sentences' : new URL('data/sentences', document.baseURI);
 const SHARD_SIZE = 50; // items per page (client-side pagination after load)
 
 let allSentences = [];

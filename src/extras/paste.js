@@ -17,6 +17,8 @@ import { pinyinHtml } from '../tone.js';
 import { tokenizeLine, wordPanel, reviewEntryFrom, hasHanzi } from '../reading/model.js';
 import storage from '../storage.js';
 
+const HSK1_URL = typeof document === 'undefined' ? '/data/hsk/1.json' : new URL('data/hsk/1.json', document.baseURI);
+
 export const titleKey = 'paste.title';
 
 const STYLE_ID = 'paste-style';
@@ -93,7 +95,7 @@ let hsk1Set = null;
 async function loadHSK1() {
   if (hsk1Set) return hsk1Set;
   try {
-    const res = await fetch('/data/hsk/1.json');
+    const res = await fetch(HSK1_URL);
     if (!res.ok) throw new Error('HSK1 load failed');
     const data = await res.json();
     hsk1Set = new Set(data.items.map(item => item.hanzi));

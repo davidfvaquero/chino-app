@@ -20,12 +20,12 @@ git ls-files -z | xargs -0 du -cb | tail -1
 
 | Cosa | Medido | Límite | ¿Cabe? |
 | --- | --- | --- | --- |
-| Sitio publicado (`dist-pages/`) | **57.640.363 B = 57,6 MB (55,0 MiB)** | GitHub Pages: 1 GB | **Sí** — usa el 5,8 % |
+| Sitio publicado (`dist-pages/`) | **57.642.526 B = 57,6 MB (55,0 MiB)** | GitHub Pages: 1 GB | **Sí** — usa el 5,8 % |
 | Nº de archivos del sitio | **558** | Cloudflare Pages: 20.000 | Sí — 2,8 % |
 | Archivo más grande del sitio | **`data/hsk/6.json` = 336.792 B (329 KiB)** | GitHub Pages: 100 MB por archivo; Cloudflare: 25 MiB por archivo | Sí — 0,3 % de 100 MB |
-| Archivos rastreados por git (sin `.git/`) | **58.098.284 B = 58,1 MB (55,4 MiB)** | GitHub Pages: repo recomendado ≤ 1 GB | Sí — 5,8 % |
-| Tamaño de `.git/` | **23.737.462 B = 23,7 MB (22,6 MiB)**; `du -sh .git` → `27M` | — (cuenta en el repo) | Sí |
-| Tests antes de desplegar | **471 pass / 0 fail** (`npm test`) | — | Sí |
+| Archivos rastreados por git (sin `.git/`) | **58.123.497 B = 58,1 MB (55,4 MiB)** | GitHub Pages: repo recomendado ≤ 1 GB | Sí — 5,8 % |
+| Tamaño de `.git/` | **23.771.031 B = 23,8 MB (22,7 MiB)**; `du -sh .git` → `27M` | — (cuenta en el repo) | Sí |
+| Tests antes de desplegar | **475 pass / 0 fail** (`npm test`) | — | Sí |
 
 **Conclusión: cabe de sobra en GitHub Pages y también en Cloudflare Pages
 (plan B, ver §6).** Límites *blandos* de GitHub Pages que también conviene
@@ -77,7 +77,7 @@ Read and write* sobre ese repo. (O usa `gh auth login` si tienes la CLI.)
 - Si acabas de activar Pages y no quieres esperar a un commit nuevo: pestaña
   **Actions** → workflow **"Deploy to GitHub Pages"** → **Run workflow**
   (existe el disparador manual `workflow_dispatch`).
-- El workflow hace: `npm test` (471 tests) → `sh scripts/build-pages.sh`
+- El workflow hace: `npm test` (475 tests) → `sh scripts/build-pages.sh`
   (build a `dist-pages/`, que es `OUT_DIR=dist-pages node scripts/build.mjs`
   + copia de `CREDITS.md`) → sube el artefacto → despliega.
 
@@ -149,39 +149,48 @@ Chromium headless en `http://localhost:<puerto>/chino-app/`.
   `Network.emulateNetworkConditions offline`) la app vuelve a arrancar desde la
   caché del SW (`chino-shell-<hash>`, `chino-data-<hash>`) y navega.
 
-**Bloqueado** ❌ — rutas **absolutas** `/data/...` (dan 404 bajo `/chino-app/`)
+**Arreglado** ✅ — rutas absolutas `/data/...`
 
-Estos archivos resuelven los datos contra la **raíz del origen**
-(`http://localhost:<puerto>/data/...`), no contra el subdirectorio. Comprobado
-en el navegador: `fetch('/data/dict/index-english/h.json')` → **404**;
-`fetch('./data/dict/index-english/h.json')` → **200**. Consecuencia real en la
-UI: el diccionario responde *"No results for "hello""* y la pantalla Read
-*"Could not load the reading."*
-
-| Archivo:línea | Código | Qué rompe |
-| --- | --- | --- |
-| `src/dictionary.js:27` | `const BASE = '/data/dict'` | búsqueda del diccionario (`search`/`lookup` devuelven `[]`/`null`) |
-| `src/reading/data.js:8` | `const BASE = '/data/readings/hsk1'` | pantalla Read completa |
-| `src/learn/sentences.js:11` | `const BASE = '/data/sentences'` | lección de frases |
-| `src/extras/paste.js:96` | `fetch('/data/hsk/1.json')` | Pegar y analizar |
-| `src/learn/games/matching.js:113`, `timed.js:141`, `memory.js:128` | `fetch('/data/hsk/1.json')` | los 3 juegos |
-
-Arreglo = **una línea por archivo**, con el patrón que ya usan los demás módulos
-(p. ej. `src/learn/strokes.js:54`):
+Versión anterior: 7 líneas resolvían los datos contra la **raíz del origen**
+(`http://localhost:<puerto>/data/...`) en vez del subdirectorio → 404 bajo
+`/chino-app/` (diccionario "No results for hello", Read "Could not load the
+reading", frases y los 3 juegos sin datos). Ya está corregido: cada una resuelve
+ahora contra `document.baseURI` en el navegador (y conserva la ruta `/data/...`
+en Node para los tests):
 
 ```js
 // antes
 const BASE = '/data/dict';
-// después
-const BASE = new URL('../../data/dict/', import.meta.url);
+// ahora (una línea por archivo; mismo patrón en los 7)
+const BASE = typeof document === 'undefined' ? '/data/dict' : new URL('data/dict', document.baseURI);
 ```
 
-Esos 6 archivos son de otras tareas, así que **no los he tocado**: la tarea
-quedó bloqueada pidiendo que los arreglen sus dueños (o que me autoricen a
-hacerlo). Hasta entonces, **publicar en `/<repo>/` deja el diccionario, el
-lector, las frases y los juegos sin datos** (el resto de la app sí funciona).
-En la raíz de un dominio propio (`https://tudominio.com/`) las rutas absolutas
-sí funcionarían, pero no es el caso de GitHub Pages de proyecto.
+Archivos corregidos: `src/dictionary.js`, `src/reading/data.js`,
+`src/learn/sentences.js`, `src/extras/paste.js`, `src/learn/games/matching.js`,
+`src/learn/games/timed.js`, `src/learn/games/memory.js`. (En los juegos y Paste
+la URL vive en una constante `HSK1_URL` con el mismo patrón.)
+
+**Re-verificado en subdirectorio** (mismo montaje; `dist-pages` copiado a
+`/tmp/…/subsite/chino-app/`, `node scripts/serve.mjs <subsite>`, Chromium
+headless en `http://127.0.0.1:<puerto>/chino-app/`):
+
+```
+dict search 'hello' -> 5 resultados     (antes: 0)
+readings index      -> 20 lecturas      (antes: no cargaba)
+status 200: data/hsk/1.json, data/dict/index-english/h.json, data/dict/shards/000.json,
+            data/readings/hsk1/index.json, data/readings/hsk1/reading-01.json,
+            data/sentences/index.json, manifest.webmanifest, icons/icon-512.png, CREDITS.md
+rutas OK: #/dictionary, #/learn/sentences (frases reales), #/extras/paste,
+          #/learn/games/{matching,timed,memory} (palabras cargadas), #/read, #/learn/strokes
+sw scope  = http://127.0.0.1:<puerto>/chino-app/ ; controller = …/chino-app/sw.js
+caches    = chino-shell-<hash>, chino-data-<hash>
+OFFLINE (CDP Network offline + recarga): arranca, navega a #/dictionary y
+          dictionary.search('hello') -> 3 resultados desde la caché del SW
+npm test  -> 475 pass / 0 fail
+YAML      -> "YAML OK"; triggers [push, workflow_dispatch]; jobs [test, deploy];
+             permissions {contents:read, pages:write, id-token:write};
+             deploy needs test; build "sh scripts/build-pages.sh"; upload path "dist-pages"
+```
 
 ### Licencias / CREDITS.md
 
@@ -201,7 +210,7 @@ sí funcionarían, pero no es el caso de GitHub Pages de proyecto.
 2. `https://<usuario>.github.io/chino-app/CREDITS.md` responde.
 3. DevTools → Application → Service Workers: scope `…/chino-app/`.
 4. DevTools → Network, busca algo en el diccionario: no debe haber 404 de
-   `/data/...` (esto es lo que falla hoy, ver §4).
+   `/data/...` (arreglado y re-verificado, ver §4).
 5. DevTools → Network → *Offline* + recarga: la app sigue abriendo.
 
 ---
@@ -209,7 +218,7 @@ sí funcionarían, pero no es el caso de GitHub Pages de proyecto.
 ## 6. Plan B: Cloudflare Pages (si GitHub Pages no convence)
 
 Gratis, sin límite de builds y con el mismo build estático. Límites que importan:
-**20.000 archivos** y **25 MiB por archivo** → el sitio actual (547 archivos,
+**20.000 archivos** y **25 MiB por archivo** → el sitio actual (558 archivos,
 máx. 329 KiB) entra holgado.
 
 Pasos: cuenta en <https://dash.cloudflare.com> → **Workers & Pages** → *Create*

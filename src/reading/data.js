@@ -5,7 +5,7 @@
  * root by the build). The level defaults to `hsk1`.
  */
 
-const BASE = '/data/readings/hsk1';
+const BASE = typeof document === 'undefined' ? '/data/readings/hsk1' : new URL('data/readings/hsk1', document.baseURI);
 
 async function getJSON(url, fetchImpl) {
   const doFetch = fetchImpl ?? globalThis.fetch;

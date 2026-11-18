@@ -18,6 +18,8 @@ import { pinyinHtml } from '../../tone.js';
 import { search } from '../../dictionary.js';
 import storage from '../../storage.js';
 
+const HSK1_URL = typeof document === 'undefined' ? '/data/hsk/1.json' : new URL('data/hsk/1.json', document.baseURI);
+
 export const titleKey = 'games.memory.title';
 export const id = 'memory';
 
@@ -125,7 +127,7 @@ export function checkMemory(cards, flippedIds) {
 /** Load words from a source: 'hsk1' | 'review' | 'theme:<name>' */
 async function loadWords(source) {
   if (source === 'hsk1') {
-    const res = await fetch('/data/hsk/1.json', { cache: 'no-cache' });
+    const res = await fetch(HSK1_URL, { cache: 'no-cache' });
     if (!res.ok) throw new Error('memory: failed to load HSK1');
     const data = await res.json();
     return data.items ?? [];

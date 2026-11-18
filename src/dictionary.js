@@ -24,7 +24,7 @@
 
 import { pinyinToMarks, tonelessKey } from './pinyin.js';
 
-const BASE = '/data/dict';
+const BASE = typeof document === 'undefined' ? '/data/dict' : new URL('data/dict', document.baseURI);
 
 const HANZI_RE = /[\u3400-\u9fff\uf900-\ufaff]/;
 const TONE_MARK_RE = /[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/i;
