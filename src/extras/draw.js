@@ -372,7 +372,7 @@ export async function render(container, ctx) {
     }
 
     showCandidates(results);
-    setStatus('draw.candidates', { count: results.length });
+    setStatus('draw.candidatesCount', { count: results.length });
     fireDrawUsed();
   }, 120);
 

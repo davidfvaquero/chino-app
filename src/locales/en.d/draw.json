@@ -5,6 +5,7 @@
     "undo": "Undo last stroke",
     "clear": "Clear all",
     "candidates": "Candidates",
+    "candidatesCount": "Candidates: {count}",
     "noCandidates": "Draw a stroke to see candidates.",
     "drawMore": "Draw more strokes to refine results.",
     "limitNotice": "Recognition works best with the correct stroke order and number of strokes. Try redrawing if the character you want is not in the list.",

@@ -1,89 +1,119 @@
-# Chino — free offline PWA to learn Mandarin
+# Chino — free offline PWA to learn Mandarin Chinese
 
-Shell of an all-in-one Chinese-learning web app: plain ES modules, no framework,
-no backend, no installed dependencies. Mobile-first and installable (PWA).
-
-This repository currently contains **the shell only**: router, i18n, storage layer
-and empty placeholder screens. Features (dictionary, SRS, HSK lessons, readings,
-drawing search, streaks) are added by later tasks on top of these seams.
+All-in-one Chinese-learning web app: plain ES modules, no framework, no backend,
+**zero runtime dependencies**. Mobile-first and installable (PWA). The app is
+**Simplified Chinese only** (traditional forms appear only as reference next to
+Simplified entries in the dictionary).
 
 ## Requirements
 
-- Node.js >= 20 (only used for the dev server, the build script and the tests —
-  the app itself is static files).
+- Node.js >= 20 — used only for the dev/build servers, the data pipeline and the
+  tests. The app itself is static files and runs in any modern browser.
 
-## Commands
+## Running it
 
 ```bash
-npm run dev      # static dev server on http://localhost:5173 (port=PORT/-PORT=…)
-npm run build    # writes the servable site to dist/ (relative paths, any subfolder)
+npm install      # no-op: package.json has no dependencies (verifies the lockfile)
+npm run dev      # dev server on http://localhost:5173 (PORT=… to change)
 npm test         # node --test tests/
-npm run icons    # regenerate public/icons/*.png (only needed if you change the art)
+npm run build    # writes the servable site to dist/ (OUT_DIR=… to choose the dir)
+npm run serve    # static server for an already-built dir (node scripts/serve.mjs [dir])
+npm run icons    # regenerate public/icons/*.png (only if you change the art)
+npm run data     # rebuild the dataset shards under public/data/ (needs network)
 ```
 
-There is nothing to install: `package.json` has no dependencies. Tests use the
-built-in `node:test` runner.
+`npm run build` merges every locale, generates `manifest.webmanifest` and stamps a
+content hash into `sw.js` so each build rotates the service-worker caches. The
+build fails (on purpose) if two locale files define the same key or if the
+precache list mentions a missing file.
 
-In dev the service worker is served unstamped (`VERSION = 'dev'`), so if the app
-ever looks stale while developing, unregister it in the browser DevTools
-(Application → Service Workers). Only `npm run build` stamps a content hash.
-
-Serving the build:
+Serving the build locally:
 
 ```bash
-npm run build && cd dist && python3 -m http.server 8899
-# http://localhost:8899/ , /manifest.webmanifest , /sw.js
+npm run build && node scripts/serve.mjs dist
+# open the printed http://localhost:<port>/ — /manifest.webmanifest and /sw.js work too
 ```
+
+`npm run dev` serves the source tree directly: `scripts/serve.mjs` merges the
+`<code>.d/*.json` locale shards and generates the manifest on the fly, so what you
+edit is what you see. In dev the service worker is unstamped (`VERSION = 'dev'`);
+if the app ever looks stale, unregister it in DevTools → Application → Service
+Workers.
+
+## Features
+
+- **Home** (`#/home`) — a suggested next step, word of the day, daily goal and
+  current streak.
+- **Dictionary** (`#/dictionary`) — search by hanzi, pinyin or English; definitions,
+  audio, stroke diagrams, and “Add to review”.
+- **Review** (`#/review`) — spaced-repetition flashcards (SM-2 style) with the four
+  grades (Again/Hard/Good/Easy); progress persists across reloads.
+- **Learn** (`#/learn`):
+  - *Lessons* (`hsk1`): vocabulary, choose/listen/match/order exercises.
+  - *Tones* — colour-coded tones, per-tone listening practice.
+  - *Pinyin chart* — the full initial×final table with playable cells.
+  - *Strokes* — stroke-order animation and drawing practice (single or multi-character).
+  - *Sentences* — example sentences with audio and “Add to review”.
+  - *Themes* — topical vocabulary sets (travel, food, …) with add-all.
+  - *Dictation* — listen and write the pinyin / pick the hanzi.
+  - *Games* — matching, memory and a timed quiz.
+  - *Radicals* — search a radical, see characters that use it, decompose hanzi.
+  - *Hard words* — automatic practice of the cards you miss most.
+- **Read** (`#/read`) — graded readings with a pinyin toggle, tap-a-word lookup,
+  line audio and “mark done”.
+- **More** (`#/extras`):
+  - *Profile* — streak, points, level, achievements and the language picker.
+  - *Stats* — a per-day bar chart of reviews, lessons, readings, strokes and minutes.
+  - *Paste text* — colour the tones in any pasted text and tap words for meanings.
+  - *Draw* — write a character with a finger/mouse and get dictionary candidates.
+  - *Pronounce* — say a word and get a correct/try-again verdict (needs microphone;
+    degrades to “play the model” when speech recognition is unavailable).
+  - *Settings* — dark theme, larger text, tone colours, daily goal, language.
+  - *Backup* — export everything to a JSON file and import it back.
+
+Completing anything (review, lesson, reading, stroke, drawing, speaking) awards
+points and extends the streak, which the Profile screen shows live.
 
 ## Layout
 
 ```
 index.html              shell markup (contains no visible text)
-manifest.webmanifest    generated by the build from src/locales/en.json
+manifest.webmanifest    generated by the build from the merged en locale
 sw.js                   service worker (precache shell + runtime cache of data JSON)
 src/
-  main.js               bootstrap: loads locales, builds the tab bar, starts the router
+  main.js               bootstrap: locales, tab bar, router, settings, gamification wire
   router.js             hash router (#/screen/sub?param=1)
   i18n.js               t()/setLocale()/registerLocale()/loadLocale()
   storage.js            the only module that touches IndexedDB/localStorage
-  dom.js                tiny h() element helper
-  icons.js              inline SVG icons for the tab bar
-  pwa.js                service worker registration + install prompt
-  styles.css            mobile-first CSS (safe-area aware bottom tab bar)
-  locales/index.json    list of available locale codes
-  locales/en.json       every UI string
-  screens/*.js          one module per screen
-scripts/                dev server, build, icon generator, PNG writer
-tests/                  i18n, storage and router tests
+  gamification.js       streaks, points, achievements (events → record())
+  gamification-wire.js  forwards chino:* events to gamification.record()
+  speech.js / audio.js  Web Speech API (TTS + recognition) and audio fallback
+  srs.js                spaced-repetition scheduler
+  dom.js / icons.js / pwa.js / settings.js / tone.js
+  locales/              <code>.json + <code>.d/*.json shards (see below)
+  screens/              home, dictionary, review, learn, read, extras (hubs)
+  learn/                one module per Learn area
+  extras/               one module per More area
+scripts/                dev/build servers, data pipeline, icon generator, PNG writer
+tests/                  unit tests (node --test)
+public/data/            dictionary, strokes, HSK lists, sentences, readings, themes
+docs/                   per-area notes; FUTURE.md = the roadmap
 ```
-
-## Adding a screen
-
-Create `src/screens/<name>.js`:
-
-```js
-export const titleKey = 'screens.<name>.title'; // i18n key used as the header title
-export function render(container, ctx) {
-  // ctx = { route: { name, segments, params, path }, navigate }
-  // ... build DOM into container ...
-  return () => {/* optional cleanup, called before the next screen renders */};
-}
-```
-
-Register it in `src/main.js` (`SCREENS`, and `NAV` if it deserves a tab) and add
-its strings to `src/locales/en.json`. Deep links such as `#/learn/hsk1/lesson-1`
-arrive as `ctx.route.segments` — the router only ever needs the screen name.
 
 ## Adding a language
 
 1. Copy `src/locales/en.json` to `src/locales/<code>.json` and translate the values
-   (keep the keys, keep `locale.name` as the language's own name, e.g. `"Español"`).
+   (keep the keys; keep `locale.name` as the language's own name, e.g. `"Español"`).
+   For a large translation you can instead start from a small `<code>.json` and add
+   `src/locales/<code>.d/*.json` shards — the build merges `<code>.json` +
+   `<code>.d/*.json` into one file and **fails on duplicate keys**.
 2. Add the code to `src/locales/index.json` (`["en", "es"]`).
 
-That is all: boot fetches every listed locale, the Extras screen offers them in a
-picker, the choice is persisted through `storage.js` and missing keys fall back to
+That is all: boot fetches every listed locale, the Profile screen offers them in a
+picker, the choice persists through `storage.js`, and missing keys fall back to
 English. Never write user-visible text in a module — add a key and use `t('key')`.
-Interpolation: `t('greet', { name })` with `"greet": "Hello {name}"`.
+Interpolation: `t('greet', { name })` with `"greet": "Hello {name}"`. The manifest
+picks up the new locale on the next build.
 
 ## Storage
 
@@ -94,32 +124,52 @@ localStorage fallback, and in-memory as a last resort so nothing ever throws):
 import storage from './storage.js';
 await storage.set('srs', 'card-1', { front: '你好', reps: 0 });
 await storage.get('srs', 'card-1');   // -> { front: '你好', reps: 0 } | undefined
-await storage.delete('srs', 'card-1'); // -> true when it existed
 await storage.list('srs');            // -> [{ key, value }, ...]
 ```
 
 Stores: `meta`, `settings`, `srs`, `progress`, `gamification` (declared in
 `src/storage.js`). No other module may import IndexedDB or localStorage directly.
 
-Optional login/sync in a later phase is a new driver with the same four methods,
-swapped in via `createStorage(driver)`, plus the `onWrite()` hook that already
-fires after every local write — see the comment at the top of `src/storage.js`.
+### Backup / restore
 
-## Offline / PWA
+**More → Backup** exports every store to a single JSON file (via the browser's
+download) and imports it back: pick the file, review the preview (cards, streak,
+lessons, points) and confirm. Importing replaces the local data, so export first if
+you want to keep the current state.
+
+## Layout offline / PWA
 
 `sw.js` precaches the shell and serves data JSON (`data/**/*.json`) with a
-stale-while-revalidate strategy, so downloaded dictionaries and lessons keep
-working offline. `npm run build` stamps a content hash into the service worker so
-each build rotates the caches automatically (bump nothing by hand). The build also
-fails if the precache list mentions a file that does not exist.
+stale-while-revalidate strategy, so downloaded dictionaries and lessons keep working
+offline after the first visit. The build stamps a content hash into the service
+worker so each version rotates the caches automatically — bump nothing by hand.
 
-## Packaging for Android (later phase)
+## Packaging for Android with Capacitor
 
-The app is static HTML/CSS/JS with no backend and relative paths, so it can be
-wrapped by Capacitor (`npx cap add android`) pointing `webDir` at `dist/` without
-rewriting any code. Nothing in the shell assumes a specific origin.
+The app is static HTML/CSS/JS with no backend and **relative paths only**, so
+Capacitor wraps it without rewriting any code (see
+[`docs/FUTURE.md`](docs/FUTURE.md) §(c) for the full checklist):
+
+```bash
+npm i -D @capacitor/cli @capacitor/android
+npx cap init chino-app com.example.chino --web-dir=dist
+npx cap add android
+npm run build && npx cap copy android
+npx cap open android          # Android Studio: run, sign, build the APK
+```
+
+Keep `server.androidScheme = "https"` in `capacitor.config.json` — the service
+worker, Web Speech API and IndexedDB need a secure origin inside the WebView.
+
+## Roadmap
+
+Future work (HSK 2–6 lesson wiring, optional login/sync, and the details of the
+Android packaging above) is described, with pointers to the real files involved, in
+[`docs/FUTURE.md`](docs/FUTURE.md).
 
 ## Licences
 
-Dataset attributions (CC-CEDICT CC BY-SA, Make Me a Hanzi, Tatoeba CC BY, HSK word
-lists) are collected in `CREDITS.md` once the data lands in `public/data/`.
+The app is free: no ads, no paywall, no paid services, no tracking. Its data comes
+from open projects — CC-CEDICT (CC BY-SA), Make Me a Hanzi (Arphic PL / LGPL),
+Tatoeba (CC BY) and the HSK word lists (MIT) — all attributed, with the changes made,
+in [`CREDITS.md`](CREDITS.md).

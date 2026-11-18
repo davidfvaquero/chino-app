@@ -401,12 +401,12 @@ Navegador: Chrome headless via CDP. Build `OUT_DIR=/tmp/chino-t_e06c00f0b` (505 
 | Sin chino tradicional en datos de temas/practicas | **OK** | 0 caracteres solo-tradicionales (CC-CEDICT trad-only) en 12 temas + 5 lecciones |
 | Sin strings de UI hardcodeados (juegos) | **OK** | `grep text:` en `src/learn/games*` solo `'?'` (dorso de carta) |
 | Sin errores de consola | **OK** | 0 errores en 11 rutas del alcance |
-| NUM: leccion practical abierta + ejercicio | **OK** | `#/learn/lessons?level=practical` -> practical-02, ejercicio 1 respondido (\"Not quite\" con opcion incorrecta) |
-| THC1/THC2: abrir 3 temas, oir palabra, add-whole | **OK** | theme-03 (18p/10f), theme-09 y theme-12 abren; 🔊 habla 饭; \"Add whole theme\" -> 28 cartas |
+| NUM: leccion practical abierta + ejercicio | **OK** | `#/learn/lessons?level=practical` -> practical-02, ejercicio 1 respondido ("Not quite" con opcion incorrecta) |
+| THC1/THC2: abrir 3 temas, oir palabra, add-whole | **OK** | theme-03 (18p/10f), theme-09 y theme-12 abren; 🔊 habla 饭; "Add whole theme" -> 28 cartas |
 | G1: ruta a juego concreto | **FALLO A (corregido)** | ver abajo |
-| G1: partida de Matching | **OK** | 6/6, \"Round complete!\", evento `chino:lesson_done {gameId:'matching',score:6,total:6}` |
+| G1: partida de Matching | **OK** | 6/6, "Round complete!", evento `chino:lesson_done {gameId:'matching',score:6,total:6}` |
 | G1: partida de Memory | **FALLO B (corregido)** | ver abajo |
-| G2: partida de Timed Quiz | **OK** | 10 preguntas, \"Time's up!\", evento `chino:lesson_done {gameId:'timed',score,total:10}` |
+| G2: partida de Timed Quiz | **OK** | 10 preguntas, "Time's up!", evento `chino:lesson_done {gameId:'timed',score,total:10}` |
 | Cada ruta abre directamente | **OK** | `#/learn/games[/matching|/memory|/timed]`, `#/learn/themes[/<id>]`, `#/learn/lessons?level=practical` |
 
 ### FALLO A (G1, `src/learn/games.js`) — rutas de juego rotas. CORREGIDO
@@ -414,11 +414,11 @@ Navegador: Chrome headless via CDP. Build `OUT_DIR=/tmp/chino-t_e06c00f0b` (505 
 Fix (2 lineas): `isHub = segments[0]==='games'`; `gameId = isHub ? segments[1] : segments[0]`; y al delegar, pasar `segments: isHub ? segments.slice(1) : segments` para que el juego hijo lea su sub-ruta (p.ej. `sourceParam`).
 
 ### FALLO B (G1, `src/learn/games/memory.js`) — Memory nunca termina. CORREGIDO
-En `onCardClick` se evaluaba `if (check.complete)` ANTES de marcar como emparejada la pareja recien acertada, asi que en la ultima pareja `complete` era false y `finished` nunca pasaba a true: no salia la pantalla de resultado ni el evento `chino:lesson_done`. Reproducir (sin el fix): abrir `#/learn/games/memory`, emparejar las 6 parejas -> cabecera \"Matched: 6/6\" pero sin \"Round complete!\".
+En `onCardClick` se evaluaba `if (check.complete)` ANTES de marcar como emparejada la pareja recien acertada, asi que en la ultima pareja `complete` era false y `finished` nunca pasaba a true: no salia la pantalla de resultado ni el evento `chino:lesson_done`. Reproducir (sin el fix): abrir `#/learn/games/memory`, emparejar las 6 parejas -> cabecera "Matched: 6/6" pero sin "Round complete!".
 Fix (1 linea): `if (check.matched + 1 >= check.total) finished = true;`.
 
 ### FALLO C (comun, `tests/themes.test.mjs`) — test obsoleto. CORREGIDO
-`missing theme file rejects...` usaba `theme-03`, que THC1 ya creo, asi que el test fallaba (\"Missing expected rejection\"). Fix (1 linea): usar un id inexistente, `theme-99`. Con esto `npm test` = 447/447.
+`missing theme file rejects...` usaba `theme-03`, que THC1 ya creo, asi que el test fallaba ("Missing expected rejection"). Fix (1 linea): usar un id inexistente, `theme-99`. Con esto `npm test` = 447/447.
 
 ### Avisos (no bloquean)
 - Tono neutro sobre-marcado en algunos temas (THC2): `行李 xíng lǐ`, `左边 zuǒ biān`, `后面 hòu miàn`, `那里 nà lǐ`, `咳嗽 ké sòu` (y `便宜 pián yí` en theme-05). Estandar: tono neutro (`xíng li`, `zuǒ bian`...). Aceptable, tono de cita.
@@ -429,3 +429,215 @@ Fix (1 linea): `if (check.matched + 1 >= check.total) finished = true;`.
 Verdict: **NUM, THC1, THC2 OK. G1 OK tras 2 fixes (ruta + fin de Memory). G2 OK.** 3 defectos pequenos corregidos (2 codigo, 1 test); resto son avisos. No se toco `dist/`.
 
 *Verificador `barato` — 2026-11-18 (t_e06c00f0)*
+
+---
+
+## Verificacion bloque 7: Home, palabras dificiles y menus — t_cae73e1c
+
+Verificador: `gratis`. Alcance: HARD (`t_01dc64f8`, `barato`) + HOME (`t_5c203a10`, `barato`) + STROKES multi-char (`t_2c0f2f8f`, `barato`). Todos hechos por `barato` (perfil distinto — OK).
+
+Navegador: Chrome headless via CDP. Build `OUT_DIR=/tmp/chino-t_cae73e1c` (505 files) + `node scripts/serve.mjs /tmp/chino-t_cae73e1c` (puerto 8765).
+
+### Resumen
+
+| Punto | Resultado | Evidencia |
+|-------|-----------|-----------|
+| `npm test` completo verde | **OK** | 447 pass / 0 fail |
+| Build con `OUT_DIR` | **OK** | 505 files, merged locales OK |
+| Home es ruta por defecto (`/`) | **OK** | `/` redirige a `#/home`, header "Home", tab Home activo |
+| 'Next step' con tarjetas vencidas | **OK** | "Review due cards (3)" → navega a `#/review` |
+| 'Next step' sin tarjetas vencidas | **OK** | "Continue: Greetings & numbers" → navega a lección |
+| 'Next step' con palabras difíciles | **OK** | Botón "Practice hard words (1)" visible junto a Next step |
+| Palabra del día estable en el día | **OK** | `pickWordOfDay` determinista por `dayNumber`; mismo día = misma palabra (朋友) |
+| Palabra del día cambia al día siguiente | **OK** | Día siguiente → palabra distinta (五) |
+| Meta diaria refleja tarjetas de hoy | **OK** | "1 / 20 cards today", barra 5%, streak 1 |
+| Learn hub: 10 áreas cableadas | **OK** | lessons, tones, pinyin-chart, strokes, sentences, themes, dictation, games, radicals, hardwords |
+| More hub: 7 áreas cableadas | **OK** | profile, stats, paste, draw, pronounce, settings, backup |
+| Cada tarjeta Learn abre sin errores | **OK** | 10/10 rutas, 0 errores de consola |
+| Cada tarjeta More abre sin errores | **OK** | 7/7 rutas, 0 errores de consola |
+| Eventos `chino:*` llegan a gamification | **OK** | `window.__gamification.record('review_done')` → points +10, streak 1 |
+| Eventos `chino:*` llegan a stats | **OK** | `chino:review_done` → `getDay()` reviews=1; `chino:lesson_done` → lessons=1 |
+| Tema oscuro aplica desde arranque | **OK** | `setSetting('theme','dark')` → `data-theme=dark`, CSS vars dark |
+| Tonos en colores aplica desde arranque | **OK** | CSS `.tone1..5` inyectado; pinyin con spans `.tone`; toggle on/off funciona |
+| Sin strings UI hardcodeados | **OK** | Todo texto via `t()`; shards `en.d/home.json`, `en.d/hardwords.json`, etc. |
+| Sin chino tradicional en UI | **OK** | 0 caracteres tradicionales en pantallas verificadas |
+| Sin errores de consola | **OK** | 0 errores en 28 rutas verificadas |
+| Cada ruta abre directamente | **OK** | `/`, `#/home`, `#/dictionary`, `#/review`, `#/learn/*`, `#/read`, `#/extras/*` |
+
+### STROKES multi-caracter (`t_2c0f2f8f`)
+
+| Punto | Resultado | Evidencia |
+|-------|-----------|-----------|
+| `#/learn/strokes/戴维德` → 3 tarjetas | **OK** | 戴(17), 维(11), 德(15) trazos y pasos |
+| Pasos = trazos por carácter | **OK** | `steps.length === strokes` verificado contra `public/data` |
+| Play funciona | **OK** | Click "Play" → animación SVG en `.sheet-player`, `playState=playing` |
+| Carácter sin datos no rompe | **OK** | `龘` muestra "No stroke data for '龘'. The other characters still work." |
+| Un solo carácter sigue con animación + práctica | **OK** | `#/learn/strokes/戴` → pantalla single-char con board + practice |
+| 'Copy as text' funciona | **OK** | Botón genera resumen con trazos y tipos (clipboard falla en headless — esperado) |
+| 'Add all to review' funciona | **OK** | "Added 3 to your review deck"; tarjetas persistidas en SRS (source=strokes-sheet) |
+
+---
+
+## Reproduction Steps
+
+```bash
+cd /home/homelab/chino-app
+
+# 1. Tests
+npm test                                    # 447 pass / 0 fail
+
+# 2. Build & serve
+OUT_DIR=/tmp/chino-t_cae73e1c npm run build # 505 files
+PORT=8765 node scripts/serve.mjs /tmp/chino-t_cae73e1c
+
+# 3. Home screen checks
+# Abrir http://localhost:8765/ → header "Home", tab Home activo
+# Next step: "Continue: Greetings & numbers" (sin due) → click → #/learn/lessons/hsk1-01
+# Añadir tarjeta due → recargar → "Review due cards (3)" → click → #/review
+# Añadir hard word (3 lapses) → recargar → botón "Practice hard words (1)"
+# Word of the day: 朋友 (pinyin + english) → estable en recargas
+# Simular día siguiente (pickWordOfDay con tomorrow) → cambia a 五
+# Daily goal: "1 / 20 cards today", barra 5%, streak "Day streak: 1"
+
+# 4. Learn hub (10 áreas)
+# /#/learn → 10 botones con títulos localizados
+# Cada /#/learn/<area> abre sin errores: lessons, tones, pinyin-chart, strokes,
+# sentences, themes, dictation, games, radicals, hardwords
+
+# 5. More hub (7 áreas)
+# /#/extras → 7 botones
+# Cada /#/extras/<area> abre sin errores: profile, stats, paste, draw,
+# pronounce, settings, backup
+
+# 6. Gamification + Stats wiring
+# En consola del navegador:
+# window.dispatchEvent(new CustomEvent('chino:review_done'))
+# await window.__gamification.getStats() → points=10, streak=1
+# await import('/src/stats.js').then(m => m.getDay(today)) → reviews=1
+
+# 7. Theme & tone colors
+# await import('/src/settings.js').then(m => m.setSetting('theme','dark'))
+# document.documentElement.dataset.theme === 'dark'
+# getComputedStyle(...).getPropertyValue('--bg') === 'rgb(19, 18, 17)'
+# toneColors toggle: setSetting('toneColors', false) → pinyin sin color
+
+# 8. Strokes multi-char
+# /#/learn/strokes/戴维德 → 3 tarjetas 戴(17)/维(11)/德(15) con pasos 1..n
+# Click Play en 戴 → animación SVG
+# /#/learn/strokes/戴龘德 → 龘 muestra "No stroke data...", otros OK
+# /#/learn/strokes/戴 → single-char con board + practice
+# Copy as text → resumen generado
+# Add all to review → "Added 3 to your review deck"
+```
+
+---
+
+## Files Touched by This Verification
+- `VERIFICATION.md` (appended this section)
+
+No source files were modified — all checks passed.
+
+---
+
+**Verdict: BLOCK 7 VERIFIED — ALL CHECKS OK**
+
+*Verificador `gratis` — 2026-11-18*
+
+---
+
+# Verification Report — Block 4 + app completa y README (t_b6277815)
+
+*Verificador `barato` — 2026-11-18. Alcance (todas de `gratis`, ninguna de `barato`): G t_61321803, PR t_d9f37576, MU t_d909160e, W t_80480bfa, DOC t_310054a6. Comprobación global de la app completa + README.*
+
+## Summary
+
+| Punto | Resultado |
+|-------|-----------|
+| `npm install` sin errores | **OK** (0 dependencias, 0 vulnerabilidades) |
+| `npm run build` sin errores | **OK** (OUT_DIR propio → 505 files, "merged locales: en") |
+| `npm test` sin errores | **OK** (447 pass / 0 fail) |
+| Dist servido carga | **OK** (`node scripts/serve.mjs`) |
+| `manifest.webmanifest` válido | **OK** (200, `application/manifest+json`) |
+| Service worker válido | **OK** (`sw.js` 200, `VERSION` con hash `5b9be8c11ad4`) |
+| Offline tras primera carga | **OK** (offline → `#/home` y `#/dictionary` renderizan desde caché) |
+| Flujo real repaso → puntos+racha | **OK** (points 0→10, streak 0→1, visible en `#/extras/profile`) |
+| Cada evento `chino:*` llega a gamification | **OK** (6/6; points 11→89) |
+| Pronunciación degrada sin micrófono | **OK** (aviso traducido, Record deshabilitado, Play model disponible) |
+| Dibujo devuelve candidatos, 0 errores | **OK** (一 dibujado → 10 candidatos, 一 88%) |
+| `docs/FUTURE.md` apunta a archivos reales | **OK tras corregir 4 referencias obsoletas** (ver FALLO 3) |
+| Sin strings de UI hardcodeados | **OK** (scan de `t('literal')` → 0 claves reales ausentes) |
+| Storage solo en `storage.js` | **OK** |
+| Sin dependencias evitables / servicios de pago | **OK** (0 deps; sección Licences en README) |
+| Sin cámara / OCR / vídeo | **OK** (grep 0 resultados) |
+| CREDITS con CC-CEDICT (CC BY-SA) y Tatoeba (CC BY) | **OK** |
+| README.md completo | **OK** (dev/build/servir, idioma, Capacitor, enlace FUTURE, backup) |
+
+## Fallos encontrados y corregidos (1 ciclo de reparación)
+
+- **FALLO 1 (corregido, visible al usuario):** la pantalla Perfil mostraba claves i18n crudas en los logros (`gamification.ach.first_review.name`, …) porque faltaba `src/locales/en.d/gamification.json`. El propio módulo lo indicaba (`src/gamification.js:25-30`). **Fix:** nuevo fichero `src/locales/en.d/gamification.json` con los 13 logros (`achievements.json`) × `name`/`desc`. Tras rebuild: "First review / Review your first card.", … y `"gamification.ach" in innerText === false`.
+- **FALLO 2 (corregido, cosmético):** en `#/extras/draw` el estado mostraba "Candidates" repetido y descartaba `{count}` (la clave no tenía el marcador). **Fix:** clave `draw.candidatesCount` = "Candidates: {count}" + `setStatus('draw.candidatesCount', { count })` en `src/extras/draw.js`. Ahora "Candidates: 10".
+- **FALLO 3 (corregido, docs):** `docs/FUTURE.md` tenía referencias obsoletas: `learn.js`/`extras.js` llamados "placeholder" (ya son hubs), `src/i18n.js` `t()` "líneas 107-111" (real: 166), `src/main.js` `loadAvailableLocales()` "líneas 100-102" (real: 109), `scripts/build.mjs` stamp de `sw.js` "líneas 56-67" (real: 78-89). **Fix:** corregidas; los ficheros referenciados existen todos.
+
+No aparecieron fallos de nivel "bloqueo": no se repite el ciclo.
+
+## Reproduction Steps
+
+```bash
+# 1. Tests
+cd /home/homelab/chino-app
+npm install                                   # 0 dependencias
+npm test                                      # 447 pass / 0 fail
+
+# 2. Build con OUT_DIR propio (nunca dist/) y servir
+OUT_DIR=/tmp/chino-t_b6277815b npm run build  # 505 files, "merged locales: en"
+node scripts/serve.mjs /tmp/chino-t_b6277815b # imprime http://localhost:<port>/
+
+# 3. Shell / PWA / offline (en navegador real)
+# GET /manifest.webmanifest -> 200 application/manifest+json
+# GET /sw.js -> 200, contiene const VERSION = '<hash de 12 hex>'
+# DevTools: Network -> Offline -> recargar #/home y #/dictionary -> siguen renderizando
+
+# 4. Flujo real repaso -> puntos + racha
+# #/dictionary -> buscar 你好 -> botón "Add to review" -> "Added ✓"
+# #/review -> "1 DUE" -> "Show answer" -> "Good" -> "Session complete"
+# #/extras/profile -> Current streak 1, puntos 10, "First review" desbloqueado
+
+# 5. Cada chino:* llega a gamification (consola del navegador)
+# window.dispatchEvent(new CustomEvent('chino:lesson_done'))   # +50
+# window.dispatchEvent(new CustomEvent('chino:reading_done'))  # +20
+# window.dispatchEvent(new CustomEvent('chino:stroke_done'))   # +2
+# window.dispatchEvent(new CustomEvent('chino:draw_used'))     # +1
+# window.dispatchEvent(new CustomEvent('chino:speak_done'))    # +5
+# await window.__gamification.getStats() -> points sube, streak=1
+
+# 6. Pronunciación sin micrófono
+# Object.defineProperty(globalThis,'webkitSpeechRecognition',{value:undefined,configurable:true})
+# #/extras/pronounce -> aviso "Speech recognition not supported in this browser.",
+# Record deshabilitado, "Play model" sigue disponible, 0 errores de consola
+
+# 7. Dibujo
+# #/extras/draw -> dibujar un trazo horizontal -> "Candidates: 10", "一 88%", 0 errores
+
+# 8. Reglas globales
+# grep -rn "getUserMedia\|tesseract\|<video\|camera" src/         -> vacío
+# grep -rln "indexedDB\|localStorage" src/ | grep -v storage.js  -> vacío
+# grep -n "CC BY-SA\|Tatoeba\|CC BY" CREDITS.md                  -> CC-CEDICT + Tatoeba
+
+# 9. README
+# README.md: dev/build/serve, "Adding a language", "Packaging for Android with Capacitor",
+# enlace a docs/FUTURE.md, sección Backup/restore, lista de features (1 línea cada una)
+```
+
+## Files Touched by This Verification
+- `README.md` (reescrito: features, arranque, idioma, Capacitor, FUTURE, backup)
+- `src/locales/en.d/gamification.json` (nuevo — nombres/descripciones de logros)
+- `src/locales/en.d/draw.json` (+ clave `draw.candidatesCount`)
+- `src/extras/draw.js` (1 línea: status usa `draw.candidatesCount`)
+- `docs/FUTURE.md` (referencias de líneas corregidas)
+- `VERIFICATION.md` (esta sección)
+
+---
+
+**Verdict: BLOCK 4 + APP COMPLETA + README VERIFIED — 3 fallos menores corregidos, resto OK**
+
+*Verificador `barato` — 2026-11-18*
