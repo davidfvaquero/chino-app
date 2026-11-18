@@ -28,6 +28,8 @@ import { gradeExercise, summarize } from './exercises.js';
 
 export const titleKey = 'hubs.learn.lessons';
 export const DEFAULT_LEVEL = 'hsk1';
+/** Selectable levels; each reads public/data/lessons/<level>/index.json. Chosen with `?level=`. */
+export const LEVELS = ['hsk1', 'practical'];
 export const PROGRESS_STORE = 'progress';
 
 /** Root of the lesson data, relative to this module (works in src/ and dist/). */
@@ -83,13 +85,27 @@ const label = (value) => (typeof value === 'string' && value ? t(value) : '');
 
 /* ------------------------------------------------------------------ list -- */
 
-async function renderList(container, ctx) {
-  const index = await loadIndex(DEFAULT_LEVEL);
+async function renderList(container, ctx, level) {
+  const index = await loadIndex(level);
   const lessons = await Promise.all(
     (index.lessons ?? []).map(async (lesson) => ({ ...lesson, progress: await getProgress(index.level, lesson.id) })),
   );
 
   reset(container);
+  const picker = h(
+    'div',
+    { class: 'level-picker', role: 'group', 'aria-label': t('home.level.label') },
+    ...LEVELS.map((name) =>
+      h('button', {
+        type: 'button',
+        class: 'btn option',
+        'data-level': name,
+        'aria-pressed': String(name === level),
+        text: t(`home.level.${name}`),
+        onclick: () => ctx.navigate(`learn/lessons?level=${name}`),
+      }),
+    ),
+  );
   const list = h('section', { class: 'menu', 'aria-label': t(titleKey) });
   if (!lessons.length) list.append(h('p', { class: 'card', text: t('learn.lessons.empty') }));
   for (const lesson of lessons) {
@@ -107,21 +123,21 @@ async function renderList(container, ctx) {
           type: 'button',
           class: 'card field',
           'data-lesson': lesson.id,
-          onclick: () => ctx.navigate(`learn/lessons/${lesson.id}`),
+          onclick: () => ctx.navigate(`learn/lessons/${lesson.id}${level === DEFAULT_LEVEL ? '' : `?level=${level}`}`),
         },
         h('span', { text: label(lesson.title) || lesson.id }),
         h('span', { class: 'pill', text: status }),
       ),
     );
   }
-  container.append(list);
+  container.append(picker, list);
   container.focus({ preventScroll: true });
 }
 
 /* ---------------------------------------------------------------- lesson -- */
 
-async function renderLesson(container, ctx, lessonId) {
-  const index = await loadIndex(DEFAULT_LEVEL);
+async function renderLesson(container, ctx, lessonId, level) {
+  const index = await loadIndex(level);
   const lesson = await loadLesson(index.level, lessonId);
   const exercises = Array.isArray(lesson.exercises) ? lesson.exercises : [];
   const results = [];
@@ -395,7 +411,7 @@ async function renderLesson(container, ctx, lessonId) {
               detail: { level: index.level, lessonId: lesson.id, score: summary.correct, total: exercises.length },
             }),
           );
-          ctx.navigate('learn/lessons');
+          ctx.navigate(index.level === DEFAULT_LEVEL ? 'learn/lessons' : `learn/lessons?level=${index.level}`);
         },
       }),
     );
@@ -408,11 +424,13 @@ async function renderLesson(container, ctx, lessonId) {
 
 export async function render(container, ctx) {
   const lessonId = ctx?.route?.segments?.[1];
+  const requested = ctx?.route?.params?.level;
+  const level = LEVELS.includes(requested) ? requested : DEFAULT_LEVEL;
   reset(container);
   container.append(h('p', { class: 'pill', text: t('learn.lessons.loading') }));
   try {
-    if (lessonId) await renderLesson(container, ctx, lessonId);
-    else await renderList(container, ctx);
+    if (lessonId) await renderLesson(container, ctx, lessonId, level);
+    else await renderList(container, ctx, level);
   } catch (err) {
     reset(container);
     container.append(

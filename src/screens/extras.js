@@ -9,9 +9,9 @@
 import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
 
-export const titleKey = 'screens.extras.title';
+export const titleKey = 'screens.extras.more';
 
-const AREAS = ['profile', 'draw', 'pronounce', 'backup', 'stats'];
+const AREAS = ['profile', 'stats', 'paste', 'draw', 'pronounce', 'settings', 'backup'];
 
 const load = (area) => import(`../extras/${area}.js`);
 

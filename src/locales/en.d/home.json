@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "home": "Home",
+    "more": "More"
+  },
+  "screens": {
+    "home": {
+      "title": "Home"
+    },
+    "extras": {
+      "more": "More"
+    }
+  },
+  "hubs": {
+    "extras": {
+      "settings": "Settings"
+    }
+  },
+  "home": {
+    "error": "Could not load the home screen.",
+    "next": {
+      "title": "Next step",
+      "review": "Review due cards ({n})",
+      "lesson": "Continue: {title}",
+      "read": "Read: {title}",
+      "learn": "Explore Learn"
+    },
+    "hard": "Practice hard words ({n})",
+    "wotd": {
+      "title": "Word of the day",
+      "audio": "Play audio",
+      "add": "Add to review",
+      "added": "Added ✓"
+    },
+    "goal": {
+      "title": "Daily goal",
+      "progress": "{done} / {goal} cards today",
+      "reached": "Goal reached: {done} / {goal} cards today"
+    },
+    "streak": "Day streak: {n}",
+    "level": {
+      "label": "Level",
+      "hsk1": "HSK 1",
+      "practical": "Practical"
+    }
+  }
+}

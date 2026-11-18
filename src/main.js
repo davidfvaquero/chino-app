@@ -23,21 +23,27 @@ import { icon } from './icons.js';
 import { createRouter, navigate } from './router.js';
 import { registerServiceWorker, watchInstallPrompt } from './pwa.js';
 import { attach as attachStats } from './stats.js';
+import { applySettings } from './settings.js';
+import './gamification-wire.js';
+import * as home from './screens/home.js';
 import * as dictionary from './screens/dictionary.js';
 import * as review from './screens/review.js';
 import * as learn from './screens/learn.js';
 import * as read from './screens/read.js';
 import * as extras from './screens/extras.js';
 
-const SCREENS = { dictionary, review, learn, read, extras };
+const SCREENS = { home, dictionary, review, learn, read, extras };
 const NAV = [
-  { route: 'dictionary', icon: 'search' },
-  { route: 'review', icon: 'repeat' },
-  { route: 'learn', icon: 'learn' },
-  { route: 'read', icon: 'book' },
-  { route: 'extras', icon: 'user' },
+  { route: 'home', label: 'home', icon: 'home' },
+  { route: 'dictionary', label: 'dictionary', icon: 'search' },
+  { route: 'review', label: 'review', icon: 'repeat' },
+  { route: 'learn', label: 'learn', icon: 'learn' },
+  { route: 'read', label: 'read', icon: 'book' },
+  { route: 'extras', label: 'more', icon: 'user' },
 ];
-const FALLBACK_ROUTE = 'dictionary';
+const FALLBACK_ROUTE = 'home';
+const HOME_ICON =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg>';
 
 const el = {
   header: document.getElementById('app-header'),
@@ -66,9 +72,10 @@ function renderChrome(route = router?.current()) {
 
   el.header.textContent = t(screen.titleKey);
   el.nav.setAttribute('aria-label', t('nav.label'));
+  el.nav.style.gridTemplateColumns = `repeat(${NAV.length}, 1fr)`; // styles.css hard-codes 5 columns
   el.nav.replaceChildren(
     ...NAV.map((item) => {
-      const label = h('span', { class: 'tab-label', text: t(`nav.${item.route}`) });
+      const label = h('span', { class: 'tab-label', text: t(`nav.${item.label}`) });
       return h(
         'button',
         {
@@ -76,7 +83,7 @@ function renderChrome(route = router?.current()) {
           class: 'tab',
           'data-route': item.route,
           'aria-current': active === item.route ? 'page' : 'false',
-          html: icon(item.icon), // trusted local SVG markup
+          html: item.icon === 'home' ? HOME_ICON : icon(item.icon), // trusted local SVG markup
           onclick: () => navigate(item.route),
         },
         label,
@@ -118,6 +125,7 @@ async function boot() {
   });
 
   watchInstallPrompt();
+  applySettings();
   attachStats();
   renderChrome();
   await router.start();
