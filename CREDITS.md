@@ -84,7 +84,24 @@ the licence asks for it.
   The 214 radical definitions (pinyin, meaning, stroke count) are compiled from
   standard Unicode Kangxi Radicals block references (public domain).
 
-## 6. Software libraries
+## 6. Make Me a Hanzi — etymology & mnemonics (`public/data/etymology/`)
+
+- **Source:** Make Me a Hanzi, <https://github.com/skishore/makemeahanzi>
+  (`dictionary.txt`, `etymology` field), same file as the radicals data.
+- **Licences:** the data derive from the **Arphic Public License** (Arphic PL) —
+  <https://www.arphic.com.tw/> ; the Make Me a Hanzi *code* is **LGPL**.
+  Combined: *Arphic Public License / LGPL*.
+- **Copyright:** © Arphic Technology Co., Ltd. (fonts) and the Make Me a Hanzi
+  authors.
+- **Changes made:** kept `type` (`pictophonetic` | `ideographic` | `pictographic`),
+  `hint`, `semantic` and `phonetic` for the characters the app already ships data
+  for (HSK vocab + the characters of the dictionary / strokes / sentences /
+  readings / lessons), sharded by Unicode range. For pictophonetic characters the
+  meaning part is glossed from the Kangxi radical table and the sound part gets
+  its pinyin from the CC-CEDICT shards. **Simplified-only:** a `hint` that quotes
+  a traditional-only character is omitted rather than shown.
+
+## 7. Software libraries
 
 - **None bundled for data processing.** `scripts/build-data.mjs` uses only the
   Node.js standard library plus the system `bunzip2` to unpack Tatoeba's `.bz2`
@@ -101,6 +118,7 @@ the licence asks for it.
 
 ```bash
 npm run data        # downloads (cached in .cache/) and rebuilds public/data/
+node scripts/build-etymology.mjs   # rebuilds public/data/etymology/ from .cache/dictionary.txt
 npm run test:data   # sanity checks on the generated JSON
 ```
 

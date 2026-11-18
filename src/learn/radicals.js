@@ -30,6 +30,7 @@ import { addToReview } from '../srs.js';
 import { pinyinHtml } from '../tone.js';
 import { search as dictSearch, lookup as dictLookup } from '../dictionary.js';
 import { tonelessKey } from '../pinyin.js';
+import { renderEtymology } from '../etymology.js';
 
 export const titleKey = 'radicals.title';
 
@@ -415,6 +416,7 @@ async function renderDecomposition(container, ctx, charParam) {
 
       renderHeader();
       renderParts();
+      renderEtymology(character).then((box) => { if (box && state.alive) partsRow.after(box); }).catch(() => {});
       await loadDictionaryEntries();
       renderChars();
     } catch (err) {

@@ -36,6 +36,7 @@ import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import { speak } from '../audio.js';
 import { addToReview } from '../srs.js';
+import { renderEtymology } from '../etymology.js';
 
 export const titleKey = 'hubs.learn.strokes';
 
@@ -468,6 +469,8 @@ export async function render(container, ctx = {}) {
   const character = characters[0] ?? '';
   if (character) await app.show(character);
   else app.showSearch();
+  // One-liner hook (MNEMO task): mnemonic hint under the board, single-char view.
+  renderEtymology(character).then((box) => { const board = container.querySelector('.strokes-board'); if (box && board) board.after(box); }).catch(() => {});
   return () => app.destroy();
 }
 

@@ -27,6 +27,7 @@ import { lookup } from '../dictionary.js';
 import { addToReview } from '../srs.js';
 import { pinyinHtml } from '../tone.js';
 import { loadStrokes, createStrokeAnimation, strokeDiagramSvg } from './strokes.js';
+import { renderEtymology } from '../etymology.js';
 
 export const titleKey = 'strokesSheet.title';
 export const MAX_CHARACTERS = 20;
@@ -307,6 +308,7 @@ export async function render(container, ctx = {}) {
     );
     const node = h('article', { class: 'sheet-card' }, head);
     node.dataset.character = card.character;
+    renderEtymology(card.character).then((box) => { if (box) node.append(box); }).catch(() => {});
     if (!card.hasData) {
       node.append(h('p', { class: 'sheet-empty', text: t('strokesSheet.noData', { char: card.character }) }));
       return node;

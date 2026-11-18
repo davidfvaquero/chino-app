@@ -1,0 +1,14 @@
+{
+  "etymology": {
+    "title": "Why it looks like this",
+    "meaningPart": "Meaning part: {char} {gloss}",
+    "meaningPartNoGloss": "Meaning part: {char}",
+    "soundPart": "Sound part: {char} {pinyin}",
+    "soundPartNoPinyin": "Sound part: {char}",
+    "type": {
+      "pictophonetic": "Sound + meaning compound",
+      "ideographic": "Meaning compound",
+      "pictographic": "Picture of the thing"
+    }
+  }
+}
