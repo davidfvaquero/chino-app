@@ -1,0 +1,21 @@
+{
+  "themes": {
+    "title": "Temas de vocabulario",
+    "listIntro": "Elige un tema para ver sus palabras y frases útiles. Toca una fila para oírla, añadir tarjetas sueltas o mandar el tema entero a tu repaso.",
+    "back": "Volver a los temas",
+    "travel": "Viajes",
+    "words": "Palabras",
+    "phrases": "Frases",
+    "counts": "{words} palabras · {phrases} frases",
+    "addAll": "Añadir el tema entero al repaso",
+    "addedAll": "Añadidas {added} tarjetas nuevas ({total} en este tema).",
+    "addOne": "Añadir al repaso",
+    "addedOne": "Añadida ✓",
+    "play": "Reproducir audio",
+    "markStudied": "Marcar como estudiado",
+    "studied": "Estudiado ✓",
+    "soonTitle": "Aún no está",
+    "soon": "Este tema aún no tiene contenido. Vuelve más tarde.",
+    "loadError": "No se pudieron cargar los temas. Revisa tu conexión e inténtalo de nuevo."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "profileScreen": {
+    "title": "Perfil y progreso",
+    "streak": {
+      "current": "Racha actual",
+      "best": "Mejor racha",
+      "days": "{count} día",
+      "days_plural": "{count} días"
+    },
+    "points": "Puntos",
+    "level": "Nivel {level}",
+    "achievements": {
+      "title": "Logros",
+      "unlocked": "Conseguido",
+      "locked": "Bloqueado",
+      "empty": "Aún no hay logros: ¡sigue aprendiendo para conseguirlos!",
+      "unlockAt": "Conseguido el {date}"
+    },
+    "language": {
+      "label": "Idioma",
+      "current": "Actual: {name}"
+    },
+    "emptyState": {
+      "title": "¡Bienvenido a Chino!",
+      "description": "Empieza una lección, repasa una tarjeta o practica trazos para hacer tu racha y conseguir logros.",
+      "startLearning": "Empezar a aprender"
+    }
+  }
+}

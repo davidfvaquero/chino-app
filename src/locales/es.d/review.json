@@ -1,0 +1,31 @@
+{
+  "review": {
+    "remaining": "{count} pendientes",
+    "showAnswer": "Ver respuesta",
+    "audio": "Reproducir audio",
+    "audioUnavailable": "El audio no está disponible en este navegador",
+    "rate": "¿Qué tal la sabías?",
+    "ratings": {
+      "again": "Otra vez",
+      "hard": "Difícil",
+      "good": "Bien",
+      "easy": "Fácil"
+    },
+    "interval": {
+      "days": "{n} d",
+      "months": "{n} mes",
+      "years": "{n} a"
+    },
+    "empty": {
+      "title": "Nada pendiente",
+      "body": "Ahora mismo no hay tarjetas en espera. Añade palabras desde el diccionario y aparecerán aquí.",
+      "action": "Ir al diccionario"
+    },
+    "done": {
+      "title": "Sesión completada",
+      "body": "Tarjetas repasadas en esta sesión: {count}.",
+      "again": "Buscar más",
+      "action": "Ir al diccionario"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "pinyinchart": {
+    "title": "Tabla de pinyin",
+    "intro": "Cada sílaba del mandarín es una inicial (la consonante con la que empieza) más una final (la parte vocal). Busca la fila de la inicial y la columna de la final: la casilla es la sílaba. Toca una sílaba para ver sus cuatro tonos — cada tono es una palabra distinta, así que reproducimos un carácter real para cada uno.",
+    "tableLabel": "Sílabas de pinyin por inicial y final",
+    "cornerLabel": "inicial \\ final",
+    "noInitial": "— (sin inicial)",
+    "cellLabel": "Sílaba {syllable}",
+    "tone1": "1.er tono",
+    "tone2": "2.º tono",
+    "tone3": "3.er tono",
+    "tone4": "4.º tono",
+    "playTone": "Reproducir el audio de {hanzi}",
+    "noAudio": "Sin audio",
+    "pickHint": "Toca una sílaba para oír sus tonos.",
+    "loadError": "No se pudo cargar la tabla de pinyin.",
+    "speakUnsupported": "El audio no está disponible en este navegador.",
+    "speakError": "No se pudo reproducir el audio."
+  }
+}

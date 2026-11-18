@@ -1,0 +1,14 @@
+{
+  "etymology": {
+    "title": "Por qué se ve así",
+    "meaningPart": "Parte de significado: {char} {gloss}",
+    "meaningPartNoGloss": "Parte de significado: {char}",
+    "soundPart": "Parte de sonido: {char} {pinyin}",
+    "soundPartNoPinyin": "Parte de sonido: {char}",
+    "type": {
+      "pictophonetic": "Compuesto de sonido y significado",
+      "ideographic": "Compuesto de significado",
+      "pictographic": "Dibujo de la cosa"
+    }
+  }
+}

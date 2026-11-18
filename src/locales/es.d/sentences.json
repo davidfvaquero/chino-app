@@ -1,0 +1,18 @@
+{
+  "sentences": {
+    "title": "Frases del día a día",
+    "filterPlaceholder": "Filtrar por hanzi, pinyin o inglés...",
+    "random": "Al azar",
+    "playAudio": "Reproducir audio",
+    "audioUnsupported": "La síntesis de voz no está disponible en este navegador",
+    "addToReview": "Añadir al repaso",
+    "addedToReview": "Añadida al repaso",
+    "alreadyInReview": "Ya está en el repaso",
+    "attribution": "Frases de Tatoeba (CC BY 2.0 FR)",
+    "viewCredits": "Ver créditos",
+    "noResults": "Ninguna frase coincide con tu filtro",
+    "pageInfo": "Página {page} de {totalPages} ({total} frases)",
+    "prev": "Anterior",
+    "next": "Siguiente"
+  }
+}

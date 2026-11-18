@@ -1,0 +1,19 @@
+{
+  "stats": {
+    "title": "Estadísticas",
+    "summary": {
+      "known": "Palabras conocidas",
+      "learning": "Aprendiendo",
+      "total": "Palabras en repaso",
+      "minutes": "Tiempo de estudio (min)",
+      "days": "Días estudiados"
+    },
+    "chart": {
+      "title": "Tiempo de estudio, últimos 14 días",
+      "empty": "Aún no hay datos de estudio. Termina una lección, un repaso o algo de práctica y tu gráfico aparecerá aquí.",
+      "axis": "máx. {minutes} min",
+      "bar": "{date}: {minutes} min",
+      "aria": "Gráfico de barras de los minutos de estudio de los últimos {days} días, el día con más actividad {minutes} minutos"
+    }
+  }
+}

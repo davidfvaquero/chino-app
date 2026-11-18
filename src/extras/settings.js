@@ -9,6 +9,7 @@
 
 import { t, getLocale, setLocale, availableLocales, localeLabel, subscribe } from '../i18n.js';
 import { getSettings, setSetting, applySettings, DEFAULTS } from '../settings.js';
+import storage from '../storage.js';
 import { isToneColorsOn } from '../tone.js';
 import { h, reset } from '../dom.js';
 
@@ -165,7 +166,11 @@ export async function render(container, ctx) {
     const select = h('select', {
       class: 'field',
       value: currentLocale,
-      onchange: (e) => setLocale(e.target.value),
+      onchange: async (e) => {
+        setLocale(e.target.value);
+        // main.js restores the locale from storage 'settings'/'locale' on boot.
+        await storage.set('settings', 'locale', e.target.value);
+      },
     }, ...locales.map((code) =>
       h('option', { value: code, selected: code === currentLocale }, localeLabel(code))
     ));

@@ -1,0 +1,37 @@
+{
+  "games": {
+    "loading": "Cargando…",
+    "error": "No se pudo cargar el juego: {message}",
+    "matching": {
+      "title": "Emparejar",
+      "desc": "Toca para emparejar cada hanzi con su significado en español.",
+      "mistakes": "Fallos",
+      "time": "Tiempo",
+      "matched": "Emparejados",
+      "hintSelectHanzi": "Toca un carácter chino para seleccionarlo.",
+      "hintSelectMatch": "Ahora toca su significado.",
+      "score": "Puntos",
+      "complete": "¡Ronda completada!",
+      "playAgain": "Jugar otra vez",
+      "back": "Volver a los juegos"
+    },
+    "memory": {
+      "title": "Memoria",
+      "desc": "Voltea tarjetas para encontrar parejas de hanzi y significado.",
+      "mistakes": "Fallos",
+      "time": "Tiempo",
+      "matched": "Emparejados",
+      "hintFirst": "Toca una tarjeta para voltearla.",
+      "hintSecond": "Toca otra tarjeta para encontrar la pareja.",
+      "score": "Puntos",
+      "complete": "¡Ronda completada!",
+      "playAgain": "Jugar otra vez",
+      "back": "Volver a los juegos"
+    }
+  },
+  "hubs": {
+    "learn": {
+      "games": "Juegos de memoria"
+    }
+  }
+}

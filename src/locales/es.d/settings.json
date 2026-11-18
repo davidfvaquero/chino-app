@@ -1,0 +1,35 @@
+{
+  "settings": {
+    "theme": {
+      "title": "Tema",
+      "hint": "Elige cómo se adapta la app a la preferencia de tu sistema.",
+      "auto": "Auto (sistema)",
+      "light": "Claro",
+      "dark": "Oscuro"
+    },
+    "fontScale": {
+      "title": "Tamaño de letra",
+      "hint": "Ajusta el tamaño base del texto en toda la app.",
+      "small": "Normal",
+      "medium": "Mediano",
+      "large": "Grande"
+    },
+    "toneColors": {
+      "title": "Colores de tono",
+      "hint": "Colorea las sílabas de pinyin según el tono (1–4 + neutro). La vista previa se actualiza al momento.",
+      "on": "Activado",
+      "off": "Desactivado",
+      "previewLabel": "Vista previa:"
+    },
+    "dailyGoal": {
+      "title": "Meta diaria",
+      "hint": "Número de tarjetas de repaso que quieres al día.",
+      "option": "{count} tarjetas"
+    },
+    "language": {
+      "title": "Idioma de la interfaz",
+      "hint": "Elige el idioma de los menús y las etiquetas.",
+      "current": "Actual: {name}"
+    }
+  }
+}

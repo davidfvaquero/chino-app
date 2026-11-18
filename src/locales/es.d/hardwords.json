@@ -1,0 +1,23 @@
+{
+  "hardwords": {
+    "title": "Palabras difíciles",
+    "intro": "Las palabras que más fallas en el repaso, las peores primero.",
+    "misses": "{count} fallos",
+    "audio": "Reproducir audio",
+    "audioUnavailable": "El audio no está disponible en este navegador",
+    "practice": "Practicar",
+    "back": "Volver a la lista",
+    "showAnswer": "Ver respuesta",
+    "remaining": "Quedan {count}",
+    "again": "Otra vez",
+    "good": "Bien",
+    "empty": {
+      "title": "Aún no hay palabras difíciles",
+      "body": "Las palabras que falles 3 veces o más en el repaso aparecerán aquí. Sigue así, lo estás haciendo bien."
+    },
+    "done": {
+      "title": "Práctica completada",
+      "body": "Palabras practicadas: {count}."
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "paste": {
+    "title": "Pegar y analizar",
+    "placeholder": "Pega o escribe aquí texto en chino (solo simplificado)...",
+    "analyze": "Analizar",
+    "analyzing": "Analizando...",
+    "togglePinyin": "Pinyin",
+    "playAll": "Reproducir todo",
+    "playSentence": "Reproducir frase",
+    "unknownCount_one": "1 palabra desconocida (no está en HSK1 ni en el repaso)",
+    "unknownCount_other": "{count} palabras desconocidas (no están en HSK1 ni en el repaso)",
+    "noText": "No hay texto que analizar.",
+    "wordNotFound": "No hay entrada de diccionario para «{word}».",
+    "error": "No se pudo analizar el texto. Inténtalo de nuevo.",
+    "addToReview": "Añadir al repaso",
+    "added": "Añadida al repaso",
+    "close": "Cerrar",
+    "tapWord": "Toca una palabra para ver su significado.",
+    "storageSaved": "Texto guardado.",
+    "audioUnsupported": "El audio no está disponible en este navegador."
+  }
+}

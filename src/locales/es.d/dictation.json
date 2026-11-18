@@ -1,0 +1,45 @@
+{
+  "dictation": {
+    "title": "Dictado",
+    "intro": "Escucha una palabra y escríbela. Diez preguntas por ronda: escribe el pinyin y luego elige el carácter que oigas.",
+    "sourceLabel": "Palabras de",
+    "source": {
+      "hsk1": "Palabras de HSK 1",
+      "srs": "Mis tarjetas de repaso"
+    },
+    "sourceCount": "{count} palabras",
+    "toneModeLabel": "Respuestas de pinyin",
+    "toneMode": {
+      "numbers": "Números de tono (ni3 hao3)",
+      "marks": "Marcas de tono (nǐ hǎo)",
+      "none": "Sin tonos (ni hao)"
+    },
+    "start": "Empezar ronda",
+    "emptySource": "Aún no hay palabras para esta fuente. Añade antes algunas tarjetas a tu repaso.",
+    "error": "No se pudieron cargar las palabras. Revisa tu conexión e inténtalo de nuevo.",
+    "progress": "Pregunta {current} de {total}",
+    "scoreSoFar": "Puntos {score}/{answered}",
+    "mode": {
+      "pinyin": "Escribe el pinyin que oigas",
+      "choose": "Elige el carácter que oigas"
+    },
+    "play": "Reproducir audio",
+    "repeat": "Repetir",
+    "ttsUnavailable": "Este navegador no tiene voz disponible, así que la palabra se muestra en vez de reproducirse.",
+    "answerPlaceholder": "Escribe el pinyin",
+    "check": "Comprobar",
+    "showAnswer": "Ver respuesta",
+    "correct": "¡Correcto!",
+    "incorrect": "Casi.",
+    "addToReview": "Añadir al repaso",
+    "added": "Añadida al repaso",
+    "next": "Siguiente",
+    "result": {
+      "title": "Ronda completada",
+      "score": "Has acertado {correct} de {total} ({percent}%).",
+      "missed": "Palabras que repasar",
+      "playAgain": "Jugar otra vez",
+      "back": "Volver a Aprender"
+    }
+  }
+}

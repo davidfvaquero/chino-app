@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "more": "Más"
+  },
+  "screens": {
+    "home": {
+      "title": "Inicio"
+    },
+    "extras": {
+      "more": "Más"
+    }
+  },
+  "hubs": {
+    "extras": {
+      "settings": "Ajustes"
+    }
+  },
+  "home": {
+    "error": "No se pudo cargar la pantalla de inicio.",
+    "next": {
+      "title": "Siguiente paso",
+      "review": "Repasar tarjetas pendientes ({n})",
+      "lesson": "Continuar: {title}",
+      "read": "Leer: {title}",
+      "learn": "Explorar Aprender"
+    },
+    "hard": "Practicar palabras difíciles ({n})",
+    "wotd": {
+      "title": "Palabra del día",
+      "audio": "Reproducir audio",
+      "add": "Añadir al repaso",
+      "added": "Añadida ✓"
+    },
+    "goal": {
+      "title": "Meta diaria",
+      "progress": "{done} / {goal} tarjetas hoy",
+      "reached": "Meta alcanzada: {done} / {goal} tarjetas hoy"
+    },
+    "streak": "Racha: {n} días",
+    "level": {
+      "label": "Nivel",
+      "hsk1": "HSK 1",
+      "practical": "Práctico"
+    }
+  }
+}

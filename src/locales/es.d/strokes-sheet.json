@@ -1,0 +1,34 @@
+{
+  "strokesSheet": {
+    "title": "Hoja de trazos",
+    "inputLabel": "Caracteres que buscar",
+    "inputPlaceholder": "Escribe o pega hasta 20 caracteres, p. ej. 戴维德",
+    "show": "Ver trazos",
+    "tooMany": "Solo se muestran los primeros {max} caracteres.",
+    "empty": "Escribe al menos un carácter chino.",
+    "loading": "Cargando trazos…",
+    "noData": "No hay datos de trazos para «{char}». Los demás caracteres sí funcionan.",
+    "strokesCount": "{count} trazos",
+    "stepLabel": "Paso {number}",
+    "approxLabel": "tipos de trazo aprox.:",
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "copy": "Copiar como texto",
+    "copied": "Resumen copiado.",
+    "copyError": "No se pudo copiar el resumen.",
+    "addAll": "Añadir todo al repaso",
+    "added": "Añadidas {count} a tu repaso.",
+    "reviewError": "No se pudieron añadir al repaso.",
+    "summaryLine": "{char}: {count} trazos",
+    "summaryNoData": "{char}: sin datos de trazos",
+    "types": {
+      "horizontal": "horizontal",
+      "vertical": "vertical",
+      "left-falling": "de izquierda a abajo",
+      "right-falling": "de derecha a abajo",
+      "dot": "punto",
+      "turn": "giro",
+      "hook": "gancho"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "strokes": {
+    "searchLabel": "Buscar un carácter",
+    "searchPlaceholder": "Escribe un carácter, p. ej. 你",
+    "searchButton": "Mostrar",
+    "searchResults": "Caracteres que coinciden",
+    "searchNoHanzi": "Escribe un carácter chino para ver sus trazos.",
+    "boardLabel": "Diagrama del orden de trazos",
+    "loading": "Cargando trazos…",
+    "notFound": "No hay datos de trazos para «{char}».",
+    "loadError": "No se pudieron cargar los datos de trazos. Revisa tu conexión.",
+    "progress": "Trazo {current} / {total}",
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "replay": "Repetir",
+    "animationDone": "Todos los trazos dibujados. ¡Ahora pruébalo tú!",
+    "practice": "Practicar",
+    "practiceExit": "Parar práctica",
+    "practiceHint": "Repasa el trazo {current} de {total} siguiendo la guía de puntos.",
+    "practiceWrong": "Casi: sigue la guía de puntos, en orden.",
+    "practiceDone": "¡Bien! Has repasado todos los trazos.",
+    "speak": "Escuchar",
+    "speakUnsupported": "Este dispositivo no tiene voz para chino.",
+    "speakError": "No se pudo reproducir el audio.",
+    "addToReview": "Añadir al repaso",
+    "addedToReview": "Añadido a tu repaso.",
+    "reviewError": "No se pudo añadir al repaso."
+  }
+}

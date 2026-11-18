@@ -1,0 +1,16 @@
+{
+  "draw": {
+    "title": "Dibujar un carácter",
+    "canvasAria": "Lienzo de dibujo. Dibuja un carácter chino trazo a trazo.",
+    "undo": "Deshacer el último trazo",
+    "clear": "Borrar todo",
+    "candidates": "Candidatos",
+    "candidatesCount": "Candidatos: {count}",
+    "noCandidates": "Dibuja un trazo para ver candidatos.",
+    "drawMore": "Dibuja más trazos para afinar los resultados.",
+    "limitNotice": "El reconocimiento funciona mejor con el orden y el número de trazos correctos. Prueba a dibujar de nuevo si el carácter que quieres no está en la lista.",
+    "openInDictionary": "Abrir en el diccionario",
+    "viewStrokes": "Ver orden de trazos",
+    "strokeCount": "{count} trazo{count, plural, one {} other {s}}"
+  }
+}

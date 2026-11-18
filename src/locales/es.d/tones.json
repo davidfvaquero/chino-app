@@ -1,0 +1,39 @@
+{
+  "tones": {
+    "lesson": {
+      "title": "Tonos y pinyin",
+      "intro": "El chino mandarín tiene cuatro tonos más un tono neutro. La misma sílaba con tonos distintos significa palabras completamente distintas. Esta lección enseña lo básico del pinyin (iniciales y finales) y los cinco tonos con los clásicos ejemplos de \"ma\"."
+    },
+    "exercise": {
+      "listenPrompt": "Escucha y elige el tono que oigas.",
+      "chooseTone1": "¿Qué pinyin representa el 1.er tono (alto y plano)?",
+      "chooseTone2": "¿Qué pinyin representa el 2.º tono (ascendente)?",
+      "chooseTone3": "¿Qué pinyin representa el 3.er tono (descendente y ascendente)?",
+      "chooseTone4": "¿Qué pinyin representa el 4.º tono (descendente)?",
+      "chooseTone0": "¿Qué pinyin representa el tono neutro (suave y corto)?"
+    },
+    "explanation": {
+      "pinyinTitle": "Básicos del pinyin",
+      "initialsTitle": "Iniciales (consonantes)",
+      "finalsTitle": "Finales (vocales)",
+      "initialsDesc": "Las sílabas del pinyin empiezan por una consonante inicial. En mandarín hay 21 iniciales. Algunas comunes: b, p, m, f, d, t, n, l, g, k, h, j, q, x, zh, ch, sh, r, z, c, s.",
+      "finalsDesc": "Las finales son la parte vocal de una sílaba. Pueden ser vocales simples (a, o, e, i, u, ü) o finales compuestas (ai, ei, ao, ou, an, en, ang, eng, etc.). Cada sílaba tiene exactamente una final.",
+      "tonesTitle": "Los cinco tonos",
+      "tone1Desc": "1.er tono: alto y plano (ˉ) — mā (madre). La voz se mantiene alta y estable.",
+      "tone2Desc": "2.º tono: ascendente (ˊ) — má (cáñamo). La voz sube como al hacer una pregunta.",
+      "tone3Desc": "3.er tono: descendente y ascendente (ˇ) — mǎ (caballo). La voz baja y luego sube.",
+      "tone4Desc": "4.º tono: descendente (ˋ) — mà (regañar). La voz cae de golpe, como al decir \"¡No!\".",
+      "tone0Desc": "Tono neutro: suave y corto (sin marca) — ma (partícula interrogativa). Rápido y sin acento.",
+      "playTone": "Reproducir {tone}"
+    },
+    "vocabulary": {
+      "toneLabel": "Tono",
+      "hanziLabel": "Carácter",
+      "pinyinLabel": "Pinyin",
+      "meaningLabel": "Significado"
+    },
+    "nav": {
+      "back": "Volver a Aprender"
+    }
+  }
+}

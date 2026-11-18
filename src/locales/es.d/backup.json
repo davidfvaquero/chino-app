@@ -1,0 +1,50 @@
+{
+  "backupScreen": {
+    "title": "Copia de seguridad y restauración",
+    "dataNotice": "Tu progreso (tarjetas de repaso, racha, logros y ajustes) solo vive en este navegador. No hay cuenta ni nube. Descarga un archivo de copia de seguridad para tenerlo a salvo, o importa uno para llevar tu progreso a otro navegador o recuperarlo.",
+    "export": {
+      "title": "Descargar una copia de seguridad",
+      "button": "Descargar copia",
+      "filename": "chino-app-copia-{date}.json",
+      "success": "Copia descargada: {count} tarjetas, racha de {streak}.",
+      "error": "No se pudo crear el archivo de copia de seguridad."
+    },
+    "import": {
+      "title": "Restaurar desde un archivo",
+      "hint": "Elige un archivo de copia de seguridad de chino-app (.json). Verás qué contiene antes de que cambie nada.",
+      "button": "Elegir archivo",
+      "cancel": "Cancelar",
+      "preview": {
+        "title": "Este archivo contiene",
+        "cards": "{count} tarjetas de repaso",
+        "streak": "racha de {streak} días",
+        "lessons": "{lessons} lecciones terminadas",
+        "points": "{points} puntos"
+      },
+      "confirm": {
+        "title": "Confirmar importación",
+        "replace": "Reemplazar: tus datos actuales se borran y se sustituyen por los del archivo. Esto no se puede deshacer.",
+        "merge": "Combinar: conserva el registro más nuevo de cada tarjeta; no se borra nada local.",
+        "button": "Reemplazar todo",
+        "buttonMerge": "Combinar con mis datos"
+      },
+      "success": "Importación terminada: {imported} registros escritos, {skipped} conservados.",
+      "error": {
+        "corrupt": "Ese archivo no es JSON válido, así que no es una copia de seguridad.",
+        "invalidType": "Ese archivo no parece una copia de seguridad.",
+        "wrongApp": "Esa copia de seguridad pertenece a otra app.",
+        "unknownVersion": "Esa copia de seguridad la creó una versión más nueva de la app.",
+        "badTimestamp": "Ese archivo de copia de seguridad está incompleto.",
+        "missingStores": "Ese archivo de copia de seguridad está incompleto.",
+        "unknownStore": "Esa copia de seguridad contiene datos que esta app no conoce.",
+        "storeNotObject": "Ese archivo de copia de seguridad está dañado.",
+        "nonSerializableValue": "Ese archivo de copia de seguridad está dañado.",
+        "applyFailed": "La importación falló y tus datos quedaron intactos."
+      }
+    },
+    "mode": {
+      "replace": "Reemplazar",
+      "merge": "Combinar (conservar lo más nuevo)"
+    }
+  }
+}

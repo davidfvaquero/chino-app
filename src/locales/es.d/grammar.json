@@ -1,0 +1,28 @@
+{
+  "grammar": {
+    "title": "Gramática",
+    "intro": "Primero, patrones de frase para principiantes; después, los clasificadores que necesitas para contar cosas.",
+    "patternsHeading": "Patrones",
+    "measureWordsHeading": "Clasificadores",
+    "measureWordsIntro": "El clasificador va entre el número y el sustantivo. Estos 25 cubren casi todo lo del día a día.",
+    "measureWordsButton": "Clasificadores",
+    "patternsButton": "Patrones gramaticales",
+    "structureLabel": "Estructura",
+    "notesLabel": "Nota",
+    "examplesHeading": "Ejemplos",
+    "usageLabel": "Se usa para",
+    "play": "Escuchar",
+    "playError": "No se pudo reproducir el audio.",
+    "speakUnsupported": "Este dispositivo no tiene voz para chino.",
+    "addToReview": "Añadir al repaso",
+    "added": "Añadido al repaso",
+    "reviewError": "No se pudo añadir al repaso.",
+    "markStudied": "Marcar como estudiado",
+    "marked": "Estudiado",
+    "studiedProgress": "{studied} de {total} patrones estudiados",
+    "back": "Atrás",
+    "loadError": "No se pudieron cargar los datos de gramática. Revisa tu conexión e inténtalo de nuevo.",
+    "unavailable": "Este patrón está previsto pero aún no está escrito.",
+    "soon": "Pronto"
+  }
+}

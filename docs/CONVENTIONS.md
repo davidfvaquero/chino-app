@@ -104,6 +104,11 @@ modules need it, a matching `src/locales/<code>.d/` with the same shard names,
 then list `<code>` in `src/locales/index.json`. Nothing else — the build and the
 server glob whatever files exist. `es.json` + `es.d/` is exactly this.
 
+**Keep `es` current:** when you add a key to `en.json`/`en.d/*.json`, add the
+matching `es.json`/`es.d/*.json` key too; `node scripts/check-i18n.mjs` lists any
+English keys still missing a Spanish translation (missing keys fall back to
+English). `tests/i18n-es.test.mjs` fails if an es shard drifts from its en shard.
+
 ## 4. Tests
 
 - One file per area: `tests/<area>.test.mjs`, `node:test` + `node:assert/strict`.

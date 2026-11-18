@@ -1,0 +1,58 @@
+{
+  "gamification": {
+    "ach": {
+      "first_review": {
+        "name": "Primer repaso",
+        "desc": "Repasa tu primera tarjeta."
+      },
+      "reviews_100": {
+        "name": "Repasador centenario",
+        "desc": "Repasa 100 tarjetas."
+      },
+      "first_lesson": {
+        "name": "Primera lección",
+        "desc": "Termina tu primera lección."
+      },
+      "lessons_10": {
+        "name": "Diez lecciones",
+        "desc": "Termina 10 lecciones."
+      },
+      "readings_5": {
+        "name": "Lector",
+        "desc": "Termina 5 lecturas."
+      },
+      "strokes_50": {
+        "name": "Pulso firme",
+        "desc": "Practica 50 trazos."
+      },
+      "drawings_10": {
+        "name": "Cuaderno de bocetos",
+        "desc": "Dibuja 10 caracteres."
+      },
+      "spoken_20": {
+        "name": "Locutor",
+        "desc": "Pronuncia bien 20 palabras."
+      },
+      "streak_3": {
+        "name": "Racha de tres días",
+        "desc": "Practica 3 días seguidos."
+      },
+      "streak_7": {
+        "name": "Racha de una semana",
+        "desc": "Practica 7 días seguidos."
+      },
+      "streak_30": {
+        "name": "Racha de un mes",
+        "desc": "Practica 30 días seguidos."
+      },
+      "points_100": {
+        "name": "100 puntos",
+        "desc": "Gana 100 puntos."
+      },
+      "points_1000": {
+        "name": "1000 puntos",
+        "desc": "Gana 1000 puntos."
+      }
+    }
+  }
+}

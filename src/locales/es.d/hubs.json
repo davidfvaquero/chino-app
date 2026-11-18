@@ -1,0 +1,15 @@
+{
+  "hubs": {
+    "learn": {
+      "lessons": "Lecciones HSK",
+      "tones": "Tonos y pinyin",
+      "strokes": "Orden de trazos",
+      "sentences": "Frases del día a día"
+    },
+    "extras": {
+      "profile": "Perfil y progreso",
+      "draw": "Dibujar un carácter",
+      "pronounce": "Práctica de pronunciación"
+    }
+  }
+}

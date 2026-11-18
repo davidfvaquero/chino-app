@@ -1,0 +1,16 @@
+{
+  "pronounce": {
+    "title": "Práctica de pronunciación",
+    "targetLabel": "Di esto:",
+    "recordBtn": "Grabar",
+    "recording": "Escuchando...",
+    "playModelBtn": "Reproducir modelo",
+    "feedbackCorrect": "¡Correcto!",
+    "feedbackTryAgain": "Inténtalo de nuevo",
+    "feedbackHeard": "Se oyó: {text}",
+    "noSupport": "El reconocimiento de voz no es compatible con este navegador.",
+    "permissionDenied": "Permiso de micrófono denegado. Aún puedes escuchar el modelo.",
+    "noSpeech": "No se detectó voz. Inténtalo de nuevo.",
+    "error": "Error de reconocimiento. Inténtalo de nuevo."
+  }
+}

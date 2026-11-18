@@ -1,0 +1,29 @@
+{
+  "reviewFilter": {
+    "title": "Qué repasar",
+    "all": "Todo ({count})",
+    "back": "Atrás",
+    "loading": "Cargando…",
+    "source": {
+      "dictionary": "Diccionario ({count})",
+      "lesson": "Lecciones ({count})",
+      "theme": "Temas ({count})",
+      "reading": "Lecturas ({count})",
+      "strokes-sheet": "Hojas de trazos ({count})",
+      "sentences": "Frases ({count})",
+      "dictation": "Dictado ({count})",
+      "unknown": "Otros ({count})"
+    },
+    "detail": {
+      "title": "Filtrar por {source}",
+      "allInSource": "Todo {source} ({count})",
+      "item": "{name} ({count})"
+    },
+    "empty": {
+      "title": "Nada pendiente",
+      "body": "Ahora mismo no hay tarjetas de {source} en espera.",
+      "action": "Cambiar filtro"
+    },
+    "selectLabel": "Elige qué repasar"
+  }
+}

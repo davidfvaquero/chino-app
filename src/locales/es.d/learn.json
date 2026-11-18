@@ -1,0 +1,27 @@
+{
+  "learn": {
+    "lessons": {
+      "loading": "Cargando lecciones…",
+      "error": "No se pudieron cargar las lecciones: {message}",
+      "empty": "Aún no hay lecciones.",
+      "start": "Empezar",
+      "done": "Completada · {score}/{total}",
+      "partial": "En curso · {answered}/{total}",
+      "next": "Siguiente",
+      "vocabulary": "Vocabulario",
+      "addToReview": "Añadir al repaso",
+      "added": "Añadida ✓",
+      "exerciseProgress": "Ejercicio {current} de {total}",
+      "playAudio": "Reproducir",
+      "correct": "¡Correcto!",
+      "incorrect": "Casi",
+      "continue": "Continuar",
+      "check": "Comprobar",
+      "orderHint": "Toca las palabras en el orden correcto.",
+      "matchHint": "Toca una palabra y luego toca su significado.",
+      "result": "Lección completada",
+      "resultScore": "Has acertado {score} de {total}.",
+      "finish": "Terminar"
+    }
+  }
+}

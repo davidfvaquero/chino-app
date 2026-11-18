@@ -1,0 +1,20 @@
+{
+  "dict": {
+    "searchLabel": "Buscar en el diccionario",
+    "placeholder": "Hanzi, pinyin o inglés",
+    "results": "Resultados de búsqueda",
+    "empty": "Escribe una palabra para buscar en el diccionario.",
+    "loading": "Buscando…",
+    "noResults": "Sin resultados para «{query}».",
+    "error": "La búsqueda falló. Revisa tu conexión e inténtalo de nuevo.",
+    "audio": "Reproducir",
+    "audioFor": "Reproducir el audio de {hanzi}",
+    "audioEmpty": "No hay nada que reproducir.",
+    "audioUnavailable": "El audio no está disponible en este navegador.",
+    "strokesFor": "Orden de trazos de {char}",
+    "addToReview": "Añadir al repaso",
+    "added": "Añadida ✓",
+    "addedToReview": "{hanzi} añadida a tu repaso.",
+    "addError": "No se pudo añadir la palabra a tu repaso."
+  }
+}

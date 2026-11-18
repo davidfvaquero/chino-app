@@ -1,0 +1,56 @@
+{
+  "locale": {
+    "name": "Español"
+  },
+  "app": {
+    "title": "Chino",
+    "short_name": "Chino",
+    "description": "App web gratuita y sin conexión para aprender chino mandarín: diccionario, tarjetas, lecciones HSK y lecturas."
+  },
+  "nav": {
+    "label": "Navegación principal",
+    "dictionary": "Diccionario",
+    "review": "Repaso",
+    "learn": "Aprender",
+    "read": "Leer",
+    "extras": "Extras"
+  },
+  "common": {
+    "comingSoon": "Próximamente",
+    "loading": "Cargando…"
+  },
+  "screens": {
+    "dictionary": {
+      "title": "Diccionario",
+      "hint": "Busca en CC-CEDICT por hanzi, pinyin o inglés y añade palabras a tu repaso."
+    },
+    "review": {
+      "title": "Repaso",
+      "hint": "Aquí aparecerán las tarjetas de repaso espaciado."
+    },
+    "learn": {
+      "title": "Aprender",
+      "hint": "Aquí vivirán las lecciones HSK, los tonos, el orden de trazos y las frases del día a día."
+    },
+    "read": {
+      "title": "Leer",
+      "hint": "Aquí vivirán lecturas cortas graduadas y diálogos."
+    },
+    "extras": {
+      "title": "Extras / Perfil",
+      "hint": "Aquí vivirán los ajustes, las rachas, la búsqueda dibujando y más herramientas de práctica."
+    }
+  },
+  "profile": {
+    "language": "Idioma",
+    "storage": "Almacenamiento",
+    "storageEngine": "{driver}",
+    "offlineReady": "Listo sin conexión",
+    "install": "Instalar app",
+    "installUnavailable": "La instalación no está disponible en este navegador (¿ya está instalada?)"
+  },
+  "errors": {
+    "routeMissing": "La pantalla «{screen}» no existe.",
+    "localeUnknown": "El idioma «{code}» no está cargado."
+  }
+}

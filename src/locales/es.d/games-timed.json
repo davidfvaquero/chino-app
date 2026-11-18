@@ -1,0 +1,19 @@
+{
+  "games": {
+    "timed": {
+      "title": "Quiz cronometrado",
+      "desc": "60 segundos para acertar todas las que puedas.",
+      "playAudio": "Reproducir audio",
+      "streak": "Racha",
+      "streakLabel": "Racha",
+      "score": "Puntos",
+      "finalScore": "Puntuación final",
+      "bestScore": "Mejor puntuación",
+      "bestStreak": "Mejor racha",
+      "time": "Tiempo",
+      "complete": "¡Se acabó el tiempo!",
+      "playAgain": "Jugar otra vez",
+      "back": "Volver a los juegos"
+    }
+  }
+}
