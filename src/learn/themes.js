@@ -26,16 +26,19 @@ import storage from '../storage.js';
 import { speak } from '../audio.js';
 import { addToReview } from '../srs.js';
 import { pinyinHtml } from '../tone.js';
+import { fetchData } from '../data-url.js';
 
 export const titleKey = 'themes.title';
 export const PROGRESS_STORE = 'progress';
 export const DATA_BASE = new URL('../../data/themes/', import.meta.url);
 
-const defaultFetchJson = async (url) => {
-  const res = await fetch(url, { cache: 'no-cache' });
-  if (!res.ok) throw new Error(`themes: ${res.status} for ${url}`);
-  return res.json();
-};
+/**
+ * Reads one theme file, language-aware by default: locale 'es' loads
+ * `data/es/themes/<relPath>` when translated, else English. An injected
+ * `fetchJson`/`base` keeps the plain-URL contract (tests).
+ */
+const readJson = (relPath, { base = DATA_BASE, fetchJson } = {}) =>
+  fetchJson ? fetchJson(new URL(relPath, base)) : fetchData(`themes/${relPath}`);
 
 const str = (v) => typeof v === 'string' && v.trim() !== '';
 
@@ -75,16 +78,16 @@ export function validateIndex(index) {
 }
 
 /** Loads the index (bare array in the JSON file). */
-export async function loadIndex({ base = DATA_BASE, fetchJson = defaultFetchJson } = {}) {
-  const index = await fetchJson(new URL('index.json', base));
+export async function loadIndex(opts = {}) {
+  const index = await readJson('index.json', opts);
   const problems = validateIndex(index);
   if (problems.length) throw new Error(`themes index: ${problems.join('; ')}`);
   return Array.isArray(index) ? index : index.themes;
 }
 
 /** Loads and validates one theme; throws on a schema problem. */
-export async function loadTheme(id, { base = DATA_BASE, fetchJson = defaultFetchJson } = {}) {
-  const theme = await fetchJson(new URL(`${id}.json`, base));
+export async function loadTheme(id, opts = {}) {
+  const theme = await readJson(`${id}.json`, opts);
   const problems = validateTheme(theme);
   if (problems.length) throw new Error(`themes ${id}: ${problems.join('; ')}`);
   return {

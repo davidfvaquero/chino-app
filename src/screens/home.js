@@ -18,10 +18,10 @@ import { getSettings, DEFAULTS } from '../settings.js';
 import { getHardWords } from '../hardwords.js';
 import { loadIndex as loadLessonIndex, getProgress } from '../learn/lessons.js';
 import { loadIndex as loadReadingIndex } from '../reading/data.js';
+import { fetchData } from '../data-url.js';
 
 export const titleKey = 'screens.home.title';
 
-const HSK1_URL = new URL('../../data/hsk/1.json', import.meta.url);
 const WOTD_STEP = 37; // coprime with 150 words: visits every word, no neighbours on consecutive days
 
 /** Local 'YYYY-MM-DD' (same key format as src/stats.js). */
@@ -90,9 +90,8 @@ function ensureStyles() {
 const safe = (promise, fallback) => Promise.resolve(promise).catch(() => fallback);
 
 async function loadWordList() {
-  const res = await fetch(HSK1_URL);
-  if (!res.ok) throw new Error(`home: ${res.status}`);
-  return (await res.json()).items ?? [];
+  const data = await fetchData('hsk/1.json');
+  return data.items ?? [];
 }
 
 async function gather(now) {

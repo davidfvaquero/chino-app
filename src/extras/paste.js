@@ -8,7 +8,7 @@
  *
  * Reuses pure logic from src/reading/model.js and src/screens/read.js patterns.
  */
-import { t } from '../i18n.js';
+import { t, getLocale } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import * as dictionary from '../dictionary.js';
 import { addToReview, listCards } from '../srs.js';
@@ -16,8 +16,7 @@ import { speak, isTtsAvailable } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
 import { tokenizeLine, wordPanel, reviewEntryFrom, hasHanzi } from '../reading/model.js';
 import storage from '../storage.js';
-
-const HSK1_URL = typeof document === 'undefined' ? '/data/hsk/1.json' : new URL('data/hsk/1.json', document.baseURI);
+import { fetchData } from '../data-url.js';
 
 export const titleKey = 'paste.title';
 
@@ -90,18 +89,20 @@ function ensureStyles(doc) {
 
 const STORAGE_KEY = 'pasteLastText';
 
-/** Load HSK1 vocabulary into a Set for fast unknown-word checking. */
+/** Load HSK1 vocabulary into a Set for fast unknown-word checking.
+ *  Reloaded when the UI language changes (the list carries a meaning per language). */
 let hsk1Set = null;
+let hsk1Locale = null;
 async function loadHSK1() {
-  if (hsk1Set) return hsk1Set;
+  const locale = getLocale();
+  if (hsk1Set && hsk1Locale === locale) return hsk1Set;
   try {
-    const res = await fetch(HSK1_URL);
-    if (!res.ok) throw new Error('HSK1 load failed');
-    const data = await res.json();
+    const data = await fetchData('hsk/1.json');
     hsk1Set = new Set(data.items.map(item => item.hanzi));
   } catch {
     hsk1Set = new Set();
   }
+  hsk1Locale = locale;
   return hsk1Set;
 }
 

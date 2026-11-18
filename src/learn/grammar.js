@@ -33,6 +33,7 @@ import { speak, isTtsAvailable } from '../audio.js';
 import { addToReview } from '../srs.js';
 import storage from '../storage.js';
 import { pinyinHtml } from '../tone.js';
+import { fetchData } from '../data-url.js';
 
 export const titleKey = 'grammar.title';
 export const LESSON_ID = 'grammar';
@@ -108,15 +109,17 @@ export function normalizePattern(raw = {}) {
 
 /* ------------------------------------------------------------------ loading -- */
 
-const defaultFetchJson = async (url) => {
-  const res = await fetch(url, { cache: 'no-cache' });
-  if (!res.ok) throw new Error(`grammar: ${res.status} for ${url}`);
-  return res.json();
-};
+/**
+ * Reads one grammar file, language-aware by default: locale 'es' loads
+ * `data/es/grammar/<relPath>` when translated, else English. An injected
+ * `fetchJson`/`base` keeps the plain-URL contract (tests).
+ */
+const readJson = (relPath, { base = DATA_BASE, fetchJson } = {}) =>
+  fetchJson ? fetchJson(new URL(relPath, base)) : fetchData(`grammar/${relPath}`);
 
 /** The plan: 15 pre-defined patterns (id, title, level, optional file). */
-export async function loadIndex({ base = DATA_BASE, fetchJson = defaultFetchJson } = {}) {
-  const data = await fetchJson(new URL('index.json', base));
+export async function loadIndex(opts = {}) {
+  const data = await readJson('index.json', opts);
   const list = Array.isArray(data) ? data : data.patterns ?? [];
   return (Array.isArray(list) ? list : [])
     .filter(isValidIndexEntry)
@@ -124,18 +127,19 @@ export async function loadIndex({ base = DATA_BASE, fetchJson = defaultFetchJson
 }
 
 /** One pattern's full text; `null` when the pattern is planned but not written. */
-export async function loadPattern(id, { base = DATA_BASE, fetchJson = defaultFetchJson, index } = {}) {
-  const entries = index ?? (await loadIndex({ base, fetchJson }));
+export async function loadPattern(id, opts = {}) {
+  const { index, ...io } = opts;
+  const entries = index ?? (await loadIndex(io));
   const entry = entries.find((candidate) => candidate.id === id);
   if (!entry || !entry.file) return null;
-  const raw = await fetchJson(new URL(entry.file, base));
+  const raw = await readJson(entry.file, io);
   const pattern = normalizePattern(raw);
   return isValidPattern(pattern) ? pattern : null;
 }
 
 /** The 25 common classifiers. */
-export async function loadMeasureWords({ base = DATA_BASE, fetchJson = defaultFetchJson } = {}) {
-  const data = await fetchJson(new URL('measure-words.json', base));
+export async function loadMeasureWords(opts = {}) {
+  const data = await readJson('measure-words.json', opts);
   const list = Array.isArray(data) ? data : data.measureWords ?? [];
   return (Array.isArray(list) ? list : []).filter(isValidMeasureWord);
 }

@@ -25,6 +25,7 @@ import { addToReview } from '../srs.js';
 import { speak } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
 import { gradeExercise, summarize } from './exercises.js';
+import { fetchData } from '../data-url.js';
 
 const STYLE_ID = 'lessons-layout-style';
 
@@ -84,26 +85,26 @@ export const PROGRESS_STORE = 'progress';
 /** Root of the lesson data, relative to this module (works in src/ and dist/). */
 export const DATA_BASE = new URL('../../data/lessons/', import.meta.url);
 
-const defaultFetchJson = async (url) => {
-  const res = await fetch(url, { cache: 'no-cache' });
-  if (!res.ok) throw new Error(`lessons: ${res.status} for ${url}`);
-  return res.json();
-};
+/**
+ * Reads one lesson file, language-aware by default: with locale 'es' it loads
+ * `data/es/lessons/<relPath>` when translated and falls back to English. A
+ * caller-supplied `fetchJson`/`base` keeps the plain-URL contract (tests).
+ */
+const readJson = (relPath, { base = DATA_BASE, fetchJson } = {}) =>
+  fetchJson ? fetchJson(new URL(relPath, base)) : fetchData(`lessons/${relPath}`);
 
 /** Loads `index.json` for a level. `fetchJson`/`base` are injectable for tests. */
-export async function loadIndex(level = DEFAULT_LEVEL, { base = DATA_BASE, fetchJson = defaultFetchJson } = {}) {
-  const url = new URL(`${level}/index.json`, base);
-  const index = await fetchJson(url);
+export async function loadIndex(level = DEFAULT_LEVEL, opts = {}) {
+  const index = await readJson(`${level}/index.json`, opts);
   return { ...index, level: index.level ?? level };
 }
 
 /** Loads one lesson file (by its index entry id). */
-export async function loadLesson(level, lessonId, { base = DATA_BASE, fetchJson = defaultFetchJson } = {}) {
-  const index = await loadIndex(level, { base, fetchJson });
+export async function loadLesson(level, lessonId, opts = {}) {
+  const index = await loadIndex(level, opts);
   const entry = (index.lessons ?? []).find((lesson) => lesson.id === lessonId);
   if (!entry) throw new Error(`lessons: unknown lesson "${lessonId}" in ${level}`);
-  const url = new URL(`${level}/${entry.file ?? `${lessonId}.json`}`, base);
-  const lesson = await fetchJson(url);
+  const lesson = await readJson(`${level}/${entry.file ?? `${lessonId}.json`}`, opts);
   return { ...lesson, level, id: entry.id };
 }
 

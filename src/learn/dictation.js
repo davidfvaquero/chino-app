@@ -40,6 +40,7 @@ import { speak, isTtsAvailable } from '../audio.js';
 import { addToReview } from '../srs.js';
 import { pinyinHtml } from '../tone.js';
 import { tonelessKey } from '../pinyin.js';
+import { fetchData } from '../data-url.js';
 
 export const titleKey = 'dictation.title';
 export const LESSON_ID = 'dictation';
@@ -346,15 +347,17 @@ export async function setToneMode(mode, { store = storage } = {}) {
 
 /* ------------------------------------------------------------------ sources -- */
 
-const defaultFetchJson = async (url) => {
-  const res = await fetch(url, { cache: 'no-cache' });
-  if (!res.ok) throw new Error(`dictation: ${res.status} for ${url}`);
-  return res.json();
-};
+/**
+ * Reads one data file, language-aware by default: locale 'es' loads
+ * `data/es/<relPath>` when translated, else English. An injected
+ * `fetchJson`/`base` keeps the plain-URL contract (tests).
+ */
+const readJson = (relPath, { base = DATA_BASE, fetchJson } = {}) =>
+  fetchJson ? fetchJson(new URL(relPath, base)) : fetchData(relPath);
 
 /** HSK level 1 words. `base`/`fetchJson` are injectable for tests. */
-export async function loadHsk1({ base = DATA_BASE, fetchJson = defaultFetchJson, level = 1 } = {}) {
-  const data = await fetchJson(new URL(`hsk/${level}.json`, base));
+export async function loadHsk1({ base = DATA_BASE, fetchJson, level = 1 } = {}) {
+  const data = await readJson(`hsk/${level}.json`, { base, fetchJson });
   return (data.items ?? []).map(normalizeWord).filter(isPlayable);
 }
 
@@ -365,9 +368,9 @@ export async function loadSrs({ store = storage } = {}) {
 }
 
 /** Theme list (`public/data/themes/index.json`); [] when the file does not exist. */
-export async function loadThemesIndex({ base = DATA_BASE, fetchJson = defaultFetchJson } = {}) {
+export async function loadThemesIndex({ base = DATA_BASE, fetchJson } = {}) {
   try {
-    const data = await fetchJson(new URL('themes/index.json', base));
+    const data = await readJson('themes/index.json', { base, fetchJson });
     // The data task ships a bare array; accept a wrapped list too.
     const list = Array.isArray(data) ? data : data.themes ?? data.items ?? [];
     return Array.isArray(list) ? list.filter((theme) => theme && (theme.id || theme.slug)) : [];
@@ -377,8 +380,8 @@ export async function loadThemesIndex({ base = DATA_BASE, fetchJson = defaultFet
 }
 
 /** Words of one theme (`public/data/themes/<id>.json`). */
-export async function loadTheme(id, { base = DATA_BASE, fetchJson = defaultFetchJson } = {}) {
-  const data = await fetchJson(new URL(`themes/${id}.json`, base));
+export async function loadTheme(id, { base = DATA_BASE, fetchJson } = {}) {
+  const data = await readJson(`themes/${id}.json`, { base, fetchJson });
   const list = data.items ?? data.words ?? [];
   return (Array.isArray(list) ? list : []).map(normalizeWord).filter(isPlayable);
 }
@@ -388,7 +391,7 @@ export async function loadTheme(id, { base = DATA_BASE, fetchJson = defaultFetch
  * `[{id, label, labelKey, count, load}]` — `count` is null for lazily loaded
  * themes (they are only fetched when picked).
  */
-export async function loadSources({ store = storage, base = DATA_BASE, fetchJson = defaultFetchJson } = {}) {
+export async function loadSources({ store = storage, base = DATA_BASE, fetchJson } = {}) {
   const sources = [];
   let hsk1 = [];
   try {

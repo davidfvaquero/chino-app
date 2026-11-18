@@ -2,13 +2,13 @@
  * Everyday phrases (Tatoeba) — paginated, filterable, with audio & "add to review".
  * Contract: exports titleKey + render(container, ctx)
  */
-import { t } from '../i18n.js';
+import { t, getLocale } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import { speak, isTtsAvailable } from '../audio.js';
 import { addToReview } from '../srs.js';
 import { pinyinHtml } from '../tone.js';
+import { fetchData } from '../data-url.js';
 
-const BASE = typeof document === 'undefined' ? '/data/sentences' : new URL('data/sentences', document.baseURI);
 const SHARD_SIZE = 50; // items per page (client-side pagination after load)
 
 const STYLE_ID = 'sentences-layout-style';
@@ -38,15 +38,17 @@ let filtered = [];
 let currentPage = 0;
 let currentFilter = '';
 let cleanupFns = [];
+let loadedLocale = null;
 
 async function loadSentences() {
-  if (allSentences.length) return allSentences;
-  const idx = await fetch(`${BASE}/index.json`).then(r => r.json());
-  const shards = await Promise.all(
-    idx.shards.map(s => fetch(`${BASE}/${s.file}`).then(r => r.json()))
-  );
+  const locale = getLocale();
+  if (allSentences.length && loadedLocale === locale) return allSentences;
+  // Language-aware: locale 'es' reads data/es/sentences/... when translated.
+  const idx = await fetchData('sentences/index.json');
+  const shards = await Promise.all(idx.shards.map((s) => fetchData(`sentences/${s.file}`)));
   allSentences = shards.flat();
   filtered = [...allSentences];
+  loadedLocale = locale;
   return allSentences;
 }
 

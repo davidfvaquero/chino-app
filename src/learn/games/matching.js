@@ -16,8 +16,7 @@ import { addToReview } from '../../srs.js';
 import { pinyinHtml } from '../../tone.js';
 import { search } from '../../dictionary.js';
 import storage from '../../storage.js';
-
-const HSK1_URL = typeof document === 'undefined' ? '/data/hsk/1.json' : new URL('data/hsk/1.json', document.baseURI);
+import { fetchData } from '../../data-url.js';
 
 export const titleKey = 'games.matching.title';
 export const id = 'matching';
@@ -112,9 +111,7 @@ export function checkMatching(pairs, response) {
 /** Load words from a source: 'hsk1' | 'review' | 'theme:<name>' */
 async function loadWords(source) {
   if (source === 'hsk1') {
-    const res = await fetch(HSK1_URL, { cache: 'no-cache' });
-    if (!res.ok) throw new Error('matching: failed to load HSK1');
-    const data = await res.json();
+    const data = await fetchData('hsk/1.json');
     return data.items ?? [];
   }
   if (source === 'review') {
