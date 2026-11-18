@@ -11,6 +11,7 @@
     "serve": "node scripts/serve.mjs",
     "test": "node --test tests/",
     "data": "node scripts/build-data.mjs",
+    "data:sentences-es": "node scripts/build-sentences-es.mjs",
     "data:radicals": "node scripts/build-radicals.mjs",
     "test:data": "node --test tests/data-sanity.test.mjs",
     "icons": "node scripts/gen-icons.mjs"

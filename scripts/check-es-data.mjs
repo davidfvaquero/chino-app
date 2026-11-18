@@ -306,7 +306,16 @@ function toRelative(target, { enRoot, esRoot }) {
 }
 
 async function targetsFor(opts, roots) {
-  if (!opts.target) return walkJson(roots.esRoot);
+  if (!opts.target) {
+    // Machine-generated shards (dict/strokes/sentences/…) and build listings
+    // are never hand-translated, so the default sweep skips them (same rule as
+    // `--coverage`): their `en` fields legitimately mix English fallbacks.
+    const files = await walkJson(roots.esRoot);
+    return files.filter((rel) => {
+      const parts = rel.split('/');
+      return !parts.some((part) => SKIP_DIRS.has(part)) && !SKIP_FILES.has(parts[parts.length - 1]);
+    });
+  }
   const rel = toRelative(opts.target, roots);
   const abs = path.join(roots.enRoot, rel);
   if (!(await exists(abs))) throw new Error(`no encuentro ${opts.target}`);
