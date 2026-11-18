@@ -1,0 +1,35 @@
+{
+  "settings": {
+    "theme": {
+      "title": "Theme",
+      "hint": "Choose how the app adapts to your system preference.",
+      "auto": "Auto (system)",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "fontScale": {
+      "title": "Font size",
+      "hint": "Adjust the base text size across the app.",
+      "small": "Normal",
+      "medium": "Medium",
+      "large": "Large"
+    },
+    "toneColors": {
+      "title": "Tone colors",
+      "hint": "Color pinyin syllables by tone (1–4 + neutral). Preview updates live.",
+      "on": "On",
+      "off": "Off",
+      "previewLabel": "Preview:"
+    },
+    "dailyGoal": {
+      "title": "Daily goal",
+      "hint": "Target number of review cards per day.",
+      "option": "{count} cards"
+    },
+    "language": {
+      "title": "Interface language",
+      "hint": "Select the language for menus and labels.",
+      "current": "Current: {name}"
+    }
+  }
+}
