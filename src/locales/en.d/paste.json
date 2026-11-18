@@ -11,6 +11,7 @@
     "unknownCount_other": "{count} unknown words (not in HSK1 or review)",
     "noText": "No text to analyze.",
     "wordNotFound": "No dictionary entry for “{word}”.",
+    "error": "Could not analyze the text. Please try again.",
     "addToReview": "Add to review",
     "added": "Added to review",
     "close": "Close",

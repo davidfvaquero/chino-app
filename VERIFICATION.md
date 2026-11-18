@@ -323,3 +323,63 @@ Arreglo (1 linea por archivo): anadir `'pinyin-chart','themes','dictation'` a AR
 Verdict: modulos TONEa/b, TON, PIN, TH, DICT, BACKUP, STATS OK. Bloque NO cerrado hasta FALLO 1 (integracion hubs + `attach()`).
 
 *Revisor `fuerte` — 2026-11-17*
+
+---
+
+## Verificacion bloque 6 (herramientas) — RADD/RADU, PASTE, SET — t_fea29e70
+
+Verificador `barato`. Alcance (tras el ajuste): solo lo hecho por `gratis` -> RADD/RADU (`t_e20fa2fd`), PASTE (`t_15dc5ef3`), SET (`t_1e34d7fb`). TONEa/b, BACKUP y STATS quedan fuera de alcance (los hizo `barato`, revision fuerte en `t_5d7e04b5`). Comprobado el asignado de cada tarea en alcance: las TRES son de `gratis`, ninguna de mi perfil -> verifico sin conflicto de interes.
+
+Navegador: Chrome headless via CDP, build `OUT_DIR=/tmp/chino-t_fea29e70` (nunca `dist/`), `node scripts/serve.mjs /tmp/chino-t_fea29e70`, sesion de navegador aislada.
+
+Nota de concurrencia: durante la verificacion otro worker (Home, `t_5c203a10`) editaba a la vez `src/screens/extras.js`, `src/screens/learn.js`, `src/main.js` y anadia `src/locales/en.d/home.json` (todo SIN commitear). Esos cambios ya integran paste/settings/radicals en los hubs; esta verificacion es contra el arbol de trabajo actual (por eso "cada ruta abre directo" sale OK — a HEAD esas rutas todavia mostraban el menu del hub).
+
+| Punto | Resultado | Evidencia |
+| --- | --- | --- |
+| `npm test` | **OK** | 447 pass / 0 fail (el worker Home arreglo el fallo previo de `themes.test.mjs`; antes 439/1) |
+| PASTE `#/extras/paste` abre directo | **OK** | renderiza `.paste-textarea`, header "Paste & Analyze" |
+| PASTE analiza `我喜欢学习中文。你好吗？` | **OK** | 2 oraciones; palabras `我 喜欢 学习 中文 你好 吗` |
+| PASTE pinyin coloreado + toggle | **OK** | `.pinyin` con `.tone tone3/tone5/...`; boton Pinyin muestra/oculta (`hidden` false) |
+| PASTE panel de significado | **OK** | tap en `我` -> hanzi `我`, pinyin `wǒ`, defs `I; me; my`, botones Add to review / Play sentence |
+| PASTE anadir a repaso | **OK** | boton -> "Added to review"; `srs.listCards()` source=`paste` -> `我`; contador bajan las desconocidas |
+| PASTE pinyin se apaga con toneColors | **OK** | `setSetting('toneColors',false)` -> color de `.tone` pasa de azul (`rgb(21,101,192)`) al color del body (`rgb(242,240,238)`) |
+| SET `#/extras/settings` abre directo | **OK** | header "Settings" + 5 secciones (Theme, Font size, Tone colors, Daily goal, Interface language) |
+| SET tema oscuro + letra grande persisten tras recargar | **OK** | tras set dark/1.3 y reload: `data-theme=dark`, `--font-scale=1.3`, body bg `rgb(19,18,17)`; `storage('settings','theme')=dark`, `fontScale=1.3` |
+| SET legible | **OK** | fg `#f2f0ee` sobre bg `#131211` (contraste alto) |
+| RADD `#/learn/radicals` abre directo | **OK** | grid con 214 radicales; buscar `女` filtra a 1 |
+| RADU `好 = 女 + 子` | **OK** | `#/learn/radicals/好`: partes `女 子`, "Radical: 女 (Kangxi #38)" |
+| RADU radical `女` lista `好` y `妈` | **OK** | `#/learn/radicals/女`: rejilla 163 chars, incluye `好` y `妈` |
+| sin strings de UI hardcodeados en los 3 modulos | **OK** | todo el texto sale de `t()`; claves `paste.*` / `settings.*` / `radicals.*` presentes |
+| sin chino tradicional en la UI | **FALLO** | rejilla de `女` muestra 22 caracteres solo-tradicionales: `媽 婦 嬰 孌 妝 娛 嫗 嫵 嫻 嬈 嬋 嬌 嬪 嬸 孃 奼 妳 姦 姪 婁 婭 媧` (ver FALLO 1) |
+| sin errores de consola | **OK** | 0 errores en todas las cargas/render (paste, settings, radicals lista y descomposicion) |
+| cada ruta abre directamente | **OK** | paste/settings/radicals renderizan su pantalla con la integracion en curso del worker Home |
+
+### FALLO 1 — caracteres tradicionales en la rejilla de radicales (menor, datos)
+
+`#/learn/radicals/女` ("Caracteres con este radical") incluye 22 caracteres que solo existen como `trad` (no como `simp`) en `public/data/dict/shards`: `媽 婦 嬰 孌 妝 娛 嫗 ...`. La app debe ser "SOLO chino simplificado", asi que es tradicional visible en la UI. Los 3 restantes (`妟 姫 媷`) ni siquiera estan en el diccionario.
+
+- Reproducir: `OUT_DIR=/tmp/x npm run build && node scripts/serve.mjs /tmp/x` -> abrir `#/learn/radicals/女` -> mirar la rejilla (aparecen `媽`, `婦`, `嬰`...).
+- Causa: `scripts/build-radicals.mjs` mete en `dataChars` todas las claves del indice de trazos (`public/data/strokes/lookup`, dataset amplio con tradicionales) y de ahi pasan al `reverse-index.json`; `src/learn/radicals.js` (`renderChars`) los pinta sin filtrar.
+- Arreglo sugerido (NO aplicado, >5 lineas y toca datos generados): en `build-radicals.mjs` recolectar `dataChars` solo del contenido propio simplificado (o intersectar con el set `simp` del diccionario) y regenerar `reverse-index.json`; o filtrar en `renderChars` contra las claves `simp`.
+
+### Defecto menor corregido (1 linea)
+
+`src/extras/paste.js:310` usa `t('paste.error')` pero la clave no existia en `src/locales/en.d/paste.json` (en el camino de error se veria la clave cruda). Anadida `"error": "Could not analyze the text. Please try again."`. `node --test tests/paste.test.mjs tests/i18n-locales.test.mjs` -> 20/20 pass.
+
+### Como reproducir
+
+```bash
+cd /home/homelab/chino-app
+OUT_DIR=/tmp/chino-t_fea29e70 npm run build     # 505 files
+node scripts/serve.mjs /tmp/chino-t_fea29e70     # p.ej. http://localhost:42047/
+# PASTE:   #/extras/paste -> pegar "我喜欢学习中文。你好吗？" -> Analyze -> Pinyin -> tap palabra -> Add to review; #/review
+# SET:     #/extras/settings -> Theme=Dark, Font size=Large -> recargar -> sigue oscuro y grande
+# RADD:    #/learn/radicals -> buscar 女 ; #/learn/radicals/好 -> 女 + 子 ; #/learn/radicals/女 -> lista (aqui salen los tradicionales)
+node --test tests/paste.test.mjs tests/settings.test.mjs tests/radicals.test.mjs   # 46 pass
+```
+
+Sin cambios de codigo salvo la 1 linea de locale. No se toco `dist/`.
+
+Verdict: **RADD, RADU, PASTE, SET OK en funcionalidad.** 1 FALLO menor (tradicional en rejilla de radicales, datos) + 1 defecto menor corregido (clave `paste.error`). El FALLO 1 no bloquea PASTE/SET ni el nucleo de RADD/RADU.
+
+*Verificador `barato` — 2026-11-18*
