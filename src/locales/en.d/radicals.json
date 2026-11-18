@@ -1,0 +1,25 @@
+{
+  "radicals": {
+    "title": "Radicals",
+    "searchLabel": "Search radicals",
+    "searchPlaceholder": "Type radical or meaning, e.g. 女 or woman",
+    "searchButton": "Search",
+    "searchResults": "Matching radicals",
+    "noRadicals": "No radicals match your search.",
+    "loading": "Loading…",
+    "loadError": "Could not load radicals data.",
+    "characters": "Characters with this radical",
+    "addToReview": "Add to review",
+    "addedToReview": "Added to your review deck.",
+    "reviewError": "Could not add to review deck.",
+    "decompositionTitle": "Decomposition of {char}",
+    "parts": "Parts",
+    "radical": "Radical: {radical}",
+    "kangxiNumber": "Kangxi #{number}",
+    "noDecomposition": "No decomposition data for this character.",
+    "clickPart": "Click a part to see its characters",
+    "speak": "Hear it",
+    "speakUnsupported": "This device has no speech voice for Chinese.",
+    "speakError": "Could not play the audio."
+  }
+}
