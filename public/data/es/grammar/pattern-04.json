@@ -1,0 +1,16 @@
+{
+  "id": "bu-mei-negation",
+  "title": "不 / 没 — negación",
+  "level": "HSK1",
+  "explanation": "不 niega acciones presentes o futuras y adjetivos. 没 niega acciones pasadas y la posesión (没 + 有). 不 pasa a segundo tono (bú) antes de una sílaba de cuarto tono.",
+  "structure": "Sujeto + 不/没 + verbo/adj.  |  Sujeto + 没 + 有 + sustantivo",
+  "examples": [
+    { "hanzi": "我不忙。", "pinyin": "wǒ bù máng", "english": "No estoy ocupado." },
+    { "hanzi": "他不吃肉。", "pinyin": "tā bù chī ròu", "english": "Él no come carne." },
+    { "hanzi": "我没有钱。", "pinyin": "wǒ méi yǒu qián", "english": "No tengo dinero." },
+    { "hanzi": "他没去中国。", "pinyin": "tā méi qù zhōngguó", "english": "Él no fue a China." },
+    { "hanzi": "这不贵。", "pinyin": "zhè bù guì", "english": "Esto no es caro." },
+    { "hanzi": "我没看那本书。", "pinyin": "wǒ méi kàn nà běn shū", "english": "No leí ese libro." }
+  ],
+  "notes": "不 + cuarto tono → bú (p. ej., 不是 bú shì). 没 se usa con acciones completadas o realizadas y con 有. 不 se usa con lo habitual, el futuro y los adjetivos."
+}

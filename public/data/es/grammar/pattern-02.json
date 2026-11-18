@@ -1,0 +1,14 @@
+{
+  "id": "de-possession",
+  "title": "的 — posesión",
+  "level": "HSK1",
+  "explanation": "的 une un poseedor o una descripción con un sustantivo: A 的 B significa «el B de A» o «el B que es A».",
+  "structure": "Poseedor + 的 + sustantivo",
+  "examples": [
+    { "hanzi": "我的妈妈", "pinyin": "wǒ de māma", "english": "mi madre" },
+    { "hanzi": "老师的书", "pinyin": "lǎoshī de shū", "english": "el libro del profesor" },
+    { "hanzi": "这是他的手机。", "pinyin": "zhè shì tā de shǒujī", "english": "Este es su teléfono." },
+    { "hanzi": "中国的地图", "pinyin": "zhōngguó de dìtú", "english": "un mapa de China" }
+  ],
+  "notes": "Con la familia cercana puedes omitir 的: 我妈妈 (mi mamá) suena más cálido que 我的妈妈."
+}

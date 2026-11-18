@@ -1,0 +1,15 @@
+{
+  "id": "ma-questions",
+  "title": "吗 — preguntas de sí/no",
+  "level": "HSK1",
+  "explanation": "Añade 吗 al final de una afirmación para convertirla en una pregunta de sí/no. No hace falta cambiar el orden de las palabras.",
+  "structure": "Afirmación + 吗",
+  "examples": [
+    { "hanzi": "你好吗？", "pinyin": "nǐ hǎo ma", "english": "¿Cómo estás?" },
+    { "hanzi": "你是老师吗？", "pinyin": "nǐ shì lǎoshī ma", "english": "¿Eres profesor?" },
+    { "hanzi": "这是你的书吗？", "pinyin": "zhè shì nǐ de shū ma", "english": "¿Este es tu libro?" },
+    { "hanzi": "你会说中文吗？", "pinyin": "nǐ huì shuō zhōngwén ma", "english": "¿Sabes hablar chino?" },
+    { "hanzi": "你吃饭了吗？", "pinyin": "nǐ chī fàn le ma", "english": "¿Has comido?" }
+  ],
+  "notes": "Responde con 对 (correcto), 不对 (incorrecto), 是 (sí, lo es), 不是 (no, no lo es), 有 (tener) o 没有 (no tener); no con un simple «sí/no»."
+}

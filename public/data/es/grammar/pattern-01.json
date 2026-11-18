@@ -1,0 +1,14 @@
+{
+  "id": "shi",
+  "title": "是 — ser",
+  "level": "HSK1",
+  "explanation": "Usa 是 para unir dos sustantivos, como el verbo «ser»: A 是 B significa «A es B». No lo uses con adjetivos.",
+  "structure": "Sujeto + 是 + sustantivo",
+  "examples": [
+    { "hanzi": "我是学生。", "pinyin": "wǒ shì xuéshēng", "english": "Soy estudiante." },
+    { "hanzi": "他是老师。", "pinyin": "tā shì lǎoshī", "english": "Él es profesor." },
+    { "hanzi": "这是我的书。", "pinyin": "zhè shì wǒ de shū", "english": "Este es mi libro." },
+    { "hanzi": "她是中国人。", "pinyin": "tā shì zhōngguó rén", "english": "Ella es china." }
+  ],
+  "notes": "Con un adjetivo no se usa 是: di 我很累 (estoy cansado), no 我是很累. Consulta el patrón 很 + adjetivo."
+}
