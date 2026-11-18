@@ -1,0 +1,16 @@
+{
+  "id": "question-words",
+  "title": "Question words",
+  "level": "HSK1",
+  "explanation": "Chinese question words stay in the answer's position — no fronting like English. 什么 (what), 谁 (who), 哪 (which), 怎么 (how), 为什么 (why), 多少 (how many/much), 几 (how few).",
+  "structure": "Subj + Verb + Question Word  |  Question Word + Verb + Obj",
+  "examples": [
+    { "hanzi": "你叫什么名字？", "pinyin": "nǐ jiào shénme míngzi", "english": "What is your name?" },
+    { "hanzi": "谁是老师？", "pinyin": "shéi shì lǎoshī", "english": "Who is the teacher?" },
+    { "hanzi": "你在哪儿？", "pinyin": "nǐ zài nǎr", "english": "Where are you?" },
+    { "hanzi": "怎么去车站？", "pinyin": "zěnme qù chēzhàn", "english": "How to get to the station?" },
+    { "hanzi": "为什么不吃肉？", "pinyin": "wèishénme bù chī ròu", "english": "Why don't you eat meat?" },
+    { "hanzi": "你有几本书？", "pinyin": "nǐ yǒu jǐ běn shū", "english": "How many books do you have?" }
+  ],
+  "notes": "哪儿/哪里 (where) are interchangeable. 几 for small numbers (<10), 多少 for larger. 怎么 = how (method), 怎么样 = how about/what do you think. Question word position = answer position."
+}

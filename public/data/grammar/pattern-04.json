@@ -1,0 +1,16 @@
+{
+  "id": "bu-mei-negation",
+  "title": "不 / 没 — negation",
+  "level": "HSK1",
+  "explanation": "不 negates present/future actions and adjectives. 没 negates past actions and possession (没 + 有). 不 changes to second tone (bú) before a fourth-tone syllable.",
+  "structure": "Subj + 不/没 + Verb/Adj  |  Subj + 没 + 有 + Noun",
+  "examples": [
+    { "hanzi": "我不忙。", "pinyin": "wǒ bù máng", "english": "I am not busy." },
+    { "hanzi": "他不吃肉。", "pinyin": "tā bù chī ròu", "english": "He doesn't eat meat." },
+    { "hanzi": "我没有钱。", "pinyin": "wǒ méi yǒu qián", "english": "I don't have money." },
+    { "hanzi": "他没去中国。", "pinyin": "tā méi qù zhōngguó", "english": "He didn't go to China." },
+    { "hanzi": "这不贵。", "pinyin": "zhè bù guì", "english": "This isn't expensive." },
+    { "hanzi": "我没看那本书。", "pinyin": "wǒ méi kàn nà běn shū", "english": "I didn't read that book." }
+  ],
+  "notes": "不 + 4th tone → bú (e.g., 不是 bú shì). 没 is for completed/realized actions and with 有. 不 is for habitual, future, and adjectives."
+}

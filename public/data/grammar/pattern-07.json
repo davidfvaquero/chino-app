@@ -1,0 +1,16 @@
+{
+  "id": "you-have",
+  "title": "有 — to have",
+  "level": "HSK1",
+  "explanation": "有 means \"have/possess\" or \"there is/are.\" Negation is 没有 (never 不有). It never takes 了 for completion.",
+  "structure": "Subj + 有 + Noun          (possession)\n有 + Noun                   (existence: \"there is/are\")",
+  "examples": [
+    { "hanzi": "我有车。", "pinyin": "wǒ yǒu chē", "english": "I have a car." },
+    { "hanzi": "他没有妹妹。", "pinyin": "tā méi yǒu mèimei", "english": "He doesn't have a younger sister." },
+    { "hanzi": "这里有三个人。", "pinyin": "zhèlǐ yǒu sān gè rén", "english": "There are three people here." },
+    { "hanzi": "你有时间吗？", "pinyin": "nǐ yǒu shíjiān ma", "english": "Do you have time?" },
+    { "hanzi": "我有两个哥哥。", "pinyin": "wǒ yǒu liǎng gè gēge", "english": "I have two older brothers." },
+    { "hanzi": "学校有图书馆。", "pinyin": "xuéxiào yǒu túshūguǎn", "english": "The school has a library." }
+  ],
+  "notes": "Negation is always 没有 (méi yǒu), never 不有. 有 does not combine with 了. For \"have done,\" use Verb + 了, not 有 + Verb."
+}

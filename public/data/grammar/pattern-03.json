@@ -1,0 +1,15 @@
+{
+  "id": "ma-questions",
+  "title": "吗 — yes/no questions",
+  "level": "HSK1",
+  "explanation": "Add 吗 at the end of a statement to turn it into a yes/no question. No word order change needed.",
+  "structure": "Statement + 吗",
+  "examples": [
+    { "hanzi": "你好吗？", "pinyin": "nǐ hǎo ma", "english": "How are you?" },
+    { "hanzi": "你是老师吗？", "pinyin": "nǐ shì lǎoshī ma", "english": "Are you a teacher?" },
+    { "hanzi": "这是你的书吗？", "pinyin": "zhè shì nǐ de shū ma", "english": "Is this your book?" },
+    { "hanzi": "你会说中文吗？", "pinyin": "nǐ huì shuō zhōngwén ma", "english": "Can you speak Chinese?" },
+    { "hanzi": "你吃饭了吗？", "pinyin": "nǐ chī fàn le ma", "english": "Have you eaten?" }
+  ],
+  "notes": "Answer with 对 (right), 不对 (not right), 是 (yes/it is), 不是 (no/it isn't), 有 (have), 没有 (don't have) — not with a simple \"yes/no\"."
+}

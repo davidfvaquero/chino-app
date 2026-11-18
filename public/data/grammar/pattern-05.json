@@ -1,0 +1,16 @@
+{
+  "id": "le-completed",
+  "title": "了 — completed action",
+  "level": "HSK1",
+  "explanation": "了 after a verb marks the action as completed or realized. It is not a past-tense marker — it marks completion relative to the context. With a number + measure word, it means \"already.\"",
+  "structure": "Subj + Verb + 了 (+ Obj)  |  Subj + Verb + Num + MW + 了",
+  "examples": [
+    { "hanzi": "我吃了。", "pinyin": "wǒ chī le", "english": "I ate / I have eaten." },
+    { "hanzi": "他买了书。", "pinyin": "tā mǎi le shū", "english": "He bought a book." },
+    { "hanzi": "我们看了电影。", "pinyin": "wǒmen kàn le diànyǐng", "english": "We watched a movie." },
+    { "hanzi": "我吃了两个苹果。", "pinyin": "wǒ chī le liǎng gè píngguǒ", "english": "I ate two apples." },
+    { "hanzi": "她去了北京。", "pinyin": "tā qù le běijīng", "english": "She went to Beijing." },
+    { "hanzi": "做完了。", "pinyin": "zuò wán le", "english": "Finished doing it." }
+  ],
+  "notes": "句尾了 (sentence-final 了) marks a change of state: 我饿了 (I'm hungry now). Verb 了 + 句尾了 can combine: 我吃了两个苹果了 (I've eaten two apples already)."
+}

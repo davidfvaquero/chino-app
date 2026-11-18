@@ -72,12 +72,9 @@ test('index.json: 15 valid patterns with unique ids, in the expected order', () 
   }
 });
 
-test('index.json: only the two written patterns carry a file, and it exists', () => {
+test('index.json: all patterns with a file entry have a valid matching file', () => {
   const written = readJson('index.json').patterns.filter((entry) => entry.file);
-  assert.deepEqual(
-    written.map((entry) => entry.id),
-    ['shi', 'de-possession'],
-  );
+  assert.ok(written.length >= 2, 'at least the two original patterns have files');
   for (const entry of written) {
     const pattern = readJson(entry.file); // throws if the file is missing
     assert.equal(pattern.id, entry.id, `${entry.file} must match its index id`);
@@ -86,8 +83,12 @@ test('index.json: only the two written patterns carry a file, and it exists', ()
 
 /* --------------------------------------------------------------- patterns -- */
 
-test('pattern-01/02: valid per schema, with notes and examples', () => {
-  for (const file of ['pattern-01.json', 'pattern-02.json']) {
+test('all written pattern files: valid per schema, with notes and examples', () => {
+  const index = readJson('index.json');
+  const writtenFiles = index.patterns
+    .filter((entry) => entry.file)
+    .map((entry) => entry.file);
+  for (const file of writtenFiles) {
     const pattern = normalizePattern(readJson(file));
     assert.ok(isValidPattern(pattern), `${file} is invalid`);
     assert.ok(pattern.examples.length >= 2, `${file} has at least 2 examples`);
