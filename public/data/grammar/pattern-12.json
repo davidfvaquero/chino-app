@@ -1,0 +1,14 @@
+{
+  "id": "time-word-order",
+  "title": "Time words order",
+  "level": "HSK2",
+  "explanation": "In Chinese, time words (when) come BEFORE the verb, typically right after the subject. Order: Subject + Time + Place + Verb.",
+  "structure": "Subj + Time + Place + Verb",
+  "examples": [
+    { "hanzi": "我明天去北京。", "pinyin": "wǒ míng tiān qù běi jīng", "english": "I am going to Beijing tomorrow." },
+    { "hanzi": "他在公司工作。", "pinyin": "tā zài gōng sī gōng zuò", "english": "He works at the company." },
+    { "hanzi": "我们昨天在家吃饭。", "pinyin": "wǒ men zuó tiān zài jiā chī fàn", "english": "We ate at home yesterday." },
+    { "hanzi": "他每天早上跑步。", "pinyin": "tā měi tiān zǎo shang pǎo bù", "english": "He runs every morning." }
+  ],
+  "notes": "Time phrases like 明天, 昨天, 每天 go after the subject, before the place and verb. Never put time at the end of the sentence like in English."
+}

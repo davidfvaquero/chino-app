@@ -1,0 +1,14 @@
+{
+  "id": "xiang-yao",
+  "title": "想 / 要 — want to",
+  "level": "HSK1",
+  "explanation": "想  means \"would like to\" (softer desire); 要  means \"want to\" or \"will\" (stronger intention). Both come before the verb.",
+  "structure": "Subj + 想 / 要 + Verb",
+  "examples": [
+    { "hanzi": "我想喝水。", "pinyin": "wǒ xiǎng hē shuǐ", "english": "I would like to drink water." },
+    { "hanzi": "你要去北京吗？", "pinyin": "nǐ yào qù běijīng ma", "english": "Do you want to go to Beijing?" },
+    { "hanzi": "我们想吃中国菜。", "pinyin": "wǒ men xiǎng chī zhōng guó cài", "english": "We would like to eat Chinese food." },
+    { "hanzi": "他们要买新手机。", "pinyin": "tā men yào mǎi xīn shǒu jī", "english": "They want to buy new phones." }
+  ],
+  "notes": "要 can also mean \"will\" for near-future plans: 我要走了. To negate, use 不想 or 不要 before the verb."
+}

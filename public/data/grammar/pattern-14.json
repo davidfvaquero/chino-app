@@ -1,0 +1,14 @@
+{
+  "id": "cong-dao-zai",
+  "title": "从…到… and 在…",
+  "level": "HSK2",
+  "explanation": "从…到…  means \"from...to...\" (spatial or temporal range); 在…  means \"at/in/on\" a location. Both come before the verb in the Time/Place slot.",
+  "structure": "Subj + 从 Place 到 Place + Verb / Subj + 在 Place + Verb",
+  "examples": [
+    { "hanzi": "我从北京到上海。", "pinyin": "wǒ cóng běi jīng dào shàng hǎi", "english": "I go from Beijing to Shanghai." },
+    { "hanzi": "他从八点工作到六点。", "pinyin": "tā cóng bā diǎn gōng zuò dào liù diǎn", "english": "He works from 8 to 6." },
+    { "hanzi": "我在图书馆看书。", "pinyin": "wǒ zài tú shū guǎn kàn shū", "english": "I read books at the library." },
+    { "hanzi": "他们在公园跑步。", "pinyin": "tā men zài gōng yuán pǎo bù", "english": "They run in the park." }
+  ],
+  "notes": "从…到…  marks a range (place or time). 在…  marks a static location where an action happens. Both follow the subject in the standard word order."
+}

@@ -1,0 +1,14 @@
+{
+  "id": "ba-suggestions",
+  "title": "吧 — suggestions",
+  "level": "HSK2",
+  "explanation": "Adding 吧  at the end of a sentence softens it into a suggestion, request, or polite command. It seeks agreement (\"let's...\", \"how about...\").",
+  "structure": "Statement + 吧",
+  "examples": [
+    { "hanzi": "我们走吧。", "pinyin": "wǒ men zǒu ba", "english": "Let's go." },
+    { "hanzi": "喝茶吧。", "pinyin": "hē chá ba", "english": "How about some tea?" },
+    { "hanzi": "你先说吧。", "pinyin": "nǐ xiān shuō ba", "english": "You speak first." },
+    { "hanzi": "一起吃饭吧。", "pinyin": "yī qǐ chī fàn ba", "english": "Let's eat together." }
+  ],
+  "notes": "吧  is not a question particle like 吗; it expects cooperation, not a yes/no answer. For negative suggestions use 别...吧 (e.g., 别走吧 — \"don't leave, okay?\")."
+}

@@ -1,0 +1,14 @@
+{
+  "id": "he-ye-dou",
+  "title": "和 / 也 / 都",
+  "level": "HSK2",
+  "explanation": "和  connects nouns (\"and\"); 也  means \"also/too\" and sits before the verb; 都  means \"all/both\" and also sits before the verb, referring to the subject.",
+  "structure": "Noun + 和 + Noun / Subj + 也 / 都 + Verb",
+  "examples": [
+    { "hanzi": "我和他是朋友。", "pinyin": "wǒ hé tā shì péng yǒu", "english": "He and I are friends." },
+    { "hanzi": "我也喜欢喝茶。", "pinyin": "wǒ yě xǐ huan hē chá", "english": "I also like to drink tea." },
+    { "hanzi": "我们都去过上海。", "pinyin": "wǒ men dōu qù guo shàng hǎi", "english": "We have both been to Shanghai." },
+    { "hanzi": "苹果和香蕉都好吃。", "pinyin": "píng guǒ hé xiāng jiāo dōu hǎo chī", "english": "Both apples and bananas are delicious." }
+  ],
+  "notes": "和 only links nouns, never verbs or clauses (use 也/并/而且 for those). 也 and 都 go after the subject and before the verb/auxiliary."
+}

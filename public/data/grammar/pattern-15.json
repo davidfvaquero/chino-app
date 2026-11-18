@@ -1,0 +1,14 @@
+{
+  "id": "bi-comparison",
+  "title": "Comparisons with 比",
+  "level": "HSK2",
+  "explanation": "比  is the standard way to compare two things: A 比 B + Adj means \"A is more Adj than B.\" No 很  is needed before the adjective.",
+  "structure": "A + 比 + B + Adjective",
+  "examples": [
+    { "hanzi": "我比他高。", "pinyin": "wǒ bǐ tā gāo", "english": "I am taller than him." },
+    { "hanzi": "中文比英文难。", "pinyin": "zhōng wén bǐ yīng wén nán", "english": "Chinese is harder than English." },
+    { "hanzi": "这本书比那本贵。", "pinyin": "zhè běn shū bǐ nà běn guì", "english": "This book is more expensive than that one." },
+    { "hanzi": "夏天比冬天热。", "pinyin": "xià tiān bǐ dōng tiān rè", "english": "Summer is hotter than winter." }
+  ],
+  "notes": "Do not use 很 with 比 comparisons (说：我比他高, not 我比他很高). For \"much more\" add 多 了: 我比他高多了. For \"a little more\" add 一点 / 些: 我比他高一点."
+}

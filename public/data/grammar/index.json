@@ -10,11 +10,11 @@
     { "id": "you-have", "title": "有 — to have", "level": "HSK1" },
     { "id": "hen-adjective", "title": "很 + adjective", "level": "HSK1" },
     { "id": "question-words", "title": "Question words", "level": "HSK1" },
-    { "id": "xiang-yao", "title": "想 / 要 — want to", "level": "HSK1" },
-    { "id": "he-ye-dou", "title": "和 / 也 / 都", "level": "HSK2" },
-    { "id": "time-word-order", "title": "Time words order", "level": "HSK2" },
-    { "id": "ba-suggestions", "title": "吧 — suggestions", "level": "HSK2" },
-    { "id": "cong-dao-zai", "title": "从…到… and 在…", "level": "HSK2" },
-    { "id": "bi-comparison", "title": "Comparisons with 比", "level": "HSK2" }
+    { "id": "xiang-yao", "title": "想 / 要 — want to", "level": "HSK1", "file": "pattern-10.json" },
+    { "id": "he-ye-dou", "title": "和 / 也 / 都", "level": "HSK2", "file": "pattern-11.json" },
+    { "id": "time-word-order", "title": "Time words order", "level": "HSK2", "file": "pattern-12.json" },
+    { "id": "ba-suggestions", "title": "吧 — suggestions", "level": "HSK2", "file": "pattern-13.json" },
+    { "id": "cong-dao-zai", "title": "从…到… and 在…", "level": "HSK2", "file": "pattern-14.json" },
+    { "id": "bi-comparison", "title": "Comparisons with 比", "level": "HSK2", "file": "pattern-15.json" }
   ]
 }
