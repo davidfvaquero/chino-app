@@ -1,0 +1,229 @@
+{
+  "measureWords": [
+    {
+      "character": "个",
+      "pinyin": "gè",
+      "usage": "general measure word for people and things",
+      "examples": [
+        { "hanzi": "一个人", "pinyin": "yí gè rén", "english": "one person" },
+        { "hanzi": "三个苹果", "pinyin": "sān gè píngguǒ", "english": "three apples" }
+      ]
+    },
+    {
+      "character": "本",
+      "pinyin": "běn",
+      "usage": "books, notebooks and other bound volumes",
+      "examples": [
+        { "hanzi": "一本书", "pinyin": "yì běn shū", "english": "a book" },
+        { "hanzi": "两本词典", "pinyin": "liǎng běn cídiǎn", "english": "two dictionaries" }
+      ]
+    },
+    {
+      "character": "杯",
+      "pinyin": "bēi",
+      "usage": "cups or glasses of a drink",
+      "examples": [
+        { "hanzi": "一杯水", "pinyin": "yì bēi shuǐ", "english": "a glass of water" },
+        { "hanzi": "两杯咖啡", "pinyin": "liǎng bēi kāfēi", "english": "two cups of coffee" }
+      ]
+    },
+    {
+      "character": "张",
+      "pinyin": "zhāng",
+      "usage": "flat things: paper, tickets, tables, beds, faces",
+      "examples": [
+        { "hanzi": "一张纸", "pinyin": "yì zhāng zhǐ", "english": "a sheet of paper" },
+        { "hanzi": "两张票", "pinyin": "liǎng zhāng piào", "english": "two tickets" }
+      ]
+    },
+    {
+      "character": "只",
+      "pinyin": "zhī",
+      "usage": "animals (especially birds and small animals), or one of a pair",
+      "examples": [
+        { "hanzi": "一只猫", "pinyin": "yì zhī māo", "english": "a cat" },
+        { "hanzi": "两只手", "pinyin": "liǎng zhī shǒu", "english": "two hands" }
+      ]
+    },
+    {
+      "character": "条",
+      "pinyin": "tiáo",
+      "usage": "long, thin things: rivers, roads, fish, trousers",
+      "examples": [
+        { "hanzi": "一条河", "pinyin": "yì tiáo hé", "english": "a river" },
+        { "hanzi": "两条裤子", "pinyin": "liǎng tiáo kùzi", "english": "two pairs of trousers" }
+      ]
+    },
+    {
+      "character": "件",
+      "pinyin": "jiàn",
+      "usage": "items of clothing, matters and pieces of business",
+      "examples": [
+        { "hanzi": "一件衣服", "pinyin": "yí jiàn yīfu", "english": "a piece of clothing" },
+        { "hanzi": "一件事", "pinyin": "yí jiàn shì", "english": "one matter" }
+      ]
+    },
+    {
+      "character": "位",
+      "pinyin": "wèi",
+      "usage": "polite measure word for people",
+      "examples": [
+        { "hanzi": "一位老师", "pinyin": "yí wèi lǎoshī", "english": "a teacher (polite)" },
+        { "hanzi": "两位客人", "pinyin": "liǎng wèi kèrén", "english": "two guests" }
+      ]
+    },
+    {
+      "character": "瓶",
+      "pinyin": "píng",
+      "usage": "bottles of something",
+      "examples": [
+        { "hanzi": "一瓶水", "pinyin": "yì píng shuǐ", "english": "a bottle of water" },
+        { "hanzi": "三瓶啤酒", "pinyin": "sān píng píjiǔ", "english": "three bottles of beer" }
+      ]
+    },
+    {
+      "character": "家",
+      "pinyin": "jiā",
+      "usage": "families and businesses: shops, hotels, companies",
+      "examples": [
+        { "hanzi": "一家商店", "pinyin": "yì jiā shāngdiàn", "english": "a shop" },
+        { "hanzi": "两家公司", "pinyin": "liǎng jiā gōngsī", "english": "two companies" }
+      ]
+    },
+    {
+      "character": "块",
+      "pinyin": "kuài",
+      "usage": "pieces or chunks, and units of money (yuan)",
+      "examples": [
+        { "hanzi": "三块钱", "pinyin": "sān kuài qián", "english": "three yuan" },
+        { "hanzi": "一块蛋糕", "pinyin": "yí kuài dàngāo", "english": "a piece of cake" }
+      ]
+    },
+    {
+      "character": "辆",
+      "pinyin": "liàng",
+      "usage": "vehicles with wheels: cars, buses, bicycles",
+      "examples": [
+        { "hanzi": "一辆车", "pinyin": "yí liàng chē", "english": "a car" },
+        { "hanzi": "两辆公共汽车", "pinyin": "liǎng liàng gōnggòng qìchē", "english": "two buses" }
+      ]
+    },
+    {
+      "character": "台",
+      "pinyin": "tái",
+      "usage": "machines and devices: computers, TVs, fridges",
+      "examples": [
+        { "hanzi": "一台电脑", "pinyin": "yì tái diànnǎo", "english": "a computer" },
+        { "hanzi": "两台电视", "pinyin": "liǎng tái diànshì", "english": "two televisions" }
+      ]
+    },
+    {
+      "character": "部",
+      "pinyin": "bù",
+      "usage": "films and works of art; also phones and cars",
+      "examples": [
+        { "hanzi": "一部电影", "pinyin": "yí bù diànyǐng", "english": "a film" },
+        { "hanzi": "两部手机", "pinyin": "liǎng bù shǒujī", "english": "two phones" }
+      ]
+    },
+    {
+      "character": "双",
+      "pinyin": "shuāng",
+      "usage": "things that come in pairs: shoes, socks, chopsticks",
+      "examples": [
+        { "hanzi": "一双鞋", "pinyin": "yì shuāng xié", "english": "a pair of shoes" },
+        { "hanzi": "两双袜子", "pinyin": "liǎng shuāng wàzi", "english": "two pairs of socks" }
+      ]
+    },
+    {
+      "character": "群",
+      "pinyin": "qún",
+      "usage": "groups or crowds of people or animals",
+      "examples": [
+        { "hanzi": "一群人", "pinyin": "yì qún rén", "english": "a crowd of people" },
+        { "hanzi": "一群鸟", "pinyin": "yì qún niǎo", "english": "a flock of birds" }
+      ]
+    },
+    {
+      "character": "次",
+      "pinyin": "cì",
+      "usage": "times an event happens",
+      "examples": [
+        { "hanzi": "一次机会", "pinyin": "yí cì jīhuì", "english": "one chance" },
+        { "hanzi": "我去过两次。", "pinyin": "wǒ qù guo liǎng cì", "english": "I have been there twice." }
+      ]
+    },
+    {
+      "character": "遍",
+      "pinyin": "biàn",
+      "usage": "times doing an action all the way through",
+      "examples": [
+        { "hanzi": "再听一遍", "pinyin": "zài tīng yí biàn", "english": "listen once more" },
+        { "hanzi": "读了三遍", "pinyin": "dú le sān biàn", "english": "read it three times" }
+      ]
+    },
+    {
+      "character": "顿",
+      "pinyin": "dùn",
+      "usage": "meals and scoldings or beatings",
+      "examples": [
+        { "hanzi": "一顿饭", "pinyin": "yí dùn fàn", "english": "a meal" },
+        { "hanzi": "三顿饭", "pinyin": "sān dùn fàn", "english": "three meals" }
+      ]
+    },
+    {
+      "character": "场",
+      "pinyin": "chǎng",
+      "usage": "events, performances and sports",
+      "examples": [
+        { "hanzi": "一场比赛", "pinyin": "yì chǎng bǐsài", "english": "a match" },
+        { "hanzi": "一场雨", "pinyin": "yì chǎng yǔ", "english": "a spell of rain" }
+      ]
+    },
+    {
+      "character": "间",
+      "pinyin": "jiān",
+      "usage": "rooms",
+      "examples": [
+        { "hanzi": "一间卧室", "pinyin": "yì jiān wòshì", "english": "a bedroom" },
+        { "hanzi": "两间教室", "pinyin": "liǎng jiān jiàoshì", "english": "two classrooms" }
+      ]
+    },
+    {
+      "character": "把",
+      "pinyin": "bǎ",
+      "usage": "things with a handle: knives, umbrellas, chairs",
+      "examples": [
+        { "hanzi": "一把刀", "pinyin": "yì bǎ dāo", "english": "a knife" },
+        { "hanzi": "一把伞", "pinyin": "yì bǎ sǎn", "english": "an umbrella" }
+      ]
+    },
+    {
+      "character": "架",
+      "pinyin": "jià",
+      "usage": "aircraft and large instruments: planes, pianos",
+      "examples": [
+        { "hanzi": "一架飞机", "pinyin": "yí jià fēijī", "english": "an airplane" },
+        { "hanzi": "一架钢琴", "pinyin": "yí jià gāngqín", "english": "a piano" }
+      ]
+    },
+    {
+      "character": "头",
+      "pinyin": "tóu",
+      "usage": "large animals: cattle, pigs, elephants",
+      "examples": [
+        { "hanzi": "一头牛", "pinyin": "yì tóu niú", "english": "a cow" },
+        { "hanzi": "两头猪", "pinyin": "liǎng tóu zhū", "english": "two pigs" }
+      ]
+    },
+    {
+      "character": "封",
+      "pinyin": "fēng",
+      "usage": "letters and messages",
+      "examples": [
+        { "hanzi": "一封信", "pinyin": "yì fēng xìn", "english": "a letter" },
+        { "hanzi": "两封邮件", "pinyin": "liǎng fēng yóujiàn", "english": "two emails" }
+      ]
+    }
+  ]
+}

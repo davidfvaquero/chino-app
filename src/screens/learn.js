@@ -24,6 +24,7 @@ const AREAS = [
   'games',
   'radicals',
   'hardwords',
+  'grammar',
 ];
 
 const load = (area) => import(`../learn/${area}.js`);

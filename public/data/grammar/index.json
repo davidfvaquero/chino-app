@@ -1,0 +1,20 @@
+{
+  "level": "beginner",
+  "patterns": [
+    { "id": "shi", "title": "是 — to be", "level": "HSK1", "file": "pattern-01.json" },
+    { "id": "de-possession", "title": "的 — possession", "level": "HSK1", "file": "pattern-02.json" },
+    { "id": "ma-questions", "title": "吗 — yes/no questions", "level": "HSK1" },
+    { "id": "bu-mei-negation", "title": "不 / 没 — negation", "level": "HSK1" },
+    { "id": "le-completed", "title": "了 — completed action", "level": "HSK1" },
+    { "id": "zai-location", "title": "在 — location", "level": "HSK1" },
+    { "id": "you-have", "title": "有 — to have", "level": "HSK1" },
+    { "id": "hen-adjective", "title": "很 + adjective", "level": "HSK1" },
+    { "id": "question-words", "title": "Question words", "level": "HSK1" },
+    { "id": "xiang-yao", "title": "想 / 要 — want to", "level": "HSK1" },
+    { "id": "he-ye-dou", "title": "和 / 也 / 都", "level": "HSK2" },
+    { "id": "time-word-order", "title": "Time words order", "level": "HSK2" },
+    { "id": "ba-suggestions", "title": "吧 — suggestions", "level": "HSK2" },
+    { "id": "cong-dao-zai", "title": "从…到… and 在…", "level": "HSK2" },
+    { "id": "bi-comparison", "title": "Comparisons with 比", "level": "HSK2" }
+  ]
+}

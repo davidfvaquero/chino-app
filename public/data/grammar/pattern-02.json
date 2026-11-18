@@ -1,0 +1,14 @@
+{
+  "id": "de-possession",
+  "title": "的 — possession",
+  "level": "HSK1",
+  "explanation": "的 links an owner or a description to a noun: A 的 B means \"A's B\" or \"the B that is A\".",
+  "structure": "Owner + 的 + Noun",
+  "examples": [
+    { "hanzi": "我的妈妈", "pinyin": "wǒ de māma", "english": "my mother" },
+    { "hanzi": "老师的书", "pinyin": "lǎoshī de shū", "english": "the teacher's book" },
+    { "hanzi": "这是他的手机。", "pinyin": "zhè shì tā de shǒujī", "english": "This is his phone." },
+    { "hanzi": "中国的地图", "pinyin": "zhōngguó de dìtú", "english": "a map of China" }
+  ],
+  "notes": "With close family you can drop 的: 我妈妈 (my mum) sounds warmer than 我的妈妈."
+}

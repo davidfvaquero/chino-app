@@ -1,0 +1,28 @@
+{
+  "grammar": {
+    "title": "Grammar",
+    "intro": "Beginner sentence patterns, then the measure words you need to count things.",
+    "patternsHeading": "Patterns",
+    "measureWordsHeading": "Measure words",
+    "measureWordsIntro": "A measure word sits between a number and a noun. These 25 cover most everyday things.",
+    "measureWordsButton": "Measure words",
+    "patternsButton": "Grammar patterns",
+    "structureLabel": "Structure",
+    "notesLabel": "Note",
+    "examplesHeading": "Examples",
+    "usageLabel": "Used for",
+    "play": "Hear it",
+    "playError": "Could not play the audio.",
+    "speakUnsupported": "This device has no speech voice for Chinese.",
+    "addToReview": "Add to review",
+    "added": "Added to review",
+    "reviewError": "Could not add it to the review deck.",
+    "markStudied": "Mark as studied",
+    "marked": "Studied",
+    "studiedProgress": "{studied} of {total} patterns studied",
+    "back": "Back",
+    "loadError": "Could not load the grammar data. Check your connection and try again.",
+    "unavailable": "This pattern is planned but not written yet.",
+    "soon": "Soon"
+  }
+}

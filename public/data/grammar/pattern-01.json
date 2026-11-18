@@ -1,0 +1,14 @@
+{
+  "id": "shi",
+  "title": "是 — to be",
+  "level": "HSK1",
+  "explanation": "Use 是 to link two nouns, like English \"to be\": A 是 B means \"A is B\". Do not use it with adjectives.",
+  "structure": "Subj + 是 + Noun",
+  "examples": [
+    { "hanzi": "我是学生。", "pinyin": "wǒ shì xuéshēng", "english": "I am a student." },
+    { "hanzi": "他是老师。", "pinyin": "tā shì lǎoshī", "english": "He is a teacher." },
+    { "hanzi": "这是我的书。", "pinyin": "zhè shì wǒ de shū", "english": "This is my book." },
+    { "hanzi": "她是中国人。", "pinyin": "tā shì zhōngguó rén", "english": "She is Chinese." }
+  ],
+  "notes": "With an adjective there is no 是: say 我很累 (I am tired), not 我是很累. See the 很 + adjective pattern."
+}
