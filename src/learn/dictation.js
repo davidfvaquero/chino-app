@@ -456,10 +456,11 @@ const CSS = `
 .dict-feedback { display: grid; gap: 0.5rem; }
 .dict-feedback .ok { color: var(--tone2, #2e7d32); }
 .dict-feedback .bad { color: var(--tone1, #c62828); }
-.dict-answer-line { margin: 0; font-size: 1.25rem; }
+.dict-answer-line { margin: 0; font-size: 1.25rem; display: flex; flex-direction: column; gap: 0.3rem; }
 .dict-answer-line .pinyin { font-size: 1rem; }
+.dict-answer-line .english { color: var(--fg-soft); font-size: 0.95rem; }
 .dict-missed { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
-.dict-missed li { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.dict-missed li { display: flex; flex-direction: column; align-items: flex-start; gap: 0.15rem; }
 .dict-missed .hanzi { font-size: 1.3rem; }
 `;
 

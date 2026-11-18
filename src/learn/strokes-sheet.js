@@ -153,11 +153,11 @@ const CSS = `
 .sheet-form button, .sheet-actions button { padding: 0.55rem 0.8rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; font-size: 0.95rem; }
 .sheet-warning, .sheet-empty { margin: 0; color: #b3261e; }
 .sheet-card { border: 1px solid var(--line, #c9c4bd); border-radius: 0.8rem; padding: 0.75rem; display: flex; flex-direction: column; gap: 0.55rem; break-inside: avoid; }
-.sheet-head { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.sheet-head { display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem; }
 .sheet-char { font-size: 2.6rem; line-height: 1; }
 .sheet-pinyin { font-size: 1.1rem; }
-.sheet-meaning { opacity: 0.8; font-size: 0.9rem; }
-.sheet-count { margin-left: auto; font-variant-numeric: tabular-nums; opacity: 0.8; }
+.sheet-meaning { display: block; opacity: 0.8; font-size: 0.9rem; }
+.sheet-count { opacity: 0.8; font-variant-numeric: tabular-nums; }
 .sheet-steps { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.3rem; -webkit-overflow-scrolling: touch; }
 .sheet-step { flex: 0 0 auto; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 0.15rem; }
 .sheet-step svg, .sheet-player svg { display: block; width: 4.5rem; height: 4.5rem; background: var(--board, #faf8f5); border-radius: 0.4rem; }

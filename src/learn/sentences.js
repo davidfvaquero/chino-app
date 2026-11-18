@@ -11,6 +11,28 @@ import { pinyinHtml } from '../tone.js';
 const BASE = typeof document === 'undefined' ? '/data/sentences' : new URL('data/sentences', document.baseURI);
 const SHARD_SIZE = 50; // items per page (client-side pagination after load)
 
+const STYLE_ID = 'sentences-layout-style';
+
+/**
+ * Layout-only CSS: stack hanzi / pinyin / english so nothing is glued on one
+ * line on mobile. Reuses the shell variables (light/dark + font scale).
+ */
+const CSS = `
+.sentence-card { display: flex; flex-direction: column; gap: 0.35rem; }
+.sentence-row { display: flex; flex-direction: column; gap: 0.15rem; }
+.sentence-hanzi { font-size: 1.25em; line-height: 1.5; }
+.sentence-en { color: var(--fg-soft); margin-top: 0.25em; line-height: 1.4; }
+.sentence-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25em; }
+`;
+
+function ensureStyles() {
+  if (document.getElementById(STYLE_ID)) return;
+  const style = document.createElement('style');
+  style.id = STYLE_ID;
+  style.textContent = CSS;
+  document.head.append(style);
+}
+
 let allSentences = [];
 let filtered = [];
 let currentPage = 0;
@@ -172,6 +194,8 @@ export async function render(container, ctx) {
   // cleanup previous
   cleanupFns.forEach(fn => fn());
   cleanupFns = [];
+
+  ensureStyles();
 
   await loadSentences();
   filtered = [...allSentences];

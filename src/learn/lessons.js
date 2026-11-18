@@ -26,6 +26,53 @@ import { speak } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
 import { gradeExercise, summarize } from './exercises.js';
 
+const STYLE_ID = 'lessons-layout-style';
+
+/**
+ * Layout-only CSS for the vocabulary card. Kept here (not in styles.css, owned
+ * by another task) and injected once. Reuses the shell variables so light/dark
+ * and the font scale keep working. Splits hanzi / pinyin / english / example /
+ * button into stacked blocks so nothing is glued on one line on mobile.
+ */
+const CSS = `
+.vocab-item.field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.25rem;
+}
+.vocab-item .hanzi { font-size: 1.6em; line-height: 1.25; }
+.vocab-item .pinyin { font-size: 1.05em; }
+.vocab-item .english {
+  margin-top: 0.25em;
+  color: var(--fg-soft);
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+.vocab-item .example {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.4em;
+  padding-top: 0.4em;
+  border-top: 1px solid var(--line);
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+.vocab-item .example-hanzi { font-size: 1.15em; }
+.vocab-item .example-english { color: var(--fg-soft); }
+.vocab-item > .btn { align-self: stretch; margin-top: 0.4em; }
+`;
+
+/** Inject the layout CSS into <head> once. */
+function ensureStyles(doc) {
+  if (doc.getElementById(STYLE_ID)) return;
+  const style = doc.createElement('style');
+  style.id = STYLE_ID;
+  style.textContent = CSS;
+  doc.head.append(style);
+}
+
 export const titleKey = 'hubs.learn.lessons';
 export const DEFAULT_LEVEL = 'hsk1';
 /** Selectable levels; each reads public/data/lessons/<level>/index.json. Chosen with `?level=`. */
@@ -195,9 +242,9 @@ async function renderLesson(container, ctx, lessonId, level) {
             ? h(
                 'span',
                 { class: 'example' },
-                `${word.example.hanzi} · `,
-                h('span', { html: pinyinHtml(word.example.pinyin) }),
-                ` · ${word.example.english}`,
+                h('span', { class: 'example-hanzi', text: word.example.hanzi }),
+                h('span', { class: 'example-pinyin', html: pinyinHtml(word.example.pinyin) }),
+                h('span', { class: 'example-english', text: word.example.english }),
               )
             : null,
           button,
@@ -425,6 +472,7 @@ async function renderLesson(container, ctx, lessonId, level) {
 /* ---------------------------------------------------------------- render -- */
 
 export async function render(container, ctx) {
+  ensureStyles(container.ownerDocument ?? document);
   const lessonId = ctx?.route?.segments?.[1];
   const requested = ctx?.route?.params?.level;
   const level = LEVELS.includes(requested) ? requested : DEFAULT_LEVEL;
