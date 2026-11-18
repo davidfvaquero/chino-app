@@ -1,0 +1,41 @@
+{
+  "id": "hsk2-01",
+  "title": "Polite requests & comparison",
+  "intro": "Suggest politely with 吧, compare with 比, say where you are from, and use the first HSK 2 words.",
+  "vocabulary": [
+    { "hanzi": "吧", "pinyin": "ba", "english": "particle indicating a polite suggestion", "example": { "hanzi": "我们走吧", "pinyin": "wǒmen zǒu ba", "english": "let's go" } },
+    { "hanzi": "白", "pinyin": "bái", "english": "white", "example": { "hanzi": "白纸", "pinyin": "bái zhǐ", "english": "white paper" } },
+    { "hanzi": "百", "pinyin": "bǎi", "english": "hundred", "example": { "hanzi": "三百块", "pinyin": "sān bǎi kuài", "english": "three hundred yuan" } },
+    { "hanzi": "帮助", "pinyin": "bāngzhù", "english": "help; to help", "example": { "hanzi": "谢谢你的帮助", "pinyin": "xièxie nǐ de bāngzhù", "english": "thanks for your help" } },
+    { "hanzi": "报纸", "pinyin": "bàozhǐ", "english": "newspaper", "example": { "hanzi": "看报纸", "pinyin": "kàn bàozhǐ", "english": "read the newspaper" } },
+    { "hanzi": "比", "pinyin": "bǐ", "english": "to compare; (than, in comparisons)", "example": { "hanzi": "他比我高", "pinyin": "tā bǐ wǒ gāo", "english": "he is taller than me" } },
+    { "hanzi": "别", "pinyin": "bié", "english": "don't", "example": { "hanzi": "别说话", "pinyin": "bié shuōhuà", "english": "don't talk" } },
+    { "hanzi": "宾馆", "pinyin": "bīnguǎn", "english": "guesthouse; hotel", "example": { "hanzi": "一个宾馆", "pinyin": "yí gè bīnguǎn", "english": "a hotel" } },
+    { "hanzi": "长", "pinyin": "cháng, zhǎng", "english": "long; to grow", "example": { "hanzi": "时间很长", "pinyin": "shíjiān hěn cháng", "english": "the time is long" } },
+    { "hanzi": "唱歌", "pinyin": "chànggē", "english": "to sing (a song)", "example": { "hanzi": "我喜欢唱歌", "pinyin": "wǒ xǐhuan chànggē", "english": "I like to sing" } },
+    { "hanzi": "出", "pinyin": "chū", "english": "to go out; to come out", "example": { "hanzi": "出去", "pinyin": "chūqu", "english": "go out" } },
+    { "hanzi": "穿", "pinyin": "chuān", "english": "to wear; put on", "example": { "hanzi": "穿衣服", "pinyin": "chuān yīfu", "english": "put on clothes" } },
+    { "hanzi": "次", "pinyin": "cì", "english": "time (measure word for occurrences)", "example": { "hanzi": "一次", "pinyin": "yí cì", "english": "once" } },
+    { "hanzi": "从", "pinyin": "cóng", "english": "from", "example": { "hanzi": "从中国来", "pinyin": "cóng Zhōngguó lái", "english": "come from China" } },
+    { "hanzi": "错", "pinyin": "cuò", "english": "mistake; wrong", "example": { "hanzi": "错了", "pinyin": "cuò le", "english": "it's wrong" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 帮助 mean?", "options": ["help", "newspaper", "mistake"], "answer": "help" },
+    { "type": "choose", "prompt": "Which word means 'white'?", "options": ["白", "百", "别"], "answer": "白" },
+    { "type": "listen", "audio": "唱歌", "pinyin": "chànggē", "prompt": "Listen and choose what you hear.", "options": ["唱歌", "帮助", "报纸"], "answer": "唱歌" },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        { "hanzi": "帮助", "english": "help" },
+        { "hanzi": "报纸", "english": "newspaper" },
+        { "hanzi": "唱歌", "english": "sing" },
+        { "hanzi": "穿", "english": "wear" }
+      ]
+    },
+    { "type": "order", "prompt": "Make the phrase 'don't talk'.", "tokens": ["话", "别", "说"], "answer": "别说话" },
+    { "type": "order", "prompt": "Put the characters in order to say 'go out'.", "tokens": ["去", "出"], "answer": "出去" },
+    { "type": "listen", "audio": "从", "pinyin": "cóng", "prompt": "Listen and choose what you hear.", "options": ["从", "出", "穿"], "answer": "从" },
+    { "type": "choose", "prompt": "Which character means 'mistake'?", "options": ["长", "次", "错"], "answer": "错" }
+  ]
+}

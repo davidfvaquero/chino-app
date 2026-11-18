@@ -1,0 +1,20 @@
+{
+  "level": "hsk2",
+  "title": "HSK 2",
+  "source": "public/data/hsk/2.json",
+  "wordCount": 151,
+  "wordsPerLesson": 15,
+  "note": "Fixed 10-lesson plan for HSK2, mirroring HSK1. `range` is the suggested slice of the 151 HSK2 words (1-based, inclusive, alphabetical list) for a lesson that is still to be written; the filler tasks write lesson-02.json .. lesson-10.json without touching this index. Lesson 1 is already written by hand (`curated: true`) and its vocabulary is authoritative. Lesson 10 covers the last 16 words (151 is not divisible by 10). See docs/lesson-schema.md.",
+  "lessons": [
+    { "id": "hsk2-01", "title": "Polite requests & comparison", "file": "lesson-01.json", "range": { "from": 1, "to": 15 }, "curated": true },
+    { "id": "hsk2-02", "title": "People & places", "file": "lesson-02.json", "range": { "from": 16, "to": 30 } },
+    { "id": "hsk2-03", "title": "Getting around town", "file": "lesson-03.json", "range": { "from": 31, "to": 45 } },
+    { "id": "hsk2-04", "title": "School & tastes", "file": "lesson-04.json", "range": { "from": 46, "to": 60 } },
+    { "id": "hsk2-05", "title": "Study & feelings", "file": "lesson-05.json", "range": { "from": 61, "to": 75 } },
+    { "id": "hsk2-06", "title": "Shopping & food", "file": "lesson-06.json", "range": { "from": 76, "to": 90 } },
+    { "id": "hsk2-07", "title": "Morning & prices", "file": "lesson-07.json", "range": { "from": 91, "to": 105 } },
+    { "id": "hsk2-08", "title": "Daily life & time", "file": "lesson-08.json", "range": { "from": 106, "to": 120 } },
+    { "id": "hsk2-09", "title": "Actions & connectors", "file": "lesson-09.json", "range": { "from": 121, "to": 135 } },
+    { "id": "hsk2-10", "title": "Questions & everyday words", "file": "lesson-10.json", "range": { "from": 136, "to": 151 } }
+  ]
+}

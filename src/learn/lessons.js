@@ -29,7 +29,9 @@ import { gradeExercise, summarize } from './exercises.js';
 export const titleKey = 'hubs.learn.lessons';
 export const DEFAULT_LEVEL = 'hsk1';
 /** Selectable levels; each reads public/data/lessons/<level>/index.json. Chosen with `?level=`. */
-export const LEVELS = ['hsk1', 'practical'];
+export const LEVELS = ['hsk1', 'hsk2', 'practical'];
+/** Picker label keys per level; levels not listed fall back to `home.level.<name>`. */
+const LEVEL_LABEL_KEYS = { hsk2: 'hsk2.level' };
 export const PROGRESS_STORE = 'progress';
 
 /** Root of the lesson data, relative to this module (works in src/ and dist/). */
@@ -101,7 +103,7 @@ async function renderList(container, ctx, level) {
         class: 'btn option',
         'data-level': name,
         'aria-pressed': String(name === level),
-        text: t(`home.level.${name}`),
+        text: t(LEVEL_LABEL_KEYS[name] ?? `home.level.${name}`),
         onclick: () => ctx.navigate(`learn/lessons?level=${name}`),
       }),
     ),
