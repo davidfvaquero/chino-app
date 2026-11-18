@@ -20,6 +20,7 @@ const flatKeys = (obj, parents = []) =>
   );
 
 const shard = readJson(new URL('../src/locales/en.d/review.json', import.meta.url));
+const filterShard = readJson(new URL('../src/locales/en.d/review-filter.json', import.meta.url));
 const shell = readJson(new URL('../src/locales/en.json', import.meta.url));
 
 test('module keeps the screen contract', () => {
@@ -71,7 +72,7 @@ test('every static text key used by the screen exists in the shard', () => {
   const source = readFileSync(new URL('../src/screens/review.js', import.meta.url), 'utf8');
   const staticKeys = [...source.matchAll(/\bt\(\s*'([^']+)'/g)].map((match) => match[1]);
   assert.ok(staticKeys.length > 0, 'the screen reads its texts from i18n');
-  const available = new Set(flatKeys(shard).concat(flatKeys(shell)));
+  const available = new Set(flatKeys(shard).concat(flatKeys(filterShard)).concat(flatKeys(shell)));
   for (const key of staticKeys) {
     assert.ok(available.has(key), `missing locale key: ${key}`);
   }
