@@ -103,12 +103,39 @@ test('明 decomposes to 日 + 月 with radical 日 (kangxi 72)', () => {
   assert.equal(d.kangxiNumber, 72, '明 kangxiNumber is 72 (日)');
 });
 
-test('reverse index for 女 includes 好 and 妈', () => {
+test('reverse index for 女 includes 妈 and 好 but not the traditional 媽 or 婦', () => {
   const chars = loadReverseIndex('女');
   assert.ok(chars, '女 has reverse index entry');
   assert.ok(Array.isArray(chars), '女 maps to array');
   assert.ok(chars.includes('好'), '女 reverse index includes 好');
   assert.ok(chars.includes('妈'), '女 reverse index includes 妈');
+  assert.ok(!chars.includes('媽'), '女 reverse index excludes traditional 媽');
+  assert.ok(!chars.includes('婦'), '女 reverse index excludes traditional 婦');
+});
+
+test('reverse index lists Simplified only (no CC-CEDICT traditional-only form)', () => {
+  // trad-only = a character CC-CEDICT gives as a trad form but never as a simp form.
+  const simp = new Set();
+  const trad = new Set();
+  const dictDir = path.join(ROOT, 'public', 'data', 'dict', 'shards');
+  for (const f of fs.readdirSync(dictDir)) {
+    if (!f.endsWith('.json')) continue;
+    for (const e of JSON.parse(fs.readFileSync(path.join(dictDir, f), 'utf8'))) {
+      if (e.simp) for (const ch of e.simp) simp.add(ch);
+      if (e.trad) for (const ch of e.trad) trad.add(ch);
+    }
+  }
+  const tradOnly = new Set([...trad].filter(ch => !simp.has(ch)));
+  assert.ok(tradOnly.has('媽') && tradOnly.has('婦'), 'sanity: 媽/婦 are traditional-only');
+
+  const idx = read('reverse-index.json');
+  for (const sh of idx.shards) {
+    for (const [comp, chars] of Object.entries(read(sh.file))) {
+      for (const ch of chars) {
+        assert.ok(!tradOnly.has(ch), `${comp} grid lists traditional-only ${ch}`);
+      }
+    }
+  }
 });
 
 test('reverse index for 日 includes 明', () => {

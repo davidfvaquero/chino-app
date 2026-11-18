@@ -137,6 +137,9 @@ test('loadReverse returns characters containing a component', async () => {
   assert.ok(chars.includes('好'), '女 reverse index includes 好');
   assert.ok(chars.includes('妈'), '女 reverse index includes 妈');
   assert.ok(chars.includes('姐'), '女 reverse index includes 姐');
+  // Simplified only: traditional-only forms must not be listed
+  assert.ok(!chars.includes('媽'), '女 reverse index excludes 媽 (traditional)');
+  assert.ok(!chars.includes('婦'), '女 reverse index excludes 婦 (traditional)');
   // Sorted by Unicode
   for (let i = 1; i < chars.length; i++) {
     assert.ok(chars[i - 1] <= chars[i], `chars sorted: ${chars[i-1]} <= ${chars[i]}`);

@@ -306,6 +306,30 @@ function parseDecomposition(ids) {
 }
 
 // ============================================================================
+// Simplified-only filter
+// ============================================================================
+// CC-CEDICT (public/data/dict/) lists every entry as {simp, trad}. A character
+// that only ever shows up as the *traditional* form (trad, never simp) is not
+// Simplified Chinese, so it must not appear in the radical grid. A character
+// used by both forms (e.g. 好, 女) is kept.
+function loadTraditionalOnly() {
+  const dir = path.join(ROOT, 'public', 'data', 'dict', 'shards');
+  const simp = new Set();
+  const trad = new Set();
+  for (const name of fs.readdirSync(dir)) {
+    if (!name.endsWith('.json')) continue;
+    const entries = JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8'));
+    for (const entry of entries) {
+      if (entry.simp) for (const ch of entry.simp) simp.add(ch);
+      if (entry.trad) for (const ch of entry.trad) trad.add(ch);
+    }
+  }
+  const only = new Set();
+  for (const ch of trad) if (!simp.has(ch)) only.add(ch);
+  return only;
+}
+
+// ============================================================================
 // Main build function
 // ============================================================================
 async function main() {
@@ -461,6 +485,19 @@ async function main() {
   writeJson(path.join(OUT, 'decomposition-index.json'), decompIndex);
   
   // 7. Write reverse index shards (by component)
+  // Simplified-only: drop characters CC-CEDICT only knows as a traditional form
+  // (媽 婦 嬰 …) so the radical grid never lists them. Components left with no
+  // simplified character are dropped entirely.
+  const tradOnly = loadTraditionalOnly();
+  let droppedTrad = 0;
+  for (const [comp, set] of reverseIndex) {
+    for (const ch of [...set]) {
+      if (tradOnly.has(ch)) { set.delete(ch); droppedTrad++; }
+    }
+    if (set.size === 0) reverseIndex.delete(comp);
+  }
+  console.log(`Reverse index: dropped ${droppedTrad} traditional-only characters`);
+
   const revComponents = [...reverseIndex.keys()].sort();
   const revShards = [];
   const revShardSize = 100;
@@ -490,7 +527,7 @@ async function main() {
       license: 'Arphic Public License / LGPL',
       homepage: 'https://github.com/skishore/makemeahanzi',
     },
-    format: 'component -> [characters containing it]. Characters sorted by Unicode. HSK priority not yet implemented.',
+    format: 'component -> [characters containing it]. Characters sorted by Unicode. Simplified only: CC-CEDICT traditional-only forms (trad never simp) are excluded. HSK priority not yet implemented.',
     components: revComponents.length,
     shards: revShards,
     shardFiles: revShards.map(s => s.file),

@@ -94,7 +94,7 @@ src/
   screens/              home, dictionary, review, learn, read, extras (hubs)
   learn/                one module per Learn area
   extras/               one module per More area
-scripts/                dev/build servers, data pipeline, icon generator, PNG writer
+scripts/                dev/build servers, data pipeline, icon generator, PNG writer, validators (validate-lessons.mjs, check-tones-headless.mjs)
 tests/                  unit tests (node --test)
 public/data/            dictionary, strokes, HSK lists, sentences, readings, themes
 docs/                   per-area notes; FUTURE.md = the roadmap
