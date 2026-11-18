@@ -1,0 +1,21 @@
+{
+  "paste": {
+    "title": "Paste & Analyze",
+    "placeholder": "Paste or type Chinese text here (simplified only)...",
+    "analyze": "Analyze",
+    "analyzing": "Analyzing...",
+    "togglePinyin": "Pinyin",
+    "playAll": "Play all",
+    "playSentence": "Play sentence",
+    "unknownCount_one": "1 unknown word (not in HSK1 or review)",
+    "unknownCount_other": "{count} unknown words (not in HSK1 or review)",
+    "noText": "No text to analyze.",
+    "wordNotFound": "No dictionary entry for “{word}”.",
+    "addToReview": "Add to review",
+    "added": "Added to review",
+    "close": "Close",
+    "tapWord": "Tap a word to see its meaning.",
+    "storageSaved": "Text saved.",
+    "audioUnsupported": "Audio is not available in this browser."
+  }
+}
