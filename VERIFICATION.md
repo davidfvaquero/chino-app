@@ -383,3 +383,49 @@ Sin cambios de codigo salvo la 1 linea de locale. No se toco `dist/`.
 Verdict: **RADD, RADU, PASTE, SET OK en funcionalidad.** 1 FALLO menor (tradicional en rejilla de radicales, datos) + 1 defecto menor corregido (clave `paste.error`). El FALLO 1 no bloquea PASTE/SET ni el nucleo de RADD/RADU.
 
 *Verificador `barato` — 2026-11-18*
+
+---
+
+## Verificacion bloque 5 (NUM, THC1, THC2, G1, G2) — t_e06c00f0
+
+Verificador `barato`. Alcance ajustado: solo trabajo de `gratis` — NUM (`t_a412fefa`), THC1 (`t_a1578e66`), THC2 (`t_cde645d8`), G1 (`t_5e975801`), G2 (`t_59d600d4`). Las 5 tareas las hizo `gratis` (perfil distinto al mio). PIN/TH/DICT quedan fuera (los hizo `barato`, revisados en `t_5d7e04b5`).
+
+Navegador: Chrome headless via CDP. Build `OUT_DIR=/tmp/chino-t_e06c00f0b` (505 files) + `node scripts/serve.mjs /tmp/chino-t_e06c00f0b` (puerto 34935). Nota: mientras verificaba, un worker de integracion edito `src/screens/learn.js` (AREAS += games) y `src/learn/lessons.js` (LEVELS hsk1/practical); esas ediciones no son de `gratis` ni de esta verificacion.
+
+| Punto | Resultado | Evidencia |
+| --- | --- | --- |
+| `npm test` completo | **OK** | 447 pass / 0 fail (tras 1 correccion de test, ver FALLO C) |
+| Esquema lecciones practical (script/tests) | **OK** | `node --test tests/practical-lessons.test.mjs` 43/43; `validate-pinyin-practical.mjs` sin tradicionales |
+| Esquema de los 12 temas (script) | **OK** | `validateTheme()` sobre theme-01..12: 0 problemas; `validateIndex(index)`: 0 |
+| Pinyin de muestra vs CC-CEDICT (374 palabras) | **OK** | 260 match exacto; resto = tono neutro (5) escrito sin marca o espaciado; sin tono equivocado real |
+| Sin chino tradicional en datos de temas/practicas | **OK** | 0 caracteres solo-tradicionales (CC-CEDICT trad-only) en 12 temas + 5 lecciones |
+| Sin strings de UI hardcodeados (juegos) | **OK** | `grep text:` en `src/learn/games*` solo `'?'` (dorso de carta) |
+| Sin errores de consola | **OK** | 0 errores en 11 rutas del alcance |
+| NUM: leccion practical abierta + ejercicio | **OK** | `#/learn/lessons?level=practical` -> practical-02, ejercicio 1 respondido (\"Not quite\" con opcion incorrecta) |
+| THC1/THC2: abrir 3 temas, oir palabra, add-whole | **OK** | theme-03 (18p/10f), theme-09 y theme-12 abren; 🔊 habla 饭; \"Add whole theme\" -> 28 cartas |
+| G1: ruta a juego concreto | **FALLO A (corregido)** | ver abajo |
+| G1: partida de Matching | **OK** | 6/6, \"Round complete!\", evento `chino:lesson_done {gameId:'matching',score:6,total:6}` |
+| G1: partida de Memory | **FALLO B (corregido)** | ver abajo |
+| G2: partida de Timed Quiz | **OK** | 10 preguntas, \"Time's up!\", evento `chino:lesson_done {gameId:'timed',score,total:10}` |
+| Cada ruta abre directamente | **OK** | `#/learn/games[/matching|/memory|/timed]`, `#/learn/themes[/<id>]`, `#/learn/lessons?level=practical` |
+
+### FALLO A (G1, `src/learn/games.js`) — rutas de juego rotas. CORREGIDO
+`render()` leia `segments[0]` como id de juego, pero al montarse via `learn/games` los segmentos son `['games','matching']`, asi que `gameId='games'` y `getGame('games')` es null -> siempre el menu. Ningun juego abria por su ruta. Reproducir (sin el fix): abrir `#/learn/games/matching`.
+Fix (2 lineas): `isHub = segments[0]==='games'`; `gameId = isHub ? segments[1] : segments[0]`; y al delegar, pasar `segments: isHub ? segments.slice(1) : segments` para que el juego hijo lea su sub-ruta (p.ej. `sourceParam`).
+
+### FALLO B (G1, `src/learn/games/memory.js`) — Memory nunca termina. CORREGIDO
+En `onCardClick` se evaluaba `if (check.complete)` ANTES de marcar como emparejada la pareja recien acertada, asi que en la ultima pareja `complete` era false y `finished` nunca pasaba a true: no salia la pantalla de resultado ni el evento `chino:lesson_done`. Reproducir (sin el fix): abrir `#/learn/games/memory`, emparejar las 6 parejas -> cabecera \"Matched: 6/6\" pero sin \"Round complete!\".
+Fix (1 linea): `if (check.matched + 1 >= check.total) finished = true;`.
+
+### FALLO C (comun, `tests/themes.test.mjs`) — test obsoleto. CORREGIDO
+`missing theme file rejects...` usaba `theme-03`, que THC1 ya creo, asi que el test fallaba (\"Missing expected rejection\"). Fix (1 linea): usar un id inexistente, `theme-99`. Con esto `npm test` = 447/447.
+
+### Avisos (no bloquean)
+- Tono neutro sobre-marcado en algunos temas (THC2): `行李 xíng lǐ`, `左边 zuǒ biān`, `后面 hòu miàn`, `那里 nà lǐ`, `咳嗽 ké sòu` (y `便宜 pián yí` en theme-05). Estandar: tono neutro (`xíng li`, `zuǒ bian`...). Aceptable, tono de cita.
+- `public/data/lessons/practical/index.json` declara `wordCount:120`, `wordsPerLesson:24`, pero cada leccion trae 16-17 palabras. Metadata no usada por el motor.
+- Los temas 03-12 no estan cubiertos por `tests/themes.test.mjs` (solo valida 01-02 y el indice); los valide aparte con `validateTheme()` -> OK.
+- Hotspot: `src/learn/games.js` lo estan tocando a la vez el worker de integracion y esta verificacion (misma zona `render()`). Revisar al integrar.
+
+Verdict: **NUM, THC1, THC2 OK. G1 OK tras 2 fixes (ruta + fin de Memory). G2 OK.** 3 defectos pequenos corregidos (2 codigo, 1 test); resto son avisos. No se toco `dist/`.
+
+*Verificador `barato` — 2026-11-18 (t_e06c00f0)*

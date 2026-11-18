@@ -288,7 +288,7 @@ export async function render(container, ctx) {
         }
         flippedIds = [];
         lockInput = false;
-        if (check.complete) {
+        if (check.matched + 1 >= check.total) {
           finished = true;
         }
       } else {

@@ -135,5 +135,5 @@ test('markStudied stores progress under progress[theme:<id>]', async () => {
 });
 
 test('missing theme file rejects with a schema/load error', async () => {
-  await assert.rejects(() => loadTheme('theme-03', opts));
+  await assert.rejects(() => loadTheme('theme-99', opts));
 });

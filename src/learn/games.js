@@ -102,12 +102,13 @@ export async function render(container, ctx) {
   await ensureGamesRegistered();
 
   const segments = ctx?.route?.segments ?? [];
-  const gameId = segments[0];
+  const isHub = segments[0] === 'games';
+  const gameId = isHub ? segments[1] : segments[0];
 
   // If a specific game is requested, delegate to it
   if (gameId) {
     const game = await getGame(gameId);
-    if (game) return game.render(container, ctx);
+    if (game) return game.render(container, { ...ctx, route: { ...ctx.route, segments: isHub ? segments.slice(1) : segments } });
   }
 
   // Otherwise show the games menu
