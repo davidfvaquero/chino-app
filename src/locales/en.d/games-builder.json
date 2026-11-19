@@ -1,0 +1,23 @@
+{
+  "games": {
+    "builder": {
+      "title": "Sentence Builder",
+      "desc": "Tap the Chinese words in order to build the sentence.",
+      "round": "Sentence",
+      "mistakes": "Mistakes",
+      "time": "Time",
+      "score": "Points",
+      "hint": "Tap {left} more word(s).",
+      "hintBtn": "Hint",
+      "check": "Check",
+      "clear": "Clear",
+      "next": "Next",
+      "correct": "Correct!",
+      "incorrect": "Not quite. Correct order: {correct}",
+      "correctCount": "Correct: {correct}/{total}",
+      "complete": "Game complete!",
+      "playAgain": "Play again",
+      "back": "Back to games"
+    }
+  }
+}

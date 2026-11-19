@@ -1,0 +1,23 @@
+{
+  "games": {
+    "builder": {
+      "title": "Constructor de frases",
+      "desc": "Toca las palabras chinas en orden para formar la frase.",
+      "round": "Frase",
+      "mistakes": "Fallos",
+      "time": "Tiempo",
+      "score": "Puntos",
+      "hint": "Toca {left} palabra(s) más.",
+      "hintBtn": "Pista",
+      "check": "Comprobar",
+      "clear": "Borrar",
+      "next": "Siguiente",
+      "correct": "¡Correcto!",
+      "incorrect": "No es exacto. Orden correcto: {correct}",
+      "correctCount": "Aciertos: {correct}/{total}",
+      "complete": "¡Partida terminada!",
+      "playAgain": "Jugar otra vez",
+      "back": "Volver a los juegos"
+    }
+  }
+}
