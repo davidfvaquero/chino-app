@@ -38,7 +38,10 @@ const CSS = `
 .tones-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
 .tones-header h2 { margin: 0; }
 .tones-stats { display: flex; gap: 1rem; font-size: 0.9rem; opacity: 0.85; font-variant-numeric: tabular-nums; flex-wrap: wrap; }
-.tones-timed { display: flex; align-items: center; gap: 0.35rem; min-height: 44px; font-size: 0.9rem; }
+.tones-timed { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 44px; padding: 0 0.8rem; border: 1.5px solid var(--edge); border-radius: 999px; background: var(--surface); font-size: 0.9rem; }
+.tones-timed input[type="checkbox"] { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; }
+.tones-timed:has(input:checked) { border-color: var(--accent); color: var(--accent); background: var(--accent-wash); }
+.tones-timed:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
 .tones-timer { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
 .tones-timer span { display: block; height: 100%; background: var(--accent); animation: tones-drain linear forwards; }
 @keyframes tones-drain { from { width: 100%; } to { width: 0; } }

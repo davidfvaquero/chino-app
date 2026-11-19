@@ -95,6 +95,18 @@ const ROUTES = [
   { name: 'learn/games timed', hash: '#/learn/games/timed', optional: true, cards: [] },
   { name: 'learn/games builder', hash: '#/learn/games/builder', optional: true, cards: [] },
   { name: 'learn/radicals', hash: '#/learn/radicals', optional: true, cards: [] },
+  // New screens (t_ca3458fa): reachable by their own route.
+  { name: 'extras/worksheet', hash: '#/extras/worksheet', optional: true, cards: [] },
+  { name: 'extras/anki', hash: '#/extras/anki', optional: true, cards: [] },
+  { name: 'extras/account', hash: '#/extras/account', optional: true, cards: [] },
+  { name: 'extras/conversation', hash: '#/extras/conversation', optional: true, cards: [] },
+  { name: 'learn/plan', hash: '#/learn/plan', optional: true, cards: [] },
+  { name: 'learn/exam', hash: '#/learn/exam', optional: true, cards: [] },
+  { name: 'learn/typing', hash: '#/learn/typing', optional: true, cards: [] },
+  { name: 'learn/games tones-duel', hash: '#/learn/games/tones-duel', optional: true, cards: [] },
+  // The two hubs (Aprender / Más) as tile grids.
+  { name: 'learn hub', hash: '#/learn', waitFor: '.menu [data-area]', optional: true, cards: [] },
+  { name: 'more hub', hash: '#/extras', waitFor: '.menu [data-area]', optional: true, cards: [] },
 ];
 
 /* ------------------------------------------------------------------ CDP -- */

@@ -23,7 +23,7 @@ export const titleKey = 'anki.title';
 const STYLE_ID = 'anki-style';
 const CSS = `
 .anki-filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 0.5rem 0; }
-.anki-filter-row select { min-height: 44px; padding: 0 0.5rem; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); color: var(--ink); font: inherit; }
+.anki-filter-row select { min-height: 44px; padding: 0 0.5rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); font: inherit; }
 .anki-count, .anki-hint { margin: 0.25rem 0; font-size: 0.875rem; color: var(--ink-soft); }
 .anki-preview { margin-top: 0.75rem; padding: 0.75rem; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
 .anki-preview p { margin: 0 0 0.5rem; }

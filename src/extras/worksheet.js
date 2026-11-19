@@ -100,23 +100,25 @@ const CSS = `
 
 .ws-form { display: flex; flex-direction: column; gap: 0.6rem; }
 .ws-input-wrap { display: flex; flex-direction: column; gap: 0.3rem; }
-.ws-input { width: 100%; min-height: 80px; padding: 0.6rem 0.7rem; font-size: 1.05rem; font-family: inherit; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); color: inherit; resize: vertical; }
+.ws-input { width: 100%; min-height: 80px; padding: 0.6rem 0.7rem; font-size: 1.05rem; font-family: inherit; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: inherit; resize: vertical; }
 .ws-input:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
 .ws-input-hint { font-size: 0.8rem; color: var(--ink-soft); }
 
 .ws-sources { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.ws-source-btn { padding: 0.45rem 0.7rem; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); color: inherit; font-size: 0.9rem; }
+.ws-source-btn { min-height: 44px; padding: 0.45rem 0.7rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: inherit; font-size: 0.9rem; }
 .ws-source-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .ws-options { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; padding: 0.5rem; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
 .ws-opt-group { display: flex; flex-direction: column; gap: 0.2rem; }
-.ws-opt-label { font-size: 0.8rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em; }
-.ws-select { padding: 0.4rem 0.6rem; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); color: inherit; font: inherit; min-width: 120px; }
-.ws-checkbox { display: flex; align-items: center; gap: 0.35rem; font-size: 0.9rem; }
-.ws-checkbox input { width: 1.1rem; height: 1.1rem; accent-color: var(--accent); }
+.ws-opt-label { font-size: 0.8rem; color: var(--ink-soft); letter-spacing: 0.02em; }
+.ws-select { min-height: 44px; padding: 0.4rem 0.6rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: inherit; font: inherit; min-width: 120px; }
+.ws-checkbox { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 44px; padding: 0 0.8rem; border: 1.5px solid var(--edge); border-radius: 999px; background: var(--surface); font-size: 0.9rem; }
+.ws-checkbox input[type="checkbox"] { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; }
+.ws-checkbox:has(input:checked) { border-color: var(--accent); color: var(--accent); background: var(--accent-wash); }
+.ws-checkbox:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 .ws-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.ws-btn { padding: 0.55rem 0.9rem; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); color: inherit; font-size: 0.95rem; }
+.ws-btn { min-height: 44px; padding: 0.55rem 0.9rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: inherit; font-size: 0.95rem; }
 .ws-btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
 .ws-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
@@ -145,7 +147,7 @@ const CSS = `
   .ws-char-block { margin-bottom: 0.75rem; }
   .ws-char-large { font-size: 3.5rem; }
   .ws-grid { gap: 0.25rem; }
-  .ws-cell { border-color: #999; }
+  .ws-cell { border-color: var(--line); }
   @page { size: A4 portrait; margin: 1.5cm; }
   body { margin: 0; padding: 0; }
   .app-header, .tabbar, .screen > h2 { display: none !important; }

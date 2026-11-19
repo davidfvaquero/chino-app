@@ -110,12 +110,16 @@ const CSS = `
 .exam-field { display: grid; gap: 0.35rem; }
 .exam-field label { font-size: 0.85rem; color: var(--ink-soft); }
 .exam-select, .exam-input {
-  width: 100%; font: inherit; padding: 0.6rem 0.7rem;
-  border: 1px solid var(--line); border-radius: 0.6rem;
-  background: var(--bg); color: var(--ink);
+  width: 100%; font: inherit; padding: 0.6rem 0.7rem; min-height: 44px;
+  border: 1.5px solid var(--edge); border-radius: 0.6rem;
+  background: var(--surface); color: var(--ink);
 }
 .exam-hint { margin: 0; font-size: 0.8rem; color: var(--ink-soft); }
-.exam-check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+.exam-check { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0 0.8rem;
+  border: 1.5px solid var(--edge); border-radius: 999px; background: var(--surface); font-size: 0.9rem; }
+.exam-check input[type="checkbox"] { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; }
+.exam-check:has(input:checked) { border-color: var(--accent); color: var(--accent); background: var(--accent-wash); }
+.exam-check:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
 .exam-bar { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.85rem; color: var(--ink-soft); }
 .exam-section { margin: 0; font-size: 0.8rem; letter-spacing: 0.05em; color: var(--ink-soft); }
 .exam-notice { margin: 0; padding: 0.5rem 0.7rem; border-radius: 0.6rem; background: var(--surface); color: var(--ink-soft); font-size: 0.85rem; }

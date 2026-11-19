@@ -29,10 +29,10 @@ const CSS = `
 .account-field span { font-size: 0.9rem; color: var(--fg-soft); }
 .account-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .account-actions button, .account-send, .account-verify {
-  min-height: 2.4rem; padding: 0 0.8rem; border: 1px solid var(--line);
-  border-radius: var(--radius); background: var(--bg); color: inherit; font: inherit;
+  min-height: 44px; padding: 0 0.8rem; border: 1.5px solid var(--edge);
+  border-radius: var(--radius); background: var(--surface); color: inherit; font: inherit;
 }
-.account-actions button[data-danger="true"] { color: #c0392b; border-color: #c0392b; }
+.account-actions button[data-danger="true"] { color: var(--danger); border-color: var(--danger); }
 .account-message { margin: 0; color: var(--fg-soft); font-size: 0.9rem; }
 `;
 

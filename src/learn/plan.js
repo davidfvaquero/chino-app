@@ -214,7 +214,7 @@ const CSS = `
 .plan-day[data-status="today"] .plan-badge { border-color: var(--accent); color: var(--accent); }
 .plan-day[data-status="done"] .plan-badge { color: var(--accent); }
 .plan-tasks { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.6rem 0 0; padding: 0; list-style: none; }
-.plan-task { min-height: 2.6rem; text-align: left; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); color: inherit; font: inherit; cursor: pointer; padding: 0.5rem 0.7rem; }
+.plan-task { min-height: 44px; text-align: left; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: inherit; font: inherit; cursor: pointer; padding: 0.5rem 0.7rem; }
 .plan-rest { color: var(--ink-soft); margin: 0.6rem 0 0; }
 `;
 

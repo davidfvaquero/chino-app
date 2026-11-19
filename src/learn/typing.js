@@ -49,11 +49,11 @@ const CSS = `
 .typing-setup-row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
 .typing-setup label { font-size: 0.9rem; color: var(--ink-soft); min-width: 70px; }
 .typing-setup select, .typing-setup input[type="number"] {
-  flex: 1; min-width: 0; padding: 0.5rem 0.6rem; font-size: 1rem;
+  flex: 1; min-width: 0; min-height: 44px; padding: 0.5rem 0.6rem; font-size: 1rem;
   border: 1.5px solid var(--edge); border-radius: 0.5rem;
   background: var(--surface); color: inherit;
 }
-.typing-setup button { padding: 0.5rem 0.8rem; border: 1.5px solid var(--edge); border-radius: 0.5rem; background: var(--surface); color: inherit; font-size: 0.95rem; }
+.typing-setup button { min-height: 44px; padding: 0.5rem 0.8rem; border: 1.5px solid var(--edge); border-radius: 0.5rem; background: var(--surface); color: inherit; font-size: 0.95rem; }
 .typing-setup button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
 
 .typing-card { display: flex; flex-direction: column; gap: 0.75rem; align-items: center; text-align: center; }
@@ -62,7 +62,7 @@ const CSS = `
 
 .typing-input-wrap { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; max-width: 28rem; }
 .typing-input {
-  width: 100%; padding: 0.75rem 1rem; font-size: 1.15rem; text-align: center;
+  width: 100%; min-height: 44px; padding: 0.75rem 1rem; font-size: 1.15rem; text-align: center;
   border: 1.5px solid var(--edge); border-radius: 0.75rem;
   background: var(--surface); color: inherit;
   autocapitalize: none; autocorrect: off; spellcheck: false; inputmode: text;
@@ -78,7 +78,7 @@ const CSS = `
 .typing-hint .pinyin { display: inline; }
 
 .typing-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
-.typing-actions button { padding: 0.55rem 0.8rem; border: 1.5px solid var(--edge); border-radius: 0.6rem; background: var(--surface); color: inherit; font-size: 0.95rem; }
+.typing-actions button { min-height: 44px; padding: 0.55rem 0.8rem; border: 1.5px solid var(--edge); border-radius: 0.6rem; background: var(--surface); color: inherit; font-size: 0.95rem; }
 .typing-actions button.primary { border-color: var(--accent); color: var(--accent); font-weight: 600; }
 
 .typing-stats { display: flex; gap: 1.5rem; justify-content: center; font-variant-numeric: tabular-nums; font-size: 0.95rem; color: var(--ink-soft); }

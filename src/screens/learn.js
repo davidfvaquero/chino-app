@@ -39,6 +39,20 @@ const AREAS = [
 
 const load = (area) => import(`../learn/${area}.js`);
 
+/** Hanzi emblem per area (styles.css owns the old ones; the new areas get
+ *  theirs here because that file is frozen). One line per area. */
+const EMBLEMS = { plan: '计', exam: '考', typing: '打' };
+let emblemsAdded = false;
+function addEmblems() {
+  if (emblemsAdded || typeof document === 'undefined') return;
+  emblemsAdded = true;
+  const style = document.createElement('style');
+  style.textContent = Object.entries(EMBLEMS)
+    .map(([area, ch]) => `.menu > [data-area="${area}"].card.field::before { content: "${ch}" / ""; }`)
+    .join('\n');
+  document.head.append(style);
+}
+
 /** Menu label: `hubs.<HUB>.<area>` when the active locale defines it. */
 const labelKey = (area, module) => (has(`hubs.${HUB}.${area}`) ? `hubs.${HUB}.${area}` : module.titleKey);
 
@@ -50,6 +64,7 @@ export async function render(container, ctx) {
   if (AREAS.includes(area)) return (await load(area)).render(container, ctx);
 
   const modules = await Promise.all(AREAS.map((name) => load(name)));
+  addEmblems();
   reset(container);
   container.append(
     h(

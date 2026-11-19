@@ -41,7 +41,7 @@ const STYLE_ID = 'conv-style';
 const CSS = `
 .conv { display: flex; flex-direction: column; gap: 0.75rem; }
 .conv h2 { margin: 0; font-size: 1.2rem; }
-.conv-config { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); }
+.conv-config { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
 .conv-config > summary { padding: 0.6rem 0.75rem; cursor: pointer; font-weight: 600; }
 .conv-config > .conv-body { display: flex; flex-direction: column; gap: 0.6rem; padding: 0 0.75rem 0.75rem; }
 .conv label { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.85rem; color: var(--fg-soft); }
@@ -51,25 +51,25 @@ const CSS = `
 .conv-help ol { margin: 0.4rem 0; padding-left: 1.2rem; }
 .conv-help li { margin: 0.25rem 0; }
 .conv-chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.conv-chip { border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: inherit;
+.conv-chip { min-height: 44px; border: 1.5px solid var(--edge); border-radius: 999px; background: var(--surface); color: inherit;
   font: inherit; font-size: 0.85rem; padding: 0.25rem 0.7rem; }
 .conv-chip[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
 .conv-messages { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
 .conv-msg { display: flex; }
 .conv-user { justify-content: flex-end; }
 .conv-bubble { max-width: 90%; padding: 0.5rem 0.7rem; border-radius: var(--radius);
-  border: 1px solid var(--line); background: var(--bg-soft); }
-.conv-user .conv-bubble { background: var(--bg); border-color: var(--accent); }
+  border: 1px solid var(--line); background: var(--surface); }
+.conv-user .conv-bubble { background: var(--surface); border-color: var(--accent); }
 .conv-zh { font-size: 1.4rem; line-height: 1.7; }
 .conv-word { border: 0; background: none; color: inherit; font: inherit; padding: 0 0.05rem; cursor: pointer; }
 .conv-word:active { color: var(--accent); }
 .conv-pinyin { font-size: 0.95rem; margin-top: 0.15rem; }
 .conv-en { margin-top: 0.2rem; color: var(--fg-soft); font-size: 0.9rem; }
-.conv-toggle { margin-top: 0.3rem; border: 0; background: none; color: var(--accent); font: inherit;
+.conv-toggle { margin-top: 0.3rem; min-height: 44px; display: inline-flex; align-items: center; border: 0; background: none; color: var(--accent); font: inherit;
   font-size: 0.8rem; padding: 0; cursor: pointer; }
 .conv-correction { margin-top: 0.3rem; font-size: 0.85rem; color: var(--accent); }
 .conv-actions { display: flex; gap: 0.5rem; margin-top: 0.4rem; }
-.conv-act { border: 0; background: none; color: var(--accent); font: inherit; font-size: 0.85rem;
+.conv-act { min-height: 44px; display: inline-flex; align-items: center; border: 0; background: none; color: var(--accent); font: inherit; font-size: 0.85rem;
   padding: 0; cursor: pointer; }
 .conv-compose { display: flex; gap: 0.5rem; align-items: flex-end; }
 .conv-compose textarea { flex: 1; resize: vertical; min-height: 2.6rem; }

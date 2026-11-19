@@ -49,6 +49,16 @@ export const AREAS = [
   ['area-pronounce', '#/extras/pronounce'],
   ['area-settings', '#/extras/settings'],
   ['area-backup', '#/extras/backup'],
+  // New screens (t_ca3458fa): Anki, account, conversation, worksheet, plan,
+  // exam, typing and the newer games — own route even before the hub lists them.
+  ['area-worksheet', '#/extras/worksheet'],
+  ['area-anki', '#/extras/anki'],
+  ['area-account', '#/extras/account'],
+  ['area-conversation', '#/extras/conversation'],
+  ['area-plan', '#/learn/plan'],
+  ['area-exam', '#/learn/exam'],
+  ['area-typing', '#/learn/typing'],
+  ['area-games-tones-duel', '#/learn/games/tones-duel'],
 ];
 
 class CDP {
