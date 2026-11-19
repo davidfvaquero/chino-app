@@ -1,0 +1,32 @@
+{
+  "id": "hsk2-07",
+  "title": "Mañana y precios",
+  "intro": "Describe rutinas matutinas, precios y actividades comunes con 15 palabras más de HSK 2.",
+  "vocabulary": [
+    { "hanzi": "生病", "pinyin": "shēngbìng", "english": "enfermar", "example": { "hanzi": "生病了", "pinyin": "shēngbìng le", "english": "se enfermó" } },
+    { "hanzi": "生日", "pinyin": "shēngrì", "english": "cumpleaños", "example": { "hanzi": "生日快乐", "pinyin": "shēngrì kuàilè", "english": "feliz cumpleaños" } },
+    { "hanzi": "时间", "pinyin": "shíjiān", "english": "tiempo", "example": { "hanzi": "没时间", "pinyin": "méi shíjiān", "english": "no hay tiempo" } },
+    { "hanzi": "事情", "pinyin": "shìqing", "english": "asunto; cosa", "example": { "hanzi": "很多事情", "pinyin": "hěn duō shìqing", "english": "muchas cosas" } },
+    { "hanzi": "手表", "pinyin": "shǒubiǎo", "english": "reloj de pulsera", "example": { "hanzi": "戴手表", "pinyin": "dài shǒubiǎo", "english": "llevar reloj" } },
+    { "hanzi": "手机", "pinyin": "shǒujī", "english": "móvil", "example": { "hanzi": "打手机", "pinyin": "dǎ shǒujī", "english": "hacer una llamada" } },
+    { "hanzi": "说话", "pinyin": "shuōhuà", "english": "hablar", "example": { "hanzi": "在说话", "pinyin": "zài shuōhuà", "english": "hablando" } },
+    { "hanzi": "送", "pinyin": "sòng", "english": "regalar; entregar", "example": { "hanzi": "送礼物", "pinyin": "sòng lǐwù", "english": "regalar un obsequio" } },
+    { "hanzi": "虽然", "pinyin": "suīrán", "english": "aunque", "example": { "hanzi": "虽然累", "pinyin": "suīrán lèi", "english": "aunque cansado" } },
+    { "hanzi": "但是", "pinyin": "dànshì", "english": "pero", "example": { "hanzi": "但是好", "pinyin": "dànshì hǎo", "english": "pero bien" } },
+    { "hanzi": "它", "pinyin": "tā", "english": "ello; eso", "example": { "hanzi": "它很好", "pinyin": "tā hěn hǎo", "english": "está bien" } },
+    { "hanzi": "踢足球", "pinyin": "tīzúqiú", "english": "jugar al fútbol", "example": { "hanzi": "喜欢踢足球", "pinyin": "xǐhuan tīzúqiú", "english": "gusta jugar al fútbol" } },
+    { "hanzi": "题", "pinyin": "tí", "english": "pregunta; tema", "example": { "hanzi": "一道题", "pinyin": "yì dào tí", "english": "una pregunta" } },
+    { "hanzi": "跳舞", "pinyin": "tiàowǔ", "english": "bailar", "example": { "hanzi": "去跳舞", "pinyin": "qù tiàowǔ", "english": "ir a bailar" } },
+    { "hanzi": "外", "pinyin": "wài", "english": "fuera; exterior", "example": { "hanzi": "在外面", "pinyin": "zài wàimiàn", "english": "afuera" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 生病?", "options": ["enfermar", "cumpleaños", "tiempo"], "answer": "enfermar" },
+    { "type": "choose", "prompt": "¿Qué palabra significa 'asunto'?", "options": ["事情", "手表", "手机"], "answer": "事情" },
+    { "type": "listen", "audio": "说话", "pinyin": "shuōhuà", "prompt": "Escucha y elige lo que oyes.", "options": ["说话", "送", "虽然"], "answer": "说话" },
+    { "type": "match", "prompt": "Une cada palabra con su significado.", "pairs": [ { "hanzi": "但是", "english": "pero" }, { "hanzi": "它", "english": "ello" }, { "hanzi": "踢足球", "english": "jugar al fútbol" }, { "hanzi": "题", "english": "pregunta" } ] },
+    { "type": "order", "prompt": "Forma la frase 'se enfermó'.", "tokens": ["生", "病", "了"], "answer": "生病了" },
+    { "type": "order", "prompt": "Pon los caracteres en orden para decir 'cumpleaños'.", "tokens": ["生", "日"], "answer": "生日" },
+    { "type": "listen", "audio": "跳舞", "pinyin": "tiàowǔ", "prompt": "Escucha y elige lo que oyes.", "options": ["跳舞", "外", "生病"], "answer": "跳舞" },
+    { "type": "choose", "prompt": "¿Qué carácter significa 'fuera'?", "options": ["外", "生病", "生日"], "answer": "外" }
+  ]
+}

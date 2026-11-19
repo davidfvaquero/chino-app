@@ -1,0 +1,32 @@
+{
+  "id": "hsk2-08",
+  "title": "Vida diaria y tiempo",
+  "intro": "Habla de la vida diaria, el tiempo y objetos comunes con 15 palabras de HSK 2.",
+  "vocabulary": [
+    { "hanzi": "完", "pinyin": "wán", "english": "terminar", "example": { "hanzi": "做完了", "pinyin": "zuò wán le", "english": "terminado" } },
+    { "hanzi": "玩", "pinyin": "wán", "english": "jugar", "example": { "hanzi": "去玩", "pinyin": "qù wán", "english": "ir a jugar" } },
+    { "hanzi": "晚上", "pinyin": "wǎnshang", "english": "noche", "example": { "hanzi": "晚上好", "pinyin": "wǎnshang hǎo", "english": "buenas noches" } },
+    { "hanzi": "往", "pinyin": "wǎng", "english": "ir hacia (una dirección)", "example": { "hanzi": "往前走", "pinyin": "wǎng qián zǒu", "english": "caminar hacia adelante" } },
+    { "hanzi": "为什么", "pinyin": "wèishénme", "english": "¿por qué?", "example": { "hanzi": "为什么不", "pinyin": "wèishénme bù", "english": "¿por qué no?" } },
+    { "hanzi": "问", "pinyin": "wèn", "english": "preguntar", "example": { "hanzi": "问问题", "pinyin": "wèn wèntí", "english": "hacer una pregunta" } },
+    { "hanzi": "问题", "pinyin": "wèntí", "english": "pregunta; problema", "example": { "hanzi": "没有问题", "pinyin": "méiyǒu wèntí", "english": "no hay problema" } },
+    { "hanzi": "西瓜", "pinyin": "xīguā", "english": "sandía", "example": { "hanzi": "吃西瓜", "pinyin": "chī xīguā", "english": "comer sandía" } },
+    { "hanzi": "希望", "pinyin": "xīwàng", "english": "esperar; ojalá", "example": { "hanzi": "希望好", "pinyin": "xīwàng hǎo", "english": "esperar que vaya bien" } },
+    { "hanzi": "洗", "pinyin": "xǐ", "english": "lavar", "example": { "hanzi": "洗手", "pinyin": "xǐ shǒu", "english": "lavarse las manos" } },
+    { "hanzi": "小时", "pinyin": "xiǎoshí", "english": "hora", "example": { "hanzi": "两小时", "pinyin": "liǎng xiǎoshí", "english": "dos horas" } },
+    { "hanzi": "笑", "pinyin": "xiào", "english": "reír", "example": { "hanzi": "笑了", "pinyin": "xiào le", "english": "se rió" } },
+    { "hanzi": "新", "pinyin": "xīn", "english": "nuevo", "example": { "hanzi": "新年", "pinyin": "xīnnián", "english": "año nuevo" } },
+    { "hanzi": "姓", "pinyin": "xìng", "english": "apellidarse", "example": { "hanzi": "姓王", "pinyin": "xìng Wáng", "english": "apellidarse Wang" } },
+    { "hanzi": "休息", "pinyin": "xiūxi", "english": "descansar", "example": { "hanzi": "休息一下", "pinyin": "xiūxi yíxià", "english": "descansar un rato" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 完?", "options": ["terminar", "jugar", "noche"], "answer": "terminar" },
+    { "type": "choose", "prompt": "¿Qué palabra significa 'ir hacia (una dirección)'?", "options": ["往", "为什么", "问"], "answer": "往" },
+    { "type": "listen", "audio": "问题", "pinyin": "wèntí", "prompt": "Escucha y elige lo que oyes.", "options": ["问题", "西瓜", "希望"], "answer": "问题" },
+    { "type": "match", "prompt": "Une cada palabra con su significado.", "pairs": [ { "hanzi": "洗", "english": "lavar" }, { "hanzi": "小时", "english": "hora" }, { "hanzi": "笑", "english": "reír" }, { "hanzi": "新", "english": "nuevo" } ] },
+    { "type": "order", "prompt": "Forma la frase 'terminado'.", "tokens": ["做", "完", "了"], "answer": "做完了" },
+    { "type": "order", "prompt": "Pon los caracteres en orden para decir 'noche'.", "tokens": ["晚", "上"], "answer": "晚上" },
+    { "type": "listen", "audio": "姓", "pinyin": "xìng", "prompt": "Escucha y elige lo que oyes.", "options": ["姓", "休息", "完"], "answer": "姓" },
+    { "type": "choose", "prompt": "¿Qué carácter significa 'descansar'?", "options": ["休息", "完", "玩"], "answer": "休息" }
+  ]
+}

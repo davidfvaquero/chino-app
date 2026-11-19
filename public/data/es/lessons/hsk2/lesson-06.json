@@ -1,0 +1,32 @@
+{
+  "id": "hsk2-06",
+  "title": "Compras y comida",
+  "intro": "Compra comida, compara precios y habla de actividades diarias con 15 palabras de HSK 2.",
+  "vocabulary": [
+    { "hanzi": "女", "pinyin": "nǚ", "english": "mujer", "example": { "hanzi": "女儿", "pinyin": "nǚ'ér", "english": "hija" } },
+    { "hanzi": "旁边", "pinyin": "pángbiān", "english": "lado, al lado", "example": { "hanzi": "在我旁边", "pinyin": "zài wǒ pángbiān", "english": "a mi lado" } },
+    { "hanzi": "跑步", "pinyin": "pǎobù", "english": "correr", "example": { "hanzi": "去跑步", "pinyin": "qù pǎobù", "english": "ir a correr" } },
+    { "hanzi": "便宜", "pinyin": "piányi", "english": "barato", "example": { "hanzi": "很便宜", "pinyin": "hěn piányi", "english": "muy barato" } },
+    { "hanzi": "票", "pinyin": "piào", "english": "boleto; entrada", "example": { "hanzi": "一张票", "pinyin": "yì zhāng piào", "english": "un boleto" } },
+    { "hanzi": "妻子", "pinyin": "qīzi", "english": "esposa", "example": { "hanzi": "我的妻子", "pinyin": "wǒ de qīzi", "english": "mi esposa" } },
+    { "hanzi": "起床", "pinyin": "qǐ chuáng", "english": "levantarse", "example": { "hanzi": "早起床", "pinyin": "zǎo qǐchuáng", "english": "levantarse temprano" } },
+    { "hanzi": "千", "pinyin": "qiān", "english": "mil", "example": { "hanzi": "一千块", "pinyin": "yì qiān kuài", "english": "mil yuanes" } },
+    { "hanzi": "铅笔", "pinyin": "qiānbǐ", "english": "lápiz", "example": { "hanzi": "一支铅笔", "pinyin": "yì zhī qiānbǐ", "english": "un lápiz" } },
+    { "hanzi": "晴", "pinyin": "qíng", "english": "despejado", "example": { "hanzi": "今天晴", "pinyin": "jīntiān qíng", "english": "hoy hace sol" } },
+    { "hanzi": "去年", "pinyin": "qùnián", "english": "año pasado", "example": { "hanzi": "去年去", "pinyin": "qùnián qù", "english": "fui el año pasado" } },
+    { "hanzi": "让", "pinyin": "ràng", "english": "dejar; pedir", "example": { "hanzi": "让我试", "pinyin": "ràng wǒ shì", "english": "déjame probar" } },
+    { "hanzi": "日", "pinyin": "rì", "english": "sol; día", "example": { "hanzi": "每日", "pinyin": "měi rì", "english": "cada día" } },
+    { "hanzi": "上班", "pinyin": "shàngbān", "english": "ir a trabajar", "example": { "hanzi": "早上上班", "pinyin": "zǎoshang shàngbān", "english": "ir a trabajar por la mañana" } },
+    { "hanzi": "身体", "pinyin": "shēntǐ", "english": "salud; cuerpo", "example": { "hanzi": "身体好", "pinyin": "shēntǐ hǎo", "english": "buena salud" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 女?", "options": ["mujer", "lado, al lado", "correr"], "answer": "mujer" },
+    { "type": "choose", "prompt": "¿Qué palabra significa 'barato'?", "options": ["便宜", "票", "妻子"], "answer": "便宜" },
+    { "type": "listen", "audio": "起床", "pinyin": "qǐ chuáng", "prompt": "Escucha y elige lo que oyes.", "options": ["起床", "千", "铅笔"], "answer": "起床" },
+    { "type": "match", "prompt": "Une cada palabra con su significado.", "pairs": [ { "hanzi": "晴", "english": "despejado" }, { "hanzi": "去年", "english": "año pasado" }, { "hanzi": "让", "english": "dejar" }, { "hanzi": "日", "english": "sol" } ] },
+    { "type": "order", "prompt": "Forma la palabra 'hija'.", "tokens": ["女", "儿"], "answer": "女儿" },
+    { "type": "order", "prompt": "Pon los caracteres en orden para decir 'lado, al lado'.", "tokens": ["旁", "边"], "answer": "旁边" },
+    { "type": "listen", "audio": "上班", "pinyin": "shàngbān", "prompt": "Escucha y elige lo que oyes.", "options": ["上班", "身体", "女"], "answer": "上班" },
+    { "type": "choose", "prompt": "¿Qué carácter significa 'salud'?", "options": ["身体", "女", "旁边"], "answer": "身体" }
+  ]
+}

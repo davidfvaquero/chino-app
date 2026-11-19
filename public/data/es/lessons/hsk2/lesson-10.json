@@ -1,0 +1,33 @@
+{
+  "id": "hsk2-10",
+  "title": "Preguntas y palabras cotidianas",
+  "intro": "Haz preguntas y usa vocabulario cotidiano con las últimas 16 palabras de HSK 2.",
+  "vocabulary": [
+    { "hanzi": "右边", "pinyin": "yòubian", "english": "lado derecho", "example": { "hanzi": "在右边", "pinyin": "zài yòubian", "english": "a la derecha" } },
+    { "hanzi": "鱼", "pinyin": "yú", "english": "pescado (radical Kangxi 195)", "example": { "hanzi": "吃鱼", "pinyin": "chī yú", "english": "comer pescado" } },
+    { "hanzi": "远", "pinyin": "yuǎn", "english": "lejos", "example": { "hanzi": "很远", "pinyin": "hěn yuǎn", "english": "muy lejos" } },
+    { "hanzi": "运动", "pinyin": "yùndòng", "english": "ejercicio (físico)", "example": { "hanzi": "做运动", "pinyin": "zuò yùndòng", "english": "hacer ejercicio" } },
+    { "hanzi": "再", "pinyin": "zài", "english": "otra vez", "example": { "hanzi": "再说", "pinyin": "zài shuō", "english": "decir otra vez" } },
+    { "hanzi": "早上", "pinyin": "zǎoshang", "english": "mañana (temprano)", "example": { "hanzi": "早上好", "pinyin": "zǎoshang hǎo", "english": "buenos días" } },
+    { "hanzi": "丈夫", "pinyin": "zhàngfu", "english": "marido", "example": { "hanzi": "我的丈夫", "pinyin": "wǒ de zhàngfu", "english": "mi marido" } },
+    { "hanzi": "找", "pinyin": "zhǎo", "english": "buscar", "example": { "hanzi": "找钱", "pinyin": "zhǎo qián", "english": "dar cambio" } },
+    { "hanzi": "着", "pinyin": "zhe", "english": "-ando/-endo (acción en curso)", "example": { "hanzi": "听着", "pinyin": "tīngzhe", "english": "escuchando" } },
+    { "hanzi": "真", "pinyin": "zhēn", "english": "de verdad; realmente", "example": { "hanzi": "真好", "pinyin": "zhēn hǎo", "english": "de verdad bien" } },
+    { "hanzi": "正在", "pinyin": "zhèngzài", "english": "en proceso de (hacer algo)", "example": { "hanzi": "正在吃", "pinyin": "zhèngzài chī", "english": "comiendo ahora mismo" } },
+    { "hanzi": "知道", "pinyin": "zhīdao", "english": "saber", "example": { "hanzi": "我知道", "pinyin": "wǒ zhīdao", "english": "lo sé" } },
+    { "hanzi": "准备", "pinyin": "zhǔnbèi", "english": "preparar", "example": { "hanzi": "准备好", "pinyin": "zhǔnbèi hǎo", "english": "estar listo" } },
+    { "hanzi": "走", "pinyin": "zǒu", "english": "caminar", "example": { "hanzi": "走路", "pinyin": "zǒu lù", "english": "caminar" } },
+    { "hanzi": "最", "pinyin": "zuì", "english": "lo más; el más", "example": { "hanzi": "最好", "pinyin": "zuì hǎo", "english": "lo mejor" } },
+    { "hanzi": "左边", "pinyin": "zuǒbian", "english": "lado izquierdo", "example": { "hanzi": "在左边", "pinyin": "zài zuǒbian", "english": "a la izquierda" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 右边?", "options": ["lado derecho", "pescado (radical Kangxi 195)", "lejos"], "answer": "lado derecho" },
+    { "type": "choose", "prompt": "¿Qué palabra significa 'ejercicio (físico)'?", "options": ["运动", "再", "早上"], "answer": "运动" },
+    { "type": "listen", "audio": "丈夫", "pinyin": "zhàngfu", "prompt": "Escucha y elige lo que oyes.", "options": ["丈夫", "找", "着"], "answer": "丈夫" },
+    { "type": "match", "prompt": "Une cada palabra con su significado.", "pairs": [ { "hanzi": "真", "english": "de verdad" }, { "hanzi": "正在", "english": "en proceso de" }, { "hanzi": "知道", "english": "saber" }, { "hanzi": "准备", "english": "preparar" } ] },
+    { "type": "order", "prompt": "Forma la frase 'a la derecha'.", "tokens": ["在", "右", "边"], "answer": "在右边" },
+    { "type": "order", "prompt": "Pon los caracteres en orden para decir 'ejercicio (físico)'.", "tokens": ["运", "动"], "answer": "运动" },
+    { "type": "listen", "audio": "走", "pinyin": "zǒu", "prompt": "Escucha y elige lo que oyes.", "options": ["走", "最", "右边"], "answer": "走" },
+    { "type": "choose", "prompt": "¿Qué carácter significa 'lo más'?", "options": ["最", "右边", "鱼"], "answer": "最" }
+  ]
+}

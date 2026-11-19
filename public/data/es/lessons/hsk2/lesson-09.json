@@ -1,0 +1,32 @@
+{
+  "id": "hsk2-09",
+  "title": "Acciones y conectores",
+  "intro": "Expresa acciones, razones y conectores lógicos con 15 palabras de HSK 2.",
+  "vocabulary": [
+    { "hanzi": "雪", "pinyin": "xuě", "english": "nieve", "example": { "hanzi": "下雪", "pinyin": "xià xuě", "english": "nevando" } },
+    { "hanzi": "颜色", "pinyin": "yánsè", "english": "color", "example": { "hanzi": "什么颜色", "pinyin": "shénme yánsè", "english": "qué color" } },
+    { "hanzi": "眼睛", "pinyin": "yǎnjing", "english": "ojo", "example": { "hanzi": "大眼睛", "pinyin": "dà yǎnjing", "english": "ojos grandes" } },
+    { "hanzi": "羊肉", "pinyin": "yángròu", "english": "cordero", "example": { "hanzi": "吃羊肉", "pinyin": "chī yángròu", "english": "comer cordero" } },
+    { "hanzi": "药", "pinyin": "yào", "english": "medicina", "example": { "hanzi": "吃药", "pinyin": "chī yào", "english": "tomar medicina" } },
+    { "hanzi": "要", "pinyin": "yào", "english": "querer", "example": { "hanzi": "要水", "pinyin": "yào shuǐ", "english": "querer agua" } },
+    { "hanzi": "也", "pinyin": "yě", "english": "también", "example": { "hanzi": "我也去", "pinyin": "wǒ yě qù", "english": "yo también voy" } },
+    { "hanzi": "一起", "pinyin": "yìqǐ", "english": "juntos", "example": { "hanzi": "一起吃", "pinyin": "yìqǐ chī", "english": "comer juntos" } },
+    { "hanzi": "一下", "pinyin": "yíxià", "english": "un rato; un poco", "example": { "hanzi": "看一下", "pinyin": "kàn yíxià", "english": "echar un vistazo" } },
+    { "hanzi": "已经", "pinyin": "yǐjing", "english": "ya", "example": { "hanzi": "已经吃了", "pinyin": "yǐjing chī le", "english": "ya comí" } },
+    { "hanzi": "意思", "pinyin": "yìsi", "english": "significado", "example": { "hanzi": "什么意思", "pinyin": "shénme yìsi", "english": "qué significa" } },
+    { "hanzi": "因为", "pinyin": "yīnwèi", "english": "porque", "example": { "hanzi": "因为我累", "pinyin": "yīnwèi wǒ lèi", "english": "porque estoy cansado" } },
+    { "hanzi": "所以", "pinyin": "suǒyǐ", "english": "así que", "example": { "hanzi": "所以不去", "pinyin": "suǒyǐ bù qù", "english": "así que no voy" } },
+    { "hanzi": "阴", "pinyin": "yīn", "english": "nublado (tiempo)", "example": { "hanzi": "今天阴", "pinyin": "jīntiān yīn", "english": "hoy nublado" } },
+    { "hanzi": "游泳", "pinyin": "yóuyǒng", "english": "nadar", "example": { "hanzi": "去游泳", "pinyin": "qù yóuyǒng", "english": "ir a nadar" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 雪?", "options": ["nieve", "color", "ojo"], "answer": "nieve" },
+    { "type": "choose", "prompt": "¿Qué palabra significa 'cordero'?", "options": ["羊肉", "药", "要"], "answer": "羊肉" },
+    { "type": "listen", "audio": "也", "pinyin": "yě", "prompt": "Escucha y elige lo que oyes.", "options": ["也", "一起", "一下"], "answer": "也" },
+    { "type": "match", "prompt": "Une cada palabra con su significado.", "pairs": [ { "hanzi": "已经", "english": "ya" }, { "hanzi": "意思", "english": "significado" }, { "hanzi": "因为", "english": "porque" }, { "hanzi": "所以", "english": "así que" } ] },
+    { "type": "order", "prompt": "Forma la frase 'nevando'.", "tokens": ["下", "雪"], "answer": "下雪" },
+    { "type": "order", "prompt": "Pon los caracteres en orden para decir 'color'.", "tokens": ["颜", "色"], "answer": "颜色" },
+    { "type": "listen", "audio": "阴", "pinyin": "yīn", "prompt": "Escucha y elige lo que oyes.", "options": ["阴", "游泳", "雪"], "answer": "阴" },
+    { "type": "choose", "prompt": "¿Qué carácter significa 'nadar'?", "options": ["游泳", "雪", "颜色"], "answer": "游泳" }
+  ]
+}
