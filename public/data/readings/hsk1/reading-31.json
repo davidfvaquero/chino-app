@@ -1,0 +1,50 @@
+{
+  "id": "reading-31",
+  "title": "天气冷了",
+  "type": "dialogue",
+  "topic": "Seasons",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "今天天气怎么样？",
+      "pinyin": "Jīntiān tiānqì zěnmeyàng?",
+      "english": "How is the weather today?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "今天很冷。要穿很多衣服。",
+      "pinyin": "Jīntiān hěn lěng. Yào chuān hěn duō yīfu.",
+      "english": "Today is very cold. You need to wear lots of clothes."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "明天下雨吗？",
+      "pinyin": "Míngtiān xiàyǔ ma?",
+      "english": "Will it rain tomorrow?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "不下雨。明天天气很好。",
+      "pinyin": "Bù xiàyǔ. Míngtiān tiānqì hěn hǎo.",
+      "english": "No rain. Tomorrow's weather is very nice."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "明天冷不冷？",
+      "pinyin": "Míngtiān lěng bù lěng?",
+      "english": "Is tomorrow cold?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "明天不冷。",
+      "pinyin": "Míngtiān bù lěng.",
+      "english": "Tomorrow isn't cold."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "太好了！我喜欢不冷的天气。",
+      "pinyin": "Tài hǎo le! Wǒ xǐhuan bù lěng de tiānqì.",
+      "english": "Great! I like not-cold weather."
+    }
+  ]
+}

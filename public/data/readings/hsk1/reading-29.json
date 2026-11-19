@@ -1,0 +1,50 @@
+{
+  "id": "reading-29",
+  "title": "找工作",
+  "type": "dialogue",
+  "topic": "Looking for a job",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你在找工作吗？",
+      "pinyin": "Nǐ zài zhǎo gōngzuò ma?",
+      "english": "Are you looking for a job?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，我想在大公司工作。",
+      "pinyin": "Shì de, wǒ xiǎng zài dà gōngsī gōngzuò.",
+      "english": "Yes, I want to work at a big company."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你会说汉语吗？",
+      "pinyin": "Nǐ huì shuō Hànyǔ ma?",
+      "english": "Can you speak Chinese?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我会说一点儿。我正在学习。",
+      "pinyin": "Wǒ huì shuō yìdiǎnr. Wǒ zhèngzài xuéxí.",
+      "english": "I can speak a little. I am studying."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你会用电脑吗？",
+      "pinyin": "Nǐ huì yòng diànnǎo ma?",
+      "english": "Can you use a computer?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "会，我会用电脑。我也会写汉字。",
+      "pinyin": "Huì, wǒ huì yòng diànnǎo. Wǒ yě huì xiě Hànzì.",
+      "english": "Yes, I can use a computer. I can also write Chinese characters."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "很好！希望你找到好工作。",
+      "pinyin": "Hěn hǎo! Xīwàng nǐ zhǎodào hǎo gōngzuò.",
+      "english": "Very good! Hope you find a good job."
+    }
+  ]
+}
