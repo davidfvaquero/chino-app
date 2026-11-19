@@ -1576,3 +1576,35 @@ Build: `OUT_DIR=/tmp/chino-t_b6925301 node scripts/build.mjs` (1819 ficheros). S
 **Veredicto BLOQUE 14: audio, repaso, lógica de plan y examen OK. FALLO por ruta de plan/examen (integración pendiente), por tests/check-es-data con WIP ajeno, y por raíz sucia.**
 
 *Verificador haiku — 2026-11-19*
+
+## BLOQUE 15 — verificación de trazos en modo oscuro (t_4dcf44d7, verificador deepseek) — OK
+
+Alcance: t_5de4cb9c "Arreglar: trazos invisibles en modo oscuro". Implementador `haiku`, verificador `deepseek` — perfiles distintos, verificable. Commit `76a0af7`. Build: `OUT_DIR=/tmp/chino-t_4dcf44d7 npm run build` (1845 ficheros). No se tocó `dist/`. Chrome headless, 390x844, táctil, deviceScaleFactor 2.
+
+| # | Punto | Resultado | Evidencia |
+|---|---|---|---|
+| 1 | Trazos y guías >= 3:1 (oscuro y claro) | OK | `check-strokes-dark.mjs`: 52/52 mediciones >= 3:1, 0 < 3:1, 0 errores. Mínimo 3.41 (ghost claro); ink 14-15, guía 3.7-4.2, rejilla 3.6-4.2 |
+| 2 | `data-theme=dark` y `prefers-color-scheme: dark`, y claro | OK | 4 combos (settings dark/light/auto × OS dark/light): mismo resultado en cada pantalla |
+| 3 | `#/learn/strokes` animación y práctica (你) | OK | animation: ink 14.17, ghost 4.65, guía 3.73; practice: guía 5.75, trazo en curso 7.66, trazo hecho 10.54, trazo erróneo 6.92. Capturas revisadas: trazos blancos y guía cian visibles sobre fondo oscuro |
+| 4 | Hoja de trazos (戴维德) | OK | `#/learn/strokes/戴维德`: pasos 4.65, trazo nuevo 8.22. Miniaturas visibles sobre `--surface` oscuro |
+| 5 | Lienzo de dibujo a mano (`#/extras/draw`) | OK | trazo 15.76, rejilla 4.15 (oscuro) / 3.61 (claro). Zigzag blanco y rejilla discontinua visibles |
+| 6 | Cambio de tema en Ajustes sin recargar, color correcto | OK | `draw` cambia a `light`→pixels 22,35,38 (tinta clara) y a `dark`→232,239,235 (tinta oscura) sin recargar; `MutationObserver` sobre `data-theme` repinta. Causa real: `strokeStyle='var(--ink)'` no lo resuelve canvas 2D (sale negro); ahora lee `getComputedStyle(el).color` |
+| 7 | `scripts/check-strokes-dark.mjs` verde | OK | exit 0; 52 mediciones, 0 por debajo de 3:1 |
+| 8 | `npm test` verde | **FALLO (ajeno)** | 756 pass / 3 fail. Los 3 fallos son `tests/hsk3-lessons-headless.test.mjs` (hsk3-08/09/10, sin commitear, `??` en git status), de otro worker. `tests/strokes-dark.test.mjs` 3/3 OK |
+| 9 | git diff sin cambios de lógica de reconocimiento ni orden de trazos | OK | `strokes.js`: solo 4 líneas CSS (guide/ghost/trace-guide, colores y opacidad). `strokes-sheet.js`: 1 línea CSS (opacity 0.22→0.7). `draw.js`: solo color de canvas (canvasInk/inkOf/drawGrid). Sin cambios en reconocimiento/orden/candidatos |
+| 10 | Sin dependencias nuevas | OK | `package.json` y `package-lock.json` fuera del commit; scripts usan solo `scripts/lib/audit.mjs` existente |
+| 11 | Comunes: i18n, chino tradicional, consola, rutas | OK | `check-i18n.mjs` es al día (853 claves); sin chino tradicional en ficheros cambiados; 0 errores de consola/pantalla; `#/learn/strokes/你`, `#/learn/strokes/戴维德` y `#/extras/draw` abren directo |
+
+**Reparaciones:** ninguna. Todo OK en el alcance; el único FALLO (`npm test`) es de un fichero de test ajeno sin commitear.
+
+**Reproducir:**
+```
+OUT_DIR=/tmp/chino-t_4dcf44d7 npm run build
+SHOTS_DIR=/tmp/chino-t_4dcf44d7/shots node scripts/check-strokes-dark.mjs /tmp/chino-t_4dcf44d7   # 52/52 >= 3:1
+node --test tests/strokes-dark.test.mjs                                                          # 3/3
+npm test                                                                                         # 756/759 (3 fail: hsk3, ajeno)
+```
+
+**Veredicto BLOQUE 15: trazos en modo oscuro OK.** Trazos, guías y lienzo >= 3:1 en oscuro y claro, en las cuatro combinaciones de tema; cambio de tema sin recargar repinta con el color correcto. Sin cambios de lógica ni deps. FALLO ajeno: `npm test` por `tests/hsk3-lessons-headless.test.mjs` (otro worker).
+
+*Verificador deepseek — 2026-11-19*
