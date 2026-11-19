@@ -2,7 +2,6 @@
   "reviewFilter": {
     "title": "Qué repasar",
     "all": "Todo ({count})",
-    "back": "Atrás",
     "loading": "Cargando…",
     "source": {
       "dictionary": "Diccionario ({count})",
@@ -14,16 +13,10 @@
       "dictation": "Dictado ({count})",
       "unknown": "Otros ({count})"
     },
-    "detail": {
-      "title": "Filtrar por {source}",
-      "allInSource": "Todo {source} ({count})",
-      "item": "{name} ({count})"
-    },
     "empty": {
       "title": "Nada pendiente",
-      "body": "Ahora mismo no hay tarjetas de {source} en espera.",
+      "body": "Ahora mismo no hay tarjetas de este grupo en espera.",
       "action": "Cambiar filtro"
-    },
-    "selectLabel": "Elige qué repasar"
+    }
   }
 }

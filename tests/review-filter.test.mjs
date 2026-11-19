@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 
 import { createDeck } from '../src/srs.js';
 import { memoryDriver, createStorage } from '../src/storage.js';
-import { previewIntervals, intervalText, titleKey, render } from '../src/screens/review.js';
+import { previewIntervals, intervalText, titleKey, render, queryFor, loadFilter } from '../src/screens/review.js';
 import { grade, DAY_MS, newCardState, DEFAULT_EASE } from '../src/srs.js';
 
 const T0 = 1_700_000_000_000;
@@ -134,6 +134,59 @@ test('filter: empty group shows friendly empty state (no cards)', async () => {
 
   const themes = await deck.getDueCards({ now: T0, source: 'theme' });
   assert.equal(themes.length, 0, 'no theme cards');
+});
+
+test('loadFilter: null until the user chooses, then the remembered choice', async () => {
+  const { default: storage } = await import('../src/storage.js');
+  assert.equal(await loadFilter(), null, 'unset by default -> picker is shown');
+  await storage.set('settings', 'reviewFilter', { source: 'lesson' });
+  assert.deepEqual(await loadFilter(), { source: 'lesson' });
+  await storage.set('settings', 'reviewFilter', 'garbage');
+  assert.equal(await loadFilter(), null, 'invalid value -> unset');
+});
+
+test('queryFor: chosen source feeds getDueCards, "all" does not restrict', async () => {
+  const deck = createDeck(createStorage(memoryDriver()));
+  await deck.addToReview({ id: 'd1', simp: '一', pinyin: 'yī', english: ['one'], source: 'dictionary' }, { now: T0 });
+  for (const n of [1, 2, 3]) {
+    await deck.addToReview({ id: `l${n}`, simp: '二', pinyin: 'èr', english: ['two'], source: 'lesson', sourceDetail: `lesson-0${n}` }, { now: T0 });
+  }
+  assert.deepEqual(queryFor({ source: 'all' }, T0), { now: T0 });
+  assert.deepEqual(queryFor({ source: 'lesson' }, T0), { now: T0, source: 'lesson' });
+  assert.equal((await deck.getDueCards(queryFor({ source: 'lesson' }, T0))).length, 3);
+  assert.equal((await deck.getDueCards(queryFor({ source: 'all' }, T0))).length, 4);
+  assert.equal((await deck.getDueCards(queryFor({ source: 'theme' }, T0))).length, 0, 'empty group');
+});
+
+test('review-filter shards (en + es): empty body has no stale {source} placeholder, same keys', () => {
+  const es = readJson(new URL('../src/locales/es.d/review-filter.json', import.meta.url));
+  assert.deepEqual(flatKeys(es).sort(), flatKeys(filterShard).sort());
+  for (const shard of [filterShard, es]) {
+    assert.ok(!/\{source\}/.test(shard.reviewFilter.empty.body), 'no {source} left in empty body');
+    assert.ok(shard.reviewFilter.empty.body.length > 10);
+  }
+});
+
+test('es grammar index: every pattern has a file and matches the en index', () => {
+  const en = readJson(new URL('../public/data/grammar/index.json', import.meta.url));
+  const es = readJson(new URL('../public/data/es/grammar/index.json', import.meta.url));
+  assert.equal(es.patterns.length, 15);
+  assert.deepEqual(
+    es.patterns.map((p) => [p.id, p.file]),
+    en.patterns.map((p) => [p.id, p.file]),
+  );
+});
+
+test('public/data/es/files.json exists (no 404 probe) and lists every es file', async () => {
+  const { readdirSync } = await import('node:fs');
+  const root = new URL('../public/data/es/', import.meta.url);
+  const walk = (dir, prefix = '') =>
+    readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+      e.isDirectory()
+        ? walk(new URL(`${e.name}/`, dir), `${prefix}${e.name}/`)
+        : e.name.endsWith('.json') && prefix + e.name !== 'files.json' ? [prefix + e.name] : [],
+    );
+  assert.deepEqual(readJson(new URL('files.json', root)), walk(root).sort());
 });
 
 test('module keeps the screen contract', () => {

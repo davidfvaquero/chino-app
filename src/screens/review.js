@@ -8,16 +8,17 @@
  *   window.addEventListener('chino:review_done', (e) => e.detail)
  *   detail = { id, rating, interval, due, reviews, remaining }
  *
- * Flow: front (hanzi + audio) -> "show answer" -> back (pinyin + meanings,
- * audio) -> 4 rating buttons, each showing the next interval. When the queue
- * runs out the screen shows the empty state (nothing was due) or the session
- * summary. Rendering is local: `render()` reloads the queue from storage.
+ * Flow: origin picker -> front (hanzi + audio) -> "show answer" -> back
+ * (pinyin + meanings, audio) -> 4 rating buttons, each showing the next
+ * interval. When the queue runs out the screen shows the empty state (nothing
+ * was due) or the session summary. Rendering is local: `render()` reloads the
+ * queue from storage.
  *
- * Filter: before starting, a selector lets the user pick what to review:
- * "All" or by source (dictionary, lesson, theme, reading, strokes-sheet,
- * sentences, dictation...), and if data exists, by specific theme/lesson.
- * Shows due counts per group. The filter is remembered in storage settings
- * (key 'reviewFilter'). Default "All" behaves identically to the original.
+ * Filter: before starting, a picker lets the user choose "All" or one origin
+ * (dictionary, lesson, theme, ...), with due counts. Choosing starts the
+ * review with getDueCards({ source }). The choice is remembered in storage
+ * settings (key 'reviewFilter') and highlighted next time. When nothing is due
+ * anywhere the picker is skipped.
  */
 import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
@@ -53,31 +54,23 @@ export function intervalText(days) {
   return { key: 'review.interval.days', params: { n } };
 }
 
-/** Build the filter key stored in settings. */
 const FILTER_KEY = 'reviewFilter';
 
-/** Default filter = "all" (no source restriction). */
-const DEFAULT_FILTER = { source: 'all' };
-
-/** Normalize a stored filter to a valid shape. */
-function normalizeFilter(raw) {
-  if (!raw || typeof raw !== 'object') return DEFAULT_FILTER;
-  const source = raw.source ?? 'all';
-  const sourceDetail = raw.sourceDetail ?? null;
-  return { source, sourceDetail };
+/** Pure: getDueCards options for a filter `{ source }` ('all' = no restriction). */
+export function queryFor(filter, now = Date.now()) {
+  return !filter || filter.source === 'all' ? { now } : { now, source: filter.source };
 }
 
-/** Load the saved filter from settings. */
-async function loadFilter() {
+/** Saved filter from settings, or null when the user never chose one. */
+export async function loadFilter() {
   try {
     const raw = await storage.get('settings', FILTER_KEY);
-    return normalizeFilter(raw);
+    return raw && typeof raw === 'object' && raw.source ? { source: raw.source } : null;
   } catch {
-    return DEFAULT_FILTER;
+    return null;
   }
 }
 
-/** Save the filter to settings. */
 async function saveFilter(filter) {
   try {
     await storage.set('settings', FILTER_KEY, filter);
@@ -86,21 +79,7 @@ async function saveFilter(filter) {
   }
 }
 
-/** Get a display label for a source key. */
-function sourceLabel(source) {
-  switch (source) {
-    case 'dictionary': return 'dictionary';
-    case 'lesson': return 'lesson';
-    case 'theme': return 'theme';
-    case 'reading': return 'reading';
-    case 'strokes-sheet': return 'strokesSheet';
-    case 'sentences': return 'sentences';
-    case 'dictation': return 'dictation';
-    default: return source;
-  }
-}
-
-/** Fetch all sources that have due cards, with counts. */
+/** Due cards per source: `{ [source]: n }`. */
 async function getSourceCounts() {
   try {
     return await countDueBySource();
@@ -110,140 +89,22 @@ async function getSourceCounts() {
   }
 }
 
-/** Build the filter UI: shows "All" + sources with counts. Returns a Promise resolving to the chosen filter. */
-async function chooseFilter(root, goBack) {
-  const counts = await getSourceCounts();
-  const saved = await loadFilter();
-
-  const total = Object.values(counts).reduce((a, b) => a + b, 0);
-  const sources = Object.entries(counts)
-    .filter(([, c]) => c > 0)
-    .sort((a, b) => b[1] - a[1]);
-
-  return new Promise((resolve) => {
-    const renderOptions = () => {
-      root.replaceChildren();
-
-      const header = h('div', { style: 'display:flex;align-items:center;justify-content:space-between;margin:0 0 1rem' },
-        h('h2', { text: t('reviewFilter.title') }),
-        h('button', {
-          type: 'button',
-          style: BUTTON,
-          text: t('reviewFilter.back'),
-          onclick: () => { resolve(null); goBack(); },
-        })
-      );
-      root.append(header);
-
-      const list = h('div', { style: 'display:flex;flex-direction:column;gap:0.5rem' });
-
-      // "All" option
-      const allActive = saved.source === 'all';
-      list.append(h('button', {
-        type: 'button',
-        style: `${BUTTON};width:100%;text-align:left;padding:0.75rem 1rem;${allActive ? 'background:var(--accent);color:var(--accent-fg);' : ''}`,
-        text: t('reviewFilter.all', { count: total }),
-        onclick: () => resolve({ source: 'all' }),
-      }));
-
-      // Each source with due cards
-      for (const [src, count] of sources) {
-        const srcActive = saved.source === src && saved.sourceDetail === null;
-        const labelKey = `reviewFilter.source.${src}`;
-        const hasLabel = t(labelKey, { count }) !== labelKey;
-        const label = hasLabel ? t(labelKey, { count }) : `${src} (${count})`;
-        list.append(h('button', {
-          type: 'button',
-          style: `${BUTTON};width:100%;text-align:left;padding:0.75rem 1rem;${srcActive ? 'background:var(--accent);color:var(--accent-fg);' : ''}`,
-          text: label,
-          onclick: () => {
-            if (src === 'unknown') {
-              resolve({ source: 'unknown' });
-            } else {
-              // If this source has sourceDetail variants, offer sub-filter
-              resolve({ source: src });
-            }
-          },
-        }));
-      }
-
-      root.append(list);
-    };
-
-    renderOptions();
-    root.focus({ preventScroll: true });
-  });
-}
-
-/** Build the sub-filter UI for a specific source (by sourceDetail). */
-async function chooseSourceDetail(root, source, goBack) {
-  const cards = await getDueCards({ source, now: Date.now() });
-  const saved = await loadFilter();
-
-  // Group by sourceDetail
-  const detailCounts = {};
-  for (const card of cards) {
-    const key = card.sourceDetail ?? 'none';
-    detailCounts[key] = (detailCounts[key] ?? 0) + 1;
-  }
-
-  const details = Object.entries(detailCounts)
-    .filter(([, c]) => c > 0)
-    .sort((a, b) => b[1] - a[1]);
-
-  return new Promise((resolve) => {
-    const renderOptions = () => {
-      root.replaceChildren();
-
-      const header = h('div', { style: 'display:flex;align-items:center;justify-content:space-between;margin:0 0 1rem' },
-        h('h2', { text: t('reviewFilter.detail.title', { source: t(`reviewFilter.source.${source}`) || source }) }),
-        h('button', {
-          type: 'button',
-          style: BUTTON,
-          text: t('reviewFilter.back'),
-          onclick: () => { resolve({ action: 'back' }); },
-        })
-      );
-      root.append(header);
-
-      const list = h('div', { style: 'display:flex;flex-direction:column;gap:0.5rem' });
-
-      // "All in this source" option
-      const allActive = saved.source === source && saved.sourceDetail === null;
-      list.append(h('button', {
-        type: 'button',
-        style: `${BUTTON};width:100%;text-align:left;padding:0.75rem 1rem;${allActive ? 'background:var(--accent);color:var(--accent-fg);' : ''}`,
-        text: t('reviewFilter.detail.allInSource', { source: t(`reviewFilter.source.${source}`) || source, count: cards.length }),
-        onclick: () => resolve({ source, sourceDetail: null }),
-      }));
-
-      // Each detail item
-      for (const [detail, count] of details) {
-        if (detail === 'none') continue; // skip cards without detail
-        const detailActive = saved.source === source && saved.sourceDetail === detail;
-        list.append(h('button', {
-          type: 'button',
-          style: `${BUTTON};width:100%;text-align:left;padding:0.75rem 1rem;${detailActive ? 'background:var(--accent);color:var(--accent-fg);' : ''}`,
-          text: t('reviewFilter.detail.item', { name: detail, count }),
-          onclick: () => resolve({ source, sourceDetail: detail }),
-        }));
-      }
-
-      root.append(list);
-    };
-
-    renderOptions();
-    root.focus({ preventScroll: true });
-  });
-}
-
 export function render(container, ctx = {}) {
-  const state = { queue: [], index: 0, done: 0, flipped: false, busy: false, ready: false, alive: true, filter: null, filterStage: 'main' };
+  const state = { queue: [], index: 0, done: 0, flipped: false, busy: false, ready: false, alive: true, filter: null, counts: {}, saved: null };
   const go = (path) =>
     typeof ctx.navigate === 'function' ? ctx.navigate(path) : (location.hash = `#/${path}`);
   const root = h('section');
   reset(container).append(root);
   container.focus({ preventScroll: true });
+
+  async function init() {
+    state.counts = await getSourceCounts();
+    state.saved = await loadFilter();
+    if (!state.alive) return;
+    // Nothing due anywhere: skip the picker, show the plain empty state.
+    if (!Object.values(state.counts).some((c) => c > 0)) state.filter = { source: 'all' };
+    return state.filter ? load() : paint();
+  }
 
   async function load() {
     state.ready = false;
@@ -254,19 +115,9 @@ export function render(container, ctx = {}) {
     state.busy = false;
     paint();
 
-    const filter = state.filter ?? await loadFilter();
-    state.filter = filter;
-
     let cards;
     try {
-      const opts = { now: Date.now() };
-      if (filter.source !== 'all') {
-        opts.source = filter.source;
-        if (filter.sourceDetail !== undefined && filter.sourceDetail !== null) {
-          opts.sourceDetail = filter.sourceDetail;
-        }
-      }
-      cards = await getDueCards(opts);
+      cards = await getDueCards(queryFor(state.filter));
     } catch (err) {
       console.error('review: cannot read the deck', err);
       cards = [];
@@ -278,58 +129,57 @@ export function render(container, ctx = {}) {
     paint();
   }
 
+  function pick(filter) {
+    state.filter = filter;
+    state.saved = filter;
+    saveFilter(filter);
+    load();
+  }
+
+  async function changeFilter() {
+    state.counts = await getSourceCounts();
+    if (!state.alive) return;
+    state.filter = null;
+    paint();
+  }
+
+  function paintPicker() {
+    const sources = Object.entries(state.counts)
+      .filter(([, c]) => c > 0)
+      .sort((a, b) => b[1] - a[1]);
+    const total = sources.reduce((n, [, c]) => n + c, 0);
+    const option = (src, text) =>
+      h('button', {
+        type: 'button',
+        style: `${BUTTON};width:100%;text-align:left;padding:0.75rem 1rem;${state.saved?.source === src ? 'background:var(--accent);color:var(--accent-fg);' : ''}`,
+        text,
+        dataset: { source: src },
+        onclick: () => pick({ source: src }),
+      });
+    root.append(
+      h('h2', { text: t('reviewFilter.title') }),
+      h(
+        'div',
+        { style: 'display:flex;flex-direction:column;gap:0.5rem' },
+        option('all', t('reviewFilter.all', { count: total })),
+        ...sources.map(([src, count]) => {
+          const key = `reviewFilter.source.${src}`;
+          const label = t(key, { count });
+          return option(src, label === key ? `${src} (${count})` : label);
+        }),
+      ),
+    );
+  }
+
   function paint() {
     if (!state.alive) return;
     root.replaceChildren();
-
-    // If no filter chosen yet, show the filter picker
-    if (state.filter === null) {
-      showFilterPicker();
-      return;
-    }
-
+    if (state.filter === null) return paintPicker();
     if (!state.ready) return root.append(h('p', { text: t('reviewFilter.loading') }));
 
     const card = state.queue[state.index];
     if (card) return paintCard(card);
     return paintEnd();
-  }
-
-  function showFilterPicker() {
-    const goBack = () => { state.filter = null; paint(); };
-
-    if (state.filterStage === 'main') {
-      chooseFilter(root, goBack).then((chosen) => {
-        if (!state.alive) return;
-        if (chosen === null) {
-          // User pressed back — go to dictionary
-          go('dictionary');
-          return;
-        }
-        state.filter = chosen;
-        // If source has detail options, offer sub-filter
-        if (chosen.source !== 'all' && chosen.source !== 'unknown') {
-          state.filterStage = 'detail';
-          paint();
-        } else {
-          // No detail needed, save and load
-          saveFilter(chosen).then(load);
-        }
-      });
-    } else if (state.filterStage === 'detail') {
-      chooseSourceDetail(root, state.filter.source, goBack).then((result) => {
-        if (!state.alive) return;
-        if (result?.action === 'back') {
-          state.filterStage = 'main';
-          state.filter = null;
-          paint();
-          return;
-        }
-        state.filter = result;
-        state.filterStage = 'main';
-        saveFilter(result).then(load);
-      });
-    }
   }
 
   function audioButton(hanzi) {
@@ -438,36 +288,18 @@ export function render(container, ctx = {}) {
 
   function paintEnd() {
     const empty = state.done === 0;
-    const filter = state.filter ?? DEFAULT_FILTER;
+    const filtered = state.filter.source !== 'all';
+    // A filtered empty group has its own text; plain empty keeps the original.
+    const emptyKey = filtered ? 'reviewFilter.empty' : 'review.empty';
 
-    if (empty) {
-      // Friendly empty state for the current filter
-      let emptyKey = 'review.empty';
-      if (filter.source !== 'all') {
-        emptyKey = 'reviewFilter.empty';
-      }
-      const sourceName = filter.source !== 'all' && filter.source !== 'unknown'
-        ? t(`reviewFilter.source.${filter.source}`) || filter.source
-        : '';
-
-      root.append(
-        h(
-          'div',
-          { class: 'card' },
-          h('h2', { text: t(`${emptyKey}.title`) }),
-          h('p', { text: t(`${emptyKey}.body`, { source: sourceName }) }),
-        ),
-      );
-    } else {
-      root.append(
-        h(
-          'div',
-          { class: 'card' },
-          h('h2', { text: t('review.done.title') }),
-          h('p', { text: t('review.done.body', { count: state.done }) }),
-        ),
-      );
-    }
+    root.append(
+      h(
+        'div',
+        { class: 'card' },
+        h('h2', { text: empty ? t(`${emptyKey}.title`) : t('review.done.title') }),
+        h('p', { text: empty ? t(`${emptyKey}.body`) : t('review.done.body', { count: state.done }) }),
+      ),
+    );
 
     const actions = h('div', { style: 'display:flex;flex-wrap:wrap;gap:0.5rem' });
     if (!empty) {
@@ -477,25 +309,19 @@ export function render(container, ctx = {}) {
       h('button', {
         type: 'button',
         style: BUTTON,
-        text: empty ? t('reviewFilter.empty.action') : t('review.done.action'),
+        text: t(empty ? 'review.empty.action' : 'review.done.action'),
         onclick: () => go('dictionary'),
       }),
     );
-    // Add a "Change filter" button when a filter was applied
-    if (filter.source !== 'all') {
+    if (filtered) {
       actions.append(
-        h('button', {
-          type: 'button',
-          style: BUTTON,
-          text: t('reviewFilter.empty.action'),
-          onclick: () => { state.filter = null; state.filterStage = 'main'; paint(); },
-        }),
+        h('button', { type: 'button', style: BUTTON, text: t('reviewFilter.empty.action'), onclick: changeFilter }),
       );
     }
     root.append(actions);
   }
 
-  load();
+  init();
   return () => {
     state.alive = false;
   };

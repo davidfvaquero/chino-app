@@ -1427,3 +1427,13 @@ No se modificaron archivos de código ni de datos. No toqué `dist/`.
 **Verdict: BLOQUE 8 (2º ciclo) — 2 FALLO persisten. (1) Gramática 3-9: OK en `en`, FALLO en `es` (`public/data/es/grammar/index.json` sin `file` en 03-09 → "PRONTO"). (2) Repaso filtrable: el selector no se alcanza desde `#/review` y elegir un origen no arranca el repaso (estado vacío obsoleto con `{count}` literal); "All" sí muestra toda la cola. Tests verdes (540) y lesson-02/03 commiteados. Sin más ciclos: se bloquea para decisión.**
 
 *Verificador `barato` — 2026-11-19*
+---
+
+## BLOQUE 8 (arreglo final, t_c3483c06) — fuerte
+
+Headless 390x844, locale es, build en /tmp/chino-c34:
+- Gramática es: `index.json` con `file` en los 15 → sin "PRONTO"; patrón 03 abre.
+- Repaso: selector visible (Todo 4 / Lecciones 3 / Diccionario 1); elegir Lecciones arranca "3 PENDIENTES" y guarda `settings.reviewFilter`; contestar una → lecciones 3→2; "Todo" arranca; la elección se resalta al volver.
+- Desbordes: scrollWidth = 390 en themes, pinyin-chart, grammar, review, dictionary, inicio (la tabla de pinyin ya tiene su scroll horizontal propio). Ya estaba arreglado.
+- 404: `data/es/files.json` (listado de traducciones, sonda de data-url.js) → creado `public/data/es/files.json`; test comprueba que coincide con el disco. Sin 404 ni errores de consola.
+- `npm test` 545/545; `check-es-data` 0 errores; package*.json revertidos, sueltos de la raíz borrados.

@@ -2,7 +2,6 @@
   "reviewFilter": {
     "title": "What to review",
     "all": "All ({count})",
-    "back": "Back",
     "loading": "Loading…",
     "source": {
       "dictionary": "Dictionary ({count})",
@@ -14,16 +13,10 @@
       "dictation": "Dictation ({count})",
       "unknown": "Other ({count})"
     },
-    "detail": {
-      "title": "Filter by {source}",
-      "allInSource": "All {source} ({count})",
-      "item": "{name} ({count})"
-    },
     "empty": {
       "title": "Nothing due",
-      "body": "No {source} cards are waiting right now.",
+      "body": "No cards from this group are waiting right now.",
       "action": "Change filter"
-    },
-    "selectLabel": "Choose what to review"
+    }
   }
 }
