@@ -129,6 +129,41 @@ the licence asks for it.
 
 ---
 
+## 8. Kokoro-82M v1.1-zh — pre-generated Mandarin voice (`public/audio/`)
+
+- **Source:** Kokoro-82M **v1.1-zh**, <https://huggingface.co/hexgrad/Kokoro-82M-v1.1-zh>
+  (`kokoro-v1_1-zh.pth` and the voice file `voices/zf_001.pt`), by hexgrad.
+- **Licence:** **Apache License 2.0** — <https://www.apache.org/licenses/LICENSE-2.0>
+  (the model card declares `license: apache-2.0`). The model may be used,
+  modified and redistributed, and audio generated with it may be redistributed,
+  provided the licence and attribution are kept. The model weights are **not**
+  bundled here: only the audio they produced is committed, in `public/audio/`.
+- **Voice:** `zf_001`, one of the 100 Mandarin speakers added in the v1.1-zh
+  training run. The Chinese training data was granted to the model author free
+  of charge and without restrictions by **LongMaoData**
+  (<https://www.longmaosoft.com/>), a professional dataset company (per the model
+  card). These are dataset speakers released with the Apache-2.0 model — no
+  cloning of a third party's voice is involved.
+- **Front-end (text → phonemes):** **misaki** (<https://github.com/hexgrad/misaki>,
+  MIT), whose Chinese front-end is adapted from **PaddleSpeech**
+  (`paddlespeech/t2s/frontend/zh_frontend.py`, Apache-2.0). It supplies the
+  Bopomofo phoneme set and the tone-sandhi rules (third-tone, 一/不). None of it
+  is shipped in this repository — it only runs offline in the build environment.
+- **Changes made:** the text of every word and phrase the app displays (HSK 1-3
+  vocabulary, lesson example sentences, theme words and phrases) was synthesised
+  to 24 kHz mono audio, peak-normalised and re-encoded to **MP3 mono 24 kbps**.
+  One file per unique text, named by a SHA-1 hash of that text; the mapping lives
+  in `public/audio/index.json`. The audio is a generated derivative of the model,
+  not of any source recording.
+- **Deliberately not used:** Piper's Chinese voices (the licence of the concrete
+  voices is unclear) and online TTS services such as Edge TTS or Google — the app
+  must stay free, offline and redistributable.
+- **Regenerate:** see `docs/AUDIO.md` (`scripts/audio/setup.sh`, then
+  `scripts/audio/run.sh`). The Python venv and the model live outside the repo,
+  in `~/.cache/`.
+
+---
+
 ## How to regenerate the data
 
 ```bash
