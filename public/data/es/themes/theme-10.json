@@ -1,0 +1,30 @@
+{
+  "id": "theme-10",
+  "title": "Escuela y trabajo",
+  "icon": "🎓",
+  "words": [
+    { "hanzi": "学校", "pinyin": "xué xiào", "english": "escuela" },
+    { "hanzi": "老师", "pinyin": "lǎo shī", "english": "profesor" },
+    { "hanzi": "学生", "pinyin": "xué sheng", "english": "estudiante" },
+    { "hanzi": "同学", "pinyin": "tóng xué", "english": "compañero de clase" },
+    { "hanzi": "课", "pinyin": "kè", "english": "clase; lección" },
+    { "hanzi": "作业", "pinyin": "zuò yè", "english": "deberes" },
+    { "hanzi": "考试", "pinyin": "kǎo shì", "english": "examen" },
+    { "hanzi": "书", "pinyin": "shū", "english": "libro" },
+    { "hanzi": "笔", "pinyin": "bǐ", "english": "bolígrafo" },
+    { "hanzi": "纸", "pinyin": "zhǐ", "english": "papel" },
+    { "hanzi": "工作", "pinyin": "gōng zuò", "english": "trabajo" },
+    { "hanzi": "公司", "pinyin": "gōng sī", "english": "empresa" },
+    { "hanzi": "老板", "pinyin": "lǎo bǎn", "english": "jefe" },
+    { "hanzi": "同事", "pinyin": "tóng shì", "english": "compañero de trabajo" },
+    { "hanzi": "会议", "pinyin": "huì yì", "english": "reunión" }
+  ],
+  "phrases": [
+    { "hanzi": "我在上课。", "pinyin": "wǒ zài shàng kè", "english": "Estoy en clase." },
+    { "hanzi": "作业做完了吗？", "pinyin": "zuò yè zuò wán le ma", "english": "¿Has terminado los deberes?" },
+    { "hanzi": "明天有考试。", "pinyin": "míng tiān yǒu kǎo shì", "english": "Mañana hay examen." },
+    { "hanzi": "我在公司上班。", "pinyin": "wǒ zài gōng sī shàng bān", "english": "Trabajo en una empresa." },
+    { "hanzi": "开会要迟到了。", "pinyin": "kāi huì yào chí dào le", "english": "Voy a llegar tarde a la reunión." },
+    { "hanzi": "我的同事很好。", "pinyin": "wǒ de tóng shì hěn hǎo", "english": "Mis compañeros son muy buenos." }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "theme-08",
+  "title": "Direcciones y lugares",
+  "icon": "🧭",
+  "words": [
+    { "hanzi": "左边", "pinyin": "zuǒ biān", "english": "lado izquierdo" },
+    { "hanzi": "右边", "pinyin": "yòu biān", "english": "lado derecho" },
+    { "hanzi": "前面", "pinyin": "qián miàn", "english": "delante" },
+    { "hanzi": "后面", "pinyin": "hòu miàn", "english": "detrás" },
+    { "hanzi": "旁边", "pinyin": "páng biān", "english": "al lado" },
+    { "hanzi": "对面", "pinyin": "duì miàn", "english": "enfrente" },
+    { "hanzi": "这里", "pinyin": "zhè lǐ", "english": "aquí" },
+    { "hanzi": "那里", "pinyin": "nà lǐ", "english": "allí" },
+    { "hanzi": "哪里", "pinyin": "nǎ lǐ", "english": "dónde" },
+    { "hanzi": "附近", "pinyin": "fù jìn", "english": "cerca" },
+    { "hanzi": "远", "pinyin": "yuǎn", "english": "lejos" },
+    { "hanzi": "近", "pinyin": "jìn", "english": "cerca" },
+    { "hanzi": "路", "pinyin": "lù", "english": "calle" },
+    { "hanzi": "街", "pinyin": "jiē", "english": "calle" },
+    { "hanzi": "地铁站", "pinyin": "dì tiě zhàn", "english": "estación de metro" }
+  ],
+  "phrases": [
+    { "hanzi": "请问，地铁站在哪里？", "pinyin": "qǐng wèn, dì tiě zhàn zài nǎ lǐ", "english": "Disculpa, ¿dónde está la estación de metro?" },
+    { "hanzi": "往左边走。", "pinyin": "wǎng zuǒ biān zǒu", "english": "Ve hacia la izquierda." },
+    { "hanzi": "往右边拐。", "pinyin": "wǎng yòu biān guǎi", "english": "Gira a la derecha." },
+    { "hanzi": "一直往前走。", "pinyin": "yī zhí wǎng qián zǒu", "english": "Sigue recto." },
+    { "hanzi": "就在前面。", "pinyin": "jiù zài qián miàn", "english": "Está justo delante." },
+    { "hanzi": "离这儿近吗？", "pinyin": "lí zhèr jìn ma", "english": "¿Está cerca de aquí?" }
+  ]
+}

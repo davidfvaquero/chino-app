@@ -1,0 +1,30 @@
+{
+  "id": "theme-12",
+  "title": "Aficiones",
+  "icon": "⚽",
+  "words": [
+    { "hanzi": "爱好", "pinyin": "ài hào", "english": "afición" },
+    { "hanzi": "运动", "pinyin": "yùn dòng", "english": "ejercicio; deporte" },
+    { "hanzi": "踢球", "pinyin": "tī qiú", "english": "jugar al fútbol" },
+    { "hanzi": "打球", "pinyin": "dǎ qiú", "english": "jugar a pelota (baloncesto, etc.)" },
+    { "hanzi": "游泳", "pinyin": "yóu yǒng", "english": "nadar" },
+    { "hanzi": "跑步", "pinyin": "pǎo bù", "english": "correr; hacer footing" },
+    { "hanzi": "听音乐", "pinyin": "tīng yīn yuè", "english": "escuchar música" },
+    { "hanzi": "看书", "pinyin": "kàn shū", "english": "leer libros" },
+    { "hanzi": "看电影", "pinyin": "kàn diàn yǐng", "english": "ver películas" },
+    { "hanzi": "唱歌", "pinyin": "chàng gē", "english": "cantar" },
+    { "hanzi": "跳舞", "pinyin": "tiào wǔ", "english": "bailar" },
+    { "hanzi": "画画", "pinyin": "huà huà", "english": "dibujar; pintar" },
+    { "hanzi": "照相", "pinyin": "zhào xiàng", "english": "hacer fotos" },
+    { "hanzi": "旅行", "pinyin": "lǚ xíng", "english": "viajar" },
+    { "hanzi": "上网", "pinyin": "shàng wǎng", "english": "estar en internet" }
+  ],
+  "phrases": [
+    { "hanzi": "你喜欢什么运动？", "pinyin": "nǐ xǐ huan shén me yùn dòng", "english": "¿Qué deporte te gusta?" },
+    { "hanzi": "我喜欢踢足球。", "pinyin": "wǒ xǐ huan tī zú qiú", "english": "Me gusta jugar al fútbol." },
+    { "hanzi": "周末我们去游泳吧。", "pinyin": "zhōu mò wǒ men qù yóu yǒng ba", "english": "Vamos a nadar este fin de semana." },
+    { "hanzi": "他在听音乐。", "pinyin": "tā zài tīng yīn yuè", "english": "Está escuchando música." },
+    { "hanzi": "我爱好看书。", "pinyin": "wǒ ài hào kàn shū", "english": "Mi afición es leer." },
+    { "hanzi": "我们一起去旅行吧。", "pinyin": "wǒ men yì qǐ qù lǚ xíng ba", "english": "Vamos a viajar juntos." }
+  ]
+}

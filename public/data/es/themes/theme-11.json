@@ -1,0 +1,30 @@
+{
+  "id": "theme-11",
+  "title": "Tiempo",
+  "icon": "☀️",
+  "words": [
+    { "hanzi": "天气", "pinyin": "tiān qì", "english": "tiempo" },
+    { "hanzi": "晴天", "pinyin": "qíng tiān", "english": "día soleado" },
+    { "hanzi": "下雨", "pinyin": "xià yǔ", "english": "llover" },
+    { "hanzi": "下雪", "pinyin": "xià xuě", "english": "nevar" },
+    { "hanzi": "刮风", "pinyin": "guā fēng", "english": "hacer viento" },
+    { "hanzi": "云", "pinyin": "yún", "english": "nube" },
+    { "hanzi": "冷", "pinyin": "lěng", "english": "frío" },
+    { "hanzi": "热", "pinyin": "rè", "english": "calor" },
+    { "hanzi": "暖和", "pinyin": "nuǎn huo", "english": "agradable; tibio" },
+    { "hanzi": "凉快", "pinyin": "liáng kuai", "english": "fresco" },
+    { "hanzi": "温度", "pinyin": "wēn dù", "english": "temperatura" },
+    { "hanzi": "度", "pinyin": "dù", "english": "grado" },
+    { "hanzi": "预报", "pinyin": "yù bào", "english": "pronóstico" },
+    { "hanzi": "季节", "pinyin": "jì jié", "english": "estación" },
+    { "hanzi": "春天", "pinyin": "chūn tiān", "english": "primavera" }
+  ],
+  "phrases": [
+    { "hanzi": "今天天气很好。", "pinyin": "jīn tiān tiān qì hěn hǎo", "english": "Hoy el tiempo está muy bien." },
+    { "hanzi": "明天会下雨。", "pinyin": "míng tiān huì xià yǔ", "english": "Mañana va a llover." },
+    { "hanzi": "现在几度？", "pinyin": "xiàn zài jǐ dù", "english": "¿Cuántos grados hay ahora?" },
+    { "hanzi": "外面很冷，穿件外套。", "pinyin": "wài miàn hěn lěng, chuān jiàn wài tào", "english": "Hace mucho frío fuera, ponte una chaqueta." },
+    { "hanzi": "我很喜欢春天。", "pinyin": "wǒ hěn xǐ huan chūn tiān", "english": "Me gusta mucho la primavera." },
+    { "hanzi": "天气预报说要下雪。", "pinyin": "tiān qì yù bào shuō yào xià xuě", "english": "El pronóstico dice que va a nevar." }
+  ]
+}
