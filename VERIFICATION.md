@@ -1437,3 +1437,64 @@ Headless 390x844, locale es, build en /tmp/chino-c34:
 - Desbordes: scrollWidth = 390 en themes, pinyin-chart, grammar, review, dictionary, inicio (la tabla de pinyin ya tiene su scroll horizontal propio). Ya estaba arreglado.
 - 404: `data/es/files.json` (listado de traducciones, sonda de data-url.js) → creado `public/data/es/files.json`; test comprueba que coincide con el disco. Sin 404 ni errores de consola.
 - `npm test` 545/545; `check-es-data` 0 errores; package*.json revertidos, sueltos de la raíz borrados.
+
+---
+
+## BLOQUE 8 (re-verificación final, t_59f346e3) — OK
+
+Verificación headless en navegador real (390x844), locale **es** (el que elige esta máquina,
+`navigator.language es-ES`), build en `/tmp/chino-t_59f346e3`. Base commit `8a3bb62`. Los 2 FALLO
+del 2º ciclo quedan **arreglados**; además se re-comprueban los extras pedidos.
+
+### 1. Gramática (OK)
+- `public/data/grammar/index.json` y `public/data/es/grammar/index.json`: **15/15** patrones con
+  `file`, y los `pattern-01..15.json` existen con ejemplos en ambos locales (sondeo `node`).
+- En la app: `#/learn/grammar` lista los 15 patrones con pills **HSK1/HSK2**, sin ningún **"PRONTO"**.
+- Los 7 patrones antiguamente rotos abren con sus ejemplos (5-6 cada uno, texto en español):
+  `ma-questions` 5, `bu-mei-negation` 6, `le-completed` 6, `zai-location` 6, `you-have` 6,
+  `hen-adjective` 6, `question-words` 6. Ninguno dice "previsto pero no escrito".
+- `node --test tests/grammar.test.mjs` → **13/13**.
+
+### 2. Repaso filtrable (OK)
+Sembradas 7 tarjetas en store `srs` de IndexedDB: dictionary 2, lesson 3, theme 1, reading 1
+(`import('/src/srs.js').addToReview(...)`, `settings.reviewFilter` borrado para forzar el selector).
+- `#/review` muestra el selector **"Qué repasar"**: `Todo (7) / Lecciones (3) / Diccionario (2) /
+  Lecturas (1) / Temas (1)`.
+- "Todo" arranca la cola completa: **7 PENDIENTES** (comportamiento original).
+- Cada opción por origen **arranca el repaso con su grupo** (no se queda en el selector):
+  Diccionario → 2, Lecciones → 3, Temas → 1, Lecturas → 1.
+- Contestar una tarjeta de Lecciones con "Bien" reprograma y baja 3 → **2** (sm-2 OK).
+
+### 3. Extras pedidos (OK)
+- **Desbordes a 390px**: `scrollWidth == clientWidth == 390` en `#/learn/themes`,
+  `#/learn/pinyin-chart` y `#/review`.
+- **404 en consola**: registrador instalado con `Page.addScriptToEvaluateOnNewDocument` (parchea
+  fetch/XHR y `error` de script/link/img) recorriendo `#/home`, `#/review`, `#/learn/grammar`,
+  `#/learn/grammar/ma-questions`, `#/learn/themes`, `#/learn/pinyin-chart`, `#/dictionary` →
+  **0 respuestas ≥400**. `public/data/es/files.json` existe y se sirve.
+- `npm test` → **545/545**. `node scripts/check-es-data.mjs` (sin args, barrido completo) →
+  **82 archivos, 0 errores**. *(Nota: `node scripts/check-es-data.mjs public/data/es` da falsos
+  errores `es/es/...` por el `toRelative` del script; la forma correcta es sin argumento — que es
+  como lo ejecuta `npm test`.)*
+- `git status` **limpio**; `package.json`/`package-lock.json` sin playwright/puppeteer; sin scripts
+  sueltos en la raíz; `public/data/lessons/hsk2/lesson-02.json` y `lesson-03.json` **trackeados**.
+- Sin dependencias nuevas ni cambios de código: solo esta sección.
+
+### Cómo reproducir
+```
+OUT_DIR=/tmp/chino-x npm run build
+node scripts/serve.mjs /tmp/chino-x        # anota el puerto
+# navegador en 390x844, locale es (navigator.language es-ES):
+#   #/learn/grammar            -> 15 patrones, sin pill "PRONTO"
+#   #/learn/grammar/ma-questions -> 5 ejemplos
+#   sembrar srs:  import('/src/srs.js').addToReview({id,simp,pinyin,english,source},{now})
+#                 quitar settings/reviewFilter -> #/review -> selector -> cada origen arranca su grupo
+#   #/learn/themes, #/learn/pinyin-chart -> scrollWidth == 390
+npm test                                   # 545/545
+node scripts/check-es-data.mjs             # 0 errores
+```
+
+**Verdict: BLOQUE 8 — los 2 FALLO anteriores quedan OK (gramática 3-9 en es + repaso filtrable),
+más los extras (desbordes/404/higiene). Todo verde.**
+
+*Verificador `barato` — 2026-11-19*
