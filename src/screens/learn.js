@@ -1,5 +1,5 @@
 /**
- * Learn hub. `#/learn` shows a menu of the four areas; `#/learn/<area>` (and
+ * Learn hub. `#/learn` shows a menu of the areas; `#/learn/<area>` (and
  * `#/learn/<area>/<rest>`) hands off to that area's module.
  *
  * Contract for every src/learn/*.js module — same shape as a screen:
@@ -7,12 +7,19 @@
  *   export function render(container, ctx)   // may return a cleanup function
  * `ctx` is the router context ({ route, navigate }); `route.segments` holds
  * everything after `learn/`, so an area can read its own sub-route.
+ *
+ * Menu cards: the first <span> is the title (`hubs.learn.<area>` when the
+ * locale shard defines one, otherwise the module's own `titleKey`) and the
+ * optional second <span class="muted"> is the one-line description
+ * `hubs.learn.descriptions.<area>`. Both shards live in
+ * src/locales/{en,es}.d/hubs.json.
  */
-import { t } from '../i18n.js';
+import { t, has } from '../i18n.js';
 import { h, reset } from '../dom.js';
 
 export const titleKey = 'screens.learn.title';
 
+const HUB = 'learn';
 const AREAS = [
   'lessons',
   'tones',
@@ -25,9 +32,18 @@ const AREAS = [
   'radicals',
   'hardwords',
   'grammar',
+  'plan',
+  'exam',
+  'typing',
 ];
 
 const load = (area) => import(`../learn/${area}.js`);
+
+/** Menu label: `hubs.<HUB>.<area>` when the active locale defines it. */
+const labelKey = (area, module) => (has(`hubs.${HUB}.${area}`) ? `hubs.${HUB}.${area}` : module.titleKey);
+
+/** One-line menu description (only rendered when the locale defines it). */
+const descriptionKey = (area) => `hubs.${HUB}.descriptions.${area}`;
 
 export async function render(container, ctx) {
   const area = ctx?.route?.segments?.[0];
@@ -39,18 +55,21 @@ export async function render(container, ctx) {
     h(
       'section',
       { class: 'menu', 'aria-label': t(titleKey) },
-      ...modules.map((module, index) =>
-        h(
+      ...modules.map((module, index) => {
+        const name = AREAS[index];
+        const description = descriptionKey(name);
+        return h(
           'button',
           {
             type: 'button',
             class: 'card field',
-            'data-area': AREAS[index],
-            onclick: () => ctx.navigate(`learn/${AREAS[index]}`),
+            'data-area': name,
+            onclick: () => ctx.navigate(`learn/${name}`),
           },
-          h('span', { text: t(module.titleKey) }),
-        ),
-      ),
+          h('span', { text: t(labelKey(name, module)) }),
+          has(description) ? h('span', { class: 'muted', text: t(description) }) : null,
+        );
+      }),
     ),
   );
   container.focus({ preventScroll: true });

@@ -4,12 +4,30 @@
       "lessons": "HSK lessons",
       "tones": "Tones & pinyin",
       "strokes": "Stroke order",
-      "sentences": "Everyday phrases"
+      "sentences": "Everyday phrases",
+      "plan": "30-day plan",
+      "exam": "Practice exam",
+      "typing": "Typing practice",
+      "descriptions": {
+        "plan": "A day-by-day path through HSK 1",
+        "exam": "20 questions per level, with a score",
+        "typing": "Type pinyin and check it letter by letter"
+      }
     },
     "extras": {
       "profile": "Profile & progress",
       "draw": "Draw a character",
-      "pronounce": "Pronunciation practice"
+      "pronounce": "Pronunciation practice",
+      "worksheet": "Worksheet",
+      "anki": "Anki export / import",
+      "account": "Account & sync",
+      "conversation": "Conversation practice",
+      "descriptions": {
+        "worksheet": "Printable stroke-order grid",
+        "anki": "Move your cards in and out of Anki",
+        "account": "Optional sync between your devices",
+        "conversation": "Chat in Chinese with an AI partner"
+      }
     }
   }
 }

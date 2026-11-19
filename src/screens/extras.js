@@ -1,19 +1,44 @@
 /**
- * Extras hub. `#/extras` shows a menu of the three areas; `#/extras/<area>`
- * hands off to that area's module.
+ * Extras hub. `#/extras` shows a menu of the areas; `#/extras/<area>` hands off
+ * to that area's module.
  *
  * Contract for every src/extras/*.js module — same shape as a screen:
  *   export const titleKey = '...'            // i18n key, used as its menu label
  *   export function render(container, ctx)   // may return a cleanup function
+ *
+ * Menu cards: the first <span> is the title (`hubs.extras.<area>` when the
+ * locale shard defines one, otherwise the module's own `titleKey`) and the
+ * optional second <span class="muted"> is the one-line description
+ * `hubs.extras.descriptions.<area>`. Both shards live in
+ * src/locales/{en,es}.d/hubs.json.
  */
-import { t } from '../i18n.js';
+import { t, has } from '../i18n.js';
 import { h, reset } from '../dom.js';
 
 export const titleKey = 'screens.extras.more';
 
-const AREAS = ['profile', 'stats', 'paste', 'draw', 'pronounce', 'settings', 'backup'];
+const HUB = 'extras';
+const AREAS = [
+  'profile',
+  'stats',
+  'paste',
+  'draw',
+  'pronounce',
+  'settings',
+  'backup',
+  'worksheet',
+  'anki',
+  'account',
+  'conversation',
+];
 
 const load = (area) => import(`../extras/${area}.js`);
+
+/** Menu label: `hubs.<HUB>.<area>` when the active locale defines it. */
+const labelKey = (area, module) => (has(`hubs.${HUB}.${area}`) ? `hubs.${HUB}.${area}` : module.titleKey);
+
+/** One-line menu description (only rendered when the locale defines it). */
+const descriptionKey = (area) => `hubs.${HUB}.descriptions.${area}`;
 
 export async function render(container, ctx) {
   const area = ctx?.route?.segments?.[0];
@@ -25,18 +50,21 @@ export async function render(container, ctx) {
     h(
       'section',
       { class: 'menu', 'aria-label': t(titleKey) },
-      ...modules.map((module, index) =>
-        h(
+      ...modules.map((module, index) => {
+        const name = AREAS[index];
+        const description = descriptionKey(name);
+        return h(
           'button',
           {
             type: 'button',
             class: 'card field',
-            'data-area': AREAS[index],
-            onclick: () => ctx.navigate(`extras/${AREAS[index]}`),
+            'data-area': name,
+            onclick: () => ctx.navigate(`extras/${name}`),
           },
-          h('span', { text: t(module.titleKey) }),
-        ),
-      ),
+          h('span', { text: t(labelKey(name, module)) }),
+          has(description) ? h('span', { class: 'muted', text: t(description) }) : null,
+        );
+      }),
     ),
   );
   container.focus({ preventScroll: true });

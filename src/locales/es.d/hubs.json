@@ -4,12 +4,30 @@
       "lessons": "Lecciones HSK",
       "tones": "Tonos y pinyin",
       "strokes": "Orden de trazos",
-      "sentences": "Frases del día a día"
+      "sentences": "Frases del día a día",
+      "plan": "Plan de 30 días",
+      "exam": "Examen de práctica",
+      "typing": "Práctica de escritura",
+      "descriptions": {
+        "plan": "Un camino día a día por el HSK 1",
+        "exam": "20 preguntas por nivel, con puntuación",
+        "typing": "Escribe el pinyin y compruébalo letra a letra"
+      }
     },
     "extras": {
       "profile": "Perfil y progreso",
       "draw": "Dibujar un carácter",
-      "pronounce": "Práctica de pronunciación"
+      "pronounce": "Práctica de pronunciación",
+      "worksheet": "Cuaderno de caligrafía",
+      "anki": "Exportar / importar a Anki",
+      "account": "Cuenta y sincronización",
+      "conversation": "Práctica de conversación",
+      "descriptions": {
+        "worksheet": "Hoja imprimible con cuadrícula",
+        "anki": "Pasa tus tarjetas de ida y vuelta a Anki",
+        "account": "Sincronización opcional entre tus dispositivos",
+        "conversation": "Charla en chino con un compañero de IA"
+      }
     }
   }
 }
