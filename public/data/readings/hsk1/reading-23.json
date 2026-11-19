@@ -1,0 +1,50 @@
+{
+  "id": "reading-23",
+  "title": "学汉语",
+  "type": "dialogue",
+  "topic": "Studying Chinese",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你学汉语多久了？",
+      "pinyin": "Nǐ xué Hànyǔ duōjiǔ le?",
+      "english": "How long have you been studying Chinese?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "一年了。你呢？",
+      "pinyin": "Yī nián le. Nǐ ne?",
+      "english": "One year. You?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我才三个月。汉语很难，对不对？",
+      "pinyin": "Wǒ cái sān gè yuè. Hànyǔ hěn nán, duì bu duì?",
+      "english": "Only three months. Chinese is hard, right?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "开始难，后来容易。你每天学几个小时？",
+      "pinyin": "Kāishǐ nán, hòulái róngyì. Nǐ měitiān xué jǐ gè xiǎoshí?",
+      "english": "Hard at first, easier later. How many hours do you study each day?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "一个小时。我听录音、写汉字。",
+      "pinyin": "Yī gè xiǎoshí. Wǒ tīng lùyīn, xiě Hànzì.",
+      "english": "One hour. I listen to recordings and write characters."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "很好的方法。多说、多听、多练习。",
+      "pinyin": "Hěn hǎo de fāngfǎ. Duō shuō, duō tīng, duō liànxí.",
+      "english": "Good method. Speak more, listen more, practice more."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢你的建议。我们一起练习说汉语吧。",
+      "pinyin": "Xièxie nǐ de jiànyì. Wǒmen yīqǐ liànxí shuō Hànyǔ ba.",
+      "english": "Thanks for the advice. Let's practice speaking Chinese together."
+    }
+  ]
+}

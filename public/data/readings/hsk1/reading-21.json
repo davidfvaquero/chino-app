@@ -1,0 +1,50 @@
+{
+  "id": "reading-21",
+  "title": "看一看",
+  "type": "dialogue",
+  "topic": "Looking around a shop",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "这家店很好。我们进去看一看吧。",
+      "pinyin": "Zhè jiā diàn hěn hǎo. Wǒmen jìnqù kànkan ba.",
+      "english": "This shop is nice. Let's go in and look around."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好啊。你看那个红色的包多少钱？",
+      "pinyin": "Hǎo a. Nǐ kàn nàge hóngsè de bāo duōshao qián?",
+      "english": "Okay. How much is that red bag?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "一百二十元。你想买吗？",
+      "pinyin": "Yībǎi èrshí yuán. Nǐ xiǎng mǎi ma?",
+      "english": "120 yuan. Do you want to buy it?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "有点贵。那个蓝色的呢？",
+      "pinyin": "Yǒudiǎn guì. Nàge lánsè de ne?",
+      "english": "A bit expensive. What about that blue one?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "八十元。颜色也不错。",
+      "pinyin": "Bāshí yuán. Yánsè yě bùcuò.",
+      "english": "80 yuan. The color is also nice."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "可以。我买那个蓝色的包。",
+      "pinyin": "Kěyǐ. Wǒ mǎi nàge lánsè de bāo.",
+      "english": "Okay. I'll buy that blue bag."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我帮你拿着。我们去喝茶吧。",
+      "pinyin": "Wǒ bāng nǐ názhe. Wǒmen qù hē chá ba.",
+      "english": "I'll carry it for you. Let's go drink tea."
+    }
+  ]
+}

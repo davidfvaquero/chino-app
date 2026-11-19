@@ -1,0 +1,56 @@
+{
+  "id": "reading-27",
+  "title": "跟医生说话",
+  "type": "dialogue",
+  "topic": "A doctor's appointment",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "医生，我肚子疼，不想吃饭。",
+      "pinyin": "Yīshēng, wǒ dùzi téng, bù xiǎng chīfàn.",
+      "english": "Doctor, my stomach hurts, I don't want to eat."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "疼多久了？有没有发烧？",
+      "pinyin": "Téng duōjiǔ le? Yǒu méiyǒu fāshāo?",
+      "english": "How long has it hurt? Any fever?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "两天了。没有发烧，就是不舒服。",
+      "pinyin": "Liǎng tiān le. Méiyǒu fāshāo, jiùshì bù shūfu.",
+      "english": "Two days. No fever, just feel unwell."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我给你检查一下。躺下，别紧张。",
+      "pinyin": "Wǒ gěi nǐ jiǎnchá yīxià. Tǎng xià, bié jǐnzhāng.",
+      "english": "Let me examine you. Lie down, don't be nervous."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好。医生，严重吗？",
+      "pinyin": "Hǎo. Yīshēng, yánzhòng ma?",
+      "english": "Okay. Doctor, is it serious?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "不严重，是胃炎。开点药，吃三天。",
+      "pinyin": "Bù yánzhòng, shì wèiyán. Kāi diǎn yào, chī sān tiān.",
+      "english": "Not serious, it's gastritis. Prescribing medicine, take for three days."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢医生。药怎么吃？",
+      "pinyin": "Xièxie yīshēng. Yào zěnme chī?",
+      "english": "Thanks doctor. How to take the medicine?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "饭后吃，一天三次，一次两片。多喝水。",
+      "pinyin": "Fàn hòu chī, yītiān sān cì, yī cì liǎng piàn. Duō hē shuǐ.",
+      "english": "After meals, three times a day, two tablets each time. Drink more water."
+    }
+  ]
+}

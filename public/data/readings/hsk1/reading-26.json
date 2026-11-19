@@ -1,0 +1,50 @@
+{
+  "id": "reading-26",
+  "title": "在饭馆",
+  "type": "dialogue",
+  "topic": "At a restaurant",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "服务员，菜单给我们看一看。",
+      "pinyin": "Fúwùyuán, càidān gěi wǒmen kànkan.",
+      "english": "Waiter, please show us the menu."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好的，先生。这是菜单。请慢用。",
+      "pinyin": "Hǎo de, xiānsheng. Zhè shì càidān. Qǐng màn yòng.",
+      "english": "Okay, sir. Here's the menu. Take your time."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我们要两个菜：红烧肉、青菜。",
+      "pinyin": "Wǒmen yào liǎng ge cài: hóngshāoròu, qīngcài.",
+      "english": "We want two dishes: braised pork and greens."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "要米饭吗？",
+      "pinyin": "Yào mǐfàn ma?",
+      "english": "Do you want rice?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "要，两碗米饭。还要一瓶啤酒。",
+      "pinyin": "Yào, liǎng wǎn mǐfàn. Hái yào yī píng píjiǔ.",
+      "english": "Yes, two bowls of rice. Also a bottle of beer."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好，一共一百八十元。请稍等。",
+      "pinyin": "Hǎo, yīgòng yībǎi bāshí yuán. Qǐng shāoděng.",
+      "english": "Okay, 180 yuan total. Please wait a moment."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "菜很好吃。下次还来这儿吃。",
+      "pinyin": "Cài hěn hǎochī. Xiàcì hái lái zhèr chī.",
+      "english": "The food is delicious. We'll come eat here again next time."
+    }
+  ]
+}
