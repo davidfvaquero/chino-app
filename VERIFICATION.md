@@ -1343,3 +1343,87 @@ No se modificaron archivos de codigo ni de datos.
 
 **Verdict: ALCANCE (T1,T3,T5,T7,T9,T11) VERIFICADO OK — contenido en espanol correcto, ejercicios validos, UI en espanol, tests verdes. 1 FALLO externo al alcance (`es/grammar/index.json` desincronizado por `9de625b`): validator global rojo + 7 patrones (incl. pattern-09) no abren en es. Reportado con reproduccion y arreglo; no arreglado por estar fuera de alcance.**
 *Verificador `barato` — 2026-11-19*
+
+---
+
+# Re-verificación bloque 8, 2º ciclo (t_59f346e3)
+
+Verificador: `barato`. Alcance: SOLO los 2 FALLO del 1er ciclo (t_345a147d), tras la reparación de `gratis` (commit `9de625b`). Repo `/home/homelab/chino-app`, build en `/tmp/chino-t_59f346e3` (no se tocó `dist/`).
+
+## Summary (re-check)
+
+| Check | Result | Notes |
+|-------|--------|-------|
+| `public/data/grammar/index.json` (en) con `file` en las 15 entradas | **OK** | 15/15 (`grep -o '"file"' \| wc -l` = 15) |
+| `node --test tests/grammar.test.mjs` verde | **OK** | 13 pass / 0 fail |
+| `#/learn/grammar` patrones 3-9 sin pill "Soon" y abren con ejemplos — locale **en** | **OK** | 0 pills "Soon"; `#/learn/grammar/ma-questions` = 5 ejemplos |
+| `#/learn/grammar` patrones 3-9 sin pill "Soon" y abren con ejemplos — locale **es** | **FALLO** | siguen con "PRONTO"; al abrir: "Este patrón está previsto pero aún no está escrito." |
+| `#/review` muestra el selector de filtro | **FALLO** | nunca aparece: abre directo a la cola |
+| `#/review` → "All/All (n)" muestra toda la cola debida | **OK** | 8 tarjetas sembradas, "8 DUE" |
+| `#/review` → cada opción por origen filtra su grupo y arranca el repaso | **FALLO** | no arranca: deja estado vacío obsoleto con `{count}` literal |
+| `npm test` verde | **OK** | 540 pass / 0 fail |
+| `public/data/lessons/hsk2/lesson-02.json`, `lesson-03.json` commiteados | **OK** | trackeados (`git ls-files`) y dentro de `9de625b` |
+
+## FALLO 1 (persiste, solo en el locale `es`) — `public/data/es/grammar/index.json` sin registrar los patrones 3-9
+
+`9de625b` añadió `"file"` a las 7 entradas 03-09 **solo en el índice inglés** (`public/data/grammar/index.json`). El índice español `public/data/es/grammar/index.json` (creado por `bbcad34`, i18n) sigue con 8/15 entradas con `file`: las 7 de ma-questions…question-words van sin él. La app sirve los datos idioma-dependientes (`readJson` consciente de locale), así que con locale `es` —el que la app elige en esta máquina— los 7 patrones siguen "no escritos", aunque **los ficheros `public/data/es/grammar/pattern-03..09.json` existen y tienen ejemplos (5-6 cada uno)**.
+
+- Evidencia: `fetch('/data/es/grammar/index.json')` → `[["shi",true],["de-possession",true],["ma-questions",false],…,["question-words",false],["xiang-yao",true],…]`.
+- Captura/UI (es): `#/learn/grammar` → 吗 / 不-没 / 了 / 在 / 有 / 很 / 疑问词 con pill **"PRONTO"**; `#/learn/grammar/ma-questions` → *"Este patrón está previsto pero aún no está escrito."*
+- (Confirmado independientemente por la verificación del bloque 11: "es/grammar/index.json desincronizado por 9de625b".)
+- Arreglo: añadir `"file": "pattern-0X.json"` a esas 7 entradas en `public/data/es/grammar/index.json` (7 líneas de datos). Nada más: los ficheros de patrón ya están traducidos.
+
+## FALLO 2 (persiste) — el selector de repaso no se alcanza y elegir un origen no arranca el repaso
+
+El fix de `9de625b` (pintar dentro del `root` existente en vez de `reset(container).append(root)`) sí arregla el **desenganche** del nodo: el selector ahora se pinta bien cuando se llega a él. Pero el flujo sigue roto por dos motivos independientes:
+
+**(a) El selector no tiene punto de entrada.** `load()` hace `state.filter = state.filter ?? await loadFilter()`, y `loadFilter()` **nunca** devuelve `null` (`normalizeFilter(undefined)` → `DEFAULT_FILTER = {source:'all'}`). `paint()` solo llama a `showFilterPicker()` cuando `state.filter === null`, así que en una instalación limpia `#/review` va directo a la cola y las opciones por origen no existen en la UI. El único botón "Cambiar filtro" del estado final/empty solo se pinta cuando `filter.source !== 'all'` → alcanzar el selector exige ya tener un filtro no-`all`, que a su vez exige el selector: ciclo inalcanzable.
+
+**(b) Elegir un origen no arranca el repaso.** `showFilterPicker()` pasa a `filterStage='detail'` y hace `paint()`, pero `paint()` solo pinta el selector si `filter === null`; con filtro ya elegido y `state.ready` aún `true` cae en `paintEnd()` con la **cola vieja**. `chooseSourceDetail()` (la etapa `detail`) nunca llega a ejecutarse: la lógica del sub-filtro por lección/tema sigue siendo código muerto.
+
+- Evidencia (locale en, 8 tarjetas sembradas: dictionary 2, lesson 3, theme 2, reading 1):
+  1. `#/review` → abre directo: "8 DUE / Show answer" (**no** sale "What to review").
+  2. Forzando un filtro guardado no-`all` (p. ej. `strokes`) para que aparezca el botón: "Nothing due / No reviewFilter.source.strokes cards are waiting right now. / Change filter" → clic en "Change filter" → **sí** aparece el selector: `What to review | Back | All (8) | Lessons (3) | Dictionary (2) | Themes (2) | Readings (1)`.
+  3. Clic en "Lessons (3)" → **no arranca el repaso y no sale el sub-filtro**: "Nothing due / No Lessons **({count})** cards are waiting right now. / Change filter | Change filter" (el `{count}` sale literal: `paintEnd` llama a `reviewFilter.empty.body` solo con `{source}`).
+  4. "All (8)" sí funciona: muestra toda la cola (8 DUE).
+- Capturas: `~/.hermes/profiles/barato/cache/browser-use/workspace/.../shot.png` (A: cola tras All; B: selector; C: estado vacío obsoleto tras "Lessons").
+- Arreglo sugerido: (1) que `loadFilter()` devuelva `null` cuando no hay filtro guardado (o `state.filter = null` en el arranque) para que el selector sea la primera pantalla, y/o poner un botón "Cambiar filtro" siempre visible; (2) en el `.then` de `chooseFilter` con origen concreto: si no hay `sourceDetail` que ofrecer, arrancar directamente (`state.ready=false; saveFilter(chosen).then(load)`), o pintar la etapa `detail` desde `paint()` (`if (state.filterStage === 'detail') { showFilterPicker(); return; }`).
+
+## Observaciones menores (no bloquean, del mismo fix)
+
+1. Faltan claves de locale para orígenes reales: `reviewFilter.source.dict` (la app escribe `source:'dict'`, el locale solo tiene `dictionary`), y tampoco hay `strokes`, `strokes-sheet`, `wotd`, `radicals`, `sentences`… → el selector muestra etiquetas crudas ("dict (2)") y `paintEnd` imprime la clave entera (`t('reviewFilter.source.strokes')` es truthy → texto "reviewFilter.source.strokes").
+2. `reviewFilter.selectLabel` está definido en los 2 shards pero no se usa en ningún sitio.
+3. `package.json` / `package-lock.json` tienen cambios sin commitear (devDependencies `playwright`, `puppeteer`) y hay scripts de depuración sin trackear (`check_hsk2.py`, `debug_check.mjs`, …) de ciclos anteriores: los dejo intactos, no son de esta tarea.
+
+## Reproducción
+
+```bash
+cd /home/homelab/chino-app
+git log --oneline -1                       # 9de625b
+node --test tests/grammar.test.mjs         # 13 pass
+npm test                                   # 540 pass / 0 fail
+OUT_DIR=/tmp/chino-t_59f346e3 npm run build
+node scripts/serve.mjs /tmp/chino-t_59f346e3   # -> http://localhost:PORT/
+
+# En el navegador (sesión aislada):
+#  A) Gramática ES:  storage.set('settings','locale','es') + reload
+#     fetch('/data/es/grammar/index.json')  -> 7 entradas sin "file"
+#     #/learn/grammar                -> PRONTO en 7 patrones        (FALLO 1)
+#     #/learn/grammar/ma-questions   -> "previsto pero no escrito"  (FALLO 1)
+#  B) Gramática EN:  locale 'en' -> 0 pills "Soon", patrón abre con 5 ejemplos (OK)
+#  C) Repaso: sembrar 8 tarjetas con import('/src/srs.js').addToReview(...)
+#     #/review                       -> abre la cola, no el selector (FALLO 2a)
+#     (con reviewFilter guardado no-all + clic "Change filter")
+#     selector -> clic "Lessons (3)" -> "Nothing due ... ({count})"  (FALLO 2b)
+```
+
+## Files Touched by This Verification
+- `VERIFICATION.md` (esta sección)
+
+No se modificaron archivos de código ni de datos. No toqué `dist/`.
+
+---
+
+**Verdict: BLOQUE 8 (2º ciclo) — 2 FALLO persisten. (1) Gramática 3-9: OK en `en`, FALLO en `es` (`public/data/es/grammar/index.json` sin `file` en 03-09 → "PRONTO"). (2) Repaso filtrable: el selector no se alcanza desde `#/review` y elegir un origen no arranca el repaso (estado vacío obsoleto con `{count}` literal); "All" sí muestra toda la cola. Tests verdes (540) y lesson-02/03 commiteados. Sin más ciclos: se bloquea para decisión.**
+
+*Verificador `barato` — 2026-11-19*
