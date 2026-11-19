@@ -5,10 +5,16 @@
  *     are ONE light-dark() declaration; see docs/DESIGN.md §2);
  *   - it must not hard-code colours (hex) outside a `@media print` block.
  * If a screen needs a colour, use a token from src/styles.css.
+ *
+ * The list below mixes committed screens with modules a sibling task is still
+ * writing (e.g. src/learn/games/builder.js). A clean clone only has the
+ * committed ones, so every file that is not on disk yet is skipped; REQUIRED
+ * pins the screens that must already exist, so accidentally deleting one still
+ * fails the test instead of silently shrinking the audit.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 const FILES = [
   'src/learn/tones.js',
@@ -39,6 +45,17 @@ const FILES = [
   'src/extras/worksheet.js',
 ];
 
+/** Long-committed screens: must never disappear (guards the skip below). */
+const REQUIRED = [
+  'src/learn/tones.js',
+  'src/learn/strokes.js',
+  'src/learn/radicals.js',
+  'src/extras/settings.js',
+  'src/extras/backup.js',
+];
+
+const pathOf = (file) => new URL(`../${file}`, import.meta.url);
+
 /** Drop balanced `@media print { ... }` blocks (print ink is not a screen token). */
 function stripPrint(css) {
   let out = css, i;
@@ -58,9 +75,14 @@ const cssOf = (src) => {
   return m ? m[1] : '';
 };
 
+test('REQUIRED screens still exist', () => {
+  for (const file of REQUIRED) assert.ok(existsSync(pathOf(file)), `${file} disappeared`);
+});
+
 test('screen CSS uses design tokens, never prefers-color-scheme', () => {
   for (const file of FILES) {
-    const src = readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
+    if (!existsSync(pathOf(file))) continue; // not committed yet (sibling task) — skip
+    const src = readFileSync(pathOf(file), 'utf8');
     assert.ok(!src.includes('prefers-color-scheme'), `${file}: use tokens, not prefers-color-scheme`);
     const css = stripPrint(cssOf(src));
     const hex = [...new Set(css.match(/#[0-9a-fA-F]{3,8}\b/g) || [])];

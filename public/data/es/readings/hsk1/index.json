@@ -98,5 +98,105 @@
     "id": "reading-20",
     "title": "生日聚会",
     "topic": "Una fiesta"
+  },
+  {
+    "id": "reading-21",
+    "title": "看一看",
+    "topic": "Echar un vistazo en una tienda"
+  },
+  {
+    "id": "reading-22",
+    "title": "我的生日",
+    "topic": "Mi cumpleaños"
+  },
+  {
+    "id": "reading-23",
+    "title": "学汉语",
+    "topic": "Estudiar chino"
+  },
+  {
+    "id": "reading-24",
+    "title": "一封信",
+    "topic": "Una carta"
+  },
+  {
+    "id": "reading-25",
+    "title": "坐地铁",
+    "topic": "En el metro"
+  },
+  {
+    "id": "reading-26",
+    "title": "在饭馆",
+    "topic": "En un restaurante"
+  },
+  {
+    "id": "reading-27",
+    "title": "跟医生说话",
+    "topic": "Una cita con el médico"
+  },
+  {
+    "id": "reading-28",
+    "title": "新的家",
+    "topic": "Mudarse a una casa nueva"
+  },
+  {
+    "id": "reading-29",
+    "title": "找工作",
+    "topic": "Buscar trabajo"
+  },
+  {
+    "id": "reading-30",
+    "title": "去玩",
+    "topic": "Vacaciones y viajes"
+  },
+  {
+    "id": "reading-31",
+    "title": "天气冷了",
+    "topic": "Las estaciones"
+  },
+  {
+    "id": "reading-32",
+    "title": "运动",
+    "topic": "Deportes"
+  },
+  {
+    "id": "reading-33",
+    "title": "做饭",
+    "topic": "Cocinar en casa"
+  },
+  {
+    "id": "reading-34",
+    "title": "手机",
+    "topic": "Mensajes de texto"
+  },
+  {
+    "id": "reading-35",
+    "title": "我的名片",
+    "topic": "Tarjetas de visita"
+  },
+  {
+    "id": "reading-36",
+    "title": "图书馆",
+    "topic": "En la biblioteca"
+  },
+  {
+    "id": "reading-37",
+    "title": "在学校",
+    "topic": "En la escuela"
+  },
+  {
+    "id": "reading-38",
+    "title": "在家里",
+    "topic": "En casa"
+  },
+  {
+    "id": "reading-39",
+    "title": "星期天",
+    "topic": "El fin de semana"
+  },
+  {
+    "id": "reading-40",
+    "title": "我的狗",
+    "topic": "Mascotas"
   }
 ]
