@@ -1,0 +1,36 @@
+{
+  "id": "hsk1-05",
+  "title": "Hora y fechas",
+  "intro": "Aprende palabras para la hora, fechas, comprar y verbos comunes.",
+  "vocabulary": [
+    { "hanzi": "买", "pinyin": "mǎi", "english": "comprar", "example": { "hanzi": "买东西", "pinyin": "mǎi dōngxi", "english": "comprar cosas / ir de compras" } },
+    { "hanzi": "猫", "pinyin": "māo", "english": "gato", "example": { "hanzi": "一只猫", "pinyin": "yī zhī māo", "english": "un gato" } },
+    { "hanzi": "没关系", "pinyin": "méi guānxi", "english": "no importa; no te preocupes", "example": { "hanzi": "没关系，我不急", "pinyin": "méi guānxi, wǒ bù jí", "english": "No importa, no tengo prisa" } },
+    { "hanzi": "没有", "pinyin": "méiyǒu", "english": "no tener; no haber", "example": { "hanzi": "我没有钱", "pinyin": "wǒ méiyǒu qián", "english": "No tengo dinero" } },
+    { "hanzi": "米饭", "pinyin": "mǐfàn", "english": "arroz cocido", "example": { "hanzi": "吃米饭", "pinyin": "chī mǐfàn", "english": "comer arroz" } },
+    { "hanzi": "明天", "pinyin": "míngtiān", "english": "mañana", "example": { "hanzi": "明天见", "pinyin": "míngtiān jiàn", "english": "Nos vemos mañana" } },
+    { "hanzi": "名字", "pinyin": "míngzi", "english": "nombre", "example": { "hanzi": "你的名字", "pinyin": "nǐ de míngzi", "english": "tu nombre" } },
+    { "hanzi": "哪", "pinyin": "nǎa", "english": "cuál; cómo", "example": { "hanzi": "哪一个？", "pinyin": "nǎa yī ge?", "english": "¿Cuál?" } },
+    { "hanzi": "哪儿", "pinyin": "nǎr", "english": "¿dónde? (Beijing)", "example": { "hanzi": "你在哪儿？", "pinyin": "nǐ zài nǎr?", "english": "¿Dónde estás?" } },
+    { "hanzi": "那", "pinyin": "nà", "english": "ese; aquel; entonces", "example": { "hanzi": "那个", "pinyin": "nà ge", "english": "ese" } },
+    { "hanzi": "呢", "pinyin": "ne", "english": "partícula de pregunta; ¿y tú?; ¿qué tal?", "example": { "hanzi": "你呢？", "pinyin": "nǐ ne?", "english": "¿Y tú? / ¿Qué tal tú?" } },
+    { "hanzi": "能", "pinyin": "néng", "english": "poder; ser capaz de", "example": { "hanzi": "我能说汉语", "pinyin": "wǒ néng shuō Hànyǔ", "english": "Puedo hablar chino" } },
+    { "hanzi": "你", "pinyin": "nǐ", "english": "tú (singular)", "example": { "hanzi": "你好吗？", "pinyin": "nǐ hǎo ma?", "english": "¿Cómo estás?" } },
+    { "hanzi": "年", "pinyin": "nián", "english": "año", "example": { "hanzi": "今年", "pinyin": "jīnnián", "english": "este año" } },
+    { "hanzi": "女儿", "pinyin": "nǚ'ér", "english": "hija", "example": { "hanzi": "我的女儿", "pinyin": "wǒ de nǚ'ér", "english": "mi hija" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 女儿?", "options": ["hijo", "hija", "niño"], "answer": "hija" },
+    { "type": "choose", "prompt": "¿Qué palabra significa «comprar»?", "options": ["卖", "买", "没有"], "answer": "买" },
+    { "type": "listen", "audio": "明天", "pinyin": "míngtiān", "prompt": "Escucha y elige lo que oyes.", "options": ["明天", "今天", "后天"], "answer": "明天" },
+    { "type": "match", "prompt": "Une cada palabra con su significado.", "pairs": [
+      { "hanzi": "女儿", "english": "hija" },
+      { "hanzi": "买", "english": "comprar" },
+      { "hanzi": "猫", "english": "gato" },
+      { "hanzi": "年", "english": "año" }
+    ]},
+    { "type": "order", "prompt": "Forma la frase «comer arroz».", "tokens": ["米饭", "吃"], "answer": "吃米饭" },
+    { "type": "choose", "prompt": "¿Qué significa 哪儿?", "options": ["quién", "dónde", "qué"], "answer": "dónde" },
+    { "type": "listen", "audio": "没有", "pinyin": "méiyǒu", "prompt": "Escucha y elige lo que oyes.", "options": ["没有", "没关系", "能有"], "answer": "没有" }
+  ]
+}

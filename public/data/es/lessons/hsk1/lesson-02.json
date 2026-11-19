@@ -1,0 +1,36 @@
+{
+  "id": "hsk1-02",
+  "title": "Personas y familia",
+  "intro": "Aprende palabras para miembros de la familia, personas y objetos cotidianos.",
+  "vocabulary": [
+    { "hanzi": "点", "pinyin": "diǎn", "english": "punto; un poco; en punto (hora)", "example": { "hanzi": "一点", "pinyin": "yī diǎn", "english": "un poco; la una en punto" } },
+    { "hanzi": "电脑", "pinyin": "diànnǎo", "english": "ordenador; computadora", "example": { "hanzi": "我的电脑", "pinyin": "wǒ de diànnǎo", "english": "mi ordenador" } },
+    { "hanzi": "电视", "pinyin": "diànshì", "english": "televisión; tele", "example": { "hanzi": "看电视", "pinyin": "kàn diànshì", "english": "ver la tele" } },
+    { "hanzi": "电影", "pinyin": "diànyǐng", "english": "película; cine", "example": { "hanzi": "看电影", "pinyin": "kàn diànyǐng", "english": "ver una película" } },
+    { "hanzi": "东西", "pinyin": "dōngxi", "english": "cosas; objetos", "example": { "hanzi": "买东西", "pinyin": "mǎi dōngxi", "english": "comprar cosas / ir de compras" } },
+    { "hanzi": "都", "pinyin": "dōu", "english": "todos; ambos", "example": { "hanzi": "我们都去", "pinyin": "wǒmen dōu qù", "english": "vamos todos" } },
+    { "hanzi": "读", "pinyin": "dú", "english": "leer; estudiar", "example": { "hanzi": "读书", "pinyin": "dú shū", "english": "leer un libro; estudiar" } },
+    { "hanzi": "对不起", "pinyin": "duìbuqǐ", "english": "lo siento; perdón", "example": { "hanzi": "对不起，我不知道", "pinyin": "duìbuqǐ, wǒ bù zhīdào", "english": "Perdón, no lo sé" } },
+    { "hanzi": "多", "pinyin": "duō", "english": "mucho; muchos", "example": { "hanzi": "很多人", "pinyin": "hěn duō rén", "english": "muchas personas" } },
+    { "hanzi": "多少", "pinyin": "duōshao", "english": "¿cuánto?; ¿cuántos?", "example": { "hanzi": "多少钱？", "pinyin": "duōshao qián?", "english": "¿Cuánto cuesta?" } },
+    { "hanzi": "儿子", "pinyin": "érzi", "english": "hijo", "example": { "hanzi": "我的儿子", "pinyin": "wǒ de érzi", "english": "mi hijo" } },
+    { "hanzi": "二", "pinyin": "èr", "english": "dos", "example": { "hanzi": "二月", "pinyin": "èr yuè", "english": "febrero" } },
+    { "hanzi": "饭店", "pinyin": "fàndiàn", "english": "restaurante; hotel", "example": { "hanzi": "去饭店", "pinyin": "qù fàndiàn", "english": "ir a un restaurante" } },
+    { "hanzi": "飞机", "pinyin": "fēijī", "english": "avión", "example": { "hanzi": "坐飞机", "pinyin": "zuò fēijī", "english": "coger un avión" } },
+    { "hanzi": "分钟", "pinyin": "fēnzhōng", "english": "minuto", "example": { "hanzi": "五分钟", "pinyin": "wǔ fēnzhōng", "english": "cinco minutos" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 儿子?", "options": ["hijo", "hija", "padre"], "answer": "hijo" },
+    { "type": "choose", "prompt": "¿Qué palabra significa «ordenador»?", "options": ["电视", "电脑", "电影"], "answer": "电脑" },
+    { "type": "listen", "audio": "对不起", "pinyin": "duìbuqǐ", "prompt": "Escucha y elige lo que oyes.", "options": ["对不起", "没关系", "谢谢"], "answer": "对不起" },
+    { "type": "match", "prompt": "Une cada palabra con su significado.", "pairs": [
+      { "hanzi": "儿子", "english": "hijo" },
+      { "hanzi": "电脑", "english": "ordenador" },
+      { "hanzi": "电影", "english": "película" },
+      { "hanzi": "飞机", "english": "avión" }
+    ]},
+    { "type": "order", "prompt": "Forma la frase «ver la tele».", "tokens": ["电视", "看"], "answer": "看电视" },
+    { "type": "choose", "prompt": "¿Qué significa 多少?", "options": ["mucho", "¿cuánto/cuántos?", "todos"], "answer": "¿cuánto/cuántos?" },
+    { "type": "listen", "audio": "飞机", "pinyin": "fēijī", "prompt": "Escucha y elige lo que oyes.", "options": ["飞机", "电脑", "电影"], "answer": "飞机" }
+  ]
+}

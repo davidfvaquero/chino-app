@@ -1,0 +1,20 @@
+{
+  "level": "hsk1",
+  "title": "HSK 1",
+  "source": "public/data/hsk/1.json",
+  "wordCount": 150,
+  "wordsPerLesson": 15,
+  "note": "Plan fijo de 10 lecciones para HSK1. `range` es el tramo sugerido de las 150 palabras HSK1 (1-based, inclusivo) para una lección que aún no se ha escrito; las tareas de relleno escriben lesson-02.json .. lesson-10.json sin tocar este índice. La lección 1 ya está escrita a mano (`curated: true`) y su vocabulario es el autoritativo. Ver docs/lesson-schema.md.",
+  "lessons": [
+    { "id": "hsk1-01", "title": "Saludos y números", "file": "lesson-01.json", "range": { "from": 1, "to": 15 }, "curated": true },
+    { "id": "hsk1-02", "title": "Personas y familia", "file": "lesson-02.json", "range": { "from": 16, "to": 30 } },
+    { "id": "hsk1-03", "title": "Cosas cotidianas", "file": "lesson-03.json", "range": { "from": 31, "to": 45 } },
+    { "id": "hsk1-04", "title": "Comida y bebida", "file": "lesson-04.json", "range": { "from": 46, "to": 60 } },
+    { "id": "hsk1-05", "title": "Hora y fechas", "file": "lesson-05.json", "range": { "from": 61, "to": 75 } },
+    { "id": "hsk1-06", "title": "Lugares y viajes", "file": "lesson-06.json", "range": { "from": 76, "to": 90 } },
+    { "id": "hsk1-07", "title": "Estudio y trabajo", "file": "lesson-07.json", "range": { "from": 91, "to": 105 } },
+    { "id": "hsk1-08", "title": "Clima y sentimientos", "file": "lesson-08.json", "range": { "from": 106, "to": 120 } },
+    { "id": "hsk1-09", "title": "Verbos en acción", "file": "lesson-09.json", "range": { "from": 121, "to": 135 } },
+    { "id": "hsk1-10", "title": "Describir el mundo", "file": "lesson-10.json", "range": { "from": 136, "to": 150 } }
+  ]
+}
