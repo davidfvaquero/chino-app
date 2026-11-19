@@ -163,7 +163,7 @@ test('loadIndex / loadPattern / loadMeasureWords read the real files', async () 
   assert.equal(pattern.id, 'shi');
   assert.ok(pattern.examples.length >= 2);
 
-  assert.equal(await loadPattern('ma-questions', withBase), null, 'planned pattern => null');
+  assert.equal(await loadPattern('non-existent-pattern', withBase), null, 'unknown pattern => null');
 
   const words = await loadMeasureWords(withBase);
   assert.equal(words.length, 25);

@@ -111,7 +111,7 @@ async function getSourceCounts() {
 }
 
 /** Build the filter UI: shows "All" + sources with counts. Returns a Promise resolving to the chosen filter. */
-async function chooseFilter(container, goBack) {
+async function chooseFilter(root, goBack) {
   const counts = await getSourceCounts();
   const saved = await loadFilter();
 
@@ -121,8 +121,6 @@ async function chooseFilter(container, goBack) {
     .sort((a, b) => b[1] - a[1]);
 
   return new Promise((resolve) => {
-    const root = h('section');
-
     const renderOptions = () => {
       root.replaceChildren();
 
@@ -173,13 +171,12 @@ async function chooseFilter(container, goBack) {
     };
 
     renderOptions();
-    reset(container).append(root);
-    container.focus({ preventScroll: true });
+    root.focus({ preventScroll: true });
   });
 }
 
 /** Build the sub-filter UI for a specific source (by sourceDetail). */
-async function chooseSourceDetail(container, source, goBack) {
+async function chooseSourceDetail(root, source, goBack) {
   const cards = await getDueCards({ source, now: Date.now() });
   const saved = await loadFilter();
 
@@ -195,8 +192,6 @@ async function chooseSourceDetail(container, source, goBack) {
     .sort((a, b) => b[1] - a[1]);
 
   return new Promise((resolve) => {
-    const root = h('section');
-
     const renderOptions = () => {
       root.replaceChildren();
 
@@ -238,8 +233,7 @@ async function chooseSourceDetail(container, source, goBack) {
     };
 
     renderOptions();
-    reset(container).append(root);
-    container.focus({ preventScroll: true });
+    root.focus({ preventScroll: true });
   });
 }
 
@@ -305,7 +299,7 @@ export function render(container, ctx = {}) {
     const goBack = () => { state.filter = null; paint(); };
 
     if (state.filterStage === 'main') {
-      chooseFilter(container, goBack).then((chosen) => {
+      chooseFilter(root, goBack).then((chosen) => {
         if (!state.alive) return;
         if (chosen === null) {
           // User pressed back — go to dictionary
@@ -323,7 +317,7 @@ export function render(container, ctx = {}) {
         }
       });
     } else if (state.filterStage === 'detail') {
-      chooseSourceDetail(container, state.filter.source, goBack).then((result) => {
+      chooseSourceDetail(root, state.filter.source, goBack).then((result) => {
         if (!state.alive) return;
         if (result?.action === 'back') {
           state.filterStage = 'main';

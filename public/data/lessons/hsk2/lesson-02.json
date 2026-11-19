@@ -1,0 +1,32 @@
+{
+  "id": "hsk2-02",
+  "title": "People & places",
+  "intro": "Talk about family, places, and common actions with the next 15 HSK 2 words.",
+  "vocabulary": [
+    { "hanzi": "打篮球", "pinyin": "dǎ lánqiú", "english": "play basketball", "example": { "hanzi": "我喜欢打篮球", "pinyin": "wǒ xǐhuan dǎ lánqiú", "english": "I like playing basketball" } },
+    { "hanzi": "大家", "pinyin": "dàjiā", "english": "everyone", "example": { "hanzi": "大家好", "pinyin": "dàjiā hǎo", "english": "hello everyone" } },
+    { "hanzi": "到", "pinyin": "dào", "english": "arrive; until", "example": { "hanzi": "到了北京", "pinyin": "dào le Běijīng", "english": "arrived in Beijing" } },
+    { "hanzi": "得", "pinyin": "de", "english": "complement particle", "example": { "hanzi": "跑得快", "pinyin": "pǎo de kuài", "english": "run fast" } },
+    { "hanzi": "等", "pinyin": "děng", "english": "wait; etc.", "example": { "hanzi": "等一下", "pinyin": "děng yí xià", "english": "wait a moment" } },
+    { "hanzi": "弟弟", "pinyin": "dìdi", "english": "younger brother", "example": { "hanzi": "我的弟弟", "pinyin": "wǒ de dìdi", "english": "my younger brother" } },
+    { "hanzi": "第一", "pinyin": "dìyī", "english": "first", "example": { "hanzi": "第一课", "pinyin": "dì yī kè", "english": "first lesson" } },
+    { "hanzi": "懂", "pinyin": "dǒng", "english": "understand", "example": { "hanzi": "我懂了", "pinyin": "wǒ dǒng le", "english": "I understand now" } },
+    { "hanzi": "对", "pinyin": "duì", "english": "correct; towards", "example": { "hanzi": "对吗", "pinyin": "duì ma", "english": "is that right" } },
+    { "hanzi": "房间", "pinyin": "fángjiān", "english": "room", "example": { "hanzi": "我的房间", "pinyin": "wǒ de fángjiān", "english": "my room" } },
+    { "hanzi": "非常", "pinyin": "fēicháng", "english": "very; extremely", "example": { "hanzi": "非常好", "pinyin": "fēicháng hǎo", "english": "very good" } },
+    { "hanzi": "服务员", "pinyin": "fúwùyuán", "english": "waiter; server", "example": { "hanzi": "叫服务员", "pinyin": "jiào fúwùyuán", "english": "call the waiter" } },
+    { "hanzi": "高", "pinyin": "gāo", "english": "tall; high", "example": { "hanzi": "他很高", "pinyin": "tā hěn gāo", "english": "he is very tall" } },
+    { "hanzi": "告诉", "pinyin": "gàosu", "english": "tell; inform", "example": { "hanzi": "告诉他", "pinyin": "gàosu tā", "english": "tell him" } },
+    { "hanzi": "哥哥", "pinyin": "gēge", "english": "older brother", "example": { "hanzi": "我的哥哥", "pinyin": "wǒ de gēge", "english": "my older brother" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 弟弟 mean?", "options": ["older brother", "younger brother", "sister"], "answer": "younger brother" },
+    { "type": "choose", "prompt": "Which word means 'very'?", "options": ["非常", "第一", "等"], "answer": "非常" },
+    { "type": "listen", "audio": "哥哥", "pinyin": "gēge", "prompt": "Listen and choose what you hear.", "options": ["哥哥", "弟弟", "姐姐"], "answer": "哥哥" },
+    { "type": "match", "prompt": "Match each word to its meaning.", "pairs": [ { "hanzi": "弟弟", "english": "younger brother" }, { "hanzi": "房间", "english": "room" }, { "hanzi": "高", "english": "tall" }, { "hanzi": "告诉", "english": "tell" } ] },
+    { "type": "order", "prompt": "Make the phrase 'hello everyone'.", "tokens": ["好", "大", "家"], "answer": "大家好" },
+    { "type": "order", "prompt": "Put the characters in order to say 'wait a moment'.", "tokens": ["一", "下", "等"], "answer": "等一下" },
+    { "type": "listen", "audio": "服务员", "pinyin": "fúwùyuán", "prompt": "Listen and choose what you hear.", "options": ["服务员", "弟弟", "哥哥"], "answer": "服务员" },
+    { "type": "choose", "prompt": "Which character means 'first'?", "options": ["第", "得", "等"], "answer": "第" }
+  ]
+}

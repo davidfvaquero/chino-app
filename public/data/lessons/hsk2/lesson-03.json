@@ -1,0 +1,32 @@
+{
+  "id": "hsk2-03",
+  "title": "Getting around town",
+  "intro": "Navigate transport, locations, and everyday objects with 15 more HSK 2 words.",
+  "vocabulary": [
+    { "hanzi": "给", "pinyin": "gěi", "english": "give; for", "example": { "hanzi": "给我", "pinyin": "gěi wǒ", "english": "give me" } },
+    { "hanzi": "公共汽车", "pinyin": "gōnggòng qìchē", "english": "bus", "example": { "hanzi": "坐公共汽车", "pinyin": "zuò gōnggòng qìchē", "english": "take the bus" } },
+    { "hanzi": "公司", "pinyin": "gōngsī", "english": "company", "example": { "hanzi": "我的公司", "pinyin": "wǒ de gōngsī", "english": "my company" } },
+    { "hanzi": "贵", "pinyin": "guì", "english": "expensive", "example": { "hanzi": "太贵了", "pinyin": "tài guì le", "english": "too expensive" } },
+    { "hanzi": "过", "pinyin": "guò", "english": "pass; experience marker", "example": { "hanzi": "去过中国", "pinyin": "qù guò Zhōngguó", "english": "have been to China" } },
+    { "hanzi": "还", "pinyin": "hái", "english": "still; also", "example": { "hanzi": "还要", "pinyin": "hái yào", "english": "still want" } },
+    { "hanzi": "孩子", "pinyin": "háizi", "english": "child", "example": { "hanzi": "两个孩子", "pinyin": "liǎng gè háizi", "english": "two children" } },
+    { "hanzi": "好吃", "pinyin": "hǎochī", "english": "tasty", "example": { "hanzi": "很好吃", "pinyin": "hěn hǎochī", "english": "very tasty" } },
+    { "hanzi": "黑", "pinyin": "hēi", "english": "black", "example": { "hanzi": "黑色", "pinyin": "hēi sè", "english": "black color" } },
+    { "hanzi": "红", "pinyin": "hóng", "english": "red", "example": { "hanzi": "红色", "pinyin": "hóng sè", "english": "red color" } },
+    { "hanzi": "火车站", "pinyin": "huǒchēzhàn", "english": "train station", "example": { "hanzi": "在火车站", "pinyin": "zài huǒchēzhàn", "english": "at the train station" } },
+    { "hanzi": "机场", "pinyin": "jīchǎng", "english": "airport", "example": { "hanzi": "去机场", "pinyin": "qù jīchǎng", "english": "go to the airport" } },
+    { "hanzi": "鸡蛋", "pinyin": "jīdàn", "english": "egg", "example": { "hanzi": "两个鸡蛋", "pinyin": "liǎng gè jīdàn", "english": "two eggs" } },
+    { "hanzi": "件", "pinyin": "jiàn", "english": "measure word for items", "example": { "hanzi": "一件衣服", "pinyin": "yí jiàn yīfu", "english": "one piece of clothing" } },
+    { "hanzi": "教室", "pinyin": "jiàoshì", "english": "classroom", "example": { "hanzi": "在教室", "pinyin": "zài jiàoshì", "english": "in the classroom" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 火车站 mean?", "options": ["airport", "train station", "bus stop"], "answer": "train station" },
+    { "type": "choose", "prompt": "Which word means 'expensive'?", "options": ["贵", "过", "还"], "answer": "贵" },
+    { "type": "listen", "audio": "机场", "pinyin": "jīchǎng", "prompt": "Listen and choose what you hear.", "options": ["机场", "火车站", "公共汽车"], "answer": "机场" },
+    { "type": "match", "prompt": "Match each word to its meaning.", "pairs": [ { "hanzi": "公司", "english": "company" }, { "hanzi": "鸡蛋", "english": "egg" }, { "hanzi": "教室", "english": "classroom" }, { "hanzi": "贵", "english": "expensive" } ] },
+    { "type": "order", "prompt": "Make the phrase 'take the bus'.", "tokens": ["车", "汽", "共", "公", "坐"], "answer": "坐公共汽车" },
+    { "type": "order", "prompt": "Put the characters in order to say 'have been to China'.", "tokens": ["过", "中", "去", "国"], "answer": "去过中国" },
+    { "type": "listen", "audio": "好吃", "pinyin": "hǎochī", "prompt": "Listen and choose what you hear.", "options": ["好吃", "黑", "红"], "answer": "好吃" },
+    { "type": "choose", "prompt": "Which word is the measure word for items?", "options": ["件", "教", "公"], "answer": "件" }
+  ]
+}
