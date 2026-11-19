@@ -1831,3 +1831,5 @@ git status --short                 # WIP ajeno
 ```
 
 *Verificador haiku — 2026-11-19 (pasada 66)*
+
+**Actualización (pasada 66, tras commit ajeno f682cce):** el WIP de exam.js, plan.js, learn.js, extras.js y demás quedó commiteado por otro worker en f682cce. `git status` sólo muestra 2 ficheros sin trackear: `tests/hsk3-lessons-headless.test.mjs` y `scripts/verify-readings.mjs`. El único FALLO común que queda es el test hsk3 sin trackear (npm test 3 fallos).
