@@ -1,0 +1,20 @@
+{
+  "level": "hsk3",
+  "title": "HSK 3",
+  "source": "public/data/hsk/3.json",
+  "wordCount": 297,
+  "wordsPerLesson": 30,
+  "note": "Plan fijo de 10 lecciones para HSK 3, igual que HSK 1 y HSK 2. `range` es el tramo sugerido de las 297 palabras de HSK 3 (1-based, inclusive, lista alfabética) para una lección que aún no se ha escrito; las tareas de relleno escriben lesson-02.json .. lesson-10.json sin tocar este índice. La lección 1 ya está escrita a mano (`curated: true`) y su vocabulario es el autoritario. La lección 10 cubre las últimas 27 palabras (297 no es divisible por 10). Véase docs/lesson-schema.md.",
+  "lessons": [
+    { "id": "hsk3-01", "title": "Personas, sentimientos y rutinas", "file": "lesson-01.json", "range": { "from": 1, "to": 30 }, "curated": true },
+    { "id": "hsk3-02", "title": "Casa, comida y objetos cotidianos", "file": "lesson-02.json", "range": { "from": 31, "to": 60 } },
+    { "id": "hsk3-03", "title": "Estudio, trabajo y planes", "file": "lesson-03.json", "range": { "from": 61, "to": 90 } },
+    { "id": "hsk3-04", "title": "Viajes, ciudad y direcciones", "file": "lesson-04.json", "range": { "from": 91, "to": 120 } },
+    { "id": "hsk3-05", "title": "Salud, cuerpo y clima", "file": "lesson-05.json", "range": { "from": 121, "to": 150 } },
+    { "id": "hsk3-06", "title": "Compras, dinero y servicios", "file": "lesson-06.json", "range": { "from": 151, "to": 180 } },
+    { "id": "hsk3-07", "title": "Tiempo, orden y frecuencia", "file": "lesson-07.json", "range": { "from": 181, "to": 210 } },
+    { "id": "hsk3-08", "title": "Sociedad, medios y comunicación", "file": "lesson-08.json", "range": { "from": 211, "to": 240 } },
+    { "id": "hsk3-09", "title": "Acciones, cualidades y conectores", "file": "lesson-09.json", "range": { "from": 241, "to": 270 } },
+    { "id": "hsk3-10", "title": "Palabras y expresiones cotidianas", "file": "lesson-10.json", "range": { "from": 271, "to": 297 } }
+  ]
+}

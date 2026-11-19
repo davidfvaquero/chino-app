@@ -1,0 +1,56 @@
+{
+  "id": "hsk3-03",
+  "title": "Estudio, trabajo y planes",
+  "intro": "Amplía tu vocabulario de estudio, trabajo y planes: repasar, reuniones, oportunidades, estaciones y comunicación.",
+  "vocabulary": [
+    { "hanzi": "多么", "pinyin": "duōme", "english": "qué (maravilloso, etc.); qué (gran idea)", "example": { "hanzi": "多么美啊", "pinyin": "duōme měi a", "english": "qué bonito" } },
+    { "hanzi": "饿", "pinyin": "è", "english": "hambriento; tener hambre", "example": { "hanzi": "我饿了", "pinyin": "wǒ è le", "english": "tengo hambre" } },
+    { "hanzi": "耳朵", "pinyin": "ěrduo", "english": "oreja; oído", "example": { "hanzi": "我的耳朵疼", "pinyin": "wǒ de ěrduo téng", "english": "me duele la oreja" } },
+    { "hanzi": "发", "pinyin": "fā, fà", "english": "enviar; mostrar (sentimientos) | pelo", "example": { "hanzi": "头发很长", "pinyin": "tóufà hěn cháng", "english": "el pelo es muy largo" } },
+    { "hanzi": "发烧", "pinyin": "fāshāo", "english": "tener fiebre", "example": { "hanzi": "他发烧了", "pinyin": "tā fāshāo le", "english": "tiene fiebre" } },
+    { "hanzi": "发现", "pinyin": "fāxiàn", "english": "descubrir; encontrar", "example": { "hanzi": "我发现了新地方", "pinyin": "wǒ fāxiàn le xīn dìfang", "english": "descubrí un lugar nuevo" } },
+    { "hanzi": "方便", "pinyin": "fāngbiàn", "english": "cómodo; conveniente", "example": { "hanzi": "坐地铁很方便", "pinyin": "zuò dìtiě hěn fāngbiàn", "english": "ir en metro es cómodo" } },
+    { "hanzi": "放", "pinyin": "fàng", "english": "poner; colocar; soltar", "example": { "hanzi": "把书放在桌子上", "pinyin": "bǎ shū fàng zài zhuōzi shàng", "english": "pon el libro en la mesa" } },
+    { "hanzi": "放心", "pinyin": "fàngxīn", "english": "tranquilizarse; quedarse tranquilo", "example": { "hanzi": "请放心", "pinyin": "qǐng fàngxīn", "english": "no te preocupes" } },
+    { "hanzi": "分", "pinyin": "fēn, fèn", "english": "dividir; minuto; parte; porción", "example": { "hanzi": "五分钟", "pinyin": "wǔ fēnzhōng", "english": "cinco minutos" } },
+    { "hanzi": "附近", "pinyin": "fùjìn", "english": "cerca; cercanías", "example": { "hanzi": "附近有超市", "pinyin": "fùjìn yǒu chāoshì", "english": "hay un supermercado cerca" } },
+    { "hanzi": "复习", "pinyin": "fùxí", "english": "repasar; revisar", "example": { "hanzi": "我要复习功课", "pinyin": "wǒ yào fùxí gōngkè", "english": "tengo que repasar las lecciones" } },
+    { "hanzi": "干净", "pinyin": "gānjìng", "english": "limpio; ordenado", "example": { "hanzi": "房间很干净", "pinyin": "fángjiān hěn gānjìng", "english": "la habitación está muy limpia" } },
+    { "hanzi": "感冒", "pinyin": "gǎnmào", "english": "resfriarse; resfriado (común)", "example": { "hanzi": "我感冒了", "pinyin": "wǒ gǎnmào le", "english": "me he resfriado" } },
+    { "hanzi": "感兴趣", "pinyin": "gǎn xìngqù", "english": "interesarse por; tener interés en", "example": { "hanzi": "我对中文感兴趣", "pinyin": "wǒ duì zhōngwén gǎn xìngqù", "english": "me interesa el chino" } },
+    { "hanzi": "刚才", "pinyin": "gāngcái", "english": "hace un momento; hace poco", "example": { "hanzi": "刚才谁来了", "pinyin": "gāngcái shéi lái le", "english": "¿quién vino hace un momento?" } },
+    { "hanzi": "个子", "pinyin": "gèzi", "english": "estatura; talla; complexión", "example": { "hanzi": "他个子很高", "pinyin": "tā gèzi hěn gāo", "english": "es muy alto" } },
+    { "hanzi": "根据", "pinyin": "gēnjù", "english": "según; basarse en; base", "example": { "hanzi": "根据天气决定", "pinyin": "gēnjù tiānqì juédìng", "english": "decidir según el tiempo" } },
+    { "hanzi": "跟", "pinyin": "gēn", "english": "seguir; ir con; con", "example": { "hanzi": "我跟你去", "pinyin": "wǒ gēn nǐ qù", "english": "voy contigo" } },
+    { "hanzi": "更", "pinyin": "gèng", "english": "más; aún más", "example": { "hanzi": "这个更好", "pinyin": "zhège gèng hǎo", "english": "este es aún mejor" } },
+    { "hanzi": "公斤", "pinyin": "gōngjīn", "english": "kilogramo", "example": { "hanzi": "两公斤苹果", "pinyin": "liǎng gōngjīn píngguǒ", "english": "dos kilos de manzanas" } },
+    { "hanzi": "公园", "pinyin": "gōngyuán", "english": "parque", "example": { "hanzi": "我们在公园散步", "pinyin": "wǒmen zài gōngyuán sànbù", "english": "paseamos por el parque" } },
+    { "hanzi": "故事", "pinyin": "gùshi", "english": "cuento; historia", "example": { "hanzi": "讲个故事", "pinyin": "jiǎng gè gùshi", "english": "cuenta un cuento" } },
+    { "hanzi": "刮风", "pinyin": "guāfēng", "english": "hacer viento; soplar (el viento)", "example": { "hanzi": "今天刮风", "pinyin": "jīntiān guāfēng", "english": "hoy hace viento" } },
+    { "hanzi": "关", "pinyin": "guān", "english": "cerrar; apagar", "example": { "hanzi": "请关门", "pinyin": "qǐng guān mén", "english": "cierra la puerta, por favor" } },
+    { "hanzi": "关系", "pinyin": "guānxi", "english": "relación; concernir", "example": { "hanzi": "我们关系很好", "pinyin": "wǒmen guānxi hěn hǎo", "english": "tenemos muy buena relación" } },
+    { "hanzi": "关心", "pinyin": "guānxīn", "english": "preocuparse por; interesarse por", "example": { "hanzi": "妈妈关心我", "pinyin": "māma guānxīn wǒ", "english": "mamá se preocupa por mí" } },
+    { "hanzi": "关于", "pinyin": "guānyú", "english": "sobre; en cuanto a; acerca de", "example": { "hanzi": "关于这件事", "pinyin": "guānyú zhè jiàn shì", "english": "sobre este asunto" } },
+    { "hanzi": "国家", "pinyin": "guójiā", "english": "país; Estado; nación", "example": { "hanzi": "中国是大国家", "pinyin": "zhōngguó shì dà guójiā", "english": "China es un país grande" } },
+    { "hanzi": "过去", "pinyin": "guòqù", "english": "en el pasado; antes", "example": { "hanzi": "过去我很忙", "pinyin": "guòqù wǒ hěn máng", "english": "antes estaba muy ocupado" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 复习?", "options": ["repasar", "descubrir", "poner"], "answer": "repasar" },
+    { "type": "choose", "prompt": "¿Qué palabra significa «cómodo»?", "options": ["方便", "放心", "附近"], "answer": "方便" },
+    { "type": "listen", "audio": "公园", "pinyin": "gōngyuán", "prompt": "Escucha y elige lo que oyes.", "options": ["公园", "故事", "公斤"], "answer": "公园" },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        { "hanzi": "感冒", "english": "resfriado" },
+        { "hanzi": "国家", "english": "país" },
+        { "hanzi": "干净", "english": "limpio" },
+        { "hanzi": "过去", "english": "en el pasado" }
+      ]
+    },
+    { "type": "order", "prompt": "Forma la frase «me he resfriado».", "tokens": ["我", "了", "感冒"], "answer": "我感冒了" },
+    { "type": "order", "prompt": "Ordena los caracteres para decir «cuenta un cuento».", "tokens": ["个", "讲", "故", "事"], "answer": "讲个故事" },
+    { "type": "listen", "audio": "关心", "pinyin": "guānxīn", "prompt": "Escucha y elige lo que oyes.", "options": ["关心", "关系", "关于"], "answer": "关心" },
+    { "type": "choose", "prompt": "¿Qué carácter significa «oreja»?", "options": ["耳朵", "发", "放"], "answer": "耳朵" }
+  ]
+}
