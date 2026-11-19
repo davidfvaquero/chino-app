@@ -1,0 +1,56 @@
+{
+  "id": "reading-38",
+  "title": "在家里",
+  "type": "dialogue",
+  "topic": "En casa",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你现在在家里吗？",
+      "pinyin": "Nǐ xiànzài zài jiālǐ ma?",
+      "english": "¿Estás en casa ahora?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，我在家里看电视。",
+      "pinyin": "Shì de, wǒ zài jiālǐ kàn diànshì.",
+      "english": "Sí, estoy en casa viendo la tele."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你家里有几口人？",
+      "pinyin": "Nǐ jiālǐ yǒu jǐ kǒu rén?",
+      "english": "¿Cuántas personas hay en tu familia?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "四口人：爸爸、妈妈、弟弟和我。",
+      "pinyin": "Sì kǒu rén: bàba, māma, dìdi hé wǒ.",
+      "english": "Cuatro: papá, mamá, mi hermano pequeño y yo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你爸爸妈妈在家吗？",
+      "pinyin": "Nǐ bàba māma zài jiā ma?",
+      "english": "¿Están papá y mamá en casa?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "爸爸在上班，妈妈在做饭。",
+      "pinyin": "Bàba zài shàngbān, māma zài zuòfàn.",
+      "english": "Papá está en el trabajo y mamá está cocinando."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "晚上全家人一起吃饭吗？",
+      "pinyin": "Wǎnshàng quán jiārén yīqǐ chīfàn ma?",
+      "english": "¿Cena toda la familia junta por la noche?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，我们每天晚上七点吃饭。",
+      "pinyin": "Shì de, wǒmen měitiān wǎnshang qī diǎn chīfàn.",
+      "english": "Sí, cenamos todos los días a las siete de la noche."
+    }
+  ]
+}

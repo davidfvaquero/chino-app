@@ -1,0 +1,50 @@
+{
+  "id": "reading-33",
+  "title": "做饭",
+  "type": "dialogue",
+  "topic": "Cocinar en casa",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你会做饭吗？",
+      "pinyin": "Nǐ huì zuòfàn ma?",
+      "english": "¿Sabes cocinar?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "会。我喜欢做菜。",
+      "pinyin": "Huì. Wǒ xǐhuan zuòcài.",
+      "english": "Sí. Me gusta cocinar."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "晚饭做什么？",
+      "pinyin": "Wǎnfàn zuò shénme?",
+      "english": "¿Qué haces para cenar?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "做鱼，还要做米饭。",
+      "pinyin": "Zuò yú, hái yào zuò mǐfàn.",
+      "english": "Pescado, y también arroz."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "要不要买菜？",
+      "pinyin": "Yào bù yào mǎi cài?",
+      "english": "¿Hace falta comprar verduras?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "家里有菜，不用买。",
+      "pinyin": "Jiālǐ yǒu cài, bù yòng mǎi.",
+      "english": "En casa hay verduras, no hace falta comprar."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "那我来帮你做饭。",
+      "pinyin": "Nà wǒ lái bāng nǐ zuòfàn.",
+      "english": "Entonces vengo a ayudarte a cocinar."
+    }
+  ]
+}

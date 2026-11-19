@@ -1,0 +1,44 @@
+{
+  "id": "reading-35",
+  "title": "我的名片",
+  "type": "dialogue",
+  "topic": "Tarjetas de visita",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "这是我的名片。请收好。",
+      "pinyin": "Zhè shì wǒ de míngpiàn. Qǐng shōu hǎo.",
+      "english": "Esta es mi tarjeta de visita. Guárdala bien."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "谢谢。我也给你一张我的名片。",
+      "pinyin": "Xièxie. Wǒ yě gěi nǐ yī zhāng wǒ de míngpiàn.",
+      "english": "Gracias. Yo también te doy una de mis tarjetas de visita."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你的电话号码是多少？",
+      "pinyin": "Nǐ de diànhuà hàomǎ shì duōshao?",
+      "english": "¿Cuál es tu número de teléfono?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我的手机是 一 三 八 零 零 零 零 一 二 三 四。",
+      "pinyin": "Wǒ de shǒujī shì yāo sān bā líng líng líng líng yāo èr sān sì.",
+      "english": "Mi teléfono es 138-0000-1234."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好。我们加个微信吧。",
+      "pinyin": "Hǎo. Wǒmen jiā ge Wēixìn ba.",
+      "english": "Bien. Vamos a añadirnos en WeChat."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好的。以后常联系。",
+      "pinyin": "Hǎo de. Yǐhòu cháng liánxì.",
+      "english": "Claro. Mantengamos el contacto."
+    }
+  ]
+}

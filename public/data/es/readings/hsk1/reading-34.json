@@ -1,0 +1,50 @@
+{
+  "id": "reading-34",
+  "title": "手机",
+  "type": "dialogue",
+  "topic": "Mensajes de texto",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "这是你的手机吗？",
+      "pinyin": "Zhè shì nǐ de shǒujī ma?",
+      "english": "¿Es este tu teléfono?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，我的手机是新的。",
+      "pinyin": "Shì de, wǒ de shǒujī shì xīn de.",
+      "english": "Sí, mi teléfono es nuevo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你每天打电话吗？",
+      "pinyin": "Nǐ měitiān dǎ diànhuà ma?",
+      "english": "¿Llamas por teléfono todos los días?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我不是每天都打电话。",
+      "pinyin": "Wǒ bú shì měitiān dōu dǎ diànhuà.",
+      "english": "No llamo por teléfono todos los días."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "手机里有报纸吗？",
+      "pinyin": "Shǒujī lǐ yǒu bàozhǐ ma?",
+      "english": "¿Hay periódicos en tu teléfono?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "有很多。我也看汉字。",
+      "pinyin": "Yǒu hěn duō. Wǒ yě kàn Hànzì.",
+      "english": "Hay muchos. También leo caracteres chinos."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "手机很好用。",
+      "pinyin": "Shǒujī hěn hǎo yòng.",
+      "english": "El teléfono es fácil de usar."
+    }
+  ]
+}

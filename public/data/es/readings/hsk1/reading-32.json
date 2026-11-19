@@ -1,0 +1,50 @@
+{
+  "id": "reading-32",
+  "title": "运动",
+  "type": "dialogue",
+  "topic": "Deportes",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你喜欢运动吗？",
+      "pinyin": "Nǐ xǐhuan yùndòng ma?",
+      "english": "¿Te gustan los deportes?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "喜欢。我每天跑步。",
+      "pinyin": "Xǐhuan. Wǒ měitiān pǎobù.",
+      "english": "Sí. Corro todos los días."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你也会游泳吗？",
+      "pinyin": "Nǐ yě huì yóuyǒng ma?",
+      "english": "¿También sabes nadar?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "会游泳，但是不太去。",
+      "pinyin": "Huì yóuyǒng, dànshì bù tài qù.",
+      "english": "Sé nadar, pero no voy muy a menudo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "星期天打篮球吗？",
+      "pinyin": "Xīngqītiān dǎ lánqiú ma?",
+      "english": "¿Juegas al baloncesto el domingo?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "不打篮球。星期天踢足球。",
+      "pinyin": "Bù dǎ lánqiú. Xīngqītiān tīzúqiú.",
+      "english": "No juego al baloncesto. El domingo juego al fútbol."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "运动对身体很好。",
+      "pinyin": "Yùndòng duì shēntǐ hěn hǎo.",
+      "english": "El ejercicio es muy bueno para el cuerpo."
+    }
+  ]
+}

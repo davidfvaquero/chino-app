@@ -1,0 +1,56 @@
+{
+  "id": "reading-40",
+  "title": "我的狗",
+  "type": "dialogue",
+  "topic": "Mascotas",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "这是你的狗吗？真可爱！",
+      "pinyin": "Zhè shì nǐ de gǒu ma? Zhēn kě'ài!",
+      "english": "¿Es este tu perro? ¡Qué bonito!"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，它叫小白。今年三岁了。",
+      "pinyin": "Shì de, tā jiào Xiǎobái. Jīnnián sān suì le.",
+      "english": "Sí, se llama Xiaobai. Este año cumple tres años."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "它吃什么？",
+      "pinyin": "Tā chī shénme?",
+      "english": "¿Qué come?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "它吃狗粮，也喜欢吃肉。",
+      "pinyin": "Tā chī gǒuliáng, yě xǐhuan chī ròu.",
+      "english": "Come comida para perros y también le gusta la carne."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你每天带它出去跑步吗？",
+      "pinyin": "Nǐ měitiān dài tā chūqù pǎobù ma?",
+      "english": "¿Lo sacas a correr todos los días?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，早上和晚上各一次。它很喜欢跑。",
+      "pinyin": "Shì de, zǎoshang hé wǎnshang gè yí cì. Tā hěn xǐhuan pǎo.",
+      "english": "Sí, una vez por la mañana y otra por la noche. Le encanta correr."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我也想养一只狗。",
+      "pinyin": "Wǒ yě xiǎng yǎng yī zhī gǒu.",
+      "english": "Yo también quiero tener un perro."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "养狗很累，但也很开心。",
+      "pinyin": "Yǎng gǒu hěn lèi, dàn yě hěn kāixīn.",
+      "english": "Tener un perro cansa mucho, pero también hace muy feliz."
+    }
+  ]
+}

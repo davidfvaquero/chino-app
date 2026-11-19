@@ -1,0 +1,50 @@
+{
+  "id": "reading-31",
+  "title": "天气冷了",
+  "type": "dialogue",
+  "topic": "Las estaciones",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "今天天气怎么样？",
+      "pinyin": "Jīntiān tiānqì zěnmeyàng?",
+      "english": "¿Qué tiempo hace hoy?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "今天很冷。要穿很多衣服。",
+      "pinyin": "Jīntiān hěn lěng. Yào chuān hěn duō yīfu.",
+      "english": "Hoy hace mucho frío. Tienes que ponerte mucha ropa."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "明天下雨吗？",
+      "pinyin": "Míngtiān xiàyǔ ma?",
+      "english": "¿Va a llover mañana?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "不下雨。明天天气很好。",
+      "pinyin": "Bù xiàyǔ. Míngtiān tiānqì hěn hǎo.",
+      "english": "No llueve. Mañana hace muy buen tiempo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "明天冷不冷？",
+      "pinyin": "Míngtiān lěng bù lěng?",
+      "english": "¿Hace frío mañana?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "明天不冷。",
+      "pinyin": "Míngtiān bù lěng.",
+      "english": "Mañana no hace frío."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "太好了！我喜欢不冷的天气。",
+      "pinyin": "Tài hǎo le! Wǒ xǐhuan bù lěng de tiānqì.",
+      "english": "¡Qué bien! Me gusta cuando no hace frío."
+    }
+  ]
+}
