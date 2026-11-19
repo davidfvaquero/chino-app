@@ -1577,6 +1577,27 @@ Build: `OUT_DIR=/tmp/chino-t_b6925301 node scripts/build.mjs` (1819 ficheros). S
 
 *Verificador haiku — 2026-11-19*
 
+### BLOQUE 14 — re-verificación (t_b6925301, tras 68dd4b7 y ciclo de reparación)
+
+Build `OUT_DIR=/tmp/chino-t_b6925301/x/chino-app`; serve `/tmp/chino-t_b6925301/x` en :8752 (`/chino-app/`). Asignados del alcance: todos `barato`.
+
+| # | Punto | Resultado | Evidencia |
+|---|---|---|---|
+| 8 | Plan por ruta: iniciar, Día 1, Home, ids | OK | `#/learn/plan` abre; "Start plan" → "0 of 30 days done", Day 1 "Today"; Home `[data-role=plan]` "Today in your plan / Day 1" (en y es) |
+| 9 | Examen por ruta: HSK 1 completo, puntuación, add mistakes | OK | `#/learn/exam` abre (selector HSK 1/2/3, código, tiempo); 20 respuestas por Skip → "You got 0 of 20 right (0%)"; "Add all mistakes to review" → "Added 10 cards to review"; `#/review` → "All (10)", "exam (10)" |
+| 11 | `check-es-data` | OK | 114 archivos, 0 errores |
+| 10 | `npm test` verde | **FALLO** | 781 tests, 778 pass, 3 fail: `hsk3-08/09/10` de `tests/hsk3-lessons-headless.test.mjs` (fichero **sin trackear**, WIP ajeno). Causa: "No vocabulary items found" (selector `.vocab-item, .vocab-word, [class*="vocab"]` no casa con el DOM de la lección; BASE fijo `localhost:33730`). anki ya pasa |
+| 16 | git limpio, raíz sin scripts sueltos, sin deps nuevas | parcial | Raíz sin `debug_*.mjs` (OK). Sin trackear: `tests/hsk3-lessons-headless.test.mjs`, `scripts/verify-readings.mjs`; modificados ajenos: `scripts/check-layout.mjs`, `scripts/lib/audit.mjs`. `package.json` sin deps nuevas OK |
+| 14 | Consola sin errores en plan/examen/hub/home | OK | 0 errores en es-ES y en-US. Un 404 visto en una sonda propia fue de mi script (import de `/src/*.js`, no existe en dist); la ejecución por ruta no da 404 |
+| 15 | Cada ruta abre directa | OK | `#/learn/plan`, `#/learn/exam`, `#/learn` (tarjetas "30-day plan" y "Practice exam"), `#/home` |
+| 1–7, 12, 13 | Audio, repaso, licencia, subdirectorio, i18n | sin cambios | Código de audio y repaso sin commits posteriores (a36af48, e0d8ef7); no repetido en esta pasada |
+
+**Veredicto re-verificación: plan y examen por ruta OK. Queda FALLO en `npm test` por fichero de test sin trackear de otro worker. Es el segundo ciclo sin arreglar: bloqueo `needs_input`.** Decisión pendiente: ¿commitear `tests/hsk3-lessons-headless.test.mjs` tras corregir selectores/puerto, o borrarlo? No toqué ese fichero (no es mío).
+
+Reproducción: `npm test 2>&1 | grep "✖"` → 3 fallos hsk3-08/09/10. Por ruta: abrir `#/learn/exam` → "Start exam" → "Skip" en cada pregunta (cada Skip queda como respuesta incorrecta y pide "Next question") → resumen con "Add all mistakes to review".
+
+*Verificador haiku — 2026-11-19 (re-verificación)*
+
 ## BLOQUE 15 — verificación de trazos en modo oscuro (t_4dcf44d7, verificador deepseek) — OK
 
 Alcance: t_5de4cb9c "Arreglar: trazos invisibles en modo oscuro". Implementador `haiku`, verificador `deepseek` — perfiles distintos, verificable. Commit `76a0af7`. Build: `OUT_DIR=/tmp/chino-t_4dcf44d7 npm run build` (1845 ficheros). No se tocó `dist/`. Chrome headless, 390x844, táctil, deviceScaleFactor 2.
