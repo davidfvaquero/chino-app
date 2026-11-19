@@ -38,9 +38,9 @@ const CSS = `
 .timed-question { text-align: center; padding: 1.5rem 1rem; }
 .timed-hanzi { font-size: 3rem; line-height: 1.2; margin-bottom: 0.5rem; }
 .timed-pinyin { font-size: 1.1rem; opacity: 0.75; margin-bottom: 1rem; }
-.timed-audio-btn { padding: 0.5rem 1rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; font-size: 1rem; cursor: pointer; }
+.timed-audio-btn { min-height: 48px; padding: 0.5rem 1rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; font-size: 1rem; cursor: pointer; touch-action: manipulation; }
 .timed-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; max-width: 28rem; margin: 0 auto; }
-.timed-option { padding: 1rem; border: 2px solid var(--line, #c9c4bd); border-radius: 0.75rem; background: var(--bg, #fff); color: inherit; font-size: 1.1rem; text-align: center; touch-action: manipulation; transition: border-color 0.15s, background 0.15s, transform 0.05s; }
+.timed-option { min-height: 48px; padding: 1rem; border: 2px solid var(--line, #c9c4bd); border-radius: 0.75rem; background: var(--bg, #fff); color: inherit; font-size: 1.1rem; text-align: center; touch-action: manipulation; transition: border-color 0.15s, background 0.15s, transform 0.05s; }
 .timed-option:active { transform: scale(0.98); }
 .timed-option.correct { border-color: #2e7d32; background: #f1f8e9; }
 .timed-option.wrong { border-color: #c62828; background: #fef2f2; animation: timed-shake 0.3s; }
@@ -51,7 +51,7 @@ const CSS = `
 .timed-result .score { font-size: 1.5rem; font-variant-numeric: tabular-nums; margin: 0.5rem 0; }
 .timed-result .best { font-size: 1.1rem; opacity: 0.8; margin-bottom: 1rem; }
 .timed-actions { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
-.timed-actions button { padding: 0.6rem 1rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; }
+.timed-actions button { min-height: 48px; padding: 0.6rem 1rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; touch-action: manipulation; }
 .timed-actions button.primary { border-color: #b3261e; background: #b3261e; color: #fff; }
 @media (prefers-color-scheme: dark) {
   .timed-option { background: #1c1a19; border-color: #3d3732; }

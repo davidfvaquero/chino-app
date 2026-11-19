@@ -24,7 +24,17 @@ import storage from '../storage.js';
 import { addToReview } from '../srs.js';
 import { speak } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
-import { gradeExercise, summarize } from './exercises.js';
+import {
+  gradeExercise,
+  summarize,
+  createMatchState,
+  toggleMatchLeft,
+  chooseMatchRight,
+  unmatchPair,
+  isMatchComplete,
+  matchPairIndex,
+} from './exercises.js';
+import { ensureExerciseStyles } from './exercise-ui.css.js';
 import { fetchData } from '../data-url.js';
 
 const STYLE_ID = 'lessons-layout-style';
@@ -67,6 +77,7 @@ const CSS = `
 
 /** Inject the layout CSS into <head> once. */
 function ensureStyles(doc) {
+  ensureExerciseStyles(doc);
   if (doc.getElementById(STYLE_ID)) return;
   const style = doc.createElement('style');
   style.id = STYLE_ID;
@@ -389,38 +400,83 @@ async function renderLesson(container, ctx, lessonId, level) {
 
   function matchBody(exercise, box, onContinue) {
     const pairs = Array.isArray(exercise.pairs) ? exercise.pairs : [];
-    const chosen = {};
-    let selected = null;
+    let state = createMatchState(pairs);
+    let locked = false;
     const left = h('div', { class: 'match-col left' });
     const right = h('div', { class: 'match-col right' });
+    const grid = h('div', { class: 'match-grid' }, left, right);
     const feedback = h('div', { class: 'feedback-box' });
+    const leftButtons = [];
+    const rightButtons = [];
+
+    const paint = () => {
+      for (const btn of leftButtons) {
+        const hanzi = btn.dataset.hanzi;
+        const matched = Object.prototype.hasOwnProperty.call(state.chosen, hanzi);
+        btn.classList.toggle('selected', state.selected === hanzi);
+        btn.classList.toggle('matched', matched);
+        btn.setAttribute('aria-pressed', String(state.selected === hanzi));
+        if (matched) btn.dataset.match = String(matchPairIndex(state, hanzi) + 1);
+        else delete btn.dataset.match;
+        btn.disabled = locked;
+      }
+      for (const btn of rightButtons) {
+        const meaning = btn.dataset.english;
+        const paired = Object.keys(state.chosen).find((hanzi) => state.chosen[hanzi] === meaning);
+        btn.classList.toggle('matched', Boolean(paired));
+        if (paired) {
+          btn.dataset.match = String(matchPairIndex(state, paired) + 1);
+          btn.dataset.pairedWith = paired;
+        } else {
+          delete btn.dataset.match;
+          delete btn.dataset.pairedWith;
+        }
+        btn.disabled = locked;
+      }
+      check.disabled = locked || !isMatchComplete(state);
+    };
 
     for (const pair of pairs) {
       const btn = h('button', {
         type: 'button',
-        class: 'chip',
+        class: 'chip match-chip',
         text: pair.hanzi,
+        'aria-pressed': 'false',
         onclick: () => {
-          selected = pair.hanzi;
-          for (const other of left.children) other.classList.toggle('selected', other === btn);
+          if (locked) return;
+          const hanzi = pair.hanzi;
+          state = Object.prototype.hasOwnProperty.call(state.chosen, hanzi)
+            ? unmatchPair(state, hanzi)
+            : toggleMatchLeft(state, hanzi);
+          paint();
         },
       });
+      btn.dataset.hanzi = pair.hanzi;
+      leftButtons.push(btn);
       left.append(btn);
     }
-    for (const pair of pairs) {
+
+    // Rotate the meanings so the two columns are not aligned pair-for-pair.
+    const rightPairs = pairs.length > 1 ? [...pairs.slice(1), pairs[0]] : pairs;
+    for (const pair of rightPairs) {
       const btn = h('button', {
         type: 'button',
-        class: 'chip',
+        class: 'chip match-chip',
         text: pair.english,
         onclick: () => {
-          if (!selected) return;
-          chosen[selected] = pair.english;
-          btn.classList.add('selected');
-          const leftBtn = [...left.children].find((node) => node.textContent === selected);
-          if (leftBtn) leftBtn.classList.add('selected');
-          selected = null;
+          if (locked) return;
+          if (btn.dataset.pairedWith) {
+            state = unmatchPair(state, btn.dataset.pairedWith);
+            paint();
+            return;
+          }
+          if (!state.selected) return;
+          state = chooseMatchRight(state, pair.english);
+          paint();
         },
       });
+      btn.dataset.english = pair.english;
+      rightButtons.push(btn);
       right.append(btn);
     }
 
@@ -428,13 +484,26 @@ async function renderLesson(container, ctx, lessonId, level) {
       type: 'button',
       class: 'btn primary',
       text: t('learn.lessons.check'),
+      disabled: true,
       onclick: () => {
-        const result = gradeExercise(exercise, chosen);
-        check.disabled = true;
+        if (locked) return;
+        const result = gradeExercise(exercise, state.chosen);
+        locked = true;
+        paint();
+        if (!result.correct) {
+          const answers = h('div', { class: 'match-answer' });
+          for (const pair of pairs) {
+            const ok = state.chosen[pair.hanzi] === pair.english;
+            answers.append(h('div', { class: ok ? 'ok' : 'bad', text: `${pair.hanzi} — ${pair.english}` }));
+          }
+          feedback.append(answers);
+        }
         finish(feedback, result, onContinue);
       },
     });
-    box.append(h('p', { class: 'hint', text: t('learn.lessons.matchHint') }), left, right, check, feedback);
+
+    paint();
+    box.append(h('p', { class: 'hint', text: t('learn.lessons.matchHint') }), grid, check, feedback);
     return box;
   }
 

@@ -33,7 +33,7 @@ const CSS = `
 .matching-stats span { display: flex; align-items: center; gap: 0.3rem; }
 .matching-board { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
 .matching-col { display: flex; flex-direction: column; gap: 0.5rem; }
-.matching-chip { padding: 0.75rem 1rem; border: 2px solid var(--line, #c9c4bd); border-radius: 0.75rem; background: var(--bg, #fff); color: inherit; font-size: 1.1rem; text-align: center; touch-action: manipulation; transition: border-color 0.15s, background 0.15s, transform 0.05s; }
+.matching-chip { min-height: 48px; padding: 0.75rem 1rem; border: 2px solid var(--line, #c9c4bd); border-radius: 0.75rem; background: var(--bg, #fff); color: inherit; font-size: 1.1rem; text-align: center; touch-action: manipulation; transition: border-color 0.15s, background 0.15s, transform 0.05s; }
 .matching-chip:active { transform: scale(0.98); }
 .matching-chip.selected { border-color: #b3261e; background: #fef2f2; }
 .matching-chip.matched { border-color: #2e7d32; background: #f1f8e9; pointer-events: none; }
@@ -45,7 +45,7 @@ const CSS = `
 .matching-result h2 { margin: 0 0 0.5rem; }
 .matching-result .score { font-size: 1.5rem; font-variant-numeric: tabular-nums; margin: 0.5rem 0; }
 .matching-actions { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
-.matching-actions button { padding: 0.6rem 1rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; }
+.matching-actions button { min-height: 48px; padding: 0.6rem 1rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; touch-action: manipulation; }
 .matching-actions button.primary { border-color: #b3261e; background: #b3261e; color: #fff; }
 @media (prefers-color-scheme: dark) {
   .matching-chip { background: #1c1a19; border-color: #3d3732; }

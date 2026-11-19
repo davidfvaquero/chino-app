@@ -20,6 +20,7 @@ import storage from '../storage.js';
 import { speak } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
 import { gradeExercise, summarize } from './exercises.js';
+import { ensureExerciseStyles } from './exercise-ui.css.js';
 
 export const titleKey = 'hubs.learn.tones';
 export const LESSON_ID = 'tones';
@@ -69,6 +70,7 @@ const label = (value) => (typeof value === 'string' && value ? t(value) : '');
 /* ------------------------------------------------------------------ render -- */
 
 export async function render(container, ctx) {
+  ensureExerciseStyles(container.ownerDocument ?? document);
   const lesson = await loadLesson();
   const exercises = Array.isArray(lesson.exercises) ? lesson.exercises : [];
   const results = [];

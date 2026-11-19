@@ -81,6 +81,66 @@ export function gradeExercise(exercise, response) {
   return { type, correct: expected.length > 0 && matched === expected.length, score, expected, given, matched };
 }
 
+/* ------------------------------------------------------- match selection -- */
+
+/**
+ * UI-only selection state for a `match` exercise. Grading stays in
+ * `gradeExercise`; these helpers just model "tap a word, then its meaning" so
+ * the interaction can be unit-tested without a DOM.
+ *
+ *   { pairs: [{hanzi, english}], chosen: { [hanzi]: english }, selected: hanzi|null }
+ */
+export function createMatchState(pairs = []) {
+  return {
+    pairs: (Array.isArray(pairs) ? pairs : []).map((pair) => ({
+      hanzi: text(pair?.hanzi),
+      english: text(pair?.english),
+    })),
+    chosen: {},
+    selected: null,
+  };
+}
+
+/** Tap a left-column word: select it, or clear it when it was already selected. */
+export function toggleMatchLeft(state, hanzi) {
+  const value = text(hanzi);
+  if (!state?.pairs?.some((pair) => pair.hanzi === value)) return state;
+  return { ...state, selected: state.selected === value ? null : value };
+}
+
+/** Tap a right-column meaning: pair it with the selected word (no-op without one). */
+export function chooseMatchRight(state, english) {
+  if (!state?.selected) return state;
+  return {
+    ...state,
+    chosen: { ...state.chosen, [state.selected]: text(english) },
+    selected: null,
+  };
+}
+
+/** Tap a matched word/meaning again: remove its pair. */
+export function unmatchPair(state, hanzi) {
+  const value = text(hanzi);
+  if (!state?.chosen || !Object.prototype.hasOwnProperty.call(state.chosen, value)) return state;
+  const chosen = { ...state.chosen };
+  delete chosen[value];
+  return { ...state, chosen, selected: state.selected === value ? null : state.selected };
+}
+
+/** True when every declared word has a chosen meaning. */
+export function isMatchComplete(state) {
+  const pairs = state?.pairs ?? [];
+  if (!pairs.length) return false;
+  const chosen = state?.chosen ?? {};
+  return pairs.every((pair) => Object.prototype.hasOwnProperty.call(chosen, pair.hanzi));
+}
+
+/** 1-based position of a word in the declared pairs (for pair colours). */
+export function matchPairIndex(state, hanzi) {
+  const value = text(hanzi);
+  return (state?.pairs ?? []).findIndex((pair) => pair.hanzi === value);
+}
+
 /** Aggregates `gradeExercise` results into a lesson score. */
 export function summarize(results = []) {
   const list = Array.isArray(results) ? results : [];

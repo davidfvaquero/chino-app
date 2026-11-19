@@ -41,6 +41,7 @@ import { addToReview } from '../srs.js';
 import { pinyinHtml } from '../tone.js';
 import { tonelessKey } from '../pinyin.js';
 import { fetchData } from '../data-url.js';
+import { ensureExerciseStyles } from './exercise-ui.css.js';
 
 export const titleKey = 'dictation.title';
 export const LESSON_ID = 'dictation';
@@ -484,6 +485,7 @@ function sourceLabel(source) {
 
 export async function render(container, ctx) {
   ensureStyles(container.ownerDocument ?? document);
+  ensureExerciseStyles(container.ownerDocument ?? document);
 
   const toneMode = await getToneMode();
   const sources = await loadSources();

@@ -49,7 +49,7 @@ const CSS = `
 .memory-result h2 { margin: 0 0 0.5rem; }
 .memory-result .score { font-size: 1.5rem; font-variant-numeric: tabular-nums; margin: 0.5rem 0; }
 .memory-actions { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
-.memory-actions button { padding: 0.6rem 1rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; }
+.memory-actions button { min-height: 48px; padding: 0.6rem 1rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; touch-action: manipulation; }
 .memory-actions button.primary { border-color: #b3261e; background: #b3261e; color: #fff; }
 @media (prefers-color-scheme: dark) {
   .memory-card-face { background: #1c1a19; border-color: #3d3732; }
