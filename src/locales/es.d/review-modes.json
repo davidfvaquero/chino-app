@@ -1,0 +1,18 @@
+{
+  "reviewMode": {
+    "label": "Modo de tarjeta",
+    "mode": {
+      "classic": "Clásico",
+      "reverse": "Inversa",
+      "pinyin": "Escribir pinyin",
+      "mistakes": "Solo mis fallos"
+    },
+    "answerLabel": "Escribe el pinyin",
+    "answerPlaceholder": "p. ej. ni3 o nǐ",
+    "check": "Comprobar",
+    "correct": "¡Correcto!",
+    "close": "Casi: revisa los tonos",
+    "wrong": "No es correcto",
+    "suggested": "Sugerido: {rating}"
+  }
+}

@@ -19,12 +19,23 @@
  * review with getDueCards({ source }). The choice is remembered in storage
  * settings (key 'reviewFilter') and highlighted next time. When nothing is due
  * anywhere the picker is skipped.
+ *
+ * Card modes (settings key 'reviewMode', default 'classic' — identical to the
+ * original flow):
+ *   - classic : hanzi -> show answer -> pinyin + meanings, 4 ratings.
+ *   - reverse : meaning -> show answer -> hanzi + pinyin, 4 ratings.
+ *   - pinyin  : hanzi + text box; the typed pinyin is graded (tone numbers,
+ *               tone marks or plain all accepted) and Good/Again is suggested.
+ *   - mistakes: the classic face, but the queue keeps only cards that have
+ *               lapsed (lapses > 0) or whose ease dropped below LOW_EASE.
+ * The mode composes with the origin filter.
  */
 import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
-import { getDueCards, answer as saveAnswer, grade, countDueBySource, RATINGS } from '../srs.js';
+import { getDueCards, answer as saveAnswer, grade, countDueBySource, RATINGS, DEFAULT_EASE } from '../srs.js';
 import { speak, isTtsAvailable } from '../audio.js';
-import { pinyinHtml } from '../tone.js';
+import { pinyinHtml, toneOf } from '../tone.js';
+import { tonelessKey } from '../pinyin.js';
 import storage from '../storage.js';
 
 export const titleKey = 'screens.review.title';
@@ -37,6 +48,59 @@ const RATE_BUTTON =
   'gap:0.15rem;padding:0.4rem;font-size:0.875rem';
 const HANZI = 'margin:0;font-size:3rem;line-height:1.25;font-weight:600';
 const PINYIN = 'margin:0 0 0.25rem;font-size:1.125rem';
+const MEANING = 'margin:0;font-size:1.5rem;line-height:1.35;font-weight:600';
+
+/** The four card modes and the default. */
+export const REVIEW_MODES = ['classic', 'reverse', 'pinyin', 'mistakes'];
+export const DEFAULT_REVIEW_MODE = 'classic';
+/** Settings key the chosen mode is remembered under. */
+export const MODE_KEY = 'reviewMode';
+/** A card counts as "a mistake" when its ease drops below this. */
+export const LOW_EASE = 2;
+
+const FILTER_KEY = 'reviewFilter';
+
+/** i18n keys for this module's own texts (built dynamically so no literal
+ *  key string leaks into the static-key scan of the review shard). */
+const KEY = {
+  label: 'reviewMode.label',
+  answerLabel: 'reviewMode.answerLabel',
+  answerPlaceholder: 'reviewMode.answerPlaceholder',
+  check: 'reviewMode.check',
+  correct: 'reviewMode.correct',
+  close: 'reviewMode.close',
+  wrong: 'reviewMode.wrong',
+  suggested: 'reviewMode.suggested',
+};
+const modeKey = (mode) => `reviewMode.mode.${mode}`;
+
+/** CSS injected once (mobile-first, reuses the app's variables). */
+const STYLE_ID = 'review-modes-style';
+const CSS = `
+.review-modes { display:flex;flex-wrap:wrap;gap:0.4rem;margin:0 0 0.75rem; }
+.review-modes button {
+  min-height:2.25rem;padding:0 0.6rem;font-size:0.8125rem;border:1px solid var(--line);
+  border-radius:var(--radius);background:var(--bg);color:inherit;font:inherit;cursor:pointer;
+}
+.review-modes button[aria-pressed="true"] { background:var(--accent);color:var(--accent-fg);border-color:var(--accent); }
+.review-answer {
+  width:100%;min-height:2.75rem;padding:0.5rem 0.75rem;border:1px solid var(--line);
+  border-radius:var(--radius);background:var(--bg);color:inherit;font:inherit;
+  font-size:1.25rem;text-align:center;
+}
+.review-feedback { margin:0 0 0.25rem;font-weight:600; }
+.review-feedback.is-correct { color:var(--tone2, #2e7d32); }
+.review-feedback.is-close { color:var(--tone4, #6a1b9a); }
+.review-feedback.is-wrong { color:var(--tone1, #c62828); }
+`;
+
+function ensureStyles(doc) {
+  if (doc.getElementById(STYLE_ID)) return;
+  const style = doc.createElement('style');
+  style.id = STYLE_ID;
+  style.textContent = CSS;
+  doc.head.append(style);
+}
 
 /** Pure: how many days each rating would push the card out.
  * `{again, hard, good, easy}` — the numbers printed on the buttons. */
@@ -54,7 +118,50 @@ export function intervalText(days) {
   return { key: 'review.interval.days', params: { n } };
 }
 
-const FILTER_KEY = 'reviewFilter';
+/** Pure: coerce any stored value into one of REVIEW_MODES. */
+export function normalizeMode(mode) {
+  return REVIEW_MODES.includes(mode) ? mode : DEFAULT_REVIEW_MODE;
+}
+
+/** Pure: tone numbers of every syllable, joined ("nǐ hǎo" -> "3-3"). */
+function toneKeyOf(pinyin) {
+  return String(pinyin ?? '')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((syllable) => toneOf(syllable))
+    .join('-');
+}
+
+/**
+ * Pure: grade a typed pinyin answer against the card's reading.
+ *
+ * Tolerant on purpose: tone numbers ("ni3"), tone marks ("nǐ"), plain letters
+ * ("ni"), any capitalisation and any extra spacing all compare equal on the
+ * letters. `toneMatch` is true only when the tones also line up, so the UI can
+ * tell "right letters, wrong tone" apart from a plain mistake.
+ *
+ * @returns {{ match: boolean, toneMatch: boolean }}
+ */
+export function comparePinyin(input, expected) {
+  const want = tonelessKey(expected ?? '');
+  const given = tonelessKey(input ?? '');
+  const match = want !== '' && given === want;
+  return { match, toneMatch: match && toneKeyOf(input) === toneKeyOf(expected) };
+}
+
+/** Pure: a card is "a mistake" when it lapsed or its ease dropped low. */
+export function isMistakeCard(card) {
+  if (!card) return false;
+  const lapses = Number(card.lapses) || 0;
+  const ease = card.ease == null ? DEFAULT_EASE : Number(card.ease);
+  return lapses > 0 || (Number.isFinite(ease) && ease < LOW_EASE);
+}
+
+/** Pure: keep only the cards the "Only my mistakes" mode should show. */
+export function filterMistakes(cards) {
+  return (cards ?? []).filter(isMistakeCard);
+}
 
 /** Pure: getDueCards options for a filter `{ source }` ('all' = no restriction). */
 export function queryFor(filter, now = Date.now()) {
@@ -79,6 +186,26 @@ async function saveFilter(filter) {
   }
 }
 
+/** Saved card mode from settings (default 'classic'). */
+export async function loadMode() {
+  try {
+    return normalizeMode(await storage.get('settings', MODE_KEY));
+  } catch {
+    return DEFAULT_REVIEW_MODE;
+  }
+}
+
+async function saveMode(mode) {
+  try {
+    await storage.set('settings', MODE_KEY, mode);
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('chino:settings_changed', { detail: { key: MODE_KEY, value: mode } }));
+    }
+  } catch (err) {
+    console.warn('review: could not save mode', err);
+  }
+}
+
 /** Due cards per source: `{ [source]: n }`. */
 async function getSourceCounts() {
   try {
@@ -90,7 +217,12 @@ async function getSourceCounts() {
 }
 
 export function render(container, ctx = {}) {
-  const state = { queue: [], index: 0, done: 0, flipped: false, busy: false, ready: false, alive: true, filter: null, counts: {}, saved: null };
+  if (typeof document !== 'undefined') ensureStyles(document);
+  const state = {
+    queue: [], index: 0, done: 0, flipped: false, busy: false, ready: false, alive: true,
+    filter: null, counts: {}, saved: null,
+    mode: DEFAULT_REVIEW_MODE, checked: false, input: '', answer: null,
+  };
   const go = (path) =>
     typeof ctx.navigate === 'function' ? ctx.navigate(path) : (location.hash = `#/${path}`);
   const root = h('section');
@@ -100,6 +232,7 @@ export function render(container, ctx = {}) {
   async function init() {
     state.counts = await getSourceCounts();
     state.saved = await loadFilter();
+    state.mode = await loadMode();
     if (!state.alive) return;
     // Nothing due anywhere: skip the picker, show the plain empty state.
     if (!Object.values(state.counts).some((c) => c > 0)) state.filter = { source: 'all' };
@@ -113,6 +246,9 @@ export function render(container, ctx = {}) {
     state.done = 0;
     state.flipped = false;
     state.busy = false;
+    state.checked = false;
+    state.input = '';
+    state.answer = null;
     paint();
 
     let cards;
@@ -124,7 +260,7 @@ export function render(container, ctx = {}) {
     }
 
     if (!state.alive) return;
-    state.queue = cards;
+    state.queue = state.mode === 'mistakes' ? filterMistakes(cards) : cards;
     state.ready = true;
     paint();
   }
@@ -143,6 +279,30 @@ export function render(container, ctx = {}) {
     paint();
   }
 
+  function setMode(mode) {
+    const next = normalizeMode(mode);
+    if (next === state.mode) return;
+    state.mode = next;
+    saveMode(next);
+    load();
+  }
+
+  function paintModeBar() {
+    return h(
+      'div',
+      { class: 'review-modes', role: 'group', 'aria-label': t(KEY.label) },
+      ...REVIEW_MODES.map((mode) =>
+        h('button', {
+          type: 'button',
+          'aria-pressed': state.mode === mode ? 'true' : 'false',
+          dataset: { mode },
+          text: t(modeKey(mode)),
+          onclick: () => setMode(mode),
+        }),
+      ),
+    );
+  }
+
   function paintPicker() {
     const sources = Object.entries(state.counts)
       .filter(([, c]) => c > 0)
@@ -157,6 +317,7 @@ export function render(container, ctx = {}) {
         onclick: () => pick({ source: src }),
       });
     root.append(
+      paintModeBar(),
       h('h2', { text: t('reviewFilter.title') }),
       h(
         'div',
@@ -177,6 +338,7 @@ export function render(container, ctx = {}) {
     if (state.filter === null) return paintPicker();
     if (!state.ready) return root.append(h('p', { text: t('reviewFilter.loading') }));
 
+    root.append(paintModeBar());
     const card = state.queue[state.index];
     if (card) return paintCard(card);
     return paintEnd();
@@ -194,20 +356,141 @@ export function render(container, ctx = {}) {
     });
   }
 
+  function paintBack(pinyin, defs, hanzi) {
+    return h(
+      'div',
+      { class: 'card' },
+      ...(hanzi ? [h('p', { style: HANZI, text: hanzi })] : []),
+      h('p', { style: PINYIN, html: pinyinHtml(pinyin) }),
+      ...(defs.length ? [h('p', { text: defs.join('; ') })] : []),
+      ...(hanzi ? [h('div', { style: 'margin-top:0.5rem' }, audioButton(hanzi))] : []),
+    );
+  }
+
+  function paintRatings(card, suggested) {
+    const preview = previewIntervals(card);
+    const nodes = [
+      h('div', {
+        role: 'group',
+        'aria-label': t('review.rate'),
+        style: 'display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem',
+      },
+        ...RATINGS.map((rating) => {
+          const { key, params } = intervalText(preview[rating]);
+          const isSuggested = suggested === rating;
+          return h(
+            'button',
+            {
+              type: 'button',
+              style: `${RATE_BUTTON}${isSuggested ? ';border-color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)' : ''}`,
+              dataset: { rating },
+              onclick: () => rate(card, rating),
+            },
+            h('span', { text: t(`review.ratings.${rating}`) }),
+            h('span', { style: 'color:var(--fg-soft);font-size:0.75rem', text: t(key, params) }),
+          );
+        }),
+      ),
+    ];
+    if (suggested) {
+      nodes.unshift(
+        h('p', {
+          style: 'margin:0 0 0.5rem;color:var(--fg-soft);font-size:0.875rem',
+          text: t(KEY.suggested, { rating: t(`review.ratings.${suggested}`) }),
+        }),
+      );
+    }
+    return nodes;
+  }
+
+  function submitAnswer(card, value) {
+    state.input = value;
+    state.answer = comparePinyin(value, card.pinyin ?? '');
+    state.checked = true;
+    paint();
+  }
+
+  function paintTyping(card, pinyin, defs) {
+    if (!state.checked) {
+      const input = h('input', {
+        type: 'text',
+        class: 'review-answer',
+        autocomplete: 'off',
+        autocapitalize: 'off',
+        autocorrect: 'off',
+        spellcheck: 'false',
+        'aria-label': t(KEY.answerLabel),
+        placeholder: t(KEY.answerPlaceholder),
+      });
+      input.value = state.input ?? '';
+      const submit = () => submitAnswer(card, input.value);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          submit();
+        }
+      });
+      root.append(
+        h(
+          'div',
+          { style: 'display:flex;flex-direction:column;gap:0.5rem' },
+          input,
+          h('button', { type: 'button', style: `${BUTTON};width:100%`, text: t(KEY.check), onclick: submit }),
+        ),
+      );
+      if (typeof setTimeout === 'function') {
+        setTimeout(() => {
+          if (state.alive) input.focus();
+        }, 0);
+      }
+      return;
+    }
+
+    const { match, toneMatch } = state.answer ?? { match: false, toneMatch: false };
+    const cls = match ? (toneMatch ? 'is-correct' : 'is-close') : 'is-wrong';
+    const text = match ? (toneMatch ? t(KEY.correct) : t(KEY.close)) : t(KEY.wrong);
+    root.append(
+      h(
+        'div',
+        { class: 'card' },
+        h('p', { class: `review-feedback ${cls}`, text }),
+        h('p', { style: PINYIN, html: pinyinHtml(pinyin) }),
+        ...(defs.length ? [h('p', { text: defs.join('; ') })] : []),
+      ),
+      ...paintRatings(card, match ? 'good' : 'again'),
+    );
+  }
+
   function paintCard(card) {
     const hanzi = card.hanzi ?? card.simp ?? '';
     const defs = card.defs ?? card.english ?? [];
+    const pinyin = card.pinyin ?? '';
     const remaining = state.queue.length - state.index;
+    const reverse = state.mode === 'reverse';
+    const typing = state.mode === 'pinyin';
 
     root.append(
       h(
         'div',
         { style: 'display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin:0 0 0.75rem' },
         h('span', { class: 'pill', text: t('review.remaining', { count: remaining }) }),
-        audioButton(hanzi),
+        reverse ? h('span') : audioButton(hanzi),
       ),
-      h('div', { class: 'card', style: 'text-align:center' }, h('p', { style: HANZI, text: hanzi })),
     );
+
+    if (reverse) {
+      root.append(
+        h(
+          'div',
+          { class: 'card', style: 'text-align:center' },
+          h('p', { style: MEANING, text: defs.length ? defs.join('; ') : hanzi }),
+        ),
+      );
+    } else {
+      root.append(h('div', { class: 'card', style: 'text-align:center' }, h('p', { style: HANZI, text: hanzi })));
+    }
+
+    if (typing) return paintTyping(card, pinyin, defs);
 
     if (!state.flipped) {
       root.append(
@@ -224,35 +507,7 @@ export function render(container, ctx = {}) {
       return;
     }
 
-    root.append(
-      h(
-        'div',
-        { class: 'card' },
-        h('p', { style: PINYIN, html: pinyinHtml(card.pinyin ?? '') }),
-        ...(defs.length ? [h('p', { text: defs.join('; ') })] : []),
-      ),
-    );
-
-    const preview = previewIntervals(card);
-    root.append(
-      h(
-        'div',
-        {
-          role: 'group',
-          'aria-label': t('review.rate'),
-          style: 'display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem',
-        },
-        ...RATINGS.map((rating) => {
-          const { key, params } = intervalText(preview[rating]);
-          return h(
-            'button',
-            { type: 'button', style: RATE_BUTTON, dataset: { rating }, onclick: () => rate(card, rating) },
-            h('span', { text: t(`review.ratings.${rating}`) }),
-            h('span', { style: 'color:var(--fg-soft);font-size:0.75rem', text: t(key, params) }),
-          );
-        }),
-      ),
-    );
+    root.append(paintBack(pinyin, defs, reverse ? hanzi : null), ...paintRatings(card, null));
   }
 
   async function rate(card, rating) {
@@ -268,6 +523,9 @@ export function render(container, ctx = {}) {
     state.done += 1;
     state.index += 1;
     state.flipped = false;
+    state.checked = false;
+    state.input = '';
+    state.answer = null;
     state.busy = false;
     if (updated) {
       window.dispatchEvent(

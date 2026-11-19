@@ -1,0 +1,18 @@
+{
+  "reviewMode": {
+    "label": "Card mode",
+    "mode": {
+      "classic": "Classic",
+      "reverse": "Reverse",
+      "pinyin": "Type pinyin",
+      "mistakes": "Only my mistakes"
+    },
+    "answerLabel": "Type the pinyin",
+    "answerPlaceholder": "e.g. ni3 or nǐ",
+    "check": "Check",
+    "correct": "Correct!",
+    "close": "Almost — check the tones",
+    "wrong": "Not quite",
+    "suggested": "Suggested: {rating}"
+  }
+}
