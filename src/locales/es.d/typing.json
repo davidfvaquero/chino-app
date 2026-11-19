@@ -1,0 +1,34 @@
+{
+  "typing": {
+    "title": "Práctica de escritura",
+    "sourceLabel": "Origen",
+    "source": {
+      "hsk": "Vocabulario HSK",
+      "myCards": "Mis tarjetas",
+      "theme": "Tema"
+    },
+    "hskLevelLabel": "Nivel HSK",
+    "themeLabel": "Tema",
+    "roundSizeLabel": "Tamaño de la ronda",
+    "start": "Empezar",
+    "inputLabel": "Escribe el pinyin (sin tonos)",
+    "showHint": "Mostrar pista",
+    "hideHint": "Ocultar pista",
+    "next": "Siguiente",
+    "addToReview": "Añadir al repaso",
+    "addedToReview": "Añadido al repaso",
+    "reviewError": "No se pudo añadir al repaso",
+    "speak": "Escuchar",
+    "wpm": "PPM",
+    "accuracy": "Precisión",
+    "progress": "Progreso",
+    "roundComplete": "Ronda completada",
+    "summaryWpm": "{wpm} PPM",
+    "summaryAccuracy": "{accuracy}% de precisión",
+    "noMistakes": "¡Perfecto! Sin errores.",
+    "noData": "No hay palabras disponibles para este origen.",
+    "playAgain": "Jugar de nuevo",
+    "changeSettings": "Cambiar ajustes",
+    "keyboardHint": "En un teclado real, escribes el pinyin y eliges el hanzi de la barra de sugerencias."
+  }
+}

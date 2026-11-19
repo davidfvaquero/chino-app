@@ -1,0 +1,34 @@
+{
+  "typing": {
+    "title": "Typing Practice",
+    "sourceLabel": "Source",
+    "source": {
+      "hsk": "HSK Vocabulary",
+      "myCards": "My Cards",
+      "theme": "Theme"
+    },
+    "hskLevelLabel": "HSK Level",
+    "themeLabel": "Theme",
+    "roundSizeLabel": "Round size",
+    "start": "Start",
+    "inputLabel": "Type pinyin (no tones)",
+    "showHint": "Show hint",
+    "hideHint": "Hide hint",
+    "next": "Next",
+    "addToReview": "Add to review",
+    "addedToReview": "Added to review",
+    "reviewError": "Could not add to review",
+    "speak": "Hear it",
+    "wpm": "WPM",
+    "accuracy": "Accuracy",
+    "progress": "Progress",
+    "roundComplete": "Round complete",
+    "summaryWpm": "{wpm} WPM",
+    "summaryAccuracy": "{accuracy}% accuracy",
+    "noMistakes": "Perfect! No mistakes.",
+    "noData": "No words available for this source.",
+    "playAgain": "Play again",
+    "changeSettings": "Change settings",
+    "keyboardHint": "On a real keyboard, type the pinyin and pick the hanzi from the suggestion bar."
+  }
+}
