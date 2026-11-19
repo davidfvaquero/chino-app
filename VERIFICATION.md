@@ -1779,3 +1779,55 @@ git grep -n -i -E 'sk-|secret|service_role' -- src tests scripts docs deploy
 E2E headless (script de verificación en la carpeta scratch del verificador): tarjetas de Learn/More, rutas EN/ES, subdirectorio, Ollama de prueba en 127.0.0.1 con dos turnos, WebLLM sin WebGPU.
 
 *Verificador haiku — 2026-11-19*
+
+## BLOQUE 14 — re-verificación pasada 66 (t_b6925301, verificador haiku, 2026-11-19) — FALLO ajeno (npm test / git status)
+
+Paso 0: asignados AUD1 t_9f38ab7a, AUD2 t_45617f44, RM t_07416dca, PLAN t_a42fabe8, EXAM t_8995dfa5 = todos `barato`. Ninguno `haiku` ni `gratis` → no se omitió ninguno.
+
+Build: `OUT_DIR=/tmp/chino-t_b6925301 npm run build` (1846 ficheros). Servido en subdirectorio `/chino-app/` (`scripts/serve.mjs --port 40841`). `dist/` no tocado. Árbol de trabajo tal cual (WIP ajeno, ver comunes).
+
+### Específicas
+
+| # | Punto | Estado | Evidencia |
+|---|---|---|---|
+| 1 | Licencia | OK | `CREDITS.md` §8: Kokoro-82M v1.1-zh, Apache-2.0 (redistribuible con atribución) |
+| 2 | Tamaño / carga | OK | `public/audio`: 1104 mp3 + index.json (1105 ficheros en build). 4.13 MB mp3, index 37 KB. Tiempo en red real no medido |
+| 3 | Muestra 10 audios | OK (no re-muestreado hoy) | Resultado de pasada 65: 10/10 existen, 0.70–1.70 s; 2/10 con cola de silencio ≥0.3 s (no bloquea) |
+| 4 | Lección 1 usa mp3; sin archivo → TTS | OK | `#/learn/lessons/hsk1-01` online: `audio/index.json` 200, `audio/440ee0853ad1e99f.mp3` 200 (en-US y es-ES). Fallback TTS cubierto por `tests/audio.test.mjs` |
+| 5 | Offline tras primera carga | OK con matiz | Con mp3 e index pedidos online antes: `setOffline(true)` + recarga de lista y lección → mp3 200, index 200 (en/es). **Matiz**: contexto nuevo que abre `#/learn/lessons/hsk1-01` directo (sin visitar la lista de lecciones), recarga offline → "Could not load the lessons: Failed to fetch". Reproducir: online `#/learn/lessons/hsk1-01` → `setOffline(true)` → reload. Mp3 offline sólo si ya se pidió |
+| 6 | 3 modos de repaso | OK | Classic: show answer → Good → siguiente. Reverse: frente inglés, reverso hanzi+pinyin. Type pinyin con tarjeta 水: `shui3` → "Correct!" (Suggested Good); `shui` → "Almost — check the tones"; `zzqx` → "Not quite" (Suggested Again). Only my mistakes: "1 due", sólo la tarjeta con lapses |
+| 7 | Plan 30 días | OK (rutas) | `#/learn/plan` en en/es: "Start plan", Day 1 "Today", Day 2 "Pending", "Mark day as done". Inicio + tarjeta Home sólo re-probados en pasada 64. Ids validados por `tests/plan.test.mjs` |
+| 8 | Examen HSK 1 + add mistakes | OK | Examen completo por Skip en en-US: lista de errores con "Correct answer: …", "Added 10 cards to review", "Take another exam". Pasada 64: 100 % y 0 % |
+
+### Comunes
+
+| Punto | Estado | Evidencia |
+|---|---|---|
+| `npm test` verde | **FALLO (ajeno)** | 3 fallos: `tests/hsk3-lessons-headless.test.mjs` hsk3-08/09/10 ("No vocabulary items found"). Fichero **sin trackear** (`??`) de otro worker; importa `playwright` (no está en package.json). Igual que pasada 65 |
+| `check-es-data` | OK | `114 archivos revisados, 0 errores` (exit 0) |
+| ES/EN sin claves crudas | OK | plan, exam, review, lección, tones-duel en en-US y es-ES: texto legible |
+| Sin chino tradicional en UI | no re-barrido | Sin cambio en esta pasada |
+| Sin errores de consola | OK | Online: 0 errores. Sólo `ERR_FAILED` en la prueba offline (esperado) |
+| Deep link | OK | plan, exam, lección, review, tones-duel, home abren directas en en-US y es-ES |
+| Subdirectorio `/chino-app/` | OK | Recursos y rutas 200 (sólo 4xx/ERR en offline) |
+| `git status` limpio / sin deps nuevas | **FALLO (ajeno)** | `package.json` sin cambios. WIP sin commitear de otros: `M src/learn/exam.js` y `M src/learn/plan.js` (sólo CSS de 44 px táctil, verificado tal cual, no commiteado por mí), `M src/learn/typing.js`, `M src/learn/games/tones-duel.js`, `M src/screens/learn.js`, `M src/screens/extras.js`, `M src/extras/{account,anki,conversation,worksheet}.js`, `M scripts/check-layout.mjs`, `M scripts/lib/audit.mjs`; `?? tests/hsk3-lessons-headless.test.mjs`, `?? scripts/verify-readings.mjs` |
+
+### Veredicto BLOQUE 14
+
+Funcionalidad del bloque OK: audio (licencia, 1104 archivos, 4.13 MB, lección 1 usa mp3), repaso (3 modos + mistakes), plan (rutas), examen (completo + add mistakes). Matiz: offline de lección abierta directa sin visitar la lista.
+
+**No cierra por lo común**: `npm test` tiene 3 fallos de un test sin trackear ajeno, y `git status` tiene WIP ajeno sin commitear. Decisiones pendientes: (a) commitear el test hsk3 tras corregir selectores, o quitarlo de `npm test`; (b) commitear o descartar el WIP listado. No reparo: no es mío y el ciclo de reparación ya se agotó en pasadas previas.
+
+### Reproducir
+
+```
+OUT_DIR=/tmp/chino-t_b6925301 npm run build
+mkdir -p /tmp/chino-t_b6925301-srv && ln -sfn /tmp/chino-t_b6925301 /tmp/chino-t_b6925301-srv/chino-app
+node scripts/serve.mjs --port 40841 /tmp/chino-t_b6925301-srv
+# rutas: /chino-app/#/learn/plan, #/learn/exam, #/learn/lessons/hsk1-01, #/review, #/learn/games/tones-duel, #/home
+node scripts/check-es-data.mjs     # 0 errores
+npm test                           # 3 fallos hsk3-08/09/10 (test sin trackear)
+git status --short                 # WIP ajeno
+```
+
+*Verificador haiku — 2026-11-19 (pasada 66)*
