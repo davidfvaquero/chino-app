@@ -7,9 +7,9 @@ into the site root by the build, and are fetched at runtime as
 
 ## Index — `public/data/readings/hsk1/index.json`
 
-A flat array with one entry per reading. The twenty entries are **pre-defined**:
+A flat array with one entry per reading. The forty entries are **pre-defined**:
 the first six (`reading-01` … `reading-06`) already have their JSON file, and
-other tasks write `reading-07.json` … `reading-20.json` with the id/title/topic
+other tasks write `reading-07.json` … `reading-40.json` with the id/title/topic
 already listed here. Nobody but the index owner edits this file.
 
 ```json
