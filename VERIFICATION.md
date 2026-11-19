@@ -1608,3 +1608,51 @@ npm test                                                                        
 **Veredicto BLOQUE 15: trazos en modo oscuro OK.** Trazos, guías y lienzo >= 3:1 en oscuro y claro, en las cuatro combinaciones de tema; cambio de tema sin recargar repinta con el color correcto. Sin cambios de lógica ni deps. FALLO ajeno: `npm test` por `tests/hsk3-lessons-headless.test.mjs` (otro worker).
 
 *Verificador deepseek — 2026-11-19*
+
+## BLOQUE 16 — contenido y herramientas nuevas (t_022bb14e, verificador deepseek)
+
+Alcance: H3C1 `t_f080cfe6`, H3C2 `t_da3d6d16`, H3C3 `t_dcbabf7e` (lecciones HSK 3), R2C1 `t_f168214f`, R2C2 `t_ed4e64b3`, R2C3 `t_b93cb779` (lecturas 21-40), CAL `t_1f16d42b` (hoja de caligrafía), TYPE `t_9d1e5969` (teclear pinyin), ANKI `t_47b586ab`, G3 `t_61937d1a` y G4 `t_f9a05d64` (juegos). Asignados `gratis`/`haiku`, distintos de `deepseek` (comprobado con `hermes kanban --board chino-app show <id>`): verificable. Build `OUT_DIR=/tmp/chino-t_022bb14e npm run build` (1846 ficheros) + `node scripts/serve.mjs`; no se tocó `dist/`. Chromium headless, sesiones aisladas.
+
+| # | Punto | Resultado | Evidencia |
+|---|---|---|---|
+| 1 | Esquema lecciones HSK 3 02-10 | OK | 9 lecciones: `id` correcto, 30 vocab (hsk3-10: 27), 8 ejercicios, 4 tipos (choose/listen/match/order); sin vocab duplicado, `answer` dentro de `options`, sin opciones duplicadas |
+| 2 | Esquema lecturas 21-40 | OK | 20 lecturas con `id/title/type/topic/lines[]` completos; todas listadas en `readings/hsk1/index.json` |
+| 3 | Pinyin vs CC-CEDICT (muestra 40) | OK | 40/40 coinciden (base toneless + secuencia de tonos vs shards CC-CEDICT); 0 desajustes |
+| 4 | Ejercicios HSK 3 resolubles | OK | 72/72 (supera la muestra de 20): `gradeExercise(ex, respuesta-correcta)` → `correct=true`, `score=1` |
+| 5 | Lecturas segmentables | OK | 947 tokens hanzi en 21-40; 0 sin entrada en `src/dictionary.js` (`segment`+`lookup`) |
+| 6 | Hoja de 戴维德 y vista de impresión | OK | `#/extras/worksheet`, entrada 戴维德 → 3 bloques (戴 Dài/17, 维 Wéi/11, 德 Dé/15), 30 celdas 田字格, 48 SVG de trazos. `Emulation.setEmulatedMedia(print)` oculta `#app-header` y `#app-nav` y mantiene `.ws-sheet` |
+| 7 | Una ronda de teclear (`#/learn/typing`) | **FALLO → OK tras reparación** | Antes: la ruta no pintaba nada (throw `Cannot set properties of null (setting 'hidden')`). Ver «Reparación». Tras el arreglo: selector HSK 1-6/My Cards/Theme, ronda de 10 completa → «Round complete | 32 WPM | 100% accuracy», 0 errores |
+| 8 | Anki: round trip export/import + cabeceras | OK | `#/extras/anki`; con IndexedDB real: export → cabeceras `#separator:tab`, `#html:true`, `#columns:Hanzi<TAB>Pinyin<TAB>Meaning<TAB>Example<TAB>Source<TAB>Tags` + 3 líneas; wipe → 0; parse 3 entradas sin errores; `previewImport` new 3; `importCards` added 3; tarjetas idénticas (人/你/好, pinyin, source); reimport «existing 3» (dedupe) |
+| 9 | Partida de Sentence Builder (`#/learn/games/builder`) | OK | 10 rondas (pista+comprobar+siguiente), resultado 10/10, `chino:lesson_done` ×1 `{gameId:'builder',score:10,total:10}`, 0 errores |
+| 10 | Partida de Tone Duel (`#/learn/games/tones-duel`) | OK | 20 rondas → «¡Duelo terminado! 4/20, Mejor racha 1, 16 fallos, confusiones más frecuentes», `chino:lesson_done` ×1 `{gameId:'tones-duel',total:20}`, 0 errores |
+| 11 | `npm test` verde | **FALLO (ajeno)** | 742 pass / 3 fail. Los 3 fallos son `tests/hsk3-lessons-headless.test.mjs` (**sin trackear**, `??` en git status): pide `http://localhost:33730` (servidor que no existe en `npm test`) y asume selectores de vocab. No es fichero de ningún commit del bloque |
+| 12 | `check-es-data` sin errores | OK | `node scripts/check-es-data.mjs` → «114 archivos revisados, 0 errores», exit 0 |
+| 13 | ES y EN sin claves crudas | OK | 14 rutas × 2 idiomas: 0 de las 892 claves literales en texto visible ni en `title/placeholder/aria-label` |
+| 14 | Sin chino tradicional en la UI | OK (con observación) | 14 rutas barridas: 0 caracteres tradicionales (lista de 3604 chars trad-only del propio `dict/index-hanzi-trad.json`). Observación: las glosas del diccionario (dato CC-CEDICT) traen tradicional — p. ej. 维 → «abbr. for Uyghur 維吾爾…» en `#/dict` y en la hoja; **preexistente**, no de los módulos del bloque |
+| 15 | Sin errores de consola | OK | 0 `console.error`/`error`/`unhandledrejection` en todas las rutas (tras el fix de typing) |
+| 16 | Cada ruta abre directa | OK | `#/learn/lessons/hsk3-02..10`, `#/read/reading-21..40`, `#/extras/{worksheet,anki}`, `#/learn/typing`, `#/learn/games/{builder,tones-duel}` abren por ruta sin caer al hub |
+| 17 | Subdirectorio `/chino-app/` sin 404 | OK | build copiado a `/tmp/chino-t_022bb14e-sub2/chino-app`, servido en `/`; 11 rutas, 0 respuestas ≥400 (fetch+XHR parcheados) y 0 errores |
+| 18 | git limpio, sin scripts sueltos en raíz, sin deps nuevas | **FALLO (ajeno)** | Sin deps nuevas (`git diff HEAD -- package.json package-lock.json` vacío) y sin scripts sueltos en la raíz (solo `sw.js`, trackeado). Pero `git status` no está limpio: `?? scripts/verify-readings.mjs` y `?? tests/hsk3-lessons-headless.test.mjs`, artefactos sin trackear de otros workers |
+
+### Reparación (1 defecto, 2 líneas — dentro de las reglas del verificador)
+
+`src/learn/typing.js` (commit `1d23c11`): `updateSourceUI()` llamaba a `document.getElementById('hsk-row'/'theme-row')` mientras esas filas aún no estaban en el documento (`buildSetup` corre antes de `reset(container).append(section)`), así que `getElementById` devolvía `null` y `render()` lanzaba `TypeError: Cannot set properties of null (setting 'hidden')`. `#/learn/typing` quedaba vacío y `main.js` lo capturaba como «boot failed». Fix: `setupSection.querySelector('#hsk-row'/'theme-row')` (2 líneas, ámbito del propio módulo, funciona esté o no montado el contenedor). Sin cambios de lógica.
+
+### Reproducir
+```
+OUT_DIR=/tmp/chino-t_022bb14e npm run build && node scripts/serve.mjs /tmp/chino-t_022bb14e
+# schema+pinyin+segmentables+ejercicios: ver pasos abajo
+node scripts/check-es-data.mjs            # 0 errores
+npm test                                  # 742/745 (3 fail: tests/hsk3-lessons-headless.test.mjs, sin trackear, pide :33730)
+```
+- Esquema HSK3 02-10 y lecturas 21-40: cargar cada JSON y comprobar `id/vocabulary/exercises` y `id/title/type/topic/lines`; `answer∈options`, sin opciones duplicadas, `order` resoluble por conteo de caracteres.
+- Pinyin vs CC-CEDICT: por palabra, comparar (base sin tonos + secuencia de dígitos de tono) con `pinyinNumeric` de `public/data/dict/shards/*.json`.
+- Ejercicios resolubles: `import { gradeExercise } from 'src/learn/exercises.js'` y responder con `answer`/pares.
+- Lecturas segmentables: `configure({fetch})` + `segment()`/`lookup()` línea a línea.
+- Hoja/impresión: `#/extras/worksheet`, escribir 戴维德, «Generar hoja»; `cdp Emulation.setEmulatedMedia media=print` → header/nav `display:none`, hoja visible.
+- Anki: importar `src/anki.js`, `exportCards(loadCards(storage))` → cabeceras; borrar `srs` (`list('srs')` devuelve `{key,value}`: borrar por `r.key`); `parseAnkiTsv` → `previewImport`/`importCards`.
+- Juegos: `#/learn/games/builder` (pista→comprobar→siguiente ×10) y `#/learn/games/tones-duel` (opción→siguiente ×20).
+
+**Veredicto BLOQUE 16: contenido y herramientas OK.** Esquema, pinyin vs CC-CEDICT, ejercicios, segmentabilidad, hoja+impresión, teclear, Anki y los dos juegos pasan con navegador real; 0 claves crudas, 0 chino tradicional en rutas barridas, 0 errores de consola, rutas directas y subdirectorio sin 404. **FALLO ajenos** (no de este bloque): `npm test` y `git status` por dos ficheros sin trackear de otros workers (`tests/hsk3-lessons-headless.test.mjs`, pide un servidor en `:33730`; `scripts/verify-readings.mjs`). 1 reparación aplicada: `src/learn/typing.js` (`1d23c11`).
+
+*Verificador deepseek — 2026-11-19*
