@@ -1,0 +1,14 @@
+{
+  "id": "xiang-yao",
+  "title": "想 / 要 — querer",
+  "level": "HSK1",
+  "explanation": "想 significa «gustaría» (deseo más suave); 要 significa «querer» o «voy a» (intención más fuerte). Ambos van antes del verbo.",
+  "structure": "Sujeto + 想 / 要 + Verbo",
+  "examples": [
+    { "hanzi": "我想喝水。", "pinyin": "wǒ xiǎng hē shuǐ", "english": "Me gustaría beber agua." },
+    { "hanzi": "你要去北京吗？", "pinyin": "nǐ yào qù běijīng ma", "english": "¿Quieres ir a Pekín?" },
+    { "hanzi": "我们想吃中国菜。", "pinyin": "wǒ men xiǎng chī zhōng guó cài", "english": "Nos gustaría comer comida china." },
+    { "hanzi": "他们要买新手机。", "pinyin": "tā men yào mǎi xīn shǒu jī", "english": "Quieren comprar móviles nuevos." }
+  ],
+  "notes": "要 también puede significar «voy a» para planes cercanos: 我要走了. Para negar, usa 不想 o 不要 antes del verbo."
+}

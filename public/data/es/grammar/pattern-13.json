@@ -1,0 +1,14 @@
+{
+  "id": "ba-suggestions",
+  "title": "吧 — sugerencias",
+  "level": "HSK2",
+  "explanation": "Añadir 吧 al final de una frase la suaviza convirtiéndola en una sugerencia, petición o mandato educado. Busca acuerdo («vamos a...», «qué tal si...\").",
+  "structure": "Afirmación + 吧",
+  "examples": [
+    { "hanzi": "我们走吧。", "pinyin": "wǒ men zǒu ba", "english": "Vámonos." },
+    { "hanzi": "喝茶吧。", "pinyin": "hē chá ba", "english": "¿Qué tal un té?" },
+    { "hanzi": "你先说吧。", "pinyin": "nǐ xiān shuō ba", "english": "Habla tú primero." },
+    { "hanzi": "一起吃饭吧。", "pinyin": "yī qǐ chī fàn ba", "english": "Comamos juntos." }
+  ],
+  "notes": "吧 no es partícula de pregunta como 吗; espera cooperación, no una respuesta sí/no. Para sugerencias negativas usa 别...吧 (ej.: 别走吧 — «no te vayas, ¿vale?»)."
+}

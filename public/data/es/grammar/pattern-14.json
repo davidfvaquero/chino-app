@@ -1,0 +1,14 @@
+{
+  "id": "cong-dao-zai",
+  "title": "从…到… y 在…",
+  "level": "HSK2",
+  "explanation": "从…到… significa «desde...hasta...» (rango espacial o temporal); 在… significa «en» un lugar. Ambos van antes del verbo en la posición de tiempo/lugar.",
+  "structure": "Sujeto + 从 Lugar 到 Lugar + Verbo / Sujeto + 在 Lugar + Verbo",
+  "examples": [
+    { "hanzi": "我从北京到上海。", "pinyin": "wǒ cóng běi jīng dào shàng hǎi", "english": "Voy de Pekín a Shanghái." },
+    { "hanzi": "他从八点工作到六点。", "pinyin": "tā cóng bā diǎn gōng zuò dào liù diǎn", "english": "Trabaja de ocho a seis." },
+    { "hanzi": "我在图书馆看书。", "pinyin": "wǒ zài tú shū guǎn kàn shū", "english": "Leo libros en la biblioteca." },
+    { "hanzi": "他们在公园跑步。", "pinyin": "tā men zài gōng yuán pǎo bù", "english": "Corren en el parque." }
+  ],
+  "notes": "从…到… marca un rango (lugar o tiempo). 在… marca una ubicación estática donde ocurre una acción. Ambos siguen al sujeto en el orden estándar."
+}

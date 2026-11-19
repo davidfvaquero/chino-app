@@ -1,0 +1,16 @@
+{
+  "id": "question-words",
+  "title": "Palabras de pregunta",
+  "level": "HSK1",
+  "explanation": "Las palabras de pregunta chinas se quedan en la posición de la respuesta — no se mueven al principio como en inglés. 什么 (qué), 谁 (quién), 哪 (cuál), 怎么 (cómo), 为什么 (por qué), 多少 (cuántos/cuánto), 几 (cuántos — para cantidades pequeñas).",
+  "structure": "Sujeto + Verbo + Palabra de pregunta  |  Palabra de pregunta + Verbo + Objeto",
+  "examples": [
+    { "hanzi": "你叫什么名字？", "pinyin": "nǐ jiào shénme míngzi", "english": "¿Cómo te llamas?" },
+    { "hanzi": "谁是老师？", "pinyin": "shéi shì lǎoshī", "english": "¿Quién es el profesor?" },
+    { "hanzi": "你在哪儿？", "pinyin": "nǐ zài nǎr", "english": "¿Dónde estás?" },
+    { "hanzi": "怎么去车站？", "pinyin": "zěnme qù chēzhàn", "english": "¿Cómo se va a la estación?" },
+    { "hanzi": "为什么不吃肉？", "pinyin": "wèishénme bù chī ròu", "english": "¿Por qué no comes carne?" },
+    { "hanzi": "你有几本书？", "pinyin": "nǐ yǒu jǐ běn shū", "english": "¿Cuántos libros tienes?" }
+  ],
+  "notes": "哪儿/哪里 (dónde) son intercambiables. 几 para números pequeños (<10), 多少 para mayores. 怎么 = cómo (método), 怎么样 = qué tal/qué opinas. La posición de la palabra de pregunta = posición de la respuesta."
+}

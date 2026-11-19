@@ -1,0 +1,14 @@
+{
+  "id": "time-word-order",
+  "title": "Orden de las palabras de tiempo",
+  "level": "HSK2",
+  "explanation": "En chino, las palabras de tiempo (cuándo) van ANTES del verbo, típicamente justo después del sujeto. Orden: Sujeto + Tiempo + Lugar + Verbo.",
+  "structure": "Sujeto + Tiempo + Lugar + Verbo",
+  "examples": [
+    { "hanzi": "我明天去北京。", "pinyin": "wǒ míng tiān qù běi jīng", "english": "Mañana voy a Pekín." },
+    { "hanzi": "他在公司工作。", "pinyin": "tā zài gōng sī gōng zuò", "english": "Él trabaja en la empresa." },
+    { "hanzi": "我们昨天在家吃饭。", "pinyin": "wǒ men zuó tiān zài jiā chī fàn", "english": "Ayer comimos en casa." },
+    { "hanzi": "他每天早上跑步。", "pinyin": "tā měi tiān zǎo shang pǎo bù", "english": "Corre cada mañana." }
+  ],
+  "notes": "Frases de tiempo como 明天, 昨天, 每天 van después del sujeto, antes del lugar y el verbo. Nunca pongas el tiempo al final de la frase como en inglés."
+}

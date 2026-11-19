@@ -1,0 +1,14 @@
+{
+  "id": "he-ye-dou",
+  "title": "和 / 也 / 都",
+  "level": "HSK2",
+  "explanation": "和 une sustantivos («y»); 也 significa «también» y va antes del verbo; 都 significa «todos/ambos» y también va antes del verbo, refiriéndose al sujeto.",
+  "structure": "Sustantivo + 和 + Sustantivo / Sujeto + 也 / 都 + Verbo",
+  "examples": [
+    { "hanzi": "我和他是朋友。", "pinyin": "wǒ hé tā shì péng yǒu", "english": "Él y yo somos amigos." },
+    { "hanzi": "我也喜欢喝茶。", "pinyin": "wǒ yě xǐ huan hē chá", "english": "Yo también quiero beber té." },
+    { "hanzi": "我们都去过上海。", "pinyin": "wǒ men dōu qù guo shàng hǎi", "english": "Los dos hemos ido a Shanghái." },
+    { "hanzi": "苹果和香蕉都好吃。", "pinyin": "píng guǒ hé xiāng jiāo dōu hǎo chī", "english": "Tanto las manzanas como los plátanos están buenos." }
+  ],
+  "notes": "和 solo une sustantivos, nunca verbos ni oraciones (usa 也/并/而且 para eso). 也 y 都 van después del sujeto y antes del verbo/auxiliar."
+}
