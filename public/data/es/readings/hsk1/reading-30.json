@@ -1,0 +1,50 @@
+{
+  "id": "reading-30",
+  "title": "去玩",
+  "type": "dialogue",
+  "topic": "Vacaciones y viajes",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "明天你去哪儿玩？",
+      "pinyin": "Míngtiān nǐ qù nǎr wán?",
+      "english": "¿Dónde vas mañana de paseo?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我和朋友去北京旅游。",
+      "pinyin": "Wǒ hé péngyou qù Běijīng lǚyóu.",
+      "english": "Mi amigo y yo vamos a Pekín de viaje."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "坐飞机去吗？",
+      "pinyin": "Zuò fēijī qù ma?",
+      "english": "¿Vas en avión?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "不，我们坐公共汽车去。便宜。",
+      "pinyin": "Bù, wǒmen zuò gōnggòng qìchē qù. Piányi.",
+      "english": "No, vamos en autobús. Es más barato."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "几点走？去多长时间？",
+      "pinyin": "Jǐ diǎn zǒu? Qù duō cháng shíjiān?",
+      "english": "¿A qué hora sales? ¿Cuánto tiempo estarás fuera?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "八点走。去三天。",
+      "pinyin": "Bā diǎn zǒu. Qù sān tiān.",
+      "english": "Salimos a las ocho. Vamos tres días."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "希望你们玩得很高兴！",
+      "pinyin": "Xīwàng nǐmen wán de hěn gāoxìng!",
+      "english": "¡Espero que disfruten mucho!"
+    }
+  ]
+}

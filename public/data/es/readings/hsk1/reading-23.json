@@ -1,0 +1,50 @@
+{
+  "id": "reading-23",
+  "title": "学汉语",
+  "type": "dialogue",
+  "topic": "Estudiar chino",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你学汉语多久了？",
+      "pinyin": "Nǐ xué Hànyǔ duōjiǔ le?",
+      "english": "¿Cuánto tiempo llevas estudiando chino?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "一年了。你呢？",
+      "pinyin": "Yī nián le. Nǐ ne?",
+      "english": "Un año. ¿Y tú?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我才三个月。汉语很难，对不对？",
+      "pinyin": "Wǒ cái sān gè yuè. Hànyǔ hěn nán, duì bu duì?",
+      "english": "Solo tres meses. El chino es difícil, ¿verdad?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "开始难，后来容易。你每天学几个小时？",
+      "pinyin": "Kāishǐ nán, hòulái róngyì. Nǐ měitiān xué jǐ gè xiǎoshí?",
+      "english": "Al principio es difícil, luego es más fácil. ¿Cuántas horas estudias cada día?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "一个小时。我听录音、写汉字。",
+      "pinyin": "Yī gè xiǎoshí. Wǒ tīng lùyīn, xiě Hànzì.",
+      "english": "Una hora. Escucho grabaciones y escribo caracteres."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "很好的方法。多说、多听、多练习。",
+      "pinyin": "Hěn hǎo de fāngfǎ. Duō shuō, duō tīng, duō liànxí.",
+      "english": "Es un buen método. Habla más, escucha más, practica más."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢你的建议。我们一起练习说汉语吧。",
+      "pinyin": "Xièxie nǐ de jiànyì. Wǒmen yīqǐ liànxí shuō Hànyǔ ba.",
+      "english": "Gracias por el consejo. Practiquemos hablar chino juntos."
+    }
+  ]
+}

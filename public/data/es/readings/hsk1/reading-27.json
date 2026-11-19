@@ -1,0 +1,56 @@
+{
+  "id": "reading-27",
+  "title": "跟医生说话",
+  "type": "dialogue",
+  "topic": "Una cita con el médico",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "医生，我肚子疼，不想吃饭。",
+      "pinyin": "Yīshēng, wǒ dùzi téng, bù xiǎng chīfàn.",
+      "english": "Doctor, me duele el estómago, no quiero comer."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "疼多久了？有没有发烧？",
+      "pinyin": "Téng duōjiǔ le? Yǒu méiyǒu fāshāo?",
+      "english": "¿Cuánto tiempo llevas con el dolor? ¿Tienes fiebre?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "两天了。没有发烧，就是不舒服。",
+      "pinyin": "Liǎng tiān le. Méiyǒu fāshāo, jiùshì bù shūfu.",
+      "english": "Dos días. No tengo fiebre, solo me siento mal."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我给你检查一下。躺下，别紧张。",
+      "pinyin": "Wǒ gěi nǐ jiǎnchá yīxià. Tǎng xià, bié jǐnzhāng.",
+      "english": "Te voy a examinar. Túmbate, no te pongas nervioso."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好。医生，严重吗？",
+      "pinyin": "Hǎo. Yīshēng, yánzhòng ma?",
+      "english": "Vale. Doctor, ¿es grave?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "不严重，是胃炎。开点药，吃三天。",
+      "pinyin": "Bù yánzhòng, shì wèiyán. Kāi diǎn yào, chī sān tiān.",
+      "english": "No es grave, es gastritis. Te receto una medicina, tómala durante tres días."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢医生。药怎么吃？",
+      "pinyin": "Xièxie yīshēng. Yào zěnme chī?",
+      "english": "Gracias, doctor. ¿Cómo tomo la medicina?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "饭后吃，一天三次，一次两片。多喝水。",
+      "pinyin": "Fàn hòu chī, yītiān sān cì, yī cì liǎng piàn. Duō hē shuǐ.",
+      "english": "Después de las comidas, tres veces al día, dos pastillas cada vez. Bebe más agua."
+    }
+  ]
+}

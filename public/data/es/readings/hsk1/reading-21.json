@@ -1,0 +1,50 @@
+{
+  "id": "reading-21",
+  "title": "看一看",
+  "type": "dialogue",
+  "topic": "Echar un vistazo en una tienda",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "这家店很好。我们进去看一看吧。",
+      "pinyin": "Zhè jiā diàn hěn hǎo. Wǒmen jìnqù kànkan ba.",
+      "english": "Esta tienda está muy bien. Entremos a echar un vistazo."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好啊。你看那个红色的包多少钱？",
+      "pinyin": "Hǎo a. Nǐ kàn nàge hóngsè de bāo duōshao qián?",
+      "english": "Vale. ¿Cuánto cuesta ese bolso rojo?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "一百二十元。你想买吗？",
+      "pinyin": "Yībǎi èrshí yuán. Nǐ xiǎng mǎi ma?",
+      "english": "Ciento veinte yuanes. ¿Quieres comprarlo?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "有点贵。那个蓝色的呢？",
+      "pinyin": "Yǒudiǎn guì. Nàge lánsè de ne?",
+      "english": "Es un poco caro. ¿Y ese azul?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "八十元。颜色也不错。",
+      "pinyin": "Bāshí yuán. Yánsè yě bùcuò.",
+      "english": "Ochenta yuanes. El color también está bien."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "可以。我买那个蓝色的包。",
+      "pinyin": "Kěyǐ. Wǒ mǎi nàge lánsè de bāo.",
+      "english": "Vale. Me llevo ese bolso azul."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我帮你拿着。我们去喝茶吧。",
+      "pinyin": "Wǒ bāng nǐ názhe. Wǒmen qù hē chá ba.",
+      "english": "Te lo llevo yo. Vamos a tomar té."
+    }
+  ]
+}

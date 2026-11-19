@@ -1,0 +1,50 @@
+{
+  "id": "reading-25",
+  "title": "坐地铁",
+  "type": "dialogue",
+  "topic": "En el metro",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "我们坐地铁去公司吧。很快。",
+      "pinyin": "Wǒmen zuò dìtiě qù gōngsī ba. Hěn kuài.",
+      "english": "Vamos en metro a la empresa. Es rápido."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好。哪一号线？",
+      "pinyin": "Hǎo. Nǎ yī hào xiàn?",
+      "english": "Vale. ¿Qué línea?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "二号线。在这儿上车，五站到。",
+      "pinyin": "Èr hào xiàn. Zài zhèr shàngchē, wǔ zhàn dào.",
+      "english": "La línea dos. Sube aquí, son cinco paradas."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "人多不多？",
+      "pinyin": "Rén duō bu duō?",
+      "english": "¿Hay mucha gente?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "早上人很多。现在不太多。",
+      "pinyin": "Zǎoshang rén hěn duō. Xiànzài bù tài duō.",
+      "english": "Por la mañana hay mucha gente. Ahora no tanta."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "车来了。请上车，小心门。",
+      "pinyin": "Chē lái le. Qǐng shàngchē, xiǎoxīn mén.",
+      "english": "Ya viene el tren. Sube, cuidado con las puertas."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "到了。我们下车，出站右边是公司。",
+      "pinyin": "Dào le. Wǒmen xiàchē, chūzhàn yòubiān shì gōngsī.",
+      "english": "Ya llegamos. Bajemos, salimos de la estación y la empresa está a la derecha."
+    }
+  ]
+}

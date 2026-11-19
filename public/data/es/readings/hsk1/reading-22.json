@@ -1,0 +1,50 @@
+{
+  "id": "reading-22",
+  "title": "我的生日",
+  "type": "dialogue",
+  "topic": "Mi cumpleaños",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "明天是我的生日。你来我家吃饭吗？",
+      "pinyin": "Míngtiān shì wǒ de shēngrì. Nǐ lái wǒ jiā chīfàn ma?",
+      "english": "Mañana es mi cumpleaños. ¿Vienes a mi casa a comer?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "当然来！生日快乐！我给你买了礼物。",
+      "pinyin": "Dāngrán lái! Shēngrì kuàilè! Wǒ gěi nǐ mǎile lǐwù.",
+      "english": "¡Claro que voy! ¡Feliz cumpleaños! Te compré un regalo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢！是什么？",
+      "pinyin": "Xièxie! Shì shénme?",
+      "english": "¡Gracias! ¿Qué es?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是一本汉语书。很好看，适合你。",
+      "pinyin": "Shì yī běn Hànyǔ shū. Hěn hǎokàn, shìhé nǐ.",
+      "english": "Es un libro de chino. Es muy bonito, adecuado para ti."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "太好了！我正想买一本新书呢。",
+      "pinyin": "Tài hǎo le! Wǒ zhèng xiǎng mǎi yī běn xīnshū ne.",
+      "english": "¡Qué bien! Justo quería comprar un libro nuevo."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我妈妈做了生日蛋糕。很好吃。",
+      "pinyin": "Wǒ māma zuòle shēngrì dàngāo. Hěn hǎochī.",
+      "english": "Mi madre hizo una tarta de cumpleaños. Está muy rica."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "那我们一起吃蛋糕、喝果汁吧。",
+      "pinyin": "Nà wǒmen yīqǐ chī dàngāo, hē guǒzhī ba.",
+      "english": "Entonces comamos tarta y bebamos zumo juntos."
+    }
+  ]
+}

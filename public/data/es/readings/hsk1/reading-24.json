@@ -1,0 +1,56 @@
+{
+  "id": "reading-24",
+  "title": "一封信",
+  "type": "text",
+  "topic": "Una carta",
+  "lines": [
+    {
+      "speaker": "",
+      "hanzi": "亲爱的王明：",
+      "pinyin": "Qīn'ài de Wáng Míng:",
+      "english": "Querido Wang Ming:"
+    },
+    {
+      "speaker": "",
+      "hanzi": "你好！我很想你。你最近忙不忙？",
+      "pinyin": "Nǐ hǎo! Wǒ hěn xiǎng nǐ. Nǐ zuìjìn máng bu máng?",
+      "english": "¡Hola! Te echo de menos. ¿Has estado ocupado últimamente?"
+    },
+    {
+      "speaker": "",
+      "hanzi": "我现在在北京工作。这里的人很多，天气也冷。",
+      "pinyin": "Wǒ xiànzài zài Běijīng gōngzuò. Zhèlǐ de rén hěn duō, tiānqì yě lěng.",
+      "english": "Ahora trabajo en Pekín. Aquí hay mucha gente y también hace frío."
+    },
+    {
+      "speaker": "",
+      "hanzi": "我的中文老师叫李老师。她教得很好。",
+      "pinyin": "Wǒ de Zhōngwén lǎoshī jiào Lǐ lǎoshī. Tā jiāo de hěn hǎo.",
+      "english": "Mi profesora de chino se llama profesora Li. Enseña muy bien."
+    },
+    {
+      "speaker": "",
+      "hanzi": "我每天学习两个小时。现在会说、会写了。",
+      "pinyin": "Wǒ měitiān xuéxí liǎng gè xiǎoshí. Xiànzài huì shuō, huì xiě le.",
+      "english": "Estudio dos horas cada día. Ahora ya sé hablar y escribir."
+    },
+    {
+      "speaker": "",
+      "hanzi": "下个月我回上海。我们一起吃饭、喝茶好吗？",
+      "pinyin": "Xià gè yuè wǒ huí Shànghǎi. Wǒmen yīqǐ chīfàn, hē chá hǎo ma?",
+      "english": "El mes que viene vuelvo a Shanghái. ¿Comemos y tomamos té juntos?"
+    },
+    {
+      "speaker": "",
+      "hanzi": "祝你身体健康，工作顺利！",
+      "pinyin": "Zhù nǐ shēntǐ jiànkāng, gōngzuò shùnlì!",
+      "english": "¡Te deseo buena salud y que te vaya bien en el trabajo!"
+    },
+    {
+      "speaker": "",
+      "hanzi": "你的朋友，李华",
+      "pinyin": "Nǐ de péngyou, Lǐ Huá",
+      "english": "Tu amigo, Li Hua"
+    }
+  ]
+}
