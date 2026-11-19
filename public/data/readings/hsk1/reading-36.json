@@ -1,0 +1,50 @@
+{
+  "id": "reading-36",
+  "title": "图书馆",
+  "type": "dialogue",
+  "topic": "At the library",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "我们去图书馆看书吧。",
+      "pinyin": "Wǒmen qù túshūguǎn kànshū ba.",
+      "english": "Let's go to the library to read books."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好啊。图书馆在哪儿？",
+      "pinyin": "Hǎo a. Túshūguǎn zài nǎr?",
+      "english": "OK. Where is the library?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "在学校旁边。走路十分钟。",
+      "pinyin": "Zài xuéxiào pángbiān. Zǒulù shí fēnzhōng.",
+      "english": "Next to the school. Ten minutes walk."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "图书馆几点开门？",
+      "pinyin": "Túshūguǎn jǐ diǎn kāimén?",
+      "english": "What time does the library open?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "早上八点钟开门，晚上九点钟关门。",
+      "pinyin": "Zǎoshang bā diǎn zhōng kāimén, wǎnshang jiǔ diǎn zhōng guānmén.",
+      "english": "Opens at 8 AM, closes at 9 PM."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我借两本中文书。你呢？",
+      "pinyin": "Wǒ jiè liǎng běn Zhōngwén shū. Nǐ ne?",
+      "english": "I'll borrow two Chinese books. How about you?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我也借一本。我们一起去。",
+      "pinyin": "Wǒ yě jiè yī běn. Wǒmen yīqǐ qù.",
+      "english": "I'll borrow one too. Let's go together."
+    }
+  ]
+}

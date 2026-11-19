@@ -1,0 +1,50 @@
+{
+  "id": "reading-39",
+  "title": "星期天",
+  "type": "dialogue",
+  "topic": "The weekend",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "这个星期天你做什么？",
+      "pinyin": "Zhège xīngqītiān nǐ zuò shénme?",
+      "english": "What are you doing this Sunday?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我想去公园跑步。你呢？",
+      "pinyin": "Wǒ xiǎng qù gōngyuán pǎobù. Nǐ ne?",
+      "english": "I want to go to the park to run. How about you?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我和朋友去爬山。天气很好。",
+      "pinyin": "Wǒ hé péngyou qù páshān. Tiānqì hěn hǎo.",
+      "english": "I'm going hiking with friends. The weather is great."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好主意！几点出发？",
+      "pinyin": "Hǎo zhǔyì! Jǐ diǎn chūfā?",
+      "english": "Good idea! What time do you leave?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "早上八点。你要一起去吗？",
+      "pinyin": "Zǎoshang bā diǎn. Nǐ yào yīqǐ qù ma?",
+      "english": "8 AM. Do you want to come along?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我不能去。我下午要复习汉语。",
+      "pinyin": "Wǒ bù néng qù. Wǒ xiàwǔ yào fùxí Hànyǔ.",
+      "english": "I can't go. I need to review Chinese this afternoon."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "没关系。下次我们再去吧。",
+      "pinyin": "Méi guānxi. Xiàcì wǒmen zài qù ba.",
+      "english": "No problem. Let's go another time instead."
+    }
+  ]
+}

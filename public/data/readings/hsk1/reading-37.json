@@ -1,0 +1,56 @@
+{
+  "id": "reading-37",
+  "title": "在学校",
+  "type": "dialogue",
+  "topic": "At school",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你在哪个学校学习？",
+      "pinyin": "Nǐ zài nǎge xuéxiào xuéxí?",
+      "english": "Which school do you study at?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我在北京大学学汉语。",
+      "pinyin": "Wǒ zài Běijīng Dàxué xué Hànyǔ.",
+      "english": "I study Chinese at Peking University."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你的老师是谁？",
+      "pinyin": "Nǐ de lǎoshī shì shéi?",
+      "english": "Who is your teacher?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我老师姓王。她教我们说汉语。",
+      "pinyin": "Wǒ lǎoshī xìng Wáng. Tā jiāo wǒmen shuō Hànyǔ.",
+      "english": "My teacher's surname is Wang. She teaches us to speak Chinese."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你每天几节课？",
+      "pinyin": "Nǐ měitiān jǐ jié kè?",
+      "english": "How many classes do you have each day?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "每天四节课。上午两节，下午两节。",
+      "pinyin": "Měitiān sì jié kè. Shàngwǔ liǎng jié, xiàwǔ liǎng jié.",
+      "english": "Four classes a day. Two in the morning, two in the afternoon."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "学校食堂饭好吃吗？",
+      "pinyin": "Xuéxiào shítáng fàn hǎochī ma?",
+      "english": "Is the food in the school cafeteria good?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "还可以。不太贵，也不太难吃。",
+      "pinyin": "Hái kěyǐ. Bú tài guì, yě bú tài nánchī.",
+      "english": "It's okay. Not too expensive, not too bad either."
+    }
+  ]
+}
