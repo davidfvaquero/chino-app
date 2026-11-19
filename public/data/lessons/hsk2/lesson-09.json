@@ -1,0 +1,253 @@
+{
+  "id": "hsk2-09",
+  "title": "Actions & connectors",
+  "intro": "Express actions, reasons, and logical connectors with 15 HSK 2 words.",
+  "vocabulary": [
+    {
+      "hanzi": "雪",
+      "pinyin": "xuě",
+      "english": "snow",
+      "example": {
+        "hanzi": "下雪",
+        "pinyin": "xià xuě",
+        "english": "snowing"
+      }
+    },
+    {
+      "hanzi": "颜色",
+      "pinyin": "yánsè",
+      "english": "color",
+      "example": {
+        "hanzi": "什么颜色",
+        "pinyin": "shénme yánsè",
+        "english": "what color"
+      }
+    },
+    {
+      "hanzi": "眼睛",
+      "pinyin": "yǎnjing",
+      "english": "eye",
+      "example": {
+        "hanzi": "大眼睛",
+        "pinyin": "dà yǎnjing",
+        "english": "big eyes"
+      }
+    },
+    {
+      "hanzi": "羊肉",
+      "pinyin": "yángròu",
+      "english": "mutton",
+      "example": {
+        "hanzi": "吃羊肉",
+        "pinyin": "chī yángròu",
+        "english": "eat lamb"
+      }
+    },
+    {
+      "hanzi": "药",
+      "pinyin": "yào",
+      "english": "medicine",
+      "example": {
+        "hanzi": "吃药",
+        "pinyin": "chī yào",
+        "english": "take medicine"
+      }
+    },
+    {
+      "hanzi": "要",
+      "pinyin": "yào",
+      "english": "to want",
+      "example": {
+        "hanzi": "要水",
+        "pinyin": "yào shuǐ",
+        "english": "want water"
+      }
+    },
+    {
+      "hanzi": "也",
+      "pinyin": "yě",
+      "english": "also",
+      "example": {
+        "hanzi": "我也去",
+        "pinyin": "wǒ yě qù",
+        "english": "I also go"
+      }
+    },
+    {
+      "hanzi": "一起",
+      "pinyin": "yìqǐ",
+      "english": "together",
+      "example": {
+        "hanzi": "一起吃",
+        "pinyin": "yìqǐ chī",
+        "english": "eat together"
+      }
+    },
+    {
+      "hanzi": "一下",
+      "pinyin": "yíxià",
+      "english": "a little bit/while",
+      "example": {
+        "hanzi": "看一下",
+        "pinyin": "kàn yíxià",
+        "english": "take a look"
+      }
+    },
+    {
+      "hanzi": "已经",
+      "pinyin": "yǐjing",
+      "english": "already",
+      "example": {
+        "hanzi": "已经吃了",
+        "pinyin": "yǐjing chī le",
+        "english": "already ate"
+      }
+    },
+    {
+      "hanzi": "意思",
+      "pinyin": "yìsi",
+      "english": "meaning",
+      "example": {
+        "hanzi": "什么意思",
+        "pinyin": "shénme yìsi",
+        "english": "what meaning"
+      }
+    },
+    {
+      "hanzi": "因为",
+      "pinyin": "yīnwèi",
+      "english": "because",
+      "example": {
+        "hanzi": "因为我累",
+        "pinyin": "yīnwèi wǒ lèi",
+        "english": "because I'm tired"
+      }
+    },
+    {
+      "hanzi": "所以",
+      "pinyin": "suǒyǐ",
+      "english": "so",
+      "example": {
+        "hanzi": "所以不去",
+        "pinyin": "suǒyǐ bù qù",
+        "english": "so not going"
+      }
+    },
+    {
+      "hanzi": "阴",
+      "pinyin": "yīn",
+      "english": "cloudy (weather)",
+      "example": {
+        "hanzi": "今天阴",
+        "pinyin": "jīntiān yīn",
+        "english": "cloudy today"
+      }
+    },
+    {
+      "hanzi": "游泳",
+      "pinyin": "yóuyǒng",
+      "english": "to swim",
+      "example": {
+        "hanzi": "去游泳",
+        "pinyin": "qù yóuyǒng",
+        "english": "go swimming"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "What does 雪 mean?",
+      "options": [
+        "snow",
+        "color",
+        "eye"
+      ],
+      "answer": "snow"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which word means 'mutton'?",
+      "options": [
+        "羊肉",
+        "药",
+        "要"
+      ],
+      "answer": "羊肉"
+    },
+    {
+      "type": "listen",
+      "audio": "也",
+      "pinyin": "yě",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "也",
+        "一起",
+        "一下"
+      ],
+      "answer": "也"
+    },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        {
+          "hanzi": "已经",
+          "english": "already"
+        },
+        {
+          "hanzi": "意思",
+          "english": "meaning"
+        },
+        {
+          "hanzi": "因为",
+          "english": "because"
+        },
+        {
+          "hanzi": "所以",
+          "english": "so"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Make the phrase 'snowing'.",
+      "tokens": [
+        "下",
+        "雪"
+      ],
+      "answer": "下雪"
+    },
+    {
+      "type": "order",
+      "prompt": "Put the characters in order to say 'color'.",
+      "tokens": [
+        "颜",
+        "色"
+      ],
+      "answer": "颜色"
+    },
+    {
+      "type": "listen",
+      "audio": "阴",
+      "pinyin": "yīn",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "阴",
+        "游泳",
+        "雪"
+      ],
+      "answer": "阴"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which character means 'to swim'?",
+      "options": [
+        "游泳",
+        "雪",
+        "颜色"
+      ],
+      "answer": "游泳"
+    }
+  ]
+}

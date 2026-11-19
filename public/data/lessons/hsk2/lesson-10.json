@@ -1,0 +1,264 @@
+{
+  "id": "hsk2-10",
+  "title": "Questions & everyday words",
+  "intro": "Ask questions and use everyday vocabulary with the final 16 HSK 2 words.",
+  "vocabulary": [
+    {
+      "hanzi": "右边",
+      "pinyin": "yòubian",
+      "english": "the right (as opposed to left) side",
+      "example": {
+        "hanzi": "在右边",
+        "pinyin": "zài yòubian",
+        "english": "on the right"
+      }
+    },
+    {
+      "hanzi": "鱼",
+      "pinyin": "yú",
+      "english": "fish (Kangxi radical 195)",
+      "example": {
+        "hanzi": "吃鱼",
+        "pinyin": "chī yú",
+        "english": "eat fish"
+      }
+    },
+    {
+      "hanzi": "远",
+      "pinyin": "yuǎn",
+      "english": "far",
+      "example": {
+        "hanzi": "很远",
+        "pinyin": "hěn yuǎn",
+        "english": "very far"
+      }
+    },
+    {
+      "hanzi": "运动",
+      "pinyin": "yùndòng",
+      "english": "(physical) exercise",
+      "example": {
+        "hanzi": "做运动",
+        "pinyin": "zuò yùndòng",
+        "english": "do exercise"
+      }
+    },
+    {
+      "hanzi": "再",
+      "pinyin": "zài",
+      "english": "again",
+      "example": {
+        "hanzi": "再说",
+        "pinyin": "zài shuō",
+        "english": "say again"
+      }
+    },
+    {
+      "hanzi": "早上",
+      "pinyin": "zǎoshang",
+      "english": "(early) morning",
+      "example": {
+        "hanzi": "早上好",
+        "pinyin": "zǎoshang hǎo",
+        "english": "good morning"
+      }
+    },
+    {
+      "hanzi": "丈夫",
+      "pinyin": "zhàngfu",
+      "english": "husband",
+      "example": {
+        "hanzi": "我的丈夫",
+        "pinyin": "wǒ de zhàngfu",
+        "english": "my husband"
+      }
+    },
+    {
+      "hanzi": "找",
+      "pinyin": "zhǎo",
+      "english": "try to find",
+      "example": {
+        "hanzi": "找钱",
+        "pinyin": "zhǎo qián",
+        "english": "give change"
+      }
+    },
+    {
+      "hanzi": "着",
+      "pinyin": "zhe",
+      "english": "-ing (indicating action in progress)",
+      "example": {
+        "hanzi": "听着",
+        "pinyin": "tīngzhe",
+        "english": "listening"
+      }
+    },
+    {
+      "hanzi": "真",
+      "pinyin": "zhēn",
+      "english": "real",
+      "example": {
+        "hanzi": "真好",
+        "pinyin": "zhēn hǎo",
+        "english": "really good"
+      }
+    },
+    {
+      "hanzi": "正在",
+      "pinyin": "zhèngzài",
+      "english": "in the process of (doing something)",
+      "example": {
+        "hanzi": "正在吃",
+        "pinyin": "zhèngzài chī",
+        "english": "eating right now"
+      }
+    },
+    {
+      "hanzi": "知道",
+      "pinyin": "zhīdao",
+      "english": "know",
+      "example": {
+        "hanzi": "我知道",
+        "pinyin": "wǒ zhīdao",
+        "english": "I know"
+      }
+    },
+    {
+      "hanzi": "准备",
+      "pinyin": "zhǔnbèi",
+      "english": "prepare",
+      "example": {
+        "hanzi": "准备好",
+        "pinyin": "zhǔnbèi hǎo",
+        "english": "get ready"
+      }
+    },
+    {
+      "hanzi": "走",
+      "pinyin": "zǒu",
+      "english": "to walk",
+      "example": {
+        "hanzi": "走路",
+        "pinyin": "zǒu lù",
+        "english": "walk"
+      }
+    },
+    {
+      "hanzi": "最",
+      "pinyin": "zuì",
+      "english": "the most",
+      "example": {
+        "hanzi": "最好",
+        "pinyin": "zuì hǎo",
+        "english": "the best"
+      }
+    },
+    {
+      "hanzi": "左边",
+      "pinyin": "zuǒbian",
+      "english": "the left side",
+      "example": {
+        "hanzi": "在左边",
+        "pinyin": "zài zuǒbian",
+        "english": "on the left"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "What does 右边 mean?",
+      "options": [
+        "the right (as opposed to left) side",
+        "fish (Kangxi radical 195)",
+        "far"
+      ],
+      "answer": "the right (as opposed to left) side"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which word means '(physical) exercise'?",
+      "options": [
+        "运动",
+        "再",
+        "早上"
+      ],
+      "answer": "运动"
+    },
+    {
+      "type": "listen",
+      "audio": "丈夫",
+      "pinyin": "zhàngfu",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "丈夫",
+        "找",
+        "着"
+      ],
+      "answer": "丈夫"
+    },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        {
+          "hanzi": "真",
+          "english": "real"
+        },
+        {
+          "hanzi": "正在",
+          "english": "in the process of (doing something)"
+        },
+        {
+          "hanzi": "知道",
+          "english": "know"
+        },
+        {
+          "hanzi": "准备",
+          "english": "prepare"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Make the phrase 'on the right'.",
+      "tokens": [
+        "在",
+        "右",
+        "边"
+      ],
+      "answer": "在右边"
+    },
+    {
+      "type": "order",
+      "prompt": "Put the characters in order to say '(physical) exercise'.",
+      "tokens": [
+        "运",
+        "动"
+      ],
+      "answer": "运动"
+    },
+    {
+      "type": "listen",
+      "audio": "走",
+      "pinyin": "zǒu",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "走",
+        "最",
+        "右边"
+      ],
+      "answer": "走"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which character means 'the most'?",
+      "options": [
+        "最",
+        "右边",
+        "鱼"
+      ],
+      "answer": "最"
+    }
+  ]
+}

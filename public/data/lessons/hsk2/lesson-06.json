@@ -1,0 +1,253 @@
+{
+  "id": "hsk2-06",
+  "title": "Shopping & food",
+  "intro": "Shop for food, compare prices, and talk about daily activities with 15 HSK 2 words.",
+  "vocabulary": [
+    {
+      "hanzi": "女",
+      "pinyin": "nǚ",
+      "english": "woman",
+      "example": {
+        "hanzi": "女儿",
+        "pinyin": "nǚ'ér",
+        "english": "daughter"
+      }
+    },
+    {
+      "hanzi": "旁边",
+      "pinyin": "pángbiān",
+      "english": "side, beside",
+      "example": {
+        "hanzi": "在我旁边",
+        "pinyin": "zài wǒ pángbiān",
+        "english": "next to me"
+      }
+    },
+    {
+      "hanzi": "跑步",
+      "pinyin": "pǎobù",
+      "english": "to run",
+      "example": {
+        "hanzi": "去跑步",
+        "pinyin": "qù pǎobù",
+        "english": "go for a run"
+      }
+    },
+    {
+      "hanzi": "便宜",
+      "pinyin": "piányi",
+      "english": "cheap",
+      "example": {
+        "hanzi": "很便宜",
+        "pinyin": "hěn piányi",
+        "english": "very cheap"
+      }
+    },
+    {
+      "hanzi": "票",
+      "pinyin": "piào",
+      "english": "ticket",
+      "example": {
+        "hanzi": "一张票",
+        "pinyin": "yì zhāng piào",
+        "english": "a ticket"
+      }
+    },
+    {
+      "hanzi": "妻子",
+      "pinyin": "qīzi",
+      "english": "wife",
+      "example": {
+        "hanzi": "我的妻子",
+        "pinyin": "wǒ de qīzi",
+        "english": "my wife"
+      }
+    },
+    {
+      "hanzi": "起床",
+      "pinyin": "qǐ chuáng",
+      "english": "get out of bed",
+      "example": {
+        "hanzi": "早起床",
+        "pinyin": "zǎo qǐchuáng",
+        "english": "get up early"
+      }
+    },
+    {
+      "hanzi": "千",
+      "pinyin": "qiān",
+      "english": "one thousand",
+      "example": {
+        "hanzi": "一千块",
+        "pinyin": "yì qiān kuài",
+        "english": "one thousand yuan"
+      }
+    },
+    {
+      "hanzi": "铅笔",
+      "pinyin": "qiānbǐ",
+      "english": "pencil",
+      "example": {
+        "hanzi": "一支铅笔",
+        "pinyin": "yì zhī qiānbǐ",
+        "english": "a pencil"
+      }
+    },
+    {
+      "hanzi": "晴",
+      "pinyin": "qíng",
+      "english": "clear",
+      "example": {
+        "hanzi": "今天晴",
+        "pinyin": "jīntiān qíng",
+        "english": "sunny today"
+      }
+    },
+    {
+      "hanzi": "去年",
+      "pinyin": "qùnián",
+      "english": "last year",
+      "example": {
+        "hanzi": "去年去",
+        "pinyin": "qùnián qù",
+        "english": "went last year"
+      }
+    },
+    {
+      "hanzi": "让",
+      "pinyin": "ràng",
+      "english": "ask",
+      "example": {
+        "hanzi": "让我试",
+        "pinyin": "ràng wǒ shì",
+        "english": "let me try"
+      }
+    },
+    {
+      "hanzi": "日",
+      "pinyin": "rì",
+      "english": "sun",
+      "example": {
+        "hanzi": "每日",
+        "pinyin": "měi rì",
+        "english": "every day"
+      }
+    },
+    {
+      "hanzi": "上班",
+      "pinyin": "shàngbān",
+      "english": "go to work",
+      "example": {
+        "hanzi": "早上上班",
+        "pinyin": "zǎoshang shàngbān",
+        "english": "go to work in the morning"
+      }
+    },
+    {
+      "hanzi": "身体",
+      "pinyin": "shēntǐ",
+      "english": "health",
+      "example": {
+        "hanzi": "身体好",
+        "pinyin": "shēntǐ hǎo",
+        "english": "healthy body"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "What does 女 mean?",
+      "options": [
+        "woman",
+        "side, beside",
+        "to run"
+      ],
+      "answer": "woman"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which word means 'cheap'?",
+      "options": [
+        "便宜",
+        "票",
+        "妻子"
+      ],
+      "answer": "便宜"
+    },
+    {
+      "type": "listen",
+      "audio": "起床",
+      "pinyin": "qǐ chuáng",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "起床",
+        "千",
+        "铅笔"
+      ],
+      "answer": "起床"
+    },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        {
+          "hanzi": "晴",
+          "english": "clear"
+        },
+        {
+          "hanzi": "去年",
+          "english": "last year"
+        },
+        {
+          "hanzi": "让",
+          "english": "ask"
+        },
+        {
+          "hanzi": "日",
+          "english": "sun"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Make the phrase 'daughter'.",
+      "tokens": [
+        "女",
+        "儿"
+      ],
+      "answer": "女儿"
+    },
+    {
+      "type": "order",
+      "prompt": "Put the characters in order to say 'side, beside'.",
+      "tokens": [
+        "旁",
+        "边"
+      ],
+      "answer": "旁边"
+    },
+    {
+      "type": "listen",
+      "audio": "上班",
+      "pinyin": "shàngbān",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "上班",
+        "身体",
+        "女"
+      ],
+      "answer": "上班"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which character means 'health'?",
+      "options": [
+        "身体",
+        "女",
+        "旁边"
+      ],
+      "answer": "身体"
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "id": "hsk2-07",
+  "title": "Morning & prices",
+  "intro": "Describe morning routines, prices, and common activities with 15 more HSK 2 words.",
+  "vocabulary": [
+    {
+      "hanzi": "生病",
+      "pinyin": "shēngbìng",
+      "english": "get sick",
+      "example": {
+        "hanzi": "生病了",
+        "pinyin": "shēngbìng le",
+        "english": "got sick"
+      }
+    },
+    {
+      "hanzi": "生日",
+      "pinyin": "shēngrì",
+      "english": "birthday",
+      "example": {
+        "hanzi": "生日快乐",
+        "pinyin": "shēngrì kuàilè",
+        "english": "happy birthday"
+      }
+    },
+    {
+      "hanzi": "时间",
+      "pinyin": "shíjiān",
+      "english": "time",
+      "example": {
+        "hanzi": "没时间",
+        "pinyin": "méi shíjiān",
+        "english": "no time"
+      }
+    },
+    {
+      "hanzi": "事情",
+      "pinyin": "shìqing",
+      "english": "matter",
+      "example": {
+        "hanzi": "很多事情",
+        "pinyin": "hěn duō shìqing",
+        "english": "many things"
+      }
+    },
+    {
+      "hanzi": "手表",
+      "pinyin": "shǒubiǎo",
+      "english": "wristwatch",
+      "example": {
+        "hanzi": "戴手表",
+        "pinyin": "dài shǒubiǎo",
+        "english": "wear a watch"
+      }
+    },
+    {
+      "hanzi": "手机",
+      "pinyin": "shǒujī",
+      "english": "mobile (cell) phone",
+      "example": {
+        "hanzi": "打手机",
+        "pinyin": "dǎ shǒujī",
+        "english": "make a call"
+      }
+    },
+    {
+      "hanzi": "说话",
+      "pinyin": "shuōhuà",
+      "english": "to talk",
+      "example": {
+        "hanzi": "在说话",
+        "pinyin": "zài shuōhuà",
+        "english": "speaking"
+      }
+    },
+    {
+      "hanzi": "送",
+      "pinyin": "sòng",
+      "english": "deliver",
+      "example": {
+        "hanzi": "送礼物",
+        "pinyin": "sòng lǐwù",
+        "english": "give a gift"
+      }
+    },
+    {
+      "hanzi": "虽然",
+      "pinyin": "suīrán",
+      "english": "although",
+      "example": {
+        "hanzi": "虽然累",
+        "pinyin": "suīrán lèi",
+        "english": "although tired"
+      }
+    },
+    {
+      "hanzi": "但是",
+      "pinyin": "dànshì",
+      "english": "but",
+      "example": {
+        "hanzi": "但是好",
+        "pinyin": "dànshì hǎo",
+        "english": "but good"
+      }
+    },
+    {
+      "hanzi": "它",
+      "pinyin": "tā",
+      "english": "it",
+      "example": {
+        "hanzi": "它很好",
+        "pinyin": "tā hěn hǎo",
+        "english": "it is good"
+      }
+    },
+    {
+      "hanzi": "踢足球",
+      "pinyin": "tīzúqiú",
+      "english": "to play football/soccer",
+      "example": {
+        "hanzi": "喜欢踢足球",
+        "pinyin": "xǐhuan tīzúqiú",
+        "english": "like playing soccer"
+      }
+    },
+    {
+      "hanzi": "题",
+      "pinyin": "tí",
+      "english": "topic",
+      "example": {
+        "hanzi": "一道题",
+        "pinyin": "yì dào tí",
+        "english": "a question"
+      }
+    },
+    {
+      "hanzi": "跳舞",
+      "pinyin": "tiàowǔ",
+      "english": "to dance",
+      "example": {
+        "hanzi": "去跳舞",
+        "pinyin": "qù tiàowǔ",
+        "english": "go dancing"
+      }
+    },
+    {
+      "hanzi": "外",
+      "pinyin": "wài",
+      "english": "outer",
+      "example": {
+        "hanzi": "在外面",
+        "pinyin": "zài wàimiàn",
+        "english": "outside"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "What does 生病 mean?",
+      "options": [
+        "get sick",
+        "birthday",
+        "time"
+      ],
+      "answer": "get sick"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which word means 'matter'?",
+      "options": [
+        "事情",
+        "手表",
+        "手机"
+      ],
+      "answer": "事情"
+    },
+    {
+      "type": "listen",
+      "audio": "说话",
+      "pinyin": "shuōhuà",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "说话",
+        "送",
+        "虽然"
+      ],
+      "answer": "说话"
+    },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        {
+          "hanzi": "但是",
+          "english": "but"
+        },
+        {
+          "hanzi": "它",
+          "english": "it"
+        },
+        {
+          "hanzi": "踢足球",
+          "english": "to play football/soccer"
+        },
+        {
+          "hanzi": "题",
+          "english": "topic"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Make the phrase 'got sick'.",
+      "tokens": [
+        "生",
+        "病",
+        "了"
+      ],
+      "answer": "生病了"
+    },
+    {
+      "type": "order",
+      "prompt": "Put the characters in order to say 'birthday'.",
+      "tokens": [
+        "生",
+        "日"
+      ],
+      "answer": "生日"
+    },
+    {
+      "type": "listen",
+      "audio": "跳舞",
+      "pinyin": "tiàowǔ",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "跳舞",
+        "外",
+        "生病"
+      ],
+      "answer": "跳舞"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which character means 'outer'?",
+      "options": [
+        "外",
+        "生病",
+        "生日"
+      ],
+      "answer": "外"
+    }
+  ]
+}

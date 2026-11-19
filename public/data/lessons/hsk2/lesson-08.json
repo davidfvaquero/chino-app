@@ -1,0 +1,254 @@
+{
+  "id": "hsk2-08",
+  "title": "Daily life & time",
+  "intro": "Discuss daily life, time, and common objects with 15 HSK 2 words.",
+  "vocabulary": [
+    {
+      "hanzi": "完",
+      "pinyin": "wán",
+      "english": "to finish",
+      "example": {
+        "hanzi": "做完了",
+        "pinyin": "zuò wán le",
+        "english": "finished doing"
+      }
+    },
+    {
+      "hanzi": "玩",
+      "pinyin": "wán",
+      "english": "to play",
+      "example": {
+        "hanzi": "去玩",
+        "pinyin": "qù wán",
+        "english": "go play"
+      }
+    },
+    {
+      "hanzi": "晚上",
+      "pinyin": "wǎnshang",
+      "english": "evening",
+      "example": {
+        "hanzi": "晚上好",
+        "pinyin": "wǎnshang hǎo",
+        "english": "good evening"
+      }
+    },
+    {
+      "hanzi": "往",
+      "pinyin": "wǎng",
+      "english": "to go (in a direction)",
+      "example": {
+        "hanzi": "往前走",
+        "pinyin": "wǎng qián zǒu",
+        "english": "walk forward"
+      }
+    },
+    {
+      "hanzi": "为什么",
+      "pinyin": "wèishénme",
+      "english": "why?",
+      "example": {
+        "hanzi": "为什么不",
+        "pinyin": "wèishénme bù",
+        "english": "why not"
+      }
+    },
+    {
+      "hanzi": "问",
+      "pinyin": "wèn",
+      "english": "ask",
+      "example": {
+        "hanzi": "问问题",
+        "pinyin": "wèn wèntí",
+        "english": "ask a question"
+      }
+    },
+    {
+      "hanzi": "问题",
+      "pinyin": "wèntí",
+      "english": "question",
+      "example": {
+        "hanzi": "没有问题",
+        "pinyin": "méiyǒu wèntí",
+        "english": "no problem"
+      }
+    },
+    {
+      "hanzi": "西瓜",
+      "pinyin": "xīguā",
+      "english": "watermelon",
+      "example": {
+        "hanzi": "吃西瓜",
+        "pinyin": "chī xīguā",
+        "english": "eat watermelon"
+      }
+    },
+    {
+      "hanzi": "希望",
+      "pinyin": "xīwàng",
+      "english": "to hope",
+      "example": {
+        "hanzi": "希望好",
+        "pinyin": "xīwàng hǎo",
+        "english": "hope it's good"
+      }
+    },
+    {
+      "hanzi": "洗",
+      "pinyin": "xǐ",
+      "english": "to wash",
+      "example": {
+        "hanzi": "洗手",
+        "pinyin": "xǐ shǒu",
+        "english": "wash hands"
+      }
+    },
+    {
+      "hanzi": "小时",
+      "pinyin": "xiǎoshí",
+      "english": "hour",
+      "example": {
+        "hanzi": "两小时",
+        "pinyin": "liǎng xiǎoshí",
+        "english": "two hours"
+      }
+    },
+    {
+      "hanzi": "笑",
+      "pinyin": "xiào",
+      "english": "to laugh",
+      "example": {
+        "hanzi": "笑了",
+        "pinyin": "xiào le",
+        "english": "laughed"
+      }
+    },
+    {
+      "hanzi": "新",
+      "pinyin": "xīn",
+      "english": "new",
+      "example": {
+        "hanzi": "新年",
+        "pinyin": "xīnnián",
+        "english": "new year"
+      }
+    },
+    {
+      "hanzi": "姓",
+      "pinyin": "xìng",
+      "english": "surname",
+      "example": {
+        "hanzi": "姓王",
+        "pinyin": "xìng Wáng",
+        "english": "surname Wang"
+      }
+    },
+    {
+      "hanzi": "休息",
+      "pinyin": "xiūxi",
+      "english": "to rest",
+      "example": {
+        "hanzi": "休息一下",
+        "pinyin": "xiūxi yíxià",
+        "english": "rest a bit"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "What does 完 mean?",
+      "options": [
+        "to finish",
+        "to play",
+        "evening"
+      ],
+      "answer": "to finish"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which word means 'to go (in a direction)'?",
+      "options": [
+        "往",
+        "为什么",
+        "问"
+      ],
+      "answer": "往"
+    },
+    {
+      "type": "listen",
+      "audio": "问题",
+      "pinyin": "wèntí",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "问题",
+        "西瓜",
+        "希望"
+      ],
+      "answer": "问题"
+    },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        {
+          "hanzi": "洗",
+          "english": "to wash"
+        },
+        {
+          "hanzi": "小时",
+          "english": "hour"
+        },
+        {
+          "hanzi": "笑",
+          "english": "to laugh"
+        },
+        {
+          "hanzi": "新",
+          "english": "new"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Make the phrase 'finished doing'.",
+      "tokens": [
+        "做",
+        "完",
+        "了"
+      ],
+      "answer": "做完了"
+    },
+    {
+      "type": "order",
+      "prompt": "Put the characters in order to say 'evening'.",
+      "tokens": [
+        "晚",
+        "上"
+      ],
+      "answer": "晚上"
+    },
+    {
+      "type": "listen",
+      "audio": "姓",
+      "pinyin": "xìng",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "姓",
+        "休息",
+        "完"
+      ],
+      "answer": "姓"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which character means 'to rest'?",
+      "options": [
+        "休息",
+        "完",
+        "玩"
+      ],
+      "answer": "休息"
+    }
+  ]
+}
