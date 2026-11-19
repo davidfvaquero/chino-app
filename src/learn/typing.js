@@ -384,8 +384,8 @@ function createTypingApp(container, ctx) {
     for (const [key, btn] of Object.entries(sourceButtons)) {
       btn.setAttribute('aria-pressed', key === state.source ? 'true' : 'false');
     }
-    document.getElementById('hsk-row').hidden = state.source !== 'hsk';
-    document.getElementById('theme-row').hidden = state.source !== 'theme';
+    setupSection.querySelector('#hsk-row').hidden = state.source !== 'hsk';
+    setupSection.querySelector('#theme-row').hidden = state.source !== 'theme';
   }
 
   function showSetup() {
