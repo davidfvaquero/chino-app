@@ -1,0 +1,64 @@
+{
+  "plan": {
+    "title": "30-day plan",
+    "intro": "A guided month for beginners: one lesson a day, a review goal, a short reading, and a theme or grammar point — with a rest day every week.",
+    "start": "Start plan",
+    "loadError": "Could not load the plan.",
+    "progress": "{done} of {total} days done",
+    "day": "Day {n}",
+    "rest": "Rest & review: no new lesson today, just clear your review queue.",
+    "markDone": "Mark day as done",
+    "catchUp": "Catch up",
+    "reset": "Reset plan",
+    "status": {
+      "done": "Done",
+      "today": "Today",
+      "pending": "Pending"
+    },
+    "task": {
+      "lesson": "Lesson: {title}",
+      "review": "Review {n} cards",
+      "reading": "Reading: {title}",
+      "theme": "Theme: {title}",
+      "grammar": "Grammar: {title}"
+    },
+    "home": {
+      "title": "Today in your plan",
+      "start": "Start your 30-day plan",
+      "open": "Open plan",
+      "day": "Day {n}: {title}"
+    },
+    "days": {
+      "1": "Greetings & numbers",
+      "2": "People & family",
+      "3": "Everyday things",
+      "4": "Food & drink",
+      "5": "Time & dates",
+      "6": "Places & travel",
+      "7": "Rest & review",
+      "8": "Study & work",
+      "9": "Shopping & money",
+      "10": "Transport & directions",
+      "11": "Weather & seasons",
+      "12": "Counting in practice",
+      "13": "Dates & weekdays",
+      "14": "Rest & review",
+      "15": "Telling the time",
+      "16": "Making plans",
+      "17": "Asking questions",
+      "18": "Family revisited",
+      "19": "Describing things",
+      "20": "Question words",
+      "21": "Rest & review",
+      "22": "Everyday objects",
+      "23": "Time expressions",
+      "24": "Colors & hobbies",
+      "25": "Possession & belonging",
+      "26": "Comparing & choosing",
+      "27": "Talking about the past",
+      "28": "Rest & review",
+      "29": "Review & consolidation",
+      "30": "Final review"
+    }
+  }
+}

@@ -18,6 +18,7 @@ import { getSettings, DEFAULTS } from '../settings.js';
 import { getHardWords } from '../hardwords.js';
 import { loadIndex as loadLessonIndex, getProgress } from '../learn/lessons.js';
 import { loadIndex as loadReadingIndex } from '../reading/data.js';
+import { loadPlan, getProgress as getPlanProgress, currentDay } from '../learn/plan.js';
 import { fetchData } from '../data-url.js';
 
 export const titleKey = 'screens.home.title';
@@ -107,12 +108,19 @@ async function gather(now) {
     safe(findNextLesson(lessonIndex, (id) => getProgress('hsk1', id)), null),
   ]);
   const reading = readings.length ? readings[dayNumber(now) % readings.length] : null;
+  const [plan, planProgress] = await Promise.all([safe(loadPlan(), null), safe(getPlanProgress(), null)]);
+  let planInfo = null;
+  if (plan && planProgress) {
+    const day = currentDay(plan, planProgress, now);
+    planInfo = { day, titleKey: plan.days[day - 1]?.titleKey ?? '' };
+  }
   return {
     next: chooseNextStep({ due, lesson, reading }),
     hard: hard.length,
     goal: goalProgress(day.reviews, settings.dailyGoal),
     streak: stats.streak ?? 0,
     word: pickWordOfDay(words, now),
+    plan: planInfo,
   };
 }
 
@@ -164,7 +172,7 @@ export async function render(container, ctx = {}) {
     return;
   }
 
-  const { next, hard, goal, streak, word } = state;
+  const { next, hard, goal, streak, word, plan } = state;
   const nextCard = h(
     'section',
     { class: 'card', 'data-role': 'next', 'data-kind': next.kind },
@@ -186,6 +194,16 @@ export async function render(container, ctx = {}) {
     h('p', { class: 'home-muted', 'data-role': 'streak', text: t('home.streak', { n: streak }) }),
   );
 
-  reset(container).append(h('div', { class: 'home' }, nextCard, goalCard, word ? wordCard(word) : null));
+  const planCard = plan
+    ? h(
+        'section',
+        { class: 'card', 'data-role': 'plan' },
+        h('h2', { text: t('plan.home.title') }),
+        h('p', { class: 'home-muted', 'data-role': 'plan-day', text: t('plan.home.day', { n: plan.day, title: t(plan.titleKey) }) }),
+        h('button', { type: 'button', class: 'home-link', 'data-role': 'plan-go', text: t('plan.home.open'), onclick: () => go('learn/plan') }),
+      )
+    : null;
+
+  reset(container).append(h('div', { class: 'home' }, nextCard, planCard, goalCard, word ? wordCard(word) : null));
   container.focus({ preventScroll: true });
 }

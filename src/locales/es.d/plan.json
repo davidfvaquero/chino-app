@@ -1,0 +1,64 @@
+{
+  "plan": {
+    "title": "Plan de 30 días",
+    "intro": "Un mes guiado para principiantes: una lección al día, una meta de repaso, una lectura corta y un tema o punto de gramática, con un día de descanso cada semana.",
+    "start": "Empezar el plan",
+    "loadError": "No se pudo cargar el plan.",
+    "progress": "{done} de {total} días hechos",
+    "day": "Día {n}",
+    "rest": "Descanso y repaso: hoy no hay lección nueva, solo vacía tu cola de repaso.",
+    "markDone": "Marcar el día como hecho",
+    "catchUp": "Ponerse al día",
+    "reset": "Reiniciar el plan",
+    "status": {
+      "done": "Hecho",
+      "today": "Hoy",
+      "pending": "Pendiente"
+    },
+    "task": {
+      "lesson": "Lección: {title}",
+      "review": "Repaso de {n} tarjetas",
+      "reading": "Lectura: {title}",
+      "theme": "Tema: {title}",
+      "grammar": "Gramática: {title}"
+    },
+    "home": {
+      "title": "Hoy en tu plan",
+      "start": "Empieza tu plan de 30 días",
+      "open": "Abrir el plan",
+      "day": "Día {n}: {title}"
+    },
+    "days": {
+      "1": "Saludos y números",
+      "2": "Personas y familia",
+      "3": "Cosas de cada día",
+      "4": "Comida y bebida",
+      "5": "Hora y fechas",
+      "6": "Lugares y viajes",
+      "7": "Descanso y repaso",
+      "8": "Estudios y trabajo",
+      "9": "Compras y dinero",
+      "10": "Transporte y direcciones",
+      "11": "Clima y estaciones",
+      "12": "Contar en la práctica",
+      "13": "Fechas y días de la semana",
+      "14": "Descanso y repaso",
+      "15": "Decir la hora",
+      "16": "Hacer planes",
+      "17": "Hacer preguntas",
+      "18": "La familia otra vez",
+      "19": "Describir cosas",
+      "20": "Palabras interrogativas",
+      "21": "Descanso y repaso",
+      "22": "Objetos de cada día",
+      "23": "Expresiones de tiempo",
+      "24": "Colores y aficiones",
+      "25": "Posesión y pertenencia",
+      "26": "Comparar y elegir",
+      "27": "Hablar del pasado",
+      "28": "Descanso y repaso",
+      "29": "Repaso y consolidación",
+      "30": "Repaso final"
+    }
+  }
+}
