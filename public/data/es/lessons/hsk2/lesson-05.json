@@ -1,0 +1,32 @@
+{
+  "id": "hsk2-05",
+  "title": "Estudio y sentimientos",
+  "intro": "Expresa movimiento, cantidades, rutinas diarias y formas educadas con 15 palabras más de HSK 2.",
+  "vocabulary": [
+    { "hanzi": "离", "pinyin": "lí", "english": "salir; partir", "example": { "hanzi": "离开", "pinyin": "líkāi", "english": "salir; partir" } },
+    { "hanzi": "两", "pinyin": "liǎng", "english": "dos", "example": { "hanzi": "两个人", "pinyin": "liǎng gè rén", "english": "dos personas" } },
+    { "hanzi": "零", "pinyin": "líng", "english": "cero", "example": { "hanzi": "零度", "pinyin": "líng dù", "english": "cero grados" } },
+    { "hanzi": "路", "pinyin": "lù", "english": "carretera; camino", "example": { "hanzi": "这条路", "pinyin": "zhè tiáo lù", "english": "este camino" } },
+    { "hanzi": "旅游", "pinyin": "lǚyóu", "english": "viajar; viaje", "example": { "hanzi": "去旅游", "pinyin": "qù lǚyóu", "english": "ir de viaje" } },
+    { "hanzi": "卖", "pinyin": "mài", "english": "vender", "example": { "hanzi": "卖东西", "pinyin": "mài dōngxi", "english": "vender cosas" } },
+    { "hanzi": "慢", "pinyin": "màn", "english": "lento", "example": { "hanzi": "慢慢来", "pinyin": "màn man lái", "english": "tómatelo con calma" } },
+    { "hanzi": "忙", "pinyin": "máng", "english": "ocupado", "example": { "hanzi": "很忙", "pinyin": "hěn máng", "english": "muy ocupado" } },
+    { "hanzi": "每", "pinyin": "měi", "english": "cada", "example": { "hanzi": "每天", "pinyin": "měi tiān", "english": "cada día" } },
+    { "hanzi": "妹妹", "pinyin": "mèimei", "english": "hermana menor", "example": { "hanzi": "我的妹妹", "pinyin": "wǒ de mèimei", "english": "mi hermana menor" } },
+    { "hanzi": "门", "pinyin": "mén", "english": "puerta", "example": { "hanzi": "开门", "pinyin": "kāi mén", "english": "abrir la puerta" } },
+    { "hanzi": "面条", "pinyin": "miàntiáo", "english": "fideos", "example": { "hanzi": "吃面条", "pinyin": "chī miàntiáo", "english": "comer fideos" } },
+    { "hanzi": "男", "pinyin": "nán", "english": "hombre; masculino", "example": { "hanzi": "男生", "pinyin": "nánshēng", "english": "chico; estudiante varón" } },
+    { "hanzi": "您", "pinyin": "nín", "english": "usted (educado)", "example": { "hanzi": "您好", "pinyin": "nín hǎo", "english": "hola (educado)" } },
+    { "hanzi": "牛奶", "pinyin": "niúnǎi", "english": "leche", "example": { "hanzi": "喝牛奶", "pinyin": "hē niúnǎi", "english": "beber leche" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 妹妹?", "options": ["hermana mayor", "hermana menor", "madre"], "answer": "hermana menor" },
+    { "type": "choose", "prompt": "¿Qué palabra significa 'leche'?", "options": ["面条", "牛奶", "咖啡"], "answer": "牛奶" },
+    { "type": "listen", "audio": "旅游", "pinyin": "lǚyóu", "prompt": "Escucha y elige lo que oyes.", "options": ["旅游", "路", "离"], "answer": "旅游" },
+    { "type": "match", "prompt": "Une cada palabra con su significado.", "pairs": [ { "hanzi": "慢", "english": "lento" }, { "hanzi": "忙", "english": "ocupado" }, { "hanzi": "门", "english": "puerta" }, { "hanzi": "您", "english": "usted (educado)" } ] },
+    { "type": "order", "prompt": "Forma la frase 'cada día'.", "tokens": ["天", "每"], "answer": "每天" },
+    { "type": "order", "prompt": "Pon los caracteres en orden para decir 'comer fideos'.", "tokens": ["条", "面", "吃"], "answer": "吃面条" },
+    { "type": "listen", "audio": "两", "pinyin": "liǎng", "prompt": "Escucha y elige lo que oyes.", "options": ["两", "零", "离"], "answer": "两" },
+    { "type": "choose", "prompt": "¿Qué carácter significa 'lento'?", "options": ["忙", "慢", "每"], "answer": "慢" }
+  ]
+}

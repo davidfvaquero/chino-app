@@ -1,0 +1,32 @@
+{
+  "id": "hsk2-04",
+  "title": "Colegio y gustos",
+  "intro": "Habla del colegio, preferencias, habilidades y sentimientos con las siguientes 15 palabras de HSK 2.",
+  "vocabulary": [
+    { "hanzi": "姐姐", "pinyin": "jiějie", "english": "hermana mayor", "example": { "hanzi": "我的姐姐", "pinyin": "wǒ de jiějie", "english": "mi hermana mayor" } },
+    { "hanzi": "介绍", "pinyin": "jièshào", "english": "presentar", "example": { "hanzi": "介绍一下", "pinyin": "jièshào yíxià", "english": "presentar brevemente" } },
+    { "hanzi": "进", "pinyin": "jìn", "english": "entrar", "example": { "hanzi": "进来", "pinyin": "jìn lái", "english": "entra" } },
+    { "hanzi": "近", "pinyin": "jìn", "english": "cerca", "example": { "hanzi": "很近", "pinyin": "hěn jìn", "english": "muy cerca" } },
+    { "hanzi": "就", "pinyin": "jiù", "english": "entonces; justo", "example": { "hanzi": "就去", "pinyin": "jiù qù", "english": "ve directamente" } },
+    { "hanzi": "觉得", "pinyin": "juéde", "english": "sentir; pensar", "example": { "hanzi": "我觉得好", "pinyin": "wǒ juéde hǎo", "english": "creo que está bien" } },
+    { "hanzi": "咖啡", "pinyin": "kāfēi", "english": "café", "example": { "hanzi": "喝咖啡", "pinyin": "hē kāfēi", "english": "tomar café" } },
+    { "hanzi": "开始", "pinyin": "kāishǐ", "english": "empezar", "example": { "hanzi": "开始了", "pinyin": "kāishǐ le", "english": "empezó" } },
+    { "hanzi": "考试", "pinyin": "kǎoshì", "english": "examen", "example": { "hanzi": "明天考试", "pinyin": "míngtiān kǎoshì", "english": "examen mañana" } },
+    { "hanzi": "可能", "pinyin": "kěnéng", "english": "quizá; posible", "example": { "hanzi": "可能去", "pinyin": "kěnéng qù", "english": "quizá vaya" } },
+    { "hanzi": "可以", "pinyin": "kěyǐ", "english": "poder; estar permitido", "example": { "hanzi": "可以吗", "pinyin": "kěyǐ ma", "english": "¿está bien?" } },
+    { "hanzi": "课", "pinyin": "kè", "english": "clase; lección", "example": { "hanzi": "上课", "pinyin": "shàng kè", "english": "tener clase" } },
+    { "hanzi": "快", "pinyin": "kuài", "english": "rápido", "example": { "hanzi": "很快", "pinyin": "hěn kuài", "english": "muy rápido" } },
+    { "hanzi": "快乐", "pinyin": "kuàilè", "english": "feliz", "example": { "hanzi": "很快乐", "pinyin": "hěn kuàilè", "english": "muy feliz" } },
+    { "hanzi": "累", "pinyin": "lèi", "english": "cansado", "example": { "hanzi": "我很累", "pinyin": "wǒ hěn lèi", "english": "estoy cansado" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 姐姐?", "options": ["hermana mayor", "hermana menor", "madre"], "answer": "hermana mayor" },
+    { "type": "choose", "prompt": "¿Qué palabra significa 'café'?", "options": ["考试", "咖啡", "开始"], "answer": "咖啡" },
+    { "type": "listen", "audio": "快乐", "pinyin": "kuàilè", "prompt": "Escucha y elige lo que oyes.", "options": ["快乐", "快", "累"], "answer": "快乐" },
+    { "type": "match", "prompt": "Une cada palabra con su significado.", "pairs": [ { "hanzi": "介绍", "english": "presentar" }, { "hanzi": "考试", "english": "examen" }, { "hanzi": "可以", "english": "poder" }, { "hanzi": "累", "english": "cansado" } ] },
+    { "type": "order", "prompt": "Forma la frase 'creo que está bien'.", "tokens": ["好", "觉", "得", "我", "很"], "answer": "我觉得很好" },
+    { "type": "order", "prompt": "Pon los caracteres en orden para decir 'tener clase'.", "tokens": ["上", "课"], "answer": "上课" },
+    { "type": "listen", "audio": "可能", "pinyin": "kěnéng", "prompt": "Escucha y elige lo que oyes.", "options": ["可能", "可以", "开始"], "answer": "可能" },
+    { "type": "choose", "prompt": "¿Qué carácter significa 'rápido'?", "options": ["快", "累", "课"], "answer": "快" }
+  ]
+}

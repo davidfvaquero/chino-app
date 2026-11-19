@@ -1,0 +1,20 @@
+{
+  "level": "hsk2",
+  "title": "HSK 2",
+  "source": "public/data/hsk/2.json",
+  "wordCount": 151,
+  "wordsPerLesson": 15,
+  "note": "Plan fijo de 10 lecciones para HSK 2, igual que HSK 1. `range` es el tramo sugerido de las 151 palabras de HSK 2 (1-based, inclusive, lista alfabética) para una lección que aún no se ha escrito; las tareas de relleno escriben lesson-02.json .. lesson-10.json sin tocar este índice. La lección 1 ya está escrita a mano (`curated: true`) y su vocabulario es el autoritario. La lección 10 cubre las últimas 16 palabras (151 no es divisible por 10). Véase docs/lesson-schema.md.",
+  "lessons": [
+    { "id": "hsk2-01", "title": "Peticiones amables y comparación", "file": "lesson-01.json", "range": { "from": 1, "to": 15 }, "curated": true },
+    { "id": "hsk2-02", "title": "Personas y lugares", "file": "lesson-02.json", "range": { "from": 16, "to": 30 } },
+    { "id": "hsk2-03", "title": "Moverse por la ciudad", "file": "lesson-03.json", "range": { "from": 31, "to": 45 } },
+    { "id": "hsk2-04", "title": "Colegio y gustos", "file": "lesson-04.json", "range": { "from": 46, "to": 60 } },
+    { "id": "hsk2-05", "title": "Estudio y sentimientos", "file": "lesson-05.json", "range": { "from": 61, "to": 75 } },
+    { "id": "hsk2-06", "title": "Compras y comida", "file": "lesson-06.json", "range": { "from": 76, "to": 90 } },
+    { "id": "hsk2-07", "title": "Mañana y precios", "file": "lesson-07.json", "range": { "from": 91, "to": 105 } },
+    { "id": "hsk2-08", "title": "Vida diaria y tiempo", "file": "lesson-08.json", "range": { "from": 106, "to": 120 } },
+    { "id": "hsk2-09", "title": "Acciones y conectores", "file": "lesson-09.json", "range": { "from": 121, "to": 135 } },
+    { "id": "hsk2-10", "title": "Preguntas y palabras cotidianas", "file": "lesson-10.json", "range": { "from": 136, "to": 151 } }
+  ]
+}
