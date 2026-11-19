@@ -1,0 +1,14 @@
+{
+  "level": "practical",
+  "title": "Chino Práctico",
+  "source": "hand-curated",
+  "wordCount": 120,
+  "wordsPerLesson": 24,
+  "lessons": [
+    { "id": "practical-01", "title": "Números 0-10 y conteo", "file": "lesson-01.json", "curated": true },
+    { "id": "practical-02", "title": "Números 11-99, centenas y millares", "file": "lesson-02.json", "curated": true },
+    { "id": "practical-03", "title": "Fechas: año, mes, día, días de la semana", "file": "lesson-03.json", "curated": true },
+    { "id": "practical-04", "title": "La hora: 点, 半, 分", "file": "lesson-04.json", "curated": true },
+    { "id": "practical-05", "title": "Dinero y precios: 块/元/毛, 多少钱, regateo", "file": "lesson-05.json", "curated": true }
+  ]
+}

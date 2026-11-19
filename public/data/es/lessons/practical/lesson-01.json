@@ -1,0 +1,33 @@
+{
+  "id": "practical-01",
+  "title": "Números 0-10 y conteo",
+  "intro": "Aprende a contar del cero al diez y usa cuantificadores básicos para contar objetos.",
+  "vocabulary": [
+    { "hanzi": "零", "pinyin": "líng", "english": "cero", "example": { "hanzi": "零度", "pinyin": "líng dù", "english": "cero grados" } },
+    { "hanzi": "一", "pinyin": "yī", "english": "uno", "example": { "hanzi": "一个人", "pinyin": "yī gè rén", "english": "una persona" } },
+    { "hanzi": "二", "pinyin": "èr", "english": "dos", "example": { "hanzi": "两个人", "pinyin": "liǎng gè rén", "english": "dos personas" } },
+    { "hanzi": "三", "pinyin": "sān", "english": "tres", "example": { "hanzi": "三本书", "pinyin": "sān běn shū", "english": "tres libros" } },
+    { "hanzi": "四", "pinyin": "sì", "english": "cuatro", "example": { "hanzi": "四只猫", "pinyin": "sì zhī māo", "english": "cuatro gatos" } },
+    { "hanzi": "五", "pinyin": "wǔ", "english": "cinco", "example": { "hanzi": "五个苹果", "pinyin": "wǔ gè píngguǒ", "english": "cinco manzanas" } },
+    { "hanzi": "六", "pinyin": "liù", "english": "seis", "example": { "hanzi": "六月", "pinyin": "liù yuè", "english": "junio" } },
+    { "hanzi": "七", "pinyin": "qī", "english": "siete", "example": { "hanzi": "七天", "pinyin": "qī tiān", "english": "siete días" } },
+    { "hanzi": "八", "pinyin": "bā", "english": "ocho", "example": { "hanzi": "八点", "pinyin": "bā diǎn", "english": "ocho en punto" } },
+    { "hanzi": "九", "pinyin": "jiǔ", "english": "nueve", "example": { "hanzi": "九岁", "pinyin": "jiǔ suì", "english": "nueve años" } },
+    { "hanzi": "十", "pinyin": "shí", "english": "diez", "example": { "hanzi": "十块钱", "pinyin": "shí kuài qián", "english": "diez yuanes" } },
+    { "hanzi": "个", "pinyin": "gè", "english": "cuantificador general", "example": { "hanzi": "一个", "pinyin": "yī gè", "english": "uno (objeto)" } },
+    { "hanzi": "本", "pinyin": "běn", "english": "cuantificador para libros", "example": { "hanzi": "三本书", "pinyin": "sān běn shū", "english": "tres libros" } },
+    { "hanzi": "只", "pinyin": "zhī", "english": "cuantificador para animales", "example": { "hanzi": "一只猫", "pinyin": "yī zhī māo", "english": "un gato" } },
+    { "hanzi": "岁", "pinyin": "suì", "english": "años (edad)", "example": { "hanzi": "五岁", "pinyin": "wǔ suì", "english": "cinco años" } },
+    { "hanzi": "多少", "pinyin": "duōshao", "english": "cuántos; cuánto", "example": { "hanzi": "多少人？", "pinyin": "duōshao rén?", "english": "¿Cuántas personas?" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 零?", "options": ["cero", "uno", "diez"], "answer": "cero" },
+    { "type": "choose", "prompt": "¿Qué carácter significa 'cinco'?", "options": ["四", "五", "六"], "answer": "五" },
+    { "type": "listen", "audio": "三本书", "pinyin": "sān běn shū", "prompt": "Escucha y elige lo que oyes.", "options": ["三本书", "三只猫", "三个苹果"], "answer": "三本书" },
+    { "type": "match", "prompt": "Une cada número con su carácter.", "pairs": [ { "hanzi": "一", "english": "uno" }, { "hanzi": "五", "english": "cinco" }, { "hanzi": "八", "english": "ocho" }, { "hanzi": "十", "english": "diez" } ] },
+    { "type": "order", "prompt": "Ordena los caracteres para contar 1-2-3.", "tokens": ["三", "一", "二"], "answer": "一二三" },
+    { "type": "order", "prompt": "Forma la frase 'dos personas'.", "tokens": ["人", "两", "个"], "answer": "两个人" },
+    { "type": "choose", "prompt": "¿Qué cuantificador se usa para libros?", "options": ["个", "本", "只"], "answer": "本" },
+    { "type": "listen", "audio": "八点", "pinyin": "bā diǎn", "prompt": "Escucha y elige lo que oyes.", "options": ["八点", "九点", "十点"], "answer": "八点" }
+  ]
+}

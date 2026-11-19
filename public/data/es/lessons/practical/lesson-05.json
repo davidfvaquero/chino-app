@@ -1,0 +1,33 @@
+{
+  "id": "practical-05",
+  "title": "Dinero y precios: 块/元/毛, 多少钱, regateo",
+  "intro": "Maneja dinero: yuan (元/块), jiao (毛), preguntar precios y frases básicas de regateo.",
+  "vocabulary": [
+    { "hanzi": "钱", "pinyin": "qián", "english": "dinero", "example": { "hanzi": "多少钱？", "pinyin": "duō shao qián?", "english": "¿Cuánto dinero?" } },
+    { "hanzi": "元", "pinyin": "yuán", "english": "yuan (unidad formal)", "example": { "hanzi": "十元", "pinyin": "shí yuán", "english": "diez yuanes" } },
+    { "hanzi": "块", "pinyin": "kuài", "english": "yuan (unidad coloquial)", "example": { "hanzi": "五块钱", "pinyin": "wǔ kuài qián", "english": "cinco yuanes" } },
+    { "hanzi": "毛", "pinyin": "máo", "english": "jiao (0.1 yuan)", "example": { "hanzi": "五毛", "pinyin": "wǔ máo", "english": "cinco jiao (0.5 yuan)" } },
+    { "hanzi": "分", "pinyin": "fēn", "english": "fen (0.01 yuan)", "example": { "hanzi": "一分", "pinyin": "yī fēn", "english": "un fen" } },
+    { "hanzi": "多少钱", "pinyin": "duō shao qián", "english": "¿cuánto cuesta?", "example": { "hanzi": "这个多少钱？", "pinyin": "zhè ge duō shao qián?", "english": "¿Cuánto cuesta esto?" } },
+    { "hanzi": "贵", "pinyin": "guì", "english": "caro", "example": { "hanzi": "太贵了", "pinyin": "tài guì le", "english": "demasiado caro" } },
+    { "hanzi": "便宜", "pinyin": "pián yi", "english": "barato", "example": { "hanzi": "很便宜", "pinyin": "hěn pián yi", "english": "muy barato" } },
+    { "hanzi": "可以", "pinyin": "kě yǐ", "english": "poder; poder ser", "example": { "hanzi": "可以便宜点吗？", "pinyin": "kě yǐ pián yi diǎn ma?", "english": "¿Puede ser más barato?" } },
+    { "hanzi": "便宜点", "pinyin": "pián yi diǎn", "english": "un poco más barato", "example": { "hanzi": "能不能便宜点？", "pinyin": "néng bu néng pián yi diǎn?", "english": "¿Podrías bajar el precio?" } },
+    { "hanzi": "成交", "pinyin": "chéng jiāo", "english": "trato; acuerdo cerrado", "example": { "hanzi": "成交！", "pinyin": "chéng jiāo!", "english": "¡Trato hecho!" } },
+    { "hanzi": "不买了", "pinyin": "bú mǎi le", "english": "ya no compro", "example": { "hanzi": "太贵了，不买了", "pinyin": "tài guì le, bú mǎi le", "english": "Demasiado caro, ya no compro" } },
+    { "hanzi": "零钱", "pinyin": "líng qián", "english": "vuelto (monedas/billetes pequeños)", "example": { "hanzi": "有零钱吗？", "pinyin": "yǒu líng qián ma?", "english": "¿Tienes vuelto?" } },
+    { "hanzi": "发票", "pinyin": "fā piào", "english": "recibo; factura", "example": { "hanzi": "要发票吗？", "pinyin": "yào fā piào ma?", "english": "¿Quieres factura?" } },
+    { "hanzi": "现金", "pinyin": "xiàn jīn", "english": "efectivo", "example": { "hanzi": "现金还是微信？", "pinyin": "xiàn jīn hái shì wēi xìn?", "english": "¿Efectivo o WeChat Pay?" } },
+    { "hanzi": "扫码", "pinyin": "sǎo mǎ", "english": "escanear código QR para pagar", "example": { "hanzi": "扫码付款", "pinyin": "sǎo mǎ fù kuǎn", "english": "escanear para pagar" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Cuál es la palabra coloquial para 'yuan'?", "options": ["元", "块", "毛"], "answer": "块" },
+    { "type": "choose", "prompt": "¿Cuánto es 五毛?", "options": ["5 yuanes", "0.5 yuanes", "0.05 yuanes"], "answer": "0.5 yuanes" },
+    { "type": "listen", "audio": "多少钱？", "pinyin": "duō shao qián?", "prompt": "Escucha y elige lo que oyes.", "options": ["多少钱？", "几块钱？", "多少人？"], "answer": "多少钱？" },
+    { "type": "match", "prompt": "Une cada unidad monetaria con su valor.", "pairs": [ { "hanzi": "元", "english": "yuan (formal)" }, { "hanzi": "块", "english": "yuan (coloquial)" }, { "hanzi": "毛", "english": "0.1 yuan (jiao)" }, { "hanzi": "分", "english": "0.01 yuan (fen)" } ] },
+    { "type": "order", "prompt": "Ordena para decir '¿Puede ser más barato?'.", "tokens": ["吗", "点", "便宜", "可以"], "answer": "可以便宜点吗" },
+    { "type": "order", "prompt": "Forma 'Esto es demasiado caro.'.", "tokens": ["了", "贵", "太", "这"], "answer": "这太贵了" },
+    { "type": "choose", "prompt": "¿Qué dices para cerrar un precio?", "options": ["成交！", "不买了", "太贵了"], "answer": "成交！" },
+    { "type": "listen", "audio": "现金还是微信？", "pinyin": "xiàn jīn hái shì wēi xìn?", "prompt": "Escucha y elige lo que oyes.", "options": ["现金还是微信？", "扫码还是现金？", "微信还是支付宝？"], "answer": "现金还是微信？" }
+  ]
+}
