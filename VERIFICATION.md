@@ -1677,3 +1677,51 @@ npm test                                  # 742/745 (3 fail: tests/hsk3-lessons-
 **Veredicto BLOQUE 16: contenido y herramientas OK.** Esquema, pinyin vs CC-CEDICT, ejercicios, segmentabilidad, hoja+impresión, teclear, Anki y los dos juegos pasan con navegador real; 0 claves crudas, 0 chino tradicional en rutas barridas, 0 errores de consola, rutas directas y subdirectorio sin 404. **FALLO ajenos** (no de este bloque): `npm test` y `git status` por dos ficheros sin trackear de otros workers (`tests/hsk3-lessons-headless.test.mjs`, pide un servidor en `:33730`; `scripts/verify-readings.mjs`). 1 reparación aplicada: `src/learn/typing.js` (`1d23c11`).
 
 *Verificador deepseek — 2026-11-19*
+
+## BLOQUE 14 — re-verificación final (t_b6925301, verificador haiku, 2026-11-19 — pasada 65) — FALLO ajeno (npm test / git status)
+
+Alcance: AUD1 t_9f38ab7a, AUD2 t_45617f44, RM t_07416dca, PLAN t_a42fabe8, EXAM t_8995dfa5. Asignados todos a `barato` (ninguno a `haiku`), así que se verifican todos. Build en `OUT_DIR=/tmp/chino-t_b6925301`; servido en subdirectorio `/chino-app/`. Árbol de trabajo tal cual (incluye WIP sin commit de otros, ver abajo).
+
+### Específicas
+
+| # | Punto | Estado | Evidencia |
+|---|---|---|---|
+| 1 | Licencia | OK | `CREDITS.md` §8: Kokoro-82M v1.1-zh, Apache-2.0 (redistribuible con atribución); pesos no commiteados |
+| 2 | Tamaño / carga | OK | `public/audio`: 1104 mp3 + index.json = 4 372 296 B (~4.2 MiB; 4.13 MB sólo mp3, media ~3.8 KB/clip); index.json 37 KB. Carga por clip bajo demanda. Tiempo de carga en red real no medido |
+| 3 | Muestra 10 audios | OK (observación) | 10/10 existen, duración 0.70–1.70 s. Silencios ≥0.3 s a −50 dB (ffmpeg silencedetect): 2/10 tienen **cola de silencio** (`012210f1…` 0.42 s, `01c5e07f…` 0.53 s); 8/10 limpios. No bloquea; se puede recortar en un script futuro |
+| 4 | Lección 1 usa mp3; sin archivo → TTS | OK | `#/learn/lessons/hsk1-01` abre (en/es). Fetch de `audio/index.json` y `audio/440ee0853ad1e99f.mp3` = 200. Fallback TTS cubierto por `tests/audio.test.mjs` (incluido en npm test verde) |
+| 5 | Offline tras primera carga | OK (matiz) | Tras visitar lista y lección y pedir el mp3 en línea: `setOffline(true)` + recarga → lección y lista renderizan; mp3 y index.json = 200 offline (en-US y es-ES). **Matiz**: el mp3 sólo queda en caché cuando se pide; si nunca se ha reproducido, offline cae al TTS |
+| 6 | 3 modos de repaso | OK (UI) / parcial | `#/review` en en/es muestra Classic / Reverse (Inversa) / Type pinyin / Only my mistakes, "Nothing due" sin tarjetas. Comportamiento por modo ya comprobado en pasada 63 (Type pinyin: Correct / Almost / Not quite) y tests `review-modes` (en npm test). Esta pasada no sembré tarjetas en el build |
+| 7 | Plan 30 días | OK (rutas) / parcial | `#/learn/plan` en en/es: "Start plan", Day 1 Greetings & numbers "Today", enlace a lección, "Mark day as done". Ids validados por `tests/plan.test.mjs` (en npm test verde). No re-pulsé Start ni comprobé la tarjeta de Home en esta pasada (sí en pasada 64) |
+| 8 | Examen HSK 1 completo + add mistakes | OK | Probe en subdirectorio con clicks reales: examen → "Added 10 cards to review", "Take another exam". Pasada 63/64: 100 % y 0 % con 20 errores, add-all → 10 tarjetas en srs |
+
+### Comunes
+
+| Punto | Estado | Evidencia |
+|---|---|---|
+| `npm test` verde | **FALLO (ajeno)** | 781 tests: 778 pass / 3 fail. Los 3 son `tests/hsk3-lessons-headless.test.mjs` (hsk3-08/09/10, "No vocabulary items found"). Es fichero **sin trackear** (`??`) de otro worker; importa `playwright` (no está en package.json) y fija `BASE = http://localhost:33730` (depende de un servidor ajeno). Ninguno de estos fallos es del bloque 14 |
+| `check-es-data` | OK | `114 archivos revisados, 0 errores` (exit 0) |
+| ES/EN sin claves crudas | OK (rutas del bloque) | home, plan, exam, lección, review, tones-duel en en-US y es-ES: textos legibles, 0 claves literales en la muestra |
+| Sin chino tradicional en UI | no re-barrido | No re-ejecuté el barrido de trad en esta pasada (ver BLOQUE 16 para el barrido completo de otras rutas) |
+| Sin errores de consola | OK | Rutas online: 0 errores de consola / pageerror. Sólo aparecen `ERR_FAILED` en la prueba offline (esperado) |
+| Deep link | OK | 6 rutas abren directas en en/es sin caer al hub ni "not found" |
+| Subdirectorio `/chino-app/` | OK | Todas las rutas y recursos 200, 0 respuestas ≥ 400 (sólo offline) |
+| `git status` limpio / sin deps nuevas | **FALLO (ajeno)** | Sin deps nuevas en package.json. Pero hay WIP sin commit de otros workers: `M src/learn/exam.js` (+12/-4), `M src/learn/plan.js`, `M src/screens/learn.js` (+15), `M src/screens/extras.js` (+15), y `?? tests/hsk3-lessons-headless.test.mjs`. No los toqué |
+
+### Veredicto BLOQUE 14
+
+Funcionalidad del bloque OK: audio (licencia, 1104 archivos, 4.2 MiB, lección 1 usa mp3, offline tras pedirlo), modos de repaso (UI), plan 30 días (rutas, Start/Day 1 en pasada 64), examen completo con add-all. Observaciones no bloqueantes: colas de silencio en 2/10 clips; mp3 sólo offline si se reprodujeron antes.
+
+**FALLO que requiere decisión (ajeno al bloque):** `npm test` tiene 3 fallos de `tests/hsk3-lessons-headless.test.mjs`, un fichero sin trackear de otro worker que depende de un servidor fijo en :33730, y `git status` no está limpio por WIP ajeno. Opciones: (a) el autor de lecciones HSK3 corrige selectores y hace commit del test (o lo quita de npm test); (b) se borra el test. Un solo ciclo de reparación ya se hizo en pasadas previas sin resolverlo, así que no reparo más aquí.
+
+### Reproducir
+```
+OUT_DIR=/tmp/chino-t_b6925301 npm run build
+node scripts/serve.mjs --port 40841 <dir con enlace chino-app -> /tmp/chino-t_b6925301>
+# rutas: #/learn/plan, #/learn/exam, #/learn/lessons/hsk1-01, #/review, #/learn/games/tones-duel, #/home (en-US y es-ES)
+node scripts/check-es-data.mjs     # 0 errores
+npm test                           # 778/781: 3 fallos hsk3-08/09/10 (test sin trackear)
+ffmpeg -i public/audio/012210f1087ecc1f.mp3 -af silencedetect=noise=-50dB:d=0.3 -f null -   # cola de silencio
+```
+
+*Verificador haiku — 2026-11-19*
