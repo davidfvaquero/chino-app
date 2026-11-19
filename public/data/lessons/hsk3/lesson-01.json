@@ -1,0 +1,56 @@
+{
+  "id": "hsk3-01",
+  "title": "People, feelings & routines",
+  "intro": "Meet the first HSK 3 words: talk about people, hobbies and everyday feelings, and use the pretransitive 把 and the passive 被.",
+  "vocabulary": [
+    { "hanzi": "阿姨", "pinyin": "āyí", "english": "auntie; mother's younger sister", "example": { "hanzi": "阿姨好", "pinyin": "āyí hǎo", "english": "hello auntie" } },
+    { "hanzi": "啊", "pinyin": "a", "english": "ah (particle showing emotion)", "example": { "hanzi": "真好啊", "pinyin": "zhēn hǎo a", "english": "how nice" } },
+    { "hanzi": "矮", "pinyin": "ǎi", "english": "short (in height); low", "example": { "hanzi": "他比我矮", "pinyin": "tā bǐ wǒ ǎi", "english": "he is shorter than me" } },
+    { "hanzi": "爱好", "pinyin": "àihào", "english": "hobby; interest", "example": { "hanzi": "我的爱好是看书", "pinyin": "wǒ de àihào shì kàn shū", "english": "my hobby is reading" } },
+    { "hanzi": "安静", "pinyin": "ānjìng", "english": "quiet; calm", "example": { "hanzi": "请安静", "pinyin": "qǐng ānjìng", "english": "please be quiet" } },
+    { "hanzi": "把", "pinyin": "bǎ", "english": "(pretransitive particle); to hold", "example": { "hanzi": "把门关上", "pinyin": "bǎ mén guān shàng", "english": "close the door" } },
+    { "hanzi": "班", "pinyin": "bān", "english": "class; team", "example": { "hanzi": "我们班有二十个人", "pinyin": "wǒmen bān yǒu èrshí gè rén", "english": "our class has twenty people" } },
+    { "hanzi": "搬", "pinyin": "bān", "english": "to move; to transport", "example": { "hanzi": "我要搬家了", "pinyin": "wǒ yào bānjiā le", "english": "I'm going to move house" } },
+    { "hanzi": "办法", "pinyin": "bànfǎ", "english": "method; way", "example": { "hanzi": "我有办法", "pinyin": "wǒ yǒu bànfǎ", "english": "I have a way" } },
+    { "hanzi": "办公室", "pinyin": "bàngōngshì", "english": "office", "example": { "hanzi": "他在办公室", "pinyin": "tā zài bàngōngshì", "english": "he is in the office" } },
+    { "hanzi": "半", "pinyin": "bàn", "english": "half", "example": { "hanzi": "半个苹果", "pinyin": "bàn gè píngguǒ", "english": "half an apple" } },
+    { "hanzi": "帮忙", "pinyin": "bāngmáng", "english": "to help (someone)", "example": { "hanzi": "请你帮忙", "pinyin": "qǐng nǐ bāngmáng", "english": "please give me a hand" } },
+    { "hanzi": "包", "pinyin": "bāo", "english": "to wrap; bag; to include", "example": { "hanzi": "这个包很贵", "pinyin": "zhège bāo hěn guì", "english": "this bag is expensive" } },
+    { "hanzi": "饱", "pinyin": "bǎo", "english": "full (from eating)", "example": { "hanzi": "我吃饱了", "pinyin": "wǒ chī bǎo le", "english": "I'm full" } },
+    { "hanzi": "北方", "pinyin": "běifāng", "english": "the north; northern part", "example": { "hanzi": "北方很冷", "pinyin": "běifāng hěn lěng", "english": "the north is very cold" } },
+    { "hanzi": "被", "pinyin": "bèi", "english": "by (passive marker); quilt", "example": { "hanzi": "他被老师说了", "pinyin": "tā bèi lǎoshī shuō le", "english": "he was told off by the teacher" } },
+    { "hanzi": "鼻子", "pinyin": "bízi", "english": "nose", "example": { "hanzi": "他的鼻子很大", "pinyin": "tā de bízi hěn dà", "english": "his nose is big" } },
+    { "hanzi": "比较", "pinyin": "bǐjiào", "english": "to compare; relatively", "example": { "hanzi": "这个比较好", "pinyin": "zhège bǐjiào hǎo", "english": "this one is relatively good" } },
+    { "hanzi": "比赛", "pinyin": "bǐsài", "english": "match; competition", "example": { "hanzi": "我喜欢看比赛", "pinyin": "wǒ xǐhuan kàn bǐsài", "english": "I like watching matches" } },
+    { "hanzi": "笔记本", "pinyin": "bǐjìběn", "english": "notebook; laptop", "example": { "hanzi": "这是我的笔记本", "pinyin": "zhè shì wǒ de bǐjìběn", "english": "this is my notebook" } },
+    { "hanzi": "必须", "pinyin": "bìxū", "english": "must; have to", "example": { "hanzi": "你必须去", "pinyin": "nǐ bìxū qù", "english": "you must go" } },
+    { "hanzi": "变化", "pinyin": "biànhuà", "english": "change", "example": { "hanzi": "天气变化很大", "pinyin": "tiānqì biànhuà hěn dà", "english": "the weather changes a lot" } },
+    { "hanzi": "别人", "pinyin": "biéren", "english": "other people; others", "example": { "hanzi": "这是别人的书", "pinyin": "zhè shì biéren de shū", "english": "this is someone else's book" } },
+    { "hanzi": "冰箱", "pinyin": "bīngxiāng", "english": "refrigerator", "example": { "hanzi": "冰箱里有牛奶", "pinyin": "bīngxiāng lǐ yǒu niúnǎi", "english": "there is milk in the fridge" } },
+    { "hanzi": "不但", "pinyin": "búdàn", "english": "not only", "example": { "hanzi": "他不但聪明，而且努力", "pinyin": "tā búdàn cōngming, érqiě nǔlì", "english": "he is not only clever but also hard-working" } },
+    { "hanzi": "而且", "pinyin": "érqiě", "english": "moreover; in addition", "example": { "hanzi": "他会唱歌，而且唱得很好", "pinyin": "tā huì chànggē, érqiě chàng de hěn hǎo", "english": "he can sing, and sings well" } },
+    { "hanzi": "菜单", "pinyin": "càidān", "english": "menu", "example": { "hanzi": "请给我菜单", "pinyin": "qǐng gěi wǒ càidān", "english": "please give me the menu" } },
+    { "hanzi": "参加", "pinyin": "cānjiā", "english": "to take part in; to join", "example": { "hanzi": "我要参加比赛", "pinyin": "wǒ yào cānjiā bǐsài", "english": "I want to join the competition" } },
+    { "hanzi": "草", "pinyin": "cǎo", "english": "grass; straw", "example": { "hanzi": "草地上有花", "pinyin": "cǎodì shàng yǒu huā", "english": "there are flowers on the grass" } },
+    { "hanzi": "层", "pinyin": "céng", "english": "floor; layer (measure word)", "example": { "hanzi": "我住在三层", "pinyin": "wǒ zhù zài sān céng", "english": "I live on the third floor" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 爱好 mean?", "options": ["hobby", "office", "nose"], "answer": "hobby" },
+    { "type": "choose", "prompt": "Which word means 'quiet'?", "options": ["安静", "北方", "菜单"], "answer": "安静" },
+    { "type": "listen", "audio": "比赛", "pinyin": "bǐsài", "prompt": "Listen and choose what you hear.", "options": ["比赛", "帮忙", "冰箱"], "answer": "比赛" },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        { "hanzi": "帮忙", "english": "to help" },
+        { "hanzi": "冰箱", "english": "refrigerator" },
+        { "hanzi": "菜单", "english": "menu" },
+        { "hanzi": "参加", "english": "to take part in" }
+      ]
+    },
+    { "type": "order", "prompt": "Make the phrase 'half an apple'.", "tokens": ["苹", "果", "半", "个"], "answer": "半个苹果" },
+    { "type": "order", "prompt": "Put the characters in order to say 'I'm full'.", "tokens": ["了", "我", "饱", "吃"], "answer": "我吃饱了" },
+    { "type": "listen", "audio": "必须", "pinyin": "bìxū", "prompt": "Listen and choose what you hear.", "options": ["必须", "别人", "北方"], "answer": "必须" },
+    { "type": "choose", "prompt": "Which character means 'nose'?", "options": ["鼻子", "包子", "草"], "answer": "鼻子" }
+  ]
+}

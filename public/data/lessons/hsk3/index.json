@@ -1,0 +1,20 @@
+{
+  "level": "hsk3",
+  "title": "HSK 3",
+  "source": "public/data/hsk/3.json",
+  "wordCount": 297,
+  "wordsPerLesson": 30,
+  "note": "Fixed 10-lesson plan for HSK3, mirroring HSK1/HSK2. `range` is the suggested slice of the 297 HSK3 words (1-based, inclusive, alphabetical list) for a lesson that is still to be written; the filler tasks write lesson-02.json .. lesson-10.json without touching this index. Lesson 1 is already written by hand (`curated: true`) and its vocabulary is authoritative. Lesson 10 covers the last 27 words (297 is not divisible by 10). See docs/lesson-schema.md.",
+  "lessons": [
+    { "id": "hsk3-01", "title": "People, feelings & routines", "file": "lesson-01.json", "range": { "from": 1, "to": 30 }, "curated": true },
+    { "id": "hsk3-02", "title": "Home, food & daily items", "file": "lesson-02.json", "range": { "from": 31, "to": 60 } },
+    { "id": "hsk3-03", "title": "Study, work & plans", "file": "lesson-03.json", "range": { "from": 61, "to": 90 } },
+    { "id": "hsk3-04", "title": "Travel, city & directions", "file": "lesson-04.json", "range": { "from": 91, "to": 120 } },
+    { "id": "hsk3-05", "title": "Health, body & weather", "file": "lesson-05.json", "range": { "from": 121, "to": 150 } },
+    { "id": "hsk3-06", "title": "Shopping, money & services", "file": "lesson-06.json", "range": { "from": 151, "to": 180 } },
+    { "id": "hsk3-07", "title": "Time, order & frequency", "file": "lesson-07.json", "range": { "from": 181, "to": 210 } },
+    { "id": "hsk3-08", "title": "Society, media & communication", "file": "lesson-08.json", "range": { "from": 211, "to": 240 } },
+    { "id": "hsk3-09", "title": "Actions, qualities & connectors", "file": "lesson-09.json", "range": { "from": 241, "to": 270 } },
+    { "id": "hsk3-10", "title": "Everyday words & expressions", "file": "lesson-10.json", "range": { "from": 271, "to": 297 } }
+  ]
+}
