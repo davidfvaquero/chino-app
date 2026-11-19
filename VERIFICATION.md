@@ -1498,3 +1498,43 @@ node scripts/check-es-data.mjs             # 0 errores
 más los extras (desbordes/404/higiene). Todo verde.**
 
 *Verificador `barato` — 2026-11-19*
+
+## BLOQUE 14 — verificación de audio, repaso, plan y examen (t_b6925301, verificador haiku) — FALLO
+
+Alcance y asignados (todos `barato`, distinto del verificador): AUD1 t_9f38ab7a, AUD2 t_45617f44, RM t_07416dca, PLAN t_a42fabe8, EXAM t_8995dfa5.
+Build: `OUT_DIR=/tmp/chino-t_b6925301 node scripts/build.mjs` (1819 ficheros). Servidor raíz :8741; subdirectorio simulado `/tmp/chino-t_b6925301-sub/chino-app` en :8742 (`/chino-app/`). No se tocó `dist/`.
+
+| # | Punto | Resultado | Evidencia |
+|---|---|---|---|
+| 1 | Licencia del modelo en CREDITS.md y redistribuible | OK | CREDITS §8: Kokoro-82M v1.1-zh, Apache-2.0; model card HF confirma Apache. Voz zf_001 con datos de LongMaoData libres. Pesos no commiteados |
+| 2 | Tamaño de public/audio y carga | OK | 1104 mp3 = 4 335 096 B (4.34 MB), index.json 37 KB. Se piden por uso, no en arranque |
+| 3 | Muestra de 10 audios (existen, duración, sin silencios) | OK | ffprobe: 0.68–1.38 s; silencedetect -45 dB/0.4 s: 0 silencios; mean_volume -13.8…-20.3 dB |
+| 4 | Lección 1 reproduce el archivo; texto ausente cae a TTS | OK | 30/30 textos de hsk1-01 en el índice. `speak('你好')` → ok y GET `/audio/<hash>.mp3`. Texto fuera del índice → 1 llamada a speechSynthesis |
+| 5 | Offline tras primera carga | OK | Recarga online → setOffline → recarga renderiza; `speak` indexado devuelve ok |
+| 6 | Subdirectorio /chino-app/ sin 404 | OK | 12 rutas × es/en, 0 respuestas ≥400, 0 errores de consola |
+| 7 | 3 modos de repaso (+ mistakes) | OK | Classic: Show answer → Good. Reverse: frente inglés, reverso hanzi. Type pinyin: "shui3" → "Correct!"; "shui" → "Almost — check the tones"; "zzqx" → "Not quite". Only my mistakes: solo la tarjeta con lapses |
+| 8 | Plan: iniciar, Día 1, tarjeta en Home, ids válidos | **FALLO** | Módulo montado directo: Start plan → "Day 1", la tarea abre `learn/lessons/hsk1-01`; Home muestra "Today in your plan / Day 1". Ids válidos (tests/plan.test.mjs OK). **FALLO**: `#/learn/plan` no abre la pantalla por ruta, `learn.js` no la registra (depende de t_677d0794, en todo) |
+| 9 | Examen HSK 1 completo con puntuación y "add mistakes" | **FALLO** (ruta) | Módulo directo: 20/20 → 100 %, `chino:lesson_done` ×1. 0/20 → 0 %, "Add all mistakes to review" → srs 3 → 13. **FALLO**: `#/learn/exam` no abre por ruta (mismo motivo, t_677d0794) |
+| 10 | `npm test` verde | **FALLO** | 748 pass / 8 fail: anki (5, `src/anki.js` sin commit de otro worker) y hsk3-08/09/10 (3, headless sin `playwright` en package.json + lecciones 8-10 sin commit). Ninguno de los 5 commits del bloque |
+| 11 | `check-es-data` sin errores | **FALLO** | 1 error: `es/readings/hsk1/index.json` 20 vs 40 (lecturas 28-40 sin traducir, WIP de otro worker) |
+| 12 | Sin claves i18n crudas en ES/EN | OK | 12 rutas × 2 idiomas, regex `clave.punto`: 0 coincidencias |
+| 13 | Sin chino tradicional en la UI | OK (muestra) | 37 caracteres tradicionales frecuentes: 0 en las rutas visitadas. No exhaustivo |
+| 14 | Sin errores de consola | OK | 0 en rutas, audio, repaso, plan y examen |
+| 15 | Cada ruta abre directa | **FALLO** | `#/learn/plan` y `#/learn/exam` caen al hub. Resto OK |
+| 16 | git limpio, sin scripts sueltos en raíz, sin deps nuevas | **FALLO** | Raíz: `debug_export.mjs`, `debug_test.mjs`, `debug_test2.mjs` sin trackear. Árbol con WIP ajeno (anki, hsk3-8-10, readings 28-40, games.js M). `package.json` == HEAD (sin deps nuevas; solo `data:audio`) OK |
+| 17 | Strings de UI hardcodeados | no comprobado | Fuera de la verificación de este ciclo |
+
+### Reproducción
+- Audio: `node --test tests/audio-index.test.mjs tests/audio.test.mjs`; en navegador `(await import('/src/audio.js')).speak('你好')`.
+- Repaso: sembrar con `import('/src/srs.js').addToReview({hanzi,pinyin,english,source})`, abrir `#/review`, pulsar "All (n)".
+- Plan/examen (hasta registrar las rutas): `#/home` → `const m = await import('/src/learn/plan.js'); await m.render(div, {})` (o `/src/learn/exam.js`).
+- Ruta fallida: abrir `#/learn/plan` o `#/learn/exam` → cae al hub.
+
+### Reparación pendiente (fuera del alcance del verificador; no toqué archivos ajenos)
+1. t_677d0794: registrar `plan` y `exam` en `src/screens/learn.js` y su tarjeta. Desbloquea los FALLO 8, 9 y 15.
+2. Commit o descarte del WIP sin trackear (anki, hsk3-8-10, readings es 28-40). Desbloquea `npm test` y `check-es-data`.
+3. Decidir sobre `debug_*.mjs` en la raíz (autor no identificado).
+
+**Veredicto BLOQUE 14: audio, repaso, lógica de plan y examen OK. FALLO por ruta de plan/examen (integración pendiente), por tests/check-es-data con WIP ajeno, y por raíz sucia.**
+
+*Verificador haiku — 2026-11-19*
