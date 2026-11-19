@@ -1,0 +1,38 @@
+{
+  "anki": {
+    "title": "Exportar / importar a Anki",
+    "export": {
+      "title": "Exportar a Anki",
+      "notice": "Descarga un archivo de texto con tus tarjetas de repaso, una por línea, para Archivo > Importar en Anki. Columnas: Hanzi, Pinyin (con tonos), Significado, Ejemplo, Origen y Etiquetas (nivel HSK y procedencia).",
+      "filter": "Origen",
+      "all": "Todas las tarjetas",
+      "count": "{count} tarjetas en esta exportación",
+      "button": "Descargar archivo",
+      "done": "Descargadas {count} tarjetas.",
+      "empty": "Todavía no hay tarjetas que exportar. Añade algunas a tu repaso primero.",
+      "error": "No se pudo crear el archivo de exportación."
+    },
+    "import": {
+      "title": "Importar desde Anki",
+      "notice": "Elige un archivo de texto exportado desde Anki o desde esta app. Verás una vista previa antes de añadir nada. Las tarjetas cuyo Hanzi ya tienes se omiten.",
+      "button": "Elegir archivo",
+      "cancel": "Cancelar",
+      "preview": "El archivo tiene {total} tarjetas: {new} nuevas y {existing} que ya están en tu repaso.",
+      "skipped": "{count} líneas no tenían Hanzi y se omitieron.",
+      "confirm": "Añadir {count} tarjetas nuevas",
+      "done": "Listo: {added} tarjetas añadidas, {skipped} omitidas (ya estaban).",
+      "error": {
+        "read": "No se pudo leer el archivo.",
+        "none": "No se encontraron tarjetas en ese archivo.",
+        "apply": "La importación falló. Tu repaso no ha cambiado."
+      }
+    },
+    "help": {
+      "title": "¿Nuevo en Anki?",
+      "step1": "Anki es un programa gratuito de tarjetas que usa repetición espaciada: vuelve a mostrar cada tarjeta justo antes de que la olvides. En Android usa AnkiDroid (gratis); en iPhone, Anki es de pago.",
+      "step2": "Descarga el archivo de arriba. En Anki abre Archivo > Importar, elige el archivo descargado y pon el separador de campos en Tabulador. Anki mostrará las columnas: Hanzi, Pinyin, Significado, Ejemplo, Origen y Etiquetas.",
+      "step3": "Asigna Hanzi al frente de la tarjeta y Pinyin y Significado al reverso. Marca «Permitir HTML en los campos» si ves símbolos raros y pulsa Importar.",
+      "step4": "Tu progreso NO se sincroniza entre Anki y esta app. Lo que respondas en Anki no cambia el calendario de aquí, y lo que respondas aquí no cambia Anki."
+    }
+  }
+}

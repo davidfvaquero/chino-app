@@ -1,0 +1,38 @@
+{
+  "anki": {
+    "title": "Anki export / import",
+    "export": {
+      "title": "Export to Anki",
+      "notice": "Downloads a text file with your review cards, one per line, for Anki's File > Import. Columns: Hanzi, Pinyin (with tone marks), Meaning, Example, Source, Tags (HSK level and origin).",
+      "filter": "Source",
+      "all": "All cards",
+      "count": "{count} cards in this export",
+      "button": "Download file",
+      "done": "Downloaded {count} cards.",
+      "empty": "No cards to export yet. Add some to your review deck first.",
+      "error": "Could not build the export file."
+    },
+    "import": {
+      "title": "Import from Anki",
+      "notice": "Choose a text file exported from Anki or from this app. You will see a preview before anything is added. Cards whose Hanzi you already have are skipped.",
+      "button": "Choose file",
+      "cancel": "Cancel",
+      "preview": "The file has {total} cards: {new} new and {existing} already in your deck.",
+      "skipped": "{count} lines had no Hanzi and were skipped.",
+      "confirm": "Add {count} new cards",
+      "done": "Done: {added} cards added, {skipped} skipped (already there).",
+      "error": {
+        "read": "Could not read the file.",
+        "none": "No cards found in that file.",
+        "apply": "The import failed. Your deck was not changed."
+      }
+    },
+    "help": {
+      "title": "New to Anki?",
+      "step1": "Anki is a free flashcard program that uses spaced repetition: it shows each card again just before you would forget it. On Android use AnkiDroid (free); on iPhone Anki is paid.",
+      "step2": "Download the file above. In Anki open File > Import, pick the downloaded file and set the field separator to Tab. Anki then shows the columns: Hanzi, Pinyin, Meaning, Example, Source and Tags.",
+      "step3": "Map Hanzi to the front of the card and Pinyin and Meaning to the back. Tick \"Allow HTML in fields\" if you see stray symbols, then press Import.",
+      "step4": "Your progress does NOT sync between Anki and this app. Answers you give in Anki do not change the schedule here, and answers here do not change Anki."
+    }
+  }
+}
