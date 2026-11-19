@@ -1,0 +1,32 @@
+{
+  "worksheet": {
+    "title": "Worksheet",
+    "inputLabel": "Characters",
+    "inputPlaceholder": "Type or paste up to 20 characters, e.g. 戴维德",
+    "lastReview": "Last review characters",
+    "lessonWords": "Lesson words",
+    "cellSizeLabel": "Cell size",
+    "cellSize": {
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large"
+    },
+    "rowsLabel": "rows per character",
+    "showPinyin": "Show pinyin",
+    "showMeaning": "Show meaning",
+    "generate": "Generate sheet",
+    "print": "Print / Save as PDF",
+    "tooMany": "Only the first {max} characters are used.",
+    "empty": "Enter at least one Chinese character.",
+    "loading": "Generating worksheet…",
+    "loadError": "Could not load characters.",
+    "generateError": "Could not generate the worksheet.",
+    "noReviewChars": "No characters in your review deck.",
+    "noLessons": "No lessons available.",
+    "noLessonChars": "No vocabulary in that lesson.",
+    "loadedLastReview": "Loaded {count} characters from your review deck.",
+    "loadedLesson": "Loaded {count} characters from lesson {lesson}.",
+    "noStrokeData": "No stroke data for “{char}”.",
+    "strokesCount": "{count} strokes"
+  }
+}

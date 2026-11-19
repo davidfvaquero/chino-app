@@ -1,0 +1,32 @@
+{
+  "worksheet": {
+    "title": "Cuaderno de caligrafía",
+    "inputLabel": "Caracteres",
+    "inputPlaceholder": "Escribe o pega hasta 20 caracteres, p. ej. 戴维德",
+    "lastReview": "Caracteres del último repaso",
+    "lessonWords": "Palabras de una lección",
+    "cellSizeLabel": "Tamaño de celda",
+    "cellSize": {
+      "small": "Pequeño",
+      "medium": "Mediano",
+      "large": "Grande"
+    },
+    "rowsLabel": "filas por carácter",
+    "showPinyin": "Mostrar pinyin",
+    "showMeaning": "Mostrar significado",
+    "generate": "Generar hoja",
+    "print": "Imprimir / Guardar como PDF",
+    "tooMany": "Solo se usan los primeros {max} caracteres.",
+    "empty": "Escribe al menos un carácter chino.",
+    "loading": "Generando hoja…",
+    "loadError": "No se pudieron cargar los caracteres.",
+    "generateError": "No se pudo generar la hoja.",
+    "noReviewChars": "No hay caracteres en tu repaso.",
+    "noLessons": "No hay lecciones disponibles.",
+    "noLessonChars": "Esa lección no tiene vocabulario.",
+    "loadedLastReview": "Cargados {count} caracteres de tu repaso.",
+    "loadedLesson": "Cargados {count} caracteres de la lección {lesson}.",
+    "noStrokeData": "No hay datos de trazos para «{char}».",
+    "strokesCount": "{count} trazos"
+  }
+}
