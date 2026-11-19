@@ -1499,6 +1499,44 @@ más los extras (desbordes/404/higiene). Todo verde.**
 
 *Verificador `barato` — 2026-11-19*
 
+## Verificación t_6cd1b3ff — ejercicios en móvil (táctil), verificador `haiku`
+
+Implementador verificado: `barato` (t_0955fcd6, commit a8bdfd1). Verificador distinto, OK.
+Build: `OUT_DIR=/tmp/chino-t_6cd1b3ff npm run build` (no toca dist/).
+
+| Punto | Estado | Evidencia |
+|---|---|---|
+| MATCH táctil 390/320, claro/oscuro, en/es: tocar palabra → significado marca par, deseleccionar, 4 pares, Check | OK | `node scripts/check-exercises.mjs /tmp/chino-t_6cd1b3ff` → 8 OK |
+| Check acierto → `feedback ok` | OK | Aserción ahora estricta (ver reparación) |
+| Check fallo (significados rotados) → `feedback bad` | OK | Copia ad hoc del script con pares rotados → 8 OK |
+| choose, order, listen usables al tacto | OK | Mismo script (tap en options, chip pool→answer→pool) |
+| Botones ejercicios ≥ 44×44 px, sin scroll horizontal | OK | check-exercises + check-layout 60/60 |
+| Tonos, dictado, Matching/Memory/Timed/builder: contraste y objetivos ≥ 44 px | OK | `ONLY=area-dictation` 8/8 tras reparación; `area-games*`, `area-themes` OK |
+| Tap real en tonos, dictado y juegos | NO COMPROBADO | Solo layout/contraste/tamaño; no hay tap scripts para esas pantallas |
+| `npm test` verde | FALLO (ajeno) | 8 fallos, ninguno en archivos de exercise UI: 4 `tests/anki.test.mjs` (src/anki.js sin trackear), 4 `tests/hsk3-lessons-headless.test.mjs` (`No vocabulary items found for hsk3-08/09/10`) |
+| Contraste en pantallas ajenas (pinyin-chart, strokes, strokes-sheet, radicals, paste, settings, backup) | FALLO (ajeno) | `node scripts/check-contrast.mjs /tmp/chino-t_6cd1b3ff` (fallos en 390/320 claro/oscuro). Cambios sin commit de otro worker (rediseño 64307b7) |
+| Sin cambios de lógica de evaluación | OK | `git show a8bdfd1 -- src/learn/exercises.js` solo añade funciones; `gradeExercise` intacto |
+| Strings hardcodeados / i18n | OK | `node scripts/check-i18n.mjs` → es al día, 852 claves |
+| Errores de consola, chino tradicional | NO COMPROBADO | No revisados en esta pasada |
+| Rutas directas | OK | `#/learn/lessons/hsk1-01` abre directo en el script |
+
+**Reparaciones (1 ciclo, pequeñas):**
+1. `scripts/check-exercises.mjs`: el check aceptaba `ok` o `bad`; ahora exige `ok` con pares correctos (acierto real).
+2. `src/learn/dictation.js` (`.dict-select, .dict-input`): borde `var(--edge)` con contraste 1.39:1; cambiado a `var(--ink-soft)`. Verificado `check-contrast` ONLY=area-dictation → 8/8 OK. **Sin commit**: el archivo tiene cambios sin commit de otro worker; commitear junto con ese trabajo.
+
+**Reproducir:**
+```
+OUT_DIR=/tmp/chino-t_6cd1b3ff npm run build
+node scripts/check-exercises.mjs /tmp/chino-t_6cd1b3ff     # 8 OK
+node scripts/check-layout.mjs /tmp/chino-t_6cd1b3ff        # 60 OK
+ONLY=area-dictation node scripts/check-contrast.mjs /tmp/chino-t_6cd1b3ff   # 8/8
+npm test                                                   # 8 fallos ajenos (anki, hsk3-08/09/10)
+```
+
+**Veredicto:** ejercicios de móvil (MATCH, choose, order, listen, tonos/dictado en contraste) OK. Quedan FALLO ajenos a esta tarea: `npm test` y contraste de pantallas no-ejercicio. Dueños: anki/hsk3 (tests) y rediseño (contraste).
+
+*Verificador `haiku` — 2026-11-19*
+
 ## BLOQUE 14 — verificación de audio, repaso, plan y examen (t_b6925301, verificador haiku) — FALLO
 
 Alcance y asignados (todos `barato`, distinto del verificador): AUD1 t_9f38ab7a, AUD2 t_45617f44, RM t_07416dca, PLAN t_a42fabe8, EXAM t_8995dfa5.

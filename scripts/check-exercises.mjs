@@ -265,7 +265,7 @@ async function runMatch(cdp, pairs, label) {
   await tap(cdp, '.exercise-body .btn.primary');
   await waitFor(cdp, '.feedback-box .feedback');
   const result = await evalJs(cdp, `document.querySelector('.feedback-box .feedback')?.className || ''`);
-  if (!/feedback\s+(ok|bad)/.test(result)) failures.push(`Check did not show a result (class "${result}")`);
+  if (!/feedback\s+ok/.test(result)) failures.push(`correct pairs: Check did not show ok (class "${result}")`);
   await shot(cdp, `${label}-match-result`);
 
   // order exercise follows match: tap a pool chip into the answer row and back.
