@@ -1,0 +1,56 @@
+{
+  "id": "hsk3-09",
+  "title": "Actions, qualities & connectors",
+  "intro": "Master essential verbs, adjectives, and connecting words to express needs, make choices, and link ideas in everyday situations.",
+  "vocabulary": [
+    { "hanzi": "小心", "pinyin": "xiǎoxīn", "english": "be careful", "example": { "hanzi": "走路小心", "pinyin": "zǒulù xiǎoxīn", "english": "be careful when walking" } },
+    { "hanzi": "校长", "pinyin": "xiàozhǎng", "english": "principal (of school); president; headmaster", "example": { "hanzi": "校长在开会", "pinyin": "xiàozhǎng zài kāihuì", "english": "the principal is in a meeting" } },
+    { "hanzi": "新闻", "pinyin": "xīnwén", "english": "news", "example": { "hanzi": "我看新闻", "pinyin": "wǒ kàn xīnwén", "english": "I watch the news" } },
+    { "hanzi": "新鲜", "pinyin": "xīnxiān", "english": "fresh; new; novel", "example": { "hanzi": "水果很新鲜", "pinyin": "shuǐguǒ hěn xīnxiān", "english": "the fruit is very fresh" } },
+    { "hanzi": "信用卡", "pinyin": "xìnyòngkǎ", "english": "credit card", "example": { "hanzi": "我用信用卡付钱", "pinyin": "wǒ yòng xìnyòngkǎ fù qián", "english": "I pay with a credit card" } },
+    { "hanzi": "行李箱", "pinyin": "xínglixiāng", "english": "suitcase; luggage", "example": { "hanzi": "我的行李箱很重", "pinyin": "wǒ de xínglǐxiāng hěn zhòng", "english": "my suitcase is very heavy" } },
+    { "hanzi": "熊猫", "pinyin": "xióngmāo", "english": "panda", "example": { "hanzi": "熊猫很可爱", "pinyin": "xióngmāo hěn kě'ài", "english": "pandas are very cute" } },
+    { "hanzi": "需要", "pinyin": "xūyào", "english": "to need; to want; to demand", "example": { "hanzi": "我需要帮助", "pinyin": "wǒ xūyào bāngzhù", "english": "I need help" } },
+    { "hanzi": "选择", "pinyin": "xuǎnzé", "english": "select; to pick; choose", "example": { "hanzi": "请选择一个", "pinyin": "qǐng xuǎnzé yī gè", "english": "please choose one" } },
+    { "hanzi": "要求", "pinyin": "yāoqiú", "english": "to request; to demand; requirement", "example": { "hanzi": "老师的要求很高", "pinyin": "lǎoshī de yāoqiú hěn gāo", "english": "the teacher's requirements are high" } },
+    { "hanzi": "爷爷", "pinyin": "yéye", "english": "(informal) father's father; paternal grandfather", "example": { "hanzi": "爷爷八十岁了", "pinyin": "yéye bāshí suì le", "english": "grandpa is 80 years old" } },
+    { "hanzi": "一般", "pinyin": "yībān", "english": "general; ordinary; common; same", "example": { "hanzi": "一般般", "pinyin": "yìbān bān", "english": "so-so; average" } },
+    { "hanzi": "一边", "pinyin": "yībiān", "english": "one side; on the one hand; at the same time", "example": { "hanzi": "一边吃饭一边看电视", "pinyin": "yībiān chīfàn yībiān kàn diànshì", "english": "eat while watching TV" } },
+    { "hanzi": "一定", "pinyin": "yīdìng", "english": "surely; certainly; necessarily; definite", "example": { "hanzi": "你一定能行", "pinyin": "nǐ yīdìng néng xíng", "english": "you can definitely do it" } },
+    { "hanzi": "一共", "pinyin": "yīgòng", "english": "altogether; in total", "example": { "hanzi": "一共多少钱", "pinyin": "yīgòng duōshǎo qián", "english": "how much in total" } },
+    { "hanzi": "一会儿", "pinyin": "yīhuìr", "english": "a while; a moment", "example": { "hanzi": "等一会儿", "pinyin": "děng yīhuìr", "english": "wait a moment" } },
+    { "hanzi": "一样", "pinyin": "yīyàng", "english": "the same; alike; equal to", "example": { "hanzi": "这两个一样", "pinyin": "zhè liǎng gè yīyàng", "english": "these two are the same" } },
+    { "hanzi": "一直", "pinyin": "yīzhí", "english": "always; all along; straight", "example": { "hanzi": "他一直在学习", "pinyin": "tā yīzhí zài xuéxí", "english": "he has been studying all along" } },
+    { "hanzi": "以前", "pinyin": "yǐqián", "english": "before; formerly; previous", "example": { "hanzi": "我以前住在这儿", "pinyin": "wǒ yǐqián zhù zài zhèr", "english": "I used to live here" } },
+    { "hanzi": "音乐", "pinyin": "yīnyuè", "english": "music", "example": { "hanzi": "我喜欢听音乐", "pinyin": "wǒ xǐhuan tīng yīnyuè", "english": "I like listening to music" } },
+    { "hanzi": "银行", "pinyin": "yínháng", "english": "bank", "example": { "hanzi": "我去银行取钱", "pinyin": "wǒ qù yínháng qǔ qián", "english": "I go to the bank to withdraw money" } },
+    { "hanzi": "饮料", "pinyin": "yǐnliào", "english": "beverage; drink", "example": { "hanzi": "想喝什么饮料", "pinyin": "xiǎng hē shénme yǐnliào", "english": "what drink would you like" } },
+    { "hanzi": "应该", "pinyin": "yīnggāi", "english": "should; ought to; must", "example": { "hanzi": "你应该去", "pinyin": "nǐ yīnggāi qù", "english": "you should go" } },
+    { "hanzi": "影响", "pinyin": "yǐngxiǎng", "english": "influence; affect; effect", "example": { "hanzi": "天气影响心情", "pinyin": "tiānqì yǐngxiǎng xīnqíng", "english": "weather affects mood" } },
+    { "hanzi": "用", "pinyin": "yòng", "english": "to use", "example": { "hanzi": "这个怎么用", "pinyin": "zhège zěnme yòng", "english": "how to use this" } },
+    { "hanzi": "游戏", "pinyin": "yóuxì", "english": "game; play; recreation", "example": { "hanzi": "孩子们在玩游戏", "pinyin": "háizimen zài wán yóuxì", "english": "children are playing games" } },
+    { "hanzi": "有名", "pinyin": "yǒumíng", "english": "famous; well-known", "example": { "hanzi": "他很有名", "pinyin": "tā hěn yǒumíng", "english": "he is very famous" } },
+    { "hanzi": "又", "pinyin": "yòu", "english": "(once) again; also; both", "example": { "hanzi": "又大又红", "pinyin": "yòu dà yòu hóng", "english": "both big and red" } },
+    { "hanzi": "遇到", "pinyin": "yùdào", "english": "to meet; run into; come across", "example": { "hanzi": "我遇到了困难", "pinyin": "wǒ yùdào le kùnnán", "english": "I encountered difficulties" } },
+    { "hanzi": "元", "pinyin": "yuán", "english": "Chinese monetary unit; dollar; first; principal", "example": { "hanzi": "十元钱", "pinyin": "shí yuán qián", "english": "ten yuan" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 需要 mean?", "options": ["to need", "to choose", "to meet"], "answer": "to need" },
+    { "type": "choose", "prompt": "Which word means 'credit card'?", "options": ["信用卡", "行李箱", "熊猫"], "answer": "信用卡" },
+    { "type": "listen", "audio": "新闻", "pinyin": "xīnwén", "prompt": "Listen and choose what you hear.", "options": ["新闻", "新鲜", "信用卡"], "answer": "新闻" },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        { "hanzi": "校长", "english": "principal" },
+        { "hanzi": "选择", "english": "to choose" },
+        { "hanzi": "音乐", "english": "music" },
+        { "hanzi": "银行", "english": "bank" }
+      ]
+    },
+    { "type": "order", "prompt": "Make the phrase 'I need help'.", "tokens": ["帮助", "我", "需要"], "answer": "我需要帮助" },
+    { "type": "order", "prompt": "Put the characters in order to say 'wait a moment'.", "tokens": ["等", "儿", "会", "一"], "answer": "等一会儿" },
+    { "type": "listen", "audio": "应该", "pinyin": "yīnggāi", "prompt": "Listen and choose what you hear.", "options": ["应该", "影响", "用"], "answer": "应该" },
+    { "type": "choose", "prompt": "Which word means 'famous'?", "options": ["有名", "音乐", "一般"], "answer": "有名" }
+  ]
+}
