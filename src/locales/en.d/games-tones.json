@@ -1,0 +1,29 @@
+{
+  "games": {
+    "tones": {
+      "title": "Tone duel",
+      "listen": "Listen and pick the tone.",
+      "replay": "Listen again",
+      "round": "Round {n}/{total}",
+      "streak": "Streak: {n}",
+      "best": "Best streak: {n}",
+      "timed": "Timed",
+      "correct": "Correct!",
+      "wrong": "Not quite.",
+      "timeout": "Time's up.",
+      "next": "Next",
+      "finish": "See results",
+      "complete": "Duel over!",
+      "correctCount": "Correct: {correct}/{total}",
+      "mistakes": "Mistakes: {n}",
+      "time": "Time: {s}s",
+      "confusionsTitle": "Your most frequent mix-ups",
+      "confusion": "You mix up tone {from} with tone {to}: {count}×",
+      "noConfusions": "No mix-ups this time. Perfect!",
+      "practice": "Practice these",
+      "playAgain": "Play again",
+      "back": "Back to games",
+      "toneLabel": "Tones {tones}"
+    }
+  }
+}

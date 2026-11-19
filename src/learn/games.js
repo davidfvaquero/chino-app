@@ -56,16 +56,18 @@ export async function ensureGamesRegistered() {
   if (registrationPromise) return registrationPromise;
   registrationPromise = (async () => {
     const base = new URL('./games/', import.meta.url);
-    const [matching, memory, timed, builder] = await Promise.all([
+    const [matching, memory, timed, builder, tonesDuel] = await Promise.all([
       import(`${base}matching.js`),
       import(`${base}memory.js`),
       import(`${base}timed.js`),
       import(`${base}builder.js`),
+      import(`${base}tones-duel.js`),
     ]);
     registerGame(matching);
     registerGame(memory);
     registerGame(timed);
     registerGame(builder);
+    registerGame(tonesDuel);
   })();
   return registrationPromise;
 }

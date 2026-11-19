@@ -1,0 +1,29 @@
+{
+  "games": {
+    "tones": {
+      "title": "Duelo de tonos",
+      "listen": "Escucha y elige el tono.",
+      "replay": "Escuchar otra vez",
+      "round": "Ronda {n}/{total}",
+      "streak": "Racha: {n}",
+      "best": "Mejor racha: {n}",
+      "timed": "Con tiempo",
+      "correct": "¡Correcto!",
+      "wrong": "No es exacto.",
+      "timeout": "Se acabó el tiempo.",
+      "next": "Siguiente",
+      "finish": "Ver resultados",
+      "complete": "¡Duelo terminado!",
+      "correctCount": "Aciertos: {correct}/{total}",
+      "mistakes": "Fallos: {n}",
+      "time": "Tiempo: {s} s",
+      "confusionsTitle": "Tus confusiones más frecuentes",
+      "confusion": "Confundes el {from} con el {to}: {count} veces",
+      "noConfusions": "Ninguna confusión esta vez. ¡Perfecto!",
+      "practice": "Practicar estas",
+      "playAgain": "Jugar otra vez",
+      "back": "Volver a los juegos",
+      "toneLabel": "Tonos {tones}"
+    }
+  }
+}
