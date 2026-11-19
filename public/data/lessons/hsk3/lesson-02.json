@@ -1,0 +1,56 @@
+{
+  "id": "hsk3-02",
+  "title": "Home, food & daily items",
+  "intro": "Learn words for home, food and everyday items: supermarket, clothes, cleaning, meals and household objects.",
+  "vocabulary": [
+    { "hanzi": "差", "pinyin": "chà", "english": "to differ from; to fall short of; poor; inferior", "example": { "hanzi": "这不差", "pinyin": "zhè bù chà", "english": "this is not bad" } },
+    { "hanzi": "超市", "pinyin": "chāoshì", "english": "supermarket", "example": { "hanzi": "我去超市买菜", "pinyin": "wǒ qù chāoshì mǎi cài", "english": "I go to the supermarket to buy food" } },
+    { "hanzi": "衬衫", "pinyin": "chènshān", "english": "shirt; blouse", "example": { "hanzi": "这件衬衫很漂亮", "pinyin": "zhè jiàn chènshān hěn piàoliang", "english": "this shirt is very pretty" } },
+    { "hanzi": "成绩", "pinyin": "chéngjì", "english": "achievement; results (of work or study)", "example": { "hanzi": "他的成绩很好", "pinyin": "tā de chéngjì hěn hǎo", "english": "his grades are very good" } },
+    { "hanzi": "城市", "pinyin": "chéngshì", "english": "city or town", "example": { "hanzi": "北京是大城市", "pinyin": "běijīng shì dà chéngshì", "english": "Beijing is a big city" } },
+    { "hanzi": "迟到", "pinyin": "chídào", "english": "to arrive late", "example": { "hanzi": "不要迟到", "pinyin": "bù yào chídào", "english": "don't be late" } },
+    { "hanzi": "除了", "pinyin": "chúle", "english": "besides; except for; aside from", "example": { "hanzi": "除了中文我还会英文", "pinyin": "chúle zhōngwén wǒ hái huì yīngwén", "english": "besides Chinese I also know English" } },
+    { "hanzi": "船", "pinyin": "chuán", "english": "boat; vessel; ship", "example": { "hanzi": "我们坐船去", "pinyin": "wǒmen zuò chuán qù", "english": "we go by boat" } },
+    { "hanzi": "春", "pinyin": "chūn", "english": "spring (season); joyful", "example": { "hanzi": "春天来了", "pinyin": "chūntiān lái le", "english": "spring has come" } },
+    { "hanzi": "词典", "pinyin": "cídiǎn", "english": "dictionary", "example": { "hanzi": "请查词典", "pinyin": "qǐng chá cídiǎn", "english": "please look in the dictionary" } },
+    { "hanzi": "聪明", "pinyin": "cōngming", "english": "intelligent; clever; smart", "example": { "hanzi": "你的孩子很聪明", "pinyin": "nǐ de háizi hěn cōngming", "english": "your child is very smart" } },
+    { "hanzi": "打扫", "pinyin": "dǎsǎo", "english": "to clean; to sweep", "example": { "hanzi": "我每天打扫房间", "pinyin": "wǒ měitiān dǎsǎo fángjiān", "english": "I clean my room every day" } },
+    { "hanzi": "打算", "pinyin": "dǎsuàn", "english": "to plan; to intend", "example": { "hanzi": "我打算明天去", "pinyin": "wǒ dǎsuàn míngtiān qù", "english": "I plan to go tomorrow" } },
+    { "hanzi": "带", "pinyin": "dài", "english": "to carry; to bring; to take along", "example": { "hanzi": "请带上你的书", "pinyin": "qǐng dài shàng nǐ de shū", "english": "please bring your book" } },
+    { "hanzi": "担心", "pinyin": "dānxīn", "english": "to worry; to feel anxious", "example": { "hanzi": "妈妈担心我", "pinyin": "māma dānxīn wǒ", "english": "mom worries about me" } },
+    { "hanzi": "蛋糕", "pinyin": "dàngāo", "english": "cake", "example": { "hanzi": "生日蛋糕很好吃", "pinyin": "shēngrì dàngāo hěn hǎochī", "english": "the birthday cake is delicious" } },
+    { "hanzi": "当然", "pinyin": "dāngrán", "english": "of course; naturally", "example": { "hanzi": "当然可以", "pinyin": "dāngrán kěyǐ", "english": "of course you can" } },
+    { "hanzi": "地", "pinyin": "dì, de", "english": "earth; ground; (adverbial particle)", "example": { "hanzi": "他跑得快", "pinyin": "tā pǎo de kuài", "english": "he runs fast" } },
+    { "hanzi": "灯", "pinyin": "dēng", "english": "lamp; light", "example": { "hanzi": "开灯", "pinyin": "kāi dēng", "english": "turn on the light" } },
+    { "hanzi": "地方", "pinyin": "dìfang", "english": "place; space; room; part", "example": { "hanzi": "这是个好地方", "pinyin": "zhè shì gè hǎo dìfang", "english": "this is a good place" } },
+    { "hanzi": "地铁", "pinyin": "dìtiě", "english": "subway", "example": { "hanzi": "坐地铁很快", "pinyin": "zuò dìtiě hěn kuài", "english": "taking the subway is fast" } },
+    { "hanzi": "地图", "pinyin": "dìtú", "english": "map", "example": { "hanzi": "看地图", "pinyin": "kàn dìtú", "english": "look at the map" } },
+    { "hanzi": "电梯", "pinyin": "diàntī", "english": "elevator", "example": { "hanzi": "坐电梯上楼", "pinyin": "zuò diàntī shàng lóu", "english": "take the elevator upstairs" } },
+    { "hanzi": "电子邮件", "pinyin": "diànzǐ yóujiàn", "english": "email", "example": { "hanzi": "我发了电子邮件", "pinyin": "wǒ fā le diànzǐ yóujiàn", "english": "I sent an email" } },
+    { "hanzi": "东", "pinyin": "dōng", "english": "East", "example": { "hanzi": "太阳从东边升起", "pinyin": "tàiyáng cóng dōngbian qǐqǐ", "english": "the sun rises in the east" } },
+    { "hanzi": "冬", "pinyin": "dōng", "english": "winter", "example": { "hanzi": "冬天很冷", "pinyin": "dōngtiān hěn lěng", "english": "winter is very cold" } },
+    { "hanzi": "动物", "pinyin": "dòngwù", "english": "animal", "example": { "hanzi": "我喜欢动物", "pinyin": "wǒ xǐhuan dòngwù", "english": "I like animals" } },
+    { "hanzi": "短", "pinyin": "duǎn", "english": "short (in length, duration, or height)", "example": { "hanzi": "头发很短", "pinyin": "tóufà hěn duǎn", "english": "hair is very short" } },
+    { "hanzi": "段", "pinyin": "duàn", "english": "paragraph; segment; section", "example": { "hanzi": "第一段课文", "pinyin": "dì yī duàn kèwén", "english": "the first paragraph of the text" } },
+    { "hanzi": "锻炼", "pinyin": "duànliàn", "english": "to exercise; to work out", "example": { "hanzi": "我每天锻炼", "pinyin": "wǒ měitiān duànliàn", "english": "I exercise every day" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 超市 mean?", "options": ["supermarket", "city", "dictionary"], "answer": "supermarket" },
+    { "type": "choose", "prompt": "Which word means 'to clean'?", "options": ["打扫", "打算", "带"], "answer": "打扫" },
+    { "type": "listen", "audio": "蛋糕", "pinyin": "dàngāo", "prompt": "Listen and choose what you hear.", "options": ["蛋糕", "当然", "地图"], "answer": "蛋糕" },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        { "hanzi": "衬衫", "english": "shirt" },
+        { "hanzi": "城市", "english": "city" },
+        { "hanzi": "春", "english": "spring" },
+        { "hanzi": "词典", "english": "dictionary" }
+      ]
+    },
+    { "type": "order", "prompt": "Make the phrase 'turn on the light'.", "tokens": ["灯", "开"], "answer": "开灯" },
+    { "type": "order", "prompt": "Put the characters in order to say 'I exercise every day'.", "tokens": ["天", "每", "炼", "锻", "我"], "answer": "我每天锻炼" },
+    { "type": "listen", "audio": "地铁", "pinyin": "dìtiě", "prompt": "Listen and choose what you hear.", "options": ["地铁", "电梯", "地图"], "answer": "地铁" },
+    { "type": "choose", "prompt": "Which character means 'East'?", "options": ["东", "冬", "动"], "answer": "东" }
+  ]
+}
