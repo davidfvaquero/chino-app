@@ -1,0 +1,56 @@
+{
+  "id": "hsk3-06",
+  "title": "Compras, dinero y servicios",
+  "intro": "Aprende palabras para las compras, la comida, los vecinos, estudiar en el extranjero y los servicios del día a día. Practica 了解, 马上, 其实 y otros conectores útiles.",
+  "vocabulary": [
+    { "hanzi": "聊天", "pinyin": "liáotiān", "english": "charlar; conversar", "example": { "hanzi": "我们聊天吧", "pinyin": "wǒmen liáotiān ba", "english": "vamos a charlar" } },
+    { "hanzi": "了解", "pinyin": "liǎojiě", "english": "entender; conocer", "example": { "hanzi": "我了解他", "pinyin": "wǒ liǎojiě tā", "english": "lo conozco" } },
+    { "hanzi": "邻居", "pinyin": "línjū", "english": "vecino", "example": { "hanzi": "我的邻居很好", "pinyin": "wǒ de línjū hěn hǎo", "english": "mi vecino es simpático" } },
+    { "hanzi": "留学", "pinyin": "liúxué", "english": "estudiar en el extranjero", "example": { "hanzi": "我想留学", "pinyin": "wǒ xiǎng liúxué", "english": "quiero estudiar en el extranjero" } },
+    { "hanzi": "楼", "pinyin": "lóu", "english": "edificio; piso", "example": { "hanzi": "我在三楼", "pinyin": "wǒ zài sān lóu", "english": "estoy en el tercer piso" } },
+    { "hanzi": "绿", "pinyin": "lǜ", "english": "verde", "example": { "hanzi": "草是绿的", "pinyin": "cǎo shì lǜ de", "english": "la hierba es verde" } },
+    { "hanzi": "马", "pinyin": "mǎ", "english": "caballo", "example": { "hanzi": "马跑得快", "pinyin": "mǎ pǎo de kuài", "english": "los caballos corren rápido" } },
+    { "hanzi": "马上", "pinyin": "mǎshàng", "english": "enseguida; de inmediato", "example": { "hanzi": "我马上来", "pinyin": "wǒ mǎshàng lái", "english": "voy enseguida" } },
+    { "hanzi": "满意", "pinyin": "mǎnyì", "english": "satisfecho; contento", "example": { "hanzi": "我很满意", "pinyin": "wǒ hěn mǎnyì", "english": "estoy muy satisfecho" } },
+    { "hanzi": "帽子", "pinyin": "màozi", "english": "sombrero; gorro", "example": { "hanzi": "戴帽子", "pinyin": "dài màozi", "english": "llevar un sombrero" } },
+    { "hanzi": "米", "pinyin": "mǐ", "english": "arroz; metro", "example": { "hanzi": "一米饭", "pinyin": "yī mǐ fàn", "english": "un metro de arroz (arroz cocido)" } },
+    { "hanzi": "面包", "pinyin": "miànbāo", "english": "pan", "example": { "hanzi": "买面包", "pinyin": "mǎi miànbāo", "english": "comprar pan" } },
+    { "hanzi": "明白", "pinyin": "míngbai", "english": "entender; claro", "example": { "hanzi": "我明白", "pinyin": "wǒ míngbai", "english": "entiendo" } },
+    { "hanzi": "拿", "pinyin": "ná", "english": "coger; tomar; sostener", "example": { "hanzi": "拿书", "pinyin": "ná shū", "english": "coge el libro" } },
+    { "hanzi": "奶奶", "pinyin": "nǎinai", "english": "abuela (paterna)", "example": { "hanzi": "奶奶在做饭", "pinyin": "nǎinai zài zuòfàn", "english": "la abuela está cocinando" } },
+    { "hanzi": "南", "pinyin": "nán", "english": "sur", "example": { "hanzi": "南方", "pinyin": "nánfāng", "english": "el sur" } },
+    { "hanzi": "难", "pinyin": "nán", "english": "difícil", "example": { "hanzi": "中文很难", "pinyin": "zhōngwén hěn nán", "english": "el chino es difícil" } },
+    { "hanzi": "难过", "pinyin": "nánguò", "english": "triste; afligido", "example": { "hanzi": "我很难过", "pinyin": "wǒ hěn nánguò", "english": "estoy muy triste" } },
+    { "hanzi": "年级", "pinyin": "niánjí", "english": "curso; grado (escolar)", "example": { "hanzi": "我是三年级", "pinyin": "wǒ shì sān niánjí", "english": "estoy en tercer curso" } },
+    { "hanzi": "年轻", "pinyin": "niánqīng", "english": "joven", "example": { "hanzi": "他很年轻", "pinyin": "tā hěn niánqīng", "english": "él es muy joven" } },
+    { "hanzi": "鸟", "pinyin": "niǎo", "english": "pájaro", "example": { "hanzi": "鸟在飞", "pinyin": "niǎo zài fēi", "english": "el pájaro está volando" } },
+    { "hanzi": "努力", "pinyin": "nǔlì", "english": "esforzarse; trabajar duro", "example": { "hanzi": "要努力学习", "pinyin": "yào nǔlì xuéxí", "english": "hay que estudiar duro" } },
+    { "hanzi": "爬山", "pinyin": "páshān", "english": "subir a la montaña; senderismo", "example": { "hanzi": "周末去爬山", "pinyin": "zhōumò qù páshān", "english": "ir de senderismo el fin de semana" } },
+    { "hanzi": "盘子", "pinyin": "pánzi", "english": "plato; fuente", "example": { "hanzi": "洗盘子", "pinyin": "xǐ pánzi", "english": "lavar los platos" } },
+    { "hanzi": "胖", "pinyin": "pàng", "english": "gordo; rellenito", "example": { "hanzi": "猫有点胖", "pinyin": "māo yǒudiǎn pàng", "english": "el gato está un poco gordo" } },
+    { "hanzi": "皮鞋", "pinyin": "píxié", "english": "zapatos de cuero", "example": { "hanzi": "新皮鞋", "pinyin": "xīn píxié", "english": "zapatos de cuero nuevos" } },
+    { "hanzi": "啤酒", "pinyin": "píjiǔ", "english": "cerveza", "example": { "hanzi": "喝啤酒", "pinyin": "hē píjiǔ", "english": "beber cerveza" } },
+    { "hanzi": "瓶子", "pinyin": "píngzi", "english": "botella", "example": { "hanzi": "一瓶子水", "pinyin": "yī píngzi shuǐ", "english": "una botella de agua" } },
+    { "hanzi": "其实", "pinyin": "qíshí", "english": "en realidad; de hecho", "example": { "hanzi": "其实我不饿", "pinyin": "qíshí wǒ bù è", "english": "en realidad no tengo hambre" } },
+    { "hanzi": "其他", "pinyin": "qítā", "english": "otro; demás", "example": { "hanzi": "还有其他吗", "pinyin": "hái yǒu qítā ma", "english": "¿algo más?" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 马上?", "options": ["enseguida", "a caballo", "caballo"], "answer": "enseguida" },
+    { "type": "choose", "prompt": "¿Qué palabra significa «pan»?", "options": ["面包", "米", "啤酒"], "answer": "面包" },
+    { "type": "listen", "audio": "奶奶", "pinyin": "nǎinai", "prompt": "Escucha y elige lo que oyes.", "options": ["奶奶", "南", "难"], "answer": "奶奶" },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        { "hanzi": "邻居", "english": "vecino" },
+        { "hanzi": "留学", "english": "estudiar en el extranjero" },
+        { "hanzi": "满意", "english": "satisfecho" },
+        { "hanzi": "帽子", "english": "sombrero" }
+      ]
+    },
+    { "type": "order", "prompt": "Forma la frase «entiendo».", "tokens": ["我", "明", "白"], "answer": "我明白" },
+    { "type": "order", "prompt": "Ordena los caracteres para decir «comprar pan».", "tokens": ["面", "包", "买"], "answer": "买面包" },
+    { "type": "listen", "audio": "其实", "pinyin": "qíshí", "prompt": "Escucha y elige lo que oyes.", "options": ["其实", "其他", "奇怪"], "answer": "其实" },
+    { "type": "choose", "prompt": "¿Qué carácter significa «pájaro»?", "options": ["鸟", "马", "牛"], "answer": "鸟" }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "hsk3-10",
+  "title": "Palabras y expresiones del día a día",
+  "intro": "Termina el HSK 3 con el vocabulario básico del día a día: la voluntad, los lugares, el tiempo, la familia, el estudio y expresiones comunes para comunicarte con soltura.",
+  "vocabulary": [
+    { "hanzi": "愿意", "pinyin": "yuànyì", "english": "estar dispuesto; querer", "example": { "hanzi": "我愿意帮你", "pinyin": "wǒ yuànyì bāng nǐ", "english": "estoy dispuesto a ayudarte" } },
+    { "hanzi": "月亮", "pinyin": "yuèliang", "english": "la luna", "example": { "hanzi": "月亮出来了", "pinyin": "yuèliang chūlái le", "english": "ha salido la luna" } },
+    { "hanzi": "越", "pinyin": "yuè", "english": "aún más; cuanto más; superar", "example": { "hanzi": "越来越好", "pinyin": "yuè lái yuè hǎo", "english": "cada vez mejor" } },
+    { "hanzi": "站", "pinyin": "zhàn", "english": "estar de pie; estación; parada; centro de servicio", "example": { "hanzi": "火车站在哪里", "pinyin": "huǒchēzhàn zài nǎlǐ", "english": "¿dónde está la estación de tren?" } },
+    { "hanzi": "张", "pinyin": "zhāng", "english": "(clasificador para objetos planos); extender; (apellido común)", "example": { "hanzi": "一张纸", "pinyin": "yī zhāng zhǐ", "english": "una hoja de papel" } },
+    { "hanzi": "着急", "pinyin": "zháojí", "english": "preocuparse; estar nervioso", "example": { "hanzi": "别着急", "pinyin": "bié zháojí", "english": "no te preocupes" } },
+    { "hanzi": "照顾", "pinyin": "zhàogu", "english": "cuidar de; atender; tener en cuenta", "example": { "hanzi": "妈妈照顾孩子", "pinyin": "māma zhàogu háizi", "english": "la mamá cuida del niño" } },
+    { "hanzi": "照片", "pinyin": "zhàopiàn", "english": "foto; fotografía", "example": { "hanzi": "这是我的照片", "pinyin": "zhè shì wǒ de zhàopiàn", "english": "esta es mi foto" } },
+    { "hanzi": "照相机", "pinyin": "zhàoxiàngjī", "english": "cámara de fotos", "example": { "hanzi": "我买了新照相机", "pinyin": "wǒ mǎi le xīn zhàoxiàngjī", "english": "compré una cámara nueva" } },
+    { "hanzi": "只", "pinyin": "zhǐ", "english": "solo; solamente", "example": { "hanzi": "我只有一个", "pinyin": "wǒ zhǐ yǒu yī gè", "english": "solo tengo uno" } },
+    { "hanzi": "只有", "pinyin": "zhǐyǒu", "english": "solo; únicamente", "example": { "hanzi": "只有你知道", "pinyin": "zhǐyǒu nǐ zhīdào", "english": "solo tú lo sabes" } },
+    { "hanzi": "才", "pinyin": "cái", "english": "talento; apenas; solo entonces", "example": { "hanzi": "他才来", "pinyin": "tā cái lái", "english": "acaba de llegar" } },
+    { "hanzi": "中间", "pinyin": "zhōngjiān", "english": "centro; medio; entre", "example": { "hanzi": "在中间", "pinyin": "zài zhōngjiān", "english": "en el medio" } },
+    { "hanzi": "中文", "pinyin": "zhōngwén", "english": "chino (idioma)", "example": { "hanzi": "我学中文", "pinyin": "wǒ xué zhōngwén", "english": "estudio chino" } },
+    { "hanzi": "终于", "pinyin": "zhōngyú", "english": "por fin; finalmente", "example": { "hanzi": "他终于来了", "pinyin": "tā zhōngyú lái le", "english": "por fin llegó" } },
+    { "hanzi": "种", "pinyin": "zhǒng", "english": "tipo; clase; semilla", "example": { "hanzi": "一种水果", "pinyin": "yī zhǒng shuǐguǒ", "english": "un tipo de fruta" } },
+    { "hanzi": "重要", "pinyin": "zhòngyào", "english": "importante; significativo", "example": { "hanzi": "这很重要", "pinyin": "zhè hěn zhòngyào", "english": "esto es muy importante" } },
+    { "hanzi": "周末", "pinyin": "zhōumò", "english": "fin de semana", "example": { "hanzi": "周末去公园", "pinyin": "zhōumò qù gōngyuán", "english": "ir al parque el fin de semana" } },
+    { "hanzi": "主要", "pinyin": "zhǔyào", "english": "principal; fundamental", "example": { "hanzi": "主要原因", "pinyin": "zhǔyào yuányīn", "english": "la razón principal" } },
+    { "hanzi": "注意", "pinyin": "zhùyì", "english": "prestar atención; fijarse en; tener cuidado", "example": { "hanzi": "注意安全", "pinyin": "zhùyì ānquán", "english": "presta atención a la seguridad" } },
+    { "hanzi": "自己", "pinyin": "zìjǐ", "english": "uno mismo; sí mismo", "example": { "hanzi": "我自己做", "pinyin": "wǒ zìjǐ zuò", "english": "lo haré yo mismo" } },
+    { "hanzi": "自行车", "pinyin": "zìxíngchē", "english": "bicicleta", "example": { "hanzi": "我骑自行车上班", "pinyin": "wǒ qí zìxíngchē shàngbān", "english": "voy al trabajo en bicicleta" } },
+    { "hanzi": "总是", "pinyin": "zǒngshì", "english": "siempre; tarde o temprano", "example": { "hanzi": "他总是迟到", "pinyin": "tā zǒngshì chídào", "english": "él siempre llega tarde" } },
+    { "hanzi": "嘴", "pinyin": "zuǐ", "english": "boca", "example": { "hanzi": "张开嘴", "pinyin": "zhāngkāi zuǐ", "english": "abre la boca" } },
+    { "hanzi": "最后", "pinyin": "zuìhòu", "english": "último; final; por último", "example": { "hanzi": "最后一天", "pinyin": "zuìhòu yī tiān", "english": "el último día" } },
+    { "hanzi": "最近", "pinyin": "zuìjìn", "english": "últimamente; recientemente", "example": { "hanzi": "最近很忙", "pinyin": "zuìjìn hěn máng", "english": "he estado muy ocupado últimamente" } },
+    { "hanzi": "作业", "pinyin": "zuòyè", "english": "deberes; tarea escolar", "example": { "hanzi": "做完作业了吗", "pinyin": "zuòwán zuòyè le ma", "english": "¿has terminado los deberes?" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 愿意?", "options": ["estar dispuesto", "la luna", "aún más"], "answer": "estar dispuesto" },
+    { "type": "choose", "prompt": "¿Qué palabra significa «deberes»?", "options": ["作业", "周末", "主要"], "answer": "作业" },
+    { "type": "listen", "audio": "自行车", "pinyin": "zìxíngchē", "prompt": "Escucha y elige lo que oyes.", "options": ["自行车", "自己", "周末"], "answer": "自行车" },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        { "hanzi": "月亮", "english": "luna" },
+        { "hanzi": "重要", "english": "importante" },
+        { "hanzi": "注意", "english": "prestar atención" },
+        { "hanzi": "最后", "english": "último" }
+      ]
+    },
+    { "type": "order", "prompt": "Forma la frase «lo hago yo mismo».", "tokens": ["做", "我", "自己"], "answer": "我自己做" },
+    { "type": "order", "prompt": "Ordena los caracteres para decir «presta atención a la seguridad».", "tokens": ["意", "安全", "注"], "answer": "注意安全" },
+    { "type": "listen", "audio": "最近", "pinyin": "zuìjìn", "prompt": "Escucha y elige lo que oyes.", "options": ["最近", "最后", "嘴"], "answer": "最近" },
+    { "type": "choose", "prompt": "¿Qué carácter significa «bicicleta»?", "options": ["自行车", "自己", "总是"], "answer": "自行车" }
+  ]
+}

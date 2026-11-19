@@ -1,0 +1,56 @@
+{
+  "id": "hsk3-07",
+  "title": "Tiempo, orden y frecuencia",
+  "intro": "Expresa tiempo, secuencia, condiciones y frecuencia con 然后, 如果, 起来 y 刚, y habla de estaciones, sentimientos y rutinas diarias.",
+  "vocabulary": [
+    { "hanzi": "奇怪", "pinyin": "qíguài", "english": "extraño; raro", "example": { "hanzi": "这很奇怪", "pinyin": "zhè hěn qíguài", "english": "esto es extraño" } },
+    { "hanzi": "骑", "pinyin": "qí", "english": "montar (en bici, a caballo)", "example": { "hanzi": "骑自行车", "pinyin": "qí zìxíngchē", "english": "montar en bicicleta" } },
+    { "hanzi": "起飞", "pinyin": "qǐfēi", "english": "despegar (el avión)", "example": { "hanzi": "飞机起飞了", "pinyin": "fēijī qǐfēi le", "english": "el avión despegó" } },
+    { "hanzi": "起来", "pinyin": "qǐlai", "english": "levantarse; empezar a", "example": { "hanzi": "七点起床", "pinyin": "qī diǎn qǐchuáng", "english": "levantarse a las siete" } },
+    { "hanzi": "清楚", "pinyin": "qīngchu", "english": "claro; tener claro", "example": { "hanzi": "说清楚", "pinyin": "shuō qīngchu", "english": "explicar claramente" } },
+    { "hanzi": "请假", "pinyin": "qǐngjià", "english": "pedir permiso (ausencia)", "example": { "hanzi": "我要请假", "pinyin": "wǒ yào qǐngjià", "english": "necesito pedir permiso" } },
+    { "hanzi": "秋", "pinyin": "qiū", "english": "otoño", "example": { "hanzi": "秋天到了", "pinyin": "qiūtiān dào le", "english": "ha llegado el otoño" } },
+    { "hanzi": "裙子", "pinyin": "qúnzi", "english": "falda", "example": { "hanzi": "红裙子", "pinyin": "hóng qúnzi", "english": "falda roja" } },
+    { "hanzi": "然后", "pinyin": "ránhòu", "english": "entonces; después", "example": { "hanzi": "先吃饭，然后睡觉", "pinyin": "xiān chīfàn, ránhòu shuìjiào", "english": "primero come, luego duerme" } },
+    { "hanzi": "热情", "pinyin": "rèqíng", "english": "cálido; entusiasta", "example": { "hanzi": "他很热情", "pinyin": "tā hěn rèqíng", "english": "él es muy cálido" } },
+    { "hanzi": "认为", "pinyin": "rènwéi", "english": "creer; pensar", "example": { "hanzi": "我认为是这样", "pinyin": "wǒ rènwéi shì zhèyàng", "english": "creo que es así" } },
+    { "hanzi": "认真", "pinyin": "rènzhēn", "english": "serio; aplicado", "example": { "hanzi": "认真学习", "pinyin": "rènzhēn xuéxí", "english": "estudiar en serio" } },
+    { "hanzi": "容易", "pinyin": "róngyì", "english": "fácil; probable", "example": { "hanzi": "这不容易", "pinyin": "zhè bù róngyì", "english": "esto no es fácil" } },
+    { "hanzi": "如果", "pinyin": "rúguǒ", "english": "si", "example": { "hanzi": "如果下雨", "pinyin": "rúguǒ xiàyǔ", "english": "si llueve" } },
+    { "hanzi": "伞", "pinyin": "sǎn", "english": "paraguas", "example": { "hanzi": "带伞", "pinyin": "dài sǎn", "english": "lleva un paraguas" } },
+    { "hanzi": "上网", "pinyin": "shàngwǎng", "english": "conectarse a internet", "example": { "hanzi": "我要上网", "pinyin": "wǒ yào shàngwǎng", "english": "quiero conectarme a internet" } },
+    { "hanzi": "生气", "pinyin": "shēngqì", "english": "enfadarse; enojarse", "example": { "hanzi": "别生气", "pinyin": "bié shēngqì", "english": "no te enfades" } },
+    { "hanzi": "声音", "pinyin": "shēngyīn", "english": "sonido; voz", "example": { "hanzi": "声音很大", "pinyin": "shēngyīn hěn dà", "english": "el sonido es fuerte" } },
+    { "hanzi": "世界", "pinyin": "shìjiè", "english": "mundo", "example": { "hanzi": "世界很大", "pinyin": "shìjiè hěn dà", "english": "el mundo es grande" } },
+    { "hanzi": "试", "pinyin": "shì", "english": "probar; examen", "example": { "hanzi": "试一下", "pinyin": "shì yīxià", "english": "pruébalo" } },
+    { "hanzi": "瘦", "pinyin": "shòu", "english": "delgado; flaco", "example": { "hanzi": "他很瘦", "pinyin": "tā hěn shòu", "english": "él está muy delgado" } },
+    { "hanzi": "叔叔", "pinyin": "shūshu", "english": "tío (hermano menor del padre)", "example": { "hanzi": "叔叔来了", "pinyin": "shūshu lái le", "english": "ha llegado el tío" } },
+    { "hanzi": "舒服", "pinyin": "shūfu", "english": "cómodo; sentirse bien", "example": { "hanzi": "这椅子很舒服", "pinyin": "zhè yǐzi hěn shūfu", "english": "esta silla es cómoda" } },
+    { "hanzi": "树", "pinyin": "shù", "english": "árbol", "example": { "hanzi": "大树", "pinyin": "dà shù", "english": "árbol grande" } },
+    { "hanzi": "数学", "pinyin": "shùxué", "english": "matemáticas", "example": { "hanzi": "数学课", "pinyin": "shùxué kè", "english": "clase de matemáticas" } },
+    { "hanzi": "刷牙", "pinyin": "shuāyá", "english": "cepillarse los dientes", "example": { "hanzi": "早晚刷牙", "pinyin": "zǎowǎn shuāyá", "english": "cepillarse los dientes por la mañana y por la noche" } },
+    { "hanzi": "双", "pinyin": "shuāng", "english": "par; doble", "example": { "hanzi": "一双鞋", "pinyin": "yī shuāng xié", "english": "un par de zapatos" } },
+    { "hanzi": "水平", "pinyin": "shuǐpíng", "english": "nivel; estándar", "example": { "hanzi": "中文水平", "pinyin": "zhōngwén shuǐpíng", "english": "nivel de chino" } },
+    { "hanzi": "司机", "pinyin": "sījī", "english": "conductor; chófer", "example": { "hanzi": "出租车司机", "pinyin": "chūzūchē sījī", "english": "conductor de taxi" } },
+    { "hanzi": "太阳", "pinyin": "tàiyáng", "english": "el sol", "example": { "hanzi": "太阳出来了", "pinyin": "tàiyáng chūlái le", "english": "salió el sol" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 然后?", "options": ["entonces", "si", "porque"], "answer": "entonces" },
+    { "type": "choose", "prompt": "¿Qué palabra significa «paraguas»?", "options": ["伞", "山", "水"], "answer": "伞" },
+    { "type": "listen", "audio": "如果", "pinyin": "rúguǒ", "prompt": "Escucha y elige lo que oyes.", "options": ["如果", "热情", "认识"], "answer": "如果" },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        { "hanzi": "秋", "english": "otoño" },
+        { "hanzi": "骑", "english": "montar" },
+        { "hanzi": "生气", "english": "enfadarse" },
+        { "hanzi": "世界", "english": "mundo" }
+      ]
+    },
+    { "type": "order", "prompt": "Forma la frase «si llueve».", "tokens": ["下", "雨", "如", "果"], "answer": "如果下雨" },
+    { "type": "order", "prompt": "Ordena los caracteres para decir «cepillarse los dientes».", "tokens": ["牙", "刷"], "answer": "刷牙" },
+    { "type": "listen", "audio": "太阳", "pinyin": "tàiyáng", "prompt": "Escucha y elige lo que oyes.", "options": ["太阳", "天气", "秋"], "answer": "太阳" },
+    { "type": "choose", "prompt": "¿Qué carácter significa «árbol»?", "options": ["树", "水", "双"], "answer": "树" }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "hsk3-08",
+  "title": "Sociedad, medios y comunicación",
+  "intro": "Amplía tu vocabulario con palabras sobre la sociedad, los medios, la comunicación y las interacciones diarias de la vida moderna.",
+  "vocabulary": [
+    { "hanzi": "特别", "pinyin": "tèbié", "english": "especial; sobre todo; particular", "example": { "hanzi": "今天特别冷", "pinyin": "jīntiān tèbié lěng", "english": "hoy hace un frío especial" } },
+    { "hanzi": "疼", "pinyin": "téng", "english": "dolor; dolorido; doler; querer mucho", "example": { "hanzi": "我的腿疼", "pinyin": "wǒ de tuǐ téng", "english": "me duele la pierna" } },
+    { "hanzi": "提高", "pinyin": "tígāo", "english": "aumentar; elevar; mejorar", "example": { "hanzi": "我想提高中文水平", "pinyin": "wǒ xiǎng tígāo zhōngwén shuǐpíng", "english": "quiero mejorar mi nivel de chino" } },
+    { "hanzi": "体育", "pinyin": "tǐyù", "english": "educación física; deportes", "example": { "hanzi": "我喜欢体育课", "pinyin": "wǒ xǐhuan tǐyù kè", "english": "me gustan las clases de educación física" } },
+    { "hanzi": "甜", "pinyin": "tián", "english": "dulce", "example": { "hanzi": "这水果很甜", "pinyin": "zhè shuǐguǒ hěn tián", "english": "esta fruta es muy dulce" } },
+    { "hanzi": "条", "pinyin": "tiáo", "english": "tira; (clasificador para objetos largos y delgados); artículo", "example": { "hanzi": "一条鱼", "pinyin": "yī tiáo yú", "english": "un pez" } },
+    { "hanzi": "同事", "pinyin": "tóngshì", "english": "colega; compañero de trabajo", "example": { "hanzi": "我的同事很友好", "pinyin": "wǒ de tóngshì hěn yǒuhǎo", "english": "mi colega es muy amable" } },
+    { "hanzi": "同意", "pinyin": "tóngyì", "english": "estar de acuerdo; aceptar; aprobar", "example": { "hanzi": "我同意你的看法", "pinyin": "wǒ tóngyì nǐ de kànfǎ", "english": "estoy de acuerdo con tu opinión" } },
+    { "hanzi": "头发", "pinyin": "tóufa", "english": "pelo; cabello", "example": { "hanzi": "她的头发很长", "pinyin": "tā de tóufa hěn cháng", "english": "su pelo es muy largo" } },
+    { "hanzi": "突然", "pinyin": "tūrán", "english": "repentino; de repente", "example": { "hanzi": "突然下雨了", "pinyin": "tūrán xiàyǔ le", "english": "de repente empezó a llover" } },
+    { "hanzi": "图书馆", "pinyin": "túshūguǎn", "english": "biblioteca", "example": { "hanzi": "我在图书馆看书", "pinyin": "wǒ zài túshūguǎn kàn shū", "english": "leo libros en la biblioteca" } },
+    { "hanzi": "腿", "pinyin": "tuǐ", "english": "pierna", "example": { "hanzi": "他的腿很长", "pinyin": "tā de tuǐ hěn cháng", "english": "sus piernas son muy largas" } },
+    { "hanzi": "完成", "pinyin": "wánchéng", "english": "completar; terminar; cumplir", "example": { "hanzi": "我完成了作业", "pinyin": "wǒ wánchéng le zuòyè", "english": "terminé mis deberes" } },
+    { "hanzi": "碗", "pinyin": "wǎn", "english": "cuenco; tazón", "example": { "hanzi": "一碗饭", "pinyin": "yī wǎn fàn", "english": "un cuenco de arroz" } },
+    { "hanzi": "万", "pinyin": "wàn", "english": "diez mil", "example": { "hanzi": "一万块钱", "pinyin": "yī wàn kuài qián", "english": "diez mil yuanes" } },
+    { "hanzi": "忘记", "pinyin": "wàngjì", "english": "olvidar", "example": { "hanzi": "别忘记带书", "pinyin": "bié wàngjì dài shū", "english": "no olvides traer el libro" } },
+    { "hanzi": "为", "pinyin": "wèi", "english": "por; a causa de; para", "example": { "hanzi": "为了你", "pinyin": "wèile nǐ", "english": "por ti" } },
+    { "hanzi": "为了", "pinyin": "wèile", "english": "para; con el fin de", "example": { "hanzi": "为了学中文", "pinyin": "wèile xué zhōngwén", "english": "para aprender chino" } },
+    { "hanzi": "位", "pinyin": "wèi", "english": "posición; lugar; (clasificador cortés para personas)", "example": { "hanzi": "一位老师", "pinyin": "yī wèi lǎoshī", "english": "un profesor (cortés)" } },
+    { "hanzi": "文化", "pinyin": "wénhuà", "english": "cultura; civilización", "example": { "hanzi": "中国文化很有意思", "pinyin": "zhōngguó wénhuà hěn yǒu yìsi", "english": "la cultura china es muy interesante" } },
+    { "hanzi": "西", "pinyin": "xī", "english": "oeste", "example": { "hanzi": "西方国家", "pinyin": "xīfāng guójiā", "english": "los países occidentales" } },
+    { "hanzi": "习惯", "pinyin": "xíguàn", "english": "costumbre; estar acostumbrado a", "example": { "hanzi": "我习惯早起", "pinyin": "wǒ xíguàn zǎoqǐ", "english": "estoy acostumbrado a madrugar" } },
+    { "hanzi": "洗手间", "pinyin": "xǐshǒujiān", "english": "aseo; baño; lavabo", "example": { "hanzi": "洗手间在哪里", "pinyin": "xǐshǒujiān zài nǎlǐ", "english": "¿dónde está el baño?" } },
+    { "hanzi": "洗澡", "pinyin": "xǐzǎo", "english": "bañarse; ducharse", "example": { "hanzi": "我每天洗澡", "pinyin": "wǒ měitiān xǐzǎo", "english": "me ducho todos los días" } },
+    { "hanzi": "夏", "pinyin": "xià", "english": "verano", "example": { "hanzi": "夏天很热", "pinyin": "xiàtiān hěn rè", "english": "el verano hace mucho calor" } },
+    { "hanzi": "先", "pinyin": "xiān", "english": "primero; antes", "example": { "hanzi": "你先走", "pinyin": "nǐ xiān zǒu", "english": "ve tú primero" } },
+    { "hanzi": "相信", "pinyin": "xiāngxìn", "english": "creer (a alguien); confiar en", "example": { "hanzi": "我信任你", "pinyin": "wǒ xiāngxìn nǐ", "english": "confío en ti" } },
+    { "hanzi": "香蕉", "pinyin": "xiāngjiāo", "english": "plátano; banana", "example": { "hanzi": "香蕉很好吃", "pinyin": "xiāngjiāo hěn hǎochī", "english": "los plátanos están deliciosos" } },
+    { "hanzi": "向", "pinyin": "xiàng", "english": "dirección; hacia; girar; mirar hacia", "example": { "hanzi": "向左转", "pinyin": "xiàng zuǒ zhuǎn", "english": "gira a la izquierda" } },
+    { "hanzi": "像", "pinyin": "xiàng", "english": "parecerse a; ser como; aspecto; parecer", "example": { "hanzi": "他像他爸爸", "pinyin": "tā xiàng tā bàba", "english": "se parece a su padre" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "¿Qué significa 特别?", "options": ["especial", "biblioteca", "verano"], "answer": "especial" },
+    { "type": "choose", "prompt": "¿Qué palabra significa «completar»?", "options": ["完成", "忘记", "提高"], "answer": "完成" },
+    { "type": "listen", "audio": "图书馆", "pinyin": "túshūguǎn", "prompt": "Escucha y elige lo que oyes.", "options": ["图书馆", "洗手间", "同事"], "answer": "图书馆" },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        { "hanzi": "疼", "english": "doler" },
+        { "hanzi": "香蕉", "english": "plátano" },
+        { "hanzi": "习惯", "english": "costumbre" },
+        { "hanzi": "文化", "english": "cultura" }
+      ]
+    },
+    { "type": "order", "prompt": "Forma la frase «estoy de acuerdo contigo».", "tokens": ["我", "同", "你", "意"], "answer": "我同意你" },
+    { "type": "order", "prompt": "Ordena los caracteres para decir «gira a la izquierda».", "tokens": ["转", "向", "左"], "answer": "向左转" },
+    { "type": "listen", "audio": "突然", "pinyin": "tūrán", "prompt": "Escucha y elige lo que oyes.", "options": ["突然", "特别", "头发"], "answer": "突然" },
+    { "type": "choose", "prompt": "¿Qué carácter significa «pierna»?", "options": ["腿", "条", "位"], "answer": "腿" }
+  ]
+}
