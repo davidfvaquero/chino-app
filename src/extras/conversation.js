@@ -333,7 +333,7 @@ export function render(container, ctx = {}) {
       class: 'field', name: 'msg', rows: '2',
       placeholder: t('conversation.inputPlaceholder'), 'aria-label': t('conversation.inputPlaceholder'),
     });
-    const send = h('button', { type: 'button', class: 'btn primary', text: t('conversation.send'), disabled: state.busy });
+    const send = h('button', { type: 'submit', class: 'btn primary', text: t('conversation.send'), disabled: state.busy });
     const newBtn = h('button', { type: 'button', class: 'btn', text: t('conversation.newChat'), onclick: startNewConversation });
     const form = h('form', {
       class: 'conv-compose',
@@ -446,6 +446,7 @@ export function render(container, ctx = {}) {
       persist();
       setStatus('');
       window.dispatchEvent(new CustomEvent('chino:lesson_done', { detail: { source: 'conversation' } }));
+      state.busy = false;
       paint();
     } catch (err) {
       live.remove();

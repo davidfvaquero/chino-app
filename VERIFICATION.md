@@ -1725,3 +1725,57 @@ ffmpeg -i public/audio/012210f1087ecc1f.mp3 -af silencedetect=noise=-50dB:d=0.3 
 ```
 
 *Verificador haiku — 2026-11-19*
+
+## BLOQUE 15 — verificación de cuenta/sync, conversación IA y menús (t_7235602a, verificador haiku)
+
+Alcance: SYNC1 (t_7cc6d3b3, asignado barato), CONV1 (t_adaedd7c, barato), CONV2 (t_9742039a, barato), NAV2 (t_677d0794, deepseek). Ninguna tarea del alcance la hizo haiku, así que todas se verifican. Build en `/tmp/chino-t_7235602a` (OUT_DIR), servido con `scripts/serve.mjs`; subdirectorio simulado con el mismo build copiado bajo `/chino-app/`. Headless Chromium, 390 px, en-US y es-ES.
+
+### Resultado por punto
+
+| Punto | Estado | Evidencia |
+| --- | --- | --- |
+| Sin configuración, cero peticiones de sync | OK | Home y `#/extras/account` sin hosts externos ni peticiones a supabase/auth/rest. Estado `not-configured`, texto "not configured". |
+| Tests de conflicto de `merge.js` | OK | `tests/sync-merge.test.mjs` cubre LWW, empate, tarjetas srs con más repasos, tombstones, reloj desfasado. `sync-client` cubre OTP, push, pull, offline, borrado. |
+| `docs/SYNC.md` útil | OK | 107 líneas: comparativa Supabase / PocketBase+Tailscale / Firebase, recomendación, límites del plan gratis, pasos para David, comportamiento del sync. |
+| Sin claves secretas en el repo | OK | `git grep -i -E 'sk-…|secret|service_role|eyJ…'` en src, tests, scripts, docs, deploy: sólo avisos ("nunca service_role"). Coincidencias en `public/data/dict` son entradas del diccionario, no claves. |
+| Ayuda sin clave | OK | 1 caja de ayuda, sin textarea, 0 peticiones a openrouter ni al CDN. |
+| Diálogo de 2 turnos | **FALLO → arreglado → OK** | Ver "Fallos y arreglos". Tras el arreglo: 2 peticiones al proveedor simulado, 2 respuestas, 25 spans de tono. |
+| Tocar palabra la añade a repaso | OK | Estado "Added 你好 to review"; `srs.listCards()` contiene `你好`. |
+| WebLLM sólo bajo demanda | OK | 0 peticiones al CDN al abrir la app, al abrir conversación y al elegir "On-device". |
+| Mensajes de "no soportado" | OK | EN: "Not supported here: this browser has no WebGPU…". ES: "No es compatible aquí: este navegador no tiene WebGPU…". Sin botón de descarga. |
+| Tarjetas nuevas de Learn y More abren sin errores | OK | Learn 14 tarjetas, More 11, en EN y ES: cada clic lleva a su ruta, 0 errores de consola, 0 respuestas ≥ 400. |
+| `npm test` verde | **FALLO ajeno** | 781 tests, 778 pass, 3 fail: `tests/hsk3-lessons-headless.test.mjs` (hsk3-08/09/10, "No vocabulary items found"). Fichero sin trackear de otro worker. Reproduce también con mi build. No lo toqué. |
+| `node scripts/check-es-data.mjs` | OK | 114 archivos revisados, 0 errores. |
+| ES y EN sin claves crudas | OK | 10 rutas y 25 tarjetas en cada idioma sin claves literales. `check-i18n`: es al día, 890 claves. |
+| Sin chino tradicional en la UI | OK | Barrido de ~90 caracteres tradicionales inequívocos en las 10 rutas y hubs en EN y ES: 0 coincidencias. |
+| Sin errores de consola | OK | 78 páginas revisadas: 0 `console.error`, 0 `pageerror`, 0 peticiones fallidas. |
+| Cada ruta abre directa | OK | `#/learn/plan`, `exam`, `typing`, `games/tones-duel`, `extras/worksheet`, `anki`, `account`, `conversation` en EN y ES. |
+| Funciona en `/chino-app/` sin 404 | OK | Build copiado bajo `/chino-app/` y servido: home redirige a `#/home`, rutas y recursos 200, 0 respuestas ≥ 400. |
+| `git status` limpio | **FALLO ajeno** | El árbol tiene WIP sin commitear de otros workers (`M` en account.js, anki.js, exam.js, plan.js, typing.js, screens/learn.js, screens/extras.js, tones-duel.js, check-layout.mjs, audit.mjs, y `?? tests/hsk3-lessons-headless.test.mjs`). Mi commit sólo lleva mis hunks. |
+| Sin scripts sueltos en la raíz | OK | La raíz contiene sólo index.html, sw.js, package*.json, README, CREDITS, VERIFICATION, .gitignore y carpetas. |
+| Sin dependencias nuevas en package.json | OK | `git diff 8f9ba11~1 HEAD -- package.json` vacío. |
+
+### Fallos y arreglos (mismo ciclo, 2 defectos pequeños en `src/extras/conversation.js`, CONV1)
+
+1. **El botón Enviar no enviaba nada.** El botón era `type: 'button'` sin `onclick`, y el `onsubmit` del formulario no se dispara con un clic. Arreglo: `type: 'submit'` (1 línea). Reproducción antes del arreglo: abrir `#/extras/conversation`, elegir Ollama con URL de un servidor local, escribir y pulsar Enviar: no llega ninguna petición y el mensaje no aparece.
+2. **Tras la primera respuesta el botón quedaba deshabilitado.** `paint()` se llamaba antes de liberar `state.busy`, así que el formulario nuevo nacía con `disabled`. Arreglo: `state.busy = false` antes de `paint()` (1 línea). Reproducción: enviar dos mensajes seguidos; el segundo no sale.
+
+Tras los dos arreglos se verificó de nuevo el diálogo completo (punto "Diálogo de 2 turnos"). No quedan fallos abiertos en esta parte. Observación no bloqueante: en el textarea, Enter no envía (sólo el botón); no se cambió.
+
+### Otras observaciones (no bloquean)
+
+- `#/learn/strokes` muestra muy poco texto (4–7 caracteres) al abrirlo sin carácter elegido. No es una tarjeta nueva; no lo investigué a fondo.
+- `#/extras/conversation`: el texto "openrouter.ai" aparece en la ayuda; es un enlace de texto, no una clave cruda.
+
+### Reproducir
+
+```
+OUT_DIR=/tmp/chino-t_7235602a npm run build
+node scripts/serve.mjs /tmp/chino-t_7235602a          # raíz
+node scripts/check-es-data.mjs                        # 0 errores
+node --test tests/chat-providers.test.mjs tests/webllm-provider.test.mjs tests/i18n-es.test.mjs tests/hubs.test.mjs tests/sync-merge.test.mjs tests/sync-client.test.mjs   # 70/70
+git grep -n -i -E 'sk-|secret|service_role' -- src tests scripts docs deploy
+```
+E2E headless (script de verificación en la carpeta scratch del verificador): tarjetas de Learn/More, rutas EN/ES, subdirectorio, Ollama de prueba en 127.0.0.1 con dos turnos, WebLLM sin WebGPU.
+
+*Verificador haiku — 2026-11-19*
