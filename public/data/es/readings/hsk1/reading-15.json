@@ -1,0 +1,50 @@
+{
+  "id": "reading-15",
+  "title": "我的爱好",
+  "type": "dialogue",
+  "topic": "Aficiones",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你平时喜欢做什么？",
+      "pinyin": "Nǐ píngshí xǐhuān zuò shénme?",
+      "english": "¿Qué te gusta hacer normalmente?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我喜欢看书、听音乐、还喜欢跑步。",
+      "pinyin": "Wǒ xǐhuān kànshū, tīng yīnyuè, hái xǐhuān pǎobù.",
+      "english": "Me gusta leer, escuchar música y también correr."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你每天都跑步吗？",
+      "pinyin": "Nǐ měitiān dōu pǎobù ma?",
+      "english": "¿Corres todos los días?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "不，一周跑三次。周末有时候打篮球。",
+      "pinyin": "Bù, yī zhōu pǎo sān cì. Zhōumò yǒushíhou dǎ lánqiú.",
+      "english": "No, tres veces por semana. Los fines de semana a veces juego al baloncesto."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你看什么书？",
+      "pinyin": "Nǐ kàn shénme shū?",
+      "english": "¿Qué tipo de libros lees?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "喜欢看历史书和中文故事书。",
+      "pinyin": "Xǐhuān kàn lìshǐ shū hé Zhōngwén gùshì shū.",
+      "english": "Me gustan los libros de historia y los cuentos en chino."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "真有意思！我也想学中文。",
+      "pinyin": "Zhēn yǒuyìsi! Wǒ yě xiǎng xué Zhōngwén.",
+      "english": "¡Qué interesante! Yo también quiero aprender chino."
+    }
+  ]
+}

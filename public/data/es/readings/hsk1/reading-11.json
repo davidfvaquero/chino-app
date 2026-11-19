@@ -1,0 +1,68 @@
+{
+  "id": "reading-11",
+  "title": "早上七点",
+  "type": "dialogue",
+  "topic": "Rutina diaria",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你每天几点起床？",
+      "pinyin": "Nǐ měitiān jǐ diǎn qǐchuáng?",
+      "english": "¿A qué hora te levantas cada día?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我早上七点起床。先喝水，然后洗脸。",
+      "pinyin": "Wǒ zǎoshang qī diǎn qǐchuáng. Xiān hē shuǐ, ránhòu xǐ liǎn.",
+      "english": "Me levanto a las 7 de la mañana. Primero bebo agua, luego me lavo la cara."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "早饭吃什么？",
+      "pinyin": "Zǎofàn chī shénme?",
+      "english": "¿Qué comes para desayunar?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "吃面包，喝牛奶。有时候吃鸡蛋。",
+      "pinyin": "Chī miànbāo, hē niúnǎi. Yǒushíhou chī jīdàn.",
+      "english": "Como pan, bebo leche. A veces como huevos."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "几点上班？",
+      "pinyin": "Jǐ diǎn shàngbān?",
+      "english": "¿A qué hora empiezas a trabajar?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "八点上班。我坐地铁去公司。",
+      "pinyin": "Bā diǎn shàngbān. Wǒ zuò dìtiě qù gōngsī.",
+      "english": "Empiezo a las 8. Voy en metro a la empresa."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "中午在公司吃饭吗？",
+      "pinyin": "Zhōngwǔ zài gōngsī chīfàn ma?",
+      "english": "¿Comes en la empresa al mediodía?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，十二点吃米饭和菜。下午一点休息。",
+      "pinyin": "Shì de, shí'èr diǎn chī mǐfàn hé cài. Xiàwǔ yī diǎn xiūxi.",
+      "english": "Sí, como arroz y platos a las 12. Descanso a la 1 de la tarde."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "几点下班？晚上做什么？",
+      "pinyin": "Jǐ diǎn xiàbān? Wǎnshàng zuò shénme?",
+      "english": "¿A qué hora sales del trabajo? ¿Qué haces por la noche?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "六点下班。回家做饭，看书，十点睡觉。",
+      "pinyin": "Liù diǎn xiàbān. Huíjiā zuòfàn, kànshū, shí diǎn shuìjiào.",
+      "english": "Salgo a las 6. Voy a casa, cocino, leo, duermo a las 10."
+    }
+  ]
+}
