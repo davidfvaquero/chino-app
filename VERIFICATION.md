@@ -1888,3 +1888,61 @@ git status --short                 # ?? tests/hsk3-lessons-headless.test.mjs, ??
 ```
 
 *Verificador haiku — 2026-11-19 (pasada 67)*
+
+## BLOQUE 14 — re-verificación pasada 68 (t_b6925301, verificador haiku, 2026-11-19) — FALLO ajeno (npm test / git status, sin decisión)
+
+### Paso 0: asignados
+
+| Tarea | Asignado | Verificada |
+| --- | --- | --- |
+| AUD1 t_9f38ab7a | barato | sí |
+| AUD2 t_45617f44 | barato | sí |
+| RM t_07416dca | barato | sí |
+| PLAN t_a42fabe8 | barato | sí |
+| EXAM t_8995dfa5 | barato | sí |
+
+Ninguna hecha por haiku ni gratis. Ninguna omitida.
+
+### Comprobaciones específicas
+
+| Punto | Resultado | Evidencia |
+| --- | --- | --- |
+| 1. Licencia en CREDITS.md | OK | §8: Kokoro-82M v1.1-zh, Apache-2.0, redistribución permitida |
+| 2. Tamaño y carga de public/audio | OK | 1104 mp3 + index.json; 4.13 MB según el worker (`du -sh` 5,8M por bloques de disco); media ~1 s por clip |
+| 3. Muestra de 10 audios | OK | existen, duración 0.73–0.98 s, `silencedetect` (-40 dB, 0.4 s) sin silencios largos |
+| 4. Lección 1 reproduce mp3, texto ausente cae a TTS | OK | carry-over pasada 63 y 67 (30/30 textos en índice; mp3 200; texto ausente → TTS). No re-ejecutado en esta pasada |
+| 5. Offline tras primera carga | OK | carry-over pasada 63 (sw.js shellStrategy cachea mp3). No re-ejecutado |
+| 6. Tres modos de repaso | OK | carry-over pasada 67 (Reverse, Type pinyin con ni3/nǐ/nixie, Only my mistakes) |
+| 7. Plan 30 días | OK | carry-over pasada 67 (Start plan, Day 1, lección, tarjeta en Home) |
+| 8. Examen HSK 1 completo | OK | carry-over pasada 67 (20/20 = 100 %, 0/20 = 0 %, add all mistakes → 10 tarjetas) |
+
+### Comprobaciones comunes
+
+| Punto | Resultado | Evidencia |
+| --- | --- | --- |
+| `npm test` verde | **FALLO (ajeno)** | ℹ tests 781, pass 778, fail 3: hsk3-08/09/10 de `tests/hsk3-lessons-headless.test.mjs` (sin trackear; necesita playwright, no está en package.json; "No vocabulary items found") |
+| `check-es-data.mjs` sin errores | OK | 114 archivos, 0 errores (el error de readings hsk1 ya no está) |
+| ES/EN sin claves crudas, sin chino tradicional, consola limpia, deep links | OK | carry-over pasada 67 |
+| Subdirectorio `/chino-app/` sin 404 | OK | sirviendo copia en `/tmp/chino-t_b6925301-sub-*/chino-app`: `/chino-app/` 200, `audio/index.json` 200, `audio/440ee0853ad1e99f.mp3` 200, `data/es/lessons/hsk1/lesson-01.json` 200, `sw.js` 200; `nope.css` 404 (esperado) |
+| `git status` limpio, sin scripts sueltos, sin deps nuevas | **FALLO (ajeno)** | `?? scripts/verify-readings.mjs`, `?? tests/hsk3-lessons-headless.test.mjs`. Raíz sin scripts sueltos; `package.json` sin deps nuevas |
+
+### Veredicto
+
+Funcionalidad del bloque 14 OK (audio, repaso, plan, examen). No cierra por dos cosas que no son de este bloque y que requieren decisión: (1) el test hsk3 sin trackear falla 3 tests en `npm test`; (2) `scripts/verify-readings.mjs` sin trackear. No toqué ninguno de los dos. Es la cuarta pasada con el mismo bloqueo.
+
+Opciones para cerrar: (a) el autor corrige selectores y necesita playwright como dev-dependency (o lo saca de `npm test`), y commitea; o (b) se borra el test de `npm test`/del repo. Para `verify-readings.mjs`: commitear como herramienta o borrar.
+
+### Limpieza
+
+`rm` bloqueado en modo desatendido: `/tmp/chino-t_b6925301` y `/tmp/chino-t_b6925301-sub-*` siguen existiendo (fuera del repo). Borrar a mano.
+
+### Reproducir
+
+```
+OUT_DIR=/tmp/chino-t_b6925301 npm run build     # 1846 ficheros, audio/ 1104 mp3 + index.json
+node scripts/check-es-data.mjs                  # 0 errores
+npm test                                        # 781 / 778 pass / 3 fail (hsk3-08/09/10)
+git status --short                              # ?? scripts/verify-readings.mjs, ?? tests/hsk3-lessons-headless.test.mjs
+```
+
+*Verificador haiku — 2026-11-19 (pasada 68)*
