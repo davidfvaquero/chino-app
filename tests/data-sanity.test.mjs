@@ -150,6 +150,38 @@ test('HSK 2 has ~150 valid new words and no duplicates with HSK 1', () => {
   }
 });
 
+test('HSK 3 has ~300 valid new words and no duplicates with HSK 1 or 2', () => {
+  const hsk1 = read('hsk/1.json');
+  const hsk2 = read('hsk/2.json');
+  const hsk3 = read('hsk/3.json');
+  assert.equal(hsk3.level, 3);
+  assert.ok(hsk3.items.length >= 295 && hsk3.items.length <= 305, `HSK3 has ~300 words (got ${hsk3.items.length})`);
+  assert.equal(hsk3.count, hsk3.items.length, 'count matches items');
+
+  const lower = new Set([...hsk1.items, ...hsk2.items].map((it) => it.hanzi));
+  const seen = new Set();
+  for (const it of hsk3.items) {
+    assert.equal(it.level, 3, `${it.hanzi} has level 3`);
+    assert.ok(it.hanzi && it.pinyin && it.english, `${it.hanzi} has hanzi/pinyin/english`);
+    assert.ok(!seen.has(it.hanzi), `${it.hanzi} is not repeated inside HSK3`);
+    assert.ok(!lower.has(it.hanzi), `${it.hanzi} is not duplicated from HSK 1/2`);
+    seen.add(it.hanzi);
+  }
+
+  // pinyin carries tone marks (or is a neutral-tone particle), never tone numbers
+  for (const it of hsk3.items) {
+    assert.ok(!/[1-5]/.test(it.pinyin), `${it.hanzi} pinyin has no tone numbers: ${it.pinyin}`);
+  }
+});
+
+test('the HSK index lists HSK 3 with its real word count', () => {
+  const idx = read('hsk/index.json');
+  const lv3 = idx.levels.find((l) => l.level === 3);
+  assert.ok(lv3, 'index has a level 3 entry');
+  assert.equal(lv3.file, '3.json');
+  assert.equal(lv3.count, read('hsk/3.json').items.length, 'index count matches 3.json');
+});
+
 
 test('short Tatoeba sentences have zh/pinyin/en and are <= 12 chars', () => {
   const idx = read('sentences/index.json');

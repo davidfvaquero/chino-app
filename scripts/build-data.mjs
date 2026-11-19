@@ -427,6 +427,7 @@ async function buildSentences(dictEntries) {
 async function buildHsk() {
   const levels = {};
   const indexLevels = [];
+  const seen = new Set(); // hanzi already introduced at a lower level (no cross-level dupes)
   let total = 0;
   for (let level = 1; level <= 6; level++) {
     const url = SOURCES.hsk.url.replace('{level}', String(level));
@@ -439,6 +440,10 @@ async function buildHsk() {
       const p = line.split('\t');
       if (p.length < 5) continue;
       const [hanzi, trad, num, marks, english] = p;
+      // Each level carries only NEW words: skip anything already seen at a
+      // lower level (the official list repeats a few, e.g. 过/还/长 in L3).
+      if (seen.has(hanzi)) continue;
+      seen.add(hanzi);
       items.push({ level, hanzi, trad, pinyin: marks, pinyinNumeric: num, english });
     }
     const obj = { level, source: SOURCES.hsk, license: SOURCES.hsk.license, count: items.length, items };

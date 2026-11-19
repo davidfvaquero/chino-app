@@ -71,6 +71,9 @@ the licence asks for it.
   vocabulary published by **Hanban / Confucius Institute Headquarters (汉办)**;
   used here for study purposes as free reference data.
 - **Changes made:** parsed to JSON with `{level, hanzi, trad, pinyin, pinyinNumeric, english}`.
+  Each level keeps only the words **not already introduced at a lower level** —
+  the official list repeats a few entries across levels (e.g. 过 / 还 / 长 are
+  listed in both L2 and L3), so those repeats are dropped from the higher level.
 - **Pinyin:** taken from the hskhsk.com list and contrasted against **CC-CEDICT**
   (the same source as the dictionary). Readings match except for tone sandhi
   (e.g. 一起 yìqǐ, 一下 yíxià), `ü` written as `v` (e.g. 女 nǚ), and the
