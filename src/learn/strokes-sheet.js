@@ -162,7 +162,7 @@ const CSS = `
 .sheet-step { flex: 0 0 auto; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 0.15rem; }
 .sheet-step svg, .sheet-player svg { display: block; width: 4.5rem; height: 4.5rem; background: var(--surface); border-radius: var(--r-sm); }
 .sheet-step figcaption { font-size: 0.75rem; opacity: 0.7; font-variant-numeric: tabular-nums; }
-.sheet-step .stroke-part { fill: var(--ink-soft); opacity: 0.22; }
+.sheet-step .stroke-part { fill: var(--ink-soft); opacity: 0.7; }
 .sheet-step .stroke-part-new { fill: var(--accent); opacity: 1; }
 .sheet-player { align-self: flex-start; margin-top: 0.2rem; }
 .sheet-player svg { width: 9rem; height: 9rem; }

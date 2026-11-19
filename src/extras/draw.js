@@ -26,10 +26,10 @@ const CSS = `
 .draw-canvas {
   width: 100%; height: 100%; min-height: 240px; max-height: 50vh;
   border: 2px solid var(--line); border-radius: var(--r-md);
-  background: var(--bg); touch-action: none; display: block;
+  background: var(--bg); color: var(--ink); touch-action: none; display: block;
 }
 .draw-canvas:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
-.draw-grid { position: absolute; inset: 0; pointer-events: none; opacity: 0.15; }
+.draw-grid { position: absolute; inset: 0; pointer-events: none; color: var(--edge); }
 .draw-toolbar { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .draw-btn {
   flex: 1; min-width: 90px; padding: 0.6rem 0.9rem;
@@ -60,10 +60,28 @@ function ensureStyles(doc) {
   doc.head.append(style);
 }
 
+/**
+ * Canvas 2D cannot read CSS variables or currentColor, so a strokeStyle of
+ * 'var(--ink)' is silently ignored and the stroke stays black (invisible on the
+ * dark theme). Accepts only a concrete colour from getComputedStyle(el).color;
+ * returns null otherwise so the caller can fall back.
+ * @param {string} value computed `color` of the canvas element
+ * @returns {string|null}
+ */
+export function canvasInk(value) {
+  const text = String(value ?? '').trim();
+  return /^(#[0-9a-f]{3,8}|rgba?\(|hsla?\()/i.test(text) ? text : null;
+}
+
+/** Ink colour of a canvas, read now (it follows the theme that is active). */
+function inkOf(el) {
+  return canvasInk(getComputedStyle(el).color) ?? 'CanvasText';
+}
+
 /** Grid lines for the canvas (center + diagonals). */
-function drawGrid(ctx, w, h) {
+function drawGrid(ctx, w, h, color) {
   ctx.save();
-  ctx.strokeStyle = 'currentColor';
+  ctx.strokeStyle = color;
   ctx.lineWidth = 1;
   ctx.setLineDash([4, 4]);
   // center cross
@@ -218,13 +236,12 @@ export async function render(container, ctx) {
     grid.style.height = h + 'px';
     const gctx = grid.getContext('2d');
     gctx.scale(devicePixelRatio, devicePixelRatio);
-    drawGrid(gctx, w, h);
+    drawGrid(gctx, w, h, inkOf(grid));
     ctx2d = canvas.getContext('2d');
     ctx2d.scale(devicePixelRatio, devicePixelRatio);
     ctx2d.lineCap = 'round';
     ctx2d.lineJoin = 'round';
     ctx2d.lineWidth = 3;
-    ctx2d.strokeStyle = 'var(--ink)';
     redraw();
   }
 
@@ -232,6 +249,7 @@ export async function render(container, ctx) {
     if (!ctx2d) return;
     const w = canvas.clientWidth;
     const h = canvas.clientHeight;
+    ctx2d.strokeStyle = inkOf(canvas);
     ctx2d.clearRect(0, 0, w, h);
     for (const s of strokes) {
       if (s.length < 2) continue;
@@ -379,12 +397,16 @@ export async function render(container, ctx) {
   // Resize handling
   const ro = new ResizeObserver(resize);
   ro.observe(canvasWrap);
+  // Theme switch (settings or OS) changes data-theme: repaint with the new ink.
+  const themeObserver = new MutationObserver(resize);
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
   container.focus({ preventScroll: true });
 
   return () => {
     alive = false;
     ro.disconnect();
+    themeObserver.disconnect();
     canvas.removeEventListener('pointerdown', onPointerDown);
     canvas.removeEventListener('pointermove', onPointerMove);
     canvas.removeEventListener('pointerup', onPointerUp);

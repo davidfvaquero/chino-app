@@ -300,11 +300,11 @@ const CSS = `
 .strokes-results button { font-size: 1.4rem; line-height: 1; min-height: 44px; padding: 0.35rem 0.55rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); }
 .strokes-board { position: relative; width: 100%; max-width: 22rem; margin: 0 auto; }
 .strokes-svg { display: block; width: 100%; aspect-ratio: 1 / 1; touch-action: none; border-radius: 0.75rem; background: var(--surface); }
-.strokes-guide { stroke: color-mix(in srgb, var(--accent) 30%, transparent); stroke-width: 2; fill: none; }
-.strokes-ghost { fill: var(--ink-soft); opacity: 0.16; }
+.strokes-guide { stroke: var(--edge); stroke-width: 2; fill: none; }
+.strokes-ghost { fill: var(--ink-soft); opacity: 0.7; }
 .strokes-ink { fill: none; stroke: var(--ink); stroke-width: ${STROKE_WIDTH}; stroke-linecap: round; stroke-linejoin: round; }
-.strokes-trace-guide { fill: none; stroke: var(--accent); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 18 22; opacity: 0.45; }
-.strokes-trace-guide[data-current="true"] { opacity: 0.9; stroke-width: 14; }
+.strokes-trace-guide { fill: none; stroke: var(--accent); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 18 22; opacity: 0.8; }
+.strokes-trace-guide[data-current="true"] { opacity: 1; stroke-width: 14; }
 .strokes-trace-done { fill: var(--ink); opacity: 0.85; }
 .strokes-trace-drawn { fill: none; stroke: var(--tone3); stroke-width: ${PEN_WIDTH}; stroke-linecap: round; stroke-linejoin: round; }
 .strokes-trace-drawn[data-result="wrong"] { stroke: var(--danger); }
