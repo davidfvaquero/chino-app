@@ -1946,3 +1946,95 @@ git status --short                              # ?? scripts/verify-readings.mjs
 ```
 
 *Verificador haiku — 2026-11-19 (pasada 68)*
+
+## REDISEÑO VISUAL — verificación t_e6321904 (verificador haiku, 2026-11-19) — FALLO: 3 defectos abiertos, reparación en t_69c214eb
+
+### Paso 0: asignados
+
+| Tarea | Asignado | Verificada |
+| --- | --- | --- |
+| UI1 t_70410e99 | fuerte | sí |
+| UI2 t_756e8edf | barato | sí |
+| UI3 t_ca3458fa | deepseek (la descripción decía barato; el asignado real es deepseek) | sí |
+
+Ninguna hecha por haiku. Ninguna omitida.
+
+Nota de método: las primeras pasadas usaron el puerto 8097 y resultó ser un servidor de otro worker (build de t_47b586ab). Todo lo de abajo está repetido contra mi propia build en el puerto 8099.
+
+### Arreglos pequeños hechos por el verificador
+
+| Archivo | Cambio | Motivo |
+| --- | --- | --- |
+| `src/learn/themes.js` | `.theme-tile` con `flex-wrap: wrap` | Etiquetas «Travel»/«Viajes» salían del borde: la página medía 397 px (390 de viewport) |
+| `src/styles.css` | `.tab .tab-label` con `letter-spacing: -0.03em` | «Diccionario» en 320 px es se leía «Dicciona…» |
+| `src/learn/plan.js` | `.plan-day > summary` con `min-height: 2.75rem` | Cabeceras de día de 24 px (objetivo < 44 px) |
+| `src/extras/conversation.js` | `.conv-config > summary` con `min-height: 2.75rem` | Summary de 43 px |
+| `src/learn/games/memory.js` | `generateMemoryRound`: cuenta pares tras quitar duplicados | Test «respects count limit» fallaba 6 ≠ 8 (regresión de 863b437, dedupe reducía las parejas) |
+| `package.json` | `"test": "node --test tests/*.test.mjs"` | `node --test tests/` no encuentra el directorio en Node 24/26 (`Cannot find module tests`) |
+| `docs/DESIGN.md` | §7 reescrita (decía «not done yet»); quitada la línea `ONLY=x-` de §8 | Documento obsoleto |
+
+### Comprobaciones específicas
+
+| Punto | Resultado | Evidencia |
+| --- | --- | --- |
+| 1. `check-contrast.mjs` verde | OK | 424/424 views (390/320 × claro/oscuro × es/en, touch), 0 errores de escenario, exit 0 (tras arreglos) |
+| 2. `check-layout.mjs` verde | OK | 156 OK, 0 fallos (tras arreglos) |
+| 3. Rutas Learn y Más + Inicio, Diccionario, Repaso, Leer, lección | OK (tras arreglos) | 98 vistas × 8 combinaciones (390/320 × claro/oscuro × es/en) incluyendo recorrido de la lección (intro → ejercicios → resultado) |
+| 4. Sin scroll horizontal de página | OK (tras arreglos) | Antes: Aprender > Temas 390 px desbordaba 7–17 px. Ahora `scrollWidth == 390` en en/es |
+| 5. Objetivos ≥ 44 px | OK (tras arreglos) | Antes: summaries de Plan 24 px y de Conversación 43 px. Ahora 0 controles por debajo de 43.5 px |
+| 6. Controles sin estilo (aspecto por defecto del navegador) | OK | Recorrido de button/input/select/textarea: 0 casos (fuente 13.33 px, borde outset/inset o fondo #efefef) |
+| 7. Texto cortado | OK con notas | Diccionario 320 es corregido. Restantes: glifos de `.hz-cell` (Inicio 五, celdas de vocabulario) tienen caja de avance mayor que la celda; visto en capturas, el carácter sale completo y centrado. Tabla de pinyin: scroll horizontal dentro de su propia caja (intencionado, 412 celdas); la página no tiene scroll |
+| 8. Ajustes: tema auto/claro/oscuro | OK | `select` tema: dark → `data-theme=dark`, fondo rgb(15,21,24); light → claro; persiste tras recargar |
+| 9. Ajustes: tamaño de letra ×1.3 | OK | `--font-scale` 1.3 aplicado; captura Ajustes 320 es ×1.3 sin cortes |
+| 10. Ajustes: colores de tono on/off | OK | Chip Activado → Desactivado; vista previa en color neutro; persiste tras recargar |
+| 11. Subdirectorio `/chino-app/` | OK | Enlace simbólico servido en :8098: `/chino-app/` 200, SW scope `/chino-app/`, `controlled: true`, 0 peticiones 4xx/5xx, 0 peticiones fuera del subdirectorio |
+| 12. Offline tras primera carga, rutas ya visitadas | OK | Con todas las rutas visitadas online, offline renderiza todas |
+| 13. Offline tras primera carga, rutas NO visitadas | **FALLO** | Ver reproducción A |
+| 14. Sin peticiones a CDN/fuentes externas (recorrido completo) | OK | 0 peticiones externas en 8 combinaciones. Fuente Onest autoalojada. Nota: el chat IA en navegador (WebLLM) carga de cdn.jsdelivr.net solo al pulsar «descargar» (opt-in); la sincronización y OpenRouter solo con configuración o clave |
+| 15. CSS total < 60 KB | OK | styles.css 26.8 KB + exercise-ui.css.js 4.9 KB = 31.6 KB |
+| 16. docs/DESIGN.md describe lo que hay | OK (tras arreglo) | §7 obsoleta corregida |
+| 17. Raíz sin archivos sueltos, sin dependencias nuevas | OK | Raíz: .gitignore, CREDITS.md, README.md, VERIFICATION.md, index.html, package(-lock).json, sw.js. `package.json` sin `dependencies` |
+| 18. Capturas representativas (6) | OK | `/tmp/chino-t_e6321904/shots/verify-*.png`: Inicio 390 es, Repaso 390 oscuro en, Aprender 320 oscuro en, Leer 390 es, Ajustes 320 es ×1.3, lección 320 es. Revisadas con vision_analyze sobre la pasada previa a los arreglos de pestañas/temas (los arreglos son CSS localizado; las mediciones DOM posteriores están en 1–7). Sin cortes ni controles por defecto |
+| 19. Cada ruta abre directamente | OK | Las 98 rutas se abren por hash en carga limpia |
+| 20. Sin strings de UI hardcodeados | OK | `check-i18n.mjs`: es al día, 890 claves traducidas |
+| 21. Sin chino tradicional en la UI | **FALLO** | Ver reproducción B y C |
+| 22. Sin errores de consola | OK | 0 errores en 8 combinaciones (salvo offline sin visita, ver A) |
+
+### Comprobaciones comunes
+
+| Punto | Resultado | Evidencia |
+| --- | --- | --- |
+| `npm test` verde | **FALLO (ajeno)** | 781 tests, 778 pass, 3 fail: hsk3-08/09/10 de `tests/hsk3-lessons-headless.test.mjs` (sin trackear). Ver reproducción D. Antes del arreglo de `package.json` no ejecutaba nada en Node 24/26 |
+| Subdirectorio / offline / red | ver puntos 11–14 | |
+| `git status` limpio, sin scripts sueltos | **FALLO (ajeno)** | `?? scripts/verify-readings.mjs`, `?? tests/hsk3-lessons-headless.test.mjs` |
+
+### Reproducción
+
+A. Offline sin visita previa:
+1. Build en `/tmp/chino-t_e6321904`, servir en `/chino-app/` (ver punto 11).
+2. Contexto nuevo, abrir `/chino-app/#/home` online, esperar `navigator.serviceWorker.ready`, recargar.
+3. `context.setOffline(true)`, abrir `#/learn`, `#/extras` o `#/extras/settings`.
+4. Resultado: `#screen` sin hijos. Causa: `sw.js` `SHELL_ASSETS` solo lista el shell; los módulos `src/learn/*.js` y `src/extras/*.js` no están en caché. Con visita previa online funciona.
+
+B. Tradicional en Radicales: abrir `#/learn/radicals` en es o en. Texto renderizado: 見貝車長門風飛馬魚鳥黃齊齒. Origen: campo `symbol` de los datos de radicales.
+
+C. Tradicional en Frases: `public/data/sentences/shards` y `public/data/es/sentences/shards` contienen 4 frases en tradicional (ids 337290 `請打開窗。`, 344232 `太過分了！`, 344237 `她會開車。`, y una más). `src/learn/sentences.js` las muestra en el campo `zh`. No comprobado en DOM porque la lista está paginada; comprobado en datos.
+
+D. `npm test`: `tests/hsk3-lessons-headless.test.mjs` falla 3/3. (a) Espera título en inglés («Society»), pero el navegador va en español. (b) Busca `.vocab-item` en la intro, que no muestra vocabulario (aparece tras pulsar Empezar). Con el servidor del propio test (localhost:33730) falla igual. El test está mal; la lección carga.
+
+### Veredicto
+
+No cierra. Defectos abiertos: A (offline sin visita previa), B y C (caracteres tradicionales en la UI), D (test sin trackear). Ya corregidos aquí: 6 defectos de layout/test/doc (tabla de arreglos). Reparación de UN ciclo en `t_69c214eb` (barato); re-verificación en `t_206decef` (haiku, después de la reparación).
+
+### Reproducir
+
+```
+OUT_DIR=/tmp/chino-t_e6321904 npm run build      # 1846 ficheros
+node scripts/serve.mjs /tmp/chino-t_e6321904 --port 8099 --host 127.0.0.1
+node scripts/check-contrast.mjs /tmp/chino-t_e6321904   # 424/424 OK
+node scripts/check-layout.mjs /tmp/chino-t_e6321904     # 156 OK
+npm test                                                 # 781 / 778 pass / 3 fail (hsk3)
+git status --short                                       # ?? scripts/verify-readings.mjs, ?? tests/hsk3-lessons-headless.test.mjs
+```
+
+*Verificador haiku — 2026-11-19 (t_e6321904)*

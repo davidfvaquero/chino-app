@@ -208,7 +208,7 @@ const CSS = `
 .plan-progress { color: var(--ink-soft); margin: 0; }
 .plan-days { display: flex; flex-direction: column; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
 .plan-day { padding: 0.6rem 0.75rem; }
-.plan-day > summary { cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; }
+.plan-day > summary { cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; min-height: 2.75rem; }
 .plan-day .plan-n { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 .plan-badge { margin-left: auto; font-size: 0.72rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.5rem; color: var(--ink-soft); }
 .plan-day[data-status="today"] .plan-badge { border-color: var(--accent); color: var(--accent); }

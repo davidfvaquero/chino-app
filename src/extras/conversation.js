@@ -42,7 +42,7 @@ const CSS = `
 .conv { display: flex; flex-direction: column; gap: 0.75rem; }
 .conv h2 { margin: 0; font-size: 1.2rem; }
 .conv-config { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
-.conv-config > summary { padding: 0.6rem 0.75rem; cursor: pointer; font-weight: 600; }
+.conv-config > summary { padding: 0.6rem 0.75rem; min-height: 2.75rem; cursor: pointer; font-weight: 600; }
 .conv-config > .conv-body { display: flex; flex-direction: column; gap: 0.6rem; padding: 0 0.75rem 0.75rem; }
 .conv label { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.85rem; color: var(--fg-soft); }
 .conv input, .conv select, .conv textarea { width: 100%; }

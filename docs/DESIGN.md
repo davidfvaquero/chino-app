@@ -235,18 +235,12 @@ scroll-triggered entrances.
 7. New screen checklist: run `check-contrast.mjs` (add the route to `scripts/lib/audit.mjs`), look at 320 px es, dark.
 8. Default margins of `.screen p` / `.screen h2` are zero-specificity (`:where`): a single class always wins over them.
 
-## 7. Not done yet (next task: apply the system to the rest)
+## 7. Status
 
-Screens still on module-local styling (they work and look consistent through
-the tokens, but were not redesigned): `src/learn/{tones,pinyin-chart,strokes,
-strokes-sheet,sentences,themes,dictation,games*,radicals,hardwords,grammar,
-exam,typing,plan}.js`, `src/extras/*` (settings, profile, stats, paste, draw,
-pronounce, backup, anki, account, worksheet, conversation). Known findings from
-`ONLY=x- node scripts/check-contrast.mjs`: the settings checkbox is 13 px, the
-strokes input/button are 30 px high with a hairline border. Replace their local
-`border: 1px solid var(--line)` on controls with `.btn` / `.field` / `.chip`.
-`extras/settings.js` renders its own `header.app-header` / `main.screen` inside
-the screen; `styles.css` neutralises the nesting, the markup should lose it.
+Every Learn and More screen uses the tokens and shared classes (t_756e8edf,
+t_ca3458fa). Controls are >= 44 px with a 3:1 border (`--edge`); `--line` is
+decoration only. Audited by `check-contrast.mjs` (all `AREAS` routes) and
+`check-layout.mjs`.
 
 ## 8. Checks
 
@@ -256,7 +250,6 @@ node scripts/check-contrast.mjs /tmp/chino-<id>                          # all m
 SHOTS_DIR=/tmp/chino-<id>/shots node scripts/check-contrast.mjs <dir>    # also save screenshots
 ONLY=home,review WIDTHS=320 THEMES=dark LOCALES=es node scripts/check-contrast.mjs <dir>
 FONTSCALE=1.3 node scripts/check-contrast.mjs <dir>                      # largest text size
-ONLY=x- node scripts/check-contrast.mjs <dir>                            # screens not redesigned yet
 node scripts/check-layout.mjs <dir>                                      # hanzi/pinyin/english stacking, overflow
 ```
 

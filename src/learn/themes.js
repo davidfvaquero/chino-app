@@ -164,7 +164,7 @@ export async function markStudied(theme, { store = storage, now = Date.now() } =
 const STYLE_ID = 'themes-style';
 const CSS = `
 .themes-list { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); }
-.theme-tile { display: flex; align-items: center; gap: 0.6rem; padding: 0.85rem; text-align: left; }
+.theme-tile { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; padding: 0.85rem; text-align: left; }
 .theme-tile .theme-icon { font-size: 1.5rem; line-height: 1; }
 .theme-tile .theme-name { font-weight: 600; }
 .theme-badge { margin-left: auto; font-size: 0.72rem; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.45rem; }

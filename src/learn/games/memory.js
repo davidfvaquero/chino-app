@@ -73,10 +73,10 @@ function ensureStyles(doc) {
 export function generateMemoryRound(words, { count = DEFAULT_COUNT } = {}) {
   if (!Array.isArray(words) || words.length === 0) return { cards: [] };
   const shuffled = [...words].sort(() => Math.random() - 0.5);
-  const selected = shuffled.slice(0, Math.min(count, shuffled.length));
   const cards = [];
   const seen = new Set();
-  for (const w of selected) {
+  for (const w of shuffled) {
+    if (cards.length >= 2 * count) break; // count pairs; duplicates skipped below do not use up the count
     const meaning = Array.isArray(w.english) ? w.english[0] : w.english;
     const id = `${w.hanzi}|${meaning}`.replace(/\s+/g, '_');
     if (seen.has(id)) continue; // duplicate entry (same hanzi+meaning) would give two cards with one id

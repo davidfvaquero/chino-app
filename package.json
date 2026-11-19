@@ -9,7 +9,7 @@
     "dev": "node scripts/serve.mjs .",
     "build": "node scripts/build.mjs",
     "serve": "node scripts/serve.mjs",
-    "test": "node --test tests/",
+    "test": "node --test tests/*.test.mjs",
     "data": "node scripts/build-data.mjs",
     "data:sentences-es": "node scripts/build-sentences-es.mjs",
     "data:radicals": "node scripts/build-radicals.mjs",
