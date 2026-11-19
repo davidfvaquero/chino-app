@@ -1,0 +1,56 @@
+{
+  "id": "hsk3-05",
+  "title": "Health, body & weather",
+  "intro": "Talk about health, body parts, weather and seasons, and express frequency with 经常 and duration with 久.",
+  "vocabulary": [
+    { "hanzi": "节目", "pinyin": "jiémù", "english": "program; TV show", "example": { "hanzi": "这个节目很好看", "pinyin": "zhège jiémù hěn hǎokàn", "english": "this show is great" } },
+    { "hanzi": "节日", "pinyin": "jiérì", "english": "holiday; festival", "example": { "hanzi": "春节是大节日", "pinyin": "chūnjié shì dà jiérì", "english": "Spring Festival is a big holiday" } },
+    { "hanzi": "结婚", "pinyin": "jiéhūn", "english": "to get married", "example": { "hanzi": "他们要结婚了", "pinyin": "tāmen yào jiéhūn le", "english": "they are getting married" } },
+    { "hanzi": "结束", "pinyin": "jiéshù", "english": "to end; to finish", "example": { "hanzi": "课结束了", "pinyin": "kè jiéshù le", "english": "class is over" } },
+    { "hanzi": "解决", "pinyin": "jiějué", "english": "to solve; to resolve", "example": { "hanzi": "我解决了问题", "pinyin": "wǒ jiějué le wèntí", "english": "I solved the problem" } },
+    { "hanzi": "借", "pinyin": "jiè", "english": "to borrow; to lend", "example": { "hanzi": "我借你的书", "pinyin": "wǒ jiè nǐ de shū", "english": "I'll borrow your book" } },
+    { "hanzi": "经常", "pinyin": "jīngcháng", "english": "often; frequently", "example": { "hanzi": "我经常跑步", "pinyin": "wǒ jīngcháng pǎobù", "english": "I often go running" } },
+    { "hanzi": "经过", "pinyin": "jīngguò", "english": "to pass by; to go through", "example": { "hanzi": "我经过公园", "pinyin": "wǒ jīngguò gōngyuán", "english": "I passed by the park" } },
+    { "hanzi": "经理", "pinyin": "jīnglǐ", "english": "manager", "example": { "hanzi": "他是经理", "pinyin": "tā shì jīnglǐ", "english": "he is the manager" } },
+    { "hanzi": "久", "pinyin": "jiǔ", "english": "long time", "example": { "hanzi": "好久不见", "pinyin": "hǎojiǔ bùjiàn", "english": "long time no see" } },
+    { "hanzi": "旧", "pinyin": "jiù", "english": "old; used", "example": { "hanzi": "这本书很旧", "pinyin": "zhè běn shū hěn jiù", "english": "this book is old" } },
+    { "hanzi": "句子", "pinyin": "jùzi", "english": "sentence", "example": { "hanzi": "请写一个句子", "pinyin": "qǐng xiě yīgè jùzi", "english": "please write a sentence" } },
+    { "hanzi": "决定", "pinyin": "juédìng", "english": "to decide; decision", "example": { "hanzi": "我决定去北京", "pinyin": "wǒ juédìng qù běijīng", "english": "I decided to go to Beijing" } },
+    { "hanzi": "可爱", "pinyin": "kě'ài", "english": "cute; lovely", "example": { "hanzi": "这只猫很可爱", "pinyin": "zhè zhī māo hěn kě'ài", "english": "this cat is very cute" } },
+    { "hanzi": "渴", "pinyin": "kě", "english": "thirsty", "example": { "hanzi": "我渴了", "pinyin": "wǒ kě le", "english": "I'm thirsty" } },
+    { "hanzi": "刻", "pinyin": "kè", "english": "quarter hour; moment", "example": { "hanzi": "三刻", "pinyin": "sān kè", "english": "three quarters (45 minutes)" } },
+    { "hanzi": "客人", "pinyin": "kèrén", "english": "guest; customer", "example": { "hanzi": "客人来了", "pinyin": "kèrén lái le", "english": "the guest has arrived" } },
+    { "hanzi": "空调", "pinyin": "kōngtiáo", "english": "air conditioning", "example": { "hanzi": "请开空调", "pinyin": "qǐng kāi kōngtiáo", "english": "please turn on the AC" } },
+    { "hanzi": "口", "pinyin": "kǒu", "english": "mouth", "example": { "hanzi": "张开口", "pinyin": "zhāngkāi kǒu", "english": "open your mouth" } },
+    { "hanzi": "哭", "pinyin": "kū", "english": "to cry", "example": { "hanzi": "别哭了", "pinyin": "bié kū le", "english": "don't cry" } },
+    { "hanzi": "裤子", "pinyin": "kùzi", "english": "pants; trousers", "example": { "hanzi": "这条裤子太长", "pinyin": "zhè tiáo kùzi tài cháng", "english": "these pants are too long" } },
+    { "hanzi": "筷子", "pinyin": "kuàizi", "english": "chopsticks", "example": { "hanzi": "请给我筷子", "pinyin": "qǐng gěi wǒ kuàizi", "english": "please give me chopsticks" } },
+    { "hanzi": "蓝", "pinyin": "lán", "english": "blue", "example": { "hanzi": "天空是蓝的", "pinyin": "tiānkōng shì lán de", "english": "the sky is blue" } },
+    { "hanzi": "老", "pinyin": "lǎo", "english": "old; aged", "example": { "hanzi": "我老了", "pinyin": "wǒ lǎo le", "english": "I'm old" } },
+    { "hanzi": "离开", "pinyin": "líkāi", "english": "to leave; to depart", "example": { "hanzi": "飞机离开了", "pinyin": "fēijī líkāi le", "english": "the plane has departed" } },
+    { "hanzi": "礼物", "pinyin": "lǐwù", "english": "gift; present", "example": { "hanzi": "这是送你的礼物", "pinyin": "zhè shì sòng nǐ de lǐwù", "english": "this is a gift for you" } },
+    { "hanzi": "历史", "pinyin": "lìshǐ", "english": "history", "example": { "hanzi": "我喜欢历史", "pinyin": "wǒ xǐhuan lìshǐ", "english": "I like history" } },
+    { "hanzi": "脸", "pinyin": "liǎn", "english": "face", "example": { "hanzi": "洗脸", "pinyin": "xǐ liǎn", "english": "wash face" } },
+    { "hanzi": "练习", "pinyin": "liànxí", "english": "to practice; exercise", "example": { "hanzi": "我要练习中文", "pinyin": "wǒ yào liànxí zhōngwén", "english": "I want to practice Chinese" } },
+    { "hanzi": "辆", "pinyin": "liàng", "english": "measure word for vehicles", "example": { "hanzi": "一辆车", "pinyin": "yī liàng chē", "english": "one car" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 经常 mean?", "options": ["often", "old", "blue"], "answer": "often" },
+    { "type": "choose", "prompt": "Which word means 'thirsty'?", "options": ["渴", "哭", "可爱"], "answer": "渴" },
+    { "type": "listen", "audio": "礼物", "pinyin": "lǐwù", "prompt": "Listen and choose what you hear.", "options": ["礼物", "历史", "离开"], "answer": "礼物" },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        { "hanzi": "裤子", "english": "pants" },
+        { "hanzi": "筷子", "english": "chopsticks" },
+        { "hanzi": "空调", "english": "air conditioning" },
+        { "hanzi": "客人", "english": "guest" }
+      ]
+    },
+    { "type": "order", "prompt": "Make the phrase 'long time no see'.", "tokens": ["好", "久", "不", "见"], "answer": "好久不见" },
+    { "type": "order", "prompt": "Put the characters in order to say 'I'm thirsty'.", "tokens": ["了", "我", "渴"], "answer": "我渴了" },
+    { "type": "listen", "audio": "练习", "pinyin": "liànxí", "prompt": "Listen and choose what you hear.", "options": ["练习", "历史", "脸"], "answer": "练习" },
+    { "type": "choose", "prompt": "Which character means 'mouth'?", "options": ["口", "哭", "蓝"], "answer": "口" }
+  ]
+}

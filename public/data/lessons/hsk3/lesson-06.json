@@ -1,0 +1,56 @@
+{
+  "id": "hsk3-06",
+  "title": "Shopping, money & services",
+  "intro": "Learn words for shopping, food, neighbors, study abroad and everyday services. Practice 了解, 马上, 其实 and other useful connectors.",
+  "vocabulary": [
+    { "hanzi": "聊天", "pinyin": "liáotiān", "english": "to chat", "example": { "hanzi": "我们聊天吧", "pinyin": "wǒmen liáotiān ba", "english": "let's chat" } },
+    { "hanzi": "了解", "pinyin": "liǎojiě", "english": "to understand; to know", "example": { "hanzi": "我了解他", "pinyin": "wǒ liǎojiě tā", "english": "I know him" } },
+    { "hanzi": "邻居", "pinyin": "línjū", "english": "neighbor", "example": { "hanzi": "我的邻居很好", "pinyin": "wǒ de línjū hěn hǎo", "english": "my neighbor is nice" } },
+    { "hanzi": "留学", "pinyin": "liúxué", "english": "to study abroad", "example": { "hanzi": "我想留学", "pinyin": "wǒ xiǎng liúxué", "english": "I want to study abroad" } },
+    { "hanzi": "楼", "pinyin": "lóu", "english": "building; floor", "example": { "hanzi": "我在三楼", "pinyin": "wǒ zài sān lóu", "english": "I'm on the third floor" } },
+    { "hanzi": "绿", "pinyin": "lǜ", "english": "green", "example": { "hanzi": "草是绿的", "pinyin": "cǎo shì lǜ de", "english": "grass is green" } },
+    { "hanzi": "马", "pinyin": "mǎ", "english": "horse", "example": { "hanzi": "马跑得快", "pinyin": "mǎ pǎo de kuài", "english": "horses run fast" } },
+    { "hanzi": "马上", "pinyin": "mǎshàng", "english": "right away; immediately", "example": { "hanzi": "我马上来", "pinyin": "wǒ mǎshàng lái", "english": "I'm coming right away" } },
+    { "hanzi": "满意", "pinyin": "mǎnyì", "english": "satisfied; pleased", "example": { "hanzi": "我很满意", "pinyin": "wǒ hěn mǎnyì", "english": "I'm very satisfied" } },
+    { "hanzi": "帽子", "pinyin": "màozi", "english": "hat; cap", "example": { "hanzi": "戴帽子", "pinyin": "dài màozi", "english": "wear a hat" } },
+    { "hanzi": "米", "pinyin": "mǐ", "english": "rice; meter", "example": { "hanzi": "一米饭", "pinyin": "yī mǐ fàn", "english": "one meter of rice (cooked rice)" } },
+    { "hanzi": "面包", "pinyin": "miànbāo", "english": "bread", "example": { "hanzi": "买面包", "pinyin": "mǎi miànbāo", "english": "buy bread" } },
+    { "hanzi": "明白", "pinyin": "míngbai", "english": "to understand; clear", "example": { "hanzi": "我明白", "pinyin": "wǒ míngbai", "english": "I understand" } },
+    { "hanzi": "拿", "pinyin": "ná", "english": "to take; to hold", "example": { "hanzi": "拿书", "pinyin": "ná shū", "english": "take the book" } },
+    { "hanzi": "奶奶", "pinyin": "nǎinai", "english": "grandma (paternal)", "example": { "hanzi": "奶奶在做饭", "pinyin": "nǎinai zài zuòfàn", "english": "grandma is cooking" } },
+    { "hanzi": "南", "pinyin": "nán", "english": "south", "example": { "hanzi": "南方", "pinyin": "nánfāng", "english": "the south" } },
+    { "hanzi": "难", "pinyin": "nán", "english": "difficult", "example": { "hanzi": "中文很难", "pinyin": "zhōngwén hěn nán", "english": "Chinese is difficult" } },
+    { "hanzi": "难过", "pinyin": "nánguò", "english": "sad; grieved", "example": { "hanzi": "我很难过", "pinyin": "wǒ hěn nánguò", "english": "I'm very sad" } },
+    { "hanzi": "年级", "pinyin": "niánjí", "english": "grade (in school)", "example": { "hanzi": "我是三年级", "pinyin": "wǒ shì sān niánjí", "english": "I'm in third grade" } },
+    { "hanzi": "年轻", "pinyin": "niánqīng", "english": "young", "example": { "hanzi": "他很年轻", "pinyin": "tā hěn niánqīng", "english": "he is very young" } },
+    { "hanzi": "鸟", "pinyin": "niǎo", "english": "bird", "example": { "hanzi": "鸟在飞", "pinyin": "niǎo zài fēi", "english": "the bird is flying" } },
+    { "hanzi": "努力", "pinyin": "nǔlì", "english": "to work hard", "example": { "hanzi": "要努力学习", "pinyin": "yào nǔlì xuéxí", "english": "must study hard" } },
+    { "hanzi": "爬山", "pinyin": "páshān", "english": "mountain climbing", "example": { "hanzi": "周末去爬山", "pinyin": "zhōumò qù páshān", "english": "go hiking on the weekend" } },
+    { "hanzi": "盘子", "pinyin": "pánzi", "english": "plate; dish", "example": { "hanzi": "洗盘子", "pinyin": "xǐ pánzi", "english": "wash the plates" } },
+    { "hanzi": "胖", "pinyin": "pàng", "english": "fat; plump", "example": { "hanzi": "猫有点胖", "pinyin": "māo yǒudiǎn pàng", "english": "the cat is a bit fat" } },
+    { "hanzi": "皮鞋", "pinyin": "píxié", "english": "leather shoes", "example": { "hanzi": "新皮鞋", "pinyin": "xīn píxié", "english": "new leather shoes" } },
+    { "hanzi": "啤酒", "pinyin": "píjiǔ", "english": "beer", "example": { "hanzi": "喝啤酒", "pinyin": "hē píjiǔ", "english": "drink beer" } },
+    { "hanzi": "瓶子", "pinyin": "píngzi", "english": "bottle", "example": { "hanzi": "一瓶子水", "pinyin": "yī píngzi shuǐ", "english": "a bottle of water" } },
+    { "hanzi": "其实", "pinyin": "qíshí", "english": "actually; in fact", "example": { "hanzi": "其实我不饿", "pinyin": "qíshí wǒ bù è", "english": "actually I'm not hungry" } },
+    { "hanzi": "其他", "pinyin": "qítā", "english": "other; else", "example": { "hanzi": "还有其他吗", "pinyin": "hái yǒu qítā ma", "english": "anything else?" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 马上 mean?", "options": ["right away", "on the horse", "horse"], "answer": "right away" },
+    { "type": "choose", "prompt": "Which word means 'bread'?", "options": ["面包", "米", "啤酒"], "answer": "面包" },
+    { "type": "listen", "audio": "奶奶", "pinyin": "nǎinai", "prompt": "Listen and choose what you hear.", "options": ["奶奶", "南", "难"], "answer": "奶奶" },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        { "hanzi": "邻居", "english": "neighbor" },
+        { "hanzi": "留学", "english": "study abroad" },
+        { "hanzi": "满意", "english": "satisfied" },
+        { "hanzi": "帽子", "english": "hat" }
+      ]
+    },
+    { "type": "order", "prompt": "Make the phrase 'I understand'.", "tokens": ["我", "明", "白"], "answer": "我明白" },
+    { "type": "order", "prompt": "Put the characters in order to say 'buy bread'.", "tokens": ["面", "包", "买"], "answer": "买面包" },
+    { "type": "listen", "audio": "其实", "pinyin": "qíshí", "prompt": "Listen and choose what you hear.", "options": ["其实", "其他", "奇怪"], "answer": "其实" },
+    { "type": "choose", "prompt": "Which character means 'bird'?", "options": ["鸟", "马", "牛"], "answer": "鸟" }
+  ]
+}

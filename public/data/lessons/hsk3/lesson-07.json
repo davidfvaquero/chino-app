@@ -1,0 +1,56 @@
+{
+  "id": "hsk3-07",
+  "title": "Time, order & frequency",
+  "intro": "Express time, sequence, conditions and frequency with 然后, 如果, 起来, 刚, and talk about seasons, feelings and daily routines.",
+  "vocabulary": [
+    { "hanzi": "奇怪", "pinyin": "qíguài", "english": "strange; odd", "example": { "hanzi": "这很奇怪", "pinyin": "zhè hěn qíguài", "english": "this is strange" } },
+    { "hanzi": "骑", "pinyin": "qí", "english": "to ride (bike, horse)", "example": { "hanzi": "骑自行车", "pinyin": "qí zìxíngchē", "english": "ride a bicycle" } },
+    { "hanzi": "起飞", "pinyin": "qǐfēi", "english": "take off (plane)", "example": { "hanzi": "飞机起飞了", "pinyin": "fēijī qǐfēi le", "english": "the plane took off" } },
+    { "hanzi": "起来", "pinyin": "qǐlai", "english": "get up; start to", "example": { "hanzi": "七点起床", "pinyin": "qī diǎn qǐchuáng", "english": "get up at seven" } },
+    { "hanzi": "清楚", "pinyin": "qīngchu", "english": "clear; to be clear about", "example": { "hanzi": "说清楚", "pinyin": "shuō qīngchu", "english": "explain clearly" } },
+    { "hanzi": "请假", "pinyin": "qǐngjià", "english": "ask for leave", "example": { "hanzi": "我要请假", "pinyin": "wǒ yào qǐngjià", "english": "I need to ask for leave" } },
+    { "hanzi": "秋", "pinyin": "qiū", "english": "autumn; fall", "example": { "hanzi": "秋天到了", "pinyin": "qiūtiān dào le", "english": "autumn has arrived" } },
+    { "hanzi": "裙子", "pinyin": "qúnzi", "english": "skirt", "example": { "hanzi": "红裙子", "pinyin": "hóng qúnzi", "english": "red skirt" } },
+    { "hanzi": "然后", "pinyin": "ránhòu", "english": "then; afterwards", "example": { "hanzi": "先吃饭，然后睡觉", "pinyin": "xiān chīfàn, ránhòu shuìjiào", "english": "eat first, then sleep" } },
+    { "hanzi": "热情", "pinyin": "rèqíng", "english": "warm; enthusiastic", "example": { "hanzi": "他很热情", "pinyin": "tā hěn rèqíng", "english": "he is very warm" } },
+    { "hanzi": "认为", "pinyin": "rènwéi", "english": "to think; to believe", "example": { "hanzi": "我认为是这样", "pinyin": "wǒ rènwéi shì zhèyàng", "english": "I think it's like this" } },
+    { "hanzi": "认真", "pinyin": "rènzhēn", "english": "serious; earnest", "example": { "hanzi": "认真学习", "pinyin": "rènzhēn xuéxí", "english": "study seriously" } },
+    { "hanzi": "容易", "pinyin": "róngyì", "english": "easy; likely", "example": { "hanzi": "这不容易", "pinyin": "zhè bù róngyì", "english": "this isn't easy" } },
+    { "hanzi": "如果", "pinyin": "rúguǒ", "english": "if", "example": { "hanzi": "如果下雨", "pinyin": "rúguǒ xiàyǔ", "english": "if it rains" } },
+    { "hanzi": "伞", "pinyin": "sǎn", "english": "umbrella", "example": { "hanzi": "带伞", "pinyin": "dài sǎn", "english": "bring an umbrella" } },
+    { "hanzi": "上网", "pinyin": "shàngwǎng", "english": "go online", "example": { "hanzi": "我要上网", "pinyin": "wǒ yào shàngwǎng", "english": "I want to go online" } },
+    { "hanzi": "生气", "pinyin": "shēngqì", "english": "to get angry", "example": { "hanzi": "别生气", "pinyin": "bié shēngqì", "english": "don't get angry" } },
+    { "hanzi": "声音", "pinyin": "shēngyīn", "english": "sound; voice", "example": { "hanzi": "声音很大", "pinyin": "shēngyīn hěn dà", "english": "the sound is loud" } },
+    { "hanzi": "世界", "pinyin": "shìjiè", "english": "world", "example": { "hanzi": "世界很大", "pinyin": "shìjiè hěn dà", "english": "the world is big" } },
+    { "hanzi": "试", "pinyin": "shì", "english": "to try; exam", "example": { "hanzi": "试一下", "pinyin": "shì yīxià", "english": "try it" } },
+    { "hanzi": "瘦", "pinyin": "shòu", "english": "thin; slim", "example": { "hanzi": "他很瘦", "pinyin": "tā hěn shòu", "english": "he is very thin" } },
+    { "hanzi": "叔叔", "pinyin": "shūshu", "english": "uncle (father's younger brother)", "example": { "hanzi": "叔叔来了", "pinyin": "shūshu lái le", "english": "uncle has arrived" } },
+    { "hanzi": "舒服", "pinyin": "shūfu", "english": "comfortable; feel well", "example": { "hanzi": "这椅子很舒服", "pinyin": "zhè yǐzi hěn shūfu", "english": "this chair is comfortable" } },
+    { "hanzi": "树", "pinyin": "shù", "english": "tree", "example": { "hanzi": "大树", "pinyin": "dà shù", "english": "big tree" } },
+    { "hanzi": "数学", "pinyin": "shùxué", "english": "mathematics", "example": { "hanzi": "数学课", "pinyin": "shùxué kè", "english": "math class" } },
+    { "hanzi": "刷牙", "pinyin": "shuāyá", "english": "brush teeth", "example": { "hanzi": "早晚刷牙", "pinyin": "zǎowǎn shuāyá", "english": "brush teeth morning and night" } },
+    { "hanzi": "双", "pinyin": "shuāng", "english": "pair; double", "example": { "hanzi": "一双鞋", "pinyin": "yī shuāng xié", "english": "a pair of shoes" } },
+    { "hanzi": "水平", "pinyin": "shuǐpíng", "english": "level; standard", "example": { "hanzi": "中文水平", "pinyin": "zhōngwén shuǐpíng", "english": "Chinese level" } },
+    { "hanzi": "司机", "pinyin": "sījī", "english": "driver", "example": { "hanzi": "出租车司机", "pinyin": "chūzūchē sījī", "english": "taxi driver" } },
+    { "hanzi": "太阳", "pinyin": "tàiyáng", "english": "the sun", "example": { "hanzi": "太阳出来了", "pinyin": "tàiyáng chūlái le", "english": "the sun came out" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 然后 mean?", "options": ["then", "if", "because"], "answer": "then" },
+    { "type": "choose", "prompt": "Which word means 'umbrella'?", "options": ["伞", "山", "水"], "answer": "伞" },
+    { "type": "listen", "audio": "如果", "pinyin": "rúguǒ", "prompt": "Listen and choose what you hear.", "options": ["如果", "热情", "认识"], "answer": "如果" },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        { "hanzi": "秋", "english": "autumn" },
+        { "hanzi": "骑", "english": "to ride" },
+        { "hanzi": "生气", "english": "to get angry" },
+        { "hanzi": "世界", "english": "world" }
+      ]
+    },
+    { "type": "order", "prompt": "Make the phrase 'if it rains'.", "tokens": ["下", "雨", "如", "果"], "answer": "如果下雨" },
+    { "type": "order", "prompt": "Put the characters in order to say 'brush teeth'.", "tokens": ["牙", "刷"], "answer": "刷牙" },
+    { "type": "listen", "audio": "太阳", "pinyin": "tàiyáng", "prompt": "Listen and choose what you hear.", "options": ["太阳", "天气", "秋"], "answer": "太阳" },
+    { "type": "choose", "prompt": "Which character means 'tree'?", "options": ["树", "水", "双"], "answer": "树" }
+  ]
+}
