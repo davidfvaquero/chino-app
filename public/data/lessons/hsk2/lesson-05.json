@@ -1,0 +1,32 @@
+{
+  "id": "hsk2-05",
+  "title": "Study & feelings",
+  "intro": "Express movement, quantities, daily routines, and polite forms with 15 more HSK 2 words.",
+  "vocabulary": [
+    { "hanzi": "离", "pinyin": "lí", "english": "leave; depart", "example": { "hanzi": "离开", "pinyin": "líkāi", "english": "leave; depart" } },
+    { "hanzi": "两", "pinyin": "liǎng", "english": "two", "example": { "hanzi": "两个人", "pinyin": "liǎng gè rén", "english": "two people" } },
+    { "hanzi": "零", "pinyin": "líng", "english": "zero", "example": { "hanzi": "零度", "pinyin": "líng dù", "english": "zero degrees" } },
+    { "hanzi": "路", "pinyin": "lù", "english": "road; path", "example": { "hanzi": "这条路", "pinyin": "zhè tiáo lù", "english": "this road" } },
+    { "hanzi": "旅游", "pinyin": "lǚyóu", "english": "travel; trip", "example": { "hanzi": "去旅游", "pinyin": "qù lǚyóu", "english": "go traveling" } },
+    { "hanzi": "卖", "pinyin": "mài", "english": "to sell", "example": { "hanzi": "卖东西", "pinyin": "mài dōngxi", "english": "sell things" } },
+    { "hanzi": "慢", "pinyin": "màn", "english": "slow", "example": { "hanzi": "慢慢来", "pinyin": "màn man lái", "english": "take it slow" } },
+    { "hanzi": "忙", "pinyin": "máng", "english": "busy", "example": { "hanzi": "很忙", "pinyin": "hěn máng", "english": "very busy" } },
+    { "hanzi": "每", "pinyin": "měi", "english": "each; every", "example": { "hanzi": "每天", "pinyin": "měi tiān", "english": "every day" } },
+    { "hanzi": "妹妹", "pinyin": "mèimei", "english": "younger sister", "example": { "hanzi": "我的妹妹", "pinyin": "wǒ de mèimei", "english": "my younger sister" } },
+    { "hanzi": "门", "pinyin": "mén", "english": "door", "example": { "hanzi": "开门", "pinyin": "kāi mén", "english": "open the door" } },
+    { "hanzi": "面条", "pinyin": "miàntiáo", "english": "noodles", "example": { "hanzi": "吃面条", "pinyin": "chī miàntiáo", "english": "eat noodles" } },
+    { "hanzi": "男", "pinyin": "nán", "english": "male", "example": { "hanzi": "男生", "pinyin": "nánshēng", "english": "boy; male student" } },
+    { "hanzi": "您", "pinyin": "nín", "english": "you (polite)", "example": { "hanzi": "您好", "pinyin": "nín hǎo", "english": "hello (polite)" } },
+    { "hanzi": "牛奶", "pinyin": "niúnǎi", "english": "milk", "example": { "hanzi": "喝牛奶", "pinyin": "hē niúnǎi", "english": "drink milk" } }
+  ],
+  "exercises": [
+    { "type": "choose", "prompt": "What does 妹妹 mean?", "options": ["older sister", "younger sister", "mother"], "answer": "younger sister" },
+    { "type": "choose", "prompt": "Which word means 'milk'?", "options": ["面条", "牛奶", "咖啡"], "answer": "牛奶" },
+    { "type": "listen", "audio": "旅游", "pinyin": "lǚyóu", "prompt": "Listen and choose what you hear.", "options": ["旅游", "路", "离"], "answer": "旅游" },
+    { "type": "match", "prompt": "Match each word to its meaning.", "pairs": [ { "hanzi": "慢", "english": "slow" }, { "hanzi": "忙", "english": "busy" }, { "hanzi": "门", "english": "door" }, { "hanzi": "您", "english": "you (polite)" } ] },
+    { "type": "order", "prompt": "Make the phrase 'every day'.", "tokens": ["天", "每"], "answer": "每天" },
+    { "type": "order", "prompt": "Put the characters in order to say 'eat noodles'.", "tokens": ["条", "面", "吃"], "answer": "吃面条" },
+    { "type": "listen", "audio": "两", "pinyin": "liǎng", "prompt": "Listen and choose what you hear.", "options": ["两", "零", "离"], "answer": "两" },
+    { "type": "choose", "prompt": "Which character means 'slow'?", "options": ["忙", "慢", "每"], "answer": "慢" }
+  ]
+}
