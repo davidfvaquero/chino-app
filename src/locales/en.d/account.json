@@ -1,0 +1,32 @@
+{
+  "account": {
+    "title": "Account & Sync",
+    "notConfigured": "Sync is not configured",
+    "notConfiguredHint": "This build has no sync server, so everything stays on this device. To sync between devices, follow docs/SYNC.md.",
+    "privacyTitle": "Privacy",
+    "privacy": "Your study data (review cards, progress, achievements and settings) is saved on this device only. If you sign in, it is also copied to your own private row on the sync server, protected so only you can read it. No analytics, no ads, no third parties. You can delete the server copy at any time.",
+    "signedOut": "Not signed in",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "sendCode": "Send code",
+    "codeSent": "Code sent. Check your email.",
+    "codeLabel": "Code",
+    "codePlaceholder": "123456",
+    "verify": "Sign in",
+    "signedInAs": "Signed in as {email}",
+    "signOut": "Sign out",
+    "syncNow": "Sync now",
+    "lastSync": "Last sync",
+    "never": "never",
+    "syncing": "Syncing…",
+    "syncDone": "Synced.",
+    "syncFailed": "Sync failed. Your changes are kept and will be sent later.",
+    "offline": "Offline — your changes are kept and sent later.",
+    "pending": "{count} change(s) waiting to sync",
+    "deleteData": "Delete my data from the server",
+    "deleteConfirm": "Delete your synced copy from the server? The copy on this device stays.",
+    "deleteYes": "Yes, delete the server copy",
+    "deleted": "Server data deleted.",
+    "deleteFailed": "Could not delete the server data."
+  }
+}

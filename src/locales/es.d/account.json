@@ -1,0 +1,32 @@
+{
+  "account": {
+    "title": "Cuenta y sincronización",
+    "notConfigured": "La sincronización no está configurada",
+    "notConfiguredHint": "Esta versión no tiene servidor de sincronización, así que todo se queda en este dispositivo. Para sincronizar entre dispositivos, sigue docs/SYNC.md.",
+    "privacyTitle": "Privacidad",
+    "privacy": "Tus datos de estudio (tarjetas de repaso, progreso, logros y ajustes) se guardan solo en este dispositivo. Si inicias sesión, también se copian a tu propia fila privada en el servidor de sincronización, protegida para que solo tú puedas leerla. Sin analíticas, sin anuncios, sin terceros. Puedes borrar la copia del servidor cuando quieras.",
+    "signedOut": "Sesión no iniciada",
+    "emailLabel": "Correo",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "sendCode": "Enviar código",
+    "codeSent": "Código enviado. Revisa tu correo.",
+    "codeLabel": "Código",
+    "codePlaceholder": "123456",
+    "verify": "Iniciar sesión",
+    "signedInAs": "Sesión iniciada como {email}",
+    "signOut": "Cerrar sesión",
+    "syncNow": "Sincronizar ahora",
+    "lastSync": "Última sincronización",
+    "never": "nunca",
+    "syncing": "Sincronizando…",
+    "syncDone": "Sincronizado.",
+    "syncFailed": "La sincronización falló. Tus cambios se conservan y se enviarán más tarde.",
+    "offline": "Sin conexión: tus cambios se conservan y se enviarán más tarde.",
+    "pending": "{count} cambio(s) esperando sincronizarse",
+    "deleteData": "Borrar mis datos del servidor",
+    "deleteConfirm": "¿Borrar tu copia sincronizada del servidor? La copia de este dispositivo se queda.",
+    "deleteYes": "Sí, borrar la copia del servidor",
+    "deleted": "Datos del servidor borrados.",
+    "deleteFailed": "No se pudieron borrar los datos del servidor."
+  }
+}
