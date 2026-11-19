@@ -21,20 +21,20 @@ export const titleKey = 'backupScreen.title';
 const STYLE_ID = 'backup-style';
 const CSS = `
 .backup-section { margin-bottom: 1.25rem; }
-.backup-notice { margin: 0 0 1rem; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--line); border-radius: var(--radius); font-size: 0.9rem; color: var(--fg-soft); }
+.backup-notice { margin: 0 0 1rem; padding: 0.75rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); font-size: 0.9rem; color: var(--ink-soft); }
 .backup-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 0.75rem; }
 .backup-modes { display: flex; flex-wrap: wrap; gap: 0.75rem; font-size: 0.9rem; }
 .backup-modes label { display: inline-flex; align-items: center; gap: 0.35rem; }
-.backup-preview { margin-top: 1rem; padding: 0.75rem; background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); }
+.backup-preview { margin-top: 1rem; padding: 0.75rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); }
 .backup-preview-title { margin: 0 0 0.5rem; font-weight: 600; }
-.backup-preview-stats { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; color: var(--fg-soft); }
-.backup-confirm { margin-top: 1rem; padding: 0.75rem; border: 1px solid var(--line); border-radius: var(--radius); }
+.backup-preview-stats { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; color: var(--ink-soft); }
+.backup-confirm { margin-top: 1rem; padding: 0.75rem; border: 1px solid var(--line); border-radius: var(--r-md); }
 .backup-confirm-title { margin: 0 0 0.5rem; font-weight: 600; }
-.backup-confirm-text { margin: 0 0 0.5rem; font-size: 0.9rem; color: var(--fg-soft); }
+.backup-confirm-text { margin: 0 0 0.5rem; font-size: 0.9rem; color: var(--ink-soft); }
 .backup-confirm-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.backup-status { margin-top: 0.75rem; padding: 0.6rem; border-radius: var(--radius); font-size: 0.9rem; }
-.backup-status.success { border: 1px solid var(--line); background: var(--bg-elevated); }
-.backup-status.error { border: 1px solid var(--danger, #b00); }
+.backup-status { margin-top: 0.75rem; padding: 0.6rem; border-radius: var(--r-md); font-size: 0.9rem; }
+.backup-status.success { border: 1px solid var(--line); background: var(--surface); }
+.backup-status.error { border: 1px solid var(--danger); }
 `;
 
 function ensureStyles(doc) {
@@ -98,22 +98,25 @@ export function render(container, ctx) {
       if (file) readFile(file);
     },
   });
-  const modeRadio = (value, labelKey) =>
-    h(
-      'label',
-      {},
-      h('input', {
-        type: 'radio',
-        name: 'backup-mode',
-        value,
-        checked: value === state.mode,
-        onchange: () => {
+  const modeChips = {};
+  const modeRadio = (value, labelKey) => {
+    const chip = h(
+      'button',
+      {
+        type: 'button',
+        class: 'chip',
+        'aria-pressed': String(value === state.mode),
+        onclick: () => {
           state.mode = value;
+          for (const [v, c] of Object.entries(modeChips)) c.setAttribute('aria-pressed', String(v === value));
           renderConfirm();
         },
-      }),
-      h('span', { text: t(labelKey) }),
+      },
+      t(labelKey),
     );
+    modeChips[value] = chip;
+    return chip;
+  };
   const importSection = h(
     'section',
     { class: 'backup-section card' },

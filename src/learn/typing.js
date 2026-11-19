@@ -47,55 +47,52 @@ const CSS = `
 
 .typing-setup { display: flex; flex-direction: column; gap: 0.5rem; }
 .typing-setup-row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-.typing-setup label { font-size: 0.9rem; color: var(--muted, #666); min-width: 70px; }
+.typing-setup label { font-size: 0.9rem; color: var(--ink-soft); min-width: 70px; }
 .typing-setup select, .typing-setup input[type="number"] {
   flex: 1; min-width: 0; padding: 0.5rem 0.6rem; font-size: 1rem;
-  border: 1px solid var(--line, #c9c4bd); border-radius: 0.5rem;
-  background: var(--bg, #fff); color: inherit;
+  border: 1.5px solid var(--edge); border-radius: 0.5rem;
+  background: var(--surface); color: inherit;
 }
-.typing-setup button { padding: 0.5rem 0.8rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.5rem; background: var(--bg, #fff); color: inherit; font-size: 0.95rem; }
-.typing-setup button[aria-pressed="true"] { border-color: #b3261e; color: #b3261e; }
+.typing-setup button { padding: 0.5rem 0.8rem; border: 1.5px solid var(--edge); border-radius: 0.5rem; background: var(--surface); color: inherit; font-size: 0.95rem; }
+.typing-setup button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
 
 .typing-card { display: flex; flex-direction: column; gap: 0.75rem; align-items: center; text-align: center; }
 .typing-prompt { font-size: 2.5rem; line-height: 1.2; word-break: keep-all; }
-.typing-meaning { font-size: 1.1rem; color: var(--muted, #666); min-height: 1.4em; }
+.typing-meaning { font-size: 1.1rem; color: var(--ink-soft); min-height: 1.4em; }
 
 .typing-input-wrap { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; max-width: 28rem; }
 .typing-input {
   width: 100%; padding: 0.75rem 1rem; font-size: 1.15rem; text-align: center;
-  border: 2px solid var(--line, #c9c4bd); border-radius: 0.75rem;
-  background: var(--bg, #fff); color: inherit;
+  border: 1.5px solid var(--edge); border-radius: 0.75rem;
+  background: var(--surface); color: inherit;
   autocapitalize: none; autocorrect: off; spellcheck: false; inputmode: text;
 }
-.typing-input:focus { outline: none; border-color: #b3261e; }
+.typing-input:focus { outline: none; border-color: var(--accent); }
 
 .typing-feedback { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 1.25rem; line-height: 1.6; min-height: 1.6em; letter-spacing: 0.1em; }
-.typing-feedback .ok { color: #2e7d32; }
-.typing-feedback .bad { color: #c62828; text-decoration: underline; }
-.typing-feedback .pending { color: var(--muted, #999); }
+.typing-feedback .ok { color: var(--ok); }
+.typing-feedback .bad { color: var(--danger); text-decoration: underline; }
+.typing-feedback .pending { color: var(--ink-soft); }
 
-.typing-hint { font-size: 1rem; color: var(--muted, #666); min-height: 1.3em; }
+.typing-hint { font-size: 1rem; color: var(--ink-soft); min-height: 1.3em; }
 .typing-hint .pinyin { display: inline; }
 
 .typing-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
-.typing-actions button { padding: 0.55rem 0.8rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; font-size: 0.95rem; }
-.typing-actions button.primary { border-color: #b3261e; color: #b3261e; font-weight: 600; }
+.typing-actions button { padding: 0.55rem 0.8rem; border: 1.5px solid var(--edge); border-radius: 0.6rem; background: var(--surface); color: inherit; font-size: 0.95rem; }
+.typing-actions button.primary { border-color: var(--accent); color: var(--accent); font-weight: 600; }
 
-.typing-stats { display: flex; gap: 1.5rem; justify-content: center; font-variant-numeric: tabular-nums; font-size: 0.95rem; color: var(--muted, #666); }
+.typing-stats { display: flex; gap: 1.5rem; justify-content: center; font-variant-numeric: tabular-nums; font-size: 0.95rem; color: var(--ink-soft); }
 .typing-stats .stat { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; }
 .typing-stats .stat-value { font-size: 1.3rem; font-weight: 600; color: inherit; }
 
 .typing-summary { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; padding: 1rem; }
 .typing-summary .big { font-size: 1.5rem; font-weight: 600; }
 .typing-summary .failed-list { max-height: 12rem; overflow-y: auto; width: 100%; max-width: 24rem; text-align: left; }
-.typing-summary .failed-item { display: flex; justify-content: space-between; padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--line, #eee); font-size: 0.9rem; }
+.typing-summary .failed-item { display: flex; justify-content: space-between; padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
 .typing-summary .failed-item:last-child { border-bottom: none; }
 .typing-summary .failed-hanzi { font-size: 1.1rem; }
-.typing-summary .failed-pinyin { color: var(--muted, #666); }
+.typing-summary .failed-pinyin { color: var(--ink-soft); }
 
-@media (prefers-color-scheme: dark) {
-  .typing-summary .failed-item { border-bottom-color: #333; }
-}
 `;
 
 function ensureStyles(doc) {

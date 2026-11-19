@@ -21,6 +21,36 @@ const CHROME = [
 
 export const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/**
+ * Every area beyond the main flows, by route: [audit label, hash]. Reachable
+ * directly (`#/learn/<area>`) even before the hub menu lists it; only the
+ * integration task (HOME) adds the menu cards, not the route.
+ */
+export const AREAS = [
+  ['area-tones', '#/learn/tones'],
+  ['area-pinyin-chart', '#/learn/pinyin-chart'],
+  ['area-strokes', '#/learn/strokes'],
+  ['area-strokes-sheet', '#/learn/strokes/妈妈'],
+  ['area-sentences', '#/learn/sentences'],
+  ['area-themes', '#/learn/themes'],
+  ['area-dictation', '#/learn/dictation'],
+  ['area-games', '#/learn/games'],
+  ['area-games-matching', '#/learn/games/matching'],
+  ['area-games-memory', '#/learn/games/memory'],
+  ['area-games-timed', '#/learn/games/timed'],
+  ['area-games-builder', '#/learn/games/builder'],
+  ['area-radicals', '#/learn/radicals'],
+  ['area-hardwords', '#/learn/hardwords'],
+  ['area-grammar', '#/learn/grammar'],
+  ['area-profile', '#/extras/profile'],
+  ['area-stats', '#/extras/stats'],
+  ['area-paste', '#/extras/paste'],
+  ['area-draw', '#/extras/draw'],
+  ['area-pronounce', '#/extras/pronounce'],
+  ['area-settings', '#/extras/settings'],
+  ['area-backup', '#/extras/backup'],
+];
+
 class CDP {
   constructor(ws) {
     this.ws = ws;
@@ -251,19 +281,14 @@ export async function runScenarios(dir, { widths = [390, 320], themes = ['light'
             await cdp.waitFor('.word-panel:not([hidden])');
             await view('read-panel');
           });
-          // Screens not redesigned yet: only audited on request (ONLY=x-).
-          if (only?.some((o) => o.startsWith('x-'))) {
-            for (const [label, hash, sel] of [
-              ['x-settings', '#/extras/settings', '.screen'],
-              ['x-profile', '#/extras/profile', '.screen'],
-              ['x-tones', '#/learn/tones', '.screen'],
-              ['x-games', '#/learn/games', '.screen'],
-              ['x-grammar', '#/learn/grammar', '.screen'],
-              ['x-strokes', '#/learn/strokes', '.screen'],
-              ['x-stats', '#/extras/stats', '.screen'],
-            ]) {
-              await run(label, async () => { await go(hash, sel); await sleep(500); await view(label); });
-            }
+          // Every other area, reached by its own route (each hub dispatches on the
+          // first segment). The integration task (HOME) adds the menu cards.
+          for (const [label, hash] of AREAS) {
+            await run(label, async () => {
+              await go(hash, '.screen');
+              await sleep(500);
+              await view(label);
+            });
           }
           await run('hub', async () => {
             await go('#/learn', '.menu [data-area]');

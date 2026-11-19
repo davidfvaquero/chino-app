@@ -441,15 +441,15 @@ export async function loadSources({ store = storage, base = DATA_BASE, fetchJson
 const CSS = `
 .dict-setup, .dict-question, .dict-result { display: grid; gap: var(--pad); }
 .dict-field { display: grid; gap: 0.35rem; }
-.dict-field label { font-size: 0.85rem; color: var(--fg-soft); }
+.dict-field label { font-size: 0.85rem; color: var(--ink-soft); }
 .dict-select, .dict-input {
-  width: 100%; font: inherit; padding: 0.6rem 0.7rem;
-  border: 1px solid var(--line); border-radius: 0.6rem;
-  background: var(--bg); color: var(--fg);
+  width: 100%; font: inherit; padding: 0.6rem 0.7rem; min-height: 48px;
+  border: 1.5px solid var(--ink-soft); border-radius: var(--r-md);
+  background: var(--surface); color: var(--ink);
 }
-.dict-bar { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.85rem; color: var(--fg-soft); }
-.dict-mode { margin: 0; color: var(--fg-soft); }
-.dict-notice { margin: 0; padding: 0.5rem 0.7rem; border-radius: 0.6rem; background: var(--bg-soft); color: var(--fg-soft); font-size: 0.85rem; }
+.dict-bar { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+.dict-mode { margin: 0; color: var(--ink-soft); }
+.dict-notice { margin: 0; padding: 0.5rem 0.7rem; border-radius: var(--r-md); background: var(--inset); color: var(--ink-soft); font-size: 0.85rem; }
 .dict-prompt { margin: 0; font-size: 1.6rem; text-align: center; }
 .dict-prompt.hanzi { font-size: 2.4rem; }
 .dict-audio { display: flex; gap: 0.5rem; }
@@ -458,11 +458,11 @@ const CSS = `
 .dict-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
 .dict-option { font-size: 1.5rem; padding: 0.6rem; }
 .dict-feedback { display: grid; gap: 0.5rem; }
-.dict-feedback .ok { color: var(--tone2, #2e7d32); }
-.dict-feedback .bad { color: var(--tone1, #c62828); }
+.dict-feedback .ok { color: var(--ok); }
+.dict-feedback .bad { color: var(--danger); }
 .dict-answer-line { margin: 0; font-size: 1.25rem; display: flex; flex-direction: column; gap: 0.3rem; }
 .dict-answer-line .pinyin { font-size: 1rem; }
-.dict-answer-line .english { color: var(--fg-soft); font-size: 0.95rem; }
+.dict-answer-line .english { color: var(--ink-soft); font-size: 0.95rem; }
 .dict-missed { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
 .dict-missed li { display: flex; flex-direction: column; align-items: flex-start; gap: 0.15rem; }
 .dict-missed .hanzi { font-size: 1.3rem; }

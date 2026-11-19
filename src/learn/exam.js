@@ -108,17 +108,17 @@ async function loadSentences(level) {
 const CSS = `
 .exam-setup, .exam-question, .exam-result { display: grid; gap: var(--pad); }
 .exam-field { display: grid; gap: 0.35rem; }
-.exam-field label { font-size: 0.85rem; color: var(--fg-soft); }
+.exam-field label { font-size: 0.85rem; color: var(--ink-soft); }
 .exam-select, .exam-input {
   width: 100%; font: inherit; padding: 0.6rem 0.7rem;
   border: 1px solid var(--line); border-radius: 0.6rem;
-  background: var(--bg); color: var(--fg);
+  background: var(--bg); color: var(--ink);
 }
-.exam-hint { margin: 0; font-size: 0.8rem; color: var(--fg-soft); }
+.exam-hint { margin: 0; font-size: 0.8rem; color: var(--ink-soft); }
 .exam-check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
-.exam-bar { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.85rem; color: var(--fg-soft); }
-.exam-section { margin: 0; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--fg-soft); }
-.exam-notice { margin: 0; padding: 0.5rem 0.7rem; border-radius: 0.6rem; background: var(--bg-soft); color: var(--fg-soft); font-size: 0.85rem; }
+.exam-bar { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+.exam-section { margin: 0; font-size: 0.8rem; letter-spacing: 0.05em; color: var(--ink-soft); }
+.exam-notice { margin: 0; padding: 0.5rem 0.7rem; border-radius: 0.6rem; background: var(--surface); color: var(--ink-soft); font-size: 0.85rem; }
 .exam-prompt { margin: 0; font-size: 1.3rem; }
 .exam-prompt.hanzi { font-size: 2.4rem; text-align: center; }
 .exam-prompt .pinyin { display: block; font-size: 1rem; }
@@ -130,16 +130,16 @@ const CSS = `
 .exam-chosen .exam-option { padding: 0.35rem 0.6rem; }
 .exam-tokens { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .exam-feedback { display: grid; gap: 0.5rem; }
-.exam-feedback .ok { color: var(--tone2, #2e7d32); }
-.exam-feedback .bad { color: var(--tone1, #c62828); }
+.exam-feedback .ok { color: var(--ok); }
+.exam-feedback .bad { color: var(--danger); }
 .exam-answer-line { margin: 0; font-size: 1.15rem; display: grid; gap: 0.2rem; }
 .exam-answer-line .pinyin { font-size: 0.95rem; }
-.exam-answer-line .english { color: var(--fg-soft); font-size: 0.9rem; }
+.exam-answer-line .english { color: var(--ink-soft); font-size: 0.9rem; }
 .exam-result-score { font-size: 1.15rem; }
 .exam-missed { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
 .exam-missed li { display: grid; gap: 0.2rem; border-top: 1px solid var(--line); padding-top: 0.5rem; }
 .exam-missed .prompt { font-size: 1.2rem; }
-.exam-missed .expected { color: var(--fg-soft); }
+.exam-missed .expected { color: var(--ink-soft); }
 `;
 
 function ensureStyles(doc) {

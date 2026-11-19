@@ -56,8 +56,8 @@ export function syllableOf(initial, final) {
 const STYLE_ID = 'pinyinchart-style';
 const CSS = `
 .pinyinchart { display: flex; flex-direction: column; gap: 0.85rem; }
-.pinyinchart-intro { margin: 0; color: var(--fg-soft); font-size: 0.95rem; line-height: 1.45; }
-.pinyinchart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--radius); }
+.pinyinchart-intro { margin: 0; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.45; }
+.pinyinchart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
 .pinyinchart-table { border-collapse: collapse; font-size: 0.95rem; }
 .pinyinchart-table th, .pinyinchart-table td { padding: 0; margin: 0; }
 .pinyinchart-corner, .pinyinchart-final, .pinyinchart-initial {
@@ -66,31 +66,31 @@ const CSS = `
 }
 .pinyinchart-corner, .pinyinchart-final { top: 0; z-index: 2; }
 .pinyinchart-corner { left: 0; z-index: 3; }
-.pinyinchart-final { padding: 0.35rem 0.5rem; text-align: center; font-weight: 600; color: var(--fg-soft); }
-.pinyinchart-initial { padding: 0.35rem 0.55rem; text-align: left; color: var(--fg-soft); }
+.pinyinchart-final { padding: 0.35rem 0.5rem; text-align: center; font-weight: 600; color: var(--ink-soft); }
+.pinyinchart-initial { padding: 0.35rem 0.55rem; text-align: left; color: var(--ink-soft); }
 .pinyin-cell {
-  display: block; width: 100%; min-width: 2.9rem; min-height: 2.5rem; padding: 0.2rem 0.3rem;
-  border: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line);
-  background: var(--bg); color: inherit; font: inherit; font-size: 1rem; cursor: pointer;
+  display: block; width: 100%; min-width: 2.9rem; min-height: 2.75rem; padding: 0.2rem 0.3rem;
+  border: 0; border-top: 1px solid var(--edge); border-left: 1px solid var(--edge);
+  background: var(--surface); color: inherit; font: inherit; font-size: 1rem; cursor: pointer;
 }
-.pinyin-cell[aria-pressed="true"] { background: color-mix(in srgb, var(--fg-soft) 18%, var(--bg)); font-weight: 600; }
+.pinyin-cell[aria-pressed="true"] { background: var(--accent-wash); font-weight: 600; }
 .pinyin-cell:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
-.pinyin-empty { display: block; min-width: 2.9rem; min-height: 2.5rem; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.pinyinchart-panel { display: flex; flex-direction: column; gap: 0.5rem; padding: 0.75rem; border: 1px solid var(--line); border-radius: var(--radius); }
+.pinyin-empty { display: block; min-width: 2.9rem; min-height: 2.75rem; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.pinyinchart-panel { display: flex; flex-direction: column; gap: 0.5rem; padding: 0.75rem; border: 1px solid var(--line); border-radius: var(--r-md); }
 .pinyinchart-panel[hidden] { display: none; }
 .pinyinchart-panel-title { margin: 0; font-size: 1.1rem; }
 .pinyinchart-tones { display: grid; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
 .pinyin-tone-btn {
   display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 0.6rem;
   width: 100%; min-height: 2.8rem; padding: 0.4rem 0.6rem; border: 1px solid var(--line);
-  border-radius: var(--radius); background: var(--bg); color: inherit; font: inherit; text-align: left; cursor: pointer;
+  border-radius: var(--r-md); background: var(--surface); color: inherit; font: inherit; text-align: left; cursor: pointer;
 }
 .pinyin-tone-btn[disabled] { opacity: 0.5; cursor: default; }
-.pinyin-tone-num { font-size: 0.8rem; color: var(--fg-soft); }
+.pinyin-tone-num { font-size: 0.8rem; color: var(--ink-soft); }
 .pinyin-tone-pinyin { font-size: 1.15rem; }
 .pinyin-tone-hanzi { font-size: 1.5rem; font-weight: 600; }
-.pinyin-tone-gloss { font-size: 0.85rem; color: var(--fg-soft); }
-.pinyinchart-status { margin: 0; min-height: 1.2em; color: var(--fg-soft); font-size: 0.9rem; }
+.pinyin-tone-gloss { font-size: 0.85rem; color: var(--ink-soft); }
+.pinyinchart-status { margin: 0; min-height: 1.2em; color: var(--ink-soft); font-size: 0.9rem; }
 `;
 
 function ensureStyles(doc) {

@@ -25,16 +25,16 @@ const CSS = `
 .paste-wrap { display: flex; flex-direction: column; gap: 0.75rem; height: 100%; }
 .paste-textarea {
   width: 100%; min-height: 160px; max-height: 40vh;
-  padding: 0.75rem; border: 1px solid var(--line); border-radius: var(--radius);
-  background: var(--bg); color: var(--fg); font: inherit; resize: vertical;
+  padding: 0.75rem; border: 1.5px solid var(--edge); border-radius: var(--r-md);
+  background: var(--surface); color: var(--ink); font: inherit; resize: vertical;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
 }
 .paste-textarea:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
 .paste-toolbar { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .paste-btn {
-  flex: 1; min-width: 100px; padding: 0.6rem 0.9rem;
-  border: 1px solid var(--line); border-radius: var(--radius);
-  background: var(--bg); color: var(--fg); font: inherit;
+  flex: 1; min-width: 100px; min-height: 48px; padding: 0.6rem 0.9rem;
+  border: 1.5px solid var(--edge); border-radius: var(--r-md);
+  background: var(--surface); color: var(--ink); font: inherit;
 }
 .paste-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .paste-btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
@@ -45,22 +45,21 @@ const CSS = `
 .paste-word {
   display: inline-flex; flex-direction: column; align-items: center; gap: 0.1rem;
   padding: 0.15rem 0.3rem; border: 1px solid transparent; border-radius: 0.4rem;
-  background: transparent; color: var(--fg); font: inherit; text-decoration: none;
+  background: transparent; color: var(--ink); font: inherit; text-decoration: none;
   min-width: 2rem; cursor: pointer;
 }
-.paste-word:hover { background: var(--bg-soft); border-color: var(--line); }
+.paste-word:hover { background: var(--inset); border-color: var(--edge); }
 .paste-word:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 .paste-word .hanzi { font-size: 1.125rem; line-height: 1.2; }
 .paste-word .pinyin { font-size: 0.7rem; line-height: 1; white-space: nowrap; }
-.paste-punct { display: inline-flex; align-items: center; font-size: 1.125rem; color: var(--fg-soft); }
-.paste-english { font-size: 0.8125rem; color: var(--fg-soft); margin-top: 0.25rem; }
+.paste-punct { display: inline-flex; align-items: center; font-size: 1.125rem; color: var(--ink-soft); }
+.paste-english { font-size: 0.8125rem; color: var(--ink-soft); margin-top: 0.25rem; }
 .paste-sentence-controls { display: flex; gap: 0.5rem; margin-top: 0.25rem; }
 .paste-sentence-btn { padding: 0.3rem 0.6rem; font-size: 0.75rem; }
 .paste-panel {
   position: fixed; inset: auto 0 0 0; z-index: 10;
-  padding: 1rem; background: var(--bg); border-top: 1px solid var(--line);
-  border-radius: var(--radius) var(--radius) 0 0;
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+  padding: 1rem; background: var(--surface); border-top: 1px solid var(--line);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
   max-height: 60vh; overflow-y: auto;
   animation: paste-slide-up 0.2s ease-out;
 }
@@ -68,15 +67,12 @@ const CSS = `
 .paste-panel.hidden { display: none; }
 .paste-panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
 .paste-panel-hanzi { font-size: 2rem; font-weight: 600; }
-.paste-panel-pinyin { font-size: 1rem; color: var(--fg-soft); }
+.paste-panel-pinyin { font-size: 1rem; color: var(--ink-soft); }
 .paste-panel-defs { margin: 0.75rem 0; }
 .paste-panel-defs li { margin: 0.25rem 0; }
 .paste-panel-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .paste-panel-btn { flex: 1; min-width: 100px; padding: 0.6rem; font: inherit; }
 .paste-unknown { font-size: 0.8125rem; color: var(--accent); margin-top: 0.5rem; }
-@media (prefers-color-scheme: dark) {
-  .paste-panel { box-shadow: 0 -4px 12px rgba(0,0,0,0.3); }
-}
 `;
 
 function ensureStyles(doc) {

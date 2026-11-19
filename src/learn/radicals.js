@@ -59,9 +59,10 @@ const CSS = `
 .radicals { display: flex; flex-direction: column; gap: 0.75rem; }
 .radicals [hidden] { display: none !important; }
 .radicals-search { display: flex; gap: 0.5rem; align-items: center; }
-.radicals-search input { flex: 1; min-width: 0; padding: 0.6rem 0.7rem; font-size: 1.05rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; }
+.radicals-search input { flex: 1; min-width: 0; padding: 0.6rem 0.7rem; font-size: 1.05rem; min-height: 48px; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); }
+.radicals-search button { min-height: 44px; padding: 0.6rem 1rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); }
 .radicals-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 0.4rem; }
-.radical-btn { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.5rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.5rem; background: var(--bg, #fff); color: inherit; font-size: 0.85rem; }
+.radical-btn { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; min-height: 44px; padding: 0.5rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); font-size: 0.85rem; }
 .radical-btn .radical-symbol { font-size: 2rem; line-height: 1; }
 .radical-btn .radical-info { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; font-size: 0.7rem; opacity: 0.8; }
 .radicals-decomp { display: flex; flex-direction: column; gap: 0.75rem; }
@@ -70,19 +71,16 @@ const CSS = `
 .decomp-char { font-size: 3rem; font-weight: 600; }
 .decomp-radical { font-size: 1.5rem; }
 .decomp-parts { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.decomp-part { font-size: 1.5rem; padding: 0.3rem 0.5rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.5rem; background: var(--bg, #fff); color: inherit; cursor: pointer; }
-.decomp-part:hover { border-color: var(--accent, #b3261e); }
+.decomp-part { font-size: 1.5rem; min-height: 44px; padding: 0.3rem 0.5rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); cursor: pointer; }
+.decomp-part:hover { border-color: var(--accent); }
 .decomp-chars { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 0.4rem; }
-.decomp-char-btn { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.4rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.5rem; background: var(--bg, #fff); color: inherit; font-size: 0.9rem; }
+.decomp-char-btn { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; min-height: 44px; padding: 0.4rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); font-size: 0.9rem; }
 .decomp-char-btn .char-hanzi { font-size: 1.8rem; line-height: 1; }
 .decomp-char-btn .char-pinyin { font-size: 0.75rem; opacity: 0.85; }
 .decomp-char-btn .char-meaning { font-size: 0.7rem; opacity: 0.7; text-align: center; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .decomp-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
-.decomp-actions button { padding: 0.55rem 0.8rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; font-size: 0.95rem; }
+.decomp-actions button { min-height: 44px; padding: 0.55rem 0.8rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); font-size: 0.95rem; }
 .radicals-empty, .radicals-error, .radicals-loading { margin: 0; text-align: center; min-height: 1.2em; opacity: 0.7; }
-@media (prefers-color-scheme: dark) {
-  .radical-btn, .decomp-part, .decomp-char-btn { background: #1c1a19; border-color: #3d3732; }
-}
 `;
 
 function ensureStyles(doc) {

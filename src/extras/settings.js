@@ -113,18 +113,16 @@ export async function render(container, ctx) {
 
     const current = isToneColorsOn();
 
-    const label = h('label', { class: 'settings-toggle' });
-    const checkbox = h('input', {
-      type: 'checkbox',
-      checked: current,
-      onchange: async (e) => {
-        await setSetting('toneColors', e.target.checked);
+    const toggle = h('button', {
+      type: 'button',
+      class: 'chip',
+      'aria-pressed': String(current),
+      onclick: async () => {
+        await setSetting('toneColors', !current);
         renderSettings(); // re-render to update preview
       },
-    });
-    const span = h('span', { class: 'settings-toggle-slider' });
-    label.append(checkbox, span, h('span', { class: 'settings-toggle-text', text: t(current ? 'settings.toneColors.on' : 'settings.toneColors.off') }));
-    section.append(label);
+    }, t(current ? 'settings.toneColors.on' : 'settings.toneColors.off'));
+    section.append(toggle);
 
     // Preview
     const preview = h('div', { class: 'settings-preview' });

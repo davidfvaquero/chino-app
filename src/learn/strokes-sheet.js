@@ -149,10 +149,10 @@ const CSS = `
 .strokes-sheet { display: flex; flex-direction: column; gap: 0.9rem; }
 .strokes-sheet [hidden] { display: none !important; }
 .sheet-form { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-.sheet-form input { flex: 1 1 12rem; min-width: 0; padding: 0.6rem 0.7rem; font-size: 1.05rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; }
-.sheet-form button, .sheet-actions button { padding: 0.55rem 0.8rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; font-size: 0.95rem; }
-.sheet-warning, .sheet-empty { margin: 0; color: #b3261e; }
-.sheet-card { border: 1px solid var(--line, #c9c4bd); border-radius: 0.8rem; padding: 0.75rem; display: flex; flex-direction: column; gap: 0.55rem; break-inside: avoid; }
+.sheet-form input { flex: 1 1 12rem; min-width: 0; padding: 0.6rem 0.7rem; font-size: 1.05rem; min-height: 48px; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); }
+.sheet-form button, .sheet-actions button { min-height: 44px; padding: 0.55rem 0.8rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); font-size: 0.95rem; }
+.sheet-warning, .sheet-empty { margin: 0; color: var(--danger); }
+.sheet-card { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 0.75rem; display: flex; flex-direction: column; gap: 0.55rem; break-inside: avoid; }
 .sheet-head { display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem; }
 .sheet-char { font-size: 2.6rem; line-height: 1; }
 .sheet-pinyin { font-size: 1.1rem; }
@@ -160,23 +160,18 @@ const CSS = `
 .sheet-count { opacity: 0.8; font-variant-numeric: tabular-nums; }
 .sheet-steps { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.3rem; -webkit-overflow-scrolling: touch; }
 .sheet-step { flex: 0 0 auto; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 0.15rem; }
-.sheet-step svg, .sheet-player svg { display: block; width: 4.5rem; height: 4.5rem; background: var(--board, #faf8f5); border-radius: 0.4rem; }
+.sheet-step svg, .sheet-player svg { display: block; width: 4.5rem; height: 4.5rem; background: var(--surface); border-radius: var(--r-sm); }
 .sheet-step figcaption { font-size: 0.75rem; opacity: 0.7; font-variant-numeric: tabular-nums; }
-.sheet-step .stroke-part { fill: #7a7168; opacity: 0.22; }
-.sheet-step .stroke-part-new { fill: #b3261e; opacity: 1; }
+.sheet-step .stroke-part { fill: var(--ink-soft); opacity: 0.22; }
+.sheet-step .stroke-part-new { fill: var(--accent); opacity: 1; }
 .sheet-player { align-self: flex-start; margin-top: 0.2rem; }
 .sheet-player svg { width: 9rem; height: 9rem; }
-.sheet-player .stroke-pen { fill: none; stroke: #1b1b1b; stroke-width: 46; stroke-linecap: round; stroke-linejoin: round; }
+.sheet-player .stroke-pen { fill: none; stroke: var(--ink); stroke-width: 46; stroke-linecap: round; stroke-linejoin: round; }
 .sheet-types { margin: 0; font-size: 0.85rem; opacity: 0.85; }
-.sheet-card > button { align-self: flex-start; padding: 0.45rem 0.9rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.6rem; background: var(--bg, #fff); color: inherit; font-size: 0.95rem; }
+.sheet-card > button { align-self: flex-start; min-height: 44px; padding: 0.45rem 0.9rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); font-size: 0.95rem; }
 .sheet-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .sheet-actions button[disabled] { opacity: 0.5; }
 .sheet-hint { margin: 0; min-height: 1.2em; opacity: 0.8; }
-@media (prefers-color-scheme: dark) {
-  .sheet-step svg, .sheet-player svg { background: #1c1a19; }
-  .sheet-step .stroke-part { fill: #d7d2cc; }
-  .sheet-player .stroke-pen { stroke: #f2efec; }
-}
 @media print {
   .sheet-form, .sheet-actions, .sheet-hint { display: none !important; }
   .sheet-card { border-color: #999; page-break-inside: avoid; }

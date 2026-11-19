@@ -186,28 +186,28 @@ const CSS = `
 .gram-table { display: grid; gap: var(--pad); }
 .gram-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
 .gram-head h2 { margin: 0; }
-.gram-count { font-size: 0.85rem; color: var(--fg-soft); }
+.gram-count { font-size: 0.85rem; color: var(--ink-soft); }
 .gram-nav { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .gram-list { display: grid; gap: 0.5rem; }
 .gram-item { display: grid; gap: 0.3rem; width: 100%; text-align: left; font: inherit; cursor: pointer; }
-.gram-item-title { font-weight: 600; color: var(--fg); }
+.gram-item-title { font-weight: 600; color: var(--ink); }
 .gram-item-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-.gram-studied { color: var(--tone2, #2e7d32); font-size: 0.85rem; }
+.gram-studied { color: var(--ok); font-size: 0.85rem; }
 .gram-detail { display: grid; gap: 0.75rem; }
 .gram-detail h2 { margin: 0; }
-.gram-structure { margin: 0; font-size: 1rem; color: var(--fg); }
+.gram-structure { margin: 0; font-size: 1rem; color: var(--ink); }
 .gram-examples { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
 .gram-example { display: grid; gap: 0.35rem; padding-top: 0.6rem; border-top: 1px solid var(--line); }
 .gram-example:first-child { border-top: 0; padding-top: 0; }
 .gram-example .hanzi { font-size: 1.5rem; }
 .gram-example .pinyin { display: block; font-size: 1rem; }
-.gram-example .english { display: block; color: var(--fg-soft); font-size: 0.9rem; }
+.gram-example .english { display: block; color: var(--ink-soft); font-size: 0.9rem; }
 .gram-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .gram-mw { display: grid; gap: 0.75rem; }
 .gram-mw-char { font-size: 2rem; line-height: 1.1; }
 .gram-mw-head { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
-.gram-label { font-size: 0.75rem; color: var(--fg-soft); text-transform: uppercase; letter-spacing: 0.05em; }
-.gram-notice { margin: 0; padding: 0.5rem 0.7rem; border-radius: 0.6rem; background: var(--bg); color: var(--fg-soft); font-size: 0.85rem; }
+.gram-label { font-size: 0.75rem; color: var(--ink-soft); letter-spacing: 0.05em; }
+.gram-notice { margin: 0; padding: 0.5rem 0.7rem; border-radius: 0.6rem; background: var(--bg); color: var(--ink-soft); font-size: 0.85rem; }
 `;
 
 function ensureStyles(doc) {

@@ -167,18 +167,18 @@ const CSS = `
 .theme-tile { display: flex; align-items: center; gap: 0.6rem; padding: 0.85rem; text-align: left; }
 .theme-tile .theme-icon { font-size: 1.5rem; line-height: 1; }
 .theme-tile .theme-name { font-weight: 600; }
-.theme-badge { margin-left: auto; font-size: 0.72rem; color: var(--fg-soft); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.45rem; }
+.theme-badge { margin-left: auto; font-size: 0.72rem; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.45rem; }
 .theme-head { display: flex; flex-direction: column; gap: 0.5rem; }
 .theme-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.theme-counts { color: var(--fg-soft); font-size: 0.85rem; }
-.theme-subhead { margin: 1.1rem 0 0.4rem; font-size: 0.95rem; color: var(--fg-soft); text-transform: uppercase; letter-spacing: 0.04em; }
+.theme-counts { color: var(--ink-soft); font-size: 0.85rem; }
+.theme-subhead { margin: 1.1rem 0 0.4rem; font-size: 0.95rem; color: var(--ink-soft); letter-spacing: 0.04em; }
 .theme-rows { display: flex; flex-direction: column; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
 .theme-row { display: flex; flex-direction: column; gap: 0.25rem; padding: 0.7rem 0.8rem; }
 .theme-row .theme-hanzi { font-size: 1.35rem; }
-.theme-row .theme-meaning { color: var(--fg-soft); font-size: 0.95rem; }
+.theme-row .theme-meaning { color: var(--ink-soft); font-size: 0.95rem; }
 .theme-row-btns { display: flex; gap: 0.4rem; margin-top: 0.25rem; }
 .theme-row-btns .btn { padding: 0.35rem 0.7rem; font-size: 0.85rem; }
-.theme-note { color: var(--fg-soft); font-size: 0.85rem; }
+.theme-note { color: var(--ink-soft); font-size: 0.85rem; }
 @media (min-width: 40rem) { .theme-list-wrap { max-width: 42rem; } }
 `;
 

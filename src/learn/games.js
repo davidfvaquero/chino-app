@@ -56,14 +56,16 @@ export async function ensureGamesRegistered() {
   if (registrationPromise) return registrationPromise;
   registrationPromise = (async () => {
     const base = new URL('./games/', import.meta.url);
-    const [matching, memory, timed] = await Promise.all([
+    const [matching, memory, timed, builder] = await Promise.all([
       import(`${base}matching.js`),
       import(`${base}memory.js`),
       import(`${base}timed.js`),
+      import(`${base}builder.js`),
     ]);
     registerGame(matching);
     registerGame(memory);
     registerGame(timed);
+    registerGame(builder);
   })();
   return registrationPromise;
 }
@@ -77,15 +79,8 @@ const STYLE_ID = 'games-hub-style';
 
 const CSS = `
 .games-hub { display: flex; flex-direction: column; gap: 0.75rem; }
-.games-hub .menu { display: flex; flex-direction: column; gap: 0.5rem; }
-.games-hub .card.field { display: flex; align-items: center; justify-content: space-between; padding: 1rem; border: 1px solid var(--line, #c9c4bd); border-radius: 0.75rem; background: var(--bg, #fff); color: inherit; text-align: left; }
-.games-hub .card.field:active { background: var(--board, #faf8f5); }
 .games-hub .game-title { font-size: 1.1rem; font-weight: 500; }
 .games-hub .game-desc { font-size: 0.85rem; opacity: 0.7; margin-top: 0.25rem; }
-@media (prefers-color-scheme: dark) {
-  .games-hub .card.field { background: #1c1a19; border-color: #3d3732; }
-  .games-hub .card.field:active { background: #2a2522; }
-}
 `;
 
 function ensureStyles(doc) {

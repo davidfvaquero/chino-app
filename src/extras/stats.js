@@ -29,15 +29,15 @@ const CSS = `
 .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
 .stats-card { text-align: center; padding: 0.6rem; }
 .stats-value { font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
-.stats-label { font-size: 0.75rem; color: var(--fg-soft); text-transform: uppercase; letter-spacing: 0.05em; }
+.stats-label { font-size: 0.75rem; color: var(--ink-soft); letter-spacing: 0.05em; }
 .stats-chart { margin-top: 0.75rem; }
 .stats-svg { display: block; width: 100%; height: auto; }
-.stats-bar { fill: var(--fg-soft); }
+.stats-bar { fill: var(--ink-soft); }
 .stats-bar[data-today="true"] { fill: var(--accent); }
 .stats-axis { stroke: var(--line); stroke-width: 1; }
-.stats-text { fill: var(--fg-soft); font-size: 7px; text-anchor: middle; }
-.stats-text-top { fill: var(--fg); font-size: 7px; font-weight: 600; text-anchor: middle; }
-.stats-empty { text-align: center; color: var(--fg-soft); padding: 1.5rem 0; }
+.stats-text { fill: var(--ink-soft); font-size: 7px; text-anchor: middle; }
+.stats-text-top { fill: var(--ink); font-size: 7px; font-weight: 600; text-anchor: middle; }
+.stats-empty { text-align: center; color: var(--ink-soft); padding: 1.5rem 0; }
 `;
 
 function ensureStyles(doc) {

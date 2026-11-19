@@ -100,23 +100,23 @@ const CSS = `
 
 .ws-form { display: flex; flex-direction: column; gap: 0.6rem; }
 .ws-input-wrap { display: flex; flex-direction: column; gap: 0.3rem; }
-.ws-input { width: 100%; min-height: 80px; padding: 0.6rem 0.7rem; font-size: 1.05rem; font-family: inherit; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); color: inherit; resize: vertical; }
+.ws-input { width: 100%; min-height: 80px; padding: 0.6rem 0.7rem; font-size: 1.05rem; font-family: inherit; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); color: inherit; resize: vertical; }
 .ws-input:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
-.ws-input-hint { font-size: 0.8rem; color: var(--fg-soft); }
+.ws-input-hint { font-size: 0.8rem; color: var(--ink-soft); }
 
 .ws-sources { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.ws-source-btn { padding: 0.45rem 0.7rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); color: inherit; font-size: 0.9rem; }
+.ws-source-btn { padding: 0.45rem 0.7rem; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); color: inherit; font-size: 0.9rem; }
 .ws-source-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.ws-options { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; padding: 0.5rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); }
+.ws-options { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; padding: 0.5rem; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
 .ws-opt-group { display: flex; flex-direction: column; gap: 0.2rem; }
-.ws-opt-label { font-size: 0.8rem; color: var(--fg-soft); text-transform: uppercase; letter-spacing: 0.05em; }
-.ws-select { padding: 0.4rem 0.6rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); color: inherit; font: inherit; min-width: 120px; }
+.ws-opt-label { font-size: 0.8rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em; }
+.ws-select { padding: 0.4rem 0.6rem; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); color: inherit; font: inherit; min-width: 120px; }
 .ws-checkbox { display: flex; align-items: center; gap: 0.35rem; font-size: 0.9rem; }
 .ws-checkbox input { width: 1.1rem; height: 1.1rem; accent-color: var(--accent); }
 
 .ws-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.ws-btn { padding: 0.55rem 0.9rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); color: inherit; font-size: 0.95rem; }
+.ws-btn { padding: 0.55rem 0.9rem; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); color: inherit; font-size: 0.95rem; }
 .ws-btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
 .ws-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
@@ -138,10 +138,6 @@ const CSS = `
 .ws-cell svg { display: block; width: 85%; height: 85%; }
 .ws-cell .tian-grid { position: absolute; inset: 0; pointer-events: none; stroke: currentColor; stroke-width: 0.5; opacity: 0.2; }
 
-@media (prefers-color-scheme: dark) {
-  .ws-cell { background: var(--bg-soft); }
-  .ws-cell .tian-grid { stroke: var(--fg); }
-}
 
 @media print {
   .ws-form, .ws-actions, .ws-hint, .ws-warning { display: none !important; }
@@ -218,7 +214,7 @@ async function renderCharBlock(character, set, entry, options, cellSize) {
   const diagramSvg = strokeDiagramSvg(set, { upTo: set.strokes.length });
   diagramSvg.style.width = '4.5rem';
   diagramSvg.style.height = '4.5rem';
-  diagramSvg.style.background = 'var(--board, #faf8f5)';
+  diagramSvg.style.background = 'var(--surface)';
   diagramSvg.style.borderRadius = '0.4rem';
   diagramSvg.style.flexShrink = '0';
   diagramWrap.append(diagramSvg);
@@ -517,7 +513,7 @@ export async function render(container, ctx) {
             head.append(meaningEl);
           }
           const emptyMsg = document.createElement('p');
-          emptyMsg.style.color = 'var(--fg-soft)';
+          emptyMsg.style.color = 'var(--ink-soft)';
           emptyMsg.style.fontSize = '0.9rem';
           emptyMsg.textContent = t('worksheet.noStrokeData', { char: card.character });
           block.append(head, emptyMsg);

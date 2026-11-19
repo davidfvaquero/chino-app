@@ -25,7 +25,7 @@ const CSS = `
 .draw-canvas-wrap { position: relative; flex: 1; min-height: 240px; }
 .draw-canvas {
   width: 100%; height: 100%; min-height: 240px; max-height: 50vh;
-  border: 2px solid var(--line); border-radius: var(--radius);
+  border: 2px solid var(--line); border-radius: var(--r-md);
   background: var(--bg); touch-action: none; display: block;
 }
 .draw-canvas:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -33,26 +33,23 @@ const CSS = `
 .draw-toolbar { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .draw-btn {
   flex: 1; min-width: 90px; padding: 0.6rem 0.9rem;
-  border: 1px solid var(--line); border-radius: var(--radius);
-  background: var(--bg); color: var(--fg); font: inherit;
+  border: 1px solid var(--line); border-radius: var(--r-md);
+  background: var(--bg); color: var(--ink); font: inherit;
 }
 .draw-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .draw-btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
-.draw-status { min-height: 1.25rem; color: var(--fg-soft); font-size: 0.875rem; }
+.draw-status { min-height: 1.25rem; color: var(--ink-soft); font-size: 0.875rem; }
 .draw-candidates { margin-top: 0.5rem; }
 .draw-candidates-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.35rem; }
 .draw-candidate {
   display: inline-flex; flex-direction: column; align-items: center; gap: 0.2rem;
-  padding: 0.5rem 0.75rem; border: 1px solid var(--line); border-radius: var(--radius);
-  background: var(--bg); color: var(--fg); font: inherit; text-decoration: none;
+  padding: 0.5rem 0.75rem; border: 1px solid var(--line); border-radius: var(--r-md);
+  background: var(--bg); color: var(--ink); font: inherit; text-decoration: none;
   min-width: 60px;
 }
 .draw-candidate .char { font-size: 1.5rem; font-weight: 600; line-height: 1; }
-.draw-candidate .score { font-size: 0.7rem; color: var(--fg-soft); }
-.draw-limit { margin-top: 0.75rem; padding: 0.6rem; border-radius: var(--radius); background: var(--bg-soft); border: 1px solid var(--line); font-size: 0.8125rem; color: var(--fg-soft); }
-@media (prefers-color-scheme: dark) {
-  .draw-grid { opacity: 0.1; }
-}
+.draw-candidate .score { font-size: 0.7rem; color: var(--ink-soft); }
+.draw-limit { margin-top: 0.75rem; padding: 0.6rem; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--line); font-size: 0.8125rem; color: var(--ink-soft); }
 `;
 
 function ensureStyles(doc) {
@@ -227,7 +224,7 @@ export async function render(container, ctx) {
     ctx2d.lineCap = 'round';
     ctx2d.lineJoin = 'round';
     ctx2d.lineWidth = 3;
-    ctx2d.strokeStyle = 'var(--fg)';
+    ctx2d.strokeStyle = 'var(--ink)';
     redraw();
   }
 

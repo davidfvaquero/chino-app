@@ -14,13 +14,13 @@ import { pinyinHtml } from '../tone.js';
 export const titleKey = 'hardwords.title';
 
 const CSS = `
-.hw-btn{min-height:2.75rem;padding:0 0.75rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg);color:inherit;font:inherit;cursor:pointer}
+.hw-btn{min-height:2.75rem;padding:0 0.75rem;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg);color:inherit;font:inherit;cursor:pointer}
 .hw-btn:disabled{opacity:.5;cursor:default}
 .hw-row{display:flex;align-items:center;gap:0.75rem;margin:0 0 0.5rem}
 .hw-row .hw-main{flex:1;min-width:0}
 .hw-hanzi{margin:0;font-size:1.75rem;font-weight:600;line-height:1.25}
 .hw-big{margin:0;font-size:3rem;font-weight:600;line-height:1.25;text-align:center}
-.hw-sub{margin:0;color:var(--fg-soft);font-size:0.875rem}
+.hw-sub{margin:0;color:var(--ink-soft);font-size:0.875rem}
 .hw-bar{display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin:0 0 0.75rem}
 .hw-rate{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem}
 `;

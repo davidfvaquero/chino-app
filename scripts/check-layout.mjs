@@ -81,6 +81,20 @@ const ROUTES = [
     steps: [{ click: '[data-action="toggle-pinyin"]' }],
     cards: [{ card: '.line', pinyin: '.pinyin', english: '.english' }] },
   { name: 'extras/paste', hash: '#/extras/paste', waitFor: '.paste-wrap', optional: true, cards: [] },
+  { name: 'extras/settings', hash: '#/extras/settings', optional: true, cards: [] },
+  { name: 'extras/backup', hash: '#/extras/backup', optional: true, cards: [] },
+  { name: 'extras/stats', hash: '#/extras/stats', optional: true, cards: [] },
+  { name: 'extras/profile', hash: '#/extras/profile', optional: true, cards: [] },
+  { name: 'extras/draw', hash: '#/extras/draw', optional: true, cards: [] },
+  { name: 'extras/pronounce', hash: '#/extras/pronounce', optional: true, cards: [] },
+  { name: 'learn/tones', hash: '#/learn/tones', optional: true, cards: [] },
+  { name: 'learn/pinyin-chart', hash: '#/learn/pinyin-chart', optional: true, cards: [] },
+  { name: 'learn/strokes', hash: '#/learn/strokes', optional: true, cards: [] },
+  { name: 'learn/games matching', hash: '#/learn/games/matching', optional: true, cards: [] },
+  { name: 'learn/games memory', hash: '#/learn/games/memory', optional: true, cards: [] },
+  { name: 'learn/games timed', hash: '#/learn/games/timed', optional: true, cards: [] },
+  { name: 'learn/games builder', hash: '#/learn/games/builder', optional: true, cards: [] },
+  { name: 'learn/radicals', hash: '#/learn/radicals', optional: true, cards: [] },
 ];
 
 /* ------------------------------------------------------------------ CDP -- */

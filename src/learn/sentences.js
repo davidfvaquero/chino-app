@@ -21,7 +21,7 @@ const CSS = `
 .sentence-card { display: flex; flex-direction: column; gap: 0.35rem; }
 .sentence-row { display: flex; flex-direction: column; gap: 0.15rem; }
 .sentence-hanzi { font-size: 1.25em; line-height: 1.5; }
-.sentence-en { color: var(--fg-soft); margin-top: 0.25em; line-height: 1.4; }
+.sentence-en { color: var(--ink-soft); margin-top: 0.25em; line-height: 1.4; }
 .sentence-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25em; }
 `;
 
@@ -141,7 +141,7 @@ function renderAttribution(container) {
   container.append(
     h('div', { class: 'attribution' },
       h('span', { text: t('sentences.attribution') }),
-      h('a', { href: 'CREDITS.md', target: '_blank', rel: 'noopener', text: t('sentences.viewCredits') })
+      h('a', { href: 'CREDITS.md', target: '_blank', rel: 'noopener', class: 'btn sm', text: t('sentences.viewCredits') })
     )
   );
 }
