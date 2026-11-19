@@ -1,0 +1,50 @@
+{
+  "id": "reading-18",
+  "title": "打电话",
+  "type": "dialogue",
+  "topic": "Por teléfono",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "喂，请问王明在吗？",
+      "pinyin": "Wéi, qǐngwèn Wáng Míng zài ma?",
+      "english": "Hola, ¿está Wang Ming, por favor?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "他是我同事。他在开会，稍等一下。",
+      "pinyin": "Tā shì wǒ tóngshì. Tā zài kāihuì, shāo děng yīxià.",
+      "english": "Es mi compañero. Está en una reunión, espere un momento."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好的，我不挂。麻烦告诉他李华找他。",
+      "pinyin": "Hǎo de, wǒ bù guà. Máfan gàosu tā Lǐ Huá zhǎo tā.",
+      "english": "Vale, no cuelgo. Por favor dígale que Li Hua le busca."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "没问题。您留个电话号码吗？",
+      "pinyin": "Méi wèntí. Nín liú ge diànhuà hàomǎ ma?",
+      "english": "Sin problema. ¿Deja un número de teléfono?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我是 138-0000-1234。",
+      "pinyin": "Wǒ shì 138-0000-1234.",
+      "english": "Soy el 138-0000-1234."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "记下了。会让他尽快回电话。",
+      "pinyin": "Jì xià le. Huì ràng tā jǐnkuài huí diànhuà.",
+      "english": "Apuntado. Haré que le devuelva la llamada cuanto antes."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢，再见。",
+      "pinyin": "Xièxie, zàijiàn.",
+      "english": "Gracias, adiós."
+    }
+  ]
+}

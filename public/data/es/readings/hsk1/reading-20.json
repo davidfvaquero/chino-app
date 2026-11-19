@@ -1,0 +1,56 @@
+{
+  "id": "reading-20",
+  "title": "生日聚会",
+  "type": "dialogue",
+  "topic": "Una fiesta",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "生日快乐！这是给你的礼物。",
+      "pinyin": "Shēngrì kuàilè! Zhè shì gěi nǐ de lǐwù.",
+      "english": "¡Feliz cumpleaños! Este es un regalo para ti."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "哇，谢谢！我打开看看。",
+      "pinyin": "Wa, xièxie! Wǒ dǎkāi kànkan.",
+      "english": "¡Guau, gracias! Déjame abrirlo y ver."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "是一本中文书。适合初学者。",
+      "pinyin": "Shì yī běn Zhōngwén shū. Shìhé chūxuézhě.",
+      "english": "Es un libro de chino. Adecuado para principiantes."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "太完美了！我正想学中文呢。",
+      "pinyin": "Tài wánměi le! Wǒ zhèng xiǎng xué Zhōngwén ne.",
+      "english": "¡Demasiado perfecto! Justo quería aprender chino."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "来，切蛋糕吧。大家一起唱歌。",
+      "pinyin": "Lái, qiē dàngāo ba. Dàjiā yīqǐ chànggē.",
+      "english": "Vamos, cortemos la tarta. Todos a cantar juntos."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好！许愿、吹蜡烛、吃蛋糕！",
+      "pinyin": "Hǎo! Xǔyuàn, chuī làzhú, chī dàngāo!",
+      "english": "¡Vale! Pide un deseo, sopla las velas, ¡come tarta!"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "蛋糕很好吃。这是谁做的？",
+      "pinyin": "Dàngāo hěn hǎochī. Zhè shì shéi zuò de?",
+      "english": "La tarta está muy rica. ¿Quién la hizo?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我妈妈做的。她做饭最好吃。",
+      "pinyin": "Wǒ māma zuò de. Tā zuòfàn zuì hǎochī.",
+      "english": "La hizo mi madre. Ella cocina lo mejor."
+    }
+  ]
+}

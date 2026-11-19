@@ -1,0 +1,56 @@
+{
+  "id": "reading-17",
+  "title": "坐出租车",
+  "type": "dialogue",
+  "topic": "En un taxi",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "师傅，去火车站。",
+      "pinyin": "Shīfu, qù huǒchēzhàn.",
+      "english": "Conductor, a la estación de tren."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好，系好安全带。走哪条路？",
+      "pinyin": "Hǎo, jì hǎo ānquándài. Zǒu nǎ tiáo lù?",
+      "english": "Vale, póngase el cinturón. ¿Por qué ruta vamos?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "快一点的路。我赶时间。",
+      "pinyin": "Kuài yīdiǎn de lù. Wǒ gǎn shíjiān.",
+      "english": "La más rápida. Tengo prisa."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "那走高速吧。大概二十分钟。",
+      "pinyin": "Nà zǒu gāosù ba. Dàgài èrshí fēnzhōng.",
+      "english": "Entonces vamos por la autopista. Unos 20 minutos."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "多少钱？",
+      "pinyin": "Duōshao qián?",
+      "english": "¿Cuánto cuesta?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "表上多少给多少。到地方再算。",
+      "pinyin": "Biǎo shang duōshao gěi duōshao. Dào dìfang zài suàn.",
+      "english": "Lo que marque el taxímetro. Lo calculamos al llegar."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "到了，谢谢师傅。",
+      "pinyin": "Dào le, xièxie shīfu.",
+      "english": "Hemos llegado, gracias conductor."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "慢走，欢迎下次再坐！",
+      "pinyin": "Màn zǒu, huānyíng xiàcì zài zuò!",
+      "english": "Vaya con cuidado, ¡espero que vuelva a subir!"
+    }
+  ]
+}

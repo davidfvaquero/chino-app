@@ -1,0 +1,50 @@
+{
+  "id": "reading-16",
+  "title": "一条消息",
+  "type": "dialogue",
+  "topic": "Un mensaje",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你看手机了吗？有一条消息。",
+      "pinyin": "Nǐ kàn shǒujī le ma? Yǒu yī tiáo xiāoxi.",
+      "english": "¿Has mirado el móvil? Hay un mensaje."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "谁发的？",
+      "pinyin": "Shéi fā de?",
+      "english": "¿Quién lo mandó?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "是李华。他说明天不来上班。",
+      "pinyin": "Shì Lǐ Huá. Tā shuō míngtiān bù lái shàngbān.",
+      "english": "Es de Li Hua. Dice que mañana no viene a trabajar."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "为什么？他生病了吗？",
+      "pinyin": "Wèishéme? Tā shēngbìng le ma?",
+      "english": "¿Por qué? ¿Está enfermo?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "没说。只说有事请假。",
+      "pinyin": "Méi shuō. Zhǐ shuō yǒu shì qǐngjià.",
+      "english": "No lo dijo. Solo dijo que tiene algo y pide permiso."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "那我回个消息问问吧。",
+      "pinyin": "Nà wǒ huí ge xiāoxi wènwen ba.",
+      "english": "Entonces le responderé un mensaje para preguntar."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好，告诉我他怎么说。",
+      "pinyin": "Hǎo, gàosu wǒ tā zěnme shuō.",
+      "english": "Vale, dime qué dice."
+    }
+  ]
+}
