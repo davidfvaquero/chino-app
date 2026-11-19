@@ -1833,3 +1833,58 @@ git status --short                 # WIP ajeno
 *Verificador haiku — 2026-11-19 (pasada 66)*
 
 **Actualización (pasada 66, tras commit ajeno f682cce):** el WIP de exam.js, plan.js, learn.js, extras.js y demás quedó commiteado por otro worker en f682cce. `git status` sólo muestra 2 ficheros sin trackear: `tests/hsk3-lessons-headless.test.mjs` y `scripts/verify-readings.mjs`. El único FALLO común que queda es el test hsk3 sin trackear (npm test 3 fallos).
+
+## BLOQUE 14 — re-verificación pasada 67 (t_b6925301, verificador haiku, 2026-11-19) — FALLO ajeno (tests/hsk3 sin trackear, decisión pendiente)
+
+Paso 0: AUD1 t_9f38ab7a, AUD2 t_45617f44, RM t_07416dca, PLAN t_a42fabe8, EXAM t_8995dfa5 = todas `barato`. Ninguna `haiku` ni `gratis`: no se omitió ninguna.
+
+Build: `OUT_DIR=/tmp/chino-t_b6925301 npm run build` (1846 ficheros; `audio/` = 1104 mp3 + index.json). Servido en subdirectorio: `node scripts/serve.mjs <dir-con-chino-app/> --port 40844`, URLs `/chino-app/#/...`. `dist/` no tocado.
+
+### Específicas
+
+| # | Punto | Estado | Evidencia |
+|---|---|---|---|
+| 1 | Licencia | OK | `CREDITS.md` §8: Kokoro-82M v1.1-zh, Apache-2.0 (sin cambios desde pasada 66) |
+| 2 | Tamaño / carga | OK | 1104 mp3 + index.json = 1105 ficheros; 4.13 MB de mp3 (5.8 MB en disco, `du`). Tiempo de carga en red real no medido |
+| 3 | Muestra 10 audios | OK (no re-muestreado hoy) | Pasada 65: 10/10 existen, 0.70–1.70 s |
+| 4 | Lección 1 usa mp3; sin archivo → TTS | OK (no re-ejecutado hoy) | Pasada 66: clic real en "Reproducir" (ejercicio listen) pide `audio/440ee0853ad1e99f.mp3`, TTS no llamado. Fallback cubierto por `tests/audio.test.mjs` |
+| 5 | Offline tras primera carga | OK con matiz | Hoy: en-US, `#/learn/lessons/hsk1-01` offline tras carga online → lección renderiza. es-ES, deep link directo sin visitar la lista → "Could not load the lessons: Failed to fetch" (matiz ya conocido). MP3 offline sólo si ya se pidió antes en la sesión (esperado) |
+| 6 | 3 modos de repaso | OK (carga hoy; flujo de pasada 66) | `#/review` muestra selector Classic / Reverse / Type pinyin / Only my mistakes en en y es. Tarjeta completada por modo: pasada 66 |
+| 7 | Plan 30 días | OK (rutas hoy; flujo de pasada 66) | `#/learn/plan` abre en en/es sin 404. "Start plan", Day 1, tarjeta Home: pasadas 64 y 66 |
+| 8 | Examen HSK 1 + add mistakes | OK (hoy) | `#/learn/exam` → Skip hasta el final → lista de errores con "Correct answer" → "Added 10 cards to review" → `#/review` muestra `exam (10)` |
+
+### Comunes
+
+| Punto | Estado | Evidencia |
+|---|---|---|
+| `npm test` verde | **FALLO → 1 arreglado, 3 pendientes** | Antes: 777/781. (a) `checkMemory: matching pair` fallaba (~5 % de rondas, ver abajo) — **arreglado en esta pasada** (commit de `src/learn/games/memory.js`). (b) `tests/hsk3-lessons-headless.test.mjs` hsk3-08/09/10: fichero **sin trackear** de otro worker, necesita `playwright` (no está en package.json) y no encuentra vocabulario. Decisión pendiente |
+| `check-es-data` | OK | `114 archivos revisados, 0 errores` |
+| ES/EN sin claves crudas | OK | plan, exam, review, lección, tones-duel en en-US y es-ES: texto legible |
+| Sin chino tradicional en UI | no re-barrido | Sin cambios en esta pasada |
+| Sin errores de consola | OK | Online: 0 errores. Sólo `ERR_FAILED` en la prueba offline (esperado) |
+| Deep link | OK | plan, exam, lección, review, tones-duel, home abren directos en en-US y es-ES |
+| Subdirectorio `/chino-app/` | OK | `/chino-app/` y rutas 200 |
+| `git status` limpio / sin deps nuevas | **FALLO (ajeno)** | `?? tests/hsk3-lessons-headless.test.mjs`, `?? scripts/verify-readings.mjs` (WIP sin trackear de otros). `package.json` sin cambios |
+
+### Arreglo mínimo (1 ciclo)
+
+`src/learn/games/memory.js` (`generateMemoryRound`): dos entradas con mismo hanzi y mismo significado (p. ej. 谢 `thank` y 谢 `['thank','thanks']`) generaban dos cartas con el mismo `id`. Al elegir ambas, `checkMemory` veía 3-4 cartas volteadas y devolvía `pairComplete:false`. Fix: saltar ids ya vistos (3 líneas).
+Verificación: 20 000 rondas `count:2` → antes 1190 con id duplicado y 1190 fallos del test de par; después 0 y 0. `node --test tests/games.test.mjs` → 21/21.
+
+### Veredicto BLOQUE 14
+
+Funcionalidad OK: audio, repaso, plan (rutas) y examen (completo + add mistakes). **No cierra** por lo común: (1) `tests/hsk3-lessons-headless.test.mjs` sin trackear falla 3 tests en `npm test`; (2) `scripts/verify-readings.mjs` sin trackear. Decisión para el orquestador: (a) commitear el test hsk3 tras corregir selectores (lo hace su autor) o (b) borrarlo de `npm test`; y decidir qué pasa con `scripts/verify-readings.mjs`. No lo toqué.
+
+### Reproducir
+
+```
+OUT_DIR=/tmp/chino-t_b6925301 npm run build
+node scripts/serve.mjs <dir-con-copia-chino-app/> --port 40844
+# rutas: /chino-app/#/learn/plan, #/learn/exam, #/learn/lessons/hsk1-01, #/review, #/learn/games/tones-duel, #/home
+node scripts/check-es-data.mjs     # 0 errores
+npm test                           # 3 fallos hsk3-08/09/10 (test sin trackear)
+node --test tests/games.test.mjs   # 21/21 tras el arreglo de memory.js
+git status --short                 # ?? tests/hsk3-lessons-headless.test.mjs, ?? scripts/verify-readings.mjs
+```
+
+*Verificador haiku — 2026-11-19 (pasada 67)*

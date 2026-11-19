@@ -75,9 +75,12 @@ export function generateMemoryRound(words, { count = DEFAULT_COUNT } = {}) {
   const shuffled = [...words].sort(() => Math.random() - 0.5);
   const selected = shuffled.slice(0, Math.min(count, shuffled.length));
   const cards = [];
+  const seen = new Set();
   for (const w of selected) {
     const meaning = Array.isArray(w.english) ? w.english[0] : w.english;
     const id = `${w.hanzi}|${meaning}`.replace(/\s+/g, '_');
+    if (seen.has(id)) continue; // duplicate entry (same hanzi+meaning) would give two cards with one id
+    seen.add(id);
     cards.push(
       { id: `${id}-hanzi`, hanzi: w.hanzi, pinyin: w.pinyin, meaning, type: 'hanzi', flipped: false, matched: false },
       { id: `${id}-meaning`, hanzi: w.hanzi, pinyin: w.pinyin, meaning, type: 'meaning', flipped: false, matched: false },
