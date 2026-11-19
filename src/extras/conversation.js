@@ -152,9 +152,12 @@ export function render(container, ctx = {}) {
 
   function currentProvider() {
     const wanted = state.config?.provider;
-    return state.providers.find((p) => p.id === wanted && p.available())
-      || state.providers.find((p) => p.available())
-      || null;
+    const preferred = state.providers.find((p) => p.id === wanted);
+    if (preferred?.available()) return preferred;
+    // An on-device model that is not downloaded yet: its config panel explains
+    // why, so do not silently fall back to another provider.
+    if (preferred?.id === 'on-device') return null;
+    return state.providers.find((p) => p.available()) || null;
   }
 
   async function reloadProviders() {
@@ -165,7 +168,12 @@ export function render(container, ctx = {}) {
     }
     state.providers = configuredProviders(state.config || {});
     state.onDevice = await loadOnDeviceProvider();
-    if (state.onDevice && state.onDevice.available()) state.providers.push(state.onDevice);
+    // On-device owns its own panel (download / progress / "not supported"), so it
+    // is listed even before a model is cached — only if that hook exists.
+    if (state.onDevice) {
+      if (typeof state.onDevice.init === 'function') await state.onDevice.init();
+      state.providers.push(state.onDevice);
+    }
   }
 
   function persist() {
@@ -197,6 +205,9 @@ export function render(container, ctx = {}) {
       body.append(renderOpenRouterConfig(cfg));
     } else if (cfg.provider === 'ollama') {
       body.append(renderOllamaConfig(cfg));
+    } else if (cfg.provider === 'on-device' && state.onDevice?.renderConfig) {
+      body.append(state.onDevice.renderConfig());
+      if (!state.onDevice.available()) details.open = true;
     }
 
     details.append(body);
@@ -480,7 +491,7 @@ export function render(container, ctx = {}) {
       if (!state.messages.length) state.messages = [{ role: 'assistant', ...openerFor(state.config.scenario) }];
       root.append(renderChat(provider));
       loadModelsOnce();
-    } else {
+    } else if (state.config?.provider !== 'on-device' || !state.onDevice) {
       root.append(h('p', { class: 'conv-hint', text: t('conversation.notConfigured') }));
       root.append(renderHelp());
     }

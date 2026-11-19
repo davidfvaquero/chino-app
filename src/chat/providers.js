@@ -170,7 +170,7 @@ export function configuredProviders(settings = {}, { fetchImpl } = {}) {
  */
 export async function loadOnDeviceProvider(config = {}) {
   try {
-    const mod = await import('./on-device.js');
+    const mod = await import('./webllm-provider.js');
     const factory = mod.createProvider || mod.createOnDeviceProvider || mod.default;
     if (typeof factory !== 'function') return null;
     const provider = factory(config) || {};

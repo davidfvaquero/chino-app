@@ -1,0 +1,18 @@
+{
+  "conversationLocal": {
+    "name": "On-device (browser)",
+    "title": "Model inside this browser",
+    "checking": "Checking whether this browser can run a model...",
+    "unsupported": "Not supported here: this browser has no WebGPU. Use a recent Chrome or Edge on a computer, or Chrome on a recent Android phone. The other providers still work.",
+    "downloadNotice": "Everything stays on this device: no key, no server. The first time it downloads about {size} GB of weights, so use Wi-Fi. After that it works offline.",
+    "modelChosen": "Model: {model}",
+    "download": "Download model",
+    "downloading": "Downloading and loading the model. Keep this tab open.",
+    "cancel": "Cancel",
+    "cancelNote": "The browser keeps downloading in the background, but the chat stops waiting and drops the model when it arrives.",
+    "ready": "Model ready: {model}. It works offline now.",
+    "remove": "Delete the model from the cache",
+    "error": "The model could not be loaded: {message}",
+    "retry": "Try again"
+  }
+}

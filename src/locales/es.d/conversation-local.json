@@ -1,0 +1,18 @@
+{
+  "conversationLocal": {
+    "name": "En el dispositivo (navegador)",
+    "title": "Modelo dentro de este navegador",
+    "checking": "Comprobando si este navegador puede ejecutar un modelo...",
+    "unsupported": "No es compatible aquí: este navegador no tiene WebGPU. Usa un Chrome o Edge recientes en un ordenador, o Chrome en un Android reciente. Los demás proveedores siguen funcionando.",
+    "downloadNotice": "Todo se queda en este dispositivo: sin clave y sin servidor. La primera vez descarga unos {size} GB de pesos, así que usa Wi-Fi. Después funciona sin conexión.",
+    "modelChosen": "Modelo: {model}",
+    "download": "Descargar modelo",
+    "downloading": "Descargando y cargando el modelo. Mantén esta pestaña abierta.",
+    "cancel": "Cancelar",
+    "cancelNote": "El navegador sigue descargando en segundo plano, pero el chat deja de esperar y descarta el modelo cuando llega.",
+    "ready": "Modelo listo: {model}. Ya funciona sin conexión.",
+    "remove": "Borrar el modelo de la caché",
+    "error": "No se pudo cargar el modelo: {message}",
+    "retry": "Reintentar"
+  }
+}
