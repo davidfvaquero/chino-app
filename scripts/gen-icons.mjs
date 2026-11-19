@@ -5,7 +5,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { encodePng } from './png.mjs';
 
-const BG = [0xb3, 0x26, 0x1e, 0xff];
+const BG = [0x17, 0x64, 0x5f, 0xff];
 const FG = [0xff, 0xff, 0xff, 0xff];
 
 function paint(size, padding) {

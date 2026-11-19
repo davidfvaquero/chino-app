@@ -36,19 +36,10 @@ import { getDueCards, answer as saveAnswer, grade, countDueBySource, RATINGS, DE
 import { speak, isTtsAvailable } from '../audio.js';
 import { pinyinHtml, toneOf } from '../tone.js';
 import { tonelessKey } from '../pinyin.js';
+import { hanziCell } from '../hanzi.js';
 import storage from '../storage.js';
 
 export const titleKey = 'screens.review.title';
-
-const BUTTON =
-  'min-height:2.75rem;padding:0 0.75rem;border:1px solid var(--line);border-radius:var(--radius);' +
-  'background:var(--bg);color:inherit;font:inherit;cursor:pointer';
-const RATE_BUTTON =
-  `${BUTTON};display:flex;flex-direction:column;align-items:center;justify-content:center;` +
-  'gap:0.15rem;padding:0.4rem;font-size:0.875rem';
-const HANZI = 'margin:0;font-size:3rem;line-height:1.25;font-weight:600';
-const PINYIN = 'margin:0 0 0.25rem;font-size:1.125rem';
-const MEANING = 'margin:0;font-size:1.5rem;line-height:1.35;font-weight:600';
 
 /** The four card modes and the default. */
 export const REVIEW_MODES = ['classic', 'reverse', 'pinyin', 'mistakes'];
@@ -73,34 +64,6 @@ const KEY = {
   suggested: 'reviewMode.suggested',
 };
 const modeKey = (mode) => `reviewMode.mode.${mode}`;
-
-/** CSS injected once (mobile-first, reuses the app's variables). */
-const STYLE_ID = 'review-modes-style';
-const CSS = `
-.review-modes { display:flex;flex-wrap:wrap;gap:0.4rem;margin:0 0 0.75rem; }
-.review-modes button {
-  min-height:2.25rem;padding:0 0.6rem;font-size:0.8125rem;border:1px solid var(--line);
-  border-radius:var(--radius);background:var(--bg);color:inherit;font:inherit;cursor:pointer;
-}
-.review-modes button[aria-pressed="true"] { background:var(--accent);color:var(--accent-fg);border-color:var(--accent); }
-.review-answer {
-  width:100%;min-height:2.75rem;padding:0.5rem 0.75rem;border:1px solid var(--line);
-  border-radius:var(--radius);background:var(--bg);color:inherit;font:inherit;
-  font-size:1.25rem;text-align:center;
-}
-.review-feedback { margin:0 0 0.25rem;font-weight:600; }
-.review-feedback.is-correct { color:var(--tone2, #2e7d32); }
-.review-feedback.is-close { color:var(--tone4, #6a1b9a); }
-.review-feedback.is-wrong { color:var(--tone1, #c62828); }
-`;
-
-function ensureStyles(doc) {
-  if (doc.getElementById(STYLE_ID)) return;
-  const style = doc.createElement('style');
-  style.id = STYLE_ID;
-  style.textContent = CSS;
-  doc.head.append(style);
-}
 
 /** Pure: how many days each rating would push the card out.
  * `{again, hard, good, easy}` — the numbers printed on the buttons. */
@@ -217,7 +180,6 @@ async function getSourceCounts() {
 }
 
 export function render(container, ctx = {}) {
-  if (typeof document !== 'undefined') ensureStyles(document);
   const state = {
     queue: [], index: 0, done: 0, flipped: false, busy: false, ready: false, alive: true,
     filter: null, counts: {}, saved: null,
@@ -294,6 +256,7 @@ export function render(container, ctx = {}) {
       ...REVIEW_MODES.map((mode) =>
         h('button', {
           type: 'button',
+          class: 'chip',
           'aria-pressed': state.mode === mode ? 'true' : 'false',
           dataset: { mode },
           text: t(modeKey(mode)),
@@ -311,7 +274,8 @@ export function render(container, ctx = {}) {
     const option = (src, text) =>
       h('button', {
         type: 'button',
-        style: `${BUTTON};width:100%;text-align:left;padding:0.75rem 1rem;${state.saved?.source === src ? 'background:var(--accent);color:var(--accent-fg);' : ''}`,
+        class: 'btn option',
+        'aria-pressed': state.saved?.source === src ? 'true' : 'false',
         text,
         dataset: { source: src },
         onclick: () => pick({ source: src }),
@@ -321,7 +285,7 @@ export function render(container, ctx = {}) {
       h('h2', { text: t('reviewFilter.title') }),
       h(
         'div',
-        { style: 'display:flex;flex-direction:column;gap:0.5rem' },
+        { class: 'rv-list' },
         option('all', t('reviewFilter.all', { count: total })),
         ...sources.map(([src, count]) => {
           const key = `reviewFilter.source.${src}`;
@@ -336,7 +300,7 @@ export function render(container, ctx = {}) {
     if (!state.alive) return;
     root.replaceChildren();
     if (state.filter === null) return paintPicker();
-    if (!state.ready) return root.append(h('p', { text: t('reviewFilter.loading') }));
+    if (!state.ready) return root.append(h('p', { class: 'muted', text: t('reviewFilter.loading') }));
 
     root.append(paintModeBar());
     const card = state.queue[state.index];
@@ -348,7 +312,7 @@ export function render(container, ctx = {}) {
     const available = isTtsAvailable();
     return h('button', {
       type: 'button',
-      style: `${BUTTON};font-size:0.875rem`,
+      class: 'btn sm',
       title: available ? t('review.audio') : t('review.audioUnavailable'),
       disabled: !available,
       text: t('review.audio'),
@@ -359,11 +323,11 @@ export function render(container, ctx = {}) {
   function paintBack(pinyin, defs, hanzi) {
     return h(
       'div',
-      { class: 'card' },
-      ...(hanzi ? [h('p', { style: HANZI, text: hanzi })] : []),
-      h('p', { style: PINYIN, html: pinyinHtml(pinyin) }),
-      ...(defs.length ? [h('p', { text: defs.join('; ') })] : []),
-      ...(hanzi ? [h('div', { style: 'margin-top:0.5rem' }, audioButton(hanzi))] : []),
+      { class: 'card rv-card' },
+      ...(hanzi ? [hanziCell(hanzi, 'lg')] : []),
+      h('p', { class: 'rv-pinyin', html: pinyinHtml(pinyin) }),
+      ...(defs.length ? [h('p', { class: 'rv-defs', text: defs.join('; ') })] : []),
+      ...(hanzi ? [audioButton(hanzi)] : []),
     );
   }
 
@@ -373,7 +337,7 @@ export function render(container, ctx = {}) {
       h('div', {
         role: 'group',
         'aria-label': t('review.rate'),
-        style: 'display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem',
+        class: 'rv-ratings',
       },
         ...RATINGS.map((rating) => {
           const { key, params } = intervalText(preview[rating]);
@@ -382,12 +346,12 @@ export function render(container, ctx = {}) {
             'button',
             {
               type: 'button',
-              style: `${RATE_BUTTON}${isSuggested ? ';border-color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)' : ''}`,
+              class: `btn rv-rate${isSuggested ? ' is-suggested' : ''}`,
               dataset: { rating },
               onclick: () => rate(card, rating),
             },
             h('span', { text: t(`review.ratings.${rating}`) }),
-            h('span', { style: 'color:var(--fg-soft);font-size:0.75rem', text: t(key, params) }),
+            h('span', { class: 'rv-int', text: t(key, params) }),
           );
         }),
       ),
@@ -395,7 +359,7 @@ export function render(container, ctx = {}) {
     if (suggested) {
       nodes.unshift(
         h('p', {
-          style: 'margin:0 0 0.5rem;color:var(--fg-soft);font-size:0.875rem',
+          class: 'hint',
           text: t(KEY.suggested, { rating: t(`review.ratings.${suggested}`) }),
         }),
       );
@@ -414,7 +378,7 @@ export function render(container, ctx = {}) {
     if (!state.checked) {
       const input = h('input', {
         type: 'text',
-        class: 'review-answer',
+        class: 'field review-answer',
         autocomplete: 'off',
         autocapitalize: 'off',
         autocorrect: 'off',
@@ -433,9 +397,9 @@ export function render(container, ctx = {}) {
       root.append(
         h(
           'div',
-          { style: 'display:flex;flex-direction:column;gap:0.5rem' },
+          { class: 'stack' },
           input,
-          h('button', { type: 'button', style: `${BUTTON};width:100%`, text: t(KEY.check), onclick: submit }),
+          h('button', { type: 'button', class: 'btn primary lg block', text: t(KEY.check), onclick: submit }),
         ),
       );
       if (typeof setTimeout === 'function') {
@@ -452,10 +416,10 @@ export function render(container, ctx = {}) {
     root.append(
       h(
         'div',
-        { class: 'card' },
+        { class: 'card rv-card' },
         h('p', { class: `review-feedback ${cls}`, text }),
-        h('p', { style: PINYIN, html: pinyinHtml(pinyin) }),
-        ...(defs.length ? [h('p', { text: defs.join('; ') })] : []),
+        h('p', { class: 'rv-pinyin', html: pinyinHtml(pinyin) }),
+        ...(defs.length ? [h('p', { class: 'rv-defs', text: defs.join('; ') })] : []),
       ),
       ...paintRatings(card, match ? 'good' : 'again'),
     );
@@ -472,7 +436,7 @@ export function render(container, ctx = {}) {
     root.append(
       h(
         'div',
-        { style: 'display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin:0 0 0.75rem' },
+        { class: 'rv-top' },
         h('span', { class: 'pill', text: t('review.remaining', { count: remaining }) }),
         reverse ? h('span') : audioButton(hanzi),
       ),
@@ -482,12 +446,12 @@ export function render(container, ctx = {}) {
       root.append(
         h(
           'div',
-          { class: 'card', style: 'text-align:center' },
-          h('p', { style: MEANING, text: defs.length ? defs.join('; ') : hanzi }),
+          { class: 'card rv-card' },
+          h('p', { class: 'rv-meaning', text: defs.length ? defs.join('; ') : hanzi }),
         ),
       );
     } else {
-      root.append(h('div', { class: 'card', style: 'text-align:center' }, h('p', { style: HANZI, text: hanzi })));
+      root.append(h('div', { class: 'card rv-card' }, hanziCell(hanzi, 'lg')));
     }
 
     if (typing) return paintTyping(card, pinyin, defs);
@@ -496,7 +460,7 @@ export function render(container, ctx = {}) {
       root.append(
         h('button', {
           type: 'button',
-          style: `${BUTTON};width:100%`,
+          class: 'btn primary lg block',
           text: t('review.showAnswer'),
           onclick: () => {
             state.flipped = true;
@@ -550,33 +514,32 @@ export function render(container, ctx = {}) {
     // A filtered empty group has its own text; plain empty keeps the original.
     const emptyKey = filtered ? 'reviewFilter.empty' : 'review.empty';
 
-    root.append(
-      h(
-        'div',
-        { class: 'card' },
-        h('h2', { text: empty ? t(`${emptyKey}.title`) : t('review.done.title') }),
-        h('p', { text: empty ? t(`${emptyKey}.body`) : t('review.done.body', { count: state.done }) }),
-      ),
-    );
-
-    const actions = h('div', { style: 'display:flex;flex-wrap:wrap;gap:0.5rem' });
+    const actions = h('div', { class: 'cluster' });
     if (!empty) {
-      actions.append(h('button', { type: 'button', style: BUTTON, text: t('review.done.again'), onclick: load }));
+      actions.append(h('button', { type: 'button', class: 'btn', text: t('review.done.again'), onclick: load }));
     }
     actions.append(
       h('button', {
         type: 'button',
-        style: BUTTON,
+        class: 'btn primary',
         text: t(empty ? 'review.empty.action' : 'review.done.action'),
         onclick: () => go('dictionary'),
       }),
     );
     if (filtered) {
       actions.append(
-        h('button', { type: 'button', style: BUTTON, text: t('reviewFilter.empty.action'), onclick: changeFilter }),
+        h('button', { type: 'button', class: 'btn', text: t('reviewFilter.empty.action'), onclick: changeFilter }),
       );
     }
-    root.append(actions);
+    root.append(
+      h(
+        'div',
+        { class: 'card empty', ...(empty ? {} : { 'data-done': '' }) },
+        h('h2', { text: empty ? t(`${emptyKey}.title`) : t('review.done.title') }),
+        h('p', { text: empty ? t(`${emptyKey}.body`) : t('review.done.body', { count: state.done }) }),
+        actions,
+      ),
+    );
   }
 
   init();

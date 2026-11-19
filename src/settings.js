@@ -14,9 +14,9 @@
  * Daily goal: integer (default 20)
  * Locale: string (managed by i18n, persisted here for restore)
  *
- * Dark theme is implemented by injecting a <style> that overrides the CSS variables
- * defined in src/styles.css (--bg, --bg-soft, --fg, --fg-soft, --line). The original
- * styles.css is never edited.
+ * This module owns NO colours. It only sets two things on <html>:
+ *   data-theme="light|dark"   -> src/styles.css switches its light-dark() tokens
+ *   --font-scale              -> src/styles.css scales the root font size
  */
 
 import storage from './storage.js';
@@ -40,27 +40,6 @@ const ALLOWED = {
 /** Storage keys (single 'settings' store, one key per setting). */
 const KEYS = Object.keys(DEFAULTS);
 
-/** Injected style element ID for dark theme overrides. */
-const STYLE_ID = 'settings-theme-overrides';
-
-/** CSS variables that exist in src/styles.css and need dark overrides. */
-const DARK_VARS = {
-  '--bg': '#131211',
-  '--bg-soft': '#1e1c1b',
-  '--fg': '#f2f0ee',
-  '--fg-soft': '#b3aeaa',
-  '--line': '#302d2b',
-};
-
-/** Light variables (explicit, for when data-theme="light" forces light). */
-const LIGHT_VARS = {
-  '--bg': '#ffffff',
-  '--bg-soft': '#f5f5f4',
-  '--fg': '#1c1b1a',
-  '--fg-soft': '#5f5c58',
-  '--line': '#e3e1df',
-};
-
 /** Current cached settings (populated by initCache). */
 let settingsCache = null;
 let cacheInitialized = false;
@@ -83,33 +62,6 @@ function validate(key, value) {
 }
 
 /**
- * Build the CSS text for the theme override <style>.
- * @param {'light'|'dark'} theme
- * @returns {string}
- */
-function buildThemeCSS(theme) {
-  const vars = theme === 'dark' ? DARK_VARS : LIGHT_VARS;
-  const lines = Object.entries(vars).map(([name, value]) => `  ${name}: ${value};`);
-  return `html[data-theme="${theme}"] {\n${lines.join('\n')}\n}`;
-}
-
-/**
- * Ensure the override <style> exists in <head>.
- * @param {Document} doc
- */
-function ensureStyleElement(doc) {
-  if (doc.getElementById(STYLE_ID)) return;
-  const style = doc.createElement('style');
-  style.id = STYLE_ID;
-  style.textContent = `
-${buildThemeCSS('light')}
-
-${buildThemeCSS('dark')}
-`;
-  doc.head.append(style);
-}
-
-/**
  * Apply theme and font scale to <html>.
  * - data-theme: 'light' | 'dark' (never 'auto'; 'auto' resolves to one of the two)
  * - style.setProperty('--font-scale', value)
@@ -118,8 +70,6 @@ ${buildThemeCSS('dark')}
  */
 function applyToDocument(settings, doc = document) {
   if (typeof doc === 'undefined') return;
-
-  ensureStyleElement(doc);
 
   const theme = settings.theme === 'auto'
     ? (doc.defaultView?.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')

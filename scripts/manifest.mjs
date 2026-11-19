@@ -2,8 +2,8 @@
  * Builds manifest.webmanifest from a locale dictionary, so the app name and
  * description live in i18n like every other string (no duplicated copy).
  */
-export const THEME_COLOR = '#b3261e';
-export const BACKGROUND_COLOR = '#ffffff';
+export const THEME_COLOR = '#17645f';
+export const BACKGROUND_COLOR = '#eef1ec';
 
 export function manifestFromLocale(dict, lang = 'en') {
   const app = dict?.app ?? {};

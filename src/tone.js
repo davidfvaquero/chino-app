@@ -93,23 +93,15 @@ function escapeHtml(s) {
     .replace(/'/g, '&#39;');
 }
 
-/** Tone colors (injected once). Light values by default, brighter on dark. */
+/** Tone colors (injected once). The colours live in src/styles.css as --tone1..5
+ *  (one light-dark() token each, AA on every surface); this only maps class -> token. */
 const CSS = `
 .tone { display: inline; }
-.tone1 { color: var(--tone1, #c62828); }
-.tone2 { color: var(--tone2, #2e7d32); }
-.tone3 { color: var(--tone3, #1565c0); }
-.tone4 { color: var(--tone4, #6a1b9a); }
-.tone5 { color: var(--tone5, #757575); }
-
-@media (prefers-color-scheme: dark) {
-  .tone1 { color: var(--tone1-dark, #ef5350); }
-  .tone2 { color: var(--tone2-dark, #66bb6a); }
-  .tone3 { color: var(--tone3-dark, #64b5f6); }
-  .tone4 { color: var(--tone4-dark, #ba68c8); }
-  .tone5 { color: var(--tone5-dark, #bdbdbd); }
-}
-
+.tone1 { color: var(--tone1); }
+.tone2 { color: var(--tone2); }
+.tone3 { color: var(--tone3); }
+.tone4 { color: var(--tone4); }
+.tone5 { color: var(--tone5); }
 html.tone-colors-off .tone { color: inherit; }
 `;
 

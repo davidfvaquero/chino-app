@@ -175,47 +175,19 @@ test('applySettings resolves auto theme to dark when prefers-color-scheme is dar
   assert.equal(newMockDoc.documentElement.dataset.theme, 'dark');
 });
 
-test('theme override style element is injected with light and dark CSS', async () => {
+test('settings owns no colours: no <style> is injected, styles.css reacts to data-theme', async () => {
   const newMockDoc = installMockDocument(false);
   await setSetting('theme', 'dark');
   applySettings();
+  assert.equal(newMockDoc.getElementById('settings-theme-overrides'), undefined);
+  assert.equal(newMockDoc.documentElement.dataset.theme, 'dark');
 
-  const styleEl = newMockDoc.getElementById('settings-theme-overrides');
-  assert.ok(styleEl, 'style element should exist');
-  assert.ok(styleEl.textContent.includes('html[data-theme="light"]'));
-  assert.ok(styleEl.textContent.includes('html[data-theme="dark"]'));
-  assert.ok(styleEl.textContent.includes('--bg:'));
-  assert.ok(styleEl.textContent.includes('--fg:'));
-});
-
-test('dark theme CSS overrides match src/styles.css variables', async () => {
-  const newMockDoc = installMockDocument(false);
-  await setSetting('theme', 'dark');
-  applySettings();
-
-  const styleEl = newMockDoc.getElementById('settings-theme-overrides');
-  const css = styleEl.textContent;
-
-  assert.ok(css.includes('--bg: #131211'));
-  assert.ok(css.includes('--bg-soft: #1e1c1b'));
-  assert.ok(css.includes('--fg: #f2f0ee'));
-  assert.ok(css.includes('--fg-soft: #b3aeaa'));
-  assert.ok(css.includes('--line: #302d2b'));
-});
-
-test('light theme CSS overrides use correct values', async () => {
-  const newMockDoc = installMockDocument(false);
-  await setSetting('theme', 'light');
-  applySettings();
-
-  const styleEl = newMockDoc.getElementById('settings-theme-overrides');
-  const css = styleEl.textContent;
-
-  assert.ok(css.includes('--bg: #ffffff'));
-  assert.ok(css.includes('--bg-soft: #f5f5f4'));
-  assert.ok(css.includes('--fg: #1c1b1a'));
-  assert.ok(css.includes('--fg-soft: #5f5c58'));
-  assert.ok(css.includes('--line: #e3e1df'));
+  const css = await (await import('node:fs/promises')).readFile(new URL('../src/styles.css', import.meta.url), 'utf8');
+  assert.match(css, /:root\[data-theme="dark"\]\s*\{\s*color-scheme:\s*dark/);
+  assert.match(css, /:root\[data-theme="light"\]\s*\{\s*color-scheme:\s*light/);
+  assert.match(css, /--bg:\s*light-dark\(/);
+  assert.match(css, /font-size:\s*calc\(16px \* var\(--font-scale/);
+  await setSetting('theme', 'light'); // leave the state the next tests expect
 });
 
 test('applySettings does nothing when document is undefined (Node)', async () => {

@@ -3,6 +3,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 import {
   createMatchState,
@@ -74,10 +75,11 @@ test('complete only after all four pairs are chosen', () => {
   assert.equal(result.score, 1);
 });
 
-test('shared CSS keeps 48px touch targets and no 300ms tap delay', () => {
-  assert.match(EXERCISE_UI_CSS, /\.btn\s*\{[^}]*min-height:\s*48px/s);
-  assert.match(EXERCISE_UI_CSS, /\.chip\s*\{[^}]*min-height:\s*48px/s);
-  assert.match(EXERCISE_UI_CSS, /touch-action:\s*manipulation/);
+test('exercise kit styles the match grid and its states; design system keeps 48px touch targets and no 300ms tap delay', () => {
+  const shell = readFileSync(new URL('../src/styles.css', import.meta.url), 'utf8');
+  assert.match(shell, /\.btn\s*\{[^}]*min-height:\s*48px/s);
+  assert.match(shell, /\.chip\s*\{[^}]*min-height:\s*48px/s);
+  assert.match(shell, /touch-action:\s*manipulation/);
   assert.match(EXERCISE_UI_CSS, /\.match-grid\s*\{[^}]*grid-template-columns/s);
   assert.match(EXERCISE_UI_CSS, /\.match-chip\.selected/);
   assert.match(EXERCISE_UI_CSS, /\.match-chip\.matched/);

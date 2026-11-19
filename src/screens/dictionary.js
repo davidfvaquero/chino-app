@@ -26,35 +26,6 @@ export const DEBOUNCE_MS = 250;
 /** Max results shown for one query. */
 export const RESULT_LIMIT = 20;
 
-const STYLE_ID = 'dict-style';
-const CSS = `
-.dict-search { margin: 0 0 0.75rem; }
-.dict-status { margin: 0 0 0.75rem; }
-.dict-results { margin: 0; padding: 0; list-style: none; }
-.dict-row { display: flex; flex-direction: column; gap: 0.35rem; }
-.dict-head { display: flex; align-items: baseline; gap: 0.5rem; }
-.dict-hanzi { font-size: 1.6rem; font-weight: 600; }
-.dict-head .dict-audio { margin-left: auto; }
-.dict-pinyin { margin: 0; font-size: 1rem; }
-.dict-defs { margin: 0; padding-left: 1.1rem; color: var(--fg-soft); font-size: 0.95rem; }
-.dict-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-.dict-actions button, .dict-actions a {
-  display: inline-flex; align-items: center; min-height: 2.4rem; padding: 0 0.6rem;
-  border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg);
-  color: inherit; font: inherit; font-size: 0.9rem; text-decoration: none;
-}
-.dict-strokes { font-size: 1.15rem; }
-.dict-add[data-added="true"] { opacity: 0.6; }
-`;
-
-function ensureStyles(doc) {
-  if (doc.getElementById(STYLE_ID)) return;
-  const style = doc.createElement('style');
-  style.id = STYLE_ID;
-  style.textContent = CSS;
-  doc.head.append(style);
-}
-
 /** Ids already in the review deck (so a result can render as "added"). */
 async function deckIds() {
   try {
@@ -66,8 +37,6 @@ async function deckIds() {
 }
 
 export function render(container, ctx = {}) {
-  ensureStyles(document);
-
   const state = { seq: 0, timer: null, alive: true };
 
   const input = h('input', {
@@ -114,7 +83,7 @@ export function render(container, ctx = {}) {
     const hanzi = entry.simp || entry.trad || '';
     const audio = h('button', {
       type: 'button',
-      class: 'dict-audio',
+      class: 'btn sm dict-audio',
       text: t('dict.audio'),
       'aria-label': t('dict.audioFor', { hanzi }),
       onclick: async () => {
@@ -127,7 +96,7 @@ export function render(container, ctx = {}) {
 
     const add = h('button', {
       type: 'button',
-      class: 'dict-add',
+      class: 'btn sm dict-add',
       text: t(isAdded ? 'dict.added' : 'dict.addToReview'),
       disabled: isAdded,
       'data-added': String(Boolean(isAdded)),
@@ -168,7 +137,7 @@ export function render(container, ctx = {}) {
     const node = h(
       'li',
       {
-        class: 'card dict-row',
+        class: 'dict-row',
         'data-id': String(entry.id),
         'data-added': String(Boolean(isAdded)),
       },

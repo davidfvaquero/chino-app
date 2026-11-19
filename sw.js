@@ -17,6 +17,7 @@ const SHELL_ASSETS = [
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
   './src/styles.css',
+  './fonts/onest-latin.woff2',
   './src/main.js',
   './src/dom.js',
   './src/i18n.js',

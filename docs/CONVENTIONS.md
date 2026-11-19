@@ -202,3 +202,12 @@ the site root by the build, so runtime URLs are `/data/...`. See `CREDITS.md`
 and `scripts/README.md`; never hand-edit generated shards.
 
 Out of scope for this project: camera/OCR capture and subtitled video.
+
+## 8. Look and feel
+
+`src/styles.css` is the design system (tokens, shared classes, light/dark/auto,
+font scale). Before writing any CSS for a screen read `docs/DESIGN.md`: use
+`.btn`, `.card`, `.field`, `.chip`, `.pill`, `.progress`, `.menu`, `hanziCell()`
+and the `--ink`/`--surface`/`--accent`/`--tone1…5` tokens; no hard-coded colours,
+no `@media (prefers-color-scheme)`, no uppercase eyebrow labels, targets >= 44 px.
+Verify with `node scripts/check-contrast.mjs <build dir>`.

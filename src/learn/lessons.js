@@ -24,6 +24,7 @@ import storage from '../storage.js';
 import { addToReview } from '../srs.js';
 import { speak } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
+import { hanziCell } from '../hanzi.js';
 import {
   gradeExercise,
   summarize,
@@ -40,23 +41,27 @@ import { fetchData } from '../data-url.js';
 const STYLE_ID = 'lessons-layout-style';
 
 /**
- * Layout-only CSS for the vocabulary card. Kept here (not in styles.css, owned
- * by another task) and injected once. Reuses the shell variables so light/dark
- * and the font scale keep working. Splits hanzi / pinyin / english / example /
- * button into stacked blocks so nothing is glued on one line on mobile.
+ * Layout of one vocabulary entry (hanzi cell / pinyin / english / example /
+ * button, stacked so nothing shares a line on mobile). Colours, type and shape
+ * come from the design system in src/styles.css (docs/DESIGN.md).
  */
 const CSS = `
 .vocab-item.field {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: flex-start;
   gap: 0.25rem;
+  margin: 0;
+  padding: 1rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
 }
-.vocab-item .hanzi { font-size: 1.6em; line-height: 1.25; }
-.vocab-item .pinyin { font-size: 1.05em; }
+.vocab-item .pinyin { margin-top: 0.35rem; font-size: var(--fs-md); }
 .vocab-item .english {
   margin-top: 0.25em;
-  color: var(--fg-soft);
+  color: var(--ink-soft);
   font-size: 0.95em;
   line-height: 1.4;
 }
@@ -64,15 +69,16 @@ const CSS = `
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  align-self: stretch;
   margin-top: 0.4em;
-  padding-top: 0.4em;
-  border-top: 1px solid var(--line);
+  padding: 0.6rem 0 0 0.75rem;
+  border-left: 2px solid var(--grid);
   font-size: 0.95em;
   line-height: 1.4;
 }
-.vocab-item .example-hanzi { font-size: 1.15em; }
-.vocab-item .example-english { color: var(--fg-soft); }
-.vocab-item > .btn { align-self: stretch; margin-top: 0.4em; }
+.vocab-item .example-hanzi { font-family: var(--font-hanzi); font-size: 1.25em; }
+.vocab-item .example-english { color: var(--ink-soft); }
+.vocab-item > .btn { margin-top: 0.5em; }
 `;
 
 /** Inject the layout CSS into <head> once. */
@@ -142,6 +148,7 @@ export async function saveProgress(level, lessonId, patch = {}, { store = storag
 }
 
 /** Inline text that works whether the lesson gives a key ('learn...') or a literal. */
+const HAN = /\p{Script=Han}/u;
 const label = (value) => (typeof value === 'string' && value ? t(value) : '');
 
 /* ------------------------------------------------------------------ list -- */
@@ -223,7 +230,7 @@ async function renderLesson(container, ctx, lessonId, level) {
   function introStep() {
     return h(
       'section',
-      { class: 'card lesson-intro' },
+      { class: 'card lesson-intro lesson-step' },
       h('h2', { text: label(lesson.title) || lesson.id }),
       h('p', { text: label(lesson.intro) }),
       h('button', { type: 'button', class: 'btn primary', text: t('learn.lessons.next'), onclick: () => go('vocabulary') }),
@@ -231,11 +238,11 @@ async function renderLesson(container, ctx, lessonId, level) {
   }
 
   function vocabularyStep() {
-    const section = h('section', { class: 'card lesson-vocabulary' }, h('h2', { text: t('learn.lessons.vocabulary') }));
+    const section = h('section', { class: 'lesson-vocabulary lesson-step' }, h('h2', { text: t('learn.lessons.vocabulary') }));
     for (const word of lesson.vocabulary ?? []) {
       const button = h('button', {
         type: 'button',
-        class: 'btn option',
+        class: 'btn sm',
         text: t('learn.lessons.addToReview'),
         onclick: async () => {
           button.disabled = true;
@@ -247,7 +254,7 @@ async function renderLesson(container, ctx, lessonId, level) {
         h(
           'div',
           { class: 'vocab-item field' },
-          h('span', { class: 'hanzi', text: word.hanzi }),
+          hanziCell(word.hanzi, 'md'),
           h('span', { class: 'pinyin', html: pinyinHtml(word.pinyin) }),
           h('span', { class: 'english', text: word.english }),
           word.example
@@ -263,7 +270,7 @@ async function renderLesson(container, ctx, lessonId, level) {
         ),
       );
     }
-    section.append(h('button', { type: 'button', class: 'btn primary', text: t('learn.lessons.next'), onclick: () => go('exercises') }));
+    section.append(h('button', { type: 'button', class: 'btn primary lg', text: t('learn.lessons.next'), onclick: () => go('exercises') }));
     return section;
   }
 
@@ -272,8 +279,9 @@ async function renderLesson(container, ctx, lessonId, level) {
     if (!exercise) return resultStep();
     const section = h(
       'section',
-      { class: 'card lesson-exercise' },
+      { class: 'card lesson-exercise lesson-step' },
       h('h2', { text: t('learn.lessons.exerciseProgress', { current: current + 1, total: exercises.length }) }),
+      progressBar(current, exercises.length),
     );
     section.append(
       exerciseView(exercise, (result) => {
@@ -294,6 +302,16 @@ async function renderLesson(container, ctx, lessonId, level) {
     return section;
   }
 
+  /** Thin progress bar: `value` of `max` steps done. */
+  function progressBar(value, max) {
+    const pct = max ? Math.round((value / max) * 100) : 0;
+    return h(
+      'div',
+      { class: 'progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(max), 'aria-valuenow': String(value) },
+      h('span', { style: `width:${pct}%` }),
+    );
+  }
+
   function exerciseView(exercise, onContinue) {
     const box = h('div', { class: 'exercise-body' });
     box.append(h('p', { class: 'prompt', text: exercise.prompt ?? '' }));
@@ -301,7 +319,7 @@ async function renderLesson(container, ctx, lessonId, level) {
       box.append(
         h('button', {
           type: 'button',
-          class: 'btn primary',
+          class: 'btn primary lg',
           text: t('learn.lessons.playAudio'),
           onclick: () => speak(exercise.audio, { lang: 'zh-CN' }),
         }),
@@ -330,11 +348,16 @@ async function renderLesson(container, ctx, lessonId, level) {
       options.append(
         h('button', {
           type: 'button',
-          class: 'btn option',
+          class: `btn option${HAN.test(String(option)) ? ' hz' : ''}`,
+          'data-value': String(option),
           text: String(option),
-          onclick: () => {
+          onclick: (event) => {
             const result = gradeExercise(exercise, option);
-            for (const btn of options.children) btn.disabled = true;
+            for (const btn of options.children) {
+              btn.disabled = true;
+              if (btn.dataset.value === result.expected) btn.classList.add(result.correct ? 'is-correct' : 'is-missed');
+            }
+            if (!result.correct) event.currentTarget.classList.add('is-wrong');
             finish(feedback, result, onContinue);
           },
         }),
@@ -389,6 +412,7 @@ async function renderLesson(container, ctx, lessonId, level) {
       text: t('learn.lessons.check'),
       onclick: () => {
         const result = gradeExercise(exercise, answer);
+        answerRow.classList.add(result.correct ? 'is-ok' : 'is-bad');
         check.disabled = true;
         for (const btn of [...poolRow.children, ...answerRow.children]) btn.disabled = true;
         finish(feedback, result, onContinue);
@@ -511,12 +535,13 @@ async function renderLesson(container, ctx, lessonId, level) {
     const summary = summarize(results);
     return h(
       'section',
-      { class: 'card lesson-result' },
+      { class: 'card lesson-result lesson-step' },
       h('h2', { text: t('learn.lessons.result') }),
       h('p', { text: t('learn.lessons.resultScore', { score: summary.correct, total: exercises.length }) }),
+      progressBar(summary.correct, exercises.length),
       h('button', {
         type: 'button',
-        class: 'btn primary',
+        class: 'btn primary lg',
         text: t('learn.lessons.finish'),
         onclick: async () => {
           await saveProgress(index.level, lesson.id, {

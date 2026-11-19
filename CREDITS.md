@@ -164,6 +164,19 @@ the licence asks for it.
 
 ---
 
+## 9. Onest — interface typeface (`public/fonts/onest-latin.woff2`)
+
+- **Source:** Onest, <https://github.com/googlefonts/onest> (file
+  `Onest[wght].ttf` from the Google Fonts repository, `ofl/onest`).
+- **Licence:** SIL Open Font License 1.1 — full text in
+  `public/fonts/OFL-Onest.txt`. Copyright 2021 The Onest Project Authors.
+- **Changes made:** subset to Basic Latin, Latin-1, Latin Extended-A and the
+  pinyin vowels (ǎ ǐ ǒ ǔ ǖ ǘ ǚ ǜ), a few punctuation marks, converted to WOFF2
+  (37 KB, variable weight 100–900). It is self-hosted: the app never requests a
+  font from a CDN. Hanzi use the device's own Chinese fonts (see `docs/DESIGN.md`).
+
+---
+
 ## How to regenerate the data
 
 ```bash

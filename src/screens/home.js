@@ -12,6 +12,7 @@ import { h, reset } from '../dom.js';
 import { countDue, addToReview } from '../srs.js';
 import { speak } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
+import { hanziCell } from '../hanzi.js';
 import { getDay } from '../stats.js';
 import { getStats } from '../gamification.js';
 import { getSettings, DEFAULTS } from '../settings.js';
@@ -69,25 +70,6 @@ export function chooseNextStep({ due = 0, lesson = null, reading = null } = {}) 
   return { kind: 'learn', path: 'learn' };
 }
 
-const CSS = `
-.home { display: grid; gap: 0.75rem; }
-.home .card { display: grid; gap: 0.5rem; padding: var(--pad); border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); }
-.home h2 { margin: 0; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--fg-soft); }
-.home .home-go { min-height: 3rem; border: 0; border-radius: var(--radius); background: var(--accent); color: var(--accent-fg); font: inherit; font-weight: 600; cursor: pointer; }
-.home .home-link { min-height: 2.75rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); color: inherit; font: inherit; cursor: pointer; }
-.home .home-hanzi { font-size: 3rem; line-height: 1.2; font-weight: 600; }
-.home .home-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.home .home-row > * { flex: 1 1 8rem; }
-.home .home-bar { height: 0.6rem; border-radius: 999px; background: var(--line); overflow: hidden; }
-.home .home-bar > span { display: block; height: 100%; background: var(--accent); }
-.home .home-muted { color: var(--fg-soft); margin: 0; }
-`;
-
-function ensureStyles() {
-  if (document.getElementById('home-styles')) return;
-  document.head.append(h('style', { id: 'home-styles', text: CSS }));
-}
-
 const safe = (promise, fallback) => Promise.resolve(promise).catch(() => fallback);
 
 async function loadWordList() {
@@ -134,7 +116,7 @@ function nextLabel(next) {
 function wordCard(word) {
   const add = h('button', {
     type: 'button',
-    class: 'home-link',
+    class: 'btn',
     'data-role': 'wotd-add',
     text: t('home.wotd.add'),
     onclick: async () => {
@@ -145,22 +127,21 @@ function wordCard(word) {
   });
   return h(
     'section',
-    { class: 'card', 'data-role': 'wotd' },
+    { class: 'card home-wotd', 'data-role': 'wotd' },
     h('h2', { text: t('home.wotd.title') }),
-    h('div', { class: 'home-hanzi', text: word.hanzi }),
+    hanziCell(word.hanzi, 'lg'),
     h('div', { class: 'pinyin', html: pinyinHtml(word.pinyin) }),
     h('p', { class: 'home-muted', text: word.english }),
     h(
       'div',
       { class: 'home-row' },
-      h('button', { type: 'button', class: 'home-link', 'data-role': 'wotd-audio', text: t('home.wotd.audio'), onclick: () => speak(word.hanzi) }),
+      h('button', { type: 'button', class: 'btn', 'data-role': 'wotd-audio', text: t('home.wotd.audio'), onclick: () => speak(word.hanzi) }),
       add,
     ),
   );
 }
 
 export async function render(container, ctx = {}) {
-  ensureStyles();
   const go = (path) => (typeof ctx.navigate === 'function' ? ctx.navigate(path) : (location.hash = `#/${path}`));
   reset(container).append(h('p', { class: 'home-muted', text: t('common.loading') }));
   let state;
@@ -175,32 +156,32 @@ export async function render(container, ctx = {}) {
   const { next, hard, goal, streak, word, plan } = state;
   const nextCard = h(
     'section',
-    { class: 'card', 'data-role': 'next', 'data-kind': next.kind },
+    { class: 'home-next', 'data-role': 'next', 'data-kind': next.kind },
     h('h2', { text: t('home.next.title') }),
-    h('button', { type: 'button', class: 'home-go', 'data-role': 'next-go', text: nextLabel(next), onclick: () => go(next.path) }),
+    h('button', { type: 'button', class: 'btn primary lg block', 'data-role': 'next-go', text: nextLabel(next), onclick: () => go(next.path) }),
   );
   if (hard > 0) {
     nextCard.append(
-      h('button', { type: 'button', class: 'home-link', 'data-role': 'hard', text: t('home.hard', { n: hard }), onclick: () => go('learn/hardwords') }),
+      h('button', { type: 'button', class: 'btn block', 'data-role': 'hard', text: t('home.hard', { n: hard }), onclick: () => go('learn/hardwords') }),
     );
   }
 
   const goalCard = h(
     'section',
-    { class: 'card', 'data-role': 'goal' },
+    { class: 'home-goal', 'data-role': 'goal' },
     h('h2', { text: t('home.goal.title') }),
     h('p', { class: 'home-muted', text: t(goal.reached ? 'home.goal.reached' : 'home.goal.progress', { done: goal.done, goal: goal.goal }) }),
-    h('div', { class: 'home-bar', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(goal.goal), 'aria-valuenow': String(Math.min(goal.done, goal.goal)) }, h('span', { style: `width:${goal.pct}%` })),
+    h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(goal.goal), 'aria-valuenow': String(Math.min(goal.done, goal.goal)) }, h('span', { style: `width:${goal.pct}%` })),
     h('p', { class: 'home-muted', 'data-role': 'streak', text: t('home.streak', { n: streak }) }),
   );
 
   const planCard = plan
     ? h(
         'section',
-        { class: 'card', 'data-role': 'plan' },
+        { class: 'card home-plan', 'data-role': 'plan' },
         h('h2', { text: t('plan.home.title') }),
         h('p', { class: 'home-muted', 'data-role': 'plan-day', text: t('plan.home.day', { n: plan.day, title: t(plan.titleKey) }) }),
-        h('button', { type: 'button', class: 'home-link', 'data-role': 'plan-go', text: t('plan.home.open'), onclick: () => go('learn/plan') }),
+        h('button', { type: 'button', class: 'btn', 'data-role': 'plan-go', text: t('plan.home.open'), onclick: () => go('learn/plan') }),
       )
     : null;
 

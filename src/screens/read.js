@@ -66,7 +66,7 @@ async function renderReader(container, ctx, id) {
   if (!raw) {
     reset(container).append(
       h('p', { class: 'muted', text: t('common.comingSoon') }),
-      h('button', { type: 'button', class: 'pill', text: t('read.back'), onclick: () => ctx.navigate('read') }),
+      h('button', { type: 'button', class: 'btn', text: t('read.back'), onclick: () => ctx.navigate('read') }),
     );
     return;
   }
@@ -91,7 +91,7 @@ async function renderReader(container, ctx, id) {
       vm.found
         ? h('button', {
             type: 'button',
-            class: 'cta',
+            class: 'btn primary',
             'data-action': 'add-review',
             text: t('read.addToReview'),
             onclick: async (event) => {
@@ -104,7 +104,7 @@ async function renderReader(container, ctx, id) {
         : null,
       h('button', {
         type: 'button',
-        class: 'pill',
+        class: 'btn sm',
         text: t('read.close'),
         onclick: () => {
           panel.hidden = true;
@@ -121,7 +121,7 @@ async function renderReader(container, ctx, id) {
   const article = h('article', { class: 'reading', 'data-reading': reading.id }, ...lines);
   const pinyinButton = h('button', {
     type: 'button',
-    class: 'pill',
+    class: 'chip',
     'data-action': 'toggle-pinyin',
     'aria-pressed': 'false',
     text: t('read.togglePinyin'),
@@ -144,7 +144,7 @@ async function renderReader(container, ctx, id) {
         { class: 'row' },
         h('button', {
           type: 'button',
-          class: 'pill',
+          class: 'btn sm',
           'data-action': 'back',
           text: t('read.back'),
           onclick: () => ctx.navigate('read'),
@@ -153,7 +153,7 @@ async function renderReader(container, ctx, id) {
         ttsOk
           ? h('button', {
               type: 'button',
-              class: 'pill',
+              class: 'btn sm',
               'data-action': 'play-all',
               text: t('read.playAll'),
               onclick: () => speak(reading.lines.map((l) => l.hanzi).join(' ')),
@@ -165,7 +165,7 @@ async function renderReader(container, ctx, id) {
       panel,
       h('button', {
         type: 'button',
-        class: 'cta',
+        class: 'btn primary lg block',
         'data-action': 'done',
         text: t('read.markDone'),
         onclick: () => {
@@ -205,7 +205,7 @@ async function buildLine(line, index, ttsOk, showWord) {
     ttsOk
       ? h('button', {
           type: 'button',
-          class: 'pill play',
+          class: 'btn sm play',
           'data-action': 'play-line',
           'aria-label': t('read.playLine', { n: index + 1 }),
           text: '▶',
