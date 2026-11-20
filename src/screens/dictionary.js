@@ -241,7 +241,8 @@ export function render(container, ctx = {}) {
       if (seq !== state.seq || !state.alive) return;
       console.error('dictionary: search failed', err);
       setState('error');
-      setStatus('dict.error');
+      // No HTTP status = the network itself failed (offline / DNS).
+      setStatus(err?.status === undefined ? 'dict.offline' : 'dict.error');
       return;
     }
     if (seq !== state.seq || !state.alive) return;

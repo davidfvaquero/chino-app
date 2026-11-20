@@ -72,7 +72,11 @@ function getJSON(rel, base = BASE) {
     pending = Promise.resolve()
       .then(() => (fetcher || globalThis.fetch)(url))
       .then((res) => {
-        if (!res || res.ok === false) throw new Error(`dictionary: ${rel} -> ${res && res.status}`);
+        if (!res || res.ok === false) {
+          const err = new Error(`dictionary: ${rel} -> ${res && res.status}`);
+          err.status = res && res.status;
+          throw err;
+        }
         return res.json();
       });
     cache.set(url, pending);
@@ -80,6 +84,13 @@ function getJSON(rel, base = BASE) {
   }
   return pending;
 }
+
+/** Resolve to null only when the file does not exist; real failures propagate. */
+const orNullOn404 = (promise) =>
+  promise.catch((err) => {
+    if (err?.status === 404) return null;
+    throw err;
+  });
 
 const shardId = (n) => `shards/${String(n).padStart(3, '0')}.json`;
 const letterOf = (s) => (s && /[a-z]/.test(s[0]) ? s[0] : null);
@@ -118,25 +129,43 @@ function esShardDefs(n) {
   if (!pending) {
     pending = Promise.resolve()
       .then(() => (fetcher || globalThis.fetch)(url))
-      .then((res) => (res && res.ok === false ? null : res.json()))
+      .then((res) => {
+        if (res && res.ok === false) {
+          if (res.status === 404) return null; // not translated: normal
+          const err = new Error(`dictionary: es shard ${n} -> ${res.status}`);
+          err.status = res.status;
+          throw err;
+        }
+        return res.json();
+      })
       .then((list) => {
         if (!Array.isArray(list)) return null;
         const map = new Map();
         for (const e of list) if (e && e.id != null && Array.isArray(e.defs)) map.set(e.id, e.defs);
         return map;
       })
-      .catch(() => null);
+      // Only a 404 is a real "no data": a network/5xx failure must not poison
+      // the cache for the rest of the session (offline first search).
+      .catch((err) => {
+        cache.delete(url);
+        throw err;
+      });
     cache.set(url, pending);
   }
   return pending;
 }
 
-/** Spanish search postings (`es/search/<letter>.json`), or null; a miss is cached. */
+/** Spanish search postings (`es/search/<letter>.json`), or null; a 404 is cached. */
 function loadSpanishSearch(letter) {
   let pending = spanishSearchCache.get(letter);
   if (!pending) {
-    pending = getJSON(`${letter}.json`, ES_SEARCH_BASE).catch(() => null);
+    pending = getJSON(`${letter}.json`, ES_SEARCH_BASE).catch((err) => {
+      // Feature off when the file does not exist; a network failure is retried.
+      if (err?.status === 404) return null;
+      throw err;
+    });
     spanishSearchCache.set(letter, pending);
+    pending.catch(() => spanishSearchCache.delete(letter));
   }
   return pending;
 }
@@ -173,7 +202,7 @@ async function hanziShards(word) {
   if (!ch) return [];
   const ids = [];
   for (const load of [loadHanziIndex, loadTradIndex]) {
-    const idx = await load().catch(() => null);
+    const idx = await orNullOn404(load());
     const list = idx && idx.chars && idx.chars[ch];
     if (list) ids.push(...list);
   }
@@ -196,7 +225,7 @@ async function isPinyin(q) {
   const key = tonelessKey(q);
   const letter = letterOf(key);
   if (!letter) return false;
-  const idx = await loadPinyinIndex(letter).catch(() => null);
+  const idx = await orNullOn404(loadPinyinIndex(letter));
   if (!idx) return false;
   if (idx[key]) return true;
   return Object.keys(idx).some((k) => k.startsWith(key));
@@ -207,7 +236,7 @@ async function hasExactPinyin(q) {
   const key = tonelessKey(q);
   const letter = letterOf(key);
   if (!letter) return false;
-  const idx = await loadPinyinIndex(letter).catch(() => null);
+  const idx = await orNullOn404(loadPinyinIndex(letter));
   return Boolean(idx && idx[key]);
 }
 
@@ -254,7 +283,7 @@ async function searchPinyin(q) {
   const key = tonelessKey(q);
   const letter = letterOf(key);
   if (!letter) return [];
-  const idx = await loadPinyinIndex(letter).catch(() => null);
+  const idx = await orNullOn404(loadPinyinIndex(letter));
   if (!idx) return [];
 
   const ids = [];
@@ -284,7 +313,7 @@ async function searchEnglish(q) {
   const primary = words[0];
   const letter = letterOf(primary);
   if (!letter) return [];
-  const idx = await loadEnglishIndex(letter).catch(() => null);
+  const idx = await orNullOn404(loadEnglishIndex(letter));
   if (!idx) return [];
 
   const ids = [];

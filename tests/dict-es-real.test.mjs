@@ -105,3 +105,18 @@ test('buildSearchIndex: postings are [id, shard] pairs, best first', () => {
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
+test('I5: offline first search fails loudly, then recovers in the same session', async () => {
+  const realFetch = fetchData;
+  let offline = true;
+  configure({
+    fetch: async (url) => {
+      if (offline) throw new TypeError('Failed to fetch');
+      return realFetch(url);
+    },
+  });
+  resetCache();
+  await assert.rejects(() => search('comer', { spanish: true }), 'a network failure is not "no results"');
+  offline = false;
+  const results = await search('comer', { spanish: true });
+  assert.ok(results.length > 0, 'the failed shard was not cached as missing');
+});

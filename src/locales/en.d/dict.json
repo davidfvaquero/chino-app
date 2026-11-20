@@ -13,6 +13,7 @@
     "noResultsHint": "Try the pinyin (e.g. ni hao) or the meaning in English.",
     "strokesLabel": "Strokes:",
     "error": "Search failed. Check your connection and try again.",
+    "offline": "The dictionary needs a connection the first time. Try again when you are back online.",
     "audio": "Play",
     "audioFor": "Play the audio for {hanzi}",
     "audioEmpty": "There is nothing to play.",
