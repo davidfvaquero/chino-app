@@ -3,16 +3,18 @@
 //   node scripts/validate-dict-es.mjs                       # public/data/es/dict
 //   node scripts/validate-dict-es.mjs --out data-work/dict-es/pilot
 //
-// Checks (per entry, against the English original): same id and def count, no
-// empty defs, no stray tags, hanzi + [bracketed pinyin] preserved, glossary
-// markers translated, def length within 0.4x-3x of the English, no control
-// chars, no def left identical to the English (English leak). Exit code != 0
-// when there is any error, so it can gate a commit / CI step.
+// Checks (per entry, against the English original): same id, no empty defs, no
+// stray tags, hanzi + [bracketed pinyin] preserved, glossary markers translated,
+// def length within 0.4x-3x of the English, no control chars, no def left
+// identical to the English (English leak), no duplicated def inside one entry
+// (ERROR, §3.1), no parenthetical usage note left in English (WARNING, §3.4).
+// Fewer defs than the English is allowed (a documented merge, rules 6/10).
+// Exit code != 0 when there is any error, so it can gate a commit / CI step.
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validateEntry } from './lib/dict-es.mjs';
+import { validateEntry, parentheticalLeaks } from './lib/dict-es.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'public', 'data', 'dict', 'shards');
@@ -45,9 +47,11 @@ async function main(argv) {
     return 0;
   }
   const originals = loadOriginals();
-  let checked = 0, shardCount = 0;
+  let checked = 0, shardCount = 0, merged = 0;
   const errors = [];
+  const warnings = [];
   const add = (id, file, msgs) => { for (const m of msgs) errors.push({ id, file, msg: m }); };
+  const warn = (id, file, msgs) => { for (const m of msgs) warnings.push({ id, file, msg: m }); };
 
   for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.json')).sort()) {
     let list;
@@ -60,10 +64,13 @@ async function main(argv) {
       if (!en) { add(es.id, f, ['id no existe en el diccionario original']); continue; }
       checked++;
       add(es.id, f, validateEntry(en, es));
+      warn(es.id, f, parentheticalLeaks(en, es));
+      if (es.defs.length < en.defs.length) merged++;
     }
   }
 
-  console.log(`validate-dict-es: ${shardCount} shards, ${checked} entradas, ${errors.length} errores`);
+  console.log(`validate-dict-es: ${shardCount} shards, ${checked} entradas, ${errors.length} errores, ${warnings.length} avisos`);
+  if (merged) console.log(`  (${merged} entradas con menos defs que el inglés: sentidos fusionados)`);
   if (errors.length) {
     const byMsg = new Map();
     for (const e of errors) byMsg.set(e.msg, (byMsg.get(e.msg) || 0) + 1);
@@ -71,6 +78,14 @@ async function main(argv) {
     for (const [msg, n] of [...byMsg].sort((a, b) => b[1] - a[1])) console.log(`   ${n.toString().padStart(6)}  ${msg}`);
     console.log(`  ejemplos (${Math.min(opt.examples, errors.length)}):`);
     for (const e of errors.slice(0, opt.examples)) console.log(`   id ${e.id} :: ${e.file} :: ${e.msg}`);
+  }
+  if (warnings.length) {
+    const byMsg = new Map();
+    for (const w of warnings) byMsg.set(w.msg, (byMsg.get(w.msg) || 0) + 1);
+    console.log('  avisos:');
+    for (const [msg, n] of [...byMsg].sort((a, b) => b[1] - a[1])) console.log(`   ${n.toString().padStart(6)}  ${msg}`);
+    console.log(`  ejemplos de aviso (${Math.min(opt.examples, warnings.length)}):`);
+    for (const w of warnings.slice(0, opt.examples)) console.log(`   id ${w.id} :: ${w.file} :: ${w.msg}`);
   }
   return errors.length ? 1 : 0;
 }

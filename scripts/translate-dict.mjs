@@ -131,15 +131,20 @@ export function selectStrata(priority) {
 }
 
 // ---------------------------------------------------------------- prompts
-const SYSTEM = `You translate Chinese dictionary (CC-CEDICT) definitions from English into neutral Spanish. You are a dictionary, not a tutor.
+export const SYSTEM = `You translate Chinese dictionary (CC-CEDICT) definitions from English into neutral Spanish. You are a dictionary, not a tutor.
 
 RULES
-1. Output ONLY a JSON array, no prose, no code fence: [{"id":<same id>,"defs":["..."]}]. Same ids, same number of definitions, same order. Never merge, drop, add or reorder senses.
+1. Output ONLY a JSON array, no prose, no code fence: [{"id":<same id>,"defs":["..."]}]. Same ids, same order; never add or invent senses, never reorder them. Have FEWER defs than the English only when you merge senses that share one Spanish term (rules 6 and 10); never more.
 2. Neutral Spanish, no regionalisms, no "tú/usted"; definitions are noun/adjective phrases and infinitives ("ir", "comer", "ser feliz"), never full sentences.
 3. Keep untouched: Chinese characters (hanzi) and their bracketed pinyin, e.g. 好[hao3]; proper names; numbers; units; abbreviations.
 4. Use this FIXED glossary for CC-CEDICT markers (translate the marker, keep what follows):
 ${GLOSSARY.map(([e, s]) => `   ${e} -> ${s}`).join('\n')}
-5. Do not explain, do not add notes, do not transliterate. Length stays close to the English.
+5. Do not explain and do not add commentary; the ONLY parenthesis you may add is a usage note required by rules 6, 9 or 10. Length stays close to the English.
+6. Never repeat the same Spanish term for two different English senses of one entry. When several senses converge on one word (e.g. 体现: to embody / to incarnate, or ladybug / ladybird), MERGE them into a single definition with a usage note — "mariquita (EE. UU. ladybug, Reino Unido ladybird)" — or differentiate with the nuance that tells them apart (e.g. encarnar vs. reflejar). Never output the identical term twice.
+7. Prefer the precise Spanish verb; avoid generic hypernyms (caer, herir, romper) when the Chinese carries manner or force: 扑倒 -> "caer de bruces / derribar", 戕害 -> "masacrar / segar", 打碎 -> "hacer añicos". Only fall back to the generic word when the Chinese is genuinely generic.
+8. Keep the SAME grammatical category in every sense of an entry. If the English senses are all infinitives, all Spanish senses are infinitives; never mix a verb with a noun (点发: "disparar en ráfagas" + "shooting intermittently" -> "disparar en ráfagas", "disparar de forma intermitente").
+9. Template entries ("variant of ...", "surname ...", "CL: ...") must translate ALL their text, including parenthetical usage notes: "(mostly used in given names)" -> "(se usa mayormente en nombres propios)".
+10. When the English separates regional variants (EE. UU. / Reino Unido / Taiwán / PRC ...) that converge on the same Spanish term, give ONE definition with a parenthetical note: "mariquita (EE. UU. ladybug, Reino Unido ladybird)". Do this only when the English really splits them.
 Example: "surname Wang" -> "apellido Wang"; "variant of 好[hao3]" -> "variante de 好[hao3]"; "to go" -> "ir"; "CL:個|个[ge4]" -> "clasificador:個|个[ge4]".`;
 
 function userPrompt(entries) {

@@ -26,7 +26,37 @@ export const GLOSSARY = [
   ['(dialect)', '(dialecto)'],
   ['(honorific)', '(honorífico)'],
   ['(Tw)', '(Taiwán)'],
+  // Usage notes that leaked untranslated in the pilot (docs/DICT-ES-PILOT.md §3.4).
+  // The rest are the 10 most frequent English parentheticals in priority.json.
+  ['mostly used in given names', 'se usa mayormente en nombres propios'],
+  ['(idiom)', '(modismo)'],
+  ['(bird species of China)', '(especie de ave de China)'],
+  ['(literary)', '(literario)'],
+  ['(coll.)', '(coloquial)'],
+  ['(loanword)', '(préstamo)'],
+  ['(bound form)', '(forma ligada)'],
+  ['(name)', '(nombre)'],
+  ['(old)', '(antiguo)'],
+  ['(math.)', '(mat.)'],
+  ['(computing)', '(informática)'],
 ];
+
+// Parenthetical usage notes, keyed by their bare English text: "(mostly used in
+// given names)" -> "(se usa mayormente en nombres propios)". Derived from the
+// glossary so there is a single source of truth for the prompt and the
+// deterministic template pass.
+const NOTE_ES = new Map(GLOSSARY.map(([en, es]) => [en.replace(/^\(|\)$/g, '').trim().toLowerCase(), es.replace(/^\(|\)$/g, '').trim()]));
+
+// A parenthetical that legitimately reads the same in both languages.
+const SAME_NOTE = new Set(['lit.', 'fig.']);
+
+/** Re-translate the parenthetical usage notes of one definition. */
+export function translateNotes(def) {
+  return String(def ?? '').replace(/\(([^()]{1,80})\)/g, (whole, inner) => {
+    const hit = NOTE_ES.get(inner.trim().toLowerCase());
+    return hit ? `(${hit})` : whole;
+  });
+}
 
 // Markers that read the same in English and Spanish: never flag them as
 // "untranslated english" when they survive the translation.
@@ -78,12 +108,13 @@ export function markersIn(def) {
 /** Deterministic template translation of one "pure marker" definition. */
 export function templateDefToEs(def) {
   const d = String(def ?? '');
-  if (/^surname\s+/.test(d)) return d.replace(/^surname\s+/, 'apellido ');
-  if (/^old variant of\s+/.test(d)) return d.replace(/^old variant of\s+/, 'variante antigua de ');
-  if (/^erhua variant of\s+/.test(d)) return d.replace(/^erhua variant of\s+/, 'variante erhua de ');
-  if (/^variant of\s+/.test(d)) return d.replace(/^variant of\s+/, 'variante de ');
-  if (/^CL:/.test(d)) return d.replace(/^CL:/, 'clasificador:');
-  return d;
+  const note = (s) => translateNotes(s);
+  if (/^surname\s+/.test(d)) return note(d.replace(/^surname\s+/, 'apellido '));
+  if (/^old variant of\s+/.test(d)) return note(d.replace(/^old variant of\s+/, 'variante antigua de '));
+  if (/^erhua variant of\s+/.test(d)) return note(d.replace(/^erhua variant of\s+/, 'variante erhua de '));
+  if (/^variant of\s+/.test(d)) return note(d.replace(/^variant of\s+/, 'variante de '));
+  if (/^CL:/.test(d)) return note(d.replace(/^CL:/, 'clasificador:'));
+  return note(d);
 }
 
 /** Is a single definition a pure marker template (resolvable without the LLM)? */
@@ -144,8 +175,11 @@ export function parseTranslation(text, expected) {
   for (const en of expected) {
     const got = byId.get(en.id);
     if (!got) return { ok: false, error: `falta el id ${en.id}` };
-    if (got.defs.length !== en.defs.length) {
-      return { ok: false, error: `id ${en.id}: ${got.defs.length} defs != ${en.defs.length}` };
+    // Fewer defs than the English is allowed: rules 6/10 of the SYSTEM prompt
+    // merge senses that share one Spanish term (e.g. ladybug/ladybird -> one
+    // "mariquita (EE. UU. …, Reino Unido …)"). More defs is always a bug.
+    if (got.defs.length > en.defs.length) {
+      return { ok: false, error: `id ${en.id}: ${got.defs.length} defs > ${en.defs.length}` };
     }
     if (!got.defs.every((d) => typeof d === 'string' && d.trim())) {
       return { ok: false, error: `id ${en.id}: alguna def vacía` };
@@ -186,7 +220,7 @@ export function validateEntry(en, es) {
     if (typeof d === 'string' && CONTROL.test(d)) errs.push('carácter de control en una def');
   }
   if (!Array.isArray(es.defs)) return ['defs no es lista'];
-  if (es.defs.length !== en.defs.length) errs.push(`nº defs ${es.defs.length} != ${en.defs.length}`);
+  if (es.defs.length > en.defs.length) errs.push(`nº defs ${es.defs.length} > ${en.defs.length}`);
   es.defs.forEach((d, i) => {
     if (typeof d !== 'string' || !d.trim()) errs.push(`def ${i} vacía`);
     if (/<[a-z/][^>]*>/i.test(d)) errs.push(`def ${i} con tag raro`);
@@ -208,6 +242,7 @@ export function validateEntry(en, es) {
   }
 
   en.defs.forEach((d, i) => {
+    if (i >= es.defs.length) return; // merged away into an earlier def (rules 6/10)
     const sd = es.defs[i] || '';
     const nd = norm(d);
     // An identical string is an English leak only when it looks like a phrase:
@@ -221,7 +256,42 @@ export function validateEntry(en, es) {
       if (sd.length > 3 * d.length + 6) errs.push(`def ${i} demasiado larga (${sd.length} vs ${d.length})`);
     }
   });
+
+  // §3.1 of DICT-ES-PILOT: the same Spanish term twice in one entry means two
+  // senses were not differentiated nor merged into one definition.
+  const seenDef = new Map();
+  (es.defs || []).forEach((d, i) => {
+    const k = norm(d);
+    if (!k) return;
+    if (seenDef.has(k)) errs.push(`def ${i} duplicada (igual que la def ${seenDef.get(k)})`);
+    else seenDef.set(k, i);
+  });
   return errs;
+}
+
+const PARENS = /\(([^()]{1,80})\)/g;
+const parensOf = (s) => [...String(s ?? '').matchAll(PARENS)].map((m) => m[1].trim());
+
+/**
+ * Parenthetical usage notes still in English (§3.4). A warning, not an error:
+ * a copied note can also be a proper name or a unit that reads the same.
+ * @returns {string[]} warning messages
+ */
+export function parentheticalLeaks(en, es) {
+  const out = [];
+  const allowed = new Set([...SAME_NOTE, ...[...NOTE_ES.values()].map((s) => s.toLowerCase())]);
+  (es.defs || []).forEach((d, i) => {
+    const enParens = new Set(parensOf((en.defs || [])[i] || ''));
+    for (const p of parensOf(d)) {
+      const key = p.toLowerCase();
+      if (!/[a-z]/i.test(p) || allowed.has(key)) continue;
+      if (!enParens.has(p) && !NOTE_ES.has(key)) continue; // not an English note kept verbatim
+      if (looksProper(p)) continue; // a latin name or proper noun reads the same
+      if (/^[A-Z][a-z]+\s+[a-z]+\b/.test(p)) continue; // latin binomial (Ptyas mucosus)
+      out.push(`nota parentética sin traducir: "(${p})"`);
+    }
+  });
+  return out;
 }
 
 /** Rough token estimate from characters (4 chars ≈ 1 token) + per-entry overhead. */

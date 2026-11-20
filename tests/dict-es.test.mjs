@@ -7,11 +7,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  templateDefToEs, isTemplateDef, classifyEntry, resolveTemplateDefs,
-  markersIn, parseTranslation, validateEntry, buildBatches,
+  templateDefToEs, isTemplateDef, classifyEntry, resolveTemplateDefs, translateNotes,
+  markersIn, parseTranslation, validateEntry, parentheticalLeaks, GLOSSARY, buildBatches,
   computeToDo, mergeShardEntries, estimateTokens, costUsd,
 } from '../scripts/lib/dict-es.mjs';
-import { selectStrata } from '../scripts/translate-dict.mjs';
+import { selectStrata, SYSTEM } from '../scripts/translate-dict.mjs';
 
 // ---------------------------------------------------------------- glossary
 test('templates: bare CC-CEDICT markers translate deterministically', () => {
@@ -42,6 +42,38 @@ test('markersIn: the most specific marker wins (no false "variant of")', () => {
   assert.deepEqual(markersIn('see 好[hao3]'), [['see', 'véase']]);
 });
 
+test('notes: parenthetical usage notes are translated (§3.4)', () => {
+  assert.equal(translateNotes('variant of 潔|洁[jie2] (mostly used in given names)'),
+    'variant of 潔|洁[jie2] (se usa mayormente en nombres propios)');
+  assert.equal(translateNotes('x (idiom)'), 'x (modismo)');
+  assert.equal(translateNotes('x (literary)'), 'x (literario)');
+  assert.equal(translateNotes('y (used in Taiwan)'), 'y (used in Taiwan)'); // unknown note: untouched
+  // deterministically, inside the template pass too
+  assert.equal(templateDefToEs('variant of 潔|洁[jie2] (mostly used in given names)'),
+    'variante de 潔|洁[jie2] (se usa mayormente en nombres propios)');
+  assert.deepEqual(resolveTemplateDefs(['surname Wang', 'variant of 潔|洁[jie2] (mostly used in given names)']),
+    ['apellido Wang', 'variante de 潔|洁[jie2] (se usa mayormente en nombres propios)']);
+});
+
+test('glossary: carries the pilot fixes and the frequent English notes', () => {
+  const g = new Map(GLOSSARY);
+  assert.equal(g.get('mostly used in given names'), 'se usa mayormente en nombres propios');
+  for (const m of ['(idiom)', '(literary)', '(coll.)', '(loanword)', '(bound form)', '(name)', '(old)', '(math.)', '(computing)', '(bird species of China)']) {
+    assert.ok(g.has(m), `falta la nota ${m} en el glosario`);
+    assert.notEqual(g.get(m), m.replace(/^\(|\)$/g, ''), `la nota ${m} no está traducida`);
+  }
+});
+
+test('prompt: SYSTEM carries the five pilot corrections', () => {
+  // §3.1 duplicate senses, §3.2 hypernyms, §3.3 grammatical category, §3.4 templates, §3.5 regional
+  assert.match(SYSTEM, /Never repeat the same Spanish term/);
+  assert.match(SYSTEM, /avoid generic hypernyms \(caer, herir, romper\)/);
+  assert.match(SYSTEM, /SAME grammatical category/);
+  assert.match(SYSTEM, /including parenthetical usage notes/);
+  assert.match(SYSTEM, /regional variants/);
+  assert.match(SYSTEM, /se usa mayormente en nombres propios/);
+});
+
 // ---------------------------------------------------------------- parsing
 test('parseTranslation: strict but tolerates a json fence', () => {
   const en = [{ id: 1, defs: ['to go'] }, { id: 2, defs: ['king', 'ruler'] }];
@@ -50,7 +82,9 @@ test('parseTranslation: strict but tolerates a json fence', () => {
   assert.deepEqual(good.entries[1].defs, ['rey', 'gobernante']);
   assert.equal(parseTranslation('no soy json', en).ok, false);
   assert.equal(parseTranslation('[{"id":1,"defs":["ir"]}]', en).ok, false);           // falta id 2
-  assert.equal(parseTranslation('[{"id":1,"defs":["ir"]},{"id":2,"defs":["rey"]}]', en).ok, false); // 1 def
+  // fewer defs = a documented merge (rules 6/10); more defs = always a bug
+  assert.equal(parseTranslation('[{"id":1,"defs":["ir"]},{"id":2,"defs":["rey"]}]', en).ok, true);
+  assert.equal(parseTranslation('[{"id":1,"defs":["ir","x","y"]},{"id":2,"defs":["rey","gobernante"]}]', en).ok, false);
   assert.equal(parseTranslation('[{"id":1,"defs":["ir"]},{"id":2,"defs":["rey",""]}]', en).ok, false); // vacía
 });
 
@@ -72,7 +106,8 @@ test('validateEntry: catches the real failure modes', () => {
   assert.deepEqual(validateEntry(he, { id: 7, defs: ['variante de 好[hao3]'] }), []);
 
   const two = { id: 9, defs: ['king', 'ruler'] };
-  assert.ok(validateEntry(two, { id: 9, defs: ['rey'] }).some((m) => m.includes('nº defs')));
+  assert.ok(validateEntry(two, { id: 9, defs: ['rey', 'gobernante', 'soberano'] }).some((m) => m.includes('nº defs')));
+  assert.deepEqual(validateEntry(two, { id: 9, defs: ['rey'] }), []);   // merge allowed
   assert.ok(validateEntry(two, { id: 9, defs: ['rey', '   '] }).some((m) => m.includes('vacía')));
   assert.ok(validateEntry(two, { id: 9, defs: ['rey', 'gobernante\u0007'] }).some((m) => m.includes('control')));
   // too short / too long relative to the English
@@ -80,6 +115,32 @@ test('validateEntry: catches the real failure modes', () => {
   assert.ok(validateEntry({ id: 1, defs: ['king'] }, { id: 1, defs: ['rey '.repeat(50)] }).some((m) => m.includes('larga')));
   // a proper noun with no translatable word is not an "english leak"
   assert.deepEqual(validateEntry({ id: 3, defs: ['Wang'] }, { id: 3, defs: ['Wang'] }), []);
+});
+
+test('validateEntry: a duplicated definition in one entry is an ERROR (§3.1)', () => {
+  const en = { id: 121806, defs: ['to embody', 'to incarnate'] };
+  assert.deepEqual(validateEntry(en, { id: 121806, defs: ['encarnar', 'reflejar'] }), []);
+  const dup = validateEntry(en, { id: 121806, defs: ['encarnar', 'encarnar'] });
+  assert.ok(dup.some((m) => m.includes('duplicada')), `esperaba duplicada, dio ${JSON.stringify(dup)}`);
+  // whitespace/case/punctuation do not hide a duplicate
+  assert.ok(validateEntry(en, { id: 1, defs: ['Encarnar!', 'encarnar'] }).some((m) => m.includes('duplicada')));
+  // the merged form is not a duplicate
+  assert.deepEqual(validateEntry(en, { id: 121806, defs: ['encarnar (tomar forma humana)'] }), []);
+});
+
+test('parentheticalLeaks: an English usage note kept verbatim is a warning (§3.4)', () => {
+  const en = { id: 179, defs: ['variant of 潔|洁[jie2] (mostly used in given names)'] };
+  const leaked = parentheticalLeaks(en, { id: 179, defs: ['variante de 潔|洁[jie2] (mostly used in given names)'] });
+  assert.equal(leaked.length, 1);
+  assert.match(leaked[0], /nota parentética sin traducir/);
+  // translated note, the same in both languages, or a proper name: no warning
+  assert.deepEqual(parentheticalLeaks(en, { id: 179, defs: ['variante de 潔|洁[jie2] (se usa mayormente en nombres propios)'] }), []);
+  assert.deepEqual(parentheticalLeaks({ id: 1, defs: ['to see (lit.)'] }, { id: 1, defs: ['véase (lit.)'] }), []);
+  assert.deepEqual(parentheticalLeaks({ id: 2, defs: ['a tree (Quercus)'] }, { id: 2, defs: ['un árbol (Quercus)'] }), []);
+  assert.deepEqual(parentheticalLeaks({ id: 3, defs: ['rat snake (Ptyas mucosus)'] }, { id: 3, defs: ['serpiente rata (Ptyas mucosus)'] }), []);
+  assert.equal(parentheticalLeaks({ id: 4, defs: ['x (medicinal)'] }, { id: 4, defs: ['x (medicinal)'] }).length, 1);
+  // and the deterministic template pass fixes it without any LLM
+  assert.deepEqual(parentheticalLeaks(en, { id: 179, defs: resolveTemplateDefs(en.defs) }), []);
 });
 
 // ---------------------------------------------------------------- resumption
