@@ -62,6 +62,52 @@ export function createSync({
   const getSession = async () => (await store.get('meta', SESSION_KEY)) ?? null;
   const setSession = (session) => store.set('meta', SESSION_KEY, session);
 
+  /** Refreshes an expired access token once. Returns the new session or null. */
+  async function refreshSession(session) {
+    if (!session?.refresh_token) return null;
+    try {
+      const res = await fetchImpl(`${base()}/auth/v1/token?grant_type=refresh_token`, {
+        method: 'POST',
+        headers: authHeaders(),
+        body: JSON.stringify({ refresh_token: session.refresh_token }),
+      });
+      if (!res.ok) return null;
+      const data = await res.json();
+      if (!data?.access_token) return null;
+      const next = {
+        ...session,
+        access_token: data.access_token,
+        refresh_token: data.refresh_token ?? session.refresh_token,
+      };
+      await setSession(next);
+      return next;
+    } catch {
+      return null;
+    }
+  }
+
+  /**
+   * fetch with the current token, retrying once after a 401 with the stored
+   * refresh_token (Supabase access tokens expire after an hour). Never throws
+   * on 401/expiry; network errors still propagate to the caller's try/catch.
+   */
+  async function authedFetch(url, options = {}) {
+    const session = await getSession();
+    if (!session?.access_token) return { ok: false, reason: 'not-signed-in' };
+    const send = (token) =>
+      fetchImpl(url, {
+        ...options,
+        headers: { ...authHeaders(token), ...(options.headers ?? {}) },
+      });
+    let res = await send(session.access_token);
+    if (res.status === 401) {
+      const refreshed = await refreshSession(session);
+      if (!refreshed) return { ok: false, reason: 'unauthorized', response: res };
+      res = await send(refreshed.access_token);
+    }
+    return { ok: true, response: res };
+  }
+
   /** Local records of the synced stores (+ tombstones). `stamp` fills in
    * updated_at for keys never written since sync was enabled. */
   async function collectLocal(state, stamp = false) {
@@ -161,12 +207,13 @@ export function createSync({
 
     if (rows.length) {
       try {
-        const res = await fetchImpl(`${base()}/rest/v1/${TABLE}`, {
+        const sent = await authedFetch(`${base()}/rest/v1/${TABLE}`, {
           method: 'POST',
-          headers: { ...authHeaders(session.access_token), Prefer: 'resolution=merge-duplicates' },
+          headers: { Prefer: 'resolution=merge-duplicates' },
           body: JSON.stringify(rows),
         });
-        if (!res.ok) return { ok: false, reason: 'http', status: res.status };
+        if (!sent.ok) return sent;
+        if (!sent.response.ok) return { ok: false, reason: 'http', status: sent.response.status };
       } catch (error) {
         return { ok: false, reason: 'offline', error };
       }
@@ -181,16 +228,15 @@ export function createSync({
   /** Fetches the remote rows, merges and applies the winners locally. */
   async function pull() {
     if (!configured()) return NOT_CONFIGURED;
-    const session = await getSession();
-    if (!session?.access_token) return { ok: false, reason: 'not-signed-in' };
 
     let remote;
     try {
-      const res = await fetchImpl(`${base()}/rest/v1/${TABLE}?select=store,key,value,updated_at,deleted`, {
-        headers: authHeaders(session.access_token),
-      });
-      if (!res.ok) return { ok: false, reason: 'http', status: res.status };
-      remote = await res.json();
+      const sent = await authedFetch(
+        `${base()}/rest/v1/${TABLE}?select=store,key,value,updated_at,deleted`,
+      );
+      if (!sent.ok) return sent;
+      if (!sent.response.ok) return { ok: false, reason: 'http', status: sent.response.status };
+      remote = await sent.response.json();
     } catch (error) {
       return { ok: false, reason: 'offline', error };
     }
@@ -241,11 +287,15 @@ export function createSync({
     return { ok: true, applied, total: merged.length };
   }
 
-  /** Push local changes, then pull remote ones. */
+  /** Pull remote changes and merge them locally, THEN push the merged state.
+   * Pull-first is what stops a device with an old local copy from overwriting a
+   * newer remote row on every sync. */
   async function syncNow() {
+    const pulled = await pull();
+    if (!pulled.ok) return pulled;
     const pushed = await push();
     if (!pushed.ok) return pushed;
-    return pull();
+    return { ok: true, pulled: pulled.applied, pushed: pushed.pushed };
   }
 
   /** Records a local write in the offline queue (called by the write hook). */
@@ -279,14 +329,12 @@ export function createSync({
   /** Deletes every synced row this user owns on the server (RLS scopes it). */
   async function deleteRemoteData() {
     if (!configured()) return NOT_CONFIGURED;
-    const session = await getSession();
-    if (!session?.access_token) return { ok: false, reason: 'not-signed-in' };
     try {
-      const res = await fetchImpl(`${base()}/rest/v1/${TABLE}?store=not.is.null`, {
+      const sent = await authedFetch(`${base()}/rest/v1/${TABLE}?store=not.is.null`, {
         method: 'DELETE',
-        headers: authHeaders(session.access_token),
       });
-      if (!res.ok) return { ok: false, reason: 'http', status: res.status };
+      if (!sent.ok) return sent;
+      if (!sent.response.ok) return { ok: false, reason: 'http', status: sent.response.status };
     } catch (error) {
       return { ok: false, reason: 'offline', error };
     }
@@ -296,10 +344,14 @@ export function createSync({
   const pending = async () => (await loadState()).queue.length;
   const lastSync = async () => (await loadState()).lastSync;
 
-  /** Mirrors every local write of a synced store into the offline queue. */
+  /** Mirrors every local write/deletion of a synced store into the queue. */
   function attach() {
-    return onWrite((change) => {
-      if (!applying && SYNC_STORES.includes(change.store)) enqueue(change);
+    const subscribe = store.onWrite ?? onWrite;
+    return subscribe((change) => {
+      if (applying || !SYNC_STORES.includes(change.store)) return undefined;
+      return change.deleted
+        ? enqueueDelete(change.store, change.key)
+        : enqueue(change);
     });
   }
 

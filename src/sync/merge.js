@@ -13,9 +13,9 @@
  *  - a deletion is just a write: the newest side wins, and on an exact tie the
  *    tombstone wins (never resurrect a key for free).
  *
- * Ties on `updated_at` always favour the FIRST argument (the local side), so a
- * pull(mergeAll(local, remote)) is deterministic and never rewrites identical
- * data.
+ * Ties on `updated_at` are broken by the serialised value (tombstones first),
+ * NOT by argument order: merge(a, b) and merge(b, a) return the same winner, so
+ * two devices that edit at the same millisecond still converge.
  */
 
 /** Stores that are synced. `meta` is device-local on purpose and never leaves. */
@@ -30,6 +30,14 @@ const isDeleted = (record) => Boolean(record?.deleted);
 const reviewsOf = (record) => {
   const value = record?.value;
   return value && typeof value === 'object' ? Number(value.reviews ?? 0) || 0 : 0;
+};
+/** Stable, argument-order-independent tie-break for equal timestamps. */
+const stableValue = (record) => {
+  try {
+    return JSON.stringify(record?.value ?? null);
+  } catch {
+    return String(record?.value);
+  }
 };
 
 /**
@@ -60,7 +68,9 @@ export function mergeRecord(local, remote) {
   const a = ts(local);
   const b = ts(remote);
   if (a !== b) return a > b ? local : remote;
-  return local; // tie: local wins (deterministic, no pointless rewrite)
+  // Exact tie (same millisecond): same answer on every device, both orders.
+  if (localDeleted) return local; // identical tombstones
+  return stableValue(local) >= stableValue(remote) ? local : remote;
 }
 
 /**

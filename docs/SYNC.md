@@ -92,16 +92,64 @@ Account screen).
 
 ## How the sync behaves
 
-- **Pull on open, push on change.** Opening the Account screen (or a sync) pulls
-  the server state and merges it in; every local write to a synced store is
-  queued and pushed by the next sync.
+- **Attach on boot, pull-merge-push on open.** `main.js` calls `sync.attach()`
+  only when the config is filled (sync off = zero requests), so every local
+  write to a synced store is queued. On open the client **pulls first, merges,
+  then pushes the merged state** (`syncNow`). Pull-first is the important part:
+  a device holding an old copy can no longer overwrite a newer server row.
 - **Offline is safe.** A failed request never throws: the change stays in the
-  local queue and is sent on the next **Sync now**.
-- **Merge rule** (`src/sync/merge.js`, pure and unit-tested): per key,
-  last-writer-wins on `updated_at`. Exception: review cards (`srs`) keep the
-  copy with the **higher number of reviews**, so a device with a skewed clock
-  cannot wipe out real study work. A deletion is a tombstone row
-  (`deleted = true`) and behaves like any other write — newest side wins, ties
-  go to the tombstone.
+  local queue and is sent on the next **Sync now**. A `401` is retried once
+  with `POST /auth/v1/token?grant_type=refresh_token` before giving up.
+- **Per-record deterministic merge** (`src/sync/merge.js`, pure and
+  unit-tested): the winner is the **newest `updated_at`**. Review cards (`srs`)
+  first compare the number of reviews, so a device with a skewed clock cannot
+  wipe out real study work; equal reviews fall back to `updated_at`. On an
+  exact timestamp tie the winner is chosen from the **value itself** (and a
+  tombstone always beats a live value), so `merge(a,b)` and `merge(b,a)` agree:
+  two devices editing in the same millisecond converge instead of keeping their
+  own copy.
+- **Deletions are tombstones.** `storage.remove()` fires the same write hook as
+  `set()` with `deleted: true`; the client records a tombstone
+  (`value = null, deleted = true`) and pushes it like any other write. A pull
+  that sees a winning tombstone removes the local key, and a later sync cannot
+  resurrect it. A genuinely newer edit still beats an older delete (that is a
+  deliberate edit, not a resurrection loop).
+- **Idempotent.** Pushing is an upsert on `(user_id, store, key)`; syncing twice
+  changes nothing and creates no duplicate rows.
+- **Nothing secret is uploaded.** Only the four synced stores (`srs`,
+  `progress`, `gamification`, `settings`) are collected; the `meta` store —
+  OpenRouter key and the sync session/bookkeeping — never leaves the device.
+  The backup export already lists those keys as private; the convergence test
+  asserts it.
 - **Delete my data from the server** removes every row you own (RLS scopes the
   delete to you) and leaves the local copy alone.
+
+## Protocol: final schema for your Supabase project
+
+The client only needs one table. Run this in the SQL Editor (it is the same
+file as `deploy/supabase-schema.sql`; keep them in sync):
+
+```sql
+create table if not exists public.sync_blobs (
+  user_id    uuid        not null default auth.uid() references auth.users (id) on delete cascade,
+  store      text        not null,               -- 'srs' | 'progress' | 'gamification' | 'settings'
+  key        text        not null,               -- storage key inside that store
+  value      jsonb,                              -- stored value (null for a tombstone)
+  updated_at timestamptz not null default now(), -- merge clock (ms precision from the client)
+  deleted    boolean     not null default false, -- tombstone: removed on some device
+  primary key (user_id, store, key)
+);
+
+alter table public.sync_blobs enable row level security;
+
+drop policy if exists "sync_blobs own rows" on public.sync_blobs;
+create policy "sync_blobs own rows" on public.sync_blobs
+  for all
+  using (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
+```
+
+Rows are upserted (`Prefer: resolution=merge-duplicates`) and `user_id` is
+never sent: the column default fills it from the JWT, so RLS keeps every user
+inside their own rows. The client merges locally before pushing, so the server
+can stay a dumb key/value store.

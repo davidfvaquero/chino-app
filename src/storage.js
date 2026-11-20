@@ -208,44 +208,50 @@ export function createStorage(driver) {
     if (typeof store !== 'string' || !store) throw new TypeError('store name required');
     return store;
   };
-  // Every method is async, so bad arguments surface as rejected promises
-  // (callers should not need try/catch around the call itself).
-  return {
-    get: async (store, key) => driver.get(check(store), String(key)),
-    set: async (store, key, value) => driver.set(check(store), String(key), value),
-    remove: async (store, key) => driver.remove(check(store), String(key)),
-    /** Alias kept so callers can use the name stated in the task API. */
-    delete: async (store, key) => driver.remove(check(store), String(key)),
-    list: async (store) => driver.list(check(store)),
-    name: async () => (driver.resolveName ? driver.resolveName() : driver.name),
-    _driver: driver,
-  };
-}
-
-/**
- * Optional sync/login hook (phase 5): register a callback invoked after every
- * successful local write, so a future remote layer can mirror changes.
- */
-const writeHooks = new Set();
-export function onWrite(fn) {
-  writeHooks.add(fn);
-  return () => writeHooks.delete(fn);
-}
-
-const store = createStorage(lazyDriver());
-const wrapped = {
-  ...store,
-  async set(st, key, value) {
-    const out = await store.set(st, key, value);
+  // Optional sync/login hook (phase 5): callbacks invoked after every
+  // successful local write, so a remote layer can mirror changes. Each storage
+  // instance owns its hooks, so two sync clients in one process (tests) do not
+  // observe each other's writes.
+  const writeHooks = new Set();
+  const emit = async (change) => {
     for (const fn of writeHooks) {
       try {
-        await fn({ store: st, key: String(key), value });
+        await fn(change);
       } catch (err) {
         console.warn('storage: write hook failed', err);
       }
     }
-    return out;
-  },
-};
+  };
+  // Every method is async, so bad arguments surface as rejected promises
+  // (callers should not need try/catch around the call itself).
+  const api = {
+    get: async (store, key) => driver.get(check(store), String(key)),
+    set: async (store, key, value) => {
+      const out = await driver.set(check(store), String(key), value);
+      await emit({ store, key: String(key), value });
+      return out;
+    },
+    remove: async (store, key) => {
+      const existed = await driver.remove(check(store), String(key));
+      await emit({ store, key: String(key), deleted: true });
+      return existed;
+    },
+    list: async (store) => driver.list(check(store)),
+    name: async () => (driver.resolveName ? driver.resolveName() : driver.name),
+    onWrite: (fn) => {
+      writeHooks.add(fn);
+      return () => writeHooks.delete(fn);
+    },
+    _driver: driver,
+  };
+  /** Alias kept so callers can use the name stated in the task API. */
+  api.delete = api.remove;
+  return api;
+}
 
-export default wrapped;
+const store = createStorage(lazyDriver());
+
+/** Subscribe to writes on the default storage (extension point for sync). */
+export const onWrite = (fn) => store.onWrite(fn);
+
+export default store;

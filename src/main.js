@@ -24,6 +24,8 @@ import { createRouter, navigate } from './router.js';
 import { registerServiceWorker, watchInstallPrompt } from './pwa.js';
 import { attach as attachStats } from './stats.js';
 import { applySettings } from './settings.js';
+import { isConfigured } from './sync/config.js';
+import { sync } from './sync/client.js';
 import './gamification-wire.js';
 import * as home from './screens/home.js';
 import * as dictionary from './screens/dictionary.js';
@@ -127,6 +129,12 @@ async function boot() {
   watchInstallPrompt();
   applySettings();
   attachStats();
+  // Sync stays off unless src/sync/config.js has a URL + anon key; then every
+  // local write is queued and a pull-merge-push runs on open.
+  if (isConfigured()) {
+    sync.attach();
+    sync.syncNow().catch(() => {});
+  }
   renderChrome();
   await router.start();
   registerServiceWorker();

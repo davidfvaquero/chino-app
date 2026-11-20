@@ -222,7 +222,7 @@ test('offline: a failed pull is reported, not thrown', async () => {
   assert.equal(result.reason, 'offline');
 });
 
-test('syncNow pushes then pulls', async () => {
+test('syncNow pulls first and then pushes the merged state', async () => {
   const { sync, store, fetchImpl } = await signedIn([
     { match: '/rest/v1/sync_blobs?select=', json: [] },
     { match: '/rest/v1/sync_blobs', json: {} },
@@ -232,10 +232,12 @@ test('syncNow pushes then pulls', async () => {
 
   const result = await sync.syncNow();
   assert.equal(result.ok, true);
+  assert.equal(result.pulled, 0);
+  assert.equal(result.pushed, 1);
   const methods = fetchImpl.calls
     .filter((c) => c.url.includes('/rest/v1/sync_blobs'))
     .map((c) => `${c.options.method ?? 'GET'} ${c.url.split('?')[0]}`);
-  assert.deepEqual(methods, ['POST https://demo.supabase.co/rest/v1/sync_blobs', 'GET https://demo.supabase.co/rest/v1/sync_blobs']);
+  assert.deepEqual(methods, ['GET https://demo.supabase.co/rest/v1/sync_blobs', 'POST https://demo.supabase.co/rest/v1/sync_blobs']);
 });
 
 test('deleteRemoteData sends a scoped DELETE and leaves the local copy alone', async () => {
