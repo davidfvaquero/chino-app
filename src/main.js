@@ -18,6 +18,7 @@ import {
   subscribe,
 } from './i18n.js';
 import storage from './storage.js';
+import { migrateSecrets } from './secrets.js';
 import { h } from './dom.js';
 import { icon } from './icons.js';
 import { createRouter, navigate } from './router.js';
@@ -129,6 +130,9 @@ async function boot() {
   watchInstallPrompt();
   applySettings();
   attachStats();
+  // The legacy OpenRouter key may still live in `settings`; move it to `meta`
+  // before sync can see (and re-write) it.
+  await migrateSecrets(storage);
   // Sync stays off unless src/sync/config.js has a URL + anon key; then every
   // local write is queued and a pull-merge-push runs on open.
   if (isConfigured()) {

@@ -27,6 +27,7 @@
 import storage, { onWrite } from '../storage.js';
 import { SYNC_CONFIG, isConfigured } from './config.js';
 import { SYNC_STORES, mergeAll } from './merge.js';
+import { isSecret } from '../secrets.js';
 
 export { SYNC_STORES };
 
@@ -114,10 +115,8 @@ export function createSync({
     const out = [];
     for (const name of SYNC_STORES) {
       for (const { key, value } of await store.list(name)) {
-        // The legacy OpenRouter key is a secret: it belongs in `meta` (never
-        // synced). A device that hasn't opened the conversation screen yet may
-        // still hold it in `settings` — never upload it.
-        if (name === 'settings' && key === 'openrouterKey') continue;
+        // Secrets (e.g. the legacy OpenRouter key in `settings`) never sync.
+        if (isSecret(name, key)) continue;
         const id = idOf(name, key);
         let updated = state.updatedAt[id] ?? 0;
         if (stamp && updated === 0) {
@@ -250,6 +249,7 @@ export function createSync({
     const localById = new Map(local.map((record) => [idOf(record.store, record.key), record]));
     const rows = (Array.isArray(remote) ? remote : [])
       .filter((row) => SYNC_STORES.includes(row?.store))
+      .filter((row) => !isSecret(row.store, row.key))
       .map((row) => ({
         store: row.store,
         key: row.key,

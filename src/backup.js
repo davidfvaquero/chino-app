@@ -19,6 +19,7 @@
  * value wins.
  */
 import storage, { STORES } from './storage.js';
+import { isSecret } from './secrets.js';
 
 export const APP_NAME = 'chino-app';
 /** Bump when the exported shape changes; older files are then rejected. */
@@ -26,8 +27,7 @@ export const EXPORT_VERSION = 1;
 export { STORES as BACKUP_STORES };
 
 /** Keys that must never leave the device (secrets / device session). */
-const PRIVATE = { meta: new Set(['openrouterKey', 'syncSession', 'syncState']) };
-const isPrivate = (store, key) => PRIVATE[store]?.has(key) ?? false;
+const isPrivate = (store, key) => isSecret(store, key);
 
 /** Read one store into a plain { key: value } object (private keys excluded). */
 async function readStore(store, db) {
