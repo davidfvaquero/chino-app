@@ -52,7 +52,7 @@ Workers.
 - **Review** (`#/review`) — spaced-repetition flashcards (SM-2 style) with the four
   grades (Again/Hard/Good/Easy); progress persists across reloads.
 - **Learn** (`#/learn`):
-  - *Lessons* (`hsk1`): vocabulary, choose/listen/match/order exercises.
+  - *Lessons* (`hsk1`, `hsk2`, `hsk3`): vocabulary, choose/listen/match/order exercises.
   - *Tones* — colour-coded tones, per-tone listening practice.
   - *Pinyin chart* — the full initial×final table with playable cells.
   - *Strokes* — stroke-order animation and drawing practice (single or multi-character).

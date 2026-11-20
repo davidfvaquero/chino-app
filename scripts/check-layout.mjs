@@ -24,7 +24,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { existsSync, mkdirSync } from 'node:fs';
 
-const dir = process.argv[2] || process.env.OUT_DIR || '/tmp/chino-layout';
+const dir = process.argv[2] || process.env.OUT_DIR || 'dist';
 const WIDTHS = [390, 320];
 const THEMES = ['light', 'dark'];
 const MIN_GAP = 4; // px of vertical separation required between pinyin and english

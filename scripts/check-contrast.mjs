@@ -23,7 +23,7 @@
 import { mkdirSync } from 'node:fs';
 import { runScenarios, AUDIT_FN } from './lib/audit.mjs';
 
-const dir = process.argv[2] || process.env.OUT_DIR || '/tmp/chino-design';
+const dir = process.argv[2] || process.env.OUT_DIR || 'dist';
 const SHOTS_DIR = process.env.SHOTS_DIR || '';
 const only = process.env.ONLY ? process.env.ONLY.split(',') : undefined;
 if (SHOTS_DIR) mkdirSync(SHOTS_DIR, { recursive: true });
