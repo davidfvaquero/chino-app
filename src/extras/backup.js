@@ -15,6 +15,7 @@
 import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import { exportAll, importAll, validate } from '../backup.js';
+import { localDayKey } from '../day.js';
 
 export const titleKey = 'backupScreen.title';
 
@@ -46,11 +47,7 @@ function ensureStyles(doc) {
 }
 
 /** Local date as YYYY-MM-DD, for the download file name. */
-export function dateStamp(ts = Date.now()) {
-  const d = new Date(ts);
-  const pad = (n) => String(n).padStart(2, '0');
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-}
+export const dateStamp = localDayKey;
 
 /** Short summary of a validated export, for the preview line. */
 export function describeExport(data) {

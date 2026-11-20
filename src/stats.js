@@ -24,6 +24,7 @@
  */
 import storage from './storage.js';
 import { createDeck } from './srs.js';
+import { localDayKey } from './day.js';
 
 export const STORE = 'progress';
 export const KEY_PREFIX = 'stats:';
@@ -43,10 +44,7 @@ const EVENT_NAMES = [...Object.keys(EVENT_FIELDS), ...ACTIVITY_EVENTS];
 
 const zeros = () => ({ reviews: 0, lessons: 0, readings: 0, strokes: 0, minutes: 0 });
 
-function dayOf(ts) {
-  const d = new Date(ts);
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-}
+const dayOf = localDayKey;
 
 /** 'YYYY-MM-DD' shifted by whole days (calendar math, no DST surprises). */
 function shiftDay(dateStr, delta) {

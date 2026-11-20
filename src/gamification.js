@@ -22,17 +22,16 @@
  * Achievements come from public/data/achievements.json:
  *   [{ id, nameKey, descKey, rule: { event, count } | { streak } | { points } }]
  *
- * i18n: the texts live behind `gamification.ach.<id>.name` / `.desc`. There is
- * no docs/CONVENTIONS.md yet and src/i18n.js has no src/locales/en.d/*.json
- * merge (it loads src/locales/en.json only), so those keys are undefined for
- * now and t() falls back to the key itself. When the CONVENTIONS task lands the
- * en.d mechanism, write them into src/locales/en.d/gamification.json — nothing
- * in this file changes (same note left on the kanban card).
+ * i18n: the texts live under `gamification.ach.<id>.name` / `.desc` in
+ * src/locales/en.d/gamification.json (and the es equivalent), which i18n.js
+ * merges in with the other locale shards. Adding a new achievement means a new
+ * entry there; nothing in this file changes.
  *
  * `now` (a function returning ms) is injectable for tests; the clock is read
  * once per call.
  */
 import storage from './storage.js';
+import { localDayNumber } from './day.js';
 
 export const STORE = 'gamification';
 export const STATE_KEY = 'state';
@@ -64,13 +63,10 @@ const emptyState = () => ({
 });
 
 /**
- * Local natural-day number (days since the UTC epoch shifted by the local tz
- * offset). Same calendar day -> same number, consecutive days -> +1.
+ * Local natural-day number (days since 1970-01-01 in the local timezone).
+ * Same calendar day -> same number, consecutive days -> +1.
  */
-export function dayIndex(now = Date.now()) {
-  const d = new Date(now);
-  return Math.floor((d.getTime() - d.getTimezoneOffset() * 60000) / 86400000);
-}
+export const dayIndex = localDayNumber;
 
 export function levelFor(points) {
   return Math.floor(Math.max(0, points) / POINTS_PER_LEVEL) + 1;

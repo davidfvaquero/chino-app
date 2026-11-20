@@ -7,8 +7,7 @@
  *
  * Flow: "Start plan" stores the start day in the `progress` store; the screen
  * lists the 30 days with a status (done / today / pending), each task opens its
- * route, and a day is marked done with a manual button (or automatically when
- * every task of that day has fired its `chino:*` event). Behind schedule?
+ * route, and a day is marked done with a manual button. Behind schedule?
  * "Catch up" shifts the start day so today is the first unfinished day;
  * "Reset plan" clears everything.
  *
@@ -35,6 +34,7 @@ import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import storage from '../storage.js';
 import { fetchData } from '../data-url.js';
+import { localDayNumber } from '../day.js';
 import { loadIndex as loadLessonIndex, LEVELS } from './lessons.js';
 import { loadIndex as loadThemeIndex } from './themes.js';
 import { loadIndex as loadGrammarIndex } from './grammar.js';
@@ -45,14 +45,10 @@ export const PLAN_PATH = 'plan/hsk1-30d.json';
 export const STORE = 'progress';
 export const KEY = 'plan:hsk1-30d';
 
-const DAY_MS = 86_400_000;
-
 /* ------------------------------------------------------------- pure logic -- */
 
 /** Whole local days since 1970-01-01 (stable across the local day). */
-export function dayIndex(date = new Date()) {
-  return Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / DAY_MS);
-}
+export const dayIndex = localDayNumber;
 
 /** Lesson level from its id prefix ('hsk3-05' -> 'hsk3', 'practical-01' -> 'practical'). */
 export function lessonLevel(id) {

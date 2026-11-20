@@ -37,6 +37,7 @@ import { loadIndex } from '../learn/lessons.js';
 import { getSettings } from '../settings.js';
 import { buildPdf } from '../pdf.js';
 import storage from '../storage.js';
+import { localDayKey } from '../day.js';
 import {
   clampCopies,
   MAX_COPIES,
@@ -244,10 +245,7 @@ async function renderSheetToPages(cards, options, { pinyinOn = true } = {}) {
 }
 
 /** Local YYYY-MM-DD stamp for the PDF filename. */
-export function dateStamp(date = new Date()) {
-  const pad = (n) => String(n).padStart(2, '0');
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-}
+export const dateStamp = localDayKey;
 
 /** Persisted sheet preferences (same `settings` store as the other options). */
 async function loadPrefs() {

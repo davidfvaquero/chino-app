@@ -21,21 +21,17 @@ import { loadIndex as loadLessonIndex, getProgress } from '../learn/lessons.js';
 import { loadIndex as loadReadingIndex } from '../reading/data.js';
 import { loadPlan, getProgress as getPlanProgress, currentDay } from '../learn/plan.js';
 import { fetchData } from '../data-url.js';
+import { localDayKey, localDayNumber } from '../day.js';
 
 export const titleKey = 'screens.home.title';
 
 const WOTD_STEP = 37; // coprime with 150 words: visits every word, no neighbours on consecutive days
 
 /** Local 'YYYY-MM-DD' (same key format as src/stats.js). */
-export function dayKey(date = new Date()) {
-  const p = (n) => String(n).padStart(2, '0');
-  return `${date.getFullYear()}-${p(date.getMonth() + 1)}-${p(date.getDate())}`;
-}
+export const dayKey = localDayKey;
 
 /** Whole local days since 1970-01-01 (stable across the local day). */
-export function dayNumber(date = new Date()) {
-  return Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86_400_000);
-}
+export const dayNumber = localDayNumber;
 
 /** Deterministic word for a date; null when the list is empty. */
 export function pickWordOfDay(items, date = new Date()) {
