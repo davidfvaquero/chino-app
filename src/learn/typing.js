@@ -68,7 +68,7 @@ const CSS = `
   background: var(--surface); color: inherit;
   autocapitalize: none; autocorrect: off; spellcheck: false; inputmode: text;
 }
-.typing-input:focus { outline: none; border-color: var(--accent); }
+.typing-input:focus { border-color: var(--accent); }
 
 .typing-feedback { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 1.25rem; line-height: 1.6; min-height: 1.6em; letter-spacing: 0.1em; }
 .typing-feedback .ok { color: var(--ok); }

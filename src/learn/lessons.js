@@ -35,6 +35,8 @@ import {
   unmatchPair,
   isMatchComplete,
   matchPairIndex,
+  missedVocabulary,
+  expectedAnswer,
 } from './exercises.js';
 import { ensureExerciseStyles } from './exercise-ui.css.js';
 import { fetchData } from '../data-url.js';
@@ -80,6 +82,12 @@ const CSS = `
 .vocab-item .example-hanzi { font-family: var(--font-hanzi); font-size: 1.25em; }
 .vocab-item .example-english { color: var(--ink-soft); }
 .vocab-item > .btn { margin-top: 0.5em; }
+/* Actions on top of the vocabulary list (P2-2): "add all" + the way forward,
+ * reachable without scrolling the 16 rows. */
+.lesson-vocab-actions,
+.lesson-result-actions { display: grid; gap: var(--gap); }
+.lesson-vocab-actions { margin: var(--gap) 0; }
+.lesson-result-actions { margin-top: var(--gap); }
 `;
 
 /** Inject the layout CSS into <head> once. */
@@ -150,7 +158,51 @@ export async function saveProgress(level, lessonId, patch = {}, { store = storag
 
 /** Inline text that works whether the lesson gives a key ('learn...') or a literal. */
 const HAN = /\p{Script=Han}/u;
+const HAN_RUN = /\p{Script=Han}+/gu;
 const label = (value) => (typeof value === 'string' && value ? t(value) : '');
+
+/** Reading without tone marks, so a display pinyin can be compared with an option. */
+const bareReading = (value) =>
+  String(value ?? '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\s'’-]/g, '')
+    .toLowerCase();
+
+/** hanzi -> pinyin from the lesson vocabulary. */
+function pinyinMapOf(vocabulary) {
+  const map = new Map();
+  for (const word of vocabulary ?? []) {
+    if (word?.hanzi && word?.pinyin) map.set(String(word.hanzi), String(word.pinyin));
+  }
+  return map;
+}
+
+/** Pinyin of every hanzi run in `value`; whole vocabulary words first, then single characters. */
+function pinyinForText(value, map) {
+  const out = [];
+  for (const run of String(value ?? '').match(HAN_RUN) ?? []) {
+    const chars = [...run];
+    let i = 0;
+    while (i < chars.length) {
+      let hit = '';
+      for (let len = Math.min(4, chars.length - i); len >= 1; len -= 1) {
+        const slice = chars.slice(i, i + len).join('');
+        if (map.has(slice)) {
+          hit = map.get(slice);
+          i += len;
+          break;
+        }
+      }
+      if (hit) out.push(hit);
+      else i += 1;
+    }
+  }
+  return out.join(' ').trim();
+}
+
+/** `<span class="pinyin">` from pinyinHtml (the global pinyin switch hides it), or null. */
+const pinyinLine = (pinyin) => (pinyin ? h('span', { class: 'pinyin', html: pinyinHtml(pinyin) }) : null);
 
 /* ------------------------------------------------------------------ list -- */
 
@@ -210,6 +262,10 @@ async function renderLesson(container, ctx, lessonId, level) {
   const lesson = await loadLesson(index.level, lessonId);
   const exercises = Array.isArray(lesson.exercises) ? lesson.exercises : [];
   const results = [];
+  /** hanzi -> pinyin, so an exercise can show a reading under its hanzi. */
+  const readings = pinyinMapOf(lesson.vocabulary);
+  /** hanzi -> vocabulary entry, for the meaning in the failure text. */
+  const vocabWords = new Map((lesson.vocabulary ?? []).map((word) => [String(word.hanzi), word]));
   let step = 'intro';
   let current = 0;
 
@@ -239,11 +295,33 @@ async function renderLesson(container, ctx, lessonId, level) {
   }
 
   function vocabularyStep() {
+    const words = lesson.vocabulary ?? [];
     const section = h('section', { class: 'lesson-vocabulary lesson-step' }, h('h2', { text: t('learn.lessons.vocabulary') }));
-    for (const word of lesson.vocabulary ?? []) {
+    const addAll = h('button', {
+      type: 'button',
+      class: 'btn',
+      text: t('learn.lessons.addAllToReview'),
+      onclick: async () => {
+        addAll.disabled = true;
+        for (const word of words) {
+          await addToReview({ hanzi: word.hanzi, pinyin: word.pinyin, english: word.english, source: 'lesson' });
+        }
+        addAll.textContent = t('learn.lessons.addedAll');
+      },
+    });
+    // The actions sit on top, so the way forward is reachable without scrolling 16 rows.
+    section.append(
+      h(
+        'div',
+        { class: 'lesson-vocab-actions' },
+        addAll,
+        h('button', { type: 'button', class: 'btn primary lg', text: t('learn.lessons.next'), onclick: () => go('exercises') }),
+      ),
+    );
+    for (const word of words) {
       const button = h('button', {
         type: 'button',
-        class: 'btn sm',
+        class: 'btn sm ghost vocab-add',
         text: t('learn.lessons.addToReview'),
         onclick: async () => {
           button.disabled = true;
@@ -271,7 +349,6 @@ async function renderLesson(container, ctx, lessonId, level) {
         ),
       );
     }
-    section.append(h('button', { type: 'button', class: 'btn primary lg', text: t('learn.lessons.next'), onclick: () => go('exercises') }));
     return section;
   }
 
@@ -316,6 +393,8 @@ async function renderLesson(container, ctx, lessonId, level) {
   function exerciseView(exercise, onContinue) {
     const box = h('div', { class: 'exercise-body' });
     box.append(h('p', { class: 'prompt', text: exercise.prompt ?? '' }));
+    const reading = promptPinyin(exercise);
+    if (reading) box.append(h('p', { class: 'pinyin', html: pinyinHtml(reading) }));
     if (exercise.type === 'listen') {
       box.append(
         h('button', {
@@ -332,36 +411,69 @@ async function renderLesson(container, ctx, lessonId, level) {
     return box;
   }
 
+  /**
+   * Reading of the hanzi inside a `choose` prompt (P2-1). Empty for the other
+   * types (their hanzi are the option/chip buttons) and when the reading would
+   * be the answer — the pinyin-choice exercise must not give itself away.
+   */
+  function promptPinyin(exercise) {
+    if (exercise.type !== 'choose') return '';
+    const reading = pinyinForText(exercise.prompt ?? '', readings);
+    if (!reading) return '';
+    const candidates = [...(exercise.options ?? []), exercise.answer];
+    if (candidates.some((value) => bareReading(value) === bareReading(reading))) return '';
+    return reading;
+  }
+
+  /** Live region for the right/wrong message (WCAG 4.1.3); the focus never moves to it. */
+  function feedbackBox() {
+    return h('div', { class: 'feedback-box', role: 'status', 'aria-live': 'polite' });
+  }
+
+  /** The correct answer as display text, with its meaning when the answer is a lesson word. */
+  function answerLabel(result) {
+    const expected = expectedAnswer(result);
+    if (!expected || result.type === 'match') return expected;
+    const meaning = vocabWords.get(expected)?.english;
+    return meaning ? `${expected} (${meaning})` : expected;
+  }
+
   function finish(feedback, result, onContinue) {
     feedback.append(
       h('p', {
         class: result.correct ? 'feedback ok' : 'feedback bad',
-        text: result.correct ? t('learn.lessons.correct') : t('learn.lessons.incorrect'),
+        text: result.correct ? t('learn.lessons.correct') : t('learn.lessons.incorrectAnswer', { answer: answerLabel(result) }),
       }),
     );
     feedback.append(h('button', { type: 'button', class: 'btn primary', text: t('learn.lessons.continue'), onclick: () => onContinue(result) }));
   }
 
   function choiceBody(exercise, box, onContinue) {
-    const feedback = h('div', { class: 'feedback-box' });
+    const feedback = feedbackBox();
     const options = h('div', { class: 'options' });
     for (const option of exercise.options ?? []) {
+      const value = String(option);
+      const isHan = HAN.test(value);
+      const reading = isHan ? pinyinForText(value, readings) : '';
       options.append(
-        h('button', {
-          type: 'button',
-          class: `btn option${HAN.test(String(option)) ? ' hz' : ''}`,
-          'data-value': String(option),
-          text: String(option),
-          onclick: (event) => {
-            const result = gradeExercise(exercise, option);
-            for (const btn of options.children) {
-              btn.disabled = true;
-              if (btn.dataset.value === result.expected) btn.classList.add(result.correct ? 'is-correct' : 'is-missed');
-            }
-            if (!result.correct) event.currentTarget.classList.add('is-wrong');
-            finish(feedback, result, onContinue);
+        h(
+          'button',
+          {
+            type: 'button',
+            class: `btn option${isHan ? ' hz' : ''}`,
+            'data-value': value,
+            onclick: (event) => {
+              const result = gradeExercise(exercise, option);
+              for (const btn of options.children) {
+                btn.disabled = true;
+                if (btn.dataset.value === result.expected) btn.classList.add(result.correct ? 'is-correct' : 'is-missed');
+              }
+              if (!result.correct) event.currentTarget.classList.add('is-wrong');
+              finish(feedback, result, onContinue);
+            },
           },
-        }),
+          ...(isHan ? [h('span', { class: 'option-label', text: value }), pinyinLine(reading)] : [value]),
+        ),
       );
     }
     box.append(options, feedback);
@@ -373,34 +485,33 @@ async function renderLesson(container, ctx, lessonId, level) {
     const answer = [];
     const answerRow = h('div', { class: 'answer-row' });
     const poolRow = h('div', { class: 'pool-row' });
-    const feedback = h('div', { class: 'feedback-box' });
+    const feedback = feedbackBox();
+
+    /** A token chip: the hanzi with its reading underneath (P2-1). */
+    const tokenChip = (token, onclick) =>
+      h(
+        'button',
+        { type: 'button', class: 'chip', onclick },
+        h('span', { class: 'chip-hanzi', text: token }),
+        pinyinLine(pinyinForText(token, readings)),
+      );
 
     const redrawRows = () => {
       answerRow.replaceChildren(
         ...answer.map((token, index) =>
-          h('button', {
-            type: 'button',
-            class: 'chip',
-            text: token,
-            onclick: () => {
-              answer.splice(index, 1);
-              pool.push(token);
-              redrawRows();
-            },
+          tokenChip(token, () => {
+            answer.splice(index, 1);
+            pool.push(token);
+            redrawRows();
           }),
         ),
       );
       poolRow.replaceChildren(
         ...pool.map((token, index) =>
-          h('button', {
-            type: 'button',
-            class: 'chip',
-            text: token,
-            onclick: () => {
-              pool.splice(index, 1);
-              answer.push(token);
-              redrawRows();
-            },
+          tokenChip(token, () => {
+            pool.splice(index, 1);
+            answer.push(token);
+            redrawRows();
           }),
         ),
       );
@@ -430,7 +541,7 @@ async function renderLesson(container, ctx, lessonId, level) {
     const left = h('div', { class: 'match-col left' });
     const right = h('div', { class: 'match-col right' });
     const grid = h('div', { class: 'match-grid' }, left, right);
-    const feedback = h('div', { class: 'feedback-box' });
+    const feedback = feedbackBox();
     const leftButtons = [];
     const rightButtons = [];
 
@@ -462,20 +573,24 @@ async function renderLesson(container, ctx, lessonId, level) {
     };
 
     for (const pair of pairs) {
-      const btn = h('button', {
-        type: 'button',
-        class: 'chip match-chip',
-        text: pair.hanzi,
-        'aria-pressed': 'false',
-        onclick: () => {
-          if (locked) return;
-          const hanzi = pair.hanzi;
-          state = Object.prototype.hasOwnProperty.call(state.chosen, hanzi)
-            ? unmatchPair(state, hanzi)
-            : toggleMatchLeft(state, hanzi);
-          paint();
+      const btn = h(
+        'button',
+        {
+          type: 'button',
+          class: 'chip match-chip',
+          'aria-pressed': 'false',
+          onclick: () => {
+            if (locked) return;
+            const hanzi = pair.hanzi;
+            state = Object.prototype.hasOwnProperty.call(state.chosen, hanzi)
+              ? unmatchPair(state, hanzi)
+              : toggleMatchLeft(state, hanzi);
+            paint();
+          },
         },
-      });
+        h('span', { class: 'chip-hanzi', text: pair.hanzi }),
+        pinyinLine(pinyinForText(pair.hanzi, readings)),
+      );
       btn.dataset.hanzi = pair.hanzi;
       leftButtons.push(btn);
       left.append(btn);
@@ -534,32 +649,72 @@ async function renderLesson(container, ctx, lessonId, level) {
 
   function resultStep() {
     const summary = summarize(results);
-    return h(
+    const missed = missedVocabulary(exercises, results, lesson.vocabulary ?? []);
+    const section = h(
       'section',
       { class: 'card lesson-result lesson-step' },
-      h('h2', { text: t('learn.lessons.result') }),
-      h('p', { text: t('learn.lessons.resultScore', { score: summary.correct, total: exercises.length }) }),
-      progressBar(summary.correct, exercises.length),
+      // role=status: the ending is announced, without moving the focus (WCAG 4.1.3)
+      h(
+        'div',
+        { class: 'lesson-result-status', role: 'status', 'aria-live': 'polite' },
+        h('h2', { text: t('learn.lessons.result') }),
+        h('p', { text: t('learn.lessons.resultScore', { score: summary.correct, total: exercises.length }) }),
+        progressBar(summary.correct, exercises.length),
+      ),
+    );
+    /** Saves the final score and announces the lesson as done. */
+    const complete = async () => {
+      await saveProgress(index.level, lesson.id, {
+        score: summary.correct,
+        total: exercises.length,
+        answered: exercises.length,
+        completed: true,
+      });
+      window.dispatchEvent(
+        new CustomEvent('chino:lesson_done', {
+          detail: { level: index.level, lessonId: lesson.id, score: summary.correct, total: exercises.length },
+        }),
+      );
+    };
+    const actions = h('div', { class: 'lesson-result-actions' });
+    if (missed.length) {
+      // The error is the lesson: put every missed word back in the review deck.
+      actions.append(
+        h('button', {
+          type: 'button',
+          class: 'btn primary lg',
+          text: t('learn.lessons.reviewMissed'),
+          onclick: async () => {
+            await complete();
+            for (const word of missed) await addToReview(word);
+            ctx.navigate('review');
+          },
+        }),
+      );
+    }
+    actions.append(
       h('button', {
         type: 'button',
-        class: 'btn primary lg',
+        class: 'btn lg',
+        text: t('learn.lessons.repeatLesson'),
+        onclick: () => {
+          results.length = 0;
+          current = 0;
+          go('intro');
+        },
+      }),
+      h('button', {
+        type: 'button',
+        class: 'btn ghost lg',
         text: t('learn.lessons.finish'),
         onclick: async () => {
-          await saveProgress(index.level, lesson.id, {
-            score: summary.correct,
-            total: exercises.length,
-            answered: exercises.length,
-            completed: true,
-          });
-          window.dispatchEvent(
-            new CustomEvent('chino:lesson_done', {
-              detail: { level: index.level, lessonId: lesson.id, score: summary.correct, total: exercises.length },
-            }),
-          );
+          await complete();
           ctx.navigate(index.level === DEFAULT_LEVEL ? 'learn/lessons' : `learn/lessons?level=${index.level}`);
         },
       }),
     );
+    section.append(actions);
+    return section;
   }
 
   draw();

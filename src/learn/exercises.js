@@ -149,3 +149,58 @@ export function summarize(results = []) {
   const score = total ? list.reduce((sum, result) => sum + (result?.score ?? 0), 0) / total : 0;
   return { correct, total, score };
 }
+
+/* --------------------------------------------------- review the error loop -- */
+
+const HAN_RUN = /\p{Script=Han}+/gu;
+
+/** Every free-text field of an exercise that may hold hanzi (prompt, answer, options, tokens, pairs, audio). */
+export function exerciseTexts(exercise = {}) {
+  const out = [];
+  for (const value of [exercise?.prompt, exercise?.answer, exercise?.audio]) {
+    if (typeof value === 'string') out.push(value);
+  }
+  for (const option of exercise?.options ?? []) out.push(text(option));
+  for (const token of exercise?.tokens ?? []) out.push(text(token));
+  for (const pair of exercise?.pairs ?? []) out.push(text(pair?.hanzi));
+  return out;
+}
+
+/**
+ * Deck cards for the exercises the learner got wrong: the vocabulary words
+ * that appear in a failed exercise, deduped, in lesson order. Pure, so the
+ * "review what I missed" flow is unit-testable (the UI hands the result to
+ * `addToReview` from src/srs.js). A hanzi run is used whole when the lesson
+ * vocabulary has it, else per character.
+ */
+export function missedVocabulary(exercises = [], results = [], vocabulary = []) {
+  const byWord = new Map();
+  for (const word of vocabulary ?? []) {
+    if (word?.hanzi) byWord.set(text(word.hanzi), word);
+  }
+  const seen = new Set();
+  const out = [];
+  (Array.isArray(exercises) ? exercises : []).forEach((exercise, index) => {
+    if (results?.[index]?.correct) return;
+    for (const value of exerciseTexts(exercise)) {
+      for (const run of String(value).match(HAN_RUN) ?? []) {
+        const characters = [...run];
+        const candidates = byWord.has(run) ? [run] : characters.filter((char) => byWord.has(char));
+        for (const hanzi of candidates) {
+          if (seen.has(hanzi)) continue;
+          seen.add(hanzi);
+          const word = byWord.get(hanzi);
+          out.push({ hanzi: word.hanzi, pinyin: word.pinyin ?? '', english: word.english ?? '', source: 'lesson' });
+        }
+      }
+    }
+  });
+  return out;
+}
+
+/** The correct answer of a `gradeExercise` result as display text (pairs joined for `match`). */
+export function expectedAnswer(result) {
+  const expected = result?.expected;
+  if (Array.isArray(expected)) return expected.map((pair) => `${pair.left} — ${pair.right}`).join(', ');
+  return text(expected);
+}

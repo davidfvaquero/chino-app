@@ -19,6 +19,15 @@ export const EXERCISE_UI_CSS = `
 .options { display: grid; gap: 0.5rem; }
 .options .btn { width: 100%; min-height: 3.5rem; }
 .btn.hz { font: 500 1.75rem/1.2 var(--font-hanzi); }
+/* Pinyin under a hanzi option / token chip (P2-1); the reading keeps the UI font. */
+.options .btn.option { flex-direction: column; align-items: flex-start; gap: 0.1rem; }
+.options .btn.option .pinyin { font-family: var(--font-ui); font-size: var(--fs-sm); font-weight: 500; line-height: 1.2; }
+.answer-row .chip,
+.pool-row .chip { flex-direction: column; gap: 0.1rem; }
+.answer-row .chip .pinyin,
+.pool-row .chip .pinyin,
+.match-col.left .chip .pinyin { font-family: var(--font-ui); font-size: 0.8rem; font-weight: 500; line-height: 1.2; letter-spacing: 0; }
+.match-col.left .chip { flex-direction: column; gap: 0.1rem; }
 .btn.is-correct { border-color: var(--ok); background: var(--ok-wash); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ok); animation: pop 0.28s var(--ease); }
 .btn.is-wrong { border-color: var(--danger); background: var(--danger-wash); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--danger); animation: shake 0.3s linear; }
 .btn.is-missed { border-style: dashed; border-color: var(--ok); }

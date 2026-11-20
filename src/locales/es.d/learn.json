@@ -11,16 +11,21 @@
       "vocabulary": "Vocabulario",
       "addToReview": "Añadir al repaso",
       "added": "Añadida ✓",
+      "addAllToReview": "Añadir todas al repaso",
+      "addedAll": "Añadidas ✓",
       "exerciseProgress": "Ejercicio {current} de {total}",
       "playAudio": "Reproducir",
       "correct": "¡Correcto!",
-      "incorrect": "Casi",
+      "incorrect": "Incorrecto.",
+      "incorrectAnswer": "Incorrecto. La respuesta es {answer}.",
       "continue": "Continuar",
       "check": "Comprobar",
       "orderHint": "Toca las palabras en el orden correcto.",
       "matchHint": "Toca una palabra y luego toca su significado.",
       "result": "Lección completada",
       "resultScore": "Has acertado {score} de {total}.",
+      "reviewMissed": "Repasar lo que fallé",
+      "repeatLesson": "Repetir lección",
       "finish": "Terminar"
     }
   }
