@@ -36,7 +36,7 @@ import { tonelessKey } from './pinyin.js';
 
 const BASE = typeof document === 'undefined' ? '/data/dict' : new URL('data/dict', document.baseURI);
 const ES_BASE = typeof document === 'undefined' ? '/data/es/dict' : new URL('data/es/dict', document.baseURI);
-const ES_SEARCH_BASE = typeof document === 'undefined' ? '/data/es/search' : new URL('data/es/search', document.baseURI);
+const ES_SEARCH_BASE = typeof document === 'undefined' ? '/data/search-es' : new URL('data/search-es', document.baseURI);
 
 const HANZI_RE = /[\u3400-\u9fff\uf900-\ufaff]/;
 const TONE_MARK_RE = /[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/i;

@@ -44,8 +44,8 @@ export function hskRanks(hskDir) {
 }
 
 /**
- * Compact search postings: `esDir/search/<letter>.json` maps a Spanish word to
- * `[[entryId, shard], …]` (at most MAX_POSTINGS, best first). One request per
+ * Compact search postings: `<data>/search-es/<letter>.json` maps a Spanish word
+ * to `[[entryId, shard], …]` (at most MAX_POSTINGS, best first). One request per
  * letter plus the few shards it points at, instead of every shard a word
  * appears in (REVIEW-2 C3).
  */
@@ -99,9 +99,9 @@ export function buildSearchIndex(esDir, { hskDir } = {}) {
     }
   }
 
-  // Kept OUTSIDE es/dict (which holds the translated data) so a rebuild of the
-  // search index never rewrites the dictionary itself.
-  const outDir = path.join(path.dirname(esDir), 'search');
+  // Kept outside public/data/es (which holds the translated data, checked by
+  // check-es-data) so a rebuild of the search index never touches it.
+  const outDir = path.join(path.dirname(esDir), '..', 'search-es');
   fs.rmSync(outDir, { recursive: true, force: true });
   fs.mkdirSync(outDir, { recursive: true });
   let words = 0;

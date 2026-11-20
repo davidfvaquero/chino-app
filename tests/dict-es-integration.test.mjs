@@ -15,7 +15,7 @@ import { buildIndex, esTokens, ES_STOPWORDS } from '../scripts/build-dict-es-ind
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = path.join(ROOT, 'public', 'data');
 const ES = '/data/es/dict/';
-const ES_SEARCH = '/data/es/search/';
+const ES_SEARCH = '/data/search-es/';
 
 /** Synthetic Spanish files for the test at hand: 'shards/003.json' -> value.
  *  A url missing from here answers 404 (the normal "not translated" case). */
@@ -24,7 +24,7 @@ let calls = [];
 
 async function testFetch(url) {
   calls.push(url);
-  for (const [prefix, key] of [[ES_SEARCH, 'search/'], [ES, '']]) {
+  for (const [prefix, key] of [[ES_SEARCH, ''], [ES, '']]) {
     if (!url.startsWith(prefix)) continue;
     const rel = key + url.slice(prefix.length);
     const value = Object.prototype.hasOwnProperty.call(esFiles, rel) ? esFiles[rel] : undefined;
@@ -110,14 +110,14 @@ test('Spanish index: a Spanish word finds its entry, and ranks first', async () 
   const hit = await helloEntry();
   esFiles = {
     [`shards/${pad3(hit.shard)}.json`]: [{ id: hit.id, defs: ['hola', 'saludo'] }],
-    'search/h.json': { hola: [[hit.id, hit.shard]], saludo: [[hit.id, hit.shard]] },
+    'h.json': { hola: [[hit.id, hit.shard]], saludo: [[hit.id, hit.shard]] },
   };
   calls = [];
   const results = await search('hola', { spanish: true });
   assert.ok(results.length > 0, 'the Spanish index found something');
   assert.equal(results[0].simp, '你好');
   assert.deepEqual(results[0].defsEs, ['hola', 'saludo']);
-  assert.ok(esCalls().some((url) => url.endsWith('search/h.json')));
+  assert.ok(esCalls().some((url) => url.endsWith('/data/search-es/h.json')));
 });
 
 test('Spanish index missing: a Latin query behaves as before (English only)', async () => {
@@ -126,7 +126,7 @@ test('Spanish index missing: a Latin query behaves as before (English only)', as
   const results = await search('hello', { spanish: true });
   assert.ok(results.length > 0);
   assert.ok(results.some((r) => r.simp === '你好'));
-  assert.ok(esCalls().some((url) => url.endsWith('search/h.json')), 'it tried the es index');
+  assert.ok(esCalls().some((url) => url.endsWith('/data/search-es/h.json')), 'it tried the es index');
 });
 
 test('buildIndex: word -> shards, accents stripped, stop-words dropped', () => {

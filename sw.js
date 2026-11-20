@@ -43,7 +43,7 @@ self.addEventListener('activate', (event) => {
 const isDataRequest = (url) => /\/data\//.test(url.pathname) && url.pathname.endsWith('.json');
 
 /** Data that never changes between app versions: cache-first, no revalidation. */
-const isImmutableData = (url) => /\/(?:es\/)?(?:dict|search|strokes)\//.test(url.pathname);
+const isImmutableData = (url) => /\/(?:es\/)?(?:dict|search|search-es|strokes)\//.test(url.pathname);
 
 /** Data JSON: stale-while-revalidate, or cache-first for immutable data. */
 async function dataStrategy(request) {

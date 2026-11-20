@@ -99,7 +99,7 @@ test('buildSearchIndex: postings are [id, shard] pairs, best first', () => {
     );
     const out = buildSearchIndex(esDir, { hskDir });
     assert.equal(out.words, 1);
-    const postings = JSON.parse(fs.readFileSync(path.join(dir, 'es', 'search', 'c.json'), 'utf8'));
+    const postings = JSON.parse(fs.readFileSync(path.join(dir, 'search-es', 'c.json'), 'utf8'));
     assert.deepEqual(postings.comer, [[1, 7], [2, 7]], 'HSK entry first, then by id');
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
