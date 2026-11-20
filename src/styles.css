@@ -154,6 +154,9 @@ a { color: var(--accent); text-underline-offset: 0.2em; }
   outline: none;
 }
 .screen > * { animation: page-in 0.2s ease-out; }
+/* Each route renders into its own node, so a slow screen cannot paint over the
+   next one; layout is unchanged because the slot is only a grouping box. */
+.route-slot { display: block; min-width: 0; }
 .screen .screen { padding: 0; }
 .screen .app-header { position: static; padding: 0 0 0.75rem; border: 0; }
 

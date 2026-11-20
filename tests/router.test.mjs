@@ -67,3 +67,41 @@ test('router renders the matching screen and cleanups the previous one', async (
   assert.equal(route.unknown, 'nope');
   assert.deepEqual(rendered, ['read', 'learn', 'learn', 'learn']);
 });
+
+test('I1: a slow screen cannot paint over the next one', async () => {
+  // Minimal DOM: each render gets its own slot node under the container.
+  const makeNode = () => {
+    const node = {
+      children: [],
+      className: '',
+      append(child) { this.children.push(child); },
+      remove() { node.removed = true; },
+    };
+    return node;
+  };
+  const container = makeNode();
+  container.replaceChildren = () => { container.children = []; };
+  const realDocument = globalThis.document;
+  globalThis.document = { createElement: () => makeNode() };
+  try {
+    const screens = {
+      slow: {
+        render: async (slot) => {
+          await new Promise((r) => setTimeout(r, 50));
+          slot.append('A');
+        },
+      },
+      fast: { render: (slot) => { slot.append('B'); } },
+    };
+    const router = createRouter({ container, screens, fallback: 'fast' });
+    globalThis.location = { hash: '#/slow' };
+    const slow = router.render();
+    globalThis.location = { hash: '#/fast' };
+    await router.render();
+    await slow;
+    const painted = container.children.flatMap((slot) => slot.children);
+    assert.deepEqual(painted, ['B'], 'only the live screen is on the container');
+  } finally {
+    globalThis.document = realDocument;
+  }
+});

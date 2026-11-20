@@ -60,11 +60,20 @@ export function createRouter({ container, screens, fallback = 'dictionary', onRo
     cleanup = null;
 
     container.replaceChildren();
+    const doc = container.ownerDocument || (typeof document !== 'undefined' ? document : null);
+    let slot = container;
+    if (doc) {
+      slot = doc.createElement('div');
+      slot.className = 'route-slot';
+      container.append(slot);
+    }
     const token = ++seq;
-    const result = await screen.render(container, { route, navigate });
+    const result = await screen.render(slot, { route, navigate });
     if (token !== seq) {
-      // A newer render started: drop this one's cleanup and leave the DOM alone.
+      // A newer render started: run this one's cleanup and drop its subtree
+      // (it may have painted into the slot after its own await).
       if (typeof result === 'function') result();
+      if (slot !== container) slot.remove();
       return route;
     }
     if (typeof result === 'function') cleanup = result;
