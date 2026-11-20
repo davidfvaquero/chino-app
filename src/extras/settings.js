@@ -181,6 +181,15 @@ export async function render(container, ctx) {
     const section = h('section', { class: 'card' });
     section.append(h('h2', { text: t('settings.credits.title') }));
     section.append(h('p', { class: 'settings-hint', text: t('settings.credits.dictEs') }));
+    // CC BY-SA 4.0 §3(a): attribution, changes and the licence URI, linked.
+    const link = (href, text) =>
+      h('a', { href, target: '_blank', rel: 'noopener noreferrer', text });
+    section.append(h('p', { class: 'settings-hint' },
+      link('https://creativecommons.org/licenses/by-sa/4.0/', 'CC BY-SA 4.0'),
+      ' · ',
+      link('https://www.mdbg.net/chinese/dictionary?page=cc-cedict', 'CC-CEDICT'),
+      ' · ',
+      link('data/es/dict/LICENSE.md', 'LICENSE')));
     return section;
   }
 

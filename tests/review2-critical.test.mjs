@@ -183,3 +183,29 @@ test('M2: a new service worker reloads the page once', () => {
   const pwa = fs.readFileSync(path.join(ROOT, 'src/pwa.js'), 'utf8');
   assert.match(pwa, /controllerchange', \(\) => location\.reload\(\), \{ once: true \}/);
 });
+
+// ---------------------------------------------------------------- I7
+test('I7: the licence and attribution ship with the build', async () => {
+  const { execFileSync } = await import('node:child_process');
+  const out = fs.mkdtempSync(path.join(os.tmpdir(), 'chino-build-'));
+  try {
+    execFileSync(process.execPath, ['scripts/build.mjs'], {
+      cwd: ROOT,
+      env: { ...process.env, OUT_DIR: out },
+      stdio: 'pipe',
+    });
+    assert.ok(fs.existsSync(path.join(out, 'CREDITS.md')), 'CREDITS.md is copied');
+    assert.ok(fs.existsSync(path.join(out, 'data/es/dict/LICENSE.md')), 'the ES dict licence ships');
+    const lic = fs.readFileSync(path.join(out, 'data/es/dict/LICENSE.md'), 'utf8');
+    assert.match(lic, /by-sa\/4\.0/);
+    assert.match(lic, /CC-CEDICT/);
+  } finally {
+    fs.rmSync(out, { recursive: true, force: true });
+  }
+});
+
+test('I7: Ajustes links to the licence and to CC-CEDICT', () => {
+  const settings = fs.readFileSync(path.join(ROOT, 'src/extras/settings.js'), 'utf8');
+  assert.match(settings, /by-sa\/4\.0/);
+  assert.match(settings, /mdbg\.net/);
+});

@@ -80,6 +80,12 @@ export function render(container, ctx = {}) {
   const list = h('ul', { class: 'dict-results', 'aria-label': t('dict.results') });
   // One small note per results screen (never per row) when Spanish shows.
   const note = h('p', { class: 'hint dict-note', hidden: true, text: t('dict.machineTranslation') });
+  note.append(' ', h('a', {
+    href: 'data/es/dict/LICENSE.md',
+    target: '_blank',
+    rel: 'noopener noreferrer',
+    text: 'CC BY-SA 4.0',
+  }));
   const form = h(
     'form',
     {

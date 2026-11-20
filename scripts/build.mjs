@@ -53,6 +53,10 @@ await cp(new URL('src/', root), new URL('src/', dist), { recursive: true });
 if (await exists(new URL('public/', root))) {
   await cp(new URL('public/', root), dist, { recursive: true });
 }
+// Attribution must ship with the data, not only live on GitHub Pages.
+if (await exists(new URL('CREDITS.md', root))) {
+  await cp(new URL('CREDITS.md', root), new URL('CREDITS.md', dist));
+}
 
 // 3b. Spanish dictionary index: generated from the translated shards that were
 //     just copied, and only when some exist. With none it is a no-op and the
