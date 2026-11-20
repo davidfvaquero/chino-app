@@ -11,7 +11,7 @@ import {
   markersIn, parseTranslation, validateEntry, parentheticalLeaks, GLOSSARY, buildBatches,
   computeToDo, mergeShardEntries, estimateTokens, costUsd,
 } from '../scripts/lib/dict-es.mjs';
-import { selectStrata, SYSTEM } from '../scripts/translate-dict.mjs';
+import { selectStrata, SYSTEM, parseArgs, anthropicBody, handleAnthropicResponse, failReason } from '../scripts/translate-dict.mjs';
 
 // ---------------------------------------------------------------- glossary
 test('templates: bare CC-CEDICT markers translate deterministically', () => {
@@ -172,4 +172,43 @@ test('selectStrata: 300 unique ids, 20 from the template tier', () => {
   assert.equal(sample.length, 300);
   assert.equal(new Set(sample).size, 300);
   assert.equal(sample.filter((id) => id >= 5000).length, 20);
+});
+
+// ---------------------------------------------------------------- thinking off
+test('anthropic: the request disables thinking and raises max_tokens (offline)', () => {
+  const body = JSON.parse(anthropicBody({ model: 'claude-haiku-5-5' }, [{ id: 1, defs: ['to go'] }]));
+  assert.deepEqual(body.thinking, { type: 'disabled' });
+  assert.equal(body.max_tokens, 8192);
+  assert.equal(body.model, 'claude-haiku-5-5');
+});
+
+test('anthropic: a truncated reply (stop_reason max_tokens) is invalid, reason "truncado"', () => {
+  const en = [{ id: 1, defs: ['to go'] }, { id: 2, defs: ['king'] }];
+  const trunc = { stop_reason: 'max_tokens', content: [{ type: 'text', text: '[{"id":1,"defs":["ir"]},{"id":2,"de' }] };
+  assert.throws(() => handleAnthropicResponse(trunc, en), (e) => failReason(e) === 'truncado');
+  assert.throws(() => handleAnthropicResponse(trunc, en), /truncada|max_tokens/);
+});
+
+test('anthropic: an empty thinking block does not hide a valid text block', () => {
+  const en = [{ id: 1, defs: ['to go'] }];
+  const ok = { stop_reason: 'end_turn',
+    content: [{ type: 'thinking', thinking: '' }, { type: 'text', text: '[{"id":1,"defs":["ir"]}]' }] };
+  assert.deepEqual(handleAnthropicResponse(ok, en).entries, [{ id: 1, defs: ['ir'] }]);
+  // no text block at all (only thinking) = empty reply
+  const onlyThink = { stop_reason: 'end_turn', content: [{ type: 'thinking', thinking: 'x' }] };
+  assert.throws(() => handleAnthropicResponse(onlyThink, en), (e) => failReason(e) === 'vacío');
+});
+
+test('failReason: classifies the measured failure modes', () => {
+  assert.equal(failReason(new Error('JSON inválido: Unterminated string in JSON at position 765')), 'json');
+  assert.equal(failReason(new Error('respuesta sin contenido')), 'vacío');
+  assert.equal(failReason(new Error('falta el id 42')), 'formato');
+  assert.equal(failReason(new Error('HTTP 500: sin detalle')), 'http');
+  assert.equal(failReason(new Error('vaya')), 'otro');
+});
+
+test('parseArgs: Claude defaults to 30-entry batches, openrouter to 40', () => {
+  assert.equal(parseArgs([]).batch, 30);
+  assert.equal(parseArgs(['--provider', 'openrouter']).batch, 40);
+  assert.equal(parseArgs(['--batch', '50']).batch, 50);
 });

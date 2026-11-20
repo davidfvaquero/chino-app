@@ -46,9 +46,9 @@ const CC_PREFIX = "You are Claude Code, Anthropic's official CLI for Claude.";
 const DEFAULTS = { anthropic: 'claude-haiku-5-5', openrouter: 'deepseek/deepseek-v4.1-flash' };
 
 // ---------------------------------------------------------------- args
-function parseArgs(argv) {
+export function parseArgs(argv) {
   const o = { provider: 'anthropic', tier: '1', limit: 0, maxUsd: 0, minBalance: 1.0,
-    concurrency: 0, batch: 40, model: '', dryRun: false, strata: '', out: '', pause: 150 };
+    concurrency: 0, batch: 0, model: '', dryRun: false, strata: '', out: '', pause: 150 };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     const val = () => argv[++i];
@@ -71,6 +71,9 @@ function parseArgs(argv) {
   const cap = o.provider === 'anthropic' ? 2 : 3;
   if (!o.concurrency) o.concurrency = cap;
   if (o.concurrency > cap) { console.warn(`  aviso: concurrencia limitada a ${cap} con ${o.provider}`); o.concurrency = cap; }
+  // Claude haiku spends ~50% of max_tokens on the thinking block, so 40-entry
+  // batches truncate: 30 is the safe default (measured in the pilot).
+  if (!o.batch) o.batch = o.provider === 'anthropic' ? 30 : 40;
   if (!o.out) o.out = o.strata === 'pilot' ? path.join(WORK, 'pilot') : path.join(DATA, 'es', 'dict');
   return o;
 }
@@ -234,18 +237,49 @@ async function callAnthropic(opt, entries) {
       'User-Agent': 'claude-cli/2.0.0 (external, cli)',
       'x-app': 'cli',
     },
-    body: JSON.stringify({ model: opt.model, max_tokens: 4096,
-      system: [{ type: 'text', text: CC_PREFIX }, { type: 'text', text: SYSTEM }],
-      messages: [{ role: 'user', content: userPrompt(entries) }] }),
+    body: anthropicBody(opt, entries),
   });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) { const e = new Error(`HTTP ${r.status}: ${j.error?.message || 'sin detalle'}`); e.status = r.status; throw e; }
+  return handleAnthropicResponse(j, entries);
+}
+
+/** The Anthropic request body. `thinking: disabled` is essential: with it on,
+ *  haiku spends ~50% of max_tokens on the thinking block and 30-40-entry
+ *  batches come back truncated or empty (measured: 322/380 failed batches).
+ *  max_tokens 8192 leaves room for the full JSON even on a hard batch. */
+export function anthropicBody(opt, entries) {
+  return JSON.stringify({ model: opt.model, max_tokens: 8192, thinking: { type: 'disabled' },
+    system: [{ type: 'text', text: CC_PREFIX }, { type: 'text', text: SYSTEM }],
+    messages: [{ role: 'user', content: userPrompt(entries) }] });
+}
+
+/** Map one raw /v1/messages payload to translated entries.
+ *  stop_reason 'max_tokens' = a truncated reply -> throw with reason 'truncado'
+ *  (runBatch halves the batch and retries); an empty text block -> 'vacío'.
+ *  Non-text blocks (thinking) are ignored. */
+export function handleAnthropicResponse(j, entries) {
+  if (j.stop_reason === 'max_tokens') {
+    const e = new Error('respuesta truncada (max_tokens)'); e.reason = 'truncado'; throw e;
+  }
   const text = (j.content || []).filter((b) => b.type === 'text').map((b) => b.text || '').join('');
-  if (!text) throw new Error('respuesta sin contenido');
+  if (!text) { const e = new Error('respuesta sin contenido'); e.reason = 'vacío'; throw e; }
   const parsed = parseTranslation(text, entries);
-  if (!parsed.ok) throw new Error(parsed.error);
+  if (!parsed.ok) { const e = new Error(parsed.error); e.reason = failReason(parsed.error); throw e; }
   const u = j.usage || {};
   return { entries: parsed.entries, inTok: u.input_tokens || 0, outTok: u.output_tokens || 0, usd: 0 };
+}
+
+/** Short failure category for the run summary (failed.json + last-run.json). */
+export function failReason(err) {
+  if (err && err.reason) return err.reason;
+  const m = String((err && err.message) || err || '');
+  if (m.includes('truncada') || m.includes('max_tokens')) return 'truncado';
+  if (/HTTP \d/.test(m)) return 'http';
+  if (m.includes('sin contenido')) return 'vacío';
+  if (m.includes('JSON inválido')) return 'json';
+  if (m.includes('no es una lista') || m.includes('sin {id, defs') || m.includes('falta el id') || m.includes('defs >')) return 'formato';
+  return 'otro';
 }
 
 const callModel = (opt, entries) => (opt.provider === 'anthropic' ? callAnthropic(opt, entries) : callOpenRouter(opt, entries));
@@ -272,10 +306,13 @@ async function runBatch(opt, entries, depth, stats) {
   } catch (err) {
     if (err.code === 4 || err.code === 3) throw err;
     stats.invalid += 1;
+    const reason = failReason(err);
+    stats.reasons[reason] = (stats.reasons[reason] || 0) + 1;
     if (depth >= 1 || entries.length === 1) {
-      stats.errors.push({ ids: entries.map((e) => e.id), error: String(err.message || err) });
+      stats.errors.push({ ids: entries.map((e) => e.id), error: String(err.message || err), reason });
       return [];
     }
+    // A truncated batch (or any other failure) is retried as two halves.
     const mid = Math.ceil(entries.length / 2);
     const a = await runBatch(opt, entries.slice(0, mid), depth + 1, stats);
     const b = await runBatch(opt, entries.slice(mid), depth + 1, stats);
@@ -319,7 +356,7 @@ async function main(argv) {
   console.log(`  out: ${path.relative(ROOT, opt.out)}`);
   if (opt.dryRun) return 0;
 
-  const stats = { inTok: 0, outTok: 0, usd: 0, invalid: 0, errors: [] };
+  const stats = { inTok: 0, outTok: 0, usd: 0, invalid: 0, errors: [], reasons: {} };
   const usageStart = opt.provider === 'anthropic' ? claudeUsage(true) : null;
   let balance = null;
   if (opt.provider === 'openrouter') {
@@ -382,6 +419,8 @@ async function main(argv) {
     when: new Date().toISOString(), provider: opt.provider, model: opt.model, out: path.relative(ROOT, opt.out),
     scope: scope.length, translated: results.length, template: templateIds.length,
     llmRequests: batches.length, invalidBatches: stats.invalid,
+    invalidRate: batches.length ? Number((stats.invalid / batches.length).toFixed(3)) : 0,
+    failReasons: stats.reasons,
     promptTokens: stats.inTok, completionTokens: stats.outTok, costUsd: Number(stats.usd.toFixed(6)),
     failed: stats.errors.map((e) => e.id), doneTotal: nowDone.size, donePerTier: perTier,
     usageStart: usageStart ? { session: usageStart.session, weekly: usageStart.weekly } : null,
@@ -395,7 +434,8 @@ async function main(argv) {
   }
 
   console.log(`\nhecho: ${results.length} entradas (${templateIds.length} plantilla)`);
-  console.log(`  lotes ${batches.length}, inválidos ${stats.invalid}, fallidos ${stats.errors.length}`);
+  console.log(`  lotes ${batches.length}, inválidos ${stats.invalid} (${summary.invalidRate != null ? `${Math.round(summary.invalidRate * 100)}%` : '0%'}), fallidos ${stats.errors.length}`);
+  if (Object.keys(stats.reasons).length) console.log(`  motivos de fallo: ${Object.entries(stats.reasons).map(([k, n]) => `${k} ${n}`).join(', ')}`);
   console.log(`  tokens ${stats.inTok}+${stats.outTok}${opt.provider === 'openrouter' ? `  coste real ~$${stats.usd.toFixed(5)}` : ''}`);
   if (delta) console.log(`  Claude delta: sesión ${delta.session >= 0 ? '+' : ''}${delta.session}% (${usageEnd.session}%), semana ${delta.weekly >= 0 ? '+' : ''}${delta.weekly}% (${usageEnd.weekly}%)`);
   console.log(`  hechas en total: ${nowDone.size} (T1 ${perTier[1]}, T2 ${perTier[2]}, plantilla ${perTier.template})`);
