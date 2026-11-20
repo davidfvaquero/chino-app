@@ -143,7 +143,6 @@ export function render(container, ctx = {}) {
     busy: false,
     status: '',
     statusError: false,
-    rewarded: false,
     ctrl: null,
   };
 
@@ -430,7 +429,6 @@ export function render(container, ctx = {}) {
 
   function startNewConversation() {
     state.messages = [{ role: 'assistant', ...openerFor(state.config.scenario) }];
-    state.rewarded = false;
     persist();
     paint();
   }
@@ -467,10 +465,10 @@ export function render(container, ctx = {}) {
       state.messages.push({ role: 'assistant', ...parsed });
       persist();
       setStatus('');
-      // Reward the conversation once, after 5 user messages.
+      // Reward once per conversation: exactly when the 5th user message is answered.
+      // (A flag in state reset on every screen visit, so re-entering paid again.)
       const userCount = state.messages.filter((m) => m.role === 'user').length;
-      if (!state.rewarded && userCount >= 5) {
-        state.rewarded = true;
+      if (userCount === 5) {
         window.dispatchEvent(new CustomEvent('chino:lesson_done', { detail: { source: 'conversation' } }));
       }
       state.busy = false;
