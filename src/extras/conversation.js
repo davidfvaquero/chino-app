@@ -28,6 +28,8 @@ import {
   fetchModels,
   recommendFreeModel,
   freeModels,
+  initialModel,
+  nextFreeModel,
   cheapPaidModels,
   estimateCostPer1000,
 } from '../chat/providers.js';
@@ -491,14 +493,15 @@ export function render(container, ctx = {}) {
   }
 
   function offerModelSwitch() {
+    if (root.querySelector('.conv-switch')) return;
     const box = root.querySelector('.conv-compose')?.parentElement || root;
     box.insertBefore(h('div', { class: 'conv-row' },
       h('button', {
-        type: 'button', class: 'btn', text: t('conversation.switchModel'),
+        type: 'button', class: 'btn conv-switch', text: t('conversation.switchModel'),
         onclick: () => {
-          state.config.openrouterModel = '';
-          storage.set('settings', CONFIG_KEYS.openrouterModel, '');
-          state.models = null;
+          const next = nextFreeModel(state.models || [], state.config.openrouterModel);
+          state.config.openrouterModel = next;
+          storage.set('settings', CONFIG_KEYS.openrouterModel, next);
           paint();
         },
       }),
@@ -512,12 +515,14 @@ export function render(container, ctx = {}) {
     root.replaceChildren();
     root.append(h('h2', { text: t(titleKey) }));
     root.append(renderConfig());
+    // Models must load even when no provider is available yet: with only the
+    // key pasted there is no model saved, and the list is what unlocks it.
+    loadModelsOnce();
 
     const provider = currentProvider();
     if (provider) {
       if (!state.messages.length) state.messages = [{ role: 'assistant', ...openerFor(state.config.scenario) }];
       root.append(renderChat(provider));
-      loadModelsOnce();
     } else if (state.config?.provider !== 'on-device' || !state.onDevice) {
       root.append(h('p', { class: 'conv-hint', text: t('conversation.notConfigured') }));
       root.append(renderHelp());
@@ -529,6 +534,14 @@ export function render(container, ctx = {}) {
     if (state.config.provider !== 'openrouter' || !state.config.openrouterKey) return;
     try {
       state.models = await fetchModels();
+      // First use: adopt the recommended free model so the provider becomes
+      // available with just the API key.
+      const chosen = state.config.openrouterModel || initialModel(state.models);
+      if (chosen && chosen !== state.config.openrouterModel) {
+        state.config.openrouterModel = chosen;
+        await storage.set('settings', CONFIG_KEYS.openrouterModel, chosen);
+        await reloadProviders();
+      }
       if (!state.disposed) paint();
     } catch {
       state.modelsError = true;

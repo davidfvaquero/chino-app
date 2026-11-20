@@ -13,6 +13,7 @@ import { exportAll } from '../src/backup.js';
 import { migrateSecrets, isSecret } from '../src/secrets.js';
 import { cleanGenerated } from '../scripts/lib/clean-data.mjs';
 import { createSync } from '../src/sync/client.js';
+import { initialModel, nextFreeModel, configuredProviders } from '../src/chat/providers.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -121,4 +122,35 @@ test('I18: pull ignores a remote settings.openrouterKey row', async () => {
   const res = await sync.pull();
   assert.equal(res.ok, true);
   assert.equal(await storage.get('settings', 'openrouterKey'), undefined);
+});
+// ---------------------------------------------------------------- C1
+const MODELS = [
+  { id: 'openai/gpt-4o', pricing: { prompt: '0.000005', completion: '0.000015' } },
+  { id: 'deepseek/deepseek-chat:free', pricing: { prompt: '0', completion: '0' } },
+];
+
+test('C1: initialModel picks a free model so the key alone is enough', () => {
+  assert.equal(initialModel(MODELS), 'deepseek/deepseek-chat:free');
+  assert.equal(initialModel([]), '');
+  const provider = configuredProviders({ openrouterKey: 'sk', openrouterModel: initialModel(MODELS) })
+    .find((p) => p.id === 'openrouter');
+  assert.equal(provider.available(), true);
+  // Without a saved model the provider is unavailable — the bug this guards.
+  const bare = configuredProviders({ openrouterKey: 'sk', openrouterModel: '' })
+    .find((p) => p.id === 'openrouter');
+  assert.equal(bare.available(), false);
+});
+
+test('C1: nextFreeModel never returns the current model or an empty id', () => {
+  assert.equal(nextFreeModel(MODELS, 'deepseek/deepseek-chat:free'), '');
+  assert.equal(nextFreeModel([...MODELS, { id: 'qwen/qwen:free' }], 'deepseek/deepseek-chat:free'), 'qwen/qwen:free');
+  assert.equal(nextFreeModel([], ''), '');
+});
+
+test('C1: paint loads models before checking the provider', () => {
+  const src = fs.readFileSync(path.join(ROOT, 'src/extras/conversation.js'), 'utf8');
+  const paint = src.slice(src.indexOf('function paint()'), src.indexOf('async function loadModelsOnce'));
+  assert.match(paint, /loadModelsOnce\(\);\s*\n\s*const provider/);
+  const load = src.slice(src.indexOf('async function loadModelsOnce'));
+  assert.match(load, /initialModel\(state\.models\)/);
 });

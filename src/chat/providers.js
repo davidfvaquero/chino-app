@@ -222,6 +222,19 @@ export function recommendFreeModel(models = []) {
   return zh || free[0] || null;
 }
 
+/**
+ * Model to save on first use, so pasting only the API key is enough to start
+ * a chat (the provider is unavailable until a model is stored).
+ */
+export function initialModel(models = []) {
+  return recommendFreeModel(models)?.id || '';
+}
+
+/** Next free model that differs from `current`, for the "switch model" button. */
+export function nextFreeModel(models = [], current = '') {
+  return freeModels(models).find((m) => m.id !== current)?.id || '';
+}
+
 /** Prices per million tokens, `blended` = prompt + completion (for cheap-first ordering). */
 export function pricePerMillion(model) {
   const p = model?.pricing || {};
