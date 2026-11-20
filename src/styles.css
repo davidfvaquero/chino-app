@@ -199,14 +199,14 @@ a { color: var(--accent); text-underline-offset: 0.2em; }
   border-radius: var(--r-md);
   background: transparent;
   color: var(--ink-soft);
-  font-size: 10px; /* px on purpose: six labels must fit 320px at any font scale */
+  font-size: 11px; /* px on purpose: six labels must fit 320px at any font scale */
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.1;
   cursor: pointer;
 }
 .tab svg { width: 1.5rem; height: 1.5rem; flex: none; }
-.tab .tab-label { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: -0.03em; } /* "Diccionario" at 320 px es was cut to "Dicciona…" */
+.tab .tab-label { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: -0.045em; } /* "Diccionario" at 320 px es must not be cut */
 .tab[aria-current="page"] { color: var(--accent); font-weight: 700; }
 .tab[aria-current="page"]::before {
   content: "";
@@ -509,6 +509,12 @@ label { overflow-wrap: anywhere; }
 .menu > [data-area="settings"].card.field::before { content: "设" / ""; }
 .menu > [data-area="backup"].card.field::before { content: "备" / ""; }
 
+/* Hub groups: a quiet text header per block (Learn / More), no box. */
+.menu-group { margin: 0 0 1.25rem; }
+.menu-group:last-child { margin-bottom: 0; }
+.menu-group-title { margin: 0 0 0.5rem; font-size: var(--fs-sm); font-weight: 700; color: var(--ink-soft); }
+.menu-group .menu { margin-bottom: 0; }
+
 .level-picker { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 var(--gap); }
 .level-picker .btn { width: auto; flex: 1 1 5rem; justify-content: center; }
 .level-picker .btn[aria-pressed="true"] {
@@ -701,6 +707,9 @@ label { overflow-wrap: anywhere; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+  /* Keep the right/wrong border and fill; drop only the pop/shake movement. */
+  .btn.is-wrong,
+  .btn.is-correct { animation: none !important; }
   .btn:active,
   .chip:active,
   .menu > .card.field:active { transform: none; }

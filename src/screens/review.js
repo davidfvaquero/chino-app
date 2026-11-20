@@ -63,8 +63,10 @@ const KEY = {
   close: 'reviewMode.close',
   wrong: 'reviewMode.wrong',
   suggested: 'reviewMode.suggested',
+  hint: 'reviewMode.hint',
 };
 const modeKey = (mode) => `reviewMode.mode.${mode}`;
+const hintKey = (mode) => `${KEY.hint}.${mode}`;
 
 /** Pure: how many days each rating would push the card out.
  * `{again, hard, good, easy}` — the numbers printed on the buttons. */
@@ -255,14 +257,19 @@ export function render(container, ctx = {}) {
       'div',
       { class: 'review-modes', role: 'group', 'aria-label': t(KEY.label) },
       ...REVIEW_MODES.map((mode) =>
-        h('button', {
-          type: 'button',
-          class: 'chip',
-          'aria-pressed': state.mode === mode ? 'true' : 'false',
-          dataset: { mode },
-          text: t(modeKey(mode)),
-          onclick: () => setMode(mode),
-        }),
+        h(
+          'div',
+          { class: 'stack', style: 'flex: 1 1 100%' },
+          h('button', {
+            type: 'button',
+            class: 'chip',
+            'aria-pressed': state.mode === mode ? 'true' : 'false',
+            dataset: { mode },
+            text: t(modeKey(mode)),
+            onclick: () => setMode(mode),
+          }),
+          h('span', { class: 'hint', text: t(hintKey(mode)) }),
+        ),
       ),
     );
   }
@@ -312,7 +319,7 @@ export function render(container, ctx = {}) {
   function audioButton(hanzi) {
     return h('button', {
       type: 'button',
-      class: 'btn sm',
+      class: 'btn ghost sm',
       text: t('review.audio'),
       onclick: async () => {
         const result = await speak(hanzi);
@@ -505,7 +512,7 @@ export function render(container, ctx = {}) {
 
     const actions = h('div', { class: 'cluster' });
     if (!empty) {
-      actions.append(h('button', { type: 'button', class: 'btn', text: t('review.done.again'), onclick: load }));
+      actions.append(h('button', { type: 'button', class: 'btn ghost', text: t('review.done.again'), onclick: load }));
     }
     actions.append(
       h('button', {

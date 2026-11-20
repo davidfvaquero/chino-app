@@ -1,6 +1,11 @@
 {
   "hubs": {
     "learn": {
+      "groups": {
+        "start": "Empieza",
+        "practice": "Practica",
+        "deepen": "Profundiza"
+      },
       "lessons": "Lecciones HSK",
       "tones": "Tonos y pinyin",
       "strokes": "Orden de trazos",
@@ -15,6 +20,11 @@
       }
     },
     "extras": {
+      "groups": {
+        "account": "Mi cuenta y datos",
+        "tools": "Herramientas",
+        "about": "Ayuda y acerca de"
+      },
       "profile": "Perfil y progreso",
       "draw": "Dibujar un carácter",
       "pronounce": "Práctica de pronunciación",

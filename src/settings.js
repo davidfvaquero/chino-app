@@ -214,18 +214,20 @@ export function applySettings() {
  */
 export function pinyinToggle() {
   const shown = () => document.documentElement.dataset.pinyin !== 'off';
+  const label = () => t('settings.pinyin.quickState', { state: t(shown() ? 'settings.pinyin.on' : 'settings.pinyin.off') });
   const sync = () => {
     if (!btn.isConnected) {
       window.removeEventListener('chino:settings_changed', sync);
       return;
     }
     btn.setAttribute('aria-pressed', String(shown()));
+    btn.textContent = label();
   };
   const btn = h('button', {
     type: 'button',
-    class: 'chip pinyin-toggle',
+    class: 'btn ghost sm pinyin-toggle',
     'data-action': 'toggle-pinyin',
-    text: t('settings.pinyin.quick'),
+    text: label(),
     onclick: () => setSetting('pinyin', !shown()),
   });
   btn.setAttribute('aria-pressed', String(shown()));

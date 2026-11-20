@@ -2,7 +2,7 @@
   "strokes": {
     "searchLabel": "Search a character",
     "searchPlaceholder": "Type a character, e.g. 你",
-    "searchButton": "Show",
+    "searchButton": "Show strokes",
     "searchResults": "Matching characters",
     "searchNoHanzi": "Type a Chinese character to see its strokes.",
     "boardLabel": "Stroke order diagram",

@@ -53,6 +53,7 @@ async function renderList(container, ctx) {
             onclick: () => ctx.navigate(`read/${reading.id}`),
           },
           h('span', { class: 'card-title', text: reading.title }),
+          ...(reading.pinyin ? [h('span', { class: 'hint', html: pinyinHtml(reading.pinyin) })] : []),
           h('span', { class: 'muted', text: reading.topic }),
         ),
       ),
@@ -105,7 +106,7 @@ async function renderReader(container, ctx, id) {
         : null,
       h('button', {
         type: 'button',
-        class: 'btn sm',
+        class: 'btn ghost sm',
         text: t('read.close'),
         onclick: () => {
           panel.hidden = true;
@@ -132,7 +133,7 @@ async function renderReader(container, ctx, id) {
         { class: 'row' },
         h('button', {
           type: 'button',
-          class: 'btn sm',
+          class: 'btn ghost sm',
           'data-action': 'back',
           text: t('read.back'),
           onclick: () => ctx.navigate('read'),
@@ -141,7 +142,7 @@ async function renderReader(container, ctx, id) {
         ttsOk
           ? h('button', {
               type: 'button',
-              class: 'btn sm',
+              class: 'btn ghost sm',
               'data-action': 'play-all',
               text: t('read.playAll'),
               onclick: () => speak(reading.lines.map((l) => l.hanzi).join(' ')),
@@ -186,7 +187,7 @@ async function buildLine(line, index, ttsOk, showWord) {
   return h(
     'div',
     { class: 'line', 'data-line': index + 1 },
-    line.speaker ? h('span', { class: 'speaker', text: line.speaker }) : null,
+    line.speaker ? h('span', { class: 'speaker', 'aria-label': t('read.speaker', { name: line.speaker }), text: line.speaker }) : null,
     h('p', { class: 'hanzi' }, ...body),
     h('p', { class: 'pinyin', html: pinyinHtml(line.pinyin) }),
     h('p', { class: 'english muted', text: line.english }),

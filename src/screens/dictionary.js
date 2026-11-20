@@ -11,13 +11,14 @@
  *   .dict-row[data-id]       one per result, data-added="true" when in the deck
  *   .dict-add[data-added]    the "Add to review" button
  */
-import { t } from '../i18n.js';
+import { t, getLocale } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import { href } from '../router.js';
-import { search } from '../dictionary.js';
+import { search, distinctDefs } from '../dictionary.js';
 import { addToReview, listCards, cardId } from '../srs.js';
 import { speak } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
+import { fetchData } from '../data-url.js';
 
 export const titleKey = 'screens.dictionary.title';
 
@@ -25,6 +26,29 @@ export const titleKey = 'screens.dictionary.title';
 export const DEBOUNCE_MS = 250;
 /** Max results shown for one query. */
 export const RESULT_LIMIT = 20;
+
+/** HSK levels whose Spanish word lists carry a gloss per hanzi. */
+const GLOSS_LEVELS = [1, 2, 3];
+/** hanzi -> Spanish gloss, loaded once per session (only when the UI is es). */
+let glossMap = null;
+
+/** Spanish glosses already translated in the HSK word lists (data/es/hsk). */
+function loadGlosses() {
+  if (!glossMap) {
+    glossMap = Promise.all(
+      GLOSS_LEVELS.map((level) => fetchData(`hsk/${level}.json`).catch(() => null)),
+    ).then((lists) => {
+      const map = new Map();
+      for (const list of lists) {
+        for (const word of list?.items ?? []) {
+          if (word?.hanzi && word?.english) map.set(word.hanzi, word.english);
+        }
+      }
+      return map;
+    });
+  }
+  return glossMap;
+}
 
 /** Ids already in the review deck (so a result can render as "added"). */
 async function deckIds() {
@@ -79,11 +103,11 @@ export function render(container, ctx = {}) {
   };
 
   /** One result row: hanzi (simp/trad), pinyin, meanings, audio, strokes, add. */
-  function row(entry, isAdded) {
+  function row(entry, isAdded, gloss = '') {
     const hanzi = entry.simp || entry.trad || '';
     const audio = h('button', {
       type: 'button',
-      class: 'btn sm dict-audio',
+      class: 'btn ghost sm dict-audio',
       text: t('dict.audio'),
       'aria-label': t('dict.audioFor', { hanzi }),
       onclick: async () => {
@@ -134,6 +158,7 @@ export function render(container, ctx = {}) {
       }),
     );
 
+    const defs = distinctDefs(entry.defs);
     const node = h(
       'li',
       {
@@ -148,7 +173,13 @@ export function render(container, ctx = {}) {
         audio,
       ),
       h('p', { class: 'dict-pinyin', html: pinyinHtml(entry.pinyinTone || entry.pinyinNum || '') }),
-      h('ul', { class: 'dict-defs' }, ...(entry.defs ?? []).map((def) => h('li', { text: def }))),
+      // A Spanish gloss already translated in the lesson data wins over the
+      // English CC-CEDICT ones; the English list stays, labelled.
+      ...(gloss ? [h('p', { class: 'dict-gloss', text: gloss })] : []),
+      ...(defs.length && getLocale() !== 'en'
+        ? [h('p', { class: 'hint', text: t('dict.defsEnglish') })]
+        : []),
+      h('ul', { class: 'dict-defs' }, ...defs.map((def) => h('li', { text: def }))),
       h('div', { class: 'dict-actions' }, ...strokes, add),
     );
     return node;
@@ -186,9 +217,16 @@ export function render(container, ctx = {}) {
     const added = await deckIds();
     if (seq !== state.seq || !state.alive) return;
 
+    const glosses = getLocale() === 'es' ? await loadGlosses().catch(() => null) : null;
+    if (seq !== state.seq || !state.alive) return;
+
     setState('results');
     setStatus(null);
-    list.replaceChildren(...results.map((entry) => row(entry, added.has(cardId(entry)))));
+    list.replaceChildren(
+      ...results.map((entry) =>
+        row(entry, added.has(cardId(entry)), glosses?.get(entry.simp || entry.trad) ?? ''),
+      ),
+    );
   }
 
   input.addEventListener('input', () => {

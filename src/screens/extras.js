@@ -34,6 +34,13 @@ const AREAS = [
 
 const load = (area) => import(`../extras/${area}.js`);
 
+/** Menu blocks, in reading order. Every area in AREAS appears exactly once. */
+const GROUPS = [
+  { key: 'account', areas: ['profile', 'stats', 'account', 'backup'] },
+  { key: 'tools', areas: ['paste', 'draw', 'pronounce', 'worksheet', 'anki', 'conversation'] },
+  { key: 'about', areas: ['settings'] },
+];
+
 /** Hanzi emblem per area (styles.css owns the old ones; the new areas get
  *  theirs here because that file is frozen). One line per area. */
 const EMBLEMS = { worksheet: '纸', anki: '卡', account: '云', conversation: '聊' };
@@ -59,27 +66,35 @@ export async function render(container, ctx) {
   if (AREAS.includes(area)) return (await load(area)).render(container, ctx);
 
   const modules = await Promise.all(AREAS.map((name) => load(name)));
+  const byArea = new Map(AREAS.map((name, index) => [name, modules[index]]));
   addEmblems();
   reset(container);
   container.append(
-    h(
-      'section',
-      { class: 'menu', 'aria-label': t(titleKey) },
-      ...modules.map((module, index) => {
-        const name = AREAS[index];
-        const description = descriptionKey(name);
-        return h(
-          'button',
-          {
-            type: 'button',
-            class: 'card field',
-            'data-area': name,
-            onclick: () => ctx.navigate(`extras/${name}`),
-          },
-          h('span', { text: t(labelKey(name, module)) }),
-          has(description) ? h('span', { class: 'muted', text: t(description) }) : null,
-        );
-      }),
+    ...GROUPS.map((group) =>
+      h(
+        'section',
+        { class: 'menu-group', 'aria-labelledby': `extras-group-${group.key}` },
+        h('h2', { class: 'menu-group-title', id: `extras-group-${group.key}`, text: t(`hubs.${HUB}.groups.${group.key}`) }),
+        h(
+          'div',
+          { class: 'menu' },
+          ...group.areas.map((name) => {
+            const module = byArea.get(name);
+            const description = descriptionKey(name);
+            return h(
+              'button',
+              {
+                type: 'button',
+                class: 'card field',
+                'data-area': name,
+                onclick: () => ctx.navigate(`extras/${name}`),
+              },
+              h('span', { text: t(labelKey(name, module)) }),
+              has(description) ? h('span', { class: 'muted', text: t(description) }) : null,
+            );
+          }),
+        ),
+      ),
     ),
   );
   container.focus({ preventScroll: true });

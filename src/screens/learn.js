@@ -39,6 +39,13 @@ const AREAS = [
 
 const load = (area) => import(`../learn/${area}.js`);
 
+/** Menu blocks, in reading order. Every area in AREAS appears exactly once. */
+const GROUPS = [
+  { key: 'start', areas: ['lessons', 'tones', 'pinyin-chart', 'strokes'] },
+  { key: 'practice', areas: ['sentences', 'themes', 'dictation', 'games', 'hardwords', 'radicals', 'exam', 'typing'] },
+  { key: 'deepen', areas: ['grammar', 'plan'] },
+];
+
 /** Hanzi emblem per area (styles.css owns the old ones; the new areas get
  *  theirs here because that file is frozen). One line per area. */
 const EMBLEMS = { plan: '计', exam: '考', typing: '打' };
@@ -64,27 +71,35 @@ export async function render(container, ctx) {
   if (AREAS.includes(area)) return (await load(area)).render(container, ctx);
 
   const modules = await Promise.all(AREAS.map((name) => load(name)));
+  const byArea = new Map(AREAS.map((name, index) => [name, modules[index]]));
   addEmblems();
   reset(container);
   container.append(
-    h(
-      'section',
-      { class: 'menu', 'aria-label': t(titleKey) },
-      ...modules.map((module, index) => {
-        const name = AREAS[index];
-        const description = descriptionKey(name);
-        return h(
-          'button',
-          {
-            type: 'button',
-            class: 'card field',
-            'data-area': name,
-            onclick: () => ctx.navigate(`learn/${name}`),
-          },
-          h('span', { text: t(labelKey(name, module)) }),
-          has(description) ? h('span', { class: 'muted', text: t(description) }) : null,
-        );
-      }),
+    ...GROUPS.map((group) =>
+      h(
+        'section',
+        { class: 'menu-group', 'aria-labelledby': `learn-group-${group.key}` },
+        h('h2', { class: 'menu-group-title', id: `learn-group-${group.key}`, text: t(`hubs.${HUB}.groups.${group.key}`) }),
+        h(
+          'div',
+          { class: 'menu' },
+          ...group.areas.map((name) => {
+            const module = byArea.get(name);
+            const description = descriptionKey(name);
+            return h(
+              'button',
+              {
+                type: 'button',
+                class: 'card field',
+                'data-area': name,
+                onclick: () => ctx.navigate(`learn/${name}`),
+              },
+              h('span', { text: t(labelKey(name, module)) }),
+              has(description) ? h('span', { class: 'muted', text: t(description) }) : null,
+            );
+          }),
+        ),
+      ),
     ),
   );
   container.focus({ preventScroll: true });

@@ -7,6 +7,7 @@
     "togglePinyin": "Pinyin",
     "tapWord": "Tap a word to see its meaning.",
     "playLine": "Play line {n}",
+    "speaker": "Speaker {name}",
     "playAll": "Read aloud",
     "notFound": "No dictionary entry for “{word}”.",
     "addToReview": "Add to review",

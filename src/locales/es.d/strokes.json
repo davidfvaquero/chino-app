@@ -2,7 +2,7 @@
   "strokes": {
     "searchLabel": "Buscar un carácter",
     "searchPlaceholder": "Escribe un carácter, p. ej. 你",
-    "searchButton": "Mostrar",
+    "searchButton": "Ver trazos",
     "searchResults": "Caracteres que coinciden",
     "searchNoHanzi": "Escribe un carácter chino para ver sus trazos.",
     "boardLabel": "Diagrama del orden de trazos",

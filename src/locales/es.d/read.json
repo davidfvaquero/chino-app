@@ -7,6 +7,7 @@
     "togglePinyin": "Pinyin",
     "tapWord": "Toca una palabra para ver su significado.",
     "playLine": "Reproducir línea {n}",
+    "speaker": "Hablante {name}",
     "playAll": "Leer en voz alta",
     "notFound": "No hay entrada de diccionario para «{word}».",
     "addToReview": "Añadir al repaso",

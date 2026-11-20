@@ -26,7 +26,8 @@
       "hint": "El pinyin es la pronunciación escrita con letras latinas y tildes. Apágalo cuando ya leas los caracteres; toca un carácter para ver su pinyin y significado.",
       "on": "Sí",
       "off": "No",
-      "quick": "Pinyin"
+      "quick": "Pinyin",
+      "quickState": "Pinyin: {state}"
     },
     "dailyGoal": {
       "title": "Meta diaria",

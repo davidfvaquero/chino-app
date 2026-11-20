@@ -26,7 +26,8 @@
       "hint": "Pinyin is the pronunciation written with Latin letters and tone marks. Turn it off when you can read the characters; tap a character to see its pinyin and meaning.",
       "on": "On",
       "off": "Off",
-      "quick": "Pinyin"
+      "quick": "Pinyin",
+      "quickState": "Pinyin: {state}"
     },
     "dailyGoal": {
       "title": "Daily goal",
