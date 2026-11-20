@@ -39,6 +39,7 @@ import { fileURLToPath } from 'node:url';
 
 import { pinyinToMarks, tonelessKey } from '../src/pinyin.js';
 import { buildTradSimpMap, toSimplified } from './lib/trad-simp.mjs';
+import { cleanGenerated } from './lib/clean-data.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const RAW = path.join(ROOT, '.cache');                 // raw downloads (git-ignored)
@@ -474,7 +475,9 @@ async function buildHsk() {
 async function main() {
   const t0 = Date.now();
   log('building data ->', path.relative(ROOT, OUT));
-  fs.rmSync(OUT, { recursive: true, force: true }); // OUT is fully generated; start clean
+  // Only our own outputs: public/data also holds hand-made and translated
+  // content (es/dict, lessons, readings, themes…) this script cannot regenerate.
+  cleanGenerated(OUT);
   ensureDir(OUT);
 
   const cedictGz = await cached(SOURCES.cedict.url, 'cedict.txt.gz');
