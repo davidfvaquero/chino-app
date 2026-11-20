@@ -237,7 +237,7 @@ No string literals in code — every UI text comes from `t('key')` (see `src/i18
 | `src/router.js` | Hash router, `parseRoute()` segments |
 | `src/storage.js` lines 206–249 | `createStorage()`, `onWrite()`, driver interface |
 | `src/i18n.js` | `t()`, `registerLocale()`, `loadAvailableLocales()`, `localeLabel()` |
-| `src/speech.js` | `speak()`, `speechAvailable()` |
+| `src/speech.js` | `listen()`, `compare()`, `isRecognitionAvailable()` |
 | `src/pwa.js` | `registerServiceWorker()` |
 | `scripts/build.mjs` | Build: copies to `dist/`, stamps `sw.js` VERSION |
 | `sw.js` | Service worker (relative paths, shell + data caching) |
