@@ -235,7 +235,7 @@ async function callAnthropic(opt, entries) {
   });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) { const e = new Error(`HTTP ${r.status}: ${j.error?.message || 'sin detalle'}`); e.status = r.status; throw e; }
-  const text = j.content?.[0]?.text;
+  const text = (j.content || []).filter((b) => b.type === 'text').map((b) => b.text || '').join('');
   if (!text) throw new Error('respuesta sin contenido');
   const parsed = parseTranslation(text, entries);
   if (!parsed.ok) throw new Error(parsed.error);
