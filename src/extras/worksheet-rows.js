@@ -245,14 +245,15 @@ export function drawWorksheetPage(ctx, page, plan, { labels = {}, pageIndex = 0,
   let y = plan.top;
   for (const row of page) {
     const stripH = row.strip.lines * row.strip.stepPt;
+    // Pinyin is printed whenever the sheet asks for it, not only with steps.
+    if (row.pinyin) {
+      ctx.fillStyle = INK;
+      ctx.font = `600 9px ${FONT}`;
+      ctx.textBaseline = 'middle';
+      ctx.fillText(row.pinyin, m.marginX, y + stripH / 2);
+      ctx.textBaseline = 'alphabetic';
+    }
     if (plan.showSteps) {
-      if (row.pinyin) {
-        ctx.fillStyle = INK;
-        ctx.font = `600 9px ${FONT}`;
-        ctx.textBaseline = 'middle';
-        ctx.fillText(row.pinyin, m.marginX, y + stripH / 2);
-        ctx.textBaseline = 'alphabetic';
-      }
       const set = row.card?.set;
       row.steps.forEach((step, index) => {
         const line = Math.floor(index / row.strip.perLine);

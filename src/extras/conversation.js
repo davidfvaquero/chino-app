@@ -15,7 +15,7 @@
  * runs need no network); `reset()` restores the real ones.
  */
 
-import { t } from '../i18n.js';
+import { t, getLocale } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import storage from '../storage.js';
 import { speak, isTtsAvailable } from '../audio.js';
@@ -468,7 +468,7 @@ async function sendMessage(provider, rawText, textarea, sendBtn, list) {
         role: m.role,
         content: m.role === 'user' ? (m.zh || m.content || '') : (m.zh || ''),
       }));
-      const payload = buildMessages({ level: state.config.level, scenario: state.config.scenario, history });
+      const payload = buildMessages({ level: state.config.level, scenario: state.config.scenario, uiLang: getLocale(), history });
       let acc = '';
       state.ctrl = new AbortController();
       for await (const delta of provider.send(payload, { signal: state.ctrl.signal })) {

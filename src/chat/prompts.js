@@ -46,8 +46,10 @@ export function scenarioTopic(scenario) {
   return SCENARIO_TOPICS[scenario] || SCENARIO_TOPICS.introductions;
 }
 
-export function buildSystemPrompt({ level = 1, scenario = 'introductions' } = {}) {
+export function buildSystemPrompt({ level = 1, scenario = 'introductions', uiLang = 'en' } = {}) {
   const hsk = HSK_LEVELS.includes(Number(level)) ? Number(level) : 1;
+  // The translation follows the app language: "en" used to be hard-coded.
+  const translation = uiLang === 'es' ? 'Spanish' : 'English';
   return [
     'You are a friendly Mandarin Chinese conversation partner for a beginner learner.',
     `The learner is at HSK ${hsk} level: use only very common words and the simplest grammar.`,
@@ -55,13 +57,13 @@ export function buildSystemPrompt({ level = 1, scenario = 'introductions' } = {}
     `Roleplay this situation: ${scenarioTopic(scenario)}.`,
     'Gently correct the learner: if their last message has a mistake, put a one-line note in "correction".',
     'Reply with STRICT JSON only, no markdown, with exactly these keys:',
-    '{"zh":"<reply in simplified Chinese>","pinyin":"<the same reply in pinyin with tone marks>","en":"<English translation>","correction":"<short note about the learner mistake, or empty string>"}',
+    `{"zh":"<reply in simplified Chinese>","pinyin":"<the same reply in pinyin with tone marks>","tr":"<the same reply translated into ${translation}>","correction":"<short note about the learner mistake, or empty string>"}`,
   ].join(' ');
 }
 
 /** System prompt + the (already trimmed) chat history, ready for send(). */
-export function buildMessages({ level = 1, scenario = 'introductions', history = [] } = {}) {
-  return trimHistory([{ role: 'system', content: buildSystemPrompt({ level, scenario }) }, ...history]);
+export function buildMessages({ level = 1, scenario = 'introductions', uiLang = 'en', history = [] } = {}) {
+  return trimHistory([{ role: 'system', content: buildSystemPrompt({ level, scenario, uiLang }) }, ...history]);
 }
 
 function stripFences(text) {
@@ -103,7 +105,7 @@ export function parseReply(text) {
       return {
         zh: String(obj.zh ?? obj.chinese ?? ''),
         pinyin: String(obj.pinyin ?? ''),
-        en: String(obj.en ?? obj.english ?? ''),
+        en: String(obj.en ?? obj.tr ?? obj.english ?? ''),
         correction: String(obj.correction ?? obj.note ?? ''),
       };
     }

@@ -209,3 +209,31 @@ test('I7: Ajustes links to the licence and to CC-CEDICT', () => {
   assert.match(settings, /by-sa\/4\.0/);
   assert.match(settings, /mdbg\.net/);
 });
+
+// ---------------------------------------------------------------- I15
+test('I15: the rows sheet prints the pinyin even with steps off', async () => {
+  const { planWorksheet, drawWorksheetPage } = await import('../src/extras/worksheet-rows.js');
+  const plan = planWorksheet([{ character: '你', pinyin: 'nǐ', strokes: 7 }], {
+    showSteps: false,
+    showPinyin: true,
+  });
+  const texts = [];
+  const ctx = new Proxy({}, {
+    get: (target, prop) => {
+      if (prop === 'fillText') return (text) => texts.push(text);
+      if (prop === 'measureText') return () => ({ width: 10 });
+      return () => {};
+    },
+    set: () => true,
+  });
+  drawWorksheetPage(ctx, plan.pages[0], plan, {});
+  assert.ok(texts.includes('nǐ'), `pinyin printed, got: ${texts.join(', ')}`);
+});
+
+// ---------------------------------------------------------------- I11
+test('I11: the chat translation follows the app language', async () => {
+  const { buildSystemPrompt, parseReply } = await import('../src/chat/prompts.js');
+  assert.match(buildSystemPrompt({ uiLang: 'es' }), /Spanish/);
+  assert.match(buildSystemPrompt({ uiLang: 'en' }), /English/);
+  assert.equal(parseReply('{"zh":"你好","tr":"Hola"}').en, 'Hola');
+});
