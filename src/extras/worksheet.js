@@ -8,8 +8,12 @@
  * (b) 田字格 grid cells — faint gray model repeated + empty cells for writing.
  *
  * Options: cell size (small/medium/large), rows per character (3–10),
- * show pinyin & meaning. Button "Print / Save as PDF" uses window.print()
- * with @media print stylesheet (A4 portrait, no menus).
+ * show pinyin & meaning. Primary button "Download PDF" renders each sheet page
+ * to a <canvas> (~150 dpi 田字格 grid, gray guide hanzi, pinyin/meaning when on)
+ * and packs the JPEGs into a real .pdf with src/pdf.js (no npm/CDN deps). On
+ * mobile the file is shared via navigator.share when available, otherwise
+ * downloaded as an <a download>. The old window.print() path is kept as a
+ * secondary button (its print stylesheet is A4 portrait, no menus).
  *
  * Reuses stroke loader/renderer from src/learn/strokes.js and
  * src/learn/strokes-sheet.js (import only, no edits). Max 20 characters.
@@ -30,6 +34,8 @@ import { lookup } from '../dictionary.js';
 import { pinyinHtml } from '../tone.js';
 import { getDueCards } from '../srs.js';
 import { loadIndex } from '../learn/lessons.js';
+import { getSettings } from '../settings.js';
+import { buildPdf } from '../pdf.js';
 
 export const titleKey = 'worksheet.title';
 export const MAX_CHARACTERS = 20;
@@ -90,6 +96,145 @@ export function calculateLayout(characters, options = {}) {
     totalRows,
     perChar,
   };
+}
+
+/* ---------------------------------------------------- PDF (canvas->JPEG) -- */
+
+// 150 dpi raster: 595.28×841.89 pt × 150/72 ≈ 1240×1754 px (A4 portrait).
+const PDF_PX_PER_PT = 150 / 72;
+const PDF_PAGE_W = Math.round(595.28 * PDF_PX_PER_PT);
+const PDF_PAGE_H = Math.round(841.89 * PDF_PX_PER_PT);
+const PDF_CELL_PX = { small: 80, medium: 96, large: 120 };
+// Hanzi fonts available on Android/iOS/desktop; falls back to the system UI font.
+const PDF_FONT = '"Noto Sans CJK SC", "Noto Sans CJK TC", "Noto Sans CJK", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif';
+const PDF_INK = '#1a1a1a';       // dark ink (light/dark theme both -> dark ink on white)
+const PDF_LINE = '#c4c4c4';      // 田字格 guide lines
+const PDF_GUIDE = 'rgba(26, 26, 26, 0.34)'; // gray model hanzi
+const PDF_BG = '#ffffff';
+
+/** Draw one 田字格 cell: border + dashed centre cross/diagonals + optional gray hanzi. */
+function drawTianCell(ctx, x, y, size, character) {
+  ctx.save();
+  ctx.strokeStyle = PDF_LINE;
+  ctx.lineWidth = 1.5;
+  ctx.strokeRect(x + 0.75, y + 0.75, size - 1.5, size - 1.5);
+  ctx.beginPath();
+  ctx.setLineDash([7, 7]);
+  const mid = size / 2;
+  ctx.moveTo(x, y + mid);
+  ctx.lineTo(x + size, y + mid);
+  ctx.moveTo(x + mid, y);
+  ctx.lineTo(x + mid, y + size);
+  ctx.moveTo(x, y);
+  ctx.lineTo(x + size, y + size);
+  ctx.moveTo(x + size, y);
+  ctx.lineTo(x, y + size);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  if (character) {
+    ctx.fillStyle = PDF_GUIDE;
+    ctx.font = `${Math.round(size * 0.82)}px ${PDF_FONT}`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(character, x + mid, y + size * 0.55);
+  }
+  ctx.restore();
+}
+
+/** Draw a character block: header (hanzi + optional pinyin/meaning) then rows of model+empty cells. */
+function drawCharBlock(ctx, card, { x, y, cellPx, rows, gap, showPinyin, showMeaning, pinyinOn }) {
+  const charSize = Math.round(cellPx * 0.95);
+  const entry = card.entry;
+  ctx.fillStyle = PDF_INK;
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.font = `600 ${charSize}px ${PDF_FONT}`;
+  ctx.fillText(card.character, x, y + charSize);
+
+  const tx = x + ctx.measureText(card.character).width + cellPx * 0.25;
+  let ty = y + charSize * 0.45;
+  if (showPinyin && pinyinOn && entry?.pinyinTone) {
+    ctx.font = `400 ${Math.round(charSize * 0.42)}px ${PDF_FONT}`;
+    ctx.fillText(entry.pinyinTone, tx, ty);
+    ty += charSize * 0.5;
+  }
+  if (showMeaning && entry?.defs?.length) {
+    ctx.font = `400 ${Math.round(charSize * 0.28)}px ${PDF_FONT}`;
+    ctx.fillText(entry.defs.slice(0, 2).join('; '), tx, ty);
+  }
+
+  const cellsTop = y + charSize + Math.round(cellPx * 0.2);
+  for (let row = 0; row < rows; row += 1) {
+    const cy = cellsTop + row * (cellPx + gap);
+    drawTianCell(ctx, x, cy, cellPx, card.character);            // model (gray guide)
+    drawTianCell(ctx, x + cellPx + gap, cy, cellPx, null);       // empty (write here)
+  }
+  return cellsTop + rows * cellPx + (rows - 1) * gap - y; // block height
+}
+
+/**
+ * Render the generated cards to one or more A4 canvases (~150 dpi) and encode
+ * each as a JPEG. New page when a block would not fit. Browser-only (canvas/Blob).
+ * @returns {Promise<Array<{jpeg: Uint8Array, width: number, height: number}>>}
+ */
+async function renderSheetToPages(cards, options, { pinyinOn = true } = {}) {
+  const cellPx = PDF_CELL_PX[options.cellSize] ?? PDF_CELL_PX.medium;
+  const rows = Math.min(10, Math.max(3, Math.floor(options.rowsPerChar) || 3));
+  const margin = 72;
+  const gap = 16;
+  const blockGap = 48;
+  const charSize = Math.round(cellPx * 0.95);
+  const blockH = charSize + Math.round(cellPx * 0.2) + rows * cellPx + (rows - 1) * gap;
+  const usableBottom = PDF_PAGE_H - margin;
+
+  const pages = [];
+  let ctx = null;
+  let y = margin;
+  const newPage = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = PDF_PAGE_W;
+    canvas.height = PDF_PAGE_H;
+    ctx = canvas.getContext('2d');
+    ctx.fillStyle = PDF_BG;
+    ctx.fillRect(0, 0, PDF_PAGE_W, PDF_PAGE_H);
+    pages.push(canvas);
+    y = margin;
+  };
+  newPage();
+
+  for (const card of cards) {
+    if (y + blockH > usableBottom && y > margin) newPage();
+    const height = drawCharBlock(ctx, card, {
+      x: margin,
+      y,
+      cellPx,
+      rows,
+      gap,
+      showPinyin: options.showPinyin,
+      showMeaning: options.showMeaning,
+      pinyinOn,
+    });
+    y += height + blockGap;
+  }
+
+  const out = [];
+  for (const canvas of pages) {
+    const blob = await new Promise((resolve, reject) => {
+      canvas.toBlob(
+        (b) => (b ? resolve(b) : reject(new Error('canvas.toBlob returned null'))),
+        'image/jpeg',
+        0.92,
+      );
+    });
+    out.push({ jpeg: new Uint8Array(await blob.arrayBuffer()), width: canvas.width, height: canvas.height });
+  }
+  return out;
+}
+
+/** Local YYYY-MM-DD stamp for the PDF filename. */
+export function dateStamp(date = new Date()) {
+  const pad = (n) => String(n).padStart(2, '0');
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
 
 /* --------------------------------------------------------------- screen -- */
@@ -288,6 +433,7 @@ export async function render(container, ctx) {
     showMeaning: true,
   };
   let generatedCards = [];
+  let lastPdfBlob = null;
   let alive = true;
 
   // UI skeleton
@@ -368,7 +514,15 @@ export async function render(container, ctx) {
     onclick: () => window.print(),
     disabled: true,
   });
-  const actions = h('div', { class: 'ws-actions' }, generateBtn, printBtn);
+  const pdfBtn = h('button', {
+    type: 'button',
+    class: 'ws-btn primary',
+    'data-action': 'download-pdf',
+    text: t('worksheet.downloadPdf'),
+    onclick: onDownloadPdf,
+    disabled: true,
+  });
+  const actions = h('div', { class: 'ws-actions' }, generateBtn, pdfBtn, printBtn);
 
   const warning = h('p', { class: 'ws-warning', hidden: true });
   const hint = h('p', { class: 'ws-hint' });
@@ -455,6 +609,7 @@ export async function render(container, ctx) {
       hint.textContent = t('worksheet.empty');
       sheetBox.hidden = true;
       printBtn.disabled = true;
+      pdfBtn.disabled = true;
       warning.hidden = true;
       return;
     }
@@ -465,6 +620,7 @@ export async function render(container, ctx) {
     hint.textContent = t('worksheet.loading');
     sheetBox.hidden = true;
     printBtn.disabled = true;
+    pdfBtn.disabled = true;
     sheetBox.replaceChildren();
 
     generatedCards = [];
@@ -526,10 +682,67 @@ export async function render(container, ctx) {
 
       sheetBox.hidden = false;
       printBtn.disabled = false;
+      pdfBtn.disabled = false;
       hint.textContent = '';
     } catch (err) {
       console.error('worksheet: generate failed', err);
       hint.textContent = t('worksheet.generateError');
+    }
+  }
+
+  /**
+   * Download a real .pdf: render the sheet to A4 canvases, pack them with
+   * src/pdf.js and hand the Blob to navigator.share (mobile) or an <a download>.
+   */
+  async function onDownloadPdf() {
+    if (!generatedCards.length) return;
+    pdfBtn.disabled = true;
+    hint.textContent = t('worksheet.generatingPdf');
+    try {
+      let pinyinOn = true;
+      try {
+        const settings = await getSettings();
+        pinyinOn = settings.pinyin !== false;
+      } catch {
+        /* settings unavailable — keep pinyin on */
+      }
+
+      const images = await renderSheetToPages(generatedCards, options, { pinyinOn });
+      const bytes = buildPdf(images);
+      const filename = `hoja-caligrafia-${dateStamp()}.pdf`;
+      const blob = new Blob([bytes], { type: 'application/pdf' });
+      lastPdfBlob = blob;
+
+      const file = new File([blob], filename, { type: 'application/pdf' });
+      if (typeof navigator !== 'undefined' && navigator.canShare?.({ files: [file] })) {
+        try {
+          await navigator.share({ files: [file], title: filename });
+          hint.textContent = '';
+          return;
+        } catch (err) {
+          if (err?.name === 'AbortError') {
+            hint.textContent = '';
+            return;
+          }
+          // share failed for good — fall through to the anchor download
+          console.error('worksheet: share failed, downloading instead', err);
+        }
+      }
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      document.body.append(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+      hint.textContent = t('worksheet.pdfReady');
+    } catch (err) {
+      console.error('worksheet: pdf failed', err);
+      hint.textContent = t('worksheet.pdfError');
+    } finally {
+      pdfBtn.disabled = false;
     }
   }
 
@@ -545,6 +758,10 @@ export async function render(container, ctx) {
       })),
       options: { ...options },
     }),
+    /** Last generated PDF Blob (or null), for headless checks. */
+    pdfBlob: () => lastPdfBlob,
+    /** Re-render the current sheet to JPEG pages (headless checks). */
+    pdfPages: () => renderSheetToPages(generatedCards, options, { pinyinOn: true }),
   };
 
   return () => {
