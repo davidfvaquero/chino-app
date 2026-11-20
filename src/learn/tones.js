@@ -21,6 +21,7 @@ import { speak } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
 import { gradeExercise, summarize } from './exercises.js';
 import { ensureExerciseStyles } from './exercise-ui.css.js';
+import { fetchData } from '../data-url.js';
 
 export const titleKey = 'hubs.learn.tones';
 export const LESSON_ID = 'tones';
@@ -29,16 +30,9 @@ export const PROGRESS_STORE = 'progress';
 /** Root of the lesson data, relative to this module (works in src/ and dist/). */
 export const DATA_BASE = new URL('../../data/lessons/', import.meta.url);
 
-const defaultFetchJson = async (url) => {
-  const res = await fetch(url, { cache: 'no-cache' });
-  if (!res.ok) throw new Error(`tones: ${res.status} for ${url}`);
-  return res.json();
-};
-
 /** Loads the tones lesson. `fetchJson`/`base` are injectable for tests. */
-export async function loadLesson({ base = DATA_BASE, fetchJson = defaultFetchJson } = {}) {
-  const url = new URL('tones.json', base);
-  const lesson = await fetchJson(url);
+export async function loadLesson({ base = DATA_BASE, fetchJson } = {}) {
+  const lesson = fetchJson ? await fetchJson(new URL('tones.json', base)) : await fetchData('lessons/tones.json');
   return { ...lesson, id: LESSON_ID };
 }
 
@@ -154,7 +148,7 @@ export async function render(container, ctx) {
     section.append(header);
 
     for (const word of lesson.vocabulary ?? []) {
-      const toneDisplay = word.tone === 0 ? 'Neutral' : `${word.tone}${['st','nd','rd','th'][word.tone-1] || 'th'}`;
+      const toneDisplay = t(`tones.toneName.${word.tone ?? 0}`);
       section.append(
         h('div', { class: 'vocab-item field' },
           h('span', { class: 'hanzi', text: word.hanzi }),

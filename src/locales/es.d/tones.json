@@ -26,6 +26,13 @@
       "tone0Desc": "Tono neutro: suave y corto (sin marca) — ma (partícula interrogativa). Rápido y sin acento.",
       "playTone": "Reproducir {tone}"
     },
+    "toneName": {
+      "0": "Neutro",
+      "1": "1.º",
+      "2": "2.º",
+      "3": "3.er",
+      "4": "4.º"
+    },
     "vocabulary": {
       "toneLabel": "Tono",
       "hanziLabel": "Carácter",

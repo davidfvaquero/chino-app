@@ -14,9 +14,9 @@ import { t } from '../../i18n.js';
 import { h, reset } from '../../dom.js';
 import { speak } from '../../audio.js';
 import { pinyinHtml } from '../../tone.js';
-import { search } from '../../dictionary.js';
+import { shuffle } from '../../random.js';
+import { loadWords } from './common.js';
 import storage from '../../storage.js';
-import { fetchData } from '../../data-url.js';
 
 export const titleKey = 'games.timed.title';
 export const id = 'timed';
@@ -73,7 +73,7 @@ function ensureStyles(doc) {
  */
 export function generateTimedRound(words, { count = DEFAULT_QUESTION_COUNT, mode = 'english' } = {}) {
   if (!Array.isArray(words) || words.length === 0) return { questions: [] };
-  const shuffled = [...words].sort(() => Math.random() - 0.5);
+  const shuffled = shuffle(words);
   const selected = shuffled.slice(0, Math.min(count, shuffled.length));
   const remaining = shuffled.slice(count);
 
@@ -88,8 +88,8 @@ export function generateTimedRound(words, { count = DEFAULT_QUESTION_COUNT, mode
       const otherSelected = selected.filter((_, i) => i !== idx).map((sw) => sw.hanzi);
       const distractorPool = [...remaining.map((rw) => rw.hanzi), ...otherSelected]
         .filter((h) => h !== correctAnswer);
-      const distractors = distractorPool.sort(() => Math.random() - 0.5).slice(0, 3);
-      options = [correctAnswer, ...distractors].sort(() => Math.random() - 0.5);
+      const distractors = shuffle(distractorPool).slice(0, 3);
+      options = shuffle([correctAnswer, ...distractors]);
       correctIndex = options.indexOf(correctAnswer);
     } else {
       // Hanzi -> english: question shows hanzi, options are english meanings
@@ -98,8 +98,8 @@ export function generateTimedRound(words, { count = DEFAULT_QUESTION_COUNT, mode
         .map((sw) => (Array.isArray(sw.english) ? sw.english[0] : sw.english));
       const distractorPool = [...remaining.map((rw) => (Array.isArray(rw.english) ? rw.english[0] : rw.english)), ...otherSelected]
         .filter((e) => e !== correctAnswer);
-      const distractors = distractorPool.sort(() => Math.random() - 0.5).slice(0, 3);
-      options = [correctAnswer, ...distractors].sort(() => Math.random() - 0.5);
+      const distractors = shuffle(distractorPool).slice(0, 3);
+      options = shuffle([correctAnswer, ...distractors]);
       correctIndex = options.indexOf(correctAnswer);
     }
 
@@ -127,24 +127,6 @@ export function checkTimedAnswer(question, answerIndex) {
   return { correct, streak: correct ? 1 : 0, score: correct ? 1 : 0 };
 }
 
-/** Load words from a source: 'hsk1' | 'review' | 'theme:<name>' */
-async function loadWords(source) {
-  if (source === 'hsk1') {
-    const data = await fetchData('hsk/1.json');
-    return data.items ?? [];
-  }
-  if (source === 'review') {
-    const list = await storage.list('srs');
-    return list.map((row) => row.value).filter(Boolean);
-  }
-  if (source.startsWith('theme:')) {
-    const theme = source.slice(6);
-    const results = await search(theme, { limit: 50 });
-    return results.map((r) => ({ hanzi: r.simp, pinyin: r.pinyinTone, english: r.defs }));
-  }
-  return [];
-}
-
 /** Render the timed quiz game screen. */
 export async function render(container, ctx) {
   ensureStyles(document);
@@ -164,6 +146,8 @@ export async function render(container, ctx) {
   let startTime = 0;
   let timeLeft = DEFAULT_TIME_MS;
   let timerId = null;
+  let timerEl = null;
+  let alive = true;
   let finished = false;
   let answerLock = false;
   let bestScore = 0;
@@ -219,8 +203,14 @@ export async function render(container, ctx) {
         clearInterval(timerId);
         timerId = null;
         finishGame();
+        return;
       }
-      draw();
+      // Only repaint the clock: a full draw() would wipe the answer feedback.
+      if (timerEl) {
+        const sec = Math.ceil(timeLeft / 1000);
+        timerEl.textContent = `${sec}s`;
+        timerEl.classList.toggle('warning', sec <= 10);
+      }
     }, 100);
   }
 
@@ -236,6 +226,12 @@ export async function render(container, ctx) {
     // Update best score in storage
     saveBestScore();
     draw();
+    // Fire lesson_done exactly once per game.
+    window.dispatchEvent(
+      new CustomEvent('chino:lesson_done', {
+        detail: { gameId, score, total: round.questions.length, timeMs: Date.now() - startTime, mistakes: round.questions.length - score },
+      }),
+    );
   }
 
   async function saveBestScore() {
@@ -250,19 +246,20 @@ export async function render(container, ctx) {
   }
 
   function draw() {
+    if (!alive) return;
     reset(container);
     const section = h('section', { class: 'timed' });
 
     // Header with stats
     const timeSec = Math.ceil(timeLeft / 1000);
-    const timerClass = timeSec <= 10 ? 'timed-timer warning' : 'timed-timer';
+    timerEl = h('span', { class: timeSec <= 10 ? 'timed-timer warning' : 'timed-timer', text: `${timeSec}s` });
     const header = h(
       'header',
       { class: 'timed-header' },
       h('h2', { text: t(titleKey) }),
       h('div', { class: 'timed-stats' },
         h('span', { text: `${t('games.timed.streak')}: ${streak}` }),
-        h('span', { class: timerClass, text: `${timeSec}s` }),
+        timerEl,
         h('span', { text: `${t('games.timed.score')}: ${score}` }),
       ),
     );
@@ -332,13 +329,6 @@ export async function render(container, ctx) {
         ),
       );
       section.append(resultEl);
-
-      // Fire lesson_done event
-      window.dispatchEvent(
-        new CustomEvent('chino:lesson_done', {
-          detail: { gameId, score, total: round.questions.length, timeMs, mistakes: round.questions.length - score },
-        }),
-      );
     }
 
     container.append(section);
@@ -368,14 +358,17 @@ export async function render(container, ctx) {
     }
 
     setTimeout(() => {
+      if (!alive) return;
       currentIndex += 1;
       answerLock = false;
-      draw();
+      if (currentIndex >= round.questions.length) finishGame();
+      else draw();
     }, 600);
   }
 
   await start();
   return () => {
+    alive = false;
     if (timerId) clearInterval(timerId);
   };
 }

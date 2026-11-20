@@ -713,3 +713,9 @@ label { overflow-wrap: anywhere; }
   .tabbar { left: 50%; right: auto; width: 100%; max-width: 40rem; transform: translateX(-50%); }
   .menu:has(> [data-area]) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+/* Stroke-diagram SVG (owner: src/learn/strokes.js). Shared by every host
+ * (stroke sheet, worksheet) so the parts are themed wherever the SVG is used. */
+.stroke-part { fill: var(--ink-soft); opacity: 0.7; }
+.stroke-part-new { fill: var(--accent); opacity: 1; }
+.stroke-pen { fill: none; stroke: var(--ink); stroke-width: 46; stroke-linecap: round; stroke-linejoin: round; }

@@ -41,6 +41,8 @@ export function navigate(path, { replace = false } = {}) {
 export function createRouter({ container, screens, fallback = 'dictionary', onRoute }) {
   let cleanup = null;
   let currentRoute = null;
+  // Monotonic render token: a slow screen must not paint over the next one.
+  let seq = 0;
 
   async function render() {
     const parsed = parseRoute(location.hash, fallback);
@@ -58,7 +60,13 @@ export function createRouter({ container, screens, fallback = 'dictionary', onRo
     cleanup = null;
 
     container.replaceChildren();
+    const token = ++seq;
     const result = await screen.render(container, { route, navigate });
+    if (token !== seq) {
+      // A newer render started: drop this one's cleanup and leave the DOM alone.
+      if (typeof result === 'function') result();
+      return route;
+    }
     if (typeof result === 'function') cleanup = result;
 
     currentRoute = route;

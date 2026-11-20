@@ -40,8 +40,6 @@ import {
 
 export const titleKey = 'exam.title';
 export const LESSON_ID = 'exam';
-/** Readings/lessons directory for each level (level 3 has no lessons yet). */
-const LESSON_DIR = { 1: 'hsk1', 2: 'hsk2' };
 
 const STYLE_ID = 'exam-style';
 
@@ -49,18 +47,19 @@ const STYLE_ID = 'exam-style';
 
 /** Words + sentence pools for every available HSK level (cached per call). */
 export async function loadLevels() {
-  const out = [];
-  for (const level of LEVELS) {
-    let words = [];
-    try {
-      const data = await fetchData(`hsk/${level}.json`);
-      words = (data.items ?? []).map(normalizeWord).filter(isWord);
-    } catch {
-      continue; // level data not shipped: the level is simply not offered
-    }
-    out.push({ level, words, sentences: await loadSentences(level) });
-  }
-  return out;
+  const results = await Promise.all(
+    LEVELS.map(async (level) => {
+      let words = [];
+      try {
+        const data = await fetchData(`hsk/${level}.json`);
+        words = (data.items ?? []).map(normalizeWord).filter(isWord);
+      } catch {
+        return null; // level data not shipped: the level is simply not offered
+      }
+      return { level, words, sentences: await loadSentences(level) };
+    }),
+  );
+  return results.filter(Boolean);
 }
 
 /** Short sentences for a level: reading lines (HSK 1) + lesson examples. */
@@ -84,7 +83,7 @@ async function loadSentences(level) {
   } catch {
     /* no readings shipped */
   }
-  const dir = LESSON_DIR[level];
+  const dir = `hsk${level}`;
   if (dir) {
     try {
       const index = await fetchData(`lessons/${dir}/index.json`);
@@ -534,6 +533,8 @@ export async function render(container, ctx = {}) {
     return section;
   }
 
+  reset(container);
+  container.append(h('p', { class: 'pill', text: t('common.loading') }));
   try {
     state.levels = await loadLevels();
   } catch {

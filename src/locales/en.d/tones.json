@@ -26,6 +26,13 @@
       "tone0Desc": "Neutral tone: Light and short (no mark) — ma (question particle). Quick and unstressed.",
       "playTone": "Play {tone}"
     },
+    "toneName": {
+      "0": "Neutral",
+      "1": "1st",
+      "2": "2nd",
+      "3": "3rd",
+      "4": "4th"
+    },
     "vocabulary": {
       "toneLabel": "Tone",
       "hanziLabel": "Character",

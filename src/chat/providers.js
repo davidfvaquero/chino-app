@@ -55,18 +55,23 @@ async function* streamLines(response) {
   const reader = response.body.getReader();
   const decoder = new TextDecoder();
   let buf = '';
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    buf += decoder.decode(value, { stream: true });
-    let idx;
-    while ((idx = buf.indexOf('\n')) >= 0) {
-      yield buf.slice(0, idx).replace(/\r$/, '');
-      buf = buf.slice(idx + 1);
+  try {
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += decoder.decode(value, { stream: true });
+      let idx;
+      while ((idx = buf.indexOf('\n')) >= 0) {
+        yield buf.slice(0, idx).replace(/\r$/, '');
+        buf = buf.slice(idx + 1);
+      }
     }
+    buf += decoder.decode();
+    if (buf.trim()) yield buf.replace(/\r$/, '');
+  } finally {
+    // Release the stream when the consumer stops early (abort / route change).
+    reader.cancel().catch(() => {});
   }
-  buf += decoder.decode();
-  if (buf.trim()) yield buf.replace(/\r$/, '');
 }
 
 /**
@@ -167,8 +172,11 @@ export function configuredProviders(settings = {}, { fetchImpl } = {}) {
 /**
  * Optional on-device provider, shipped by another task. Returns null when the
  * module is not there yet, so the choice never appears until it exists.
+ * Memoized: a new WebLLM engine per visit leaked ~1 GB of GPU memory.
  */
+let onDeviceProvider;
 export async function loadOnDeviceProvider(config = {}) {
+  if (onDeviceProvider) return onDeviceProvider;
   try {
     const mod = await import('./webllm-provider.js');
     const factory = mod.createProvider || mod.createOnDeviceProvider || mod.default;
@@ -177,6 +185,7 @@ export async function loadOnDeviceProvider(config = {}) {
     if (!provider.id) provider.id = 'on-device';
     if (typeof provider.name !== 'string') provider.name = 'On-device';
     if (typeof provider.available !== 'function') provider.available = () => true;
+    onDeviceProvider = provider;
     return provider;
   } catch {
     return null;

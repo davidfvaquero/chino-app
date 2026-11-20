@@ -7,8 +7,8 @@
 import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import { getHardWords } from '../hardwords.js';
-import { answer as saveAnswer } from '../srs.js';
-import { speak, isTtsAvailable } from '../audio.js';
+import { answerAndNotify } from '../srs.js';
+import { speak } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
 
 export const titleKey = 'hardwords.title';
@@ -61,8 +61,6 @@ export function render(container) {
     h('button', {
       type: 'button',
       class: 'hw-btn',
-      title: isTtsAvailable() ? t('hardwords.audio') : t('hardwords.audioUnavailable'),
-      disabled: !isTtsAvailable(),
       text: t('hardwords.audio'),
       onclick: () => speak(hanzi),
     });
@@ -179,31 +177,18 @@ export function render(container) {
   async function rate(card, rating) {
     if (state.busy) return;
     state.busy = true;
-    let updated = null;
     try {
-      updated = await saveAnswer(card.id, rating);
+      await answerAndNotify(card.id, rating, Math.max(0, state.queue.length - (state.index + 1)));
     } catch (err) {
       console.error('hardwords: cannot save the answer', err);
+      state.busy = false;
+      return; // do not advance when the answer failed to save
     }
     if (!state.alive) return;
     state.done += 1;
     state.index += 1;
     state.flipped = false;
     state.busy = false;
-    if (updated) {
-      window.dispatchEvent(
-        new CustomEvent('chino:review_done', {
-          detail: {
-            id: updated.id,
-            rating,
-            interval: updated.interval,
-            due: updated.due,
-            reviews: updated.reviews,
-            remaining: Math.max(0, state.queue.length - state.index),
-          },
-        }),
-      );
-    }
     paint();
   }
 

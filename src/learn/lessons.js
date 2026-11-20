@@ -570,7 +570,9 @@ export async function render(container, ctx) {
   ensureStyles(container.ownerDocument ?? document);
   const lessonId = ctx?.route?.segments?.[1];
   const requested = ctx?.route?.params?.level;
-  const level = LEVELS.includes(requested) ? requested : DEFAULT_LEVEL;
+  // With no ?level=, deduce it from the lesson id prefix (hsk2-03 -> hsk2).
+  const inferred = lessonId ? LEVELS.find((name) => String(lessonId).startsWith(`${name}-`)) : undefined;
+  const level = LEVELS.includes(requested) ? requested : (inferred ?? DEFAULT_LEVEL);
   reset(container);
   container.append(h('p', { class: 'pill', text: t('learn.lessons.loading') }));
   try {

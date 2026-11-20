@@ -14,9 +14,8 @@ import { h, reset } from '../../dom.js';
 import { speak } from '../../audio.js';
 import { addToReview } from '../../srs.js';
 import { pinyinHtml } from '../../tone.js';
-import { search } from '../../dictionary.js';
-import storage from '../../storage.js';
-import { fetchData } from '../../data-url.js';
+import { shuffle } from '../../random.js';
+import { loadWords } from './common.js';
 
 export const titleKey = 'games.matching.title';
 export const id = 'matching';
@@ -65,7 +64,7 @@ function ensureStyles(doc) {
  */
 export function generateMatchingRound(words, { count = DEFAULT_COUNT, mode = 'english' } = {}) {
   if (!Array.isArray(words) || words.length === 0) return { pairs: [], options: [] };
-  const shuffled = [...words].sort(() => Math.random() - 0.5);
+  const shuffled = shuffle(words);
   const selected = shuffled.slice(0, Math.min(count, shuffled.length));
   const pairs = selected.map((w) => ({
     hanzi: w.hanzi,
@@ -79,7 +78,7 @@ export function generateMatchingRound(words, { count = DEFAULT_COUNT, mode = 'en
     .map((w) => (mode === 'pinyin' ? w.pinyin : (Array.isArray(w.english) ? w.english[0] : w.english)))
     .filter((t) => !targets.includes(t))
     .slice(0, Math.max(0, count - targets.length));
-  const options = [...targets, ...distractors].sort(() => Math.random() - 0.5);
+  const options = shuffle([...targets, ...distractors]);
   return { pairs, options };
 }
 
@@ -100,24 +99,6 @@ export function checkMatching(pairs, response) {
   return { correct: matched === total, score, matched, total };
 }
 
-/** Load words from a source: 'hsk1' | 'review' | 'theme:<name>' */
-async function loadWords(source) {
-  if (source === 'hsk1') {
-    const data = await fetchData('hsk/1.json');
-    return data.items ?? [];
-  }
-  if (source === 'review') {
-    const list = await storage.list('srs');
-    return list.map((row) => row.value).filter(Boolean);
-  }
-  if (source.startsWith('theme:')) {
-    const theme = source.slice(6);
-    const results = await search(theme, { limit: 50 });
-    return results.map((r) => ({ hanzi: r.simp, pinyin: r.pinyinTone, english: r.defs }));
-  }
-  return [];
-}
-
 /** Render the matching game screen. */
 export async function render(container, ctx) {
   ensureStyles(document);
@@ -134,6 +115,7 @@ export async function render(container, ctx) {
   let mistakes = 0;
   let startTime = Date.now();
   let finished = false;
+  let alive = true;
 
   // Load words and start
   async function start() {
@@ -162,6 +144,7 @@ export async function render(container, ctx) {
   }
 
   function draw() {
+    if (!alive) return;
     reset(container);
     const section = h('section', { class: 'matching' });
 
@@ -294,5 +277,5 @@ export async function render(container, ctx) {
   }
 
   await start();
-  return () => {};
+  return () => { alive = false; };
 }

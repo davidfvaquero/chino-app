@@ -32,8 +32,8 @@
  */
 import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
-import { getDueCards, answer as saveAnswer, grade, countDueBySource, RATINGS, DEFAULT_EASE } from '../srs.js';
-import { speak, isTtsAvailable } from '../audio.js';
+import { getDueCards, answerAndNotify, grade, countDueBySource, RATINGS, DEFAULT_EASE } from '../srs.js';
+import { speak } from '../audio.js';
 import { pinyinHtml, toneOf } from '../tone.js';
 import { tonelessKey } from '../pinyin.js';
 import { hanziCell } from '../hanzi.js';
@@ -309,12 +309,9 @@ export function render(container, ctx = {}) {
   }
 
   function audioButton(hanzi) {
-    const available = isTtsAvailable();
     return h('button', {
       type: 'button',
       class: 'btn sm',
-      title: available ? t('review.audio') : t('review.audioUnavailable'),
-      disabled: !available,
       text: t('review.audio'),
       onclick: () => speak(hanzi),
     });
@@ -479,9 +476,11 @@ export function render(container, ctx = {}) {
     state.busy = true;
     let updated = null;
     try {
-      updated = await saveAnswer(card.id, rating);
+      updated = await answerAndNotify(card.id, rating, Math.max(0, state.queue.length - (state.index + 1)));
     } catch (err) {
       console.error('review: cannot save the answer', err);
+      state.busy = false;
+      return; // do not advance when the answer failed to save
     }
     if (!state.alive) return;
     state.done += 1;
@@ -491,20 +490,6 @@ export function render(container, ctx = {}) {
     state.input = '';
     state.answer = null;
     state.busy = false;
-    if (updated) {
-      window.dispatchEvent(
-        new CustomEvent('chino:review_done', {
-          detail: {
-            id: updated.id,
-            rating,
-            interval: updated.interval,
-            due: updated.due,
-            reviews: updated.reviews,
-            remaining: Math.max(0, state.queue.length - state.index),
-          },
-        }),
-      );
-    }
     paint();
   }
 

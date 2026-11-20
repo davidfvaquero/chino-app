@@ -64,7 +64,6 @@ const CSS = `
   animation: paste-slide-up 0.2s ease-out;
 }
 @keyframes paste-slide-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
-.paste-panel.hidden { display: none; }
 .paste-panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
 .paste-panel-hanzi { font-size: 2rem; font-weight: 600; }
 .paste-panel-pinyin { font-size: 1rem; color: var(--ink-soft); }
@@ -237,7 +236,7 @@ export async function render(container, ctx) {
 
   const resultWrap = h('div', { class: 'paste-result' });
 
-  const panel = h('aside', { class: 'paste-panel hidden', 'data-role': 'panel' });
+  const panel = h('aside', { class: 'paste-panel', hidden: true, 'data-role': 'panel' });
 
   reset(container).append(
     h('section', { class: 'paste-wrap' },

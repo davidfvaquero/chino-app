@@ -35,7 +35,7 @@ import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import storage from '../storage.js';
 import { fetchData } from '../data-url.js';
-import { loadIndex as loadLessonIndex } from './lessons.js';
+import { loadIndex as loadLessonIndex, LEVELS } from './lessons.js';
 import { loadIndex as loadThemeIndex } from './themes.js';
 import { loadIndex as loadGrammarIndex } from './grammar.js';
 import { loadIndex as loadReadingIndex } from '../reading/data.js';
@@ -54,9 +54,9 @@ export function dayIndex(date = new Date()) {
   return Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / DAY_MS);
 }
 
-/** Lesson level from its id prefix ('practical-01' -> 'practical'). */
+/** Lesson level from its id prefix ('hsk3-05' -> 'hsk3', 'practical-01' -> 'practical'). */
 export function lessonLevel(id) {
-  return String(id).startsWith('practical') ? 'practical' : 'hsk1';
+  return LEVELS.find((level) => String(id).startsWith(`${level}-`)) ?? 'hsk1';
 }
 
 /** Router path that opens a task's target. */

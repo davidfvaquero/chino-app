@@ -139,6 +139,7 @@ const CSS = `
 .ws-cell.empty { background: transparent; }
 .ws-cell svg { display: block; width: 85%; height: 85%; }
 .ws-cell .tian-grid { position: absolute; inset: 0; pointer-events: none; stroke: currentColor; stroke-width: 0.5; opacity: 0.2; }
+.ws-cell .tian-grid line { vector-effect: non-scaling-stroke; stroke-width: 1px; }
 
 
 @media print {
