@@ -5,7 +5,8 @@
  * Own SVG renderer, zero dependencies. Drawings come from `public/data/strokes/`
  * (Make Me a Hanzi — see CREDITS.md): `index.json` maps a character to a shard
  * file, and each entry is `{ character, strokes: [svgPath], medians: [[[x, y]]] }`
- * in a square 0..1024 top-left coordinate box (no y flip needed).
+ * in a 1024 box with y UP (baseline at y=900). `toStrokeSet` flips the medians
+ * to screen space (y DOWN); outline paths get `OUTLINE_FLIP` in every SVG.
  *
  * Screen contract: `titleKey` + `render(container, ctx)` (returns a cleanup fn).
  *
@@ -42,6 +43,10 @@ export const titleKey = 'hubs.learn.strokes';
 
 /** Side of the square viewBox the stroke data lives in. */
 export const VIEW_BOX_SIZE = 1024;
+/** Make Me a Hanzi baseline: the data is y UP, screen is y DOWN. */
+const BASELINE_Y = 900;
+/** Same flip as hanzi-writer; applied to every outline path (medians are flipped in `toStrokeSet`). */
+export const OUTLINE_FLIP = `scale(1,-1) translate(0,-${BASELINE_Y})`;
 /** Practice tolerance in viewBox units (~12% of the box) — deliberately loose. */
 export const DEFAULT_TOLERANCE = 120;
 /** Fraction of the median the drawing must cover to count as the right stroke. */
@@ -88,13 +93,13 @@ export function isValidStrokeEntry(entry) {
   return medians.every((median) => Array.isArray(median) && median.length > 0 && median.every(isPoint));
 }
 
-/** Normalises a raw shard entry; returns null when it is not usable. */
+/** Normalises a raw shard entry; returns null when it is not usable. Medians come out in screen space (y DOWN). */
 export function toStrokeSet(entry) {
   if (!isValidStrokeEntry(entry)) return null;
   return {
     character: entry.character.trim(),
     strokes: entry.strokes.slice(),
-    medians: entry.medians.map((median) => median.map((point) => [point[0], point[1]])),
+    medians: entry.medians.map((median) => median.map((point) => [point[0], BASELINE_Y - point[1]])),
   };
 }
 
@@ -349,6 +354,7 @@ export function strokeDiagramSvg(set, { upTo = set?.strokes?.length ?? 0, accent
       svgEl('path', {
         class: index === accent ? 'stroke-part stroke-part-new' : 'stroke-part',
         d: path,
+        transform: OUTLINE_FLIP,
         'data-index': index,
       }),
     );
@@ -676,7 +682,7 @@ function createStrokeApp(container, ctx) {
     state.set = set;
     clearLayers();
     set.strokes.forEach((path, index) => {
-      ghostLayer.append(svgEl('path', { class: 'strokes-ghost', d: path, 'data-index': index }));
+      ghostLayer.append(svgEl('path', { class: 'strokes-ghost', d: path, transform: OUTLINE_FLIP, 'data-index': index }));
       inkLayer.append(
         svgEl('path', {
           class: 'strokes-ink',
@@ -810,7 +816,7 @@ function createStrokeApp(container, ctx) {
     }
     state.drawnEl.remove();
     state.drawnEl = null;
-    traceDoneLayer.append(svgEl('path', { class: 'strokes-trace-done', d: set.strokes[index], 'data-index': index }));
+    traceDoneLayer.append(svgEl('path', { class: 'strokes-trace-done', d: set.strokes[index], transform: OUTLINE_FLIP, 'data-index': index }));
     state.practiceIndex = index + 1;
     state.practiceDone += 1;
     container.dataset.practiceDone = String(state.practiceDone);

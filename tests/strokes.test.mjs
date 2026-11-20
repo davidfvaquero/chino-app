@@ -63,7 +63,8 @@ test('isValidStrokeEntry / toStrokeSet reject malformed shards', () => {
 test('toStrokeSet copies a valid entry without sharing arrays', () => {
   const entry = { character: ' 你 ', strokes: ['M0 0'], medians: [[[1, 2], [3, 4]]] };
   const set = toStrokeSet(entry);
-  assert.deepEqual(set, { character: '你', strokes: ['M0 0'], medians: [[[1, 2], [3, 4]]] });
+  // medians are flipped to screen space: y' = 900 - y
+  assert.deepEqual(set, { character: '你', strokes: ['M0 0'], medians: [[[1, 898], [3, 896]]] });
   entry.medians[0][0][0] = 999;
   assert.equal(set.medians[0][0][0], 1);
 });

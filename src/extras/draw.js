@@ -7,7 +7,7 @@
  *
  * Exports for tests:
  *   - collectPoints(event, canvas) -> [{x,y},...]
- *   - normaliseStroke(points, canvas) -> [[x,y],...]  (screen -> normalised 0..1, y UP)
+ *   - normaliseStroke(points, canvas) -> [[x,y],...]  (screen -> normalised 0..1, y DOWN)
  *   - prepareForMatch(strokes) -> prepared strokes (uses strokematch.prepare)
  *   - fireDrawUsed()
  */
@@ -111,17 +111,18 @@ export function collectPoint(event, canvas) {
 }
 
 /**
- * Normalise a stroke from screen coordinates to the 0..1 box (y UP)
- * that strokematch expects.
+ * Normalise a stroke from screen coordinates to the 0..1 box (y DOWN, same as
+ * the screen) that strokematch expects: its references are flipped to screen
+ * space on load, so a drawing must not be flipped again here.
  * @param {{x:number,y:number}[]} points
  * @param {HTMLCanvasElement} canvas
- * @returns {number[][]} [[x,y],...] in 0..1, y UP
+ * @returns {number[][]} [[x,y],...] in 0..1, y DOWN
  */
 export function normaliseStroke(points, canvas) {
   if (!points.length) return [];
   const w = canvas.width;
   const h = canvas.height;
-  return points.map((p) => [p.x / w, 1 - p.y / h]);
+  return points.map((p) => [p.x / w, p.y / h]);
 }
 
 /**

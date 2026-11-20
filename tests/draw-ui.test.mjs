@@ -54,16 +54,16 @@ describe('draw.js — pure functions', () => {
   });
 
   describe('normaliseStroke', () => {
-    it('normalises points to 0..1 box with y UP', () => {
+    it('normalises points to 0..1 box with y DOWN (same as the screen)', () => {
       const canvas = createMockCanvas(300, 300);
       const points = [
-        { x: 0, y: 0 },      // top-left -> (0, 1)
-        { x: 300, y: 300 },  // bottom-right -> (1, 0)
+        { x: 0, y: 0 },      // top-left -> (0, 0)
+        { x: 300, y: 300 },  // bottom-right -> (1, 1)
         { x: 150, y: 150 },  // center -> (0.5, 0.5)
       ];
       const norm = drawModule.normaliseStroke(points, canvas);
-      assert.deepEqual(norm[0], [0, 1]);
-      assert.deepEqual(norm[1], [1, 0]);
+      assert.deepEqual(norm[0], [0, 0]);
+      assert.deepEqual(norm[1], [1, 1]);
       assert.deepEqual(norm[2], [0.5, 0.5]);
     });
 

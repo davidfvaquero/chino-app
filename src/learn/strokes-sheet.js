@@ -97,8 +97,8 @@ function angleBetween(a, b) {
 }
 
 /**
- * Rough stroke type from the median direction. Data uses a y-up box, so the
- * screen-vertical component is `-dy`. Returns null when nothing is certain.
+ * Rough stroke type from the median direction. Expects screen-space medians
+ * (y DOWN), as `toStrokeSet` returns them. Returns null when nothing is certain.
  */
 export function classifyStroke(median) {
   const points = (Array.isArray(median) ? median : []).filter(
@@ -111,7 +111,7 @@ export function classifyStroke(median) {
   const start = points[0];
   const end = points[points.length - 1];
   const dx = end[0] - start[0];
-  const dy = -(end[1] - start[1]);
+  const dy = end[1] - start[1];
   const ax = Math.abs(dx) / length;
   const ay = Math.abs(dy) / length;
 
