@@ -76,13 +76,12 @@ const settingsModule = await import('../src/settings.js');
 const { getSettings, setSetting, applySettings, DEFAULTS } = settingsModule;
 
 test('DEFAULTS exports expected keys and values', () => {
-  assert.deepEqual(Object.keys(DEFAULTS).sort(), ['dailyGoal', 'fontScale', 'locale', 'pinyin', 'theme', 'toneColors']);
+  assert.deepEqual(Object.keys(DEFAULTS).sort(), ['dailyGoal', 'fontScale', 'pinyin', 'theme', 'toneColors']);
   assert.equal(DEFAULTS.theme, 'auto');
   assert.equal(DEFAULTS.fontScale, 1);
   assert.equal(DEFAULTS.toneColors, true);
   assert.equal(DEFAULTS.pinyin, true);
   assert.equal(DEFAULTS.dailyGoal, 20);
-  assert.equal(DEFAULTS.locale, 'en');
 });
 
 test('getSettings returns defaults when storage is empty', async () => {

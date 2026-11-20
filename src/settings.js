@@ -1,8 +1,8 @@
 /**
- * User settings — theme, font scale, tone colors, daily goal, locale.
+ * User settings — theme, font scale, tone colors, daily goal.
  *
  * Public API:
- *   getSettings()         -> { theme, fontScale, toneColors, pinyin, dailyGoal, locale }
+ *   getSettings()         -> { theme, fontScale, toneColors, pinyin, dailyGoal }
  *   pinyinToggle()        -> header chip that flips the same `pinyin` setting
  *   setSetting(key, value)  validates, persists to storage 'settings', fires 'chino:settings_changed'
  *   applySettings()       applies theme + fontScale to <html> (data-theme attr, font-scale var)
@@ -15,7 +15,6 @@
  * Pinyin: boolean (default true = shown). Off sets <html data-pinyin="off">,
  *   which hides every .py element (see styles.css).
  * Daily goal: integer (default 20)
- * Locale: string (managed by i18n, persisted here for restore)
  *
  * This module owns NO colours. It only sets two things on <html>:
  *   data-theme="light|dark"   -> src/styles.css switches its light-dark() tokens
@@ -33,7 +32,6 @@ export const DEFAULTS = {
   toneColors: true,
   pinyin: true,
   dailyGoal: 20,
-  locale: 'en',
 };
 
 const ALLOWED = {
