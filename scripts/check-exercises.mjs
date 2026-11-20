@@ -243,13 +243,13 @@ async function runMatch(cdp, pairs, label) {
   for (const pair of pairs) {
     const leftIndex = await evalJs(
       cdp,
-      `(()=>[...document.querySelectorAll(${JSON.stringify(left)})].findIndex((b)=>b.textContent.trim()===${JSON.stringify(pair.hanzi)}))()`,
+      `(()=>[...document.querySelectorAll(${JSON.stringify(left)})].findIndex((b)=>b.dataset.hanzi===${JSON.stringify(pair.hanzi)}))()`,
     );
     if (leftIndex < 0) throw new Error(`match: no left button for ${pair.hanzi}`);
     await tap(cdp, left, leftIndex);
     const rightIndex = await evalJs(
       cdp,
-      `(()=>[...document.querySelectorAll(${JSON.stringify(right)})].findIndex((b)=>b.textContent.trim()===${JSON.stringify(pair.english)}))()`,
+      `(()=>[...document.querySelectorAll(${JSON.stringify(right)})].findIndex((b)=>b.dataset.english===${JSON.stringify(pair.english)}))()`,
     );
     if (rightIndex < 0) throw new Error(`match: no right button for ${pair.english}`);
     await tap(cdp, right, rightIndex);
