@@ -23,6 +23,7 @@
  */
 import { t } from './i18n.js';
 import { h } from './dom.js';
+import { pinyinHtml } from './tone.js';
 
 /** Where the browser build serves the etymology shards from (next to `src/`). */
 export const DEFAULT_ETYMOLOGY_BASE = new URL('../data/etymology/', import.meta.url);
@@ -169,13 +170,26 @@ export async function renderEtymology(character) {
     if (block.kind === 'hint') {
       node.append(h('p', { class: 'etymology-story', text: block.text }));
     } else {
-      node.append(h('p', {
-        class: 'etymology-parts',
-        text: block.items.map((item) => t(item.key, item.params)).join(' · '),
-      }));
+      node.append(h('p', { class: 'etymology-parts' }, ...etymologyParts(block.items)));
     }
   }
   return node;
+}
+
+/** Text nodes for the parts line; pinyin goes through pinyinHtml() so the .py setting applies. */
+function etymologyParts(items) {
+  const out = [];
+  items.forEach((item, i) => {
+    if (i) out.push(' · ');
+    const { pinyin, ...rest } = item.params;
+    if (pinyin === undefined) {
+      out.push(t(item.key, item.params));
+      return;
+    }
+    const [before = '', after = ''] = t(item.key, { ...rest, pinyin: '\u0001' }).split('\u0001');
+    out.push(before, h('span', { class: 'py', html: pinyinHtml(pinyin) }), after);
+  });
+  return out;
 }
 
 function toBaseUrl(base) {

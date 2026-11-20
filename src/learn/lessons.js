@@ -24,6 +24,7 @@ import storage from '../storage.js';
 import { addToReview } from '../srs.js';
 import { speak } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
+import { pinyinToggle } from '../settings.js';
 import { hanziCell } from '../hanzi.js';
 import {
   gradeExercise,
@@ -219,7 +220,7 @@ async function renderLesson(container, ctx, lessonId, level) {
     else if (step === 'vocabulary') view = vocabularyStep();
     else if (step === 'exercises') view = exerciseStep();
     else view = resultStep();
-    container.append(view);
+    container.append(h('div', { class: 'row lesson-tools' }, pinyinToggle()), view);
     container.focus({ preventScroll: true });
   };
   const go = (next) => {

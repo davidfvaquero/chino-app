@@ -118,7 +118,7 @@ function createChartApp(container, ctx) {
   const toneList = h('ul', { class: 'pinyinchart-tones' });
   const panel = h('section', { class: 'pinyinchart-panel', hidden: true, 'aria-live': 'polite' }, panelTitle, toneList);
   const status = h('p', { class: 'pinyinchart-status', role: 'status', 'aria-live': 'polite' });
-  const section = h('section', { class: 'pinyinchart' }, intro, scroll, panel, status);
+  const section = h('section', { class: 'pinyinchart py-keep' }, intro, scroll, panel, status);
 
   reset(container).append(section);
   container.dataset.state = 'loading';

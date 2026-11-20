@@ -76,10 +76,11 @@ const settingsModule = await import('../src/settings.js');
 const { getSettings, setSetting, applySettings, DEFAULTS } = settingsModule;
 
 test('DEFAULTS exports expected keys and values', () => {
-  assert.deepEqual(Object.keys(DEFAULTS).sort(), ['dailyGoal', 'fontScale', 'locale', 'theme', 'toneColors']);
+  assert.deepEqual(Object.keys(DEFAULTS).sort(), ['dailyGoal', 'fontScale', 'locale', 'pinyin', 'theme', 'toneColors']);
   assert.equal(DEFAULTS.theme, 'auto');
   assert.equal(DEFAULTS.fontScale, 1);
   assert.equal(DEFAULTS.toneColors, true);
+  assert.equal(DEFAULTS.pinyin, true);
   assert.equal(DEFAULTS.dailyGoal, 20);
   assert.equal(DEFAULTS.locale, 'en');
 });
@@ -103,6 +104,16 @@ test('setSetting validates fontScale values', async () => {
   await setSetting('fontScale', 1);
   await setSetting('fontScale', 1.15);
   await setSetting('fontScale', 1.3);
+});
+
+test('setSetting validates pinyin boolean and applySettings sets data-pinyin', async () => {
+  await assert.rejects(() => setSetting('pinyin', 'no'), /Invalid value/);
+  await setSetting('pinyin', false);
+  applySettings();
+  assert.equal(mockDoc.documentElement.dataset.pinyin, 'off');
+  await setSetting('pinyin', true);
+  applySettings();
+  assert.equal(mockDoc.documentElement.dataset.pinyin, 'on');
 });
 
 test('setSetting validates toneColors boolean', async () => {

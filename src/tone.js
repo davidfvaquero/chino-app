@@ -170,6 +170,12 @@ export function isToneColorsOn() {
  * @returns {string} escaped HTML, one <span class="tone toneN"> per syllable
  */
 export function pinyinHtml(pinyin) {
+  const body = pinyinBody(pinyin);
+  // `.py` is the one hook the global "show pinyin" setting hides (styles.css).
+  return body ? `<span class="py">${body}</span>` : '';
+}
+
+function pinyinBody(pinyin) {
   const input = pinyin ?? '';
   if (!input) return '';
 

@@ -21,6 +21,13 @@
       "off": "Off",
       "previewLabel": "Preview:"
     },
+    "pinyin": {
+      "title": "Show pinyin",
+      "hint": "Pinyin is the pronunciation written with Latin letters and tone marks. Turn it off when you can read the characters; tap a character to see its pinyin and meaning.",
+      "on": "On",
+      "off": "Off",
+      "quick": "Pinyin"
+    },
     "dailyGoal": {
       "title": "Daily goal",
       "hint": "Target number of review cards per day.",

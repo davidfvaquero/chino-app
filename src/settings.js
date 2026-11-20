@@ -2,7 +2,8 @@
  * User settings — theme, font scale, tone colors, daily goal, locale.
  *
  * Public API:
- *   getSettings()         -> { theme, fontScale, toneColors, dailyGoal, locale }
+ *   getSettings()         -> { theme, fontScale, toneColors, pinyin, dailyGoal, locale }
+ *   pinyinToggle()        -> header chip that flips the same `pinyin` setting
  *   setSetting(key, value)  validates, persists to storage 'settings', fires 'chino:settings_changed'
  *   applySettings()       applies theme + fontScale to <html> (data-theme attr, font-scale var)
  *   DEFAULTS              exported constants for validation & tests
@@ -11,6 +12,8 @@
  *   'auto' follows prefers-color-scheme and reacts to its change.
  * Font scale values: 1 | 1.15 | 1.3
  * Tone colors: boolean (default true)
+ * Pinyin: boolean (default true = shown). Off sets <html data-pinyin="off">,
+ *   which hides every .py element (see styles.css).
  * Daily goal: integer (default 20)
  * Locale: string (managed by i18n, persisted here for restore)
  *
@@ -20,12 +23,15 @@
  */
 
 import storage from './storage.js';
+import { t } from './i18n.js';
+import { h } from './dom.js';
 
 /** Default values and allowed values for validation. */
 export const DEFAULTS = {
   theme: 'auto',
   fontScale: 1,
   toneColors: true,
+  pinyin: true,
   dailyGoal: 20,
   locale: 'en',
 };
@@ -34,6 +40,7 @@ const ALLOWED = {
   theme: ['auto', 'light', 'dark'],
   fontScale: [1, 1.15, 1.3],
   toneColors: [true, false],
+  pinyin: [true, false],
   dailyGoal: [10, 20, 30, 50],
 };
 
@@ -76,6 +83,7 @@ function applyToDocument(settings, doc = document) {
     : settings.theme;
 
   doc.documentElement.dataset.theme = theme;
+  doc.documentElement.dataset.pinyin = settings.pinyin === false ? 'off' : 'on';
   doc.documentElement.style.setProperty('--font-scale', String(settings.fontScale));
 }
 
@@ -196,6 +204,33 @@ export function applySettings() {
   if (!cacheInitialized || typeof document === 'undefined') return;
   applyToDocument(settingsCache);
   syncAutoListener(settingsCache);
+}
+
+/**
+ * Quick "Pinyin" chip for screen headers. Flips the same global `pinyin`
+ * setting as the Settings screen; aria-pressed = pinyin shown. Follows
+ * 'chino:settings_changed' and stops listening once it leaves the DOM.
+ * @returns {HTMLButtonElement}
+ */
+export function pinyinToggle() {
+  const shown = () => document.documentElement.dataset.pinyin !== 'off';
+  const sync = () => {
+    if (!btn.isConnected) {
+      window.removeEventListener('chino:settings_changed', sync);
+      return;
+    }
+    btn.setAttribute('aria-pressed', String(shown()));
+  };
+  const btn = h('button', {
+    type: 'button',
+    class: 'chip pinyin-toggle',
+    'data-action': 'toggle-pinyin',
+    text: t('settings.pinyin.quick'),
+    onclick: () => setSetting('pinyin', !shown()),
+  });
+  btn.setAttribute('aria-pressed', String(shown()));
+  window.addEventListener('chino:settings_changed', sync);
+  return btn;
 }
 
 // Browser bootstrap: initialize cache and apply on load.

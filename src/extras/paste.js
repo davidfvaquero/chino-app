@@ -14,6 +14,7 @@ import * as dictionary from '../dictionary.js';
 import { addToReview, listCards } from '../srs.js';
 import { speak, isTtsAvailable } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
+import { pinyinToggle } from '../settings.js';
 import { tokenizeLine, wordPanel, reviewEntryFrom, hasHanzi } from '../reading/model.js';
 import storage from '../storage.js';
 import { fetchData } from '../data-url.js';
@@ -152,7 +153,7 @@ async function processChunk(text, hsk1, review, ttsOk, onWordTap, onPlaySentence
         onclick: () => onWordTap(text),
       },
         h('span', { class: 'hanzi', text }),
-        h('span', { class: 'pinyin', hidden: true }),
+        h('span', { class: 'pinyin' }),
       );
     });
 
@@ -216,13 +217,7 @@ export async function render(container, ctx) {
     onclick: onAnalyze,
   });
 
-  const pinyinBtn = h('button', {
-    type: 'button',
-    class: 'paste-btn',
-    text: t('paste.togglePinyin'),
-    'aria-pressed': 'false',
-    onclick: togglePinyin,
-  });
+  const pinyinBtn = pinyinToggle();
 
   const playAllBtn = h('button', {
     type: 'button',
@@ -313,13 +308,6 @@ export async function render(container, ctx) {
     }
   }
 
-  function togglePinyin(event) {
-    const on = !resultWrap.classList.contains('show-pinyin');
-    resultWrap.classList.toggle('show-pinyin', on);
-    event.currentTarget.setAttribute('aria-pressed', String(on));
-    for (const el of resultWrap.querySelectorAll('.pinyin')) el.hidden = !on;
-  }
-
   function updateUnknownCount() {
     // Count unknown words in current result
     let unknown = 0;
@@ -383,7 +371,7 @@ export async function render(container, ctx) {
         }),
       ),
       vm.found
-        ? h('p', { class: 'paste-panel-pinyin', html: pinyinHtml(vm.pinyin) })
+        ? h('p', { class: 'paste-panel-pinyin py-keep', html: pinyinHtml(vm.pinyin) })
         : h('p', { class: 'muted', text: t('paste.wordNotFound', { word }) }),
       vm.english.length
         ? h('ul', { class: 'paste-panel-defs' }, ...vm.english.map(d => h('li', { text: d })))

@@ -21,6 +21,13 @@
       "off": "Desactivado",
       "previewLabel": "Vista previa:"
     },
+    "pinyin": {
+      "title": "Mostrar pinyin",
+      "hint": "El pinyin es la pronunciación escrita con letras latinas y tildes. Apágalo cuando ya leas los caracteres; toca un carácter para ver su pinyin y significado.",
+      "on": "Sí",
+      "off": "No",
+      "quick": "Pinyin"
+    },
     "dailyGoal": {
       "title": "Meta diaria",
       "hint": "Número de tarjetas de repaso que quieres al día.",

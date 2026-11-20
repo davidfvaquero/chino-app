@@ -326,7 +326,7 @@ export function render(container, ctx = {}) {
       'div',
       { class: 'card rv-card' },
       ...(hanzi ? [hanziCell(hanzi, 'lg')] : []),
-      h('p', { class: 'rv-pinyin', html: pinyinHtml(pinyin) }),
+      h('p', { class: 'rv-pinyin py-keep', html: pinyinHtml(pinyin) }),
       ...(defs.length ? [h('p', { class: 'rv-defs', text: defs.join('; ') })] : []),
       ...(hanzi ? [audioButton(hanzi)] : []),
     );
@@ -419,7 +419,7 @@ export function render(container, ctx = {}) {
         'div',
         { class: 'card rv-card' },
         h('p', { class: `review-feedback ${cls}`, text }),
-        h('p', { class: 'rv-pinyin', html: pinyinHtml(pinyin) }),
+        h('p', { class: 'rv-pinyin py-keep', html: pinyinHtml(pinyin) }),
         ...(defs.length ? [h('p', { class: 'rv-defs', text: defs.join('; ') })] : []),
       ),
       ...paintRatings(card, match ? 'good' : 'again'),

@@ -337,7 +337,7 @@ function createTypingApp(container, ctx) {
   );
   summarySection.append(summaryTitle, summaryWpm, summaryAcc, summaryFailed, summaryActions);
 
-  const section = h('section', { class: 'typing' }, setupSection, cardSection, summarySection);
+  const section = h('section', { class: 'typing py-keep' }, setupSection, cardSection, summarySection);
 
   // --- Setup UI ---
   function buildSetup() {

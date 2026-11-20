@@ -353,7 +353,7 @@ export async function render(container, ctx = {}) {
       const isPinyin = question.type === 'listen' && question.mode === 'pinyin';
       const button = h('button', {
         type: 'button',
-        class: `btn option exam-option ${className}`.trim(),
+        class: `btn option exam-option ${className}${isPinyin ? ' py-keep' : ''}`.trim(),
         disabled: state.answered,
         onclick: () => answer(option),
       });
@@ -467,11 +467,11 @@ export async function render(container, ctx = {}) {
     const line = h('p', { class: 'exam-answer-line' });
     if (question.word) {
       line.append(h('span', { class: 'hanzi', text: question.word.hanzi }));
-      if (question.word.pinyin) line.append(h('span', { class: 'pinyin', html: pinyinHtml(question.word.pinyin) }));
+      if (question.word.pinyin) line.append(h('span', { class: 'pinyin py-keep', html: pinyinHtml(question.word.pinyin) }));
       if (question.word.english) line.append(h('span', { class: 'english', text: question.word.english }));
     } else if (question.sentence) {
       line.append(h('span', { class: 'hanzi', text: question.sentence.hanzi }));
-      if (question.sentence.pinyin) line.append(h('span', { class: 'pinyin', html: pinyinHtml(question.sentence.pinyin) }));
+      if (question.sentence.pinyin) line.append(h('span', { class: 'pinyin py-keep', html: pinyinHtml(question.sentence.pinyin) }));
       line.append(h('span', { class: 'english', text: question.sentence.english }));
     }
     return line;

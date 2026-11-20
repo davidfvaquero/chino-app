@@ -79,7 +79,8 @@ export async function render(container, ctx) {
     else if (step === 'vocabulary') view = vocabularyStep();
     else if (step === 'exercises') view = exerciseStep();
     else view = resultStep();
-    container.append(view);
+    // Tones lesson: pinyin is the content here, so it is never hidden by the setting.
+    container.append(h('div', { class: 'py-keep' }, view));
     container.focus({ preventScroll: true });
   };
 

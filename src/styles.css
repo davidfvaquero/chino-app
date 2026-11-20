@@ -719,3 +719,9 @@ label { overflow-wrap: anywhere; }
 .stroke-part { fill: var(--ink-soft); opacity: 0.7; }
 .stroke-part-new { fill: var(--accent); opacity: 1; }
 .stroke-pen { fill: none; stroke: var(--ink); stroke-width: 46; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Global pinyin switch (settings.pinyin -> <html data-pinyin>). Every pinyin
+ * line is a .py span from pinyinHtml(); .py-keep marks pinyin that IS the
+ * exercise content (answers, pinyin chart, tone lessons) and is never hidden.
+ * ponytail: the ceiling is one selector, add a class if a screen needs a hidden hanzi+pinyin pair. */
+[data-pinyin="off"] .py:not(.py-keep, .py-keep *) { display: none; }

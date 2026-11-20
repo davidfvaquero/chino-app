@@ -14,6 +14,7 @@ import * as dictionary from '../dictionary.js';
 import { addToReview } from '../srs.js';
 import { speak, isTtsAvailable } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
+import { pinyinToggle } from '../settings.js';
 import { normalizeReading, tokenizeLine, wordPanel, reviewEntryFrom } from '../reading/model.js';
 import { loadIndex, loadReading } from '../reading/data.js';
 
@@ -83,7 +84,7 @@ async function renderReader(container, ctx, id) {
     panel.append(
       h('h3', { class: 'panel-hanzi', text: vm.hanzi }),
       vm.found
-        ? h('p', { class: 'pinyin', html: pinyinHtml(vm.pinyin) })
+        ? h('p', { class: 'pinyin py-keep', html: pinyinHtml(vm.pinyin) })
         : h('p', { class: 'muted', text: t('read.notFound', { word }) }),
       ...(vm.english.length
         ? [h('ul', { class: 'defs' }, ...vm.english.map((d) => h('li', { text: d })))]
@@ -119,20 +120,7 @@ async function renderReader(container, ctx, id) {
   );
 
   const article = h('article', { class: 'reading', 'data-reading': reading.id }, ...lines);
-  const pinyinButton = h('button', {
-    type: 'button',
-    class: 'chip',
-    'data-action': 'toggle-pinyin',
-    'aria-pressed': 'false',
-    text: t('read.togglePinyin'),
-    onclick: (event) => {
-      const on = !article.classList.contains('show-pinyin');
-      article.classList.toggle('show-pinyin', on);
-      event.currentTarget.setAttribute('aria-pressed', String(on));
-      // Toggle with `hidden` so the feature needs no stylesheet support.
-      for (const el of article.querySelectorAll('.pinyin')) el.hidden = !on;
-    },
-  });
+  const pinyinButton = pinyinToggle();
 
   container.append(
     h(
@@ -200,7 +188,7 @@ async function buildLine(line, index, ttsOk, showWord) {
     { class: 'line', 'data-line': index + 1 },
     line.speaker ? h('span', { class: 'speaker', text: line.speaker }) : null,
     h('p', { class: 'hanzi' }, ...body),
-    h('p', { class: 'pinyin', html: pinyinHtml(line.pinyin), hidden: true }),
+    h('p', { class: 'pinyin', html: pinyinHtml(line.pinyin) }),
     h('p', { class: 'english muted', text: line.english }),
     ttsOk
       ? h('button', {

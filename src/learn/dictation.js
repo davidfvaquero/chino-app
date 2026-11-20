@@ -701,7 +701,7 @@ export async function render(container, ctx) {
   function answerLine(word) {
     const line = h('p', { class: 'dict-answer-line' });
     line.append(h('span', { class: 'hanzi', text: `${word.hanzi} ` }));
-    line.append(h('span', { class: 'pinyin', html: pinyinHtml(displayPinyin(word, state.toneMode)) }));
+    line.append(h('span', { class: 'pinyin py-keep', html: pinyinHtml(displayPinyin(word, state.toneMode)) }));
     if (word.english) line.append(h('span', { class: 'english', text: ` — ${word.english}` }));
     return line;
   }
@@ -739,7 +739,7 @@ export async function render(container, ctx) {
       section.append(h('h3', { text: t('dictation.result.missed') }));
       const list = h('ul', { class: 'dict-missed' });
       for (const word of summary.missed) {
-        list.append(h('li', {}, h('span', { class: 'hanzi', text: word.hanzi }), h('span', { class: 'pinyin', html: pinyinHtml(displayPinyin(word, state.toneMode)) }), reviewButton(word)));
+        list.append(h('li', {}, h('span', { class: 'hanzi', text: word.hanzi }), h('span', { class: 'pinyin py-keep', html: pinyinHtml(displayPinyin(word, state.toneMode)) }), reviewButton(word)));
       }
       section.append(list);
     }

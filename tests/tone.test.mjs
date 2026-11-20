@@ -6,6 +6,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { toneOf, pinyinHtml, isToneColorsOn, setToneColors } from '../src/tone.js';
 
+// Inner markup of pinyinHtml(): the outer <span class="py"> is covered by its own test.
+const pinyinBody = (s) => pinyinHtml(s).replace(/^<span class="py">([\s\S]*)<\/span>$/, '$1');
+
 // --- toneOf -----------------------------------------------------------------
 
 test('toneOf: detects tone from tone marks', () => {
@@ -48,32 +51,32 @@ test('toneOf: returns null for empty/invalid input', () => {
 // --- pinyinHtml -------------------------------------------------------------
 
 test('pinyinHtml: tone marks input', () => {
-  const html = pinyinHtml('nǐ hǎo');
+  const html = pinyinBody('nǐ hǎo');
   assert.equal(html, '<span class="tone tone3">nǐ</span> <span class="tone tone3">hǎo</span>');
 });
 
 test('pinyinHtml: tone numbers input', () => {
-  const html = pinyinHtml('ni3 hao3');
+  const html = pinyinBody('ni3 hao3');
   assert.equal(html, '<span class="tone tone3">ni</span> <span class="tone tone3">hao</span>');
 });
 
 test('pinyinHtml: neutral tone gets tone5', () => {
-  const html = pinyinHtml('ma5 ma');
+  const html = pinyinBody('ma5 ma');
   assert.equal(html, '<span class="tone tone5">ma</span> <span class="tone tone5">ma</span>');
 });
 
 test('pinyinHtml: mixed marks and numbers', () => {
-  const html = pinyinHtml('nǐ hao3');
+  const html = pinyinBody('nǐ hao3');
   assert.equal(html, '<span class="tone tone3">nǐ</span> <span class="tone tone3">hao</span>');
 });
 
 test('pinyinHtml: ü/v normalization in output', () => {
-  const html = pinyinHtml('lv4 nv3');
+  const html = pinyinBody('lv4 nv3');
   assert.equal(html, '<span class="tone tone4">lü</span> <span class="tone tone3">nü</span>');
 });
 
 test('pinyinHtml: all five tones', () => {
-  const html = pinyinHtml('ma1 ma2 ma3 ma4 ma5');
+  const html = pinyinBody('ma1 ma2 ma3 ma4 ma5');
   assert.match(html, /tone1">ma</);
   assert.match(html, /tone2">ma</);
   assert.match(html, /tone3">ma</);
@@ -82,40 +85,46 @@ test('pinyinHtml: all five tones', () => {
 });
 
 test('pinyinHtml: glued syllable without tone info stays plain', () => {
-  assert.equal(pinyinHtml('nihao'), 'nihao');
-  assert.ok(!pinyinHtml('nihao').includes('tone'));
+  assert.equal(pinyinBody('nihao'), 'nihao');
+  assert.ok(!pinyinBody('nihao').includes('tone'));
 });
 
 test('pinyinHtml: HTML escaping (no raw markup)', () => {
-  const html = pinyinHtml('<script>ni3</script> hao3');
+  const html = pinyinBody('<script>ni3</script> hao3');
   assert.ok(!html.includes('<script>'));
   assert.ok(html.includes('&lt;script&gt;'));
   assert.ok(html.includes('ni'));
   assert.ok(html.includes('hao'));
 
   // quotes and ampersands are escaped too
-  assert.equal(pinyinHtml('a&b'), 'a&amp;b');
-  const q = pinyinHtml('"ni3"');
+  assert.equal(pinyinBody('a&b'), 'a&amp;b');
+  const q = pinyinBody('"ni3"');
   assert.ok(!q.includes('"ni3"'));
   assert.ok(q.includes('&quot;ni3&quot;'));
 });
 
-test('pinyinHtml: empty input returns empty string', () => {
+test('pinyinHtml: wraps output in .py (the hook the pinyin setting hides)', () => {
+  assert.ok(pinyinHtml('ni3 hao3').startsWith('<span class="py">'));
+  assert.ok(pinyinHtml('ni3 hao3').endsWith('</span>'));
   assert.equal(pinyinHtml(''), '');
-  assert.equal(pinyinHtml('   '), '');
-  assert.equal(pinyinHtml(null), '');
-  assert.equal(pinyinHtml(undefined), '');
+});
+
+test('pinyinHtml: empty input returns empty string', () => {
+  assert.equal(pinyinBody(''), '');
+  assert.equal(pinyinBody('   '), '');
+  assert.equal(pinyinBody(null), '');
+  assert.equal(pinyinBody(undefined), '');
 });
 
 test('pinyinHtml: multiple syllables keep order and spacing', () => {
-  const html = pinyinHtml('wo3 men2 dou1 shi4 zhong1 guo2 ren2');
+  const html = pinyinBody('wo3 men2 dou1 shi4 zhong1 guo2 ren2');
   const tones = html.match(/tone\d+/g);
   assert.deepEqual(tones, ['tone3', 'tone2', 'tone1', 'tone4', 'tone1', 'tone2', 'tone2']);
   assert.equal((html.match(/<span /g) || []).length, 7);
 });
 
 test('pinyinHtml: capital letters', () => {
-  const html = pinyinHtml('Ni3 Hao3');
+  const html = pinyinBody('Ni3 Hao3');
   assert.equal(html, '<span class="tone tone3">Ni</span> <span class="tone tone3">Hao</span>');
 });
 
@@ -129,15 +138,15 @@ test('isToneColorsOn: defaults to true', () => {
 test('toggle off: pinyinHtml returns plain escaped text (no colors)', () => {
   setToneColors(false);
   assert.equal(isToneColorsOn(), false);
-  assert.equal(pinyinHtml('ni3 hao3'), 'ni3 hao3');
-  assert.equal(pinyinHtml('nǐ hǎo'), 'nǐ hǎo');
-  assert.ok(!pinyinHtml('ni3 hao3').includes('tone'));
+  assert.equal(pinyinBody('ni3 hao3'), 'ni3 hao3');
+  assert.equal(pinyinBody('nǐ hǎo'), 'nǐ hǎo');
+  assert.ok(!pinyinBody('ni3 hao3').includes('tone'));
   // still escaped while off
-  assert.equal(pinyinHtml('<b>'), '&lt;b&gt;');
+  assert.equal(pinyinBody('<b>'), '&lt;b&gt;');
 
   setToneColors(true);
   assert.equal(isToneColorsOn(), true);
-  assert.match(pinyinHtml('ni3'), /tone3/);
+  assert.match(pinyinBody('ni3'), /tone3/);
 });
 
 test('setToneColors: treats any non-false value as on', () => {

@@ -342,7 +342,7 @@ export async function render(container, ctx) {
             ? t('games.builder.correct')
             : t('games.builder.incorrect', { correct: round.words.join(' ') }),
         }),
-        h('p', { class: 'builder-pinyin', html: `<span>${pinyinHtml(round.pinyin)}</span>` }),
+        h('p', { class: 'builder-pinyin py-keep', html: `<span>${pinyinHtml(round.pinyin)}</span>` }),
         h('div', { class: 'builder-actions' },
           h('button', { type: 'button', class: 'primary', text: t('games.builder.next'), onclick: next })),
       );

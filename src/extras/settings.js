@@ -55,6 +55,9 @@ export async function render(container, ctx) {
     // Tone colors with preview
     main.append(await renderToneColorsSection());
 
+    // Pinyin shown or hidden everywhere (quick toggle lives in screen headers)
+    main.append(renderPinyinSection(settings.pinyin));
+
     // Daily goal
     main.append(renderDailyGoalSection(settings.dailyGoal));
 
@@ -125,12 +128,26 @@ export async function render(container, ctx) {
     section.append(toggle);
 
     // Preview
-    const preview = h('div', { class: 'settings-preview' });
+    const preview = h('div', { class: 'settings-preview py-keep' });
     preview.append(h('p', { class: 'settings-preview-label', text: t('settings.toneColors.previewLabel') }));
     preview.append(h('p', { class: 'settings-preview-pinyin', html: await import('../tone.js').then(m => m.pinyinHtml('nǐ hǎo wǒ men')) }));
     preview.append(h('p', { class: 'settings-preview-pinyin', html: await import('../tone.js').then(m => m.pinyinHtml('zhōng guó rén')) }));
     section.append(preview);
 
+    return section;
+  }
+
+  function renderPinyinSection(current) {
+    const section = h('section', { class: 'card' });
+    section.append(h('h2', { text: t('settings.pinyin.title') }));
+    section.append(h('p', { class: 'settings-hint', text: t('settings.pinyin.hint') }));
+    section.append(h('button', {
+      type: 'button',
+      class: 'chip',
+      'data-action': 'settings-pinyin',
+      'aria-pressed': String(current),
+      onclick: () => setSetting('pinyin', !current),
+    }, t(current ? 'settings.pinyin.on' : 'settings.pinyin.off')));
     return section;
   }
 

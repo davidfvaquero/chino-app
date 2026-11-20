@@ -318,7 +318,7 @@ async function renderRadicalList(container, ctx) {
       },
         h('span', { class: 'radical-symbol', text: r.symbol }),
         h('div', { class: 'radical-info' },
-          h('span', { text: r.pinyin }),
+          h('span', { class: 'py', text: r.pinyin }),
           h('span', { text: r.meaning }),
         )
       );

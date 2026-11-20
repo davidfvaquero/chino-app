@@ -225,7 +225,7 @@ async function renderCharBlock(character, set, entry, options, cellSize) {
 
   if (showPinyin && entry?.pinyinTone) {
     const pinyinEl = document.createElement('span');
-    pinyinEl.className = 'ws-char-pinyin';
+    pinyinEl.className = 'ws-char-pinyin py-keep';
     pinyinEl.innerHTML = pinyinHtml(entry.pinyinTone);
     head.append(pinyinEl);
   }
@@ -505,7 +505,7 @@ export async function render(container, ctx) {
           head.append(charLarge);
           if (options.showPinyin && card.entry?.pinyinTone) {
             const pinyinEl = document.createElement('span');
-            pinyinEl.className = 'ws-char-pinyin';
+            pinyinEl.className = 'ws-char-pinyin py-keep';
             pinyinEl.innerHTML = pinyinHtml(card.entry.pinyinTone);
             head.append(pinyinEl);
           }
