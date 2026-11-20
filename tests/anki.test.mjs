@@ -170,3 +170,19 @@ test('loadCards filters by source; sourcesOf lists distinct sources', async () =
 test('exportFilename uses the local date', () => {
   assert.match(exportFilename(new Date(2026, 10, 19).getTime()), /^chino-anki-2026-11-19\.tsv$/);
 });
+
+test('I12: importing 5000 cards is linear and stays under 1 s', async () => {
+  const db = emptyDb();
+  const lines = ['#separator:tab', `#columns:${ANKI_COLUMNS.join('\t')}`];
+  for (let i = 0; i < 5000; i += 1) {
+    const ch = String.fromCodePoint(0x4e00 + i);
+    lines.push(`${ch}\tpy${i}\tmeaning ${i}`);
+  }
+  const { entries } = parseAnkiTsv(lines.join('\n'));
+  assert.equal(entries.length, 5000);
+  const started = performance.now();
+  const result = await importCards(entries, db);
+  const elapsed = performance.now() - started;
+  assert.equal(result.added, 5000);
+  assert.ok(elapsed < 1000, `import of 5000 cards took ${elapsed.toFixed(0)} ms (expected < 1000)`);
+});

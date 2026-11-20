@@ -195,6 +195,55 @@ export function createDeck(store = storage) {
     return { card, created: true };
   };
 
+  /**
+   * Adds many entries in one pass: one `listCards()` for the whole batch instead
+   * of one per entry, so importing N cards stays linear (docs/REVIEW-2.md I12).
+   * Same dedupe rules as `addToReview` (id, then hanzi + toneless reading).
+   * Returns `{ results, createdCards }`: one `{card, created}` per entry, and the
+   * cards this call actually inserted (so a caller can post-process them).
+   */
+  const addMany = async (entries = [], { now = Date.now() } = {}) => {
+    const byId = new Map();
+    const byContent = new Map();
+    const byHanzi = new Map();
+    const byHanziNoPy = new Map();
+    for (const card of await listCards()) {
+      byId.set(card.id, card);
+      const hz = card.hanzi ?? card.simp;
+      if (!hz) continue;
+      const py = card.pinyin ?? card.pinyinNumeric;
+      if (py) byContent.set(`${hz}\u0000${tonelessKey(py)}`, card);
+      else byHanziNoPy.set(hz, card);
+      if (!byHanzi.has(hz)) byHanzi.set(hz, card);
+    }
+    const results = [];
+    const createdCards = [];
+    for (const entry of entries) {
+      const id = cardId(entry);
+      const hz = entry.hanzi ?? entry.simp;
+      const py = entry.pinyin ?? entry.pinyinNumeric;
+      let card = byId.get(id);
+      if (!card && hz) {
+        card = (py ? byContent.get(`${hz}\u0000${tonelessKey(py)}`) : undefined) ?? byHanziNoPy.get(hz) ?? (py ? undefined : byHanzi.get(hz));
+      }
+      if (card) {
+        results.push({ card, created: false });
+        continue;
+      }
+      const fresh = makeCard(entry, now);
+      await store.set('srs', fresh.id, fresh);
+      byId.set(fresh.id, fresh);
+      if (hz) {
+        if (py) byContent.set(`${hz}\u0000${tonelessKey(py)}`, fresh);
+        else byHanziNoPy.set(hz, fresh);
+        if (!byHanzi.has(hz)) byHanzi.set(hz, fresh);
+      }
+      results.push({ card: fresh, created: true });
+      createdCards.push(fresh);
+    }
+    return { results, createdCards };
+  };
+
   /** Applies a rating to a stored card, persists and returns the new card. */
   const answer = async (id, rating, now = Date.now()) => {
     const card = await store.get('srs', id);
@@ -211,7 +260,7 @@ export function createDeck(store = storage) {
     return { total: cards.length, due: cards.filter((card) => (card.due ?? 0) <= now).length };
   };
 
-  return { addToReview, getDueCards, answer, gradeCard: answer, countDue, countDueBySource, getCard, listCards, removeCard, deckStats };
+  return { addToReview, addMany, getDueCards, answer, gradeCard: answer, countDue, countDueBySource, getCard, listCards, removeCard, deckStats };
 }
 
 const deck = createDeck();

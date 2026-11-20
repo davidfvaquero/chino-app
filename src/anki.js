@@ -213,13 +213,13 @@ export async function previewImport(entries, db = storage) {
 export async function importCards(entries, db = storage) {
   const { fresh } = await planImport(entries, db);
   const deck = createDeck(db);
+  const { results } = await deck.addMany(fresh);
   let added = 0;
-  for (const entry of fresh) {
-    const { card, created } = await deck.addToReview(entry);
-    if (created) {
-      if (entry.example) await db.set('srs', card.id, { ...card, example: entry.example });
-      added += 1;
-    }
+  for (const [index, entry] of fresh.entries()) {
+    const { card, created } = results[index];
+    if (!created) continue;
+    if (entry.example) await db.set('srs', card.id, { ...card, example: entry.example });
+    added += 1;
   }
   return { added, skipped: entries.length - added };
 }

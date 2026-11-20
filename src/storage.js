@@ -145,12 +145,22 @@ export function idbDriver() {
       await withStore(store, 'readwrite', (os) => os.delete(key));
       return existed;
     },
-    list: (store) =>
-      withStore(store, 'readonly', (os) => os.getAllKeys()).then(async (keys) => {
-        const out = [];
-        for (const key of keys) out.push({ key, value: await withStore(store, 'readonly', (os) => os.get(key)) });
-        return out;
-      }),
+    list: async (store) => {
+      const db = await openDb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(store, 'readonly');
+        const os = tx.objectStore(store);
+        const keysReq = os.getAllKeys();
+        const valsReq = os.getAll();
+        tx.onerror = () => reject(tx.error);
+        tx.onabort = () => reject(tx.error ?? new Error('transaction aborted'));
+        tx.oncomplete = () => {
+          const keys = keysReq.result ?? [];
+          const vals = valsReq.result ?? [];
+          resolve(keys.map((key, index) => ({ key, value: vals[index] })));
+        };
+      });
+    },
   };
 }
 
