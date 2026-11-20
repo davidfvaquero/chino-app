@@ -278,17 +278,21 @@ export async function render(container, ctx = {}) {
     const button = h('button', { type: 'button', text: t('strokesSheet.play') });
     button.addEventListener('click', () => {
       if (!card.anim) {
-        card.anim = createStrokeAnimation(card.set);
+        // The sheet drives the shared engine; on 'done' the button goes back to
+        // Play so the state is not stuck on "Pause" (docs/REVIEW-2.md I14).
+        card.anim = createStrokeAnimation(card.set, {
+          onState: ({ state }) => {
+            button.textContent = t(state === 'playing' ? 'strokesSheet.pause' : 'strokesSheet.play');
+            button.dataset.state = state;
+            container.dataset.playState = state;
+          },
+        });
         card.anim.svg.classList.add('sheet-player-svg');
         animBox.append(card.anim.svg);
         state.anims.push(card.anim);
       }
       animBox.hidden = false;
       card.anim.toggle();
-      const now = card.anim.state();
-      button.textContent = t(now === 'playing' ? 'strokesSheet.pause' : 'strokesSheet.play');
-      button.dataset.state = now;
-      container.dataset.playState = now;
     });
     return button;
   }

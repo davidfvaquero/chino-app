@@ -153,8 +153,16 @@ try {
     await cdp.send('Page.navigate', { url: `${server.base}/#/` });
     await cdp.waitFor('html[data-ready="true"]', 10000);
     await cdp.eval(`import('./src/settings.js').then((m) => m.setSetting('theme', ${JSON.stringify(combo.setting)}))`);
-    await cdp.eval(`window.__cc = ${PAGE_LIB}`);
-    await sleep(300);
+    // On the first visit the service worker claims the page and reloads it once
+    // (src/pwa.js controllerchange -> reload), which would wipe `window.__cc`
+    // mid-run. Let that settle, then install the measurement helper and retry
+    // until it sticks (docs/REVIEW-2.md I14 asked for this check to exit 0).
+    await sleep(700);
+    for (let attempt = 0; attempt < 20; attempt += 1) {
+      await cdp.eval(`window.__cc = ${PAGE_LIB}`);
+      await sleep(150);
+      if (await cdp.eval('!!window.__cc')) break;
+    }
     const shot = async (screen) => {
       if (SHOTS_DIR) await cdp.shot(`${SHOTS_DIR}/${combo.setting}-${combo.os}-${screen}.png`);
     };

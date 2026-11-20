@@ -101,7 +101,7 @@ test('reduced motion keeps the state but drops the shake/pop', () => {
 // --------------------------------------------------------------- strokes
 
 test('the strokes board uses the dotted practice grid and the sheet wording', () => {
-  const s = src('src/learn/strokes.js');
+  const s = src('src/learn/strokes-ui.css.js');
   const guide = s.match(/\.strokes-guide \{[^}]*\}/)[0];
   assert.match(guide, /stroke-dasharray/);
   assert.match(guide, /stroke: var\(--edge\)/);
