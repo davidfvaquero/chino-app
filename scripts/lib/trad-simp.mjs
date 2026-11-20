@@ -20,7 +20,7 @@ export function buildTradSimpMap(dictEntries) {
   }
   const counts = new Map(); // traditional char -> Map(simplified char -> entry count)
   for (const e of dictEntries) {
-    if (e.trad.length !== 1 || e.simp.length !== 1 || e.trad === e.simp) continue;
+    if ([...e.trad].length !== 1 || [...e.simp].length !== 1 || e.trad === e.simp) continue;
     if (simpChars.has(e.trad)) continue; // also a simplified character: leave it alone
     if (!counts.has(e.trad)) counts.set(e.trad, new Map());
     const bySimp = counts.get(e.trad);

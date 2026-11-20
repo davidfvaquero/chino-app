@@ -367,11 +367,27 @@ async function buildSentences(dictEntries) {
   // (了/的/吗/…). Full disambiguation would need a corpus-driven segmenter;
   // this is a documented, deterministic approximation.
   const NEUTRAL_PARTICLES = new Set('了的吗呢吧啊呀着得地过们子头嘛哦哎'.split(''));
+  // HSK vocabulary (simplified hanzi + reading) gets a bonus, so a common word
+  // is read with its standard pronunciation (fixes 要 -> yào, REVIEW-2 I16/#38).
+  const hskKeys = new Set();
+  for (let level = 1; level <= 6; level += 1) {
+    try {
+      const text = fs.readFileSync(path.join(RAW, `hsk${level}.txt`), 'utf8').replace(/^\uFEFF/, '');
+      for (const raw of text.split('\n')) {
+        const cells = raw.replace(/\r$/, '').split('\t');
+        if (cells.length < 4) continue;
+        hskKeys.add(`${cells[0]}\u0000${cells[2].replace(/\s+/g, '').toLowerCase()}`);
+      }
+    } catch {
+      /* list not cached — skip the bonus */
+    }
+  }
   const scoreOf = (e) => {
     let sc = 0;
     const d0 = (e.defs[0] || '').toLowerCase();
     if (/^(variant of|old variant|surname|see |archaic|abbr\.|used in)/.test(d0)) sc += 100;
     if (e.simp.length === 1 && NEUTRAL_PARTICLES.has(e.simp) && /5$/.test(e.pinyinNumeric)) sc -= 50;
+    if (hskKeys.has(`${e.simp}\u0000${e.pinyinNumeric.replace(/\s+/g, '').toLowerCase()}`)) sc -= 20;
     return sc;
   };
   const wordPinyin = new Map();
@@ -405,7 +421,9 @@ async function buildSentences(dictEntries) {
     return {
       id: p.id,
       zh,
-      pinyin: makeSentencePinyin(zh, wordPinyin, maxWordLen),
+      // Pinyin from the ORIGINAL text (before trad->simp): the simplified form
+      // can pick up the wrong reading (聽 -> 听 yǐn, REVIEW-2 I16).
+      pinyin: makeSentencePinyin(p.zh, wordPinyin, maxWordLen),
       en: p.en,
     };
   });
