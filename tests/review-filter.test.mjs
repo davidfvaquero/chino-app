@@ -178,13 +178,15 @@ test('es grammar index: every pattern has a file and matches the en index', () =
   );
 });
 
-test('public/data/es/files.json exists (no 404 probe) and lists every es file', async () => {
+test('public/data/es/files.json exists (no 404 probe) and lists every es study file', async () => {
   const { readdirSync } = await import('node:fs');
   const root = new URL('../public/data/es/', import.meta.url);
+  // `dict/` is a machine-generated artifact loaded on demand by dictionary.js
+  // (never through data-url), so it is not part of the localized study listing.
   const walk = (dir, prefix = '') =>
     readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
       e.isDirectory()
-        ? walk(new URL(`${e.name}/`, dir), `${prefix}${e.name}/`)
+        ? (e.name === 'dict' ? [] : walk(new URL(`${e.name}/`, dir), `${prefix}${e.name}/`))
         : e.name.endsWith('.json') && prefix + e.name !== 'files.json' ? [prefix + e.name] : [],
     );
   assert.deepEqual(readJson(new URL('files.json', root)), walk(root).sort());

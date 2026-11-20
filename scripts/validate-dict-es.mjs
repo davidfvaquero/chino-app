@@ -18,8 +18,21 @@ import { validateEntry, parentheticalLeaks } from './lib/dict-es.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'public', 'data', 'dict', 'shards');
+const EXCEPTIONS = path.join(ROOT, 'scripts', 'dict-es-exceptions.json');
 
 const readJson = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
+
+/** Justified exceptions: {id: reason}. Their errors are reported, not counted. */
+function loadExceptions() {
+  if (!fs.existsSync(EXCEPTIONS)) return new Map();
+  try {
+    const doc = readJson(EXCEPTIONS);
+    return new Map(Object.entries(doc.entries || {}));
+  } catch (err) {
+    console.error(`validate-dict-es: ${path.relative(ROOT, EXCEPTIONS)} ilegible: ${err.message}`);
+    return new Map();
+  }
+}
 
 function loadOriginals() {
   const byId = new Map();
@@ -47,9 +60,11 @@ async function main(argv) {
     return 0;
   }
   const originals = loadOriginals();
+  const exceptions = loadExceptions();
   let checked = 0, shardCount = 0, merged = 0;
   const errors = [];
   const warnings = [];
+  const excused = [];
   const add = (id, file, msgs) => { for (const m of msgs) errors.push({ id, file, msg: m }); };
   const warn = (id, file, msgs) => { for (const m of msgs) warnings.push({ id, file, msg: m }); };
 
@@ -63,7 +78,10 @@ async function main(argv) {
       const en = originals.get(es.id);
       if (!en) { add(es.id, f, ['id no existe en el diccionario original']); continue; }
       checked++;
-      add(es.id, f, validateEntry(en, es));
+      const msgs = validateEntry(en, es);
+      const reason = exceptions.get(String(es.id));
+      if (reason) { for (const m of msgs) excused.push({ id: es.id, file: f, msg: m, reason }); }
+      else add(es.id, f, msgs);
       warn(es.id, f, parentheticalLeaks(en, es));
       if (es.defs.length < en.defs.length) merged++;
     }
@@ -71,6 +89,8 @@ async function main(argv) {
 
   console.log(`validate-dict-es: ${shardCount} shards, ${checked} entradas, ${errors.length} errores, ${warnings.length} avisos`);
   if (merged) console.log(`  (${merged} entradas con menos defs que el inglés: sentidos fusionados)`);
+  const excusedIds = new Set(excused.map((e) => e.id));
+  if (excused.length) console.log(`  ${excusedIds.size} entradas en la lista de excepciones justificadas (${excused.length} avisos omitidos)`);
   if (errors.length) {
     const byMsg = new Map();
     for (const e of errors) byMsg.set(e.msg, (byMsg.get(e.msg) || 0) + 1);

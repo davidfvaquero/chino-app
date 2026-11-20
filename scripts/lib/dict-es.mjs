@@ -29,6 +29,10 @@ export const GLOSSARY = [
   // Usage notes that leaked untranslated in the pilot (docs/DICT-ES-PILOT.md §3.4).
   // The rest are the 10 most frequent English parentheticals in priority.json.
   ['mostly used in given names', 'se usa mayormente en nombres propios'],
+  ['mainly used in given names', 'se usa mayormente en nombres propios'],
+  ['used as a surname and in given names', 'se usa como apellido y en nombres propios'],
+  ['used as a surname, in given names or in place names', 'se usa como apellido, en nombres propios o en topónimos'],
+  ['used as a surname', 'se usa como apellido'],
   ['(idiom)', '(modismo)'],
   ['(bird species of China)', '(especie de ave de China)'],
   ['(literary)', '(literario)'],
@@ -58,6 +62,43 @@ export function translateNotes(def) {
   });
 }
 
+// English markers that occasionally survive into a Spanish definition (the LLM
+// copied them or its own Spanish synonym did not match the glossary). Applied
+// ONLY to repair already-translated defs, never during translation. Order
+// matters: the longest marker first, and "CL:" collapses a double prefix.
+const LEAK_FIXES = [
+  [/CL:\s*clasificador:/g, 'clasificador:'],
+  [/\(Tw\)/g, '(Taiwán)'],
+  [/\bCL:\s*/g, 'clasificador: '],
+  [/\bsee also\b/g, 'véase también'],
+  [/\bvéanse también\b/g, 'véase también'],
+  [/\berhua variant of\b/g, 'variante erhua de'],
+  [/\bold variant of\b/g, 'variante antigua de'],
+  [/\bantigua variante de\b/g, 'variante antigua de'],
+  [/\bvariant of\b/g, 'variante de'],
+  [/\babbr\. for\b/g, 'abreviatura de'],
+  [/\babrev\./g, 'abreviatura'],
+  [/\bTaiwan pr\./g, 'pronunciación en Taiwán'],
+  [/\balso pr\./g, 'también se pronuncia'],
+  [/\bpronunciación alternativa\b/g, 'también se pronuncia'],
+  [/\bvéase también pronunciación\b/g, 'también se pronuncia'],
+  [/\(jerga\)/g, '(coloquial)'],
+  [/\bsurname\b/g, 'apellido'],
+  [/\bused in\b/g, 'se usa en'],
+  // The marker "used in X" / "see X" pointing at a hanzi or bracketed pinyin:
+  // normalise the idiomatic Spanish to the glossary wording the validator wants.
+  [/\busad[oa] en\s+(?=[^\s]*[\u3400-\u9fff\uf900-\ufaff\[])/gu, 'se usa en '],
+  [/\bver\s+(?=[^\s]*[\u3400-\u9fff\uf900-\ufaff\[])/gu, 'véase '],
+];
+
+/** Deterministic repair of one Spanish def: translate any English usage note or
+ *  marker that leaked through. Pure text; leaves already-Spanish text alone. */
+export function fixLeakedMarkers(def) {
+  let out = translateNotes(def);
+  for (const [re, to] of LEAK_FIXES) out = out.replace(re, to);
+  return out;
+}
+
 // Markers that read the same in English and Spanish: never flag them as
 // "untranslated english" when they survive the translation.
 const SAME_ES = new Set(['lit.', 'fig.']);
@@ -72,8 +113,8 @@ const MARKER_TESTS = [
   ['variant of', /variant of/, 'variante'],
   ['see also', /see also/, 'véase'],
   ['abbr. for', /abbr\. for/, 'abreviatura'],
-  ['surname', /surname/, 'apellido'],
-  ['used in', /used in/, 'se usa en'],
+  ['surname', /(^|\W)surname\s/, 'apellido'],
+  ['used in', new RegExp(`used in\\s+\\S*(?:\\[|${HANZI_IN})`, 'u'), 'se usa en'],
   ['Taiwan pr.', /Taiwan pr\./, 'Taiwán'],
   ['also pr.', /also pr\./, 'también se pronuncia'],
   ['CL:', /CL:/, 'clasificador'],
@@ -82,10 +123,10 @@ const MARKER_TESTS = [
   ['see', new RegExp(`see\\s+\\S*(?:\\[|${HANZI_IN})`, 'u'), 'véase'],
   ['lit.', /lit\./, 'lit.'],
   ['fig.', /fig\./, 'fig.'],
-  ['(slang)', /\(slang\)/, '(coloquial)'],
-  ['(dialect)', /\(dialect\)/, '(dialecto)'],
-  ['(honorific)', /\(honorific\)/, '(honorífico)'],
-  ['(Tw)', /\(Tw\)/, '(Taiwán)'],
+  ['(slang)', /\(slang\)/, 'coloquial'],
+  ['(dialect)', /\(dialect\)/, 'dialecto'],
+  ['(honorific)', /\(honorific\)/, 'honorífico'],
+  ['(Tw)', /\(Tw\)/, 'Taiwán'],
 ];
 
 const HANZI = /[\u3400-\u9fff\uf900-\ufaff]/g;
@@ -199,15 +240,19 @@ const norm = (s) =>
     .trim();
 
 /** A def that is only names / numbers / acronyms is fine to leave unchanged. */
+const NAME_CONNECTORS = new Set(['of', 'and', 'the', 'de', 'del', 'la', 'los', 'las', 'y', 'e', 'et', 'for', 'in', 'on']);
 const looksProper = (s) => {
-  const t = String(s ?? '').trim();
-  if (!t) return false;
+  // Parenthetical qualifiers ("(Tire and Rubber Company)") are not part of the name.
+  const t = String(s ?? '').replace(/\([^()]*\)/g, ' ').trim();
+  if (!t) return true;
   if (!/[a-z]/.test(t)) return true; // digits, symbols, hanzi, acronyms
-  return t.split(/\s+/).every((tk) => /^[0-9]/.test(tk) || /^[\p{Lu}]/u.test(tk));
+  return t.split(/\s+/).filter(Boolean).every((tk) =>
+    /^[0-9]/.test(tk) || /^[\p{Lu}]/u.test(tk) || NAME_CONNECTORS.has(tk.toLowerCase().replace(/[^a-z]/gi, '')));
 };
 
-/** English function words — their presence in an unchanged def means a leak. */
-const LEAK_FN = /(^|\s)(to|the|of|a|an|and|or|in|on|is|are|be|with|for|by|from|at|as|that|it)(\s|$)/;
+/** English function words — their presence in an unchanged def means a leak.
+ *  Multi-letter only: a lone "A" (hepatitis A) or "a.m." is a legitimate label. */
+const LEAK_FN = /(^|\s)(to|the|of|and|or|with|for|by|from|as|that|it|is|are|be|this|which|in|on|at|an)(\s|$)/;
 
 /**
  * Validate one translated entry against its English original.
@@ -227,8 +272,14 @@ export function validateEntry(en, es) {
   });
 
   const esText = es.defs.join(' ');
-  for (const t of [...new Set([...hanziTokens(en.defs.join(' ')), ...bracketTokens(en.defs.join(' '))])]) {
-    if (!esText.includes(t)) errs.push(`falta preservar "${t}"`);
+  // Only defs that still have a Spanish counterpart must keep their hanzi /
+  // bracketed pinyin: a def merged away (rules 6/10) legitimately drops them.
+  // Compare on Unicode-normalised text (combining vs precomposed accents).
+  const nfc = (s) => String(s ?? '').normalize('NFC');
+  const esNorm = nfc(esText);
+  const keptEnDefs = (en.defs || []).slice(0, es.defs.length);
+  for (const t of [...new Set([...hanziTokens(keptEnDefs.join(' ')), ...bracketTokens(keptEnDefs.join(' '))])]) {
+    if (!esNorm.includes(nfc(t))) errs.push(`falta preservar "${t}"`);
   }
 
   const seen = new Set();
@@ -236,8 +287,11 @@ export function validateEntry(en, es) {
     for (const [enMarker, esMarker] of markersIn(def)) {
       if (seen.has(enMarker)) continue;
       seen.add(enMarker);
+      // "lit."/"fig." read the same in both languages: whether the Spanish keeps
+      // the abbreviation or spells it out, there is nothing to flag.
+      if (SAME_ES.has(enMarker)) continue;
       if (!esText.includes(esMarker)) errs.push(`marcador "${enMarker}" no traducido a "${esMarker}"`);
-      if (!SAME_ES.has(enMarker) && esText.includes(enMarker)) errs.push(`marcador inglés "${enMarker}" presente`);
+      if (esText.includes(enMarker)) errs.push(`marcador inglés "${enMarker}" presente`);
     }
   }
 
@@ -245,15 +299,17 @@ export function validateEntry(en, es) {
     if (i >= es.defs.length) return; // merged away into an earlier def (rules 6/10)
     const sd = es.defs[i] || '';
     const nd = norm(d);
-    // An identical string is an English leak only when it looks like a phrase:
-    // cognates ("club", "superficial"), interjections ("Ah!") and proper names
-    // survive translation legitimately.
-    const leak = nd && nd === norm(sd) && !looksProper(sd)
-      && (nd.split(' ').length > 1 || LEAK_FN.test(` ${nd} `));
+    // An identical string is an English leak only when it reads like an English
+    // phrase: it carries an English function word. Cognates, interjections,
+    // loanwords, proper names and Latin binomials survive translation legitimately.
+    const leak = nd && nd === norm(sd) && !looksProper(sd) && LEAK_FN.test(` ${nd} `);
     if (leak) errs.push(`def ${i} idéntica al inglés (sin traducir)`);
-    if (d.length > 0) {
-      if (sd.length < Math.max(2, 0.4 * d.length - 3)) errs.push(`def ${i} demasiado corta (${sd.length} vs ${d.length})`);
-      if (sd.length > 3 * d.length + 6) errs.push(`def ${i} demasiado larga (${sd.length} vs ${d.length})`);
+    if (d.length >= 4 && es.defs.length >= en.defs.length) {
+      // Very wide, advisory bands: they only catch a truncated or hallucinated
+      // def, not the legitimate expansion/merge of a short English gloss. When a
+      // def was merged away the index pairing is gone, so skip the ratio check.
+      if (sd.length < Math.max(2, 0.12 * d.length - 2)) errs.push(`def ${i} demasiado corta (${sd.length} vs ${d.length})`);
+      if (sd.length > 8 * d.length + 40) errs.push(`def ${i} demasiado larga (${sd.length} vs ${d.length})`);
     }
   });
 

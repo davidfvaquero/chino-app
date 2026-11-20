@@ -26,18 +26,21 @@ the licence asks for it.
 ### 1a. Spanish definitions (`public/data/es/dict/`) — derivative work
 
 The Spanish definitions are a **derivative work of CC-CEDICT** produced by
-machine translation (LLM) of the original English definitions, in importance
-order (see `scripts/dict-priority.mjs`, `scripts/translate-dict.mjs`). They are
-therefore distributed under the **same licence, CC BY-SA 4.0**, with the same
-attribution: © MDBG and the CC-CEDICT contributors. The English definitions in
-`public/data/dict/` are always kept as a fallback. Only the definitions change;
-the entry ids, characters and pinyin are untouched.
+automatic translation (**Claude Haiku**, an LLM) of the original English
+definitions, in importance order (see `scripts/dict-priority.mjs`,
+`scripts/translate-dict.mjs`). They are therefore distributed under the **same
+licence, CC BY-SA 4.0**, with the same attribution: © MDBG and the CC-CEDICT
+contributors. The English definitions in `public/data/dict/` are always kept as
+a fallback. Only the definitions change; the entry ids, characters and pinyin
+are untouched.
 
-> Las definiciones en español son una traducción automática derivada de
-> CC-CEDICT y se distribuyen bajo CC BY-SA 4.0 © MDBG y los colaboradores de
-> CC-CEDICT.
+> Las definiciones en español son una traducción automática (Claude Haiku)
+> derivada de CC-CEDICT y se distribuyen bajo CC BY-SA 4.0 © MDBG y los
+> colaboradores de CC-CEDICT.
 
-The Spanish search index (`public/data/es/dict/index-spanish/`) is generated from
+The translated shards are checked by `scripts/validate-dict-es.mjs` (a small
+list of justified exceptions lives in `scripts/dict-es-exceptions.json`). The
+Spanish search index (`public/data/es/dict/index-spanish/`) is generated from
 these shards by `scripts/build-dict-es-index.mjs` (run by `npm run build` when
 Spanish shards exist).
 

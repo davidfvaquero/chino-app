@@ -31,9 +31,12 @@ public/data/grammar/pattern-01.json      ->  public/data/es/grammar/pattern-01.j
 public/data/hsk/1.json                   ->  public/data/es/hsk/1.json
 ```
 
-Los *shards* generados (`dict/`, `strokes/`, `sentences/`, `radicals/`,
-`etymology/`) y los listados de build (`files.json`, `manifest.json`) **no se
-traducen**: son datos de máquina. `--coverage` los ignora.
+Los *shards* generados (`strokes/`, `radicals/`, `etymology/`) y los listados de
+build (`files.json`, `manifest.json`) **no se traducen**: son datos de máquina.
+`--coverage` los ignora. El diccionario (`es/dict/`) se traduce aparte con su
+propio proceso (§5): **no forma parte del listado `es/files.json`** —lo carga
+`src/dictionary.js` bajo demanda— y **ningún shard del diccionario entra en el
+precache del service worker**.
 
 ### Listado opcional `public/data/es/files.json`
 
@@ -132,3 +135,43 @@ node scripts/check-es-data.mjs --coverage      # qué falta por traducir
 Antes de dar una traducción por buena: `node scripts/check-es-data.mjs <ruta>` y,
 si el archivo lo lee un motor, abrir la pantalla correspondiente
 (`#/learn/<area>`, `#/extras/<area>`) con el idioma en español.
+
+## 5. Diccionario en español (`public/data/es/dict/`)
+
+Las definiciones del diccionario (CC-CEDICT) también están traducidas al
+español. Es un caso aparte del resto del contenido: el diccionario tiene su
+propia tubería, no lo lee `data-url.js` y sus shards **no** se anuncian en
+`es/files.json` ni se precargan; `src/dictionary.js` los pide bajo demanda.
+
+```
+public/data/dict/shards/NNN.json        original inglés (no se toca)
+public/data/es/dict/shards/NNN.json     [{id, defs:[...]}] traducción por id
+public/data/es/dict/index-spanish/<a-z>.json   palabra es -> shards (búsqueda es)
+```
+
+- **Traducción:** `scripts/dict-priority.mjs` ordena las entradas por
+  importancia, y `scripts/translate-dict.mjs` las traduce con un LLM
+  (**Claude Haiku** o, en su defecto, OpenRouter) por lotes, de forma
+  reanudable. Es una obra derivada de CC-CEDICT y se distribuye bajo la misma
+  licencia (**CC BY-SA 4.0**, © MDBG y colaboradores) — ver `CREDITS.md` §1a.
+- **Reparación determinista:** `node scripts/fix-dict-es.mjs` arregla sin LLM
+  los marcadores de CC-CEDICT que se colaron en inglés (`used in` → `se usa en`,
+  `CL:` → `clasificador:`, `(Tw)` → `(Taiwán)`…) y fusiona definiciones
+  duplicadas dentro de una entrada.
+- **Validación:** `node scripts/validate-dict-es.mjs` recorre **todos** los
+  shards y compara cada entrada con su original inglés (ids, hanzi/pinyin,
+  marcadores traducidos, fugas de inglés, longitud, duplicados). Sale con 1 si
+  hay errores. Un puñado de entradas con diferencias aceptadas está en
+  `scripts/dict-es-exceptions.json`: no cuentan como error y se informan aparte.
+  (Las notas parentéticas tipo `(onom.)`, `(golf)` o `(c. 1200-1300)` son
+  avisos, no errores.)
+- **Índice de búsqueda:** `node scripts/build-dict-es-index.mjs` (lo ejecuta
+  `npm run build` si hay shards es) genera `index-spanish/`: palabra española
+  (sin acentos, sin palabras vacías) → shards. La búsqueda en español la usa
+  primero y luego cae al inglés (ver `src/dictionary.js`).
+
+```sh
+node scripts/fix-dict-es.mjs          # reparación determinista (opcional)
+node scripts/validate-dict-es.mjs     # 0 errores antes de comitear
+node scripts/build-dict-es-index.mjs  # regenera index-spanish/
+```
