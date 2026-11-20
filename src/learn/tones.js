@@ -16,17 +16,20 @@
  */
 import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
-import storage from '../storage.js';
 import { speak } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
 import { summarize } from './exercises.js';
+import {
+  getProgress as lessonGetProgress,
+  saveProgress as lessonSaveProgress,
+  progressKey as lessonProgressKey,
+} from './lessons.js';
 import { exerciseView } from './exercise-view.js';
 import { ensureExerciseStyles } from './exercise-ui.css.js';
 import { fetchData } from '../data-url.js';
 
 export const titleKey = 'hubs.learn.tones';
 export const LESSON_ID = 'tones';
-export const PROGRESS_STORE = 'progress';
 
 /** Root of the lesson data, relative to this module (works in src/ and dist/). */
 export const DATA_BASE = new URL('../../data/lessons/', import.meta.url);
@@ -37,27 +40,19 @@ export async function loadLesson({ base = DATA_BASE, fetchJson } = {}) {
   return { ...lesson, id: LESSON_ID };
 }
 
+/* Progress lives in the shared 'progress' store under `hsk1:tones` — the same
+ * record lessons.js reads (`progressKey('hsk1','tones')`). One implementation
+ * (docs/REVIEW-2.md I3): Tones re-exports the lessons engine's functions. */
+export { PROGRESS_STORE } from './lessons.js';
+
 /** Storage key for the tones lesson progress record. */
-export function progressKey() {
-  return `hsk1:${LESSON_ID}`;
-}
+export const progressKey = () => lessonProgressKey('hsk1', LESSON_ID);
 
 /** Progress record for the tones lesson, or null when it was never opened. */
-export async function getProgress({ store = storage } = {}) {
-  return (await store.get(PROGRESS_STORE, progressKey())) ?? null;
-}
+export const getProgress = (opts = {}) => lessonGetProgress('hsk1', LESSON_ID, opts);
 
-/**
- * Merges `patch` into the stored progress record and returns the new record.
- * Called after every answered exercise, so partial progress is persisted too.
- */
-export async function saveProgress(patch = {}, { store = storage, now = Date.now() } = {}) {
-  const key = progressKey();
-  const previous = (await store.get(PROGRESS_STORE, key)) ?? { completed: false, score: 0, total: 0, answered: 0 };
-  const record = { ...previous, ...patch, updatedAt: now };
-  await store.set(PROGRESS_STORE, key, record);
-  return record;
-}
+/** Merges `patch` into the stored tones progress record and returns it. */
+export const saveProgress = (patch = {}, opts = {}) => lessonSaveProgress('hsk1', LESSON_ID, patch, opts);
 
 /** Inline text that works whether the lesson gives a key ('tones...') or a literal. */
 const label = (value) => (typeof value === 'string' && value ? t(value) : '');

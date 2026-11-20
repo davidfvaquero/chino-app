@@ -8,8 +8,8 @@
  *
  * The two lessons now share one full body: pinyin readings under the hanzi,
  * right/wrong marking on the options, the answer named in the failure text and
- * a `role=status` live region (docs/REVIEW-2.md I3 removed the `rich` flag that
- * kept Tones on a poorer copy).
+ * a `role=status` live region (docs/REVIEW-2.md I3 removed the flag that kept
+ * Tones on a poorer copy).
  *
  * `config`:
  *   readings    Map      hanzi -> pinyin, for the prompt/option reading.
