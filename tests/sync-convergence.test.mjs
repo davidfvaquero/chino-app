@@ -19,6 +19,7 @@ function createServer() {
   const rows = new Map();
   const requests = [];
   const respond = (json, status = 200) => ({ ok: status < 400, status, json: async () => json });
+  const server = { rows, requests, onGet: null, fetchFor: null };
 
   const fetchFor = (label) => async (url, options = {}) => {
     const u = new URL(url);
@@ -35,19 +36,31 @@ function createServer() {
     if (u.pathname !== '/rest/v1/sync_blobs') return respond({}, 404);
 
     if (method === 'POST') {
-      // Supabase upsert replaces the row unconditionally: the client's ordering
-      // (pull/merge BEFORE push) is what protects newer data.
-      for (const row of body) rows.set(idOf(row.store, row.key), { ...row, user_id: 'u1' });
+      // An upsert that conflicts becomes an UPDATE, and the BEFORE UPDATE
+      // trigger on sync_blobs keeps the row with the NEWER updated_at — a stale
+      // device cannot overwrite a newer server row (deploy/supabase-schema.sql).
+      for (const row of body) {
+        const key = idOf(row.store, row.key);
+        const prev = rows.get(key);
+        if (prev && Date.parse(row.updated_at) < Date.parse(prev.updated_at)) continue;
+        rows.set(key, { ...row, user_id: 'u1' });
+      }
       return respond({}, 201);
     }
     if (method === 'DELETE') {
       rows.clear();
       return respond({});
     }
-    return respond([...rows.values()].map((row) => ({ ...row })));
+    // GET: snapshot the rows first, then let a test interleave a concurrent
+    // write (the race window between this client's pull and its push).
+    const snapshot = [...rows.values()].map((row) => ({ ...row }));
+    const res = respond(snapshot);
+    if (server.onGet) await server.onGet(label);
+    return res;
   };
 
-  return { rows, requests, fetchFor };
+  server.fetchFor = fetchFor;
+  return server;
 }
 
 function makeClient(server, label, startAt = 1000, gate = { offline: false }) {
@@ -108,6 +121,35 @@ test('concurrent edits of the same key converge to the newer timestamp', async (
   assert.equal(await A.store.get('settings', 'theme'), 'dark');
   assert.equal(await B.store.get('settings', 'theme'), 'dark');
   assert.equal(server.rows.get(idOf('settings', 'theme')).value, 'dark');
+});
+
+test('a write landing between A pull and A push is not lost (trigger keeps newer row)', async () => {
+  const server = createServer();
+  const A = await ready(server, 'A', 1000);
+  const B = await ready(server, 'B', 2000);
+
+  await A.store.set('settings', 'theme', 'light'); // A stamp 1000
+  assert.equal((await A.sync.syncNow()).ok, true);
+  assert.equal(server.rows.get(idOf('settings', 'theme')).value, 'light');
+
+  // B edits (stamp 2000) but has not pushed yet.
+  await B.store.set('settings', 'theme', 'dark');
+  // Race: B pushes right after A's pull GET is snapshotted, before A's POST.
+  server.onGet = async (label) => {
+    if (label !== 'A') return;
+    server.onGet = null;
+    assert.equal((await B.sync.syncNow()).ok, true); // server dark@2000
+  };
+
+  A.clock.t = 3000;
+  assert.equal((await A.sync.syncNow()).ok, true);
+
+  // A pulled the stale snapshot (light@1000) and tried to push it back, but the
+  // trigger kept B's newer row: the server is still dark.
+  assert.equal(server.rows.get(idOf('settings', 'theme')).value, 'dark');
+  // A learns dark on its next pull.
+  assert.equal((await A.sync.syncNow()).ok, true);
+  assert.equal(await A.store.get('settings', 'theme'), 'dark');
 });
 
 test('same-millisecond edits pick the same winner on both devices', async () => {

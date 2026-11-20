@@ -95,8 +95,11 @@ Account screen).
 - **Attach on boot, pull-merge-push on open.** `main.js` calls `sync.attach()`
   only when the config is filled (sync off = zero requests), so every local
   write to a synced store is queued. On open the client **pulls first, merges,
-  then pushes the merged state** (`syncNow`). Pull-first is the important part:
-  a device holding an old copy can no longer overwrite a newer server row.
+  then pushes the merged state** (`syncNow`). Pull-first narrows the window, and
+  the **server-side trigger** on `sync_blobs` closes it: an upsert that conflicts
+  with a newer row keeps the newer `updated_at`, so a device holding an old copy
+  cannot overwrite a newer server row even if another device wrote between this
+  client's pull and its push.
 - **Offline is safe.** A failed request never throws: the change stays in the
   local queue and is sent on the next **Sync now**. A `401` is retried once
   with `POST /auth/v1/token?grant_type=refresh_token` before giving up.
@@ -147,9 +150,31 @@ create policy "sync_blobs own rows" on public.sync_blobs
   for all
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
+
+-- Keep the row with the NEWER updated_at on every UPDATE. An upsert that hits
+-- the primary key becomes an UPDATE, so this trigger fires on it: a device that
+-- pushes an older copy of a row (its pull raced another device's write) cannot
+-- overwrite the newer row — the trigger returns the existing one instead.
+create or replace function public.sync_blobs_keep_newer()
+returns trigger
+language plpgsql
+as $$
+begin
+  if new.updated_at < old.updated_at then
+    return old;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists sync_blobs_keep_newer on public.sync_blobs;
+create trigger sync_blobs_keep_newer
+  before update on public.sync_blobs
+  for each row execute function public.sync_blobs_keep_newer();
 ```
 
 Rows are upserted (`Prefer: resolution=merge-duplicates`) and `user_id` is
 never sent: the column default fills it from the JWT, so RLS keeps every user
-inside their own rows. The client merges locally before pushing, so the server
-can stay a dumb key/value store.
+inside their own rows. The client merges locally before pushing, and the
+`sync_blobs_keep_newer` trigger makes the server keep the newest row on a
+conflict, so the client never has to reason about another device's writes.

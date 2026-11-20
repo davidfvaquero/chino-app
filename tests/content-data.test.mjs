@@ -89,6 +89,14 @@ for (const level of lessonLevels) {
         assert.ok(word.hanzi && word.pinyin && word.english, `vocabulary entry complete: ${JSON.stringify(word)}`);
       }
 
+      // hsk3 8-10 (the former tests/hsk3-lessons-8-10.test.mjs) require an
+      // example sentence on every word; keep that coverage here.
+      if (level === 'hsk3' && ['hsk3-08', 'hsk3-09', 'hsk3-10'].includes(meta.id)) {
+        for (const word of lesson.vocabulary) {
+          assert.ok(word.example, `hsk3 8-10 word has an example: ${word.hanzi}`);
+        }
+      }
+
       const types = new Set(lesson.exercises.map((e) => e.type));
       for (const want of ['choose', 'listen', 'match', 'order']) {
         assert.ok(types.has(want), `uses the "${want}" exercise type`);

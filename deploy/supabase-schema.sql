@@ -33,3 +33,24 @@ create policy "sync_blobs own rows" on public.sync_blobs
   for all
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
+
+-- Keep the row with the NEWER updated_at on every UPDATE. An upsert that hits
+-- the primary key becomes an UPDATE, so this trigger fires on it: a device that
+-- pushes an older copy of a row (its pull raced another device's write) cannot
+-- overwrite the newer row — the trigger returns the existing one instead.
+create or replace function public.sync_blobs_keep_newer()
+returns trigger
+language plpgsql
+as $$
+begin
+  if new.updated_at < old.updated_at then
+    return old;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists sync_blobs_keep_newer on public.sync_blobs;
+create trigger sync_blobs_keep_newer
+  before update on public.sync_blobs
+  for each row execute function public.sync_blobs_keep_newer();

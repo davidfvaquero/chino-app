@@ -252,6 +252,19 @@ test('deleteRemoteData sends a scoped DELETE and leaves the local copy alone', a
   assert.deepEqual(await store.get('srs', 'd1'), { id: 'd1' });
 });
 
+test('push never uploads a legacy settings.openrouterKey (only meta is migrated later)', async () => {
+  const { sync, store, fetchImpl } = await signedIn([{ match: '/rest/v1/sync_blobs', json: {} }]);
+  await store.set('settings', 'openrouterKey', 'sk-x');
+  await store.set('settings', 'theme', 'dark');
+  await sync.syncNow();
+
+  const body = fetchImpl.calls
+    .filter((c) => c.options.method === 'POST' && c.url.includes('/rest/v1/sync_blobs'))
+    .flatMap((c) => c.body ?? []);
+  assert.ok(body.length > 0, 'a push happened');
+  assert.equal(body.some((row) => row.key === 'openrouterKey' || JSON.stringify(row).includes('sk-x')), false);
+});
+
 // --------------------------------------------------------------------------
 // Account screen, headless (no browser)
 // --------------------------------------------------------------------------

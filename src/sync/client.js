@@ -114,6 +114,10 @@ export function createSync({
     const out = [];
     for (const name of SYNC_STORES) {
       for (const { key, value } of await store.list(name)) {
+        // The legacy OpenRouter key is a secret: it belongs in `meta` (never
+        // synced). A device that hasn't opened the conversation screen yet may
+        // still hold it in `settings` — never upload it.
+        if (name === 'settings' && key === 'openrouterKey') continue;
         const id = idOf(name, key);
         let updated = state.updatedAt[id] ?? 0;
         if (stamp && updated === 0) {
