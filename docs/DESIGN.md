@@ -213,7 +213,7 @@ colour is never the only signal.
   (`again` red, `good`/`easy` jade) with the interval under the label (2 × 2 at ≤ 22 rem).
 - **Lesson** — intro (sheet), vocabulary (rows with `.md` cell, example behind a
   jade rule), exercise (sheet + progress bar), result (score + bar).
-- **Read** — the list is a row per reading in the shared `.menu` + `.card.field`
+- **Read** — a hairline row per reading in the shared `.menu` + `.card.field`
   entry (Chinese title, its pinyin and topic on the second line, the drawn
   chevron on the right); each line of a reading is a hairline row: speaker pill,
   tappable words (dotted underline, 44 px high), optional pinyin, translation,
