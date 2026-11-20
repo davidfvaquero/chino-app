@@ -30,7 +30,7 @@
  *               lapsed (lapses > 0) or whose ease dropped below LOW_EASE.
  * The mode composes with the origin filter.
  */
-import { t } from '../i18n.js';
+import { t, getLocale } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import { getDueCards, answerAndNotify, grade, countDueBySource, RATINGS, DEFAULT_EASE } from '../srs.js';
 import { speak } from '../audio.js';
@@ -439,7 +439,10 @@ export function render(container, ctx = {}) {
 
   function paintCard(card) {
     const hanzi = card.hanzi ?? card.simp ?? '';
-    const defs = card.defs ?? card.english ?? [];
+    const meaningEs = getLocale() === 'es' && Array.isArray(card.meaningEs) && card.meaningEs.length
+      ? card.meaningEs
+      : null;
+    const defs = meaningEs ?? card.defs ?? card.english ?? [];
     const pinyin = card.pinyin ?? '';
     const remaining = state.queue.length - state.index;
     const reverse = state.mode === 'reverse';

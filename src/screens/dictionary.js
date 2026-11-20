@@ -142,6 +142,7 @@ export function render(container, ctx = {}) {
             pinyin: entry.pinyinTone,
             pinyinNumeric: entry.pinyinNum,
             defs: entry.defs,
+            defsEs: entry.defsEs,
             source: 'dict',
           });
           add.textContent = t('dict.added');

@@ -71,6 +71,8 @@ export function reviewEntryFrom(entry = {}, source = 'reading') {
     pinyin: entry.pinyinTone ?? entry.pinyin ?? '',
     pinyinNumeric: entry.pinyinNum ?? entry.pinyinNumeric ?? '',
     english: Array.isArray(entry.defs) ? entry.defs : entry.english ?? [],
+    // Spanish gloss, only when the lookup carried one (review in locale es, I9).
+    ...(Array.isArray(entry.defsEs) && entry.defsEs.length ? { meaningEs: entry.defsEs } : {}),
     source,
   };
 }

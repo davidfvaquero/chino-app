@@ -237,3 +237,20 @@ test('I11: the chat translation follows the app language', async () => {
   assert.match(buildSystemPrompt({ uiLang: 'en' }), /English/);
   assert.equal(parseReply('{"zh":"你好","tr":"Hola"}').en, 'Hola');
 });
+
+// ---------------------------------------------------------------- I9
+test('I9: a card added from the dictionary keeps the Spanish gloss', async () => {
+  const { makeCard } = await import('../src/srs.js');
+  const card = makeCard({ simp: '你', pinyin: 'nǐ', defs: ['you'], defsEs: ['tú'], source: 'dict' });
+  assert.deepEqual(card.meaningEs, ['tú']);
+  assert.deepEqual(card.defs, ['you']);
+  const bare = makeCard({ simp: '你', defs: ['you'] });
+  assert.deepEqual(bare.meaningEs, [], 'no translation still yields an array');
+});
+
+test('I9: review prefers the Spanish gloss in locale es', () => {
+  const src = fs.readFileSync(path.join(ROOT, 'src/screens/review.js'), 'utf8');
+  assert.match(src, /getLocale\(\) === 'es' && Array\.isArray\(card\.meaningEs\)/);
+  const paste = fs.readFileSync(path.join(ROOT, 'src/extras/paste.js'), 'utf8');
+  assert.match(paste, /lookup\(word, \{ spanish: getLocale\(\) === 'es' \}\)/);
+});

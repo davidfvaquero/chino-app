@@ -325,7 +325,7 @@ export async function render(container, ctx) {
 
   async function showWordPanel(word) {
     currentPanelWord = word;
-    const entry = await dictionary.lookup(word);
+    const entry = await dictionary.lookup(word, { spanish: getLocale() === 'es' });
     const vm = wordPanel(word, entry);
 
     const reviewBtn = vm.found
@@ -374,7 +374,7 @@ export async function render(container, ctx) {
         ? h('p', { class: 'paste-panel-pinyin py-keep', html: pinyinHtml(vm.pinyin) })
         : h('p', { class: 'muted', text: t('paste.wordNotFound', { word }) }),
       vm.english.length
-        ? h('ul', { class: 'paste-panel-defs' }, ...vm.english.map(d => h('li', { text: d })))
+        ? h('ul', { class: 'paste-panel-defs' }, ...(vm.spanish?.length ? vm.spanish : vm.english).map(d => h('li', { text: d })))
         : null,
       h('div', { class: 'paste-panel-actions' }, reviewBtn, playBtn),
     );

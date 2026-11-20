@@ -125,6 +125,8 @@ export function makeCard(entry = {}, now = Date.now()) {
     pinyinNumeric: entry.pinyinNumeric ?? '',
     english,
     defs: english,
+    /** Spanish translation of `defs`, when the entry had one (review in es). */
+    meaningEs: asArray(entry.meaningEs ?? entry.defsEs ?? []),
     source: entry.source ?? 'dict',
     sourceDetail: entry.sourceDetail ?? null,
     addedAt: now,
