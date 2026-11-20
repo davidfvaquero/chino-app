@@ -120,7 +120,17 @@ export function finish(feedback, result, onContinue, config = {}) {
       text: result.correct ? t('learn.lessons.correct') : wrongText(result, config),
     }),
   );
-  feedback.append(h('button', { type: 'button', class: 'btn primary', text: t('learn.lessons.continue'), onclick: () => onContinue(result) }));
+  feedback.append(h('button', {
+    type: 'button',
+    class: 'btn primary',
+    text: t('learn.lessons.continue'),
+    onclick: (event) => {
+      const button = event.currentTarget;
+      if (button.disabled) return; // a double click must not skip an exercise
+      button.disabled = true;
+      onContinue(result);
+    },
+  }));
 }
 
 function choiceBody(exercise, box, onContinue, config = {}) {

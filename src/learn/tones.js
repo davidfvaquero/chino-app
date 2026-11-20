@@ -196,7 +196,7 @@ export async function render(container, ctx) {
             total: exercises.length,
             answered: current,
             completed: current >= exercises.length,
-          }).then(() => {
+          }).catch((err) => console.warn('tones: save failed', err)).finally(() => {
             if (current >= exercises.length) go('result');
             else draw();
           });
@@ -210,7 +210,8 @@ export async function render(container, ctx) {
 
   function resultStep() {
     const summary = summarize(results);
-    return h(
+    let completed = false;
+    const section = h(
       'section',
       { class: 'card lesson-result' },
       h('h2', { text: t('learn.lessons.result') }),
@@ -219,7 +220,10 @@ export async function render(container, ctx) {
         type: 'button',
         class: 'btn primary',
         text: t('learn.lessons.finish'),
-        onclick: async () => {
+        onclick: async (event) => {
+          if (completed) return;
+          completed = true;
+          event.currentTarget.disabled = true;
           await saveProgress({
             score: summary.correct,
             total: exercises.length,
@@ -235,6 +239,7 @@ export async function render(container, ctx) {
         },
       }),
     );
+    return section;
   }
 
   draw();

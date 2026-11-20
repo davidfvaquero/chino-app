@@ -349,7 +349,7 @@ async function renderLesson(container, ctx, lessonId, level) {
             total: exercises.length,
             answered: current,
             completed: current >= exercises.length,
-          }).then(() => {
+          }).catch((err) => console.warn('lesson: save failed', err)).finally(() => {
             if (current >= exercises.length) go('result');
             else draw();
           });
@@ -542,8 +542,13 @@ async function renderLesson(container, ctx, lessonId, level) {
         progressBar(summary.correct, exercises.length),
       ),
     );
-    /** Saves the final score and announces the lesson as done. */
+    /** Saves the final score and announces the lesson as done (once). */
+    let completed = false;
     const complete = async () => {
+      if (completed) return;
+      completed = true;
+      // A second click while the save is in flight would double the reward.
+      for (const button of section.querySelectorAll('button')) button.disabled = true;
       await saveProgress(index.level, lesson.id, {
         score: summary.correct,
         total: exercises.length,

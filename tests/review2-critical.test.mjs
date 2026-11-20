@@ -76,8 +76,9 @@ test('I18: migrateSecrets moves settings.openrouterKey to meta', async () => {
   assert.equal(await storage.get('meta', 'openrouterKey'), 'sk-secret');
 });
 
-test('I18: isSecret covers meta and the legacy settings key only', () => {
-  assert.equal(isSecret('meta', 'anything'), true);
+test('I18: isSecret covers the secret keys only', () => {
+  assert.equal(isSecret('meta', 'openrouterKey'), true);
+  assert.equal(isSecret('meta', 'installDate'), false);
   assert.equal(isSecret('settings', 'openrouterKey'), true);
   assert.equal(isSecret('settings', 'theme'), false);
   assert.equal(isSecret('progress', 'hsk1'), false);
@@ -153,4 +154,18 @@ test('C1: paint loads models before checking the provider', () => {
   assert.match(paint, /loadModelsOnce\(\);\s*\n\s*const provider/);
   const load = src.slice(src.indexOf('async function loadModelsOnce'));
   assert.match(load, /initialModel\(state\.models\)/);
+});
+
+// ---------------------------------------------------------------- I2
+test('I2: Continue disables itself and Finalizar announces the lesson once', () => {
+  const view = fs.readFileSync(path.join(ROOT, 'src/learn/exercise-view.js'), 'utf8');
+  assert.match(view, /if \(button\.disabled\) return;/);
+  assert.match(view, /button\.disabled = true;/);
+  const lessons = fs.readFileSync(path.join(ROOT, 'src/learn/lessons.js'), 'utf8');
+  assert.match(lessons, /let completed = false;/);
+  assert.match(lessons, /if \(completed\) return;/);
+  assert.match(lessons, /\.finally\(\(\) => \{/);
+  const tones = fs.readFileSync(path.join(ROOT, 'src/learn/tones.js'), 'utf8');
+  assert.match(tones, /if \(completed\) return;/);
+  assert.match(tones, /\.finally\(\(\) => \{/);
 });
