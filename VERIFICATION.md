@@ -2038,3 +2038,31 @@ git status --short                                       # ?? scripts/verify-rea
 ```
 
 *Verificador haiku — 2026-11-19 (t_e6321904)*
+
+---
+
+## Re-verificación ciclo 2 (t_206decef, haiku)
+
+Verifica la reparación de t_69c214eb (commit db0c348). Solo verificación; no se ha tocado código.
+
+Build: `OUT_DIR=/tmp/chino-t_e6321904 npm run build` → 1846 archivos, sw `9ffd5d83c425`. Servido: `node scripts/serve.mjs /tmp/chino-t_e6321904 --port 8131`.
+
+| Punto | Resultado | Evidencia |
+| --- | --- | --- |
+| A. Offline sin visita previa: `#/learn`, `#/extras`, `#/extras/settings` | **OK** | Contexto: `#/home` online → SW activo y controlando, 91 entradas en caché. `setOffline(true)`, cada ruta cargada por URL completa: `#/learn` renderiza («Lecciones HSK», «Tonos y pinyin»…), `#/extras` («Perfil y progreso»…), `#/extras/settings` («Ajustes», «Tema»…). 0 `pageerror`. Script: `offline-fresh-ciclo2.mjs` |
+| A2. Offline sin visita: `#/learn/games`, `#/review`, `#/read`, `#/dictionary` | **OK** | Renderizan contenido |
+| A3. Offline sin visita: `#/learn/tones` | **Matiz** | Shell renderiza, pero el contenido muestra «Failed to fetch»: `/data/lessons/tones.json` no está en caché sin visita previa |
+| A4. Offline sin visita: `#/learn/lessons/hsk1-01` | **Matiz** (ya documentado) | «No se pudieron cargar las lecciones: Failed to fetch»: `/data/es/lessons/hsk1/lesson-01.json` no está en caché |
+| B. Tradicional en UI (`trad.mjs`, 38 rutas, en y es) | **OK** | Reporte vacío: 0 caracteres tradicionales en texto, `title`, `aria-label` y `alt`. Incluye `#/learn/radicals` y `#/learn/sentences` |
+| C. Datos de radicales | **OK** | `public/data/radicals/radicals.json`: 248 entradas, 0 caracteres de la lista tradicional |
+| D. Datos de frases (shards 000/001, en y es) | **OK** | 000: 0 hits. 001: 2 hits de «嘛», que es igual en simplificado (falso positivo de la lista) |
+| E. `npm test` | **OK** | 778/778 pass, 0 fail. `tests/hsk3-lessons-headless.test.mjs` ya no existe |
+| F. `check-contrast` (dir explícito) | **OK** | 424/424 views OK, 0 errores de escenario |
+| G. `check-layout` (`OUT_DIR`) | **OK** | 156 OK, 0 skipped, 0 failed |
+
+Notas:
+- Parte de t_69c214eb dice que `#/learn/tones` renderiza offline en contexto nuevo. Solo renderiza el shell; el contenido falla (A3). Reproducir: `#/home` online, esperar SW, recargar, `setOffline(true)`, abrir `/#/learn/tones` en página nueva.
+- `hsk/*.json` y `dict/` contienen campos `trad` (datos de vocabulario y CC-CEDICT). No aparecen en las rutas revisadas. Los resultados de búsqueda del diccionario con forma tradicional no están comprobados.
+- `check-contrast` sin argumento usa `/tmp/chino-design` (build antigua sin `src/srs.js`). Pasar siempre el directorio.
+
+Veredicto: cumple los criterios del ciclo 2 (A para las 3 rutas pedidas, B, C, D, E, F, G). Queda abierto como matiz A3/A4: offline sin visita previa de contenido de `tones` y de lecciones muestra «Failed to fetch». No bloquea el criterio pedido; decisión del usuario si cuenta como fallo.
