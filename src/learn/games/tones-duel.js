@@ -322,7 +322,7 @@ export async function render(container, ctx) {
     );
     if (answered) {
       parts.push(
-        h('p', { class: 'tones-word', text: round.hanzi }),
+        h('p', { class: 'tones-word', lang: 'zh-Hans', text: round.hanzi }),
         h('p', { class: 'tones-pinyin py-keep', html: pinyinHtml(round.pinyin) }),
         h('p', {
           class: 'tones-feedback',

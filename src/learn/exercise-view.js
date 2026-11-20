@@ -152,7 +152,7 @@ function choiceBody(exercise, box, onContinue, config = {}) {
             finish(feedback, result, onContinue, config);
           },
         },
-        ...(isHan ? [h('span', { class: 'option-label', text: value }), pinyinLine(reading)] : [value]),
+        ...(isHan ? [h('span', { class: 'option-label', lang: 'zh-Hans', text: value }), pinyinLine(reading)] : [value]),
       ),
     );
   }

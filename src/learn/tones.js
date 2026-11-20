@@ -151,7 +151,7 @@ export async function render(container, ctx) {
       const toneDisplay = t(`tones.toneName.${word.tone ?? 0}`);
       section.append(
         h('div', { class: 'vocab-item field' },
-          h('span', { class: 'hanzi', text: word.hanzi }),
+          h('span', { class: 'hanzi', lang: 'zh-Hans', text: word.hanzi }),
           h('span', { class: 'pinyin', html: pinyinHtml(word.pinyin) }),
           h('span', { class: 'tone', text: toneDisplay }),
           h('span', { class: 'english', text: word.english }),

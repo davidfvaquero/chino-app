@@ -372,7 +372,7 @@ async function renderLesson(container, ctx, lessonId, level) {
       h(
         'button',
         { type: 'button', class: 'chip', onclick },
-        h('span', { class: 'chip-hanzi', text: token }),
+        h('span', { class: 'chip-hanzi', lang: 'zh-Hans', text: token }),
         pinyinLine(pinyinForText(token, readings)),
       );
 
@@ -468,7 +468,7 @@ async function renderLesson(container, ctx, lessonId, level) {
             paint();
           },
         },
-        h('span', { class: 'chip-hanzi', text: pair.hanzi }),
+        h('span', { class: 'chip-hanzi', lang: 'zh-Hans', text: pair.hanzi }),
         pinyinLine(pinyinForText(pair.hanzi, readings)),
       );
       btn.dataset.hanzi = pair.hanzi;

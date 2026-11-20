@@ -283,7 +283,7 @@ export async function render(container, ctx) {
       } else {
         // English mode: show hanzi + pinyin
         questionEl.append(
-          h('div', { class: 'timed-hanzi', text: q.hanzi }),
+          h('div', { class: 'timed-hanzi', lang: 'zh-Hans', text: q.hanzi }),
           h('div', { class: 'timed-pinyin', html: pinyinHtml(q.pinyin) }),
         );
       }

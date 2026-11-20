@@ -16,6 +16,7 @@ import { speak } from '../../audio.js';
 import { addToReview } from '../../srs.js';
 import { pinyinHtml } from '../../tone.js';
 import { shuffle } from '../../random.js';
+import { zhText } from '../../hanzi.js';
 import { loadWords } from './common.js';
 
 export const titleKey = 'games.memory.title';
@@ -134,6 +135,8 @@ export async function render(container, ctx) {
   let finished = false;
   let alive = true;
   let lockInput = false;
+  let focusId = null; // card to keep focused across a repaint (I13)
+  let statusText = ''; // Correct/Incorrect live region (I13)
 
   async function start() {
     reset(container);
@@ -157,6 +160,8 @@ export async function render(container, ctx) {
     startTime = Date.now();
     finished = false;
     lockInput = false;
+    focusId = null;
+    statusText = '';
     draw();
   }
 
@@ -183,21 +188,27 @@ export async function render(container, ctx) {
     // Grid
     const grid = h('div', { class: 'memory-grid' });
     for (const card of round.cards) {
+      const faceUp = card.flipped || card.matched;
       const cardEl = h(
-        'div',
+        'button',
         {
+          type: 'button',
           class: `memory-card${card.flipped ? ' flipped' : ''}${card.matched ? ' matched' : ''}`,
           'data-id': card.id,
+          disabled: card.matched || lockInput,
+          'aria-label': faceUp
+            ? `${card.hanzi} ${card.type === 'hanzi' ? '' : card.meaning}`.trim()
+            : t('games.memory.hiddenCard'),
           onclick: () => onCardClick(card.id),
         },
         h('div', { class: 'memory-card-inner' },
-          h('div', { class: 'memory-card-face memory-card-back' },
+          h('div', { class: 'memory-card-face memory-card-back', 'aria-hidden': 'true' },
             h('span', { class: 'memory-back-icon', text: '?' }),
           ),
           h('div', { class: `memory-card-face memory-card-front ${card.type}` },
             card.type === 'hanzi'
               ? [
-                  h('span', { class: 'memory-hanzi', text: card.hanzi }),
+                  zhText(card.hanzi, 'span', { class: 'memory-hanzi' }),
                   h('span', { class: 'memory-pinyin', html: pinyinHtml(card.pinyin) }),
                 ]
               : h('span', { class: 'memory-meaning', text: card.meaning }),
@@ -208,12 +219,12 @@ export async function render(container, ctx) {
     }
     section.append(grid);
 
-    // Hint
+    // Hint (also the Correct/Incorrect live region, I13)
     if (!finished) {
       const hintText = flippedIds.length === 1
         ? t('games.memory.hintSecond')
         : t('games.memory.hintFirst');
-      section.append(h('p', { class: 'memory-hint', text: hintText }));
+      section.append(h('p', { class: 'memory-hint', role: 'status', 'aria-live': 'polite', text: statusText || hintText }));
     }
 
     // Result overlay
@@ -243,7 +254,11 @@ export async function render(container, ctx) {
     }
 
     container.append(section);
-    container.focus({ preventScroll: true });
+    // Keep the keyboard focus on the card the user acted on, instead of
+    // dropping it onto <main> after every repaint (I13, WCAG 2.4.3).
+    const keep = focusId ? grid.querySelector(`[data-id="${focusId}"]`) : null;
+    if (keep && !keep.disabled) keep.focus({ preventScroll: true });
+    else container.focus({ preventScroll: true });
   }
 
   function onCardClick(cardId) {
@@ -251,6 +266,7 @@ export async function render(container, ctx) {
     const card = round.cards.find((c) => c.id === cardId);
     if (!card || card.flipped || card.matched) return;
 
+    focusId = cardId;
     card.flipped = true;
     flippedIds.push(cardId);
 
@@ -263,6 +279,7 @@ export async function render(container, ctx) {
           const c = round.cards.find((x) => x.id === id);
           if (c) c.matched = true;
         }
+        statusText = t('games.memory.correct');
         flippedIds = [];
         lockInput = false;
         if (check.matched + 1 >= check.total) {
@@ -271,6 +288,7 @@ export async function render(container, ctx) {
       } else {
         // No match - flip back after delay
         mistakes += 1;
+        statusText = t('games.memory.wrong');
         setTimeout(() => {
           for (const id of flippedIds) {
             const c = round.cards.find((x) => x.id === id);

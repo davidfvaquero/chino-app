@@ -15,6 +15,7 @@ import { speak } from '../../audio.js';
 import { addToReview } from '../../srs.js';
 import { pinyinHtml } from '../../tone.js';
 import { shuffle } from '../../random.js';
+import { zhText } from '../../hanzi.js';
 import { loadWords } from './common.js';
 
 export const titleKey = 'games.matching.title';
@@ -116,6 +117,8 @@ export async function render(container, ctx) {
   let startTime = Date.now();
   let finished = false;
   let alive = true;
+  let focusKey = null; // chip (data-*) to keep focus on after a repaint (I13)
+  let statusText = ''; // Correct/Incorrect live region (I13)
 
   // Load words and start
   async function start() {
@@ -140,6 +143,8 @@ export async function render(container, ctx) {
     mistakes = 0;
     startTime = Date.now();
     finished = false;
+    focusKey = null;
+    statusText = '';
     draw();
   }
 
@@ -176,9 +181,11 @@ export async function render(container, ctx) {
           type: 'button',
           class: `matching-chip${isMatched ? ' matched' : ''}${selected?.hanzi === pair.hanzi ? ' selected' : ''}`,
           disabled: isMatched || finished,
+          'aria-pressed': String(selected?.hanzi === pair.hanzi),
+          'data-hanzi': pair.hanzi,
           onclick: () => onLeftClick(pair, btn),
         },
-        h('span', { class: 'hanzi', text: pair.hanzi }),
+        zhText(pair.hanzi, 'span', { class: 'hanzi' }),
         h('span', { class: 'matching-pinyin', html: pinyinHtml(pair.pinyin) }),
       );
       leftCol.append(btn);
@@ -194,6 +201,7 @@ export async function render(container, ctx) {
           type: 'button',
           class: `matching-chip${isMatched ? ' matched' : ''}`,
           disabled: isMatched || finished,
+          'data-target': option,
           onclick: () => onRightClick(option, btn),
         },
         h('span', { text: option }),
@@ -204,11 +212,11 @@ export async function render(container, ctx) {
     board.append(leftCol, rightCol);
     section.append(board);
 
-    // Hint
+    // Hint (also the Correct/Incorrect live region, I13)
     const hintText = selected
       ? t('games.matching.hintSelectMatch')
       : t('games.matching.hintSelectHanzi');
-    section.append(h('p', { class: 'matching-hint', text: hintText }));
+    section.append(h('p', { class: 'matching-hint', role: 'status', 'aria-live': 'polite', text: statusText || hintText }));
 
     // Result overlay
     if (finished) {
@@ -239,12 +247,17 @@ export async function render(container, ctx) {
     }
 
     container.append(section);
-    container.focus({ preventScroll: true });
+    // Keep focus on the chip the user acted on (I13, WCAG 2.4.3).
+    const keep = focusKey ? board.querySelector(focusKey) : null;
+    if (keep && !keep.disabled) keep.focus({ preventScroll: true });
+    else container.focus({ preventScroll: true });
   }
 
   function onLeftClick(pair, btnEl) {
     if (finished || matched.has(pair.hanzi)) return;
     selected = { hanzi: pair.hanzi, btnEl };
+    focusKey = `[data-hanzi="${pair.hanzi}"]`;
+    statusText = '';
     draw();
   }
 
@@ -256,6 +269,8 @@ export async function render(container, ctx) {
     if (pair.target === target) {
       // Correct match
       matched.add(pair.hanzi);
+      statusText = t('games.matching.correct');
+      focusKey = `[data-hanzi="${pair.hanzi}"]`;
       selected = null;
       if (matched.size === round.pairs.length) {
         finished = true;
@@ -263,6 +278,8 @@ export async function render(container, ctx) {
     } else {
       // Wrong match
       mistakes += 1;
+      statusText = t('games.matching.wrong');
+      focusKey = `[data-target="${target}"]`;
       selected.btnEl.classList.add('wrong');
       btnEl.classList.add('wrong');
       setTimeout(() => {

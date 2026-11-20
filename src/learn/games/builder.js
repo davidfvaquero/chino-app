@@ -316,7 +316,7 @@ export async function render(container, ctx) {
       'div',
       { class: `builder-answer${checked ? (checked.correct ? ' ok' : ' bad') : ''}` },
       ...placed.map((c, pos) =>
-        h('button', { type: 'button', disabled: !!checked, onclick: () => untap(pos), text: round.words[c] }),
+        h('button', { type: 'button', disabled: !!checked, lang: 'zh-Hans', onclick: () => untap(pos), text: round.words[c] }),
       ),
     );
     const chips = h(
@@ -327,6 +327,7 @@ export async function render(container, ctx) {
           type: 'button',
           class: placed.includes(c) ? 'used' : undefined,
           disabled: !!checked || placed.includes(c),
+          lang: 'zh-Hans',
           onclick: () => tap(c),
           text: round.words[c],
         }),

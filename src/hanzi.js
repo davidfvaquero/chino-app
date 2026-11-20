@@ -13,3 +13,12 @@ export function hanziCell(text, size = 'md', extra = '') {
     text: value,
   });
 }
+
+/**
+ * Inline Chinese text tagged with `lang="zh-Hans"`, so a screen reader uses a
+ * Chinese voice even when the document language is es/en (WCAG 3.1.2, I13).
+ * `tag` is the element name; `attrs` are extra attributes (class, data-…).
+ */
+export function zhText(text, tag = 'span', attrs = {}) {
+  return h(tag, { ...attrs, lang: 'zh-Hans', text: String(text ?? '') });
+}
