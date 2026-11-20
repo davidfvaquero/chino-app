@@ -145,6 +145,14 @@ Spanish shards exist).
   Worker. No paid or proprietary web service is used.
 - *(If a UI library is added later, list it here with its licence.)*
 
+### 7a. Chat (AI) — downloaded only if the user opens it
+
+- **On-device:** **WebLLM** (Apache-2.0) is loaded from jsDelivr
+  (`cdn.jsdelivr.net/npm/@mlc-ai/web-llm@…`) on demand; the **Qwen2.5-0.5B/1.5B-Instruct**
+  weights (Apache-2.0, © Alibaba Cloud) are then cached in the browser (~1 GB), not bundled here.
+- **Online:** the optional **OpenRouter** provider (<https://openrouter.ai>) uses
+  the user's own API key — no key or credit ships with the app.
+
 ---
 
 ## 8. Kokoro-82M v1.1-zh — pre-generated Mandarin voice (`public/audio/`)

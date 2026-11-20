@@ -5,6 +5,9 @@ All-in-one Chinese-learning web app: plain ES modules, no framework, no backend,
 **Simplified Chinese only** (traditional forms appear only as reference next to
 Simplified entries in the dictionary).
 
+The `check-*` verification scripts under `scripts/` drive a browser (puppeteer or
+the Chrome installed on the machine) — a dev-only tool, not a runtime dependency.
+
 ## Requirements
 
 - Node.js >= 20 — used only for the dev/build servers, the data pipeline and the
@@ -14,7 +17,7 @@ Simplified entries in the dictionary).
 
 ```bash
 npm install      # no-op: package.json has no dependencies (verifies the lockfile)
-npm run dev      # dev server on http://localhost:5173 (PORT=… to change)
+npm run dev      # dev server on a free port (printed on start; PORT=… to fix it)
 npm test         # node --test tests/
 npm run build    # writes the servable site to dist/ (OUT_DIR=… to choose the dir)
 npm run serve    # static server for an already-built dir (node scripts/serve.mjs [dir])
