@@ -115,7 +115,9 @@ async function ensureManifest() {
     manifest = new Set(
       list.map((entry) => normalizePath(typeof entry === 'string' ? entry : entry?.file)).filter(Boolean),
     );
-  } catch {
+  } catch (err) {
+    // A network failure must not be remembered as "there is no es listing".
+    if (err instanceof TypeError) manifestTried = false;
     manifest = null; // no listing: probe each file instead
   }
   return manifest;
@@ -136,7 +138,9 @@ function localizedExists(path) {
       try {
         await getJson(spanishUrl(key));
         return true;
-      } catch {
+      } catch (err) {
+        // Don't cache a network failure as "file missing": forget it and retry.
+        if (err instanceof TypeError) existence.delete(key);
         return false;
       }
     })();

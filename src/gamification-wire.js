@@ -3,17 +3,11 @@
  * Listens on window for the six chino:* events and forwards them to gamification.record().
  * Import once from main.js (or any entry point that runs after gamification is available).
  */
-import { record } from './gamification.js';
+import { record, EVENTS } from './gamification.js';
 import gamification from './gamification.js';
 
-const EVENT_MAP = {
-  'chino:review_done': 'review_done',
-  'chino:lesson_done': 'lesson_done',
-  'chino:reading_done': 'reading_done',
-  'chino:stroke_done': 'stroke_done',
-  'chino:draw_used': 'draw_used',
-  'chino:speak_done': 'speak_done',
-};
+/** DOM event `chino:<name>` for every gamification event; one source of truth. */
+const EVENT_MAP = Object.fromEntries(Object.keys(EVENTS).map((name) => [`chino:${name}`, name]));
 
 function attach() {
   for (const [domEvent, gameEvent] of Object.entries(EVENT_MAP)) {
