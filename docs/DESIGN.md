@@ -222,8 +222,9 @@ colour is never the only signal.
   practice grid is the same dotted 田字格 as `.hz-cell`. Empty state: one hint
   line and three example characters (你 好 妈) that open their sheet. On a sheet
   each character carries `lang="zh-Hans"`, its gloss in the UI language (the
-  English CC-CEDICT defs are labelled "Significado (en inglés)" when there is no
-  translation) and the approximate stroke types folded behind a `<details>`.
+  English CC-CEDICT defs and the etymology's English component gloss are
+  labelled "in English" when there is no translation) and the approximate
+  stroke types folded behind a `<details>`.
 
 ## 5. Motion
 

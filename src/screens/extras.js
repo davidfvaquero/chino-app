@@ -51,7 +51,7 @@ function addEmblems() {
   const style = document.createElement('style');
   style.textContent = `${Object.entries(EMBLEMS)
     .map(([area, ch]) => `.menu > [data-area="${area}"].card.field::before { content: "${ch}" / ""; }`)
-    .join('\n')}\n.menu-disclosure > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; }`;
+    .join('\n')}\n.menu-disclosure > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; gap: 0.4rem; }\n.menu-disclosure > summary::after { content: ""; width: 0.5rem; height: 0.5rem; border: solid var(--ink-soft); border-width: 2px 2px 0 0; transform: rotate(45deg); }\n.menu-disclosure[open] > summary::after { transform: rotate(135deg); }`;
   document.head.append(style);
 }
 

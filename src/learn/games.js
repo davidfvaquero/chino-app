@@ -83,6 +83,7 @@ const CSS = `
 .games-hub { display: flex; flex-direction: column; gap: 0.75rem; }
 .games-hub .game-title { font-size: 1.1rem; font-weight: 500; }
 .games-hub .game-desc { font-size: 0.85rem; opacity: 0.7; margin-top: 0.25rem; }
+.games-hub .card.field .hint { display: block; margin-top: 0.15rem; }
 `;
 
 function ensureStyles(doc) {

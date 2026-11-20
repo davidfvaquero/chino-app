@@ -1,7 +1,7 @@
 {
   "etymology": {
     "title": "Por qué se ve así",
-    "meaningPart": "Parte de significado: {char} {gloss}",
+    "meaningPart": "Significado (en inglés): {char} {gloss}",
     "meaningPartNoGloss": "Parte de significado: {char}",
     "soundPart": "Parte de sonido: {char} {pinyin}",
     "soundPartNoPinyin": "Parte de sonido: {char}",
