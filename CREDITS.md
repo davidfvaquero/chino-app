@@ -33,6 +33,14 @@ attribution: © MDBG and the CC-CEDICT contributors. The English definitions in
 `public/data/dict/` are always kept as a fallback. Only the definitions change;
 the entry ids, characters and pinyin are untouched.
 
+> Las definiciones en español son una traducción automática derivada de
+> CC-CEDICT y se distribuyen bajo CC BY-SA 4.0 © MDBG y los colaboradores de
+> CC-CEDICT.
+
+The Spanish search index (`public/data/es/dict/index-spanish/`) is generated from
+these shards by `scripts/build-dict-es-index.mjs` (run by `npm run build` when
+Spanish shards exist).
+
 ## 2. Make Me a Hanzi — stroke data (`public/data/strokes/`)
 
 - **Source:** Make Me a Hanzi, <https://github.com/skishore/makemeahanzi>

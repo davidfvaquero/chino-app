@@ -8,7 +8,7 @@
  *
  * Contract: titleKey + render(container, ctx) — see src/main.js.
  */
-import { t } from '../i18n.js';
+import { t, getLocale } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import * as dictionary from '../dictionary.js';
 import { addToReview } from '../srs.js';
@@ -78,8 +78,43 @@ async function renderReader(container, ctx, id) {
   const panel = h('aside', { class: 'word-panel', hidden: true, 'data-role': 'panel' });
 
   const showWord = async (word) => {
-    const entry = await dictionary.lookup(word);
+    const entry = await dictionary.lookup(word, { spanish: getLocale() === 'es' });
     const vm = wordPanel(word, entry);
+    const spanish = getLocale() === 'es' ? dictionary.distinctDefs(vm.spanish) : [];
+    let defsNodes;
+    if (spanish.length) {
+      // Spanish first, the English original behind a discreet per-entry toggle.
+      const english = dictionary.distinctDefs(vm.english);
+      const englishBox = h(
+        'div',
+        { class: 'defs-en', hidden: true },
+        h('ul', { class: 'defs' }, ...english.map((d) => h('li', { text: d }))),
+      );
+      const toggle = h('button', {
+        type: 'button',
+        class: 'btn ghost sm',
+        'data-action': 'toggle-english',
+        'aria-expanded': 'false',
+        text: t('read.showEnglish'),
+        onclick: () => {
+          const open = englishBox.hidden;
+          englishBox.hidden = !open;
+          toggle.setAttribute('aria-expanded', String(open));
+          toggle.textContent = t(open ? 'read.hideEnglish' : 'read.showEnglish');
+        },
+      });
+      defsNodes = [
+        h('ul', { class: 'defs defs-es' }, ...spanish.map((d) => h('li', { text: d }))),
+        h('p', { class: 'hint panel-note', text: t('read.machineTranslation') }),
+        toggle,
+        englishBox,
+      ];
+    } else {
+      defsNodes = vm.english.length
+        ? [h('ul', { class: 'defs' }, ...vm.english.map((d) => h('li', { text: d })))]
+        : [];
+    }
+
     reset(panel);
     panel.hidden = false;
     panel.append(
@@ -87,9 +122,7 @@ async function renderReader(container, ctx, id) {
       vm.found
         ? h('p', { class: 'pinyin py-keep', html: pinyinHtml(vm.pinyin) })
         : h('p', { class: 'muted', text: t('read.notFound', { word }) }),
-      ...(vm.english.length
-        ? [h('ul', { class: 'defs' }, ...vm.english.map((d) => h('li', { text: d })))]
-        : []),
+      ...defsNodes,
       vm.found
         ? h('button', {
             type: 'button',

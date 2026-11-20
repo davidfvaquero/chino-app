@@ -78,6 +78,8 @@ export function render(container, ctx = {}) {
     hidden: true,
   });
   const list = h('ul', { class: 'dict-results', 'aria-label': t('dict.results') });
+  // One small note per results screen (never per row) when Spanish shows.
+  const note = h('p', { class: 'hint dict-note', hidden: true, text: t('dict.machineTranslation') });
   const form = h(
     'form',
     {
@@ -91,7 +93,7 @@ export function render(container, ctx = {}) {
     input,
   );
 
-  reset(container).append(h('section', { class: 'dict' }, form, status, list));
+  reset(container).append(h('section', { class: 'dict' }, form, status, note, list));
   container.focus({ preventScroll: true });
 
   const setState = (name) => {
@@ -158,13 +160,51 @@ export function render(container, ctx = {}) {
       }),
     );
 
+    const es = getLocale() === 'es';
+    const defsEs = es && Array.isArray(entry.defsEs) ? distinctDefs(entry.defsEs) : [];
     const defs = distinctDefs(entry.defs);
+
+    // Spanish definitions first; the English original stays behind a discreet
+    // per-entry toggle. A shard without a translation shows the English as before.
+    let defsBlock;
+    if (defsEs.length) {
+      const english = h(
+        'div',
+        { class: 'dict-defs-en', hidden: true },
+        h('ul', { class: 'dict-defs' }, ...defs.map((def) => h('li', { text: def }))),
+      );
+      const toggle = h('button', {
+        type: 'button',
+        class: 'btn ghost sm dict-english-toggle',
+        'data-action': 'toggle-english',
+        'aria-expanded': 'false',
+        text: t('dict.showEnglish'),
+        onclick: () => {
+          const open = english.hidden;
+          english.hidden = !open;
+          toggle.setAttribute('aria-expanded', String(open));
+          toggle.textContent = t(open ? 'dict.hideEnglish' : 'dict.showEnglish');
+        },
+      });
+      defsBlock = [
+        h('ul', { class: 'dict-defs dict-defs-es' }, ...defsEs.map((def) => h('li', { text: def }))),
+        toggle,
+        english,
+      ];
+    } else {
+      defsBlock = [
+        ...(defs.length && es ? [h('p', { class: 'hint', text: t('dict.defsEnglish') })] : []),
+        h('ul', { class: 'dict-defs' }, ...defs.map((def) => h('li', { text: def }))),
+      ];
+    }
+
     const node = h(
       'li',
       {
         class: 'dict-row',
         'data-id': String(entry.id),
         'data-added': String(Boolean(isAdded)),
+        'data-translated': String(defsEs.length > 0),
       },
       h(
         'div',
@@ -176,10 +216,7 @@ export function render(container, ctx = {}) {
       // A Spanish gloss already translated in the lesson data wins over the
       // English CC-CEDICT ones; the English list stays, labelled.
       ...(gloss ? [h('p', { class: 'dict-gloss', text: gloss })] : []),
-      ...(defs.length && getLocale() !== 'en'
-        ? [h('p', { class: 'hint', text: t('dict.defsEnglish') })]
-        : []),
-      h('ul', { class: 'dict-defs' }, ...defs.map((def) => h('li', { text: def }))),
+      ...defsBlock,
       h('div', { class: 'dict-actions' }, ...strokes, add),
     );
     return node;
@@ -188,6 +225,7 @@ export function render(container, ctx = {}) {
   async function run(query) {
     const seq = (state.seq += 1);
     list.replaceChildren();
+    note.hidden = true;
     if (!query) {
       setState('empty');
       setStatus('dict.empty');
@@ -198,7 +236,7 @@ export function render(container, ctx = {}) {
 
     let results;
     try {
-      results = await search(query, { limit: RESULT_LIMIT });
+      results = await search(query, { limit: RESULT_LIMIT, spanish: getLocale() === 'es' });
     } catch (err) {
       if (seq !== state.seq || !state.alive) return;
       console.error('dictionary: search failed', err);
@@ -227,6 +265,8 @@ export function render(container, ctx = {}) {
         row(entry, added.has(cardId(entry)), glosses?.get(entry.simp || entry.trad) ?? ''),
       ),
     );
+    // Small note, once, only when at least one row shows a translated gloss.
+    note.hidden = !results.some((entry) => Array.isArray(entry.defsEs) && entry.defsEs.length);
   }
 
   input.addEventListener('input', () => {

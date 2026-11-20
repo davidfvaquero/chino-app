@@ -13,6 +13,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { manifestFromLocale } from './manifest.mjs';
 import { listLocaleCodes, loadMergedLocale } from './build-locales.mjs';
+import { buildIndex } from './build-dict-es-index.mjs';
 
 const root = new URL('../', import.meta.url);
 const outDir = resolve(process.env.OUT_DIR ?? fileURLToPath(new URL('../dist/', import.meta.url)));
@@ -51,6 +52,15 @@ await cp(new URL('src/', root), new URL('src/', dist), { recursive: true });
 // 3. static data & icons (public/ contents land at the dist root)
 if (await exists(new URL('public/', root))) {
   await cp(new URL('public/', root), dist, { recursive: true });
+}
+
+// 3b. Spanish dictionary index: generated from the translated shards that were
+//     just copied, and only when some exist. With none it is a no-op and the
+//     Spanish search stays off. (Never precached — the shards load on demand.)
+const esDictDir = resolve(outDir, 'data/es/dict');
+if (await exists(`${esDictDir}/shards/`)) {
+  const { shards, words, letters } = buildIndex(esDictDir);
+  console.log(`build: dict-es index — ${shards} shards, ${words} words in ${letters} letters`);
 }
 
 // 4. merge every locale: <code>.json + <code>.d/*.json -> one <code>.json.

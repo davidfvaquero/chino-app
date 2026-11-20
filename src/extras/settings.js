@@ -64,6 +64,9 @@ export async function render(container, ctx) {
     // Language selector
     main.append(renderLanguageSelector(currentLocale, locales));
 
+    // Licences and credits (the "about" group lives here)
+    main.append(renderCreditsSection());
+
     container.append(main);
     container.focus({ preventScroll: true });
   }
@@ -167,6 +170,13 @@ export async function render(container, ctx) {
     ));
 
     section.append(select);
+    return section;
+  }
+
+  function renderCreditsSection() {
+    const section = h('section', { class: 'card' });
+    section.append(h('h2', { text: t('settings.credits.title') }));
+    section.append(h('p', { class: 'settings-hint', text: t('settings.credits.dictEs') }));
     return section;
   }
 

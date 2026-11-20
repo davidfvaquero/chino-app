@@ -9,14 +9,23 @@
 //   /data/dict/index-english/<a-z>.json { <englishWord>: [shard] }
 //   /data/dict/shards/NNN.json        [{ id, simp, trad, pinyin, pinyinNumeric, defs[] }]
 //
+// Spanish (derivative CC-CEDICT translations, locale 'es'):
+//   /data/es/dict/shards/NNN.json        same NNN as the English shard,
+//                                        [{ id, defs[] }] — only translated entries
+//   /data/es/dict/index-spanish/<a-z>.json { <spanishWord>: [shard] }
+// Loaded lazily too, and merged by id: an entry with no translation keeps its
+// English defs. A missing Spanish file (404) is normal and cached as "no data".
+//
 // Shards are fetched lazily on first use and cached (a search touches 1 index
 // file + the 1–n shards it points at, never all 115).
 //
 // Public API (all async):
-//   search(query, { limit = 20 }) -> [{ id, simp, trad, pinyinTone, pinyinNum, defs }]
+//   search(query, { limit = 20, spanish = false })
 //       Detects hanzi (simp or trad), pinyin ("nǐ hǎo" | "ni3hao3" | "ni hao")
-//       and english ("hello"); exact matches rank first.
-//   lookup(word) -> entry | null          exact hanzi/pinyin word lookup
+//       and english ("hello"); exact matches rank first. With `spanish`, a
+//       Latin query also consults the Spanish index first and every result gets
+//       `defsEs` (its translation, by id) when one exists.
+//   lookup(word, { spanish = false }) -> entry | null   exact hanzi/pinyin lookup
 //   segment(text) -> string[]             longest-match word split (reader)
 //   detectType(query) -> 'hanzi' | 'pinyin' | 'latin'
 //   configure({ fetch })                  inject a fetch for Node/tests
@@ -26,6 +35,7 @@
 import { pinyinToMarks, tonelessKey } from './pinyin.js';
 
 const BASE = typeof document === 'undefined' ? '/data/dict' : new URL('data/dict', document.baseURI);
+const ES_BASE = typeof document === 'undefined' ? '/data/es/dict' : new URL('data/es/dict', document.baseURI);
 
 const HANZI_RE = /[\u3400-\u9fff\uf900-\ufaff]/;
 const TONE_MARK_RE = /[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/i;
@@ -34,6 +44,10 @@ const LATIN_RE = /^[a-zü\s'1-5]+$/i;
 
 let fetcher = null;
 const cache = new Map();
+/** letter -> Promise(index|null); a missing Spanish index is normal, cache it. */
+const spanishIndexCache = new Map();
+/** entry object -> the shard number it lives in (to find its Spanish twin). */
+const shardOf = new WeakMap();
 
 /** Inject a fetch implementation (Node tests, workers). Clears the cache. */
 export function configure(opts = {}) {
@@ -44,10 +58,11 @@ export function configure(opts = {}) {
 /** Drop every cached index/shard (fetched again on next use). */
 export function resetCache() {
   cache.clear();
+  spanishIndexCache.clear();
 }
 
-function getJSON(rel) {
-  const url = `${BASE}/${rel}`;
+function getJSON(rel, base = BASE) {
+  const url = `${base}/${rel}`;
   let pending = cache.get(url);
   if (!pending) {
     pending = Promise.resolve()
@@ -73,8 +88,79 @@ const loadEnglishIndex = (letter) => getJSON(`index-english/${letter}.json`);
 
 async function shardsFor(ids) {
   const unique = [...new Set(ids || [])];
-  const loaded = await Promise.all(unique.map(loadShard));
+  const loaded = await Promise.all(
+    unique.map(async (id) => {
+      const list = await loadShard(id);
+      if (Array.isArray(list)) {
+        for (const e of list) if (e && typeof e === 'object') shardOf.set(e, id);
+      }
+      return list;
+    }),
+  );
   return loaded.flat();
+}
+
+// ---------------------------------------------------------------- spanish
+
+/**
+ * Spanish shard `NNN` as a Map(id -> defs[]), or null when it does not exist.
+ * A 404 is normal — the entry just keeps its English defs — and is cached as
+ * "no data", so it is only fetched once per session.
+ */
+function esShardDefs(n) {
+  if (n == null) return Promise.resolve(null);
+  const url = `${ES_BASE}/${shardId(n)}`;
+  let pending = cache.get(url);
+  if (!pending) {
+    pending = Promise.resolve()
+      .then(() => (fetcher || globalThis.fetch)(url))
+      .then((res) => (res && res.ok === false ? null : res.json()))
+      .then((list) => {
+        if (!Array.isArray(list)) return null;
+        const map = new Map();
+        for (const e of list) if (e && e.id != null && Array.isArray(e.defs)) map.set(e.id, e.defs);
+        return map;
+      })
+      .catch(() => null);
+    cache.set(url, pending);
+  }
+  return pending;
+}
+
+/** Spanish index (`index-spanish/<letter>.json`), or null; a miss is cached. */
+function loadSpanishIndex(letter) {
+  let pending = spanishIndexCache.get(letter);
+  if (!pending) {
+    pending = getJSON(`index-spanish/${letter}.json`, ES_BASE).catch(() => null);
+    spanishIndexCache.set(letter, pending);
+  }
+  return pending;
+}
+
+/**
+ * Attach the Spanish translation of each result, matched by id inside its own
+ * (same-numbered) shard. A missing shard, or an entry that was not translated,
+ * leaves `defsEs` unset so the caller falls back to `defs` (English) per entry.
+ */
+async function withSpanish(results) {
+  await Promise.all(
+    results.map(async (r) => {
+      const defs = (await esShardDefs(r.shard))?.get(r.id);
+      if (defs && defs.length) r.defsEs = defs;
+    }),
+  );
+  return results;
+}
+
+/** Toneless, accent-free tokens of a Spanish definition (for matching). */
+function esTokens(text) {
+  return (
+    String(text ?? '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .match(/[a-z][a-z'-]*/g) || []
+  );
 }
 
 /** Candidate shard ids for a hanzi word, from both the simp and trad indices. */
@@ -121,6 +207,7 @@ const toResult = (e) => ({
   pinyinTone: e.pinyin,
   pinyinNum: e.pinyinNumeric,
   defs: e.defs,
+  shard: shardOf.get(e),
 });
 
 function rank(list, limit) {
@@ -204,34 +291,84 @@ async function searchEnglish(q) {
 }
 
 /**
+ * Spanish-word search using the derivative index (word -> shards): look the
+ * query word up there, then keep the entries whose Spanish defs contain it.
+ * Scores sit above the English ones so a Spanish query surfaces Spanish hits
+ * first. Returns [] when there is no Spanish index (feature simply off).
+ */
+async function searchSpanish(q) {
+  const words = esTokens(q);
+  if (!words.length) return [];
+  const primary = words[0];
+  const letter = letterOf(primary);
+  if (!letter) return [];
+  const idx = await loadSpanishIndex(letter);
+  if (!idx) return [];
+
+  const ids = [];
+  for (const k of Object.keys(idx)) {
+    if (k === primary) ids.push(...idx[k]);
+    else if (ids.length < 200 && k.startsWith(primary)) ids.push(...idx[k]);
+  }
+  if (!ids.length) return [];
+
+  const entries = await shardsFor(ids);
+  const wanted = new Set(words);
+  const out = [];
+  for (const e of entries) {
+    const defs = (await esShardDefs(shardOf.get(e)))?.get(e.id) || [];
+    let best = 0;
+    for (const def of defs) {
+      const tokens = esTokens(def);
+      for (const w of wanted) {
+        const at = tokens.indexOf(w);
+        if (at === -1) continue;
+        const score = 100 - at * 5 + (tokens.length === 1 ? 20 : 0);
+        if (score > best) best = score;
+      }
+    }
+    if (best > 0) out.push({ e, score: best + 200 }); // Spanish hits rank first
+  }
+  return out;
+}
+
+/**
  * Search the dictionary. Query type is auto-detected.
  * @param {string} query
- * @param {{ limit?: number }} [opts]
- * @returns {Promise<Array<{id:number,simp:string,trad:string,pinyinTone:string,pinyinNum:string,defs:string[]}>>}
+ * @param {{ limit?: number, spanish?: boolean }} [opts] `spanish` (locale es)
+ *   consults the Spanish index for a Latin query and adds `defsEs` per result.
+ * @returns {Promise<Array<{id:number,simp:string,trad:string,pinyinTone:string,pinyinNum:string,defs:string[],defsEs?:string[]}>>}
  */
-export async function search(query, { limit = 20 } = {}) {
+export async function search(query, { limit = 20, spanish = false } = {}) {
   const q = String(query ?? '').trim();
   if (!q) return [];
   const type = detectType(q);
   let hits;
   if (type === 'hanzi') hits = await searchHanzi(q);
   else if (type === 'pinyin' || (await isPinyin(q))) hits = await searchPinyin(q);
+  else if (spanish) hits = [...(await searchSpanish(q)), ...(await searchEnglish(q))];
   else hits = await searchEnglish(q);
-  return rank(hits, limit);
+  const ranked = rank(hits, limit);
+  return spanish ? withSpanish(ranked) : ranked;
 }
 
 // ---------------------------------------------------------------- lookup
 
-/** Exact lookup by hanzi (simp or trad) or by pinyin word. */
-export async function lookup(word) {
+/**
+ * Exact lookup by hanzi (simp or trad) or by pinyin word.
+ * With `spanish`, the result carries `defsEs` when a translation exists.
+ */
+export async function lookup(word, { spanish = false } = {}) {
   const q = String(word ?? '').trim();
   if (!q) return null;
   if (detectType(q) === 'hanzi') {
     const entries = await shardsFor(await hanziShards(q));
     const hit = entries.find((e) => e.simp === q || e.trad === q);
-    return hit ? toResult(hit) : null;
+    if (!hit) return null;
+    const result = toResult(hit);
+    return spanish ? (await withSpanish([result]))[0] : result;
   }
-  const results = await search(q, { limit: 50 });
+  const results = await search(q, { limit: 50, spanish });
   return results[0] || null;
 }
 

@@ -56,6 +56,7 @@ export function wordPanel(token, entry) {
     trad: entry.trad ?? '',
     pinyin: entry.pinyinTone ?? entry.pinyin ?? '',
     english: Array.isArray(entry.defs) ? entry.defs : [],
+    spanish: Array.isArray(entry.defsEs) ? entry.defsEs : [],
     id: entry.id,
     found: true,
   };

@@ -38,6 +38,10 @@
       "title": "Interface language",
       "hint": "Select the language for menus and labels.",
       "current": "Current: {name}"
+    },
+    "credits": {
+      "title": "Licences and credits",
+      "dictEs": "The Spanish definitions are an automatic translation derived from CC-CEDICT and are distributed under CC BY-SA 4.0 © MDBG and the CC-CEDICT contributors."
     }
   }
 }
