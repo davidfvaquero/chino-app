@@ -22,8 +22,9 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = path.resolve('/home/homelab/chino-app');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const RAW = path.join(ROOT, '.cache');
 const OUT = path.join(ROOT, 'public', 'data', 'etymology');
 const FORCE = process.env.FORCE === '1';
