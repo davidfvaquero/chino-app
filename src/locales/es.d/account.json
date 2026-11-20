@@ -2,7 +2,7 @@
   "account": {
     "title": "Cuenta y sincronización",
     "notConfigured": "La sincronización no está configurada",
-    "notConfiguredHint": "Esta versión no tiene servidor de sincronización, así que todo se queda en este dispositivo. Para sincronizar entre dispositivos, sigue docs/SYNC.md.",
+    "notConfiguredHint": "Esta versión no sincroniza entre dispositivos. Todo se guarda en este dispositivo.",
     "privacyTitle": "Privacidad",
     "privacy": "Tus datos de estudio (tarjetas de repaso, progreso, logros y ajustes) se guardan solo en este dispositivo. Si inicias sesión, también se copian a tu propia fila privada en el servidor de sincronización, protegida para que solo tú puedas leerla. Sin analíticas, sin anuncios, sin terceros. Puedes borrar la copia del servidor cuando quieras.",
     "signedOut": "Sesión no iniciada",

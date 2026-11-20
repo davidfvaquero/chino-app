@@ -207,9 +207,10 @@ export function applySettings() {
 }
 
 /**
- * Quick "Pinyin" chip for screen headers. Flips the same global `pinyin`
- * setting as the Settings screen; aria-pressed = pinyin shown. Follows
- * 'chino:settings_changed' and stops listening once it leaves the DOM.
+ * Quick "Pinyin" toggle for screen headers. Flips the same global `pinyin`
+ * setting as the Settings screen; aria-pressed = pinyin shown. A shared
+ * `.chip` (48 px, border, pressed state) so it reads as a switch, not text.
+ * Follows 'chino:settings_changed' and stops listening once it leaves the DOM.
  * @returns {HTMLButtonElement}
  */
 export function pinyinToggle() {
@@ -225,7 +226,7 @@ export function pinyinToggle() {
   };
   const btn = h('button', {
     type: 'button',
-    class: 'btn ghost sm pinyin-toggle',
+    class: 'chip pinyin-toggle',
     'data-action': 'toggle-pinyin',
     text: label(),
     onclick: () => setSetting('pinyin', !shown()),

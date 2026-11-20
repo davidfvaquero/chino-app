@@ -9,6 +9,7 @@
     },
     "sourceCount": "{count} words",
     "toneModeLabel": "Pinyin answers",
+    "toneModeHint": "How to write the tone: numbers (ni3 hao3), marks (nǐ hǎo) or none.",
     "toneMode": {
       "numbers": "Tone numbers (ni3 hao3)",
       "marks": "Tone marks (nǐ hǎo)",

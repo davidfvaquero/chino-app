@@ -9,6 +9,7 @@
     },
     "sourceCount": "{count} palabras",
     "toneModeLabel": "Respuestas de pinyin",
+    "toneModeHint": "Cómo escribir el tono: con números (ni3 hao3), con tildes (nǐ hǎo) o sin tono.",
     "toneMode": {
       "numbers": "Números de tono (ni3 hao3)",
       "marks": "Marcas de tono (nǐ hǎo)",

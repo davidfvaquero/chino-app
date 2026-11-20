@@ -2,6 +2,7 @@
   "games": {
     "tones": {
       "title": "Duelo de tonos",
+      "desc": "Escucha una palabra y elige el tono que oigas.",
       "listen": "Escucha y elige el tono.",
       "replay": "Escuchar otra vez",
       "round": "Ronda {n}/{total}",

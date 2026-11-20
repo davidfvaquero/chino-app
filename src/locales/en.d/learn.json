@@ -13,6 +13,7 @@
       "added": "Added ✓",
       "addAllToReview": "Add all to review",
       "addedAll": "All added ✓",
+      "showRest": "Show the {count} remaining",
       "exerciseProgress": "Exercise {current} of {total}",
       "playAudio": "Play",
       "correct": "Correct!",

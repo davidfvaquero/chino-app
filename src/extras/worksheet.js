@@ -313,6 +313,7 @@ const CSS = `
 .ws-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .ws-btn { min-height: 44px; padding: 0.55rem 0.9rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: inherit; font-size: 0.95rem; }
 .ws-btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.ws-btn.ghost { border-color: transparent; background: transparent; color: var(--accent); }
 .ws-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .ws-warning { margin: 0; color: var(--accent); font-size: 0.85rem; }
@@ -617,14 +618,14 @@ export async function render(container, ctx) {
   });
   const printBtn = h('button', {
     type: 'button',
-    class: 'ws-btn',
+    class: 'ws-btn ghost',
     text: t('worksheet.print'),
     onclick: () => window.print(),
     disabled: true,
   });
   const pdfBtn = h('button', {
     type: 'button',
-    class: 'ws-btn primary',
+    class: 'ws-btn',
     'data-action': 'download-pdf',
     text: t('worksheet.downloadPdf'),
     onclick: onDownloadPdf,

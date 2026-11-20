@@ -120,7 +120,9 @@ export async function render(container, ctx) {
       'div',
       { class: 'menu' },
       ...games.map((game) => {
-        const descKey = `${game.titleKey}.desc`;
+        // The module titleKey is `games.<id>.title`; its one-liner is the
+        // sibling `games.<id>.desc` (P2-12).
+        const descKey = `${game.titleKey}`.replace(/\.title$/, '.desc');
         return h(
           'button',
           {
@@ -131,7 +133,7 @@ export async function render(container, ctx) {
           },
           h('div', {},
             h('span', { class: 'game-title', text: t(game.titleKey) }),
-            has(descKey) ? h('span', { class: 'game-desc', text: t(descKey) }) : null,
+            has(descKey) ? h('span', { class: 'hint', text: t(descKey) }) : null,
           ),
         );
       }),

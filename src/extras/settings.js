@@ -114,7 +114,7 @@ export async function render(container, ctx) {
 
   async function renderToneColorsSection() {
     const section = h('section', { class: 'card' });
-    section.append(h('h2', { text: t('settings.toneColors.title') }));
+    section.append(h('h2', { id: 'settings-toneColors-title', text: t('settings.toneColors.title') }));
     section.append(h('p', { class: 'settings-hint', text: t('settings.toneColors.hint') }));
 
     const current = isToneColorsOn();
@@ -123,11 +123,13 @@ export async function render(container, ctx) {
       type: 'button',
       class: 'chip',
       'aria-pressed': String(current),
+      'aria-labelledby': 'settings-toneColors-title',
+      text: `${t('settings.toneColors.title')}: ${t(current ? 'settings.toneColors.on' : 'settings.toneColors.off')}`,
       onclick: async () => {
         await setSetting('toneColors', !current);
         renderSettings(); // re-render to update preview
       },
-    }, t(current ? 'settings.toneColors.on' : 'settings.toneColors.off'));
+    });
     section.append(toggle);
 
     // Preview
@@ -142,15 +144,17 @@ export async function render(container, ctx) {
 
   function renderPinyinSection(current) {
     const section = h('section', { class: 'card' });
-    section.append(h('h2', { text: t('settings.pinyin.title') }));
+    section.append(h('h2', { id: 'settings-pinyin-title', text: t('settings.pinyin.title') }));
     section.append(h('p', { class: 'settings-hint', text: t('settings.pinyin.hint') }));
     section.append(h('button', {
       type: 'button',
       class: 'chip',
       'data-action': 'settings-pinyin',
       'aria-pressed': String(current),
+      'aria-labelledby': 'settings-pinyin-title',
+      text: `${t('settings.pinyin.title')}: ${t(current ? 'settings.pinyin.on' : 'settings.pinyin.off')}`,
       onclick: () => setSetting('pinyin', !current),
-    }, t(current ? 'settings.pinyin.on' : 'settings.pinyin.off')));
+    }));
     return section;
   }
 

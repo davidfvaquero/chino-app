@@ -209,7 +209,7 @@ export function render(container, ctx = {}) {
       h(
         'div',
         { class: 'dict-head' },
-        h('span', { class: 'dict-hanzi', text: hanzi }),
+        h('span', { class: 'dict-hanzi', lang: 'zh-Hans', text: hanzi }),
         audio,
       ),
       h('p', { class: 'dict-pinyin', html: pinyinHtml(entry.pinyinTone || entry.pinyinNum || '') }),
@@ -217,7 +217,7 @@ export function render(container, ctx = {}) {
       // English CC-CEDICT ones; the English list stays, labelled.
       ...(gloss ? [h('p', { class: 'dict-gloss', text: gloss })] : []),
       ...defsBlock,
-      h('div', { class: 'dict-actions' }, ...strokes, add),
+      h('div', { class: 'dict-actions' }, h('span', { class: 'hint dict-strokes-label', text: t('dict.strokesLabel') }), ...strokes, add),
     );
     return node;
   }
@@ -249,6 +249,7 @@ export function render(container, ctx = {}) {
     if (!results.length) {
       setState('none');
       setStatus('dict.noResults', { query });
+      list.append(h('p', { class: 'hint', text: t('dict.noResultsHint') }));
       return;
     }
 

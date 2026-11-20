@@ -2,6 +2,7 @@
   "games": {
     "tones": {
       "title": "Tone duel",
+      "desc": "Hear a word and pick the tone you heard.",
       "listen": "Listen and pick the tone.",
       "replay": "Listen again",
       "round": "Round {n}/{total}",

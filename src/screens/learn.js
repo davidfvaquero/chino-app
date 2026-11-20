@@ -39,10 +39,12 @@ const AREAS = [
 
 const load = (area) => import(`../learn/${area}.js`);
 
-/** Menu blocks, in reading order. Every area in AREAS appears exactly once. */
+/** Menu blocks, in reading order. Every area in AREAS appears exactly once.
+ *  P2-1: kept to <= 4 tiles per block (chunking), so "Practice" is split. */
 const GROUPS = [
   { key: 'start', areas: ['lessons', 'tones', 'pinyin-chart', 'strokes'] },
-  { key: 'practice', areas: ['sentences', 'themes', 'dictation', 'games', 'hardwords', 'radicals', 'exam', 'typing'] },
+  { key: 'practice', areas: ['sentences', 'themes', 'dictation', 'games'] },
+  { key: 'more', areas: ['hardwords', 'radicals', 'exam', 'typing'] },
   { key: 'deepen', areas: ['grammar', 'plan'] },
 ];
 

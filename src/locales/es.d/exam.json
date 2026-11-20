@@ -7,7 +7,7 @@
     "seedLabel": "Código del examen",
     "seedPlaceholder": "p. ej. 1234",
     "seedHint": "Déjalo vacío para tener un examen nuevo cada vez.",
-    "timerLabel": "Límite de tiempo (10 minutos)",
+    "timerLabel": "Incluir límite de tiempo (10 minutos)",
     "start": "Empezar examen",
     "emptyLevel": "Aún no hay palabras para este nivel.",
     "error": "No se pudo cargar el examen. Revisa tu conexión e inténtalo de nuevo.",

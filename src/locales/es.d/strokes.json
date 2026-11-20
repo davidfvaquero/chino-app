@@ -5,6 +5,7 @@
     "searchButton": "Ver trazos",
     "searchResults": "Caracteres que coinciden",
     "searchNoHanzi": "Escribe un carácter chino para ver sus trazos.",
+    "exampleHint": "Escribe un carácter o toca uno de ejemplo.",
     "boardLabel": "Diagrama del orden de trazos",
     "loading": "Cargando trazos…",
     "notFound": "No hay datos de trazos para «{char}».",

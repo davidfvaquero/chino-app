@@ -10,6 +10,8 @@
     "empty": "Type a word to search the dictionary.",
     "loading": "Searching…",
     "noResults": "No results for \"{query}\".",
+    "noResultsHint": "Try the pinyin (e.g. ni hao) or the meaning in English.",
+    "strokesLabel": "Strokes:",
     "error": "Search failed. Check your connection and try again.",
     "audio": "Play",
     "audioFor": "Play the audio for {hanzi}",

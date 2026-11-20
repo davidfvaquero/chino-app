@@ -21,7 +21,7 @@
  * Screen contract: `titleKey` + `render(container, ctx)` (returns cleanup).
  * `container.strokesSheetApi.state()` exposes the loaded cards for headless checks.
  */
-import { t } from '../i18n.js';
+import { t, getLocale } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import { lookup } from '../dictionary.js';
 import { addToReview } from '../srs.js';
@@ -168,6 +168,7 @@ const CSS = `
 .sheet-player svg { width: 9rem; height: 9rem; }
 .sheet-player .stroke-pen { fill: none; stroke: var(--ink); stroke-width: 46; stroke-linecap: round; stroke-linejoin: round; }
 .sheet-types { margin: 0; font-size: 0.85rem; opacity: 0.85; }
+.sheet-types-summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-size: 0.85rem; }
 .sheet-card > button { align-self: flex-start; min-height: 44px; padding: 0.45rem 0.9rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); font-size: 0.95rem; }
 .sheet-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .sheet-actions button[disabled] { opacity: 0.5; }
@@ -293,12 +294,19 @@ export async function render(container, ctx = {}) {
   }
 
   function cardNode(card) {
+    // Spanish gloss when the locale is es and the entry carries one; otherwise
+    // the English CC-CEDICT defs are labelled as such (P1-1).
+    const es = getLocale() === 'es';
+    const defsEs = es && Array.isArray(card.entry?.defsEs) ? card.entry.defsEs : [];
+    const defs = defsEs.length ? defsEs : (card.entry?.defs ?? []);
+    const meaning = defs.slice(0, 2).join('; ');
+    const meaningText = meaning && !defsEs.length && es ? `${t('strokesSheet.meaningEnglish')} ${meaning}` : meaning;
     const head = h(
       'div',
       { class: 'sheet-head' },
-      h('span', { class: 'sheet-char', text: card.character }),
+      h('span', { class: 'sheet-char', lang: 'zh-Hans', text: card.character }),
       card.entry ? h('span', { class: 'sheet-pinyin', html: pinyinHtml(card.entry.pinyinTone) }) : null,
-      card.entry?.defs?.length ? h('span', { class: 'sheet-meaning', text: card.entry.defs.slice(0, 2).join('; ') }) : null,
+      meaningText ? h('span', { class: 'sheet-meaning', text: meaningText }) : null,
       card.hasData ? h('span', { class: 'sheet-count', text: t('strokesSheet.strokesCount', { count: card.strokes }) }) : null,
     );
     const node = h('article', { class: 'sheet-card' }, head);
@@ -329,7 +337,16 @@ export async function render(container, ctx = {}) {
       .map((type, index) => (type ? `${index + 1} ${t(`strokesSheet.types.${type}`)}` : null))
       .filter(Boolean)
       .join(' · ');
-    if (types) node.append(h('p', { class: 'sheet-types', text: `${t('strokesSheet.approxLabel')} ${types}` }));
+    if (types) {
+      node.append(
+        h(
+          'details',
+          { class: 'sheet-types-wrap' },
+          h('summary', { class: 'sheet-types-summary', text: t('strokesSheet.typesTitle') }),
+          h('p', { class: 'sheet-types', text: `${t('strokesSheet.approxLabel')} ${types}` }),
+        ),
+      );
+    }
     node.append(playButton(card, animBox), animBox);
     return node;
   }
@@ -356,7 +373,7 @@ export async function render(container, ctx = {}) {
             console.error('strokes-sheet: stroke load failed', character, error);
             return null;
           }),
-          lookup(character).catch(() => null),
+          lookup(character, { spanish: getLocale() === 'es' }).catch(() => null),
         ]);
         const types = set ? set.medians.map(classifyStroke) : [];
         return {

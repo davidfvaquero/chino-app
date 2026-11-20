@@ -10,6 +10,8 @@
     "empty": "Escribe una palabra para buscar en el diccionario.",
     "loading": "Buscando…",
     "noResults": "Sin resultados para «{query}».",
+    "noResultsHint": "Prueba con el pinyin (p. ej. ni hao) o con el significado en español.",
+    "strokesLabel": "Trazos:",
     "error": "La búsqueda falló. Revisa tu conexión e inténtalo de nuevo.",
     "audio": "Reproducir",
     "audioFor": "Reproducir el audio de {hanzi}",

@@ -11,6 +11,8 @@
     "strokesCount": "{count} trazos",
     "stepLabel": "Paso {number}",
     "approxLabel": "tipos de trazo aprox.:",
+    "typesTitle": "Tipos de trazo aproximados",
+    "meaningEnglish": "Significado (en inglés):",
     "play": "Reproducir",
     "pause": "Pausar",
     "copy": "Copiar como texto",

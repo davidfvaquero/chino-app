@@ -49,9 +49,9 @@ function addEmblems() {
   if (emblemsAdded || typeof document === 'undefined') return;
   emblemsAdded = true;
   const style = document.createElement('style');
-  style.textContent = Object.entries(EMBLEMS)
+  style.textContent = `${Object.entries(EMBLEMS)
     .map(([area, ch]) => `.menu > [data-area="${area}"].card.field::before { content: "${ch}" / ""; }`)
-    .join('\n');
+    .join('\n')}\n.menu-disclosure > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; }`;
   document.head.append(style);
 }
 
@@ -69,33 +69,48 @@ export async function render(container, ctx) {
   const byArea = new Map(AREAS.map((name, index) => [name, modules[index]]));
   addEmblems();
   reset(container);
+
+  const menuOf = (group) =>
+    h(
+      'div',
+      { class: 'menu' },
+      ...group.areas.map((name) => {
+        const module = byArea.get(name);
+        const description = descriptionKey(name);
+        return h(
+          'button',
+          {
+            type: 'button',
+            class: 'card field',
+            'data-area': name,
+            onclick: () => ctx.navigate(`extras/${name}`),
+          },
+          h('span', { text: t(labelKey(name, module)) }),
+          has(description) ? h('span', { class: 'muted', text: t(description) }) : null,
+        );
+      }),
+    );
+
   container.append(
-    ...GROUPS.map((group) =>
-      h(
+    ...GROUPS.map((group) => {
+      const title = t(`hubs.${HUB}.groups.${group.key}`);
+      // P2-2: the six "Tools" tiles are folded so "Help and about" stays in
+      // the first screen instead of 13 tiles stacked open.
+      if (group.key === 'tools') {
+        return h(
+          'details',
+          { class: 'menu-group menu-disclosure' },
+          h('summary', { class: 'menu-group-title', text: title }),
+          menuOf(group),
+        );
+      }
+      return h(
         'section',
         { class: 'menu-group', 'aria-labelledby': `extras-group-${group.key}` },
-        h('h2', { class: 'menu-group-title', id: `extras-group-${group.key}`, text: t(`hubs.${HUB}.groups.${group.key}`) }),
-        h(
-          'div',
-          { class: 'menu' },
-          ...group.areas.map((name) => {
-            const module = byArea.get(name);
-            const description = descriptionKey(name);
-            return h(
-              'button',
-              {
-                type: 'button',
-                class: 'card field',
-                'data-area': name,
-                onclick: () => ctx.navigate(`extras/${name}`),
-              },
-              h('span', { text: t(labelKey(name, module)) }),
-              has(description) ? h('span', { class: 'muted', text: t(description) }) : null,
-            );
-          }),
-        ),
-      ),
-    ),
+        h('h2', { class: 'menu-group-title', id: `extras-group-${group.key}`, text: title }),
+        menuOf(group),
+      );
+    }),
   );
   container.focus({ preventScroll: true });
 }

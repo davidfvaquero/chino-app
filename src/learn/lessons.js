@@ -89,6 +89,8 @@ const CSS = `
 .lesson-vocab-actions { margin: var(--gap) 0; }
 .lesson-vocab-next { margin-bottom: var(--gap); }
 .lesson-result-actions { margin-top: var(--gap); }
+.vocab-rest { margin-top: var(--gap); }
+.vocab-rest > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: 600; }
 `;
 
 /** Inject the layout CSS into <head> once. */
@@ -315,7 +317,7 @@ async function renderLesson(container, ctx, lessonId, level) {
     section.append(
       h('button', { type: 'button', class: 'btn primary lg lesson-vocab-next', text: t('learn.lessons.next'), onclick: () => go('exercises') }),
     );
-    for (const word of words) {
+    const wordRow = (word) => {
       const button = h('button', {
         type: 'button',
         class: 'btn sm ghost vocab-add',
@@ -326,23 +328,35 @@ async function renderLesson(container, ctx, lessonId, level) {
           button.textContent = t('learn.lessons.added');
         },
       });
+      return h(
+        'div',
+        { class: 'vocab-item field' },
+        hanziCell(word.hanzi, 'md'),
+        h('span', { class: 'pinyin', html: pinyinHtml(word.pinyin) }),
+        h('span', { class: 'english', text: word.english }),
+        word.example
+          ? h(
+              'span',
+              { class: 'example' },
+              h('span', { class: 'example-hanzi', lang: 'zh-Hans', text: word.example.hanzi }),
+              h('span', { class: 'example-pinyin', html: pinyinHtml(word.example.pinyin) }),
+              h('span', { class: 'example-english', text: word.example.english }),
+            )
+          : null,
+        button,
+      );
+    };
+    // P2-8: the first four words are enough before the first exercise; the
+    // rest stay behind a disclosure so the list is not a wall.
+    const rows = words.map(wordRow);
+    section.append(...rows.slice(0, 4));
+    if (rows.length > 4) {
       section.append(
         h(
-          'div',
-          { class: 'vocab-item field' },
-          hanziCell(word.hanzi, 'md'),
-          h('span', { class: 'pinyin', html: pinyinHtml(word.pinyin) }),
-          h('span', { class: 'english', text: word.english }),
-          word.example
-            ? h(
-                'span',
-                { class: 'example' },
-                h('span', { class: 'example-hanzi', text: word.example.hanzi }),
-                h('span', { class: 'example-pinyin', html: pinyinHtml(word.example.pinyin) }),
-                h('span', { class: 'example-english', text: word.example.english }),
-              )
-            : null,
-          button,
+          'details',
+          { class: 'vocab-rest' },
+          h('summary', { class: 'vocab-rest-summary', text: t('learn.lessons.showRest', { count: rows.length - 4 }) }),
+          ...rows.slice(4),
         ),
       );
     }

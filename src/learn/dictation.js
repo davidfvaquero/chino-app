@@ -616,7 +616,7 @@ export async function render(container, ctx) {
 
     section.append(
       h('div', { class: 'dict-field' }, h('label', { text: t('dictation.sourceLabel') }), sourceSelect),
-      h('div', { class: 'dict-field' }, h('label', { text: t('dictation.toneModeLabel') }), toneSelect),
+      h('div', { class: 'dict-field' }, h('label', { text: t('dictation.toneModeLabel') }), toneSelect, h('p', { class: 'hint', text: t('dictation.toneModeHint') })),
     );
     if (state.error) section.append(h('p', { class: 'dict-notice', text: state.error }));
     section.append(h('button', { type: 'button', class: 'btn primary dict-start', text: t('dictation.start'), onclick: () => start() }));

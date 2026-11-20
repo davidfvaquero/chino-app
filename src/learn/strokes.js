@@ -318,6 +318,7 @@ const CSS = `
 .strokes-actions button { min-height: 44px; padding: 0.55rem 0.8rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); font-size: 0.95rem; }
 .strokes-actions button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
 .strokes-hint, .strokes-empty { margin: 0; text-align: center; min-height: 1.2em; }
+.strokes-examples { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; }
 `;
 
 function ensureStyles(doc) {
@@ -530,6 +531,24 @@ function createStrokeApp(container, ctx) {
   const hint = h('p', { class: 'strokes-hint' });
   const empty = h('p', { class: 'strokes-empty', hidden: true });
 
+  // P2-7: the empty state is not a blank box — one line and three example
+  // characters that fill the field and open their stroke order.
+  const EXAMPLE_CHARS = ['你', '好', '妈'];
+  const exampleHint = h('p', { class: 'strokes-hint', text: t('strokes.exampleHint') });
+  const examples = h(
+    'div',
+    { class: 'strokes-examples' },
+    ...EXAMPLE_CHARS.map((ch) =>
+      h('button', {
+        type: 'button',
+        class: 'chip',
+        lang: 'zh-Hans',
+        text: ch,
+        onclick: () => ctx.navigate?.(`learn/strokes/${encodeURIComponent(ch)}`),
+      }),
+    ),
+  );
+
   const playPauseBtn = h('button', { type: 'button', class: 'strokes-play', text: t('strokes.pause'), onclick: togglePlay });
   const replayBtn = h('button', { type: 'button', class: 'btn ghost strokes-replay', text: t('strokes.replay'), onclick: () => start() });
   const practiceBtn = h('button', {
@@ -543,7 +562,7 @@ function createStrokeApp(container, ctx) {
 
   const actions = h('div', { class: 'strokes-actions' }, playPauseBtn, replayBtn, practiceBtn, speakBtn, reviewBtn);
   const board = h('div', { class: 'strokes-board' }, svg);
-  const section = h('section', { class: 'strokes' }, form, results, empty, board, progress, actions, hint);
+  const section = h('section', { class: 'strokes' }, form, results, exampleHint, examples, empty, board, progress, actions, hint);
 
   const state = {
     set: null,
@@ -909,6 +928,8 @@ function createStrokeApp(container, ctx) {
   async function show(character) {
     input.value = character;
     results.replaceChildren();
+    exampleHint.hidden = true;
+    examples.hidden = true;
     container.dataset.character = character;
     if (!state.set || state.set.character !== character) {
       board.hidden = false;
@@ -946,6 +967,8 @@ function createStrokeApp(container, ctx) {
   function showSearch() {
     reset(container).append(section);
     container.dataset.character = '';
+    exampleHint.hidden = false;
+    examples.hidden = false;
     board.hidden = true;
     actions.hidden = true;
     progress.hidden = true;

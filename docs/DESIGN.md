@@ -150,7 +150,7 @@ Buttons (min 48 px; `.sm` 44 px; all have `:hover` (pointer only), `:active`,
 | `.card` (+ `.flat`) | sheet: surface, hairline, 18 px radius |
 | `.btn` `.primary` `.ghost` `.danger` `.sm` `.lg` `.block` `.option` | buttons; `.option` = full-width left-aligned answer |
 | `.field` | input / select / textarea (`input.field`); 48 px, 3:1 border, accent focus |
-| `.chip` | toggle (`aria-pressed="true"` or `.is-on` = selected); 48 px |
+| `.chip` | toggle (`aria-pressed="true"` or `.is-on` = selected); 48 px; always carries an accessible name (its own visible label, or the section `<h2>` via `aria-labelledby`) |
 | `.pill` | static label (not interactive) |
 | `.progress > span` | progress bar: `<div class="progress" role="progressbar" aria-valuenow=…><span style="width:40%"></span></div>` |
 | `.list` + `.list-row` | hairline-separated rows without boxes |
@@ -205,19 +205,25 @@ colour is never the only signal.
 - **Home** — one primary action on the desk (no box), daily goal as a bar, the
   word of the day is the only sheet, hanzi `.lg`.
 - **Dictionary** — big search field, hairline rows: hanzi 2.25 rem · pinyin ·
-  meanings · actions (44 px).
+  meanings (at most three, `distinctDefs` drops near-duplicates) · a `Trazos:`
+  label followed by one boxed chip per character linking to Strokes (44 px).
 - **Review** — mode chips, each with a one-line hint under it (wrap, never
   scroll), the card is a sheet with an
   `.lg` cell; back = pinyin 1.75 rem + meaning; four rating buttons
   (`again` red, `good`/`easy` jade) with the interval under the label (2 × 2 at ≤ 22 rem).
 - **Lesson** — intro (sheet), vocabulary (rows with `.md` cell, example behind a
   jade rule), exercise (sheet + progress bar), result (score + bar).
-- **Read** — the list is a hairline row per reading (Chinese title, its pinyin,
-  topic); each line of a reading is a hairline row: speaker pill, tappable words
-  (dotted underline, 44 px high), optional pinyin, translation, round play
-  button; tapping a word opens a bottom sheet above the tab bar.
+- **Read** — the list is a row per reading in the shared `.menu` + `.card.field`
+  entry (Chinese title, its pinyin and topic on the second line, the drawn
+  chevron on the right); each line of a reading is a hairline row: speaker pill,
+  tappable words (dotted underline, 44 px high), optional pinyin, translation,
+  round play button; tapping a word opens a bottom sheet above the tab bar.
 - **Strokes** — "Ver trazos" (the same wording as the calligraphy sheet) and the
-  practice grid is the same dotted 田字格 as `.hz-cell`.
+  practice grid is the same dotted 田字格 as `.hz-cell`. Empty state: one hint
+  line and three example characters (你 好 妈) that open their sheet. On a sheet
+  each character carries `lang="zh-Hans"`, its gloss in the UI language (the
+  English CC-CEDICT defs are labelled "Significado (en inglés)" when there is no
+  translation) and the approximate stroke types folded behind a `<details>`.
 
 ## 5. Motion
 
@@ -240,6 +246,7 @@ every card or scroll-triggered entrances.
 6. Settings contract unchanged: `theme`, `fontScale`, `toneColors`, `dailyGoal`; modules never read them to style, the tokens react.
 7. New screen checklist: run `check-contrast.mjs` (add the route to `scripts/lib/audit.mjs`), look at 320 px es, dark.
 8. Default margins of `.screen p` / `.screen h2` are zero-specificity (`:where`): a single class always wins over them.
+9. Optional or long content goes behind a `<details>` disclosure (More › Tools, the lesson vocabulary past the first four rows, the approximate stroke types); the `<summary>` row is a ≥ 44 px target. Hub blocks stay at ≤ 4 tiles each.
 
 ## 7. Status
 
@@ -247,6 +254,14 @@ Every Learn and More screen uses the tokens and shared classes (t_756e8edf,
 t_ca3458fa). Controls are >= 44 px with a 3:1 border (`--edge`); `--line` is
 decoration only. Audited by `check-contrast.mjs` (all `AREAS` routes) and
 `check-layout.mjs`.
+
+Round 3 (t_3e479afd, `docs/DESIGN-REVIEW-2.md`) applied the review findings:
+at most four tiles per hub block, the More tools folded behind `<details>`,
+`<details>` disclosures for long optional content, the pinyin header toggle as
+a shared `.chip` with `aria-pressed` and an accessible name, `lang="zh-Hans"`
+on every standalone hanzi, Spanish glosses (or an "in English" label) on the
+stroke sheet, "Games" instead of "Memory games", and no developer paths
+(`docs/SYNC.md`) in the UI.
 
 ## 8. Checks
 

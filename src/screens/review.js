@@ -310,9 +310,13 @@ export function render(container, ctx = {}) {
     if (state.filter === null) return paintPicker();
     if (!state.ready) return root.append(h('p', { class: 'muted', text: t('reviewFilter.loading') }));
 
-    root.append(paintModeBar());
+    // P2-6: the mode chips are noise when nothing is due, so only show them
+    // while there is a card to review.
     const card = state.queue[state.index];
-    if (card) return paintCard(card);
+    if (card) {
+      root.append(paintModeBar());
+      return paintCard(card);
+    }
     return paintEnd();
   }
 

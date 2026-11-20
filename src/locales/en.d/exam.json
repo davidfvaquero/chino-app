@@ -7,7 +7,7 @@
     "seedLabel": "Exam code",
     "seedPlaceholder": "e.g. 1234",
     "seedHint": "Leave it empty for a brand new exam every time.",
-    "timerLabel": "Time limit (10 minutes)",
+    "timerLabel": "Include a time limit (10 minutes)",
     "start": "Start exam",
     "emptyLevel": "No words available for this level yet.",
     "error": "Could not load the exam. Check your connection and try again.",

@@ -213,8 +213,9 @@ const CSS = `
 .plan-badge { margin-left: auto; font-size: 0.72rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.5rem; color: var(--ink-soft); }
 .plan-day[data-status="today"] .plan-badge { border-color: var(--accent); color: var(--accent); }
 .plan-day[data-status="done"] .plan-badge { color: var(--accent); }
-.plan-tasks { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.6rem 0 0; padding: 0; list-style: none; }
-.plan-task { min-height: 44px; text-align: left; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: inherit; font: inherit; cursor: pointer; padding: 0.5rem 0.7rem; }
+.plan-tasks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0.6rem 0 0; padding: 0; list-style: none; }
+.plan-tasks > li { display: flex; }
+.plan-task { width: 100%; min-height: 44px; text-align: left; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: inherit; font: inherit; cursor: pointer; padding: 0.5rem 0.7rem; }
 .plan-rest { color: var(--ink-soft); margin: 0.6rem 0 0; }
 `;
 
@@ -297,7 +298,7 @@ function dayCard(entry, view, maps, ctx, onDone) {
   if (view.status !== 'done') {
     details.append(h('button', {
       type: 'button',
-      class: 'btn',
+      class: 'btn ghost',
       text: t('plan.markDone'),
       onclick: async (event) => {
         event.currentTarget.disabled = true;

@@ -11,6 +11,8 @@
     "strokesCount": "{count} strokes",
     "stepLabel": "Step {number}",
     "approxLabel": "approx. stroke types:",
+    "typesTitle": "Approximate stroke types",
+    "meaningEnglish": "Meaning (in English):",
     "play": "Play",
     "pause": "Pause",
     "copy": "Copy as text",

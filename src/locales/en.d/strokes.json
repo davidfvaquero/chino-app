@@ -5,6 +5,7 @@
     "searchButton": "Show strokes",
     "searchResults": "Matching characters",
     "searchNoHanzi": "Type a Chinese character to see its strokes.",
+    "exampleHint": "Type a character, or tap one of the examples.",
     "boardLabel": "Stroke order diagram",
     "loading": "Loading strokes…",
     "notFound": "No stroke data for “{char}”.",

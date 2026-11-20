@@ -30,7 +30,11 @@ for (const [hub, file] of HUBS) {
     const grouped = groups.flatMap((g) => g.areas);
     assert.deepEqual([...grouped].sort(), [...areas].sort(), `${hub}: grouped set differs from AREAS`);
     assert.equal(new Set(grouped).size, grouped.length, `${hub}: an area is grouped twice`);
-    assert.equal(groups.length, 3, `${hub}: expected three blocks with a header`);
+    const expected = { learn: 4, extras: 3 };
+    assert.equal(groups.length, expected[hub] ?? 3, `${hub}: unexpected number of blocks`);
+    if (hub === 'learn') {
+      assert.ok(groups.every((g) => g.areas.length <= 4), `${hub}: a block has more than 4 tiles`);
+    }
   });
 }
 
@@ -65,8 +69,8 @@ test('the pinyin chip carries aria-pressed and a text on/off state', () => {
   assert.match(s, /settings\.pinyin\.quickState/);
   assert.match(s, /settings\.pinyin\.on/);
   assert.match(s, /settings\.pinyin\.off/);
-  // It is no longer a plain chip (a tab-like control): a readable ghost button.
-  assert.match(s, /class: 'btn ghost sm pinyin-toggle'/);
+  // It reads as a switch: the shared `.chip` (border + pressed state).
+  assert.match(s, /class: 'chip pinyin-toggle'/);
 });
 
 test('the pinyin quick state text exists in both locales', () => {
