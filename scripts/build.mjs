@@ -13,7 +13,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { manifestFromLocale } from './manifest.mjs';
 import { listLocaleCodes, loadMergedLocale } from './build-locales.mjs';
-import { buildIndex } from './build-dict-es-index.mjs';
+import { buildIndex, buildSearchIndex } from './build-dict-es-index.mjs';
 
 const root = new URL('../', import.meta.url);
 const outDir = resolve(process.env.OUT_DIR ?? fileURLToPath(new URL('../dist/', import.meta.url)));
@@ -61,6 +61,8 @@ const esDictDir = resolve(outDir, 'data/es/dict');
 if (await exists(`${esDictDir}/shards/`)) {
   const { shards, words, letters } = buildIndex(esDictDir);
   console.log(`build: dict-es index — ${shards} shards, ${words} words in ${letters} letters`);
+  const search = buildSearchIndex(esDictDir, { hskDir: resolve(outDir, 'data/hsk') });
+  console.log(`build: dict-es search — ${search.shards} shards, ${search.words} words in ${search.letters} letters`);
 }
 
 // 4. merge every locale: <code>.json + <code>.d/*.json -> one <code>.json.

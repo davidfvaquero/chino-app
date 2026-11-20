@@ -20,6 +20,108 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+/** How many entries a word keeps in the search postings (priority-ordered). */
+export const MAX_POSTINGS = 30;
+
+/** simp -> HSK level (1..6), used to rank search results. Missing -> 99. */
+export function hskRanks(hskDir) {
+  const ranks = new Map();
+  if (!hskDir || !fs.existsSync(hskDir)) return ranks;
+  for (const level of [1, 2, 3, 4, 5, 6]) {
+    const file = path.join(hskDir, `${level}.json`);
+    if (!fs.existsSync(file)) continue;
+    try {
+      const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+      for (const item of data?.items ?? []) {
+        const hanzi = item?.hanzi;
+        if (hanzi && !ranks.has(hanzi)) ranks.set(hanzi, level);
+      }
+    } catch {
+      // a broken list only costs ranking, never correctness
+    }
+  }
+  return ranks;
+}
+
+/**
+ * Compact search postings: `esDir/search/<letter>.json` maps a Spanish word to
+ * `[[entryId, shard], …]` (at most MAX_POSTINGS, best first). One request per
+ * letter plus the few shards it points at, instead of every shard a word
+ * appears in (REVIEW-2 C3).
+ */
+export function buildSearchIndex(esDir, { hskDir } = {}) {
+  const shardsDir = path.join(esDir, 'shards');
+  if (!fs.existsSync(shardsDir)) return { shards: 0, words: 0, letters: 0 };
+  const ranks = hskRanks(hskDir);
+
+  // id -> hanzi, from the English dict next to the Spanish one.
+  const dictShards = path.join(path.dirname(esDir), '..', 'dict', 'shards');
+  const hanziById = new Map();
+  if (fs.existsSync(dictShards)) {
+    for (const f of fs.readdirSync(dictShards)) {
+      if (!/^\d+\.json$/.test(f)) continue;
+      try {
+        for (const e of JSON.parse(fs.readFileSync(path.join(dictShards, f), 'utf8'))) {
+          if (e?.id != null) hanziById.set(e.id, e.simp);
+        }
+      } catch {
+        // ignore an unreadable English shard
+      }
+    }
+  }
+
+  const byLetter = new Map(); // letter -> Map(word -> [{id, shard, rank}])
+  let shards = 0;
+  const files = fs.readdirSync(shardsDir).filter((f) => /^\d+\.json$/.test(f));
+  for (const f of files) {
+    const shard = Number.parseInt(f, 10);
+    let list;
+    try {
+      list = JSON.parse(fs.readFileSync(path.join(shardsDir, f), 'utf8'));
+    } catch {
+      continue;
+    }
+    if (!Array.isArray(list)) continue;
+    shards += 1;
+    for (const entry of list) {
+      const defs = Array.isArray(entry?.defs) ? entry.defs : [];
+      const hanzi = hanziById.get(entry?.id);
+      const rank = (ranks.get(hanzi) ?? 99) * 100000 + (hanzi ? [...hanzi].length * 1000 : 900) + (entry?.id ?? 0);
+      for (const def of defs) {
+        for (const word of new Set(esTokens(def))) {
+          if (word.length < 2 || ES_STOPWORDS.has(word)) continue;
+          if (!byLetter.has(word[0])) byLetter.set(word[0], new Map());
+          const map = byLetter.get(word[0]);
+          if (!map.has(word)) map.set(word, []);
+          map.get(word).push({ id: entry.id, shard, rank });
+        }
+      }
+    }
+  }
+
+  // Kept OUTSIDE es/dict (which holds the translated data) so a rebuild of the
+  // search index never rewrites the dictionary itself.
+  const outDir = path.join(path.dirname(esDir), 'search');
+  fs.rmSync(outDir, { recursive: true, force: true });
+  fs.mkdirSync(outDir, { recursive: true });
+  let words = 0;
+  for (const [letter, map] of byLetter) {
+    const obj = {};
+    for (const word of [...map.keys()].sort()) {
+      const seen = new Set();
+      obj[word] = map
+        .get(word)
+        .sort((a, b) => a.rank - b.rank)
+        .filter((p) => (seen.has(p.id) ? false : seen.add(p.id)))
+        .slice(0, MAX_POSTINGS)
+        .map((p) => [p.id, p.shard]);
+    }
+    fs.writeFileSync(path.join(outDir, `${letter}.json`), `${JSON.stringify(obj)}\n`);
+    words += map.size;
+  }
+  return { shards, words, letters: byLetter.size };
+}
+
 /** High-frequency words that carry no meaning on their own. */
 export const ES_STOPWORDS = new Set([
   'el', 'la', 'los', 'las', 'un', 'una', 'unos', 'unas', 'de', 'del', 'al', 'a',

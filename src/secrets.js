@@ -4,11 +4,12 @@
  * legacy `settings/openrouterKey` is filtered too because an old device may
  * still hold the key there.
  */
-export const SECRET_STORES = new Set(['meta']);
-export const SECRET_KEYS = { settings: new Set(['openrouterKey']) };
+export const SECRET_KEYS = {
+  meta: new Set(['openrouterKey', 'syncSession', 'syncState']),
+  settings: new Set(['openrouterKey']),
+};
 
-export const isSecret = (store, key) =>
-  SECRET_STORES.has(store) || (SECRET_KEYS[store]?.has(key) ?? false);
+export const isSecret = (store, key) => SECRET_KEYS[store]?.has(key) ?? false;
 
 /**
  * Move the legacy `settings.openrouterKey` to `meta.openrouterKey` (device

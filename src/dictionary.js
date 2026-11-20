@@ -36,16 +36,20 @@ import { tonelessKey } from './pinyin.js';
 
 const BASE = typeof document === 'undefined' ? '/data/dict' : new URL('data/dict', document.baseURI);
 const ES_BASE = typeof document === 'undefined' ? '/data/es/dict' : new URL('data/es/dict', document.baseURI);
+const ES_SEARCH_BASE = typeof document === 'undefined' ? '/data/es/search' : new URL('data/es/search', document.baseURI);
 
 const HANZI_RE = /[\u3400-\u9fff\uf900-\ufaff]/;
 const TONE_MARK_RE = /[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/i;
+/** Tone marks that are also Spanish accents (2nd tone == acute): ambiguous. */
+const AMBIGUOUS_TONE_RE = /[áéíóú]/i;
+const UNAMBIGUOUS_TONE_RE = /[āǎàēěèīǐìōǒòūǔùǖǘǚǜ]/i;
 const TONE_NUM_RE = /[a-zü][1-5]/i;
 const LATIN_RE = /^[a-zü\s'1-5]+$/i;
 
 let fetcher = null;
 const cache = new Map();
-/** letter -> Promise(index|null); a missing Spanish index is normal, cache it. */
-const spanishIndexCache = new Map();
+/** letter -> Promise(postings|null) for the Spanish search index. */
+const spanishSearchCache = new Map();
 /** entry object -> the shard number it lives in (to find its Spanish twin). */
 const shardOf = new WeakMap();
 
@@ -58,7 +62,7 @@ export function configure(opts = {}) {
 /** Drop every cached index/shard (fetched again on next use). */
 export function resetCache() {
   cache.clear();
-  spanishIndexCache.clear();
+  spanishSearchCache.clear();
 }
 
 function getJSON(rel, base = BASE) {
@@ -127,12 +131,12 @@ function esShardDefs(n) {
   return pending;
 }
 
-/** Spanish index (`index-spanish/<letter>.json`), or null; a miss is cached. */
-function loadSpanishIndex(letter) {
-  let pending = spanishIndexCache.get(letter);
+/** Spanish search postings (`es/search/<letter>.json`), or null; a miss is cached. */
+function loadSpanishSearch(letter) {
+  let pending = spanishSearchCache.get(letter);
   if (!pending) {
-    pending = getJSON(`index-spanish/${letter}.json`, ES_BASE).catch(() => null);
-    spanishIndexCache.set(letter, pending);
+    pending = getJSON(`${letter}.json`, ES_SEARCH_BASE).catch(() => null);
+    spanishSearchCache.set(letter, pending);
   }
   return pending;
 }
@@ -159,7 +163,7 @@ function esTokens(text) {
       .toLowerCase()
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
-      .match(/[a-z][a-z'-]*/g) || []
+      .match(/[a-z]+/g) || []
   );
 }
 
@@ -198,6 +202,15 @@ async function isPinyin(q) {
   return Object.keys(idx).some((k) => k.startsWith(key));
 }
 
+/** Is `q` an exact pinyin key ("café" is not: acute accents are Spanish too)? */
+async function hasExactPinyin(q) {
+  const key = tonelessKey(q);
+  const letter = letterOf(key);
+  if (!letter) return false;
+  const idx = await loadPinyinIndex(letter).catch(() => null);
+  return Boolean(idx && idx[key]);
+}
+
 // ---------------------------------------------------------------- search
 
 const toResult = (e) => ({
@@ -233,6 +246,10 @@ async function searchHanzi(q) {
   return out;
 }
 
+/** Max shards one latin search may fetch (a syllable appears in most shards). */
+const MAX_SHARDS = 8;
+const capShards = (ids) => [...new Set(ids)].slice(0, MAX_SHARDS);
+
 async function searchPinyin(q) {
   const key = tonelessKey(q);
   const letter = letterOf(key);
@@ -241,11 +258,17 @@ async function searchPinyin(q) {
   if (!idx) return [];
 
   const ids = [];
-  for (const [k, list] of Object.entries(idx)) {
-    if (k === key) ids.push(...list);
-    else if (ids.length < 200 && k.startsWith(key)) ids.push(...list);
+  if (idx[key]) {
+    ids.push(...idx[key]);
+  } else {
+    // Prefix expansion only when the exact syllable isn't there (a prefix like
+    // "pan" would otherwise pull in "pang"/"pian" entries from most shards).
+    for (const [k, list] of Object.entries(idx)) {
+      if (ids.length >= 200) break;
+      if (k.startsWith(key)) ids.push(...list);
+    }
   }
-  const entries = await shardsFor(ids);
+  const entries = await shardsFor(capShards(ids));
   const out = [];
   for (const e of entries) {
     const ek = tonelessKey(e.pinyinNumeric || '');
@@ -270,7 +293,7 @@ async function searchEnglish(q) {
     if (k === primary) ids.push(...idx[k]);
     else if (ids.length < 200 && k.startsWith(primary)) ids.push(...idx[k]);
   }
-  const entries = await shardsFor(ids);
+  const entries = await shardsFor(capShards(ids));
   const wanted = new Set(words);
   const out = [];
   for (const e of entries) {
@@ -296,38 +319,50 @@ async function searchEnglish(q) {
  * Scores sit above the English ones so a Spanish query surfaces Spanish hits
  * first. Returns [] when there is no Spanish index (feature simply off).
  */
+const ES_MAX_SHARDS = 4;
+
 async function searchSpanish(q) {
   const words = esTokens(q);
   if (!words.length) return [];
   const primary = words[0];
   const letter = letterOf(primary);
   if (!letter) return [];
-  const idx = await loadSpanishIndex(letter);
+  const idx = await loadSpanishSearch(letter);
   if (!idx) return [];
 
-  const ids = [];
-  for (const k of Object.keys(idx)) {
-    if (k === primary) ids.push(...idx[k]);
-    else if (ids.length < 200 && k.startsWith(primary)) ids.push(...idx[k]);
+  let pairs = Array.isArray(idx[primary]) ? idx[primary] : null;
+  if (!pairs) {
+    // Prefix only when the exact word is absent, and capped.
+    pairs = [];
+    for (const [k, list] of Object.entries(idx)) {
+      if (pairs.length >= 60) break;
+      if (k.startsWith(primary)) pairs.push(...list);
+    }
   }
-  if (!ids.length) return [];
+  if (!pairs.length) return [];
 
-  const entries = await shardsFor(ids);
+  const order = new Map();
+  for (const [id] of pairs) if (!order.has(id)) order.set(id, order.size);
+  const shards = [...new Set(pairs.map(([, shard]) => shard))].slice(0, ES_MAX_SHARDS);
+  const entries = await shardsFor(shards);
   const wanted = new Set(words);
   const out = [];
   for (const e of entries) {
+    if (!order.has(e.id)) continue;
     const defs = (await esShardDefs(shardOf.get(e)))?.get(e.id) || [];
+    const tokens = new Set(defs.flatMap(esTokens));
+    if (!words.every((w) => tokens.has(w))) continue;
     let best = 0;
     for (const def of defs) {
-      const tokens = esTokens(def);
+      const defTokens = esTokens(def);
       for (const w of wanted) {
-        const at = tokens.indexOf(w);
+        const at = defTokens.indexOf(w);
         if (at === -1) continue;
-        const score = 100 - at * 5 + (tokens.length === 1 ? 20 : 0);
-        if (score > best) best = score;
+        best = Math.max(best, 100 - at * 5 + (defTokens.length === 1 ? 20 : 0));
       }
     }
-    if (best > 0) out.push({ e, score: best + 200 }); // Spanish hits rank first
+    // The postings order already encodes HSK / short-word priority (I8).
+    out.push({ e, score: 1000 - order.get(e.id) + Math.min(50, best) / 100 });
   }
   return out;
 }
@@ -345,8 +380,16 @@ export async function search(query, { limit = 20, spanish = false } = {}) {
   const type = detectType(q);
   let hits;
   if (type === 'hanzi') hits = await searchHanzi(q);
-  else if (type === 'pinyin' || (await isPinyin(q))) hits = await searchPinyin(q);
-  else if (spanish) hits = [...(await searchSpanish(q)), ...(await searchEnglish(q))];
+  else if (spanish && !TONE_NUM_RE.test(q) && !UNAMBIGUOUS_TONE_RE.test(q)) {
+    // A Spanish word can look like pinyin ("pan", "año", "café" — the acute is
+    // the 2nd tone): the Spanish search goes first, pinyin only if it's empty.
+    const es = await searchSpanish(q);
+    if (es.length) hits = es;
+    else {
+      const pinyinToo = !/ñ/i.test(q) && (await hasExactPinyin(q));
+      hits = pinyinToo ? [...(await searchPinyin(q)), ...(await searchEnglish(q))] : await searchEnglish(q);
+    }
+  } else if (type === 'pinyin' || (await isPinyin(q))) hits = await searchPinyin(q);
   else hits = await searchEnglish(q);
   const ranked = rank(hits, limit);
   return spanish ? withSpanish(ranked) : ranked;
