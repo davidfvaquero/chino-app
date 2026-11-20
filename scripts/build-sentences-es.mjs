@@ -24,6 +24,8 @@ import readline from 'node:readline';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
+import { buildTradSimpMap, toSimplified } from './lib/trad-simp.mjs';
+
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const RAW = path.join(ROOT, '.cache');                        // raw downloads (git-ignored)
 const ORIG = path.join(ROOT, 'public', 'data', 'sentences');  // English pairs (input)
@@ -73,11 +75,25 @@ async function forEachBz2Line(file, cb) {
 async function main() {
   const index = JSON.parse(fs.readFileSync(path.join(ORIG, 'index.json'), 'utf8'));
 
+  // The input shards are already simplified, but normalise `zh` again from the
+  // committed CC-CEDICT shards so running this script on older data cannot
+  // reintroduce traditional forms (REVIEW #16).
+  const dictDir = path.join(ROOT, 'public', 'data', 'dict');
+  const dictManifest = JSON.parse(fs.readFileSync(path.join(dictDir, 'manifest.json'), 'utf8'));
+  const dictEntries = [];
+  for (const file of dictManifest.shardFiles) {
+    dictEntries.push(...JSON.parse(fs.readFileSync(path.join(dictDir, file), 'utf8')));
+  }
+  const tradSimp = buildTradSimpMap(dictEntries);
+
   // 1) the app's entries, in their original shard layout (ids/order preserved)
   const shards = index.shards.map((s) => ({
     meta: s,
     entries: JSON.parse(fs.readFileSync(path.join(ORIG, s.file), 'utf8')),
   }));
+  for (const sh of shards) {
+    for (const e of sh.entries) e.zh = toSimplified(e.zh, tradSimp);
+  }
   const ids = new Set();
   for (const sh of shards) for (const e of sh.entries) ids.add(String(e.id));
   log(`es: ${ids.size} sentences in ${shards.length} shards`);

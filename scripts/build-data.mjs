@@ -38,6 +38,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 import { pinyinToMarks, tonelessKey } from './lib/pinyin.mjs';
+import { buildTradSimpMap, toSimplified } from './lib/trad-simp.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const RAW = path.join(ROOT, '.cache');                 // raw downloads (git-ignored)
@@ -383,6 +384,10 @@ async function buildSentences(dictEntries) {
   };
   for (const e of dictEntries) { consider(e.simp, e); consider(e.trad, e); }
 
+  // Tatoeba's cmn export mixes traditional and simplified; normalise every
+  // sentence to simplified so a regeneration matches the committed shards.
+  const tradSimp = buildTradSimpMap(dictEntries);
+
   const picks = [];
   for (const [cmn, text] of cmnText) {
     const engs = engIdsByCmn.get(cmn);
@@ -394,12 +399,15 @@ async function buildSentences(dictEntries) {
   picks.sort((a, b) => (a.len - b.len) || (a.id - b.id));
 
   const selected = picks.slice(0, SENTENCE_LIMIT).sort((a, b) => a.id - b.id);
-  const entries = selected.map((p) => ({
-    id: p.id,
-    zh: p.zh,
-    pinyin: makeSentencePinyin(p.zh, wordPinyin, maxWordLen),
-    en: p.en,
-  }));
+  const entries = selected.map((p) => {
+    const zh = toSimplified(p.zh, tradSimp);
+    return {
+      id: p.id,
+      zh,
+      pinyin: makeSentencePinyin(zh, wordPinyin, maxWordLen),
+      en: p.en,
+    };
+  });
 
   const shards = packSequential(entries, 150 * 1024);
   const dir = path.join(OUT, 'sentences', 'shards');

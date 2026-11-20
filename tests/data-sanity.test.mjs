@@ -198,3 +198,31 @@ test('short Tatoeba sentences have zh/pinyin/en and are <= 12 chars', () => {
   }
   assert.equal(total, idx.count);
 });
+
+test('sentences are simplified only (no traditional-only characters)', () => {
+  // A character is traditional-only when CC-CEDICT lists it as traditional but
+  // never as simplified (same technique as tests/hsk3-lessons.test.mjs). The
+  // Tatoeba source mixes traditional and simplified; the pipeline must have
+  // normalised every sentence to simplified (REVIEW.md #16).
+  const dictManifest = read(path.join('dict', 'manifest.json'));
+  const simp = new Set();
+  const trad = new Set();
+  for (const f of dictManifest.shardFiles) {
+    for (const e of read(path.join('dict', f))) {
+      for (const c of e.simp) simp.add(c);
+      for (const c of e.trad) trad.add(c);
+    }
+  }
+  const tradOnly = new Set([...trad].filter((c) => !simp.has(c)));
+
+  for (const dir of ['sentences', path.join('es', 'sentences')]) {
+    const idx = read(path.join(dir, 'index.json'));
+    for (const sh of idx.shards) {
+      const shard = read(path.join(dir, sh.file));
+      for (const s of shard) {
+        const bad = [...new Set([...s.zh].filter((c) => tradOnly.has(c)))];
+        assert.deepEqual(bad, [], `${dir} id ${s.id} "${s.zh}" has traditional-only characters: ${bad.join('')}`);
+      }
+    }
+  }
+});
