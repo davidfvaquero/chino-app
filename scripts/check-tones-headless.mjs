@@ -4,9 +4,20 @@
 //                    node scripts/check-tones-headless.mjs [dir]
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { existsSync } from 'node:fs';
 
 const dir = process.argv[2] || '/tmp/chino-tones';
 const serveScript = fileURLToPath(new URL('./serve.mjs', import.meta.url));
+
+// Same candidates as scripts/check-exercises.mjs (copied on purpose: this script
+// must not depend on that file). Puppeteer's own Chrome cache may be missing.
+const CHROME_CANDIDATES = [
+  process.env.CHROME_BIN,
+  '/home/homelab/.hermes/tools/chromium-1208/chrome-linux64/chrome',
+  '/usr/bin/google-chrome',
+  '/usr/bin/chromium',
+  '/usr/bin/chromium-browser',
+].filter(Boolean);
 
 const server = spawn('node', [serveScript, dir], {
   stdio: ['ignore', 'pipe', 'pipe']
@@ -31,7 +42,13 @@ if (!port) {
 console.log(`Server running on port ${port}`);
 
 const { default: puppeteer } = await import('puppeteer');
-const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+const executablePath = CHROME_CANDIDATES.find((p) => existsSync(p));
+if (!executablePath) {
+  console.error(`no Chrome/Chromium found (tried: ${CHROME_CANDIDATES.join(', ')}). Set CHROME_BIN.`);
+  server.kill();
+  process.exit(1);
+}
+const browser = await puppeteer.launch({ headless: true, executablePath, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
 const page = await browser.newPage();
 page.on('console', msg => console.log('BROWSER:', msg.text()));
 page.on('pageerror', err => console.error('PAGE ERROR:', err.message));
