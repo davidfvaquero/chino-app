@@ -187,6 +187,30 @@ try {
   // same name (Chrome overwrites same-named downloads, hiding the second one).
   rmSync(file, { force: true });
 
+  /* -------------------------------------------- global pinyin setting off -- */
+  const setPinyin = (value) => page.evaluate(
+    async (b, v) => { const m = await import(`${b}/src/settings.js`); await m.setSetting('pinyin', v); },
+    base,
+    value,
+  );
+  await setPinyin(false);
+  const beforeOff = new Set(readdirSync(downloadDir));
+  await page.click('[data-action="download-pdf"]');
+  const offFile = await waitForDownload(downloadDir, { previous: beforeOff });
+  if (offFile) {
+    try {
+      const off = validatePdf(readFileSync(offFile));
+      writeFileSync(join(downloadDir, 'worksheet-page1-nopinyin.jpg'), off.jpegs[0]);
+      ok('PDF renders with the global pinyin setting off', `${off.pages} pages`);
+    } catch (err) {
+      fail('PDF renders with the global pinyin setting off', err.message);
+    }
+    rmSync(offFile, { force: true });
+  } else {
+    fail('PDF renders with the global pinyin setting off', 'no file');
+  }
+  await setPinyin(true);
+
   /* ------------------------------------------------------------- offline -- */
   await page.evaluate(() => navigator.serviceWorker.ready);
   let controlled = false;
