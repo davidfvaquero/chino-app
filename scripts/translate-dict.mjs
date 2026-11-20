@@ -97,7 +97,7 @@ function readExistingShard(outDir, shard) {
 }
 
 /** Every id already translated in the output dir (resumption / idempotency). */
-function loadDoneIds(outDir) {
+export function loadDoneIds(outDir) {
   const dir = path.join(outDir, 'shards');
   const done = new Set();
   if (!fs.existsSync(dir)) return done;
@@ -116,6 +116,17 @@ function writeShardAtomic(outDir, shard, fresh) {
   const tmp = `${file}.tmp-${process.pid}`;
   fs.writeFileSync(tmp, JSON.stringify(merged));
   fs.renameSync(tmp, file);
+}
+
+/** Write pending results to disk: only the shards they touch, merged by id (idempotent). */
+export function flushPending(outDir, entries, items) {
+  const byShard = new Map();
+  for (const item of items) {
+    const shard = entries.get(item.id).shard;
+    if (!byShard.has(shard)) byShard.set(shard, []);
+    byShard.get(shard).push(item);
+  }
+  for (const [shard, fresh] of byShard) writeShardAtomic(outDir, shard, fresh);
 }
 
 // ---------------------------------------------------------------- stratification
@@ -285,10 +296,10 @@ export function failReason(err) {
 const callModel = (opt, entries) => (opt.provider === 'anthropic' ? callAnthropic(opt, entries) : callOpenRouter(opt, entries));
 
 /** Retry 429/529 with exponential backoff; give up (code 4) after 3 tries. */
-async function callWithBackoff(opt, entries) {
+async function callWithBackoff(call, opt, entries) {
   const delays = [30000, 60000, 120000];
   for (let i = 0; ; i++) {
-    try { return await callModel(opt, entries); }
+    try { return await call(opt, entries); }
     catch (err) {
       if ((err.status === 429 || err.status === 529) && i < delays.length) { await sleep(delays[i]); continue; }
       if (err.status === 429 || err.status === 529) { const e = new Error('3 fallos seguidos (429/529)'); e.code = 4; throw e; }
@@ -298,9 +309,9 @@ async function callWithBackoff(opt, entries) {
 }
 
 /** One batch with a single retry that splits it in half. */
-async function runBatch(opt, entries, depth, stats) {
+async function runBatch(call, opt, entries, depth, stats) {
   try {
-    const r = await callWithBackoff(opt, entries);
+    const r = await callWithBackoff(call, opt, entries);
     stats.inTok += r.inTok; stats.outTok += r.outTok; stats.usd += r.usd;
     return r.entries;
   } catch (err) {
@@ -314,13 +325,17 @@ async function runBatch(opt, entries, depth, stats) {
     }
     // A truncated batch (or any other failure) is retried as two halves.
     const mid = Math.ceil(entries.length / 2);
-    const a = await runBatch(opt, entries.slice(0, mid), depth + 1, stats);
-    const b = await runBatch(opt, entries.slice(mid), depth + 1, stats);
+    const a = await runBatch(call, opt, entries.slice(0, mid), depth + 1, stats);
+    const b = await runBatch(call, opt, entries.slice(mid), depth + 1, stats);
     return [...a, ...b];
   }
 }
 
 // ---------------------------------------------------------------- run
+const FLUSH_EVERY = 25; // batches between disk dumps: at most 25 batches of work lost on a crash
+
+const hhmmss = () => new Date().toTimeString().slice(0, 8);
+
 function writeSummary(opt, summary) {
   if (opt.strata === 'pilot') {
     fs.mkdirSync(opt.out, { recursive: true });
@@ -328,6 +343,74 @@ function writeSummary(opt, summary) {
   }
   fs.mkdirSync(WORK, { recursive: true });
   fs.writeFileSync(path.join(WORK, 'last-run.json'), JSON.stringify(summary));
+}
+
+/**
+ * Translate `llmIds` in batches, dumping to disk every FLUSH_EVERY batches, at
+ * the end, on a usage/balance stop and on SIGTERM/SIGINT (exit 0).
+ * `done` is the set of ids already on disk; it is updated as dumps happen.
+ * `call(opt, entries)` is the model call (injected by tests).
+ */
+export async function translateRun(opt, { entries, templateIds, llmIds, done, tiers, call, balance = null }) {
+  const stats = { inTok: 0, outTok: 0, usd: 0, invalid: 0, errors: [], reasons: {} };
+  const pending = [];
+  let flushed = 0, batchesDone = 0, badBatches = 0, stopped = false, stopReason = '';
+
+  const progress = () => {
+    const count = (k) => [...tiers[k]].filter((id) => done.has(id)).length;
+    const usage = opt.provider === 'anthropic'
+      ? (() => { const u = claudeUsage(); return u ? `sesión ${u.session}%, semana ${u.weekly}%` : 'sesión ?, semana ?'; })()
+      : `coste ~$${stats.usd.toFixed(4)}`;
+    console.log(`[${hhmmss()}] volcado: ${done.size} entradas hechas (T1 ${count('1')}, T2 ${count('2')}), `
+      + `lotes ok/invalidos ${batchesDone - badBatches}/${badBatches}, ${usage}`);
+  };
+  const flush = () => {
+    if (!pending.length) return;
+    const items = pending.splice(0);
+    flushPending(opt.out, entries, items);
+    for (const it of items) done.add(it.id);
+    flushed += items.length;
+    progress();
+  };
+  const onSignal = (sig) => {
+    stopped = true;
+    flush();
+    console.log(`[${hhmmss()}] señal ${sig}: último volcado hecho, salgo`);
+    process.exit(0);
+  };
+  process.on('SIGTERM', onSignal);
+  process.on('SIGINT', onSignal);
+
+  for (const id of templateIds) pending.push({ id, defs: resolveTemplateDefs(entries.get(id).defs) });
+
+  const batches = buildBatches(llmIds.map((id) => entries.get(id)), opt.batch);
+  let next = 0;
+  const workers = Array.from({ length: opt.concurrency }, async () => {
+    while (!stopped) {
+      const i = next++;
+      if (i >= batches.length) return;
+      const before = stats.invalid;
+      const out = await runBatch(call, opt, batches[i], 0, stats);
+      pending.push(...out.map((e) => ({ id: e.id, defs: e.defs })));
+      batchesDone++;
+      if (stats.invalid > before) badBatches++;
+      if (batchesDone % FLUSH_EVERY === 0) flush();
+      if (opt.pause) await sleep(opt.pause);
+      if (opt.provider === 'anthropic') {
+        if (usageExhausted(claudeUsage())) { stopped = true; stopReason = 'usage'; return; }
+      } else if ((opt.maxUsd > 0 && stats.usd >= opt.maxUsd) || (balance !== null && balance - stats.usd < opt.minBalance)) {
+        stopped = true; stopReason = opt.maxUsd > 0 && stats.usd >= opt.maxUsd ? 'max-usd' : 'min-balance'; return;
+      }
+    }
+  });
+  try {
+    await Promise.all(workers);
+  } finally {
+    flush(); // last dump, also when a fatal error (code 3/4) stops the run
+    process.off('SIGTERM', onSignal);
+    process.off('SIGINT', onSignal);
+  }
+  return { flushed, batches: batches.length, stats, stopped, stopReason };
 }
 
 async function main(argv) {
@@ -356,7 +439,6 @@ async function main(argv) {
   console.log(`  out: ${path.relative(ROOT, opt.out)}`);
   if (opt.dryRun) return 0;
 
-  const stats = { inTok: 0, outTok: 0, usd: 0, invalid: 0, errors: [], reasons: {} };
   const usageStart = opt.provider === 'anthropic' ? claudeUsage(true) : null;
   let balance = null;
   if (opt.provider === 'openrouter') {
@@ -373,53 +455,26 @@ async function main(argv) {
     }
   }
 
-  const results = [];
-  let stopped = false, stopReason = '';
-  for (const id of templateIds) results.push({ id, defs: resolveTemplateDefs(entries.get(id).defs) });
-
-  const batches = buildBatches(llmIds.map((id) => entries.get(id)), opt.batch);
-  let next = 0;
-  const workers = Array.from({ length: opt.concurrency }, async () => {
-    while (!stopped) {
-      const i = next++;
-      if (i >= batches.length) return;
-      const out = await runBatch(opt, batches[i], 0, stats);
-      results.push(...out.map((e) => ({ id: e.id, defs: e.defs })));
-      if (opt.pause) await sleep(opt.pause);
-      if (opt.provider === 'anthropic') {
-        if (usageExhausted(claudeUsage())) { stopped = true; stopReason = 'usage'; return; }
-      } else if ((opt.maxUsd > 0 && stats.usd >= opt.maxUsd) || (balance !== null && balance - stats.usd < opt.minBalance)) {
-        stopped = true; stopReason = opt.maxUsd > 0 && stats.usd >= opt.maxUsd ? 'max-usd' : 'min-balance'; return;
-      }
-    }
-  });
-  await Promise.all(workers);
-
-  const byShard = new Map();
-  for (const item of results) {
-    const shard = entries.get(item.id).shard;
-    if (!byShard.has(shard)) byShard.set(shard, []);
-    byShard.get(shard).push(item);
-  }
-  for (const [shard, fresh] of byShard) writeShardAtomic(opt.out, shard, fresh);
+  const tiers = { '1': new Set(priority.tiers['1'] || []), '2': new Set(priority.tiers['2'] || []), template: new Set(priority.tiers.template || []) };
+  const r = await translateRun(opt, { entries, templateIds, llmIds, done, tiers, call: callModel, balance });
+  const { stats, batches, stopped, stopReason } = r;
 
   // totals per tier from what is now on disk
-  const nowDone = loadDoneIds(opt.out);
-  const tierSets = { '1': new Set(priority.tiers['1'] || []), '2': new Set(priority.tiers['2'] || []), template: new Set(priority.tiers.template || []) };
+  const nowDone = done;
   const perTier = { 1: 0, 2: 0, template: 0 };
   const scopeSet = new Set(priority.order || []);
   for (const id of scopeSet) {
     if (!nowDone.has(id)) continue;
-    for (const [k, s] of Object.entries(tierSets)) if (s.has(id)) perTier[k === 'template' ? 'template' : k]++;
+    for (const [k, s] of Object.entries(tiers)) if (s.has(id)) perTier[k === 'template' ? 'template' : k]++;
   }
   const usageEnd = opt.provider === 'anthropic' ? claudeUsage(true) : null;
   const delta = usageStart && usageEnd ? { session: usageEnd.session - usageStart.session, weekly: usageEnd.weekly - usageStart.weekly } : null;
 
   const summary = {
     when: new Date().toISOString(), provider: opt.provider, model: opt.model, out: path.relative(ROOT, opt.out),
-    scope: scope.length, translated: results.length, template: templateIds.length,
-    llmRequests: batches.length, invalidBatches: stats.invalid,
-    invalidRate: batches.length ? Number((stats.invalid / batches.length).toFixed(3)) : 0,
+    scope: scope.length, translated: r.flushed, template: templateIds.length,
+    llmRequests: batches, invalidBatches: stats.invalid,
+    invalidRate: batches ? Number((stats.invalid / batches).toFixed(3)) : 0,
     failReasons: stats.reasons,
     promptTokens: stats.inTok, completionTokens: stats.outTok, costUsd: Number(stats.usd.toFixed(6)),
     failed: stats.errors.map((e) => e.id), doneTotal: nowDone.size, donePerTier: perTier,
@@ -433,14 +488,14 @@ async function main(argv) {
     fs.writeFileSync(FAILED, JSON.stringify([...prev, ...stats.errors]));
   }
 
-  console.log(`\nhecho: ${results.length} entradas (${templateIds.length} plantilla)`);
-  console.log(`  lotes ${batches.length}, inválidos ${stats.invalid} (${summary.invalidRate != null ? `${Math.round(summary.invalidRate * 100)}%` : '0%'}), fallidos ${stats.errors.length}`);
+  console.log(`\nhecho: ${r.flushed} entradas (${templateIds.length} plantilla)`);
+  console.log(`  lotes ${batches}, inválidos ${stats.invalid} (${summary.invalidRate != null ? `${Math.round(summary.invalidRate * 100)}%` : '0%'}), fallidos ${stats.errors.length}`);
   if (Object.keys(stats.reasons).length) console.log(`  motivos de fallo: ${Object.entries(stats.reasons).map(([k, n]) => `${k} ${n}`).join(', ')}`);
   console.log(`  tokens ${stats.inTok}+${stats.outTok}${opt.provider === 'openrouter' ? `  coste real ~$${stats.usd.toFixed(5)}` : ''}`);
   if (delta) console.log(`  Claude delta: sesión ${delta.session >= 0 ? '+' : ''}${delta.session}% (${usageEnd.session}%), semana ${delta.weekly >= 0 ? '+' : ''}${delta.weekly}% (${usageEnd.weekly}%)`);
   console.log(`  hechas en total: ${nowDone.size} (T1 ${perTier[1]}, T2 ${perTier[2]}, plantilla ${perTier.template})`);
   if (stopped) console.log(`  (parado por ${stopReason})`);
-  return stats.errors.length && !results.length ? 1 : 0;
+  return stats.errors.length && !r.flushed ? 1 : 0;
 }
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
