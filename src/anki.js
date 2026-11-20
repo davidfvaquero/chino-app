@@ -28,6 +28,7 @@
 import storage from './storage.js';
 import { createDeck } from './srs.js';
 import { prettyPinyin, tonelessKey } from './pinyin.js';
+import { localDayKey } from './day.js';
 
 export const ANKI_COLUMNS = ['Hanzi', 'Pinyin', 'Meaning', 'Example', 'Source', 'Tags'];
 const HEADER = ['#separator:tab', '#html:true', `#columns:${ANKI_COLUMNS.join('\t')}`];
@@ -224,7 +225,5 @@ export async function importCards(entries, db = storage) {
 }
 
 export function exportFilename(ts = Date.now()) {
-  const d = new Date(ts);
-  const pad = (n) => String(n).padStart(2, '0');
-  return `chino-anki-${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}.tsv`;
+  return `chino-anki-${localDayKey(new Date(ts))}.tsv`;
 }
