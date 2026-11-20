@@ -104,7 +104,7 @@ test('the strokes board uses the dotted practice grid and the sheet wording', ()
   const s = src('src/learn/strokes.js');
   const guide = s.match(/\.strokes-guide \{[^}]*\}/)[0];
   assert.match(guide, /stroke-dasharray/);
-  assert.match(guide, /stroke: var\(--grid\)/);
+  assert.match(guide, /stroke: var\(--edge\)/);
   assert.equal(json('src/locales/es.d/strokes.json').strokes.searchButton, 'Ver trazos');
   assert.equal(json('src/locales/en.d/strokes.json').strokes.searchButton, 'Show strokes');
 });

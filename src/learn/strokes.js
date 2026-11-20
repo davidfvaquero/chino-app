@@ -305,7 +305,7 @@ const CSS = `
 .strokes-results button { font-size: 1.4rem; line-height: 1; min-height: 44px; padding: 0.35rem 0.55rem; border: 1.5px solid var(--edge); border-radius: var(--r-md); background: var(--surface); color: var(--ink); }
 .strokes-board { position: relative; width: 100%; max-width: 22rem; margin: 0 auto; }
 .strokes-svg { display: block; width: 100%; aspect-ratio: 1 / 1; touch-action: none; border-radius: 0.75rem; background: var(--surface); }
-.strokes-guide { stroke: var(--grid); stroke-width: 2; stroke-dasharray: 5 4; fill: none; }
+.strokes-guide { stroke: var(--edge); stroke-width: 2; stroke-dasharray: 5 4; fill: none; }
 .strokes-ghost { fill: var(--ink-soft); opacity: 0.7; }
 .strokes-ink { fill: none; stroke: var(--ink); stroke-width: ${STROKE_WIDTH}; stroke-linecap: round; stroke-linejoin: round; }
 .strokes-trace-guide { fill: none; stroke: var(--accent); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 18 22; opacity: 0.8; }
@@ -628,6 +628,15 @@ function createStrokeApp(container, ctx) {
     setPractice(false);
     const total = strokeCount();
     state.anim = { index: 0, progress: 0, total: 0 };
+    // Respect the OS setting: draw the finished character, no animation.
+    if (typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      for (let index = 0; index < total; index += 1) paintStroke(index, 1);
+      state.anim = { index: Math.max(0, total - 1), progress: 1, total };
+      updateProgress(total);
+      setPlayState('done');
+      setHint('strokes.animationDone');
+      return;
+    }
     for (let index = 0; index < total; index += 1) paintStroke(index, 0);
     updateProgress(1);
     setHint('');

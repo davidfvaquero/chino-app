@@ -22,6 +22,7 @@ import { speak, isTtsAvailable } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
 import { lookup, segment } from '../dictionary.js';
 import { addToReview } from '../srs.js';
+import { localDayKey } from '../day.js';
 import {
   configuredProviders,
   loadOnDeviceProvider,
@@ -436,7 +437,18 @@ export function render(container, ctx = {}) {
     paint();
   }
 
-  async function sendMessage(provider, rawText, textarea, sendBtn, list) {
+  /** Partial `zh` from a streaming JSON reply, so the bubble never shows raw JSON. */
+function streamPreview(acc) {
+  const match = String(acc).match(/"zh"\s*:\s*"((?:[^"\\]|\\.)*)/);
+  if (!match) return t('conversation.thinking');
+  try {
+    return JSON.parse(`"${match[1]}"`);
+  } catch {
+    return match[1];
+  }
+}
+
+async function sendMessage(provider, rawText, textarea, sendBtn, list) {
     const text = String(rawText || '').trim();
     if (!text || state.busy) return;
     state.busy = true;
@@ -462,22 +474,33 @@ export function render(container, ctx = {}) {
       for await (const delta of provider.send(payload, { signal: state.ctrl.signal })) {
         if (state.disposed) return;
         acc += delta;
-        liveSpan.textContent = acc;
+        liveSpan.textContent = streamPreview(acc);
       }
+      // Leaving the screen mid-stream (or aborting) must not persist a reply.
+      if (state.disposed || state.ctrl?.signal.aborted) return;
       const parsed = parseReply(acc);
+      if (!parsed.zh) throw new Error('empty reply');
       state.messages.push({ role: 'assistant', ...parsed });
       persist();
       setStatus('');
-      // Reward once per conversation: exactly when the 5th user message is answered.
-      // (A flag in state reset on every screen visit, so re-entering paid again.)
+      // Reward at most once per local day: "Nueva conversación" must not farm it.
       const userCount = state.messages.filter((m) => m.role === 'user').length;
       if (userCount === 5) {
-        window.dispatchEvent(new CustomEvent('chino:lesson_done', { detail: { source: 'conversation' } }));
+        const day = localDayKey();
+        const lastDay = await storage.get('gamification', 'conversationRewardDay');
+        if (lastDay !== day) {
+          await storage.set('gamification', 'conversationRewardDay', day);
+          window.dispatchEvent(new CustomEvent('chino:lesson_done', { detail: { source: 'conversation' } }));
+        }
       }
       state.busy = false;
       paint();
     } catch (err) {
       live.remove();
+      // The user message never got an answer: take it back so it is not stored
+      // (nor re-sent as history) after a failure.
+      if (state.messages[state.messages.length - 1]?.role === 'user') state.messages.pop();
+      persist();
       handleSendError(err, provider);
     } finally {
       state.busy = false;

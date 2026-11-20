@@ -6,6 +6,7 @@
 import { t, getLocale, setLocale, availableLocales, localeLabel, subscribe } from '../i18n.js';
 import { getStats } from '../gamification.js';
 import { h, reset } from '../dom.js';
+import storage from '../storage.js';
 
 export const titleKey = 'hubs.extras.profile';
 
@@ -154,7 +155,7 @@ export function render(container, ctx) {
     section.append(h('h2', { text: t('profileScreen.language.label') }));
     section.append(h('p', { class: 'language-current', text: t('profileScreen.language.current', { name: localeLabel(currentLocale) }) }));
 
-    const select = h('select', { class: 'field', value: currentLocale, onchange: (e) => setLocale(e.target.value) },
+    const select = h('select', { class: 'field', value: currentLocale, onchange: (e) => { setLocale(e.target.value); storage.set('settings', 'locale', e.target.value); } },
       ...locales.map((code) => h('option', { value: code, selected: code === currentLocale }, localeLabel(code))),
     );
     section.append(select);
