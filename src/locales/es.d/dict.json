@@ -14,6 +14,7 @@
     "strokesLabel": "Trazos:",
     "error": "La búsqueda falló. Revisa tu conexión e inténtalo de nuevo.",
     "offline": "El diccionario necesita conexión la primera vez. Inténtalo de nuevo cuando vuelvas a estar en línea.",
+    "licenceName": "CC BY-SA 4.0",
     "audio": "Reproducir",
     "audioFor": "Reproducir el audio de {hanzi}",
     "audioEmpty": "No hay nada que reproducir.",

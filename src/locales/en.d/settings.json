@@ -41,7 +41,10 @@
     },
     "credits": {
       "title": "Licences and credits",
-      "dictEs": "The Spanish definitions are an automatic translation derived from CC-CEDICT and are distributed under CC BY-SA 4.0 © MDBG and the CC-CEDICT contributors."
+      "dictEs": "The Spanish definitions are an automatic translation derived from CC-CEDICT and are distributed under CC BY-SA 4.0 © MDBG and the CC-CEDICT contributors.",
+      "licenceName": "CC BY-SA 4.0",
+      "sourceName": "CC-CEDICT",
+      "licenceFile": "LICENSE"
     }
   }
 }

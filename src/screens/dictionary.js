@@ -84,7 +84,7 @@ export function render(container, ctx = {}) {
     href: 'data/es/dict/LICENSE.md',
     target: '_blank',
     rel: 'noopener noreferrer',
-    text: 'CC BY-SA 4.0',
+    text: t('dict.licenceName'),
   }));
   const form = h(
     'form',

@@ -41,7 +41,10 @@
     },
     "credits": {
       "title": "Licencias y créditos",
-      "dictEs": "Las definiciones en español son una traducción automática derivada de CC-CEDICT y se distribuyen bajo CC BY-SA 4.0 © MDBG y los colaboradores de CC-CEDICT."
+      "dictEs": "Las definiciones en español son una traducción automática derivada de CC-CEDICT y se distribuyen bajo CC BY-SA 4.0 © MDBG y los colaboradores de CC-CEDICT.",
+      "licenceName": "CC BY-SA 4.0",
+      "sourceName": "CC-CEDICT",
+      "licenceFile": "LICENSE"
     }
   }
 }
