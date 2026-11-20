@@ -1,42 +1,242 @@
 [
-  { "id": "reading-01", "title": "你好！", "topic": "Greetings & introductions" },
-  { "id": "reading-02", "title": "我的家", "topic": "Family" },
-  { "id": "reading-03", "title": "吃饭", "topic": "Food & drinks" },
-  { "id": "reading-04", "title": "今天天气", "topic": "Weather & days" },
-  { "id": "reading-05", "title": "买东西", "topic": "Shopping & numbers" },
-  { "id": "reading-06", "title": "我的一天", "topic": "My day" },
-  { "id": "reading-07", "title": "认识你", "topic": "Introducing yourself" },
-  { "id": "reading-08", "title": "咖啡店", "topic": "At the café" },
-  { "id": "reading-09", "title": "问路", "topic": "Asking for directions" },
-  { "id": "reading-10", "title": "我的家人", "topic": "My family" },
-  { "id": "reading-11", "title": "早上七点", "topic": "Daily routine" },
-  { "id": "reading-12", "title": "买衣服", "topic": "Shopping for clothes" },
-  { "id": "reading-13", "title": "明天下雨吗？", "topic": "Weather" },
-  { "id": "reading-14", "title": "在酒店", "topic": "At the hotel" },
-  { "id": "reading-15", "title": "我的爱好", "topic": "Hobbies" },
-  { "id": "reading-16", "title": "一条消息", "topic": "A message" },
-  { "id": "reading-17", "title": "坐出租车", "topic": "In a taxi" },
-  { "id": "reading-18", "title": "打电话", "topic": "On the phone" },
-  { "id": "reading-19", "title": "看医生", "topic": "At the doctor" },
-  { "id": "reading-20", "title": "生日聚会", "topic": "A party" },
-  { "id": "reading-21", "title": "看一看", "topic": "Looking around a shop" },
-  { "id": "reading-22", "title": "我的生日", "topic": "My birthday" },
-  { "id": "reading-23", "title": "学汉语", "topic": "Studying Chinese" },
-  { "id": "reading-24", "title": "一封信", "topic": "A letter" },
-  { "id": "reading-25", "title": "坐地铁", "topic": "On the subway" },
-  { "id": "reading-26", "title": "在饭馆", "topic": "At a restaurant" },
-  { "id": "reading-27", "title": "跟医生说话", "topic": "A doctor's appointment" },
-  { "id": "reading-28", "title": "新的家", "topic": "Moving to a new home" },
-  { "id": "reading-29", "title": "找工作", "topic": "Looking for a job" },
-  { "id": "reading-30", "title": "去玩", "topic": "Holidays & travel" },
-  { "id": "reading-31", "title": "天气冷了", "topic": "Seasons" },
-  { "id": "reading-32", "title": "运动", "topic": "Sports" },
-  { "id": "reading-33", "title": "做饭", "topic": "Cooking at home" },
-  { "id": "reading-34", "title": "手机", "topic": "Text messages" },
-  { "id": "reading-35", "title": "我的名片", "topic": "Business cards" },
-  { "id": "reading-36", "title": "图书馆", "topic": "At the library" },
-  { "id": "reading-37", "title": "在学校", "topic": "At school" },
-  { "id": "reading-38", "title": "在家里", "topic": "At home" },
-  { "id": "reading-39", "title": "星期天", "topic": "The weekend" },
-  { "id": "reading-40", "title": "我的狗", "topic": "Pets" }
+  {
+    "id": "reading-01",
+    "title": "你好！",
+    "pinyin": "nǐ hǎo",
+    "topic": "Greetings & introductions"
+  },
+  {
+    "id": "reading-02",
+    "title": "我的家",
+    "pinyin": "wǒ de jiā",
+    "topic": "Family"
+  },
+  {
+    "id": "reading-03",
+    "title": "吃饭",
+    "pinyin": "chī fàn",
+    "topic": "Food & drinks"
+  },
+  {
+    "id": "reading-04",
+    "title": "今天天气",
+    "pinyin": "jīn tiān tiān qì",
+    "topic": "Weather & days"
+  },
+  {
+    "id": "reading-05",
+    "title": "买东西",
+    "pinyin": "mǎi dōng xi",
+    "topic": "Shopping & numbers"
+  },
+  {
+    "id": "reading-06",
+    "title": "我的一天",
+    "pinyin": "wǒ de yī tiān",
+    "topic": "My day"
+  },
+  {
+    "id": "reading-07",
+    "title": "认识你",
+    "pinyin": "rèn shi nǐ",
+    "topic": "Introducing yourself"
+  },
+  {
+    "id": "reading-08",
+    "title": "咖啡店",
+    "pinyin": "kā fēi diàn",
+    "topic": "At the café"
+  },
+  {
+    "id": "reading-09",
+    "title": "问路",
+    "pinyin": "wèn lù",
+    "topic": "Asking for directions"
+  },
+  {
+    "id": "reading-10",
+    "title": "我的家人",
+    "pinyin": "wǒ de jiā rén",
+    "topic": "My family"
+  },
+  {
+    "id": "reading-11",
+    "title": "早上七点",
+    "pinyin": "zǎo shang qī diǎn",
+    "topic": "Daily routine"
+  },
+  {
+    "id": "reading-12",
+    "title": "买衣服",
+    "pinyin": "mǎi yī fu",
+    "topic": "Shopping for clothes"
+  },
+  {
+    "id": "reading-13",
+    "title": "明天下雨吗？",
+    "pinyin": "míng tiān xià yǔ má",
+    "topic": "Weather"
+  },
+  {
+    "id": "reading-14",
+    "title": "在酒店",
+    "pinyin": "zài jiǔ diàn",
+    "topic": "At the hotel"
+  },
+  {
+    "id": "reading-15",
+    "title": "我的爱好",
+    "pinyin": "wǒ de ài hào",
+    "topic": "Hobbies"
+  },
+  {
+    "id": "reading-16",
+    "title": "一条消息",
+    "pinyin": "yī tiáo xiāo xi",
+    "topic": "A message"
+  },
+  {
+    "id": "reading-17",
+    "title": "坐出租车",
+    "pinyin": "zuò chū zū chē",
+    "topic": "In a taxi"
+  },
+  {
+    "id": "reading-18",
+    "title": "打电话",
+    "pinyin": "dǎ diàn huà",
+    "topic": "On the phone"
+  },
+  {
+    "id": "reading-19",
+    "title": "看医生",
+    "pinyin": "kàn yī shēng",
+    "topic": "At the doctor"
+  },
+  {
+    "id": "reading-20",
+    "title": "生日聚会",
+    "pinyin": "shēng rì jù huì",
+    "topic": "A party"
+  },
+  {
+    "id": "reading-21",
+    "title": "看一看",
+    "pinyin": "kàn yī kàn",
+    "topic": "Looking around a shop"
+  },
+  {
+    "id": "reading-22",
+    "title": "我的生日",
+    "pinyin": "wǒ de shēng rì",
+    "topic": "My birthday"
+  },
+  {
+    "id": "reading-23",
+    "title": "学汉语",
+    "pinyin": "xué hàn yǔ",
+    "topic": "Studying Chinese"
+  },
+  {
+    "id": "reading-24",
+    "title": "一封信",
+    "pinyin": "yī fēng xìn",
+    "topic": "A letter"
+  },
+  {
+    "id": "reading-25",
+    "title": "坐地铁",
+    "pinyin": "zuò dì tiě",
+    "topic": "On the subway"
+  },
+  {
+    "id": "reading-26",
+    "title": "在饭馆",
+    "pinyin": "zài fàn guǎn",
+    "topic": "At a restaurant"
+  },
+  {
+    "id": "reading-27",
+    "title": "跟医生说话",
+    "pinyin": "gēn yī shēng shuō huà",
+    "topic": "A doctor's appointment"
+  },
+  {
+    "id": "reading-28",
+    "title": "新的家",
+    "pinyin": "xīn de jiā",
+    "topic": "Moving to a new home"
+  },
+  {
+    "id": "reading-29",
+    "title": "找工作",
+    "pinyin": "zhǎo gōng zuò",
+    "topic": "Looking for a job"
+  },
+  {
+    "id": "reading-30",
+    "title": "去玩",
+    "pinyin": "qù wán",
+    "topic": "Holidays & travel"
+  },
+  {
+    "id": "reading-31",
+    "title": "天气冷了",
+    "pinyin": "tiān qì lěng le",
+    "topic": "Seasons"
+  },
+  {
+    "id": "reading-32",
+    "title": "运动",
+    "pinyin": "yùn dòng",
+    "topic": "Sports"
+  },
+  {
+    "id": "reading-33",
+    "title": "做饭",
+    "pinyin": "zuò fàn",
+    "topic": "Cooking at home"
+  },
+  {
+    "id": "reading-34",
+    "title": "手机",
+    "pinyin": "shǒu jī",
+    "topic": "Text messages"
+  },
+  {
+    "id": "reading-35",
+    "title": "我的名片",
+    "pinyin": "wǒ de míng piàn",
+    "topic": "Business cards"
+  },
+  {
+    "id": "reading-36",
+    "title": "图书馆",
+    "pinyin": "tú shū guǎn",
+    "topic": "At the library"
+  },
+  {
+    "id": "reading-37",
+    "title": "在学校",
+    "pinyin": "zài xué xiào",
+    "topic": "At school"
+  },
+  {
+    "id": "reading-38",
+    "title": "在家里",
+    "pinyin": "zài jiā lǐ",
+    "topic": "At home"
+  },
+  {
+    "id": "reading-39",
+    "title": "星期天",
+    "pinyin": "xīng qī tiān",
+    "topic": "The weekend"
+  },
+  {
+    "id": "reading-40",
+    "title": "我的狗",
+    "pinyin": "wǒ de gǒu",
+    "topic": "Pets"
+  }
 ]

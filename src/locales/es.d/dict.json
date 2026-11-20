@@ -3,6 +3,7 @@
     "searchLabel": "Buscar en el diccionario",
     "placeholder": "Hanzi, pinyin o inglés",
     "results": "Resultados de búsqueda",
+    "defsEnglish": "Definiciones en inglés",
     "empty": "Escribe una palabra para buscar en el diccionario.",
     "loading": "Buscando…",
     "noResults": "Sin resultados para «{query}».",

@@ -36,7 +36,7 @@ const CSS = `
 .memory-card.flipped .memory-card-inner { transform: rotateY(180deg); }
 .memory-card.matched .memory-card-inner { opacity: 0.6; }
 .memory-card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 0.75rem; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.75rem; border: 1.5px solid var(--edge); background: var(--surface); color: inherit; font-size: 1.1rem; text-align: center; box-sizing: border-box; }
-.memory-card-back { background: linear-gradient(135deg, var(--surface), var(--surface)); border-color: var(--accent); }
+.memory-card-back { border-color: var(--accent); }
 .memory-card-front { transform: rotateY(180deg); }
 .memory-card.hanzi .memory-card-front { background: var(--accent-wash); border-color: var(--accent); }
 .memory-card.meaning .memory-card-front { background: var(--ok-wash); border-color: var(--ok); }

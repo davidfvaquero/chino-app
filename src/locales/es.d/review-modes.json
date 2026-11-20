@@ -7,6 +7,12 @@
       "pinyin": "Escribir pinyin",
       "mistakes": "Solo mis fallos"
     },
+    "hint": {
+      "classic": "Ves el hanzi, dices el significado.",
+      "reverse": "Ves el significado, dices el hanzi.",
+      "pinyin": "Ves el hanzi, escribes su pinyin.",
+      "mistakes": "Solo las tarjetas que se te atascan."
+    },
     "answerLabel": "Escribe el pinyin",
     "answerPlaceholder": "p. ej. ni3 o nǐ",
     "check": "Comprobar",

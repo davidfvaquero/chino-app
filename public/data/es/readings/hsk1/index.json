@@ -2,201 +2,241 @@
   {
     "id": "reading-01",
     "title": "你好！",
+    "pinyin": "nǐ hǎo",
     "topic": "Saludos y presentaciones"
   },
   {
     "id": "reading-02",
     "title": "我的家",
+    "pinyin": "wǒ de jiā",
     "topic": "La familia"
   },
   {
     "id": "reading-03",
     "title": "吃饭",
+    "pinyin": "chī fàn",
     "topic": "Comida y bebida"
   },
   {
     "id": "reading-04",
     "title": "今天天气",
+    "pinyin": "jīn tiān tiān qì",
     "topic": "El tiempo y los días"
   },
   {
     "id": "reading-05",
     "title": "买东西",
+    "pinyin": "mǎi dōng xi",
     "topic": "Compras y números"
   },
   {
     "id": "reading-06",
     "title": "我的一天",
+    "pinyin": "wǒ de yī tiān",
     "topic": "Mi día"
   },
   {
     "id": "reading-07",
     "title": "认识你",
+    "pinyin": "rèn shi nǐ",
     "topic": "Presentarte"
   },
   {
     "id": "reading-08",
     "title": "咖啡店",
+    "pinyin": "kā fēi diàn",
     "topic": "En la cafetería"
   },
   {
     "id": "reading-09",
     "title": "问路",
+    "pinyin": "wèn lù",
     "topic": "Pedir direcciones"
   },
   {
     "id": "reading-10",
     "title": "我的家人",
+    "pinyin": "wǒ de jiā rén",
     "topic": "Mi familia"
   },
   {
     "id": "reading-11",
     "title": "早上七点",
+    "pinyin": "zǎo shang qī diǎn",
     "topic": "Rutina diaria"
   },
   {
     "id": "reading-12",
     "title": "买衣服",
+    "pinyin": "mǎi yī fu",
     "topic": "Comprar ropa"
   },
   {
     "id": "reading-13",
     "title": "明天下雨吗？",
+    "pinyin": "míng tiān xià yǔ má",
     "topic": "El tiempo"
   },
   {
     "id": "reading-14",
     "title": "在酒店",
+    "pinyin": "zài jiǔ diàn",
     "topic": "En el hotel"
   },
   {
     "id": "reading-15",
     "title": "我的爱好",
+    "pinyin": "wǒ de ài hào",
     "topic": "Aficiones"
   },
   {
     "id": "reading-16",
     "title": "一条消息",
+    "pinyin": "yī tiáo xiāo xi",
     "topic": "Un mensaje"
   },
   {
     "id": "reading-17",
     "title": "坐出租车",
+    "pinyin": "zuò chū zū chē",
     "topic": "En un taxi"
   },
   {
     "id": "reading-18",
     "title": "打电话",
+    "pinyin": "dǎ diàn huà",
     "topic": "Por teléfono"
   },
   {
     "id": "reading-19",
     "title": "看医生",
+    "pinyin": "kàn yī shēng",
     "topic": "En el médico"
   },
   {
     "id": "reading-20",
     "title": "生日聚会",
+    "pinyin": "shēng rì jù huì",
     "topic": "Una fiesta"
   },
   {
     "id": "reading-21",
     "title": "看一看",
+    "pinyin": "kàn yī kàn",
     "topic": "Echar un vistazo en una tienda"
   },
   {
     "id": "reading-22",
     "title": "我的生日",
+    "pinyin": "wǒ de shēng rì",
     "topic": "Mi cumpleaños"
   },
   {
     "id": "reading-23",
     "title": "学汉语",
+    "pinyin": "xué hàn yǔ",
     "topic": "Estudiar chino"
   },
   {
     "id": "reading-24",
     "title": "一封信",
+    "pinyin": "yī fēng xìn",
     "topic": "Una carta"
   },
   {
     "id": "reading-25",
     "title": "坐地铁",
+    "pinyin": "zuò dì tiě",
     "topic": "En el metro"
   },
   {
     "id": "reading-26",
     "title": "在饭馆",
+    "pinyin": "zài fàn guǎn",
     "topic": "En un restaurante"
   },
   {
     "id": "reading-27",
     "title": "跟医生说话",
+    "pinyin": "gēn yī shēng shuō huà",
     "topic": "Una cita con el médico"
   },
   {
     "id": "reading-28",
     "title": "新的家",
+    "pinyin": "xīn de jiā",
     "topic": "Mudarse a una casa nueva"
   },
   {
     "id": "reading-29",
     "title": "找工作",
+    "pinyin": "zhǎo gōng zuò",
     "topic": "Buscar trabajo"
   },
   {
     "id": "reading-30",
     "title": "去玩",
+    "pinyin": "qù wán",
     "topic": "Vacaciones y viajes"
   },
   {
     "id": "reading-31",
     "title": "天气冷了",
+    "pinyin": "tiān qì lěng le",
     "topic": "Las estaciones"
   },
   {
     "id": "reading-32",
     "title": "运动",
+    "pinyin": "yùn dòng",
     "topic": "Deportes"
   },
   {
     "id": "reading-33",
     "title": "做饭",
+    "pinyin": "zuò fàn",
     "topic": "Cocinar en casa"
   },
   {
     "id": "reading-34",
     "title": "手机",
+    "pinyin": "shǒu jī",
     "topic": "Mensajes de texto"
   },
   {
     "id": "reading-35",
     "title": "我的名片",
+    "pinyin": "wǒ de míng piàn",
     "topic": "Tarjetas de visita"
   },
   {
     "id": "reading-36",
     "title": "图书馆",
+    "pinyin": "tú shū guǎn",
     "topic": "En la biblioteca"
   },
   {
     "id": "reading-37",
     "title": "在学校",
+    "pinyin": "zài xué xiào",
     "topic": "En la escuela"
   },
   {
     "id": "reading-38",
     "title": "在家里",
+    "pinyin": "zài jiā lǐ",
     "topic": "En casa"
   },
   {
     "id": "reading-39",
     "title": "星期天",
+    "pinyin": "xīng qī tiān",
     "topic": "El fin de semana"
   },
   {
     "id": "reading-40",
     "title": "我的狗",
+    "pinyin": "wǒ de gǒu",
     "topic": "Mascotas"
   }
 ]

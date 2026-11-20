@@ -7,6 +7,12 @@
       "pinyin": "Type pinyin",
       "mistakes": "Only my mistakes"
     },
+    "hint": {
+      "classic": "You see the hanzi, say the meaning.",
+      "reverse": "You see the meaning, say the hanzi.",
+      "pinyin": "You see the hanzi, type its pinyin.",
+      "mistakes": "Only the cards you keep missing."
+    },
     "answerLabel": "Type the pinyin",
     "answerPlaceholder": "e.g. ni3 or nǐ",
     "check": "Check",

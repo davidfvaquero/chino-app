@@ -21,6 +21,7 @@
 //   detectType(query) -> 'hanzi' | 'pinyin' | 'latin'
 //   configure({ fetch })                  inject a fetch for Node/tests
 //   resetCache()                          drop cached shards/indexes
+//   distinctDefs(defs, max = 3)           display list: near-duplicates dropped
 
 import { pinyinToMarks, tonelessKey } from './pinyin.js';
 
@@ -277,4 +278,50 @@ export async function segment(text) {
 /** Tone-marked display form for an entry (or any numbered pinyin string). */
 export function withToneMarks(pinyin) {
   return pinyinToMarks(pinyin || '');
+}
+
+// ---------------------------------------------------------------- display
+
+/** Words dropped when comparing two definitions ("to thank" ≈ "thank you"). */
+const DEF_STOPWORDS = new Set([
+  'a', 'an', 'the', 'to', 'of', 'for', 'in', 'on', 'be', 'is', 'are', 'you', 'it', 'that', 'this',
+]);
+
+/** Normalised word set of a definition: lowercase, no punctuation, no plural -s. */
+function defWords(def) {
+  return new Set(
+    String(def ?? '')
+      .toLowerCase()
+      .replace(/[^a-z\u00e0-\u00ff\s'-]/g, ' ')
+      .split(/[\s'-]+/)
+      .filter((w) => w && !DEF_STOPWORDS.has(w))
+      .map((w) => (w.length > 3 && w.endsWith('s') && !w.endsWith('ss') ? w.slice(0, -1) : w)),
+  );
+}
+
+/**
+ * Trim a definition list for display: drop near-duplicates and cap the count.
+ * CC-CEDICT repeats one idea several ways ("to thank / thanks / thank you"),
+ * which is noise on a 390 px row. Two definitions count as the same when one's
+ * normalised words are a subset of the other's.
+ *
+ * @param {string[]} defs
+ * @param {number} [max=3] most definitions to keep
+ * @returns {string[]}
+ */
+export function distinctDefs(defs, max = 3) {
+  const out = [];
+  const seen = [];
+  for (const def of Array.isArray(defs) ? defs : []) {
+    const text = String(def ?? '').trim();
+    if (!text) continue;
+    const words = defWords(text);
+    if (!words.size) continue;
+    const sub = (a, b) => [...a].every((w) => b.has(w));
+    if (seen.some((k) => sub(words, k) || sub(k, words))) continue;
+    seen.push(words);
+    out.push(text);
+    if (out.length >= Math.max(1, max)) break;
+  }
+  return out;
 }

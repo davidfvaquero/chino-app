@@ -20,7 +20,7 @@ Guard: `node scripts/check-contrast.mjs <build dir>` (see §8 of that file).
 | Palette (dark) | Piedra `#0F1518` · Hoja `#172024` · Tinta `#E8EFEB` · Jade `#6CC6BB` · Trazo `#2A363A` |
 | Type | One family, **Onest** (self-hosted, 37 KB) for the UI; system Chinese fonts for hanzi |
 | Layout | One column, 16 px gutter, left-aligned text, hanzi centred inside its cell |
-| Memorable element | Hanzi on a dashed practice grid (`.hz-cell`), one grid tile per character |
+| Memorable element | Hanzi on a dotted practice grid (`.hz-cell`), one grid tile per character |
 | Motion | The page settles in (opacity) and big hanzi "ink in" (blur → sharp); everything else answers a touch |
 
 Wireframes (390 px):
@@ -90,6 +90,7 @@ decides the side. `src/settings.js` owns no colours: it sets
 | `--line` | `#d2d9d2` | `#2a363a` | hairlines and dividers (decoration, **not** a control boundary) |
 | `--edge` | `#72807d` | `#6a7b7b` | boundary of buttons, fields, chips (≥ 3:1) |
 | `--accent` / `--accent-fg` | `#17645f` / `#f4faf8` | `#6cc6bb` / `#0b1f1d` | primary action, progress, selection, links |
+| `--focus` | = `--accent` | = `--accent` | focus ring (`:focus-visible`, 3 px) |
 | `--danger` | `#a22c27` | `#f28b80` | wrong, destructive |
 | `--ok` | = `--accent` | = `--accent` | right |
 | `--accent-wash`, `--ok-wash`, `--danger-wash` | 12–13 % mixes over `--surface` | | selected / right / wrong fills |
@@ -155,7 +156,7 @@ Buttons (min 48 px; `.sm` 44 px; all have `:hover` (pointer only), `:active`,
 | `.list` + `.list-row` | hairline-separated rows without boxes |
 | `.empty` (+ `[data-done]`) | empty / finished state, centred; `data-done` adds a 完 mark |
 | `.toast` / `#app-status` | transient message above the tab bar |
-| `.tabbar` `.tab` | bottom navigation, 6 tabs, icon + label, readable at 320 px (labels are 10 px on purpose) |
+| `.tabbar` `.tab` | bottom navigation, 6 tabs, icon + label, readable at 320 px (labels are 11 px on purpose) |
 | `.menu` + `.card.field` | **hub / list entry** — see below |
 | `.stack` `.cluster` | vertical grid / wrapping row of controls |
 | `.hz-cell` `.sm/.md/.lg` | hanzi on the practice grid |
@@ -205,14 +206,18 @@ colour is never the only signal.
   word of the day is the only sheet, hanzi `.lg`.
 - **Dictionary** — big search field, hairline rows: hanzi 2.25 rem · pinyin ·
   meanings · actions (44 px).
-- **Review** — mode chips (wrap, never scroll), the card is a sheet with an
+- **Review** — mode chips, each with a one-line hint under it (wrap, never
+  scroll), the card is a sheet with an
   `.lg` cell; back = pinyin 1.75 rem + meaning; four rating buttons
   (`again` red, `good`/`easy` jade) with the interval under the label (2 × 2 at ≤ 22 rem).
 - **Lesson** — intro (sheet), vocabulary (rows with `.md` cell, example behind a
   jade rule), exercise (sheet + progress bar), result (score + bar).
-- **Read** — each line is a hairline row: speaker pill, tappable words
+- **Read** — the list is a hairline row per reading (Chinese title, its pinyin,
+  topic); each line of a reading is a hairline row: speaker pill, tappable words
   (dotted underline, 44 px high), optional pinyin, translation, round play
   button; tapping a word opens a bottom sheet above the tab bar.
+- **Strokes** — "Ver trazos" (the same wording as the calligraphy sheet) and the
+  practice grid is the same dotted 田字格 as `.hz-cell`.
 
 ## 5. Motion
 
@@ -220,9 +225,10 @@ One orchestrated moment: `.screen > *` fades in (200 ms, opacity only, so
 `position: fixed` children never break) and `.hz-cell.lg` "inks in" (blur
 5 px → sharp, 550 ms). Touch feedback: `:active` scale 0.98, right answer
 "pop", wrong answer "shake", the word sheet slides up, the toast rises.
-Under `prefers-reduced-motion: reduce` every animation and transition is
-effectively off (1 µs). Do not add hover transitions on every card or
-scroll-triggered entrances.
+Under `prefers-reduced-motion: reduce` every entrance animation and transition
+is effectively off (1 µs); only the border/fill change that marks a right or
+wrong answer stays, without the shake or pop. Do not add hover transitions on
+every card or scroll-triggered entrances.
 
 ## 6. Rules of use for other tasks
 
