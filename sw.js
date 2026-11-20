@@ -8,7 +8,8 @@
 const VERSION = 'dev';
 const DEV = VERSION === 'dev';
 const SHELL_CACHE = `chino-shell-${VERSION}`;
-const DATA_CACHE = `chino-data-${VERSION}`;
+/** Fixed name on purpose: downloaded dictionary shards survive an app update. */
+const DATA_CACHE = 'chino-data-v1';
 
 // Minimal list; `npm run build` injects the full shell list. In dev the SW is
 // bypassed entirely (see the fetch listener), so this only serves as a stub.
@@ -41,14 +42,18 @@ self.addEventListener('activate', (event) => {
 
 const isDataRequest = (url) => /\/data\//.test(url.pathname) && url.pathname.endsWith('.json');
 
-/** Data JSON: stale-while-revalidate (fast, and refreshes in the background). */
+/** Data that never changes between app versions: cache-first, no revalidation. */
+const isImmutableData = (url) => /\/(?:es\/)?(?:dict|search|strokes)\//.test(url.pathname);
+
+/** Data JSON: stale-while-revalidate, or cache-first for immutable data. */
 async function dataStrategy(request) {
   const cache = await caches.open(DATA_CACHE);
   // Search every cache: a cold visit precached lessons/files into SHELL_CACHE.
   const cached = await caches.match(request);
+  if (cached && isImmutableData(new URL(request.url))) return cached;
   const network = fetch(request)
-    .then((response) => {
-      if (response && response.ok) cache.put(request, response.clone());
+    .then(async (response) => {
+      if (response && response.ok) await cache.put(request, response.clone());
       return response;
     })
     .catch(() => null);

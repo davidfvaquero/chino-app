@@ -35,6 +35,9 @@ export function registerServiceWorker(options = {}) {
   if (!location.protocol.startsWith('http')) return null; // file:// has no SW
   const url = options.url ?? new URL('../sw.js', import.meta.url);
   const registration = navigator.serviceWorker.register(url, { scope: './' });
+  // skipWaiting + clients.claim swap modules mid-session: reload once so the
+  // running code and the served shell always come from the same build.
+  navigator.serviceWorker.addEventListener('controllerchange', () => location.reload(), { once: true });
   registration.catch((err) => console.warn('service worker registration failed', err));
   return registration;
 }

@@ -169,3 +169,17 @@ test('I2: Continue disables itself and Finalizar announces the lesson once', () 
   assert.match(tones, /if \(completed\) return;/);
   assert.match(tones, /\.finally\(\(\) => \{/);
 });
+
+// ---------------------------------------------------------------- I4 + M2
+test('I4: the data cache has a fixed name and keeps immutable data', () => {
+  const sw = fs.readFileSync(path.join(ROOT, 'sw.js'), 'utf8');
+  assert.match(sw, /const DATA_CACHE = 'chino-data-v1'/);
+  assert.equal(/DATA_CACHE = `chino-data-\$\{VERSION\}`/.test(sw), false);
+  assert.match(sw, /isImmutableData/);
+  assert.match(sw, /if \(cached && isImmutableData\(new URL\(request\.url\)\)\) return cached;/);
+});
+
+test('M2: a new service worker reloads the page once', () => {
+  const pwa = fs.readFileSync(path.join(ROOT, 'src/pwa.js'), 'utf8');
+  assert.match(pwa, /controllerchange', \(\) => location\.reload\(\), \{ once: true \}/);
+});
