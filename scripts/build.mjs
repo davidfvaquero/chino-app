@@ -83,9 +83,25 @@ for (const file of (await list(dist)).sort()) {
   hash.update(await readFile(new URL(file, dist)));
 }
 const version = hash.digest('hex').slice(0, 12);
+// Precache the whole shell: entry points + every module/style/icon/font under
+// src/ (and icons/, fonts/). The hand-written list in sw.js only covered the
+// shell, so a cold visit had no src/learn/* or src/extras/* in cache and the
+// hubs rendered blank offline. Data lives in the runtime (stale-while-
+// revalidate) cache, not here, so it stays out of the precache list.
+const shellAssets = [
+  './',
+  'index.html',
+  'manifest.webmanifest',
+  ...(await list(dist)).filter((f) => /^(src|icons|fonts)\//.test(f)),
+];
 const swSource = await readFile(new URL('sw.js', root), 'utf8');
-const swDist = swSource.replace("const VERSION = 'dev';", `const VERSION = '${version}';`);
-if (swDist === swSource) throw new Error('build: could not stamp sw.js (VERSION marker missing)');
+const swStamped = swSource.replace("const VERSION = 'dev';", `const VERSION = '${version}';`);
+if (swStamped === swSource) throw new Error('build: could not stamp sw.js (VERSION marker missing)');
+const swDist = swStamped.replace(
+  /const SHELL_ASSETS = \[[\s\S]*?\];/,
+  `const SHELL_ASSETS = [\n${shellAssets.map((a) => `  '${a}',`).join('\n')}\n];`,
+);
+if (swDist === swStamped) throw new Error('build: could not inject SHELL_ASSETS into sw.js');
 await writeFile(new URL('sw.js', dist), swDist);
 
 // 7. sanity check: every file the service worker precaches must exist
