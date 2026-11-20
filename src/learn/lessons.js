@@ -87,6 +87,7 @@ const CSS = `
 .lesson-vocab-actions,
 .lesson-result-actions { display: grid; gap: var(--gap); }
 .lesson-vocab-actions { margin: var(--gap) 0; }
+.lesson-vocab-next { margin-bottom: var(--gap); }
 .lesson-result-actions { margin-top: var(--gap); }
 `;
 
@@ -310,13 +311,9 @@ async function renderLesson(container, ctx, lessonId, level) {
       },
     });
     // The actions sit on top, so the way forward is reachable without scrolling 16 rows.
+    section.append(h('div', { class: 'lesson-vocab-actions' }, addAll));
     section.append(
-      h(
-        'div',
-        { class: 'lesson-vocab-actions' },
-        addAll,
-        h('button', { type: 'button', class: 'btn primary lg', text: t('learn.lessons.next'), onclick: () => go('exercises') }),
-      ),
+      h('button', { type: 'button', class: 'btn primary lg lesson-vocab-next', text: t('learn.lessons.next'), onclick: () => go('exercises') }),
     );
     for (const word of words) {
       const button = h('button', {
