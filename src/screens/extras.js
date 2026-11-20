@@ -42,7 +42,7 @@ const GROUPS = [
 ];
 
 /** Hanzi emblem per area (styles.css owns the old ones; the new areas get
- *  theirs here because that file is frozen). One line per area. */
+ *  theirs here). One line per area. */
 const EMBLEMS = { worksheet: '纸', anki: '卡', account: '云', conversation: '聊' };
 let emblemsAdded = false;
 function addEmblems() {

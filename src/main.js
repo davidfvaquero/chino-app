@@ -74,7 +74,7 @@ function renderChrome(route = router?.current()) {
 
   el.header.textContent = t(screen.titleKey);
   el.nav.setAttribute('aria-label', t('nav.label'));
-  el.nav.style.gridTemplateColumns = `repeat(${NAV.length}, 1fr)`; // styles.css hard-codes 5 columns
+  el.nav.style.gridTemplateColumns = `repeat(${NAV.length}, 1fr)`; // styles.css hard-codes 6 columns
   el.nav.replaceChildren(
     ...NAV.map((item) => {
       const label = h('span', { class: 'tab-label', text: t(`nav.${item.label}`) });

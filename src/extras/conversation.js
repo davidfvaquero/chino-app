@@ -27,6 +27,7 @@ import {
   loadOnDeviceProvider,
   fetchModels,
   recommendFreeModel,
+  freeModels,
   cheapPaidModels,
   estimateCostPer1000,
 } from '../chat/providers.js';
@@ -250,7 +251,7 @@ export function render(container, ctx = {}) {
     const modelSelect = h('select', { class: 'field', 'aria-label': t('conversation.model') });
     if (state.models) {
       const rec = recommendFreeModel(state.models);
-      for (const m of state.models.filter((x) => String(x.id).endsWith(':free') || isFree(x))) {
+      for (const m of freeModels(state.models)) {
         modelSelect.append(h('option', { value: m.id, text: m.id === rec?.id ? `${m.id} ★` : m.id }));
       }
       if (cfg.openrouterModel && ![...modelSelect.options].some((o) => o.value === cfg.openrouterModel)) {
@@ -544,10 +545,4 @@ export function render(container, ctx = {}) {
   })();
 
   return () => { state.disposed = true; state.ctrl?.abort(); };
-}
-
-/** Local copy of the free-model rule, to avoid importing it just for the picker. */
-function isFree(model) {
-  const p = model?.pricing || {};
-  return Number(p.prompt) === 0 && Number(p.completion) === 0;
 }

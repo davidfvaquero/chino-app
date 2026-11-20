@@ -133,7 +133,7 @@ with different `OUT_DIR` values never touch each other's files.
 `scripts/serve.mjs [dir]` serves `dir` and, so the source tree works too,
 merges `<code>.d/` shards into any `<...>/locales/<code>.json` request and
 generates `/manifest.webmanifest` when it is missing. `npm run dev` is
-`serve.mjs .`; `scripts/dev.mjs` is superseded (left in place, not used).
+`serve.mjs .`.
 
 ## 6. Module APIs
 

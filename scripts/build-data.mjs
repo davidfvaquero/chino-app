@@ -37,7 +37,7 @@ import readline from 'node:readline';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
-import { pinyinToMarks, tonelessKey } from './lib/pinyin.mjs';
+import { pinyinToMarks, tonelessKey } from '../src/pinyin.js';
 import { buildTradSimpMap, toSimplified } from './lib/trad-simp.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');

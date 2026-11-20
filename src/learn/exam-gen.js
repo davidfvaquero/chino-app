@@ -31,7 +31,6 @@
  *   gradeAnswer(question, response) -> boolean
  *   gradeExam(exam, answers) -> { correct, total, score, percent, wrong }
  */
-import { tonelessKey } from '../pinyin.js';
 import { shuffle } from '../random.js';
 
 /** Fisher-Yates copy (shared); re-exported so existing importers keep working. */
@@ -342,7 +341,3 @@ export function gradeExam(exam, answers = []) {
   return { correct, total, score: correct, percent, wrong };
 }
 
-/** Pinyin key of a word, used to dedupe review cards. */
-export function wordKey(word) {
-  return tonelessKey(word?.pinyinNumeric || word?.pinyin || '') || text(word?.hanzi);
-}

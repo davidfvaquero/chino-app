@@ -10,7 +10,7 @@ export function h(tag, props = {}, ...children) {
     else if (key === 'text') node.textContent = value;
     else if (key.startsWith('on') && typeof value === 'function') {
       node.addEventListener(key.slice(2).toLowerCase(), value);
-    } else if (key === 'html') node.innerHTML = value; // trusted SVG markup only
+    } else if (key === 'html') node.innerHTML = value; // trusted markup: SVG, or pinyinHtml (escaped)
     else node.setAttribute(key, value === true ? '' : String(value));
   }
   for (const child of children.flat()) {

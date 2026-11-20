@@ -8,11 +8,8 @@
  * Globals are read lazily (at call time), never at module load, so the module
  * is testable with mocks and harmless in a non-browser environment.
  *
- * TTS lives in ./audio.js; the speechAvailable/speak aliases at the bottom are
- * kept only for older callers.
+ * TTS lives in ./audio.js; this module only does recognition (STT).
  */
-
-import { isTtsAvailable, speak as ttsSpeak } from './audio.js';
 
 const DEFAULT_LANG = 'zh-CN';
 const DEFAULT_TIMEOUT_MS = 10000;
@@ -136,21 +133,3 @@ export function listen({ lang = DEFAULT_LANG, timeoutMs = DEFAULT_TIMEOUT_MS } =
   });
 }
 
-/* ------------------------------------------------------------------ *
- * Deprecated TTS aliases (kept for the dictionary/review screens).
- * New code should import isTtsAvailable()/speak() from ./audio.js.
- * ------------------------------------------------------------------ */
-
-/** @deprecated use isTtsAvailable() from ./audio.js */
-export function speechAvailable() {
-  return isTtsAvailable();
-}
-
-/** @deprecated use speak() from ./audio.js (it returns a Promise) */
-export function speak(text, opts) {
-  ttsSpeak(text, opts);
-  return isTtsAvailable();
-}
-
-/** @deprecated no longer needed: voices are resolved on every call. */
-export function resetVoiceCache() {}

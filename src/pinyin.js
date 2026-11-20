@@ -1,8 +1,8 @@
 // Pinyin helpers (dependency-free, browser + Node).
 //
-// Self-contained twin of scripts/lib/pinyin.mjs (src/ cannot import from
-// scripts/ at runtime — the build only copies src/ and public/). Keep the two
-// in sync if the tone-placement rules ever change.
+// The single source of truth for pinyin: the data pipeline (scripts/build-data.mjs)
+// and the tests import this file directly, so there is no scripts/ twin to keep
+// in sync.
 //
 // CC-CEDICT ships pinyin with *tone numbers* ("ni3 hao3"); the app shows tone
 // marks ("nǐ hǎo") and searches on a separator-free toneless key ("nihao").

@@ -6,7 +6,7 @@
  */
 import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
-import { listen, compare } from '../speech.js';
+import { listen, compare, isRecognitionAvailable } from '../speech.js';
 import { speak, isTtsAvailable } from '../audio.js';
 
 export const titleKey = 'hubs.extras.pronounce';
@@ -204,9 +204,4 @@ export function render(container, ctx) {
     recognitionSupported = false;
     updateDegradedNotice();
   }
-}
-
-// Helper: check recognition availability without importing speech.js again (circular)
-function isRecognitionAvailable() {
-  return typeof (globalThis.SpeechRecognition ?? globalThis.webkitSpeechRecognition) === 'function';
 }

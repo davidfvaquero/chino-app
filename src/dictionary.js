@@ -32,7 +32,7 @@
 //   resetCache()                          drop cached shards/indexes
 //   distinctDefs(defs, max = 3)           display list: near-duplicates dropped
 
-import { pinyinToMarks, tonelessKey } from './pinyin.js';
+import { tonelessKey } from './pinyin.js';
 
 const BASE = typeof document === 'undefined' ? '/data/dict' : new URL('data/dict', document.baseURI);
 const ES_BASE = typeof document === 'undefined' ? '/data/es/dict' : new URL('data/es/dict', document.baseURI);
@@ -411,13 +411,6 @@ export async function segment(text) {
   flush();
   return out;
 }
-
-/** Tone-marked display form for an entry (or any numbered pinyin string). */
-export function withToneMarks(pinyin) {
-  return pinyinToMarks(pinyin || '');
-}
-
-// ---------------------------------------------------------------- display
 
 /** Words dropped when comparing two definitions ("to thank" ≈ "thank you"). */
 const DEF_STOPWORDS = new Set([
