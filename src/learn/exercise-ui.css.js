@@ -1,6 +1,7 @@
 /**
  * exercise-ui.css.js — the exercise kit: option lists, order rows, match grid,
- * right/wrong feedback. Injected once by lessons, tones, dictation, exam and games.
+ * right/wrong feedback. Injected once by lessons, tones and dictation (the
+ * screens that render exercises through src/learn/exercise-view.js).
  * Base `.btn` / `.chip` / tokens live in src/styles.css (docs/DESIGN.md); this
  * file only adds what an exercise needs on top, so light/dark and the font scale
  * keep working through the shared variables.

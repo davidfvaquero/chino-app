@@ -19,7 +19,8 @@ import { h, reset } from '../dom.js';
 import storage from '../storage.js';
 import { speak } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
-import { gradeExercise, summarize } from './exercises.js';
+import { summarize } from './exercises.js';
+import { exerciseView } from './exercise-view.js';
 import { ensureExerciseStyles } from './exercise-ui.css.js';
 import { fetchData } from '../data-url.js';
 
@@ -68,6 +69,9 @@ export async function render(container, ctx) {
   const lesson = await loadLesson();
   const exercises = Array.isArray(lesson.exercises) ? lesson.exercises : [];
   const results = [];
+  // Plain (non-rich) body: Tones keeps no pinyin readings, right/wrong marking
+  // nor live region — it renders exactly as it did before the engine was shared.
+  const viewConfig = { promptOf: (exercise) => label(exercise.promptKey) || exercise.prompt || '' };
   let step = 'intro';
   let current = 0;
 
@@ -181,74 +185,27 @@ export async function render(container, ctx) {
     );
 
     section.append(
-      exerciseView(exercise, (result) => {
-        results[current] = result;
-        current += 1;
-        const summary = summarize(results);
-        saveProgress({
-          score: summary.correct,
-          total: exercises.length,
-          answered: current,
-          completed: current >= exercises.length,
-        }).then(() => {
-          if (current >= exercises.length) go('result');
-          else draw();
-        });
-      }),
+      exerciseView(
+        exercise,
+        (result) => {
+          results[current] = result;
+          current += 1;
+          const summary = summarize(results);
+          saveProgress({
+            score: summary.correct,
+            total: exercises.length,
+            answered: current,
+            completed: current >= exercises.length,
+          }).then(() => {
+            if (current >= exercises.length) go('result');
+            else draw();
+          });
+        },
+        viewConfig,
+      ),
     );
 
     return section;
-  }
-
-  function exerciseView(exercise, onContinue) {
-    const box = h('div', { class: 'exercise-body' });
-    box.append(h('p', { class: 'prompt', text: label(exercise.promptKey) || exercise.prompt || '' }));
-
-    if (exercise.type === 'listen') {
-      box.append(
-        h('button', {
-          type: 'button',
-          class: 'btn primary',
-          text: t('learn.lessons.playAudio'),
-          onclick: () => speak(exercise.audio, { lang: 'zh-CN' }),
-        }),
-      );
-    }
-
-    if (exercise.type === 'choose' || exercise.type === 'listen') return choiceBody(exercise, box, onContinue);
-
-    return box;
-  }
-
-  function finish(feedback, result, onContinue) {
-    feedback.append(
-      h('p', {
-        class: result.correct ? 'feedback ok' : 'feedback bad',
-        text: result.correct ? t('learn.lessons.correct') : t('learn.lessons.incorrect'),
-      }),
-    );
-    feedback.append(h('button', { type: 'button', class: 'btn primary', text: t('learn.lessons.continue'), onclick: () => onContinue(result) }));
-  }
-
-  function choiceBody(exercise, box, onContinue) {
-    const feedback = h('div', { class: 'feedback-box' });
-    const options = h('div', { class: 'options' });
-    for (const option of exercise.options ?? []) {
-      options.append(
-        h('button', {
-          type: 'button',
-          class: 'btn option',
-          text: String(option),
-          onclick: () => {
-            const result = gradeExercise(exercise, option);
-            for (const btn of options.children) btn.disabled = true;
-            finish(feedback, result, onContinue);
-          },
-        }),
-      );
-    }
-    box.append(options, feedback);
-    return box;
   }
 
   function resultStep() {
