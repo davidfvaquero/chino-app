@@ -42,6 +42,10 @@ import { pinyinHtml } from '../tone.js';
 import { tonelessKey } from '../pinyin.js';
 import { fetchData } from '../data-url.js';
 import { ensureExerciseStyles } from './exercise-ui.css.js';
+import { shuffle } from '../random.js';
+
+/** Fisher-Yates copy (shared); re-exported so existing importers keep working. */
+export { shuffle };
 
 export const titleKey = 'dictation.title';
 export const LESSON_ID = 'dictation';
@@ -264,16 +268,6 @@ export function normalizeWord(entry = {}) {
     pinyinNumeric: String(entry.pinyinNumeric ?? '').trim(),
     english: englishText(entry.english ?? entry.defs ?? entry.meaning),
   };
-}
-
-/** Fisher-Yates copy of `list` (injectable rng keeps tests deterministic). */
-export function shuffle(list, rng = Math.random) {
-  const out = [...list];
-  for (let i = out.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(rng() * (i + 1));
-    [out[i], out[j]] = [out[j], out[i]];
-  }
-  return out;
 }
 
 /** The 4 hanzi offered for one word: the word itself plus distinct decoys. */

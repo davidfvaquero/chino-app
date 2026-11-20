@@ -6,33 +6,15 @@
  */
 /** Cache namespace. `npm run build` rewrites 'dev' with a content hash. */
 const VERSION = 'dev';
+const DEV = VERSION === 'dev';
 const SHELL_CACHE = `chino-shell-${VERSION}`;
 const DATA_CACHE = `chino-data-${VERSION}`;
 
+// Minimal list; `npm run build` injects the full shell list. In dev the SW is
+// bypassed entirely (see the fetch listener), so this only serves as a stub.
 const SHELL_ASSETS = [
   './',
   './index.html',
-  './manifest.webmanifest',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-  './icons/icon-maskable-512.png',
-  './src/styles.css',
-  './fonts/onest-latin.woff2',
-  './src/main.js',
-  './src/dom.js',
-  './src/i18n.js',
-  './src/icons.js',
-  './src/pwa.js',
-  './src/router.js',
-  './src/storage.js',
-  './src/locales/index.json',
-  './src/locales/en.json',
-  './src/screens/dictionary.js',
-  './src/screens/extras.js',
-  './src/screens/learn.js',
-  './src/screens/placeholder.js',
-  './src/screens/read.js',
-  './src/screens/review.js',
 ];
 
 self.addEventListener('install', (event) => {
@@ -62,7 +44,8 @@ const isDataRequest = (url) => /\/data\//.test(url.pathname) && url.pathname.end
 /** Data JSON: stale-while-revalidate (fast, and refreshes in the background). */
 async function dataStrategy(request) {
   const cache = await caches.open(DATA_CACHE);
-  const cached = await cache.match(request);
+  // Search every cache: a cold visit precached lessons/files into SHELL_CACHE.
+  const cached = await caches.match(request);
   const network = fetch(request)
     .then((response) => {
       if (response && response.ok) cache.put(request, response.clone());
@@ -73,7 +56,7 @@ async function dataStrategy(request) {
 }
 
 /** Shell assets: cache-first, then network (and store what we fetched). */
-async function shellStrategy(request, event) {
+async function shellStrategy(request) {
   const cache = await caches.open(SHELL_CACHE);
   const cached = await cache.match(request, { ignoreSearch: true });
   if (cached) return cached;
@@ -93,6 +76,8 @@ async function shellStrategy(request, event) {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   if (request.method !== 'GET') return;
+  // In dev, always hit the network: caching would serve stale modules forever.
+  if (DEV) return;
 
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
@@ -101,5 +86,5 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(dataStrategy(request));
     return;
   }
-  event.respondWith(shellStrategy(request, event));
+  event.respondWith(shellStrategy(request));
 });

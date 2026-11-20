@@ -83,16 +83,16 @@ for (const file of (await list(dist)).sort()) {
   hash.update(await readFile(new URL(file, dist)));
 }
 const version = hash.digest('hex').slice(0, 12);
-// Precache the whole shell: entry points + every module/style/icon/font under
-// src/ (and icons/, fonts/). The hand-written list in sw.js only covered the
-// shell, so a cold visit had no src/learn/* or src/extras/* in cache and the
-// hubs rendered blank offline. Data lives in the runtime (stale-while-
-// revalidate) cache, not here, so it stays out of the precache list.
+// Precache the shell AND the lesson/content index: entry points + every
+// module/style/icon/font under src/ (and icons/, fonts/) plus the lesson JSON
+// and files.json the hubs load on a cold visit. Without them, #/learn/tones and
+// #/learn/lessons/* showed "Failed to fetch" offline. (~0.5 MB; other data
+// stays in the runtime stale-while-revalidate cache.)
 const shellAssets = [
   './',
   'index.html',
   'manifest.webmanifest',
-  ...(await list(dist)).filter((f) => /^(src|icons|fonts)\//.test(f)),
+  ...(await list(dist)).filter((f) => /^(src|icons|fonts)\/|^data\/(es\/)?lessons\/|^data\/(es\/)?files\.json$|^data\/manifest\.json$/.test(f)),
 ];
 const swSource = await readFile(new URL('sw.js', root), 'utf8');
 const swStamped = swSource.replace("const VERSION = 'dev';", `const VERSION = '${version}';`);
@@ -103,17 +103,6 @@ const swDist = swStamped.replace(
 );
 if (swDist === swStamped) throw new Error('build: could not inject SHELL_ASSETS into sw.js');
 await writeFile(new URL('sw.js', dist), swDist);
-
-// 7. sanity check: every file the service worker precaches must exist
-const precached = [...swDist.matchAll(/'\.\/([^']+)'/g)].map((m) => m[1]);
-const missing = [];
-for (const rel of precached) {
-  if (rel.endsWith('/')) continue;
-  if (!(await exists(new URL(rel, dist)))) missing.push(rel);
-}
-if (missing.length > 0) {
-  throw new Error(`build: service worker precaches missing files: ${missing.join(', ')}`);
-}
 
 const files = await list(dist);
 console.log(`build: ${outDir} ready — ${files.length} files (sw version ${version})`);

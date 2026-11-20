@@ -29,6 +29,7 @@ import { fetchData } from '../data-url.js';
 import { addToReview, getDueCards } from '../srs.js';
 import { pinyinHtml } from '../tone.js';
 import { speak } from '../audio.js';
+import { shuffle } from '../random.js';
 
 export const titleKey = 'hubs.learn.typing';
 
@@ -201,7 +202,7 @@ async function loadMyCards() {
 
 /** Pick random items from array, up to count. */
 function pickRandom(arr, count) {
-  const shuffled = [...arr].sort(() => Math.random() - 0.5);
+  const shuffled = shuffle(arr);
   return shuffled.slice(0, Math.min(count, arr.length));
 }
 

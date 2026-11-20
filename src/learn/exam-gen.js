@@ -32,6 +32,10 @@
  *   gradeExam(exam, answers) -> { correct, total, score, percent, wrong }
  */
 import { tonelessKey } from '../pinyin.js';
+import { shuffle } from '../random.js';
+
+/** Fisher-Yates copy (shared); re-exported so existing importers keep working. */
+export { shuffle };
 
 /** HSK levels the screen may offer (level 3+ only when the data file exists). */
 export const LEVELS = [1, 2, 3];
@@ -76,16 +80,6 @@ export function hashSeed(value) {
 /** Rng for a seed. Same seed + same data -> identical exam. */
 export function makeRng(seed) {
   return mulberry32(hashSeed(seed));
-}
-
-/** Fisher-Yates copy of `list` (injectable rng keeps exams reproducible). */
-export function shuffle(list, rng = Math.random) {
-  const out = [...list];
-  for (let i = out.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(rng() * (i + 1));
-    [out[i], out[j]] = [out[j], out[i]];
-  }
-  return out;
 }
 
 /* ------------------------------------------------------------------- words -- */
