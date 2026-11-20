@@ -29,9 +29,8 @@
  */
 import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
-import { loadStrokes, strokeDiagramSvg, VIEW_BOX_SIZE } from '../learn/strokes.js';
+import { loadStrokes } from '../learn/strokes.js';
 import { lookup } from '../dictionary.js';
-import { pinyinHtml } from '../tone.js';
 import { getDueCards } from '../srs.js';
 import { loadIndex } from '../learn/lessons.js';
 import { getSettings } from '../settings.js';
@@ -46,6 +45,7 @@ import {
   planWorksheet,
   renderWorksheetPages,
 } from './worksheet-rows.js';
+import { renderCardsPages } from './worksheet-cards.js';
 
 export const titleKey = 'worksheet.title';
 export const MAX_CHARACTERS = 20;
@@ -112,137 +112,6 @@ export function calculateLayout(characters, options = {}) {
 }
 
 /* ---------------------------------------------------- PDF (canvas->JPEG) -- */
-
-// 150 dpi raster: 595.28×841.89 pt × 150/72 ≈ 1240×1754 px (A4 portrait).
-const PDF_PX_PER_PT = 150 / 72;
-const PDF_PAGE_W = Math.round(595.28 * PDF_PX_PER_PT);
-const PDF_PAGE_H = Math.round(841.89 * PDF_PX_PER_PT);
-const PDF_CELL_PX = { small: 80, medium: 96, large: 120 };
-// Hanzi fonts available on Android/iOS/desktop; falls back to the system UI font.
-const PDF_FONT = '"Noto Sans CJK SC", "Noto Sans CJK TC", "Noto Sans CJK", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif';
-const PDF_INK = '#1a1a1a';       // dark ink (light/dark theme both -> dark ink on white)
-const PDF_LINE = '#c4c4c4';      // 田字格 guide lines
-const PDF_GUIDE = 'rgba(26, 26, 26, 0.34)'; // gray model hanzi
-const PDF_BG = '#ffffff';
-
-/** Draw one 田字格 cell: border + dashed centre cross/diagonals + optional gray hanzi. */
-function drawTianCell(ctx, x, y, size, character) {
-  ctx.save();
-  ctx.strokeStyle = PDF_LINE;
-  ctx.lineWidth = 1.5;
-  ctx.strokeRect(x + 0.75, y + 0.75, size - 1.5, size - 1.5);
-  ctx.beginPath();
-  ctx.setLineDash([7, 7]);
-  const mid = size / 2;
-  ctx.moveTo(x, y + mid);
-  ctx.lineTo(x + size, y + mid);
-  ctx.moveTo(x + mid, y);
-  ctx.lineTo(x + mid, y + size);
-  ctx.moveTo(x, y);
-  ctx.lineTo(x + size, y + size);
-  ctx.moveTo(x + size, y);
-  ctx.lineTo(x, y + size);
-  ctx.stroke();
-  ctx.setLineDash([]);
-  if (character) {
-    ctx.fillStyle = PDF_GUIDE;
-    ctx.font = `${Math.round(size * 0.82)}px ${PDF_FONT}`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(character, x + mid, y + size * 0.55);
-  }
-  ctx.restore();
-}
-
-/** Draw a character block: header (hanzi + optional pinyin/meaning) then rows of model+empty cells. */
-function drawCharBlock(ctx, card, { x, y, cellPx, rows, gap, showPinyin, showMeaning, pinyinOn }) {
-  const charSize = Math.round(cellPx * 0.95);
-  const entry = card.entry;
-  ctx.fillStyle = PDF_INK;
-  ctx.textAlign = 'left';
-  ctx.textBaseline = 'alphabetic';
-  ctx.font = `600 ${charSize}px ${PDF_FONT}`;
-  ctx.fillText(card.character, x, y + charSize);
-
-  const tx = x + ctx.measureText(card.character).width + cellPx * 0.25;
-  let ty = y + charSize * 0.45;
-  if (showPinyin && pinyinOn && entry?.pinyinTone) {
-    ctx.font = `400 ${Math.round(charSize * 0.42)}px ${PDF_FONT}`;
-    ctx.fillText(entry.pinyinTone, tx, ty);
-    ty += charSize * 0.5;
-  }
-  if (showMeaning && entry?.defs?.length) {
-    ctx.font = `400 ${Math.round(charSize * 0.28)}px ${PDF_FONT}`;
-    ctx.fillText(entry.defs.slice(0, 2).join('; '), tx, ty);
-  }
-
-  const cellsTop = y + charSize + Math.round(cellPx * 0.2);
-  for (let row = 0; row < rows; row += 1) {
-    const cy = cellsTop + row * (cellPx + gap);
-    drawTianCell(ctx, x, cy, cellPx, card.character);            // model (gray guide)
-    drawTianCell(ctx, x + cellPx + gap, cy, cellPx, null);       // empty (write here)
-  }
-  return cellsTop + rows * cellPx + (rows - 1) * gap - y; // block height
-}
-
-/**
- * Render the generated cards to one or more A4 canvases (~150 dpi) and encode
- * each as a JPEG. New page when a block would not fit. Browser-only (canvas/Blob).
- * @returns {Promise<Array<{jpeg: Uint8Array, width: number, height: number}>>}
- */
-async function renderSheetToPages(cards, options, { pinyinOn = true } = {}) {
-  const cellPx = PDF_CELL_PX[options.cellSize] ?? PDF_CELL_PX.medium;
-  const rows = Math.min(10, Math.max(3, Math.floor(options.rowsPerChar) || 3));
-  const margin = 72;
-  const gap = 16;
-  const blockGap = 48;
-  const charSize = Math.round(cellPx * 0.95);
-  const blockH = charSize + Math.round(cellPx * 0.2) + rows * cellPx + (rows - 1) * gap;
-  const usableBottom = PDF_PAGE_H - margin;
-
-  const pages = [];
-  let ctx = null;
-  let y = margin;
-  const newPage = () => {
-    const canvas = document.createElement('canvas');
-    canvas.width = PDF_PAGE_W;
-    canvas.height = PDF_PAGE_H;
-    ctx = canvas.getContext('2d');
-    ctx.fillStyle = PDF_BG;
-    ctx.fillRect(0, 0, PDF_PAGE_W, PDF_PAGE_H);
-    pages.push(canvas);
-    y = margin;
-  };
-  newPage();
-
-  for (const card of cards) {
-    if (y + blockH > usableBottom && y > margin) newPage();
-    const height = drawCharBlock(ctx, card, {
-      x: margin,
-      y,
-      cellPx,
-      rows,
-      gap,
-      showPinyin: options.showPinyin,
-      showMeaning: options.showMeaning,
-      pinyinOn,
-    });
-    y += height + blockGap;
-  }
-
-  const out = [];
-  for (const canvas of pages) {
-    const blob = await new Promise((resolve, reject) => {
-      canvas.toBlob(
-        (b) => (b ? resolve(b) : reject(new Error('canvas.toBlob returned null'))),
-        'image/jpeg',
-        0.92,
-      );
-    });
-    out.push({ jpeg: new Uint8Array(await blob.arrayBuffer()), width: canvas.width, height: canvas.height });
-  }
-  return out;
-}
 
 /** Local YYYY-MM-DD stamp for the PDF filename. */
 export const dateStamp = localDayKey;
@@ -320,30 +189,12 @@ const CSS = `
 .ws-sheet { display: flex; flex-direction: column; gap: 1rem; }
 .ws-pages { display: flex; flex-direction: column; gap: 0.75rem; }
 .ws-page { display: block; width: 100%; height: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 0.35rem; }
-.ws-char-block { page-break-inside: avoid; break-inside: avoid; display: flex; flex-direction: column; gap: 0.5rem; }
-.ws-char-head { display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem; }
-.ws-char-large { font-size: 4.5rem; line-height: 1; }
-.ws-char-pinyin { font-size: 1.2rem; }
-.ws-char-meaning { display: block; opacity: 0.8; font-size: 0.95rem; }
-.ws-char-stroke-count { opacity: 0.7; font-variant-numeric: tabular-nums; font-size: 0.85rem; }
-
-.ws-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
-.ws-cell { aspect-ratio: 1 / 1; border: 1px solid var(--line); border-radius: 0.3rem; background: var(--bg); position: relative; display: flex; align-items: center; justify-content: center; }
-.ws-cell.model { opacity: 0.35; }
-.ws-cell.empty { background: transparent; }
-.ws-cell svg { display: block; width: 85%; height: 85%; }
-.ws-cell .tian-grid { position: absolute; inset: 0; pointer-events: none; stroke: currentColor; stroke-width: 0.5; opacity: 0.2; }
-.ws-cell .tian-grid line { vector-effect: non-scaling-stroke; stroke-width: 1px; }
 
 
 @media print {
   .ws-form, .ws-actions, .ws-hint, .ws-warning { display: none !important; }
   .worksheet { gap: 0.5rem; }
   .ws-sheet.ws-cards { padding: 12mm 14mm; }
-  .ws-char-block { margin-bottom: 0.75rem; }
-  .ws-char-large { font-size: 3.5rem; }
-  .ws-grid { gap: 0.25rem; }
-  .ws-cell { border-color: var(--line); }
   .ws-pages { gap: 0; }
   .ws-page { width: 100%; border: 0; border-radius: 0; page-break-after: always; break-after: page; }
   .ws-page:last-child { page-break-after: auto; break-after: auto; }
@@ -359,119 +210,6 @@ function ensureStyles(doc) {
   style.id = STYLE_ID;
   style.textContent = CSS;
   doc.head.append(style);
-}
-
-/** SVG for 田字格 grid lines (center cross + diagonals) inside the cell viewBox. */
-function tianGridSvg(size = VIEW_BOX_SIZE) {
-  const half = size / 2;
-  const svgNS = 'http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(svgNS, 'svg');
-  svg.setAttribute('viewBox', `0 0 ${size} ${size}`);
-  svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-  svg.classList.add('tian-grid');
-  svg.setAttribute('aria-hidden', 'true');
-  // center horizontal
-  svg.appendChild(createSvgLine(svgNS, 0, half, size, half));
-  // center vertical
-  svg.appendChild(createSvgLine(svgNS, half, 0, half, size));
-  // diagonals
-  svg.appendChild(createSvgLine(svgNS, 0, 0, size, size));
-  svg.appendChild(createSvgLine(svgNS, size, 0, 0, size));
-  return svg;
-}
-
-function createSvgLine(ns, x1, y1, x2, y2) {
-  const line = document.createElementNS(ns, 'line');
-  line.setAttribute('x1', x1);
-  line.setAttribute('y1', y1);
-  line.setAttribute('x2', x2);
-  line.setAttribute('y2', y2);
-  return line;
-}
-
-/** Render a single character block into a document fragment. */
-async function renderCharBlock(character, set, entry, options, cellSize) {
-  const { rowsPerChar, showPinyin, showMeaning } = options;
-  const frag = document.createDocumentFragment();
-
-  const block = document.createElement('div');
-  block.className = 'ws-char-block';
-  block.dataset.character = character;
-
-  // Header: large character + stroke diagram + pinyin + meaning
-  const head = document.createElement('div');
-  head.className = 'ws-char-head';
-
-  const charLarge = document.createElement('span');
-  charLarge.className = 'ws-char-large';
-  charLarge.textContent = character;
-  head.append(charLarge);
-
-  // Stroke order diagram (numbered)
-  const diagramWrap = document.createElement('div');
-  diagramWrap.style.display = 'inline-flex';
-  diagramWrap.style.alignItems = 'center';
-  diagramWrap.style.gap = '0.5rem';
-  const diagramSvg = strokeDiagramSvg(set, { upTo: set.strokes.length });
-  diagramSvg.style.width = '4.5rem';
-  diagramSvg.style.height = '4.5rem';
-  diagramSvg.style.background = 'var(--surface)';
-  diagramSvg.style.borderRadius = '0.4rem';
-  diagramSvg.style.flexShrink = '0';
-  diagramWrap.append(diagramSvg);
-  head.append(diagramWrap);
-
-  if (showPinyin && entry?.pinyinTone) {
-    const pinyinEl = document.createElement('span');
-    pinyinEl.className = 'ws-char-pinyin py-keep';
-    pinyinEl.innerHTML = pinyinHtml(entry.pinyinTone);
-    head.append(pinyinEl);
-  }
-  if (showMeaning && entry?.defs?.length) {
-    const meaningEl = document.createElement('span');
-    meaningEl.className = 'ws-char-meaning';
-    meaningEl.textContent = entry.defs.slice(0, 2).join('; ');
-    head.append(meaningEl);
-  }
-  const countEl = document.createElement('span');
-  countEl.className = 'ws-char-stroke-count';
-  countEl.textContent = t('worksheet.strokesCount', { count: set.strokes.length });
-  head.append(countEl);
-
-  block.append(head);
-
-  // Grid: rowsPerChar rows × 2 cols (model + empty)
-  const grid = document.createElement('div');
-  grid.className = 'ws-grid';
-  grid.style.gridTemplateColumns = `repeat(2, ${cellSize}px)`;
-
-  for (let row = 0; row < rowsPerChar; row++) {
-    // Model cell (left)
-    const modelCell = document.createElement('div');
-    modelCell.className = 'ws-cell model';
-    modelCell.style.width = `${cellSize}px`;
-    modelCell.style.height = `${cellSize}px`;
-    if (set) {
-      const modelSvg = strokeDiagramSvg(set, { upTo: set.strokes.length });
-      modelSvg.style.width = '85%';
-      modelSvg.style.height = '85%';
-      modelCell.append(modelSvg);
-    }
-    modelCell.append(tianGridSvg());
-    grid.append(modelCell);
-
-    // Empty cell (right)
-    const emptyCell = document.createElement('div');
-    emptyCell.className = 'ws-cell empty';
-    emptyCell.style.width = `${cellSize}px`;
-    emptyCell.style.height = `${cellSize}px`;
-    emptyCell.append(tianGridSvg());
-    grid.append(emptyCell);
-  }
-
-  block.append(grid);
-  frag.append(block);
-  return frag;
 }
 
 export async function render(container, ctx) {
@@ -756,68 +494,33 @@ export async function render(container, ctx) {
       if (!alive) return;
 
       generatedCards = loaded;
-      const cellSize = CELL_SIZES[options.cellSize].size;
 
+      const pages = document.createElement('div');
+      pages.className = 'ws-pages';
+      let canvases;
       if (options.style === 'rows') {
-        const canvases = await renderWorksheetPages(loaded, {
+        canvases = await renderWorksheetPages(loaded, {
           copies: options.copies,
           showSteps: options.showSteps,
           showPinyin: options.showPinyin && pinyinOn,
           dpi: 200,
           labels: sheetLabels(),
         });
-        if (!alive) return;
-        const pages = document.createElement('div');
-        pages.className = 'ws-pages';
-        canvases.forEach((canvas, index) => {
-          canvas.className = 'ws-page';
-          canvas.dataset.page = String(index + 1);
-          canvas.setAttribute('role', 'img');
-          canvas.setAttribute('aria-label', t('worksheet.pageFooter', { current: index + 1, total: canvases.length }));
-          pages.append(canvas);
-        });
-        sheetBox.classList.add('ws-rows');
-        sheetBox.classList.remove('ws-cards');
-        sheetBox.append(pages);
       } else {
-        sheetBox.classList.add('ws-cards');
-        sheetBox.classList.remove('ws-rows');
-        for (const card of loaded) {
-          if (card.hasData && card.set) {
-            const block = await renderCharBlock(card.character, card.set, card.entry, options, cellSize);
-            sheetBox.append(block);
-          } else {
-            // No stroke data — show placeholder block
-            const block = document.createElement('div');
-            block.className = 'ws-char-block';
-            block.dataset.character = card.character;
-            const head = document.createElement('div');
-            head.className = 'ws-char-head';
-            const charLarge = document.createElement('span');
-            charLarge.className = 'ws-char-large';
-            charLarge.textContent = card.character;
-            head.append(charLarge);
-            if (options.showPinyin && pinyinOn && card.entry?.pinyinTone) {
-              const pinyinEl = document.createElement('span');
-              pinyinEl.className = 'ws-char-pinyin py-keep';
-              pinyinEl.innerHTML = pinyinHtml(card.entry.pinyinTone);
-              head.append(pinyinEl);
-            }
-            if (options.showMeaning && card.entry?.defs?.length) {
-              const meaningEl = document.createElement('span');
-              meaningEl.className = 'ws-char-meaning';
-              meaningEl.textContent = card.entry.defs.slice(0, 2).join('; ');
-              head.append(meaningEl);
-            }
-            const emptyMsg = document.createElement('p');
-            emptyMsg.style.color = 'var(--ink-soft)';
-            emptyMsg.style.fontSize = '0.9rem';
-            emptyMsg.textContent = t('worksheet.noStrokeData', { char: card.character });
-            block.append(head, emptyMsg);
-            sheetBox.append(block);
-          }
-        }
+        canvases = await renderCardsPages(loaded, {
+          rowsPerChar: options.rowsPerChar,
+          showPinyin: options.showPinyin && pinyinOn,
+          showMeaning: options.showMeaning,
+          maxCellPt: (CELL_SIZES[options.cellSize]?.size ?? 42) * 2,
+          dpi: 200,
+          labels: sheetLabels(),
+        });
       }
+      if (!alive) return;
+      sheetsToCanvases(canvases, pages);
+      sheetBox.classList.add(options.style === 'rows' ? 'ws-rows' : 'ws-cards');
+      sheetBox.classList.remove(options.style === 'rows' ? 'ws-cards' : 'ws-rows');
+      sheetBox.append(pages);
 
       sheetBox.hidden = false;
       printBtn.disabled = false;
@@ -827,6 +530,17 @@ export async function render(container, ctx) {
       console.error('worksheet: generate failed', err);
       hint.textContent = t('worksheet.generateError');
     }
+  }
+
+  /** Turn rendered page canvases into labelled `.ws-page` nodes (preview). */
+  function sheetsToCanvases(canvases, pages) {
+    canvases.forEach((canvas, index) => {
+      canvas.className = 'ws-page';
+      canvas.dataset.page = String(index + 1);
+      canvas.setAttribute('role', 'img');
+      canvas.setAttribute('aria-label', t('worksheet.pageFooter', { current: index + 1, total: canvases.length }));
+      pages.append(canvas);
+    });
   }
 
   /** Header/footer text of the printable page (es/en via i18n). */
@@ -845,6 +559,18 @@ export async function render(container, ctx) {
       copies: options.copies,
       showSteps: options.showSteps,
       showPinyin: options.showPinyin && pinyinOn,
+      dpi,
+      labels: sheetLabels(),
+    });
+  }
+
+  /** Cards-style page canvases (same drawing as the preview and the PDF, I15). */
+  function renderCardsCanvases(pinyinOn, dpi) {
+    return renderCardsPages(generatedCards, {
+      rowsPerChar: options.rowsPerChar,
+      showPinyin: options.showPinyin && pinyinOn,
+      showMeaning: options.showMeaning,
+      maxCellPt: (CELL_SIZES[options.cellSize]?.size ?? 42) * 2,
       dpi,
       labels: sheetLabels(),
     });
@@ -882,7 +608,7 @@ export async function render(container, ctx) {
 
       const images = options.style === 'rows'
         ? await renderRowsPdfImages(pinyinOn)
-        : await renderSheetToPages(generatedCards, options, { pinyinOn });
+        : await canvasesToJpegs(await renderCardsCanvases(pinyinOn, 200), 0.85);
       const bytes = buildPdf(images);
       const filename = `hoja-caligrafia-${dateStamp()}.pdf`;
       const blob = new Blob([bytes], { type: 'application/pdf' });
@@ -944,7 +670,7 @@ export async function render(container, ctx) {
     pdfBlob: () => lastPdfBlob,
     /** Re-render the current sheet to JPEG pages (headless checks). */
     pdfPages: async (pinyinOn = true) => {
-      if (options.style !== 'rows') return renderSheetToPages(generatedCards, options, { pinyinOn });
+      if (options.style !== 'rows') return canvasesToJpegs(await renderCardsCanvases(pinyinOn, 200), 0.85);
       return canvasesToJpegs(await renderRowsCanvases(pinyinOn, 200), 0.85);
     },
   };

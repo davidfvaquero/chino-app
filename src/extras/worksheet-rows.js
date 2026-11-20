@@ -170,7 +170,7 @@ const GUIDE = '#c9c9c9';
 const COPY = 'rgba(26, 26, 26, 0.30)';
 
 /** Fills strokes `indices` of `set` inside the square (x, y, size). */
-function drawGlyph(ctx, set, indices, x, y, size, { color = INK, accentIndex = -1, accentColor = INK } = {}) {
+export function drawGlyph(ctx, set, indices, x, y, size, { color = INK, accentIndex = -1, accentColor = INK } = {}) {
   if (!set?.strokes?.length || !indices.length) return false;
   const scale = size / 1024;
   indices.forEach((index) => {
@@ -201,7 +201,7 @@ function drawCharacter(ctx, row, x, y, size, color) {
 }
 
 /** 田字格 cell: thin square border + dashed centre cross/diagonals. */
-function drawTianCell(ctx, x, y, size) {
+export function drawTianCell(ctx, x, y, size) {
   ctx.save();
   ctx.strokeStyle = GUIDE;
   ctx.lineWidth = 0.7;

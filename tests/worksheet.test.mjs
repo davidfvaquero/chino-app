@@ -101,3 +101,17 @@ test('strokeDiagramSvg is exported from strokes.js (smoke check)', async () => {
   const { strokeDiagramSvg } = await import('../src/learn/strokes.js');
   assert.equal(typeof strokeDiagramSvg, 'function');
 });
+test('I15: planCards lays out cards and shares one renderer with the PDF', async () => {
+  const { planCards } = await import('../src/extras/worksheet-cards.js');
+  const cards = [{ character: '戴', entry: { pinyinTone: 'dài', defs: ['to wear'] }, set: { strokes: new Array(17).fill('M0 0') } }];
+  const plan = planCards(cards, { rowsPerChar: 5, showPinyin: true, showMeaning: true });
+  assert.equal(plan.rowsPerChar, 5);
+  assert.ok(plan.cellPt > 0);
+  assert.equal(plan.blocks.length, 1);
+  assert.equal(plan.blocks[0].pinyin, 'dài');
+  assert.equal(plan.blocks[0].meaning, 'to wear');
+  assert.equal(plan.blocks[0].strokes, 17);
+  // Pinyin off stays off in the plan (so preview and PDF agree).
+  const off = planCards(cards, { showPinyin: false });
+  assert.equal(off.blocks[0].pinyin, '');
+});

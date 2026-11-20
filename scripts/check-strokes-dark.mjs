@@ -4,11 +4,11 @@
  *
  * Opens the stroke screens at 390x844 touch — the stroke animation and tracing
  * practice of #/learn/strokes/你, the multi-character sheet
- * (#/learn/strokes/戴维德), the printable worksheet (#/extras/worksheet) and the
- * draw canvas (#/extras/draw) — drives them with real pointer input, and
- * measures the colour actually painted for every stroke and guide against the
- * surface under it. Four combinations of user theme (settings) and OS scheme
- * are checked. Exit 1 when any ratio is below 3:1 (WCAG non-text contrast).
+ * (#/learn/strokes/戴维德) and the draw canvas (#/extras/draw) — drives them
+ * with real pointer input, and measures the colour actually painted for every
+ * stroke and guide against the surface under it. Four combinations of user
+ * theme (settings) and OS scheme are checked. Exit 1 when any ratio is below
+ * 3:1 (WCAG non-text contrast).
  *
  *   OUT_DIR=/tmp/chino-<id> npm run build
  *   node scripts/check-strokes-dark.mjs /tmp/chino-<id>
@@ -217,26 +217,6 @@ try {
       record(label, 'sheet', 'step strokes', await measureAll(cdp, '.sheet-step .stroke-part:not(.stroke-part-new)'));
       record(label, 'sheet', 'step new stroke', await measureAll(cdp, '.sheet-step .stroke-part-new'));
       await shot('sheet');
-    });
-
-    /* Printable worksheet: the stroke diagram on the character header */
-    await step('worksheet', async () => {
-      await cdp.eval("location.hash = '#/extras/worksheet'");
-      if (!(await cdp.waitFor('.ws-input', 8000))) throw new Error('.ws-input never rendered');
-      // Force the DOM (non-canvas) sheet so the stroke SVG is measurable, then
-      // generate a sheet for 你.
-      await cdp.eval(`(() => {
-        const style = document.querySelector('.ws-select[data-option="style"]');
-        if (style) { style.value = 'cards'; style.dispatchEvent(new Event('change', { bubbles: true })); }
-        const input = document.querySelector('.ws-input');
-        input.value = '你';
-        input.dispatchEvent(new Event('input', { bubbles: true }));
-        document.querySelector('.ws-actions .ws-btn.primary:not([data-action])').click();
-      })()`);
-      if (!(await cdp.waitFor('.ws-char-head .stroke-part', 8000))) throw new Error('worksheet stroke diagram never rendered');
-      await sleep(200);
-      record(label, 'worksheet', 'stroke diagram', await measureAll(cdp, '.ws-char-head .stroke-part'));
-      await shot('worksheet');
     });
 
     /* Hand-drawing canvas */

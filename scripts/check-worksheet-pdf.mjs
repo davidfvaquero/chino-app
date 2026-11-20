@@ -262,8 +262,8 @@ try {
   /* ------------------------------- cards style kept + preferences stored --- */
   await page.select('[data-option="style"]', 'cards');
   await generate(page, '戴维德');
-  const cardBlocks = await page.$$eval('.ws-char-block', (nodes) => nodes.length);
-  assert(cardBlocks === 3, 'cards style still renders one block per character', `${cardBlocks} blocks`);
+  const cardPages = await page.$$eval('.ws-cards .ws-page', (nodes) => nodes.length);
+  assert(cardPages >= 1, 'cards style renders the A4 page canvas (same drawing as the PDF)', `${cardPages} page(s)`);
   const beforeCards = new Set(readdirSync(downloadDir));
   await page.click('[data-action="download-pdf"]');
   const cardsFile = await waitForDownload(downloadDir, { previous: beforeCards });
