@@ -188,6 +188,22 @@ test('state persists in the gamification store under a single key', async () => 
   assert.equal((await storage.list('gamification')).length, 1);
 });
 
+test('points: three simultaneous record calls add up to the exact sum', async () => {
+  const { g } = setup();
+  const results = await Promise.all([
+    g.record('review_done'),
+    g.record('lesson_done'),
+    g.record('stroke_done'),
+  ]);
+  const total = EVENTS.review_done + EVENTS.lesson_done + EVENTS.stroke_done;
+  assert.deepEqual(
+    results.map((r) => r.gained).sort((a, b) => a - b),
+    [EVENTS.review_done, EVENTS.lesson_done, EVENTS.stroke_done].sort((a, b) => a - b),
+    'every call reports its own gain',
+  );
+  assert.equal((await g.getStats()).points, total, 'no point is lost to a concurrent write');
+});
+
 test('public/data/achievements.json is well formed and covers every event', async () => {
   const fetchJson = async (url) => JSON.parse(await readFile(url, 'utf8'));
   const base = new URL('../public/data/achievements.json', import.meta.url);

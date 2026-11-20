@@ -9,6 +9,7 @@ import { h, reset } from '../dom.js';
 import { getHardWords } from '../hardwords.js';
 import { answerAndNotify } from '../srs.js';
 import { speak } from '../audio.js';
+import { notice } from '../notice.js';
 import { pinyinHtml } from '../tone.js';
 
 export const titleKey = 'hardwords.title';
@@ -62,7 +63,10 @@ export function render(container) {
       type: 'button',
       class: 'hw-btn',
       text: t('hardwords.audio'),
-      onclick: () => speak(hanzi),
+      onclick: async () => {
+        const result = await speak(hanzi);
+        if (!result.ok) notice('hardwords.audioUnavailable');
+      },
     });
 
   function paintList() {

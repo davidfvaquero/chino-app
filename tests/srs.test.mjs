@@ -232,3 +232,24 @@ test('countDueBySource groups due cards by source, sourceless as "unknown"', asy
   assert.deepEqual(await deck.countDueBySource(T0 + 10 * DAY_MS), { lesson: 2, reading: 2, unknown: 1 });
   assert.deepEqual(await deck.countDueBySource(-1), {});
 });
+
+test('addToReview: the five entry shapes the screens pass for 你 are one card', async () => {
+  const deck = createDeck(createStorage(memoryDriver()));
+  // The shapes each screen actually passes (docs/REVIEW.md, finding #2):
+  // dictionary -> d4242, lessons -> x你|nǐ, dictation -> x你|ni3,
+  // themes -> dtheme:你, strokes -> x你|.
+  const forms = [
+    { id: 4242, simp: '你', pinyin: 'nǐ', defs: ['you'] },
+    { hanzi: '你', pinyin: 'nǐ', english: 'you' },
+    { hanzi: '你', pinyinNumeric: 'ni3', english: 'you' },
+    { id: 'theme:你', hanzi: '你', pinyin: 'nǐ', english: 'you' },
+    { hanzi: '你' },
+  ];
+  const created = [];
+  for (const entry of forms) created.push((await deck.addToReview(entry, { now: T0 })).created);
+
+  assert.deepEqual(created, [true, false, false, false, false], 'only the first entry creates a card');
+  const cards = await deck.listCards();
+  assert.equal(cards.length, 1);
+  assert.equal(cards[0].hanzi, '你');
+});

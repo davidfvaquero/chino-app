@@ -34,6 +34,7 @@ import { t } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import { getDueCards, answerAndNotify, grade, countDueBySource, RATINGS, DEFAULT_EASE } from '../srs.js';
 import { speak } from '../audio.js';
+import { notice } from '../notice.js';
 import { pinyinHtml, toneOf } from '../tone.js';
 import { tonelessKey } from '../pinyin.js';
 import { hanziCell } from '../hanzi.js';
@@ -313,7 +314,10 @@ export function render(container, ctx = {}) {
       type: 'button',
       class: 'btn sm',
       text: t('review.audio'),
-      onclick: () => speak(hanzi),
+      onclick: async () => {
+        const result = await speak(hanzi);
+        if (!result.ok) notice('review.audioUnavailable');
+      },
     });
   }
 
