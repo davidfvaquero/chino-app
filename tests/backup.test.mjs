@@ -455,6 +455,23 @@ test('validate: rejects an array, a store that is an array, and a missing stores
   assert.equal(validate({ ...ok, stores: { srs: { a: 1 }, extra: {} } }).error, 'export.unknownStore');
 });
 
+test('secrets: never exported, never wiped by a replace import', async () => {
+  const { storage } = setup();
+  await storage.set('meta', 'syncSession', { access_token: 'secret-token' });
+  await storage.set('meta', 'openrouterKey', 'sk-live');
+  await storage.set('meta', 'installDate', 12345);
+
+  const exported = await exportAll(storage);
+  const json = JSON.stringify(exported);
+  assert.ok(!json.includes('syncSession'));
+  assert.ok(!json.includes('sk-live'));
+
+  await importAll({ ...exported, stores: { ...exported.stores, meta: {} } }, { mode: 'replace' }, storage);
+  assert.deepEqual(await storage.get('meta', 'syncSession'), { access_token: 'secret-token' });
+  assert.equal(await storage.get('meta', 'openrouterKey'), 'sk-live');
+  assert.equal(await storage.get('meta', 'installDate'), undefined);
+});
+
 test('dateStamp: local YYYY-MM-DD', () => {
   const stamp = dateStamp(new Date(2026, 0, 5).getTime());
   assert.equal(stamp, '2026-01-05');
