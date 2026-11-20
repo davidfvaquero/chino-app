@@ -163,7 +163,8 @@ export async function getStudied({ store = storage } = {}) {
  */
 export async function markStudied(id, { store = storage, now = Date.now(), notify = true } = {}) {
   const ids = await getStudied({ store });
-  if (isText(id) && !ids.includes(id)) {
+  const isNew = isText(id) && !ids.includes(id);
+  if (isNew) {
     ids.push(id);
     try {
       await store.set(PROGRESS_STORE, STUDIED_KEY, { ids, updatedAt: now });
@@ -171,7 +172,8 @@ export async function markStudied(id, { store = storage, now = Date.now(), notif
       /* storage unavailable: keep the in-memory list */
     }
   }
-  if (notify && typeof window !== 'undefined') {
+  // Only announce a genuinely new pattern: re-marking must not grant points.
+  if (notify && isNew && typeof window !== 'undefined') {
     window.dispatchEvent(
       new CustomEvent('chino:lesson_done', { detail: { lessonId: LESSON_ID, patternId: id, studied: ids.length } }),
     );

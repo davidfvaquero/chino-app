@@ -281,6 +281,7 @@ async function renderTheme(container, ctx, id) {
     type: 'button',
     class: 'btn',
     text: studied ? t('themes.studied') : t('themes.markStudied'),
+    disabled: Boolean(studied),
     onclick: async () => {
       await markStudied(theme);
       study.textContent = t('themes.studied');
@@ -335,7 +336,7 @@ function rowList(theme, kind, entries) {
         onclick: async (event) => {
           const btn = event.currentTarget;
           btn.disabled = true;
-          await addToReview({ id: `theme:${entry.hanzi}`, hanzi: entry.hanzi, pinyin: entry.pinyin, english: entry.english, source: 'theme', themeId: theme.id, kind });
+          await addToReview({ hanzi: entry.hanzi, pinyin: entry.pinyin, english: entry.english, source: 'theme', themeId: theme.id, kind });
           note.textContent = t('themes.addedOne');
         },
       }),

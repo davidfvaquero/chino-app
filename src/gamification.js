@@ -128,8 +128,10 @@ export function createGamification({
 
   const snapshot = (state, list, at) => {
     const today = dayIndex(at);
+    // A streak only survives if the last study day is today or yesterday.
+    const alive = state.lastDay != null && today - state.lastDay <= 1;
     return {
-      streak: state.streak,
+      streak: alive ? state.streak : 0,
       bestStreak: state.bestStreak,
       points: state.points,
       level: levelFor(state.points),
@@ -147,7 +149,7 @@ export function createGamification({
     return snapshot(await load(), await defs(), at);
   }
 
-  async function record(event, payload = {}) {
+  async function doRecord(event, payload = {}) {
     void payload; // accepted for callers' convenience, deliberately unused
     if (!Object.prototype.hasOwnProperty.call(EVENTS, event)) {
       throw new Error(`gamification: unknown event "${event}"`);
@@ -179,6 +181,15 @@ export function createGamification({
     await save(state);
     return { event, gained: EVENTS[event], unlocked, ...snapshot(state, list, at) };
   }
+
+  // Serialize records: simultaneous events used to read-modify-write the same
+  // state and lose points (3 parallel events stored 1 point instead of 21).
+  let queue = Promise.resolve();
+  const record = (event, payload) => {
+    const run = queue.then(() => doRecord(event, payload));
+    queue = run.catch(() => {});
+    return run;
+  };
 
   return { record, getStats };
 }

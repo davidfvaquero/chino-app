@@ -148,8 +148,9 @@ test('loadFilter: null until the user chooses, then the remembered choice', asyn
 test('queryFor: chosen source feeds getDueCards, "all" does not restrict', async () => {
   const deck = createDeck(createStorage(memoryDriver()));
   await deck.addToReview({ id: 'd1', simp: '一', pinyin: 'yī', english: ['one'], source: 'dictionary' }, { now: T0 });
-  for (const n of [1, 2, 3]) {
-    await deck.addToReview({ id: `l${n}`, simp: '二', pinyin: 'èr', english: ['two'], source: 'lesson', sourceDetail: `lesson-0${n}` }, { now: T0 });
+  const lessonWords = [['l1', '二', 'èr'], ['l2', '三', 'sān'], ['l3', '四', 'sì']];
+  for (const [id, simp, pinyin] of lessonWords) {
+    await deck.addToReview({ id, simp, pinyin, english: ['two'], source: 'lesson', sourceDetail: `lesson-${id}` }, { now: T0 });
   }
   assert.deepEqual(queryFor({ source: 'all' }, T0), { now: T0 });
   assert.deepEqual(queryFor({ source: 'lesson' }, T0), { now: T0, source: 'lesson' });

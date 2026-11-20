@@ -4,7 +4,7 @@ import { createStorage, memoryDriver } from '../src/storage.js';
 import { exportAll, validate, importAll } from '../src/backup.js';
 import { dateStamp, describeExport } from '../src/extras/backup.js';
 import { createDeck } from '../src/srs.js';
-import { createGamification, EVENTS } from '../src/gamification.js';
+import { createGamification, dayIndex, EVENTS } from '../src/gamification.js';
 
 /** Fresh storage + deck + gamification for each test. */
 function setup() {
@@ -121,7 +121,7 @@ test('importAll: replace mode overwrites all stores', async () => {
       settings: { theme: 'dark', fontScale: 1.15 },
       srs: { card1: { id: 'card1', hanzi: '新', pinyin: 'xin', english: ['new'], source: 'dict', addedAt: Date.now(), reviews: 0, ease: 2.5, reps: 0, lapses: 0, interval: 0, due: Date.now(), lastReviewed: null, lastRating: null } },
       progress: { lesson1: { done: true } },
-      gamification: { state: { points: 500, streak: 10, bestStreak: 10, lastDay: 100, days: { 100: 1 }, events: { review_done: 50 }, achievements: {} } },
+      gamification: { state: { points: 500, streak: 10, bestStreak: 10, lastDay: dayIndex(), days: { [dayIndex()]: 1 }, events: { review_done: 50 }, achievements: {} } },
     },
   };
 

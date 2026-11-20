@@ -25,10 +25,17 @@ export const APP_NAME = 'chino-app';
 export const EXPORT_VERSION = 1;
 export { STORES as BACKUP_STORES };
 
-/** Read one store into a plain { key: value } object. */
+/** Keys that must never leave the device (secrets / device session). */
+const PRIVATE = { meta: new Set(['openrouterKey', 'syncSession', 'syncState']) };
+const isPrivate = (store, key) => PRIVATE[store]?.has(key) ?? false;
+
+/** Read one store into a plain { key: value } object (private keys excluded). */
 async function readStore(store, db) {
   const out = {};
-  for (const { key, value } of await db.list(store)) out[key] = value;
+  for (const { key, value } of await db.list(store)) {
+    if (isPrivate(store, key)) continue;
+    out[key] = value;
+  }
   return out;
 }
 
@@ -101,14 +108,16 @@ export async function importAll(obj, { mode = 'replace' } = {}, db = storage) {
     if (mode === 'replace') {
       const keep = new Set(Object.keys(incoming));
       for (const { key } of await db.list(store)) {
-        if (!keep.has(key)) writes.push({ store, key, remove: true });
+        if (!keep.has(key) && !isPrivate(store, key)) writes.push({ store, key, remove: true });
       }
       for (const [key, value] of Object.entries(incoming)) {
+        if (isPrivate(store, key)) continue;
         writes.push({ store, key, value });
         imported += 1;
       }
     } else {
       for (const [key, value] of Object.entries(incoming)) {
+        if (isPrivate(store, key)) continue;
         const existing = await db.get(store, key);
         if (existing === undefined || newer(existing, value) === value) {
           writes.push({ store, key, value });

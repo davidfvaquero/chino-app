@@ -35,6 +35,7 @@
  *    storage instance — tests pass an in-memory one.
  */
 import storage from './storage.js';
+import { tonelessKey } from './pinyin.js';
 
 export const DAY_MS = 86_400_000;
 export const RATINGS = ['again', 'hard', 'good', 'easy'];
@@ -171,11 +172,22 @@ export function createDeck(store = storage) {
     return counts;
   };
 
-  /** Adds an entry to the deck. Idempotent: an existing id is left untouched. */
+  /**
+   * Adds an entry to the deck. Idempotent by id AND by content: the same word
+   * (same hanzi + reading) never enters twice, whatever id a screen passed.
+   */
   const addToReview = async (entry = {}, { now = Date.now() } = {}) => {
     const id = cardId(entry);
     const existing = await store.get('srs', id);
     if (existing) return { card: existing, created: false };
+    const hz = entry.hanzi ?? entry.simp;
+    if (hz) {
+      const py = entry.pinyin ?? entry.pinyinNumeric;
+      const same = (await listCards()).find(
+        (c) => (c.hanzi ?? c.simp) === hz && (!py || !c.pinyin || tonelessKey(c.pinyin) === tonelessKey(py)),
+      );
+      if (same) return { card: same, created: false };
+    }
     const card = makeCard(entry, now);
     await store.set('srs', id, card);
     return { card, created: true };
@@ -201,6 +213,23 @@ export function createDeck(store = storage) {
 }
 
 const deck = createDeck();
+
+/**
+ * Applies a rating and announces it on `chino:review_done`. Shared by the review
+ * and hard-words screens so both advance/notify identically. Throws (and does
+ * not notify) if the card cannot be saved, so callers can avoid advancing.
+ */
+export async function answerAndNotify(id, rating, remaining, now = Date.now()) {
+  const updated = await deck.answer(id, rating, now);
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(
+      new CustomEvent('chino:review_done', {
+        detail: { id: updated.id, rating, interval: updated.interval, due: updated.due, reviews: updated.reviews, remaining },
+      }),
+    );
+  }
+  return updated;
+}
 
 export const addToReview = deck.addToReview;
 export const getDueCards = deck.getDueCards;

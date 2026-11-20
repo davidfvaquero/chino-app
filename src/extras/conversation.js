@@ -108,9 +108,8 @@ export function resetProviders() {
 
 async function loadConfig() {
   const get = (key, fallback) => storage.get('settings', key).then((v) => (v === undefined ? fallback : v));
-  const [provider, openrouterKey, openrouterModel, ollamaUrl, ollamaModel, level, scenario, history] = await Promise.all([
+  const [provider, openrouterModel, ollamaUrl, ollamaModel, level, scenario, history] = await Promise.all([
     get(CONFIG_KEYS.provider, 'openrouter'),
-    get(CONFIG_KEYS.openrouterKey, ''),
     get(CONFIG_KEYS.openrouterModel, ''),
     get(CONFIG_KEYS.ollamaUrl, ''),
     get(CONFIG_KEYS.ollamaModel, ''),
@@ -118,6 +117,15 @@ async function loadConfig() {
     get(CONFIG_KEYS.scenario, 'introductions'),
     get(CONFIG_KEYS.history, []),
   ]);
+  // The API key is a secret: it lives in `meta` (device-local, never synced nor
+  // included in a backup). Migrate it once out of `settings`.
+  let openrouterKey = (await storage.get('meta', CONFIG_KEYS.openrouterKey)) ?? '';
+  const legacyKey = await storage.get('settings', CONFIG_KEYS.openrouterKey);
+  if (legacyKey !== undefined) {
+    if (!openrouterKey) openrouterKey = legacyKey;
+    await storage.set('meta', CONFIG_KEYS.openrouterKey, openrouterKey);
+    await storage.remove('settings', CONFIG_KEYS.openrouterKey);
+  }
   return { provider, openrouterKey, openrouterModel, ollamaUrl, ollamaModel, level, scenario, history };
 }
 
@@ -135,6 +143,8 @@ export function render(container, ctx = {}) {
     busy: false,
     status: '',
     statusError: false,
+    rewarded: false,
+    ctrl: null,
   };
 
   const root = h('section', { class: 'conv' });
@@ -197,7 +207,7 @@ export function render(container, ctx = {}) {
     providerSelect.addEventListener('change', () => {
       cfg.provider = providerSelect.value;
       storage.set('settings', CONFIG_KEYS.provider, cfg.provider);
-      paint();
+      refreshProviders();
     });
     body.append(h('label', {}, t('conversation.provider'), providerSelect));
 
@@ -214,10 +224,17 @@ export function render(container, ctx = {}) {
     return details;
   }
 
-  function field(labelKey, value, { type = 'text', placeholder = '', oninput } = {}) {
+  function field(labelKey, value, { type = 'text', placeholder = '', oninput, onchange } = {}) {
     const input = h('input', { class: 'field', type, value, placeholder, autocomplete: 'off' });
     input.addEventListener('input', () => oninput(input.value));
+    if (onchange) input.addEventListener('change', () => onchange(input.value));
     return h('label', {}, t(labelKey), input);
+  }
+
+  /** Rebuild the provider list (key/URL changed) and repaint. */
+  async function refreshProviders() {
+    await reloadProviders();
+    if (!state.disposed) paint();
   }
 
   function renderOpenRouterConfig(cfg) {
@@ -225,7 +242,8 @@ export function render(container, ctx = {}) {
     wrap.append(field('conversation.apiKey', cfg.openrouterKey, {
       type: 'password',
       placeholder: t('conversation.apiKeyPlaceholder'),
-      oninput: (value) => { cfg.openrouterKey = value.trim(); storage.set('settings', CONFIG_KEYS.openrouterKey, cfg.openrouterKey); },
+      oninput: (value) => { cfg.openrouterKey = value.trim(); storage.set('meta', CONFIG_KEYS.openrouterKey, cfg.openrouterKey); },
+      onchange: () => refreshProviders(),
     }));
     wrap.append(h('p', { class: 'conv-hint', text: t('conversation.freeNotice') }));
 
@@ -266,10 +284,12 @@ export function render(container, ctx = {}) {
     wrap.append(field('conversation.ollamaModel', cfg.ollamaModel, {
       placeholder: 'llama3',
       oninput: (value) => { cfg.ollamaModel = value.trim(); storage.set('settings', CONFIG_KEYS.ollamaModel, cfg.ollamaModel); },
+      onchange: () => refreshProviders(),
     }));
     wrap.append(field('conversation.ollamaUrl', cfg.ollamaUrl, {
       placeholder: 'https://my-host.ts.net',
       oninput: (value) => { cfg.ollamaUrl = value.trim(); storage.set('settings', CONFIG_KEYS.ollamaUrl, cfg.ollamaUrl); },
+      onchange: () => refreshProviders(),
     }));
     wrap.append(h('p', { class: 'conv-hint', text: t('conversation.ollamaUrlHint') }));
     return wrap;
@@ -410,6 +430,7 @@ export function render(container, ctx = {}) {
 
   function startNewConversation() {
     state.messages = [{ role: 'assistant', ...openerFor(state.config.scenario) }];
+    state.rewarded = false;
     persist();
     paint();
   }
@@ -436,7 +457,8 @@ export function render(container, ctx = {}) {
       }));
       const payload = buildMessages({ level: state.config.level, scenario: state.config.scenario, history });
       let acc = '';
-      for await (const delta of provider.send(payload)) {
+      state.ctrl = new AbortController();
+      for await (const delta of provider.send(payload, { signal: state.ctrl.signal })) {
         if (state.disposed) return;
         acc += delta;
         liveSpan.textContent = acc;
@@ -445,7 +467,12 @@ export function render(container, ctx = {}) {
       state.messages.push({ role: 'assistant', ...parsed });
       persist();
       setStatus('');
-      window.dispatchEvent(new CustomEvent('chino:lesson_done', { detail: { source: 'conversation' } }));
+      // Reward the conversation once, after 5 user messages.
+      const userCount = state.messages.filter((m) => m.role === 'user').length;
+      if (!state.rewarded && userCount >= 5) {
+        state.rewarded = true;
+        window.dispatchEvent(new CustomEvent('chino:lesson_done', { detail: { source: 'conversation' } }));
+      }
       state.busy = false;
       paint();
     } catch (err) {
@@ -518,7 +545,7 @@ export function render(container, ctx = {}) {
     paint();
   })();
 
-  return () => { state.disposed = true; };
+  return () => { state.disposed = true; state.ctrl?.abort(); };
 }
 
 /** Local copy of the free-model rule, to avoid importing it just for the picker. */

@@ -26,15 +26,23 @@
  * is split on ';', so a ';' inside one definition comes back as two.
  */
 import storage from './storage.js';
-import { createDeck, makeCard, cardId } from './srs.js';
-import { prettyPinyin } from './pinyin.js';
+import { createDeck } from './srs.js';
+import { prettyPinyin, tonelessKey } from './pinyin.js';
 
 export const ANKI_COLUMNS = ['Hanzi', 'Pinyin', 'Meaning', 'Example', 'Source', 'Tags'];
 const HEADER = ['#separator:tab', '#html:true', `#columns:${ANKI_COLUMNS.join('\t')}`];
 const SEPARATORS = { tab: '\t', comma: ',', semicolon: ';', pipe: '|', space: ' ' };
 
 const escapeHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const unescapeHtml = (s) => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+const unescapeHtml = (s) =>
+  s
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&quot;/g, '"')
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
+    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&');
 /** Import side: drop Anki's <br>/<b>… markup, then decode entities. */
 const clean = (s) => unescapeHtml(s.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '')).trim();
 
@@ -176,15 +184,19 @@ export function sourcesOf(cards) {
   return [...new Set(cards.map((card) => card.source || 'unknown'))].sort();
 }
 
-/** Splits entries into new ones and already-known ones (by hanzi, also within the file). */
+/** Dedup key: same hanzi AND same reading (了 le vs 了 liǎo are distinct). */
+const entryKey = (hanzi, pinyin) => `${hanzi}\u0000${tonelessKey(pinyin || '')}`;
+
+/** Splits entries into new ones and already-known ones (by hanzi + reading). */
 async function planImport(entries, db) {
-  const known = new Set((await loadCards(db)).map((card) => card.hanzi));
+  const known = new Set((await loadCards(db)).map((card) => entryKey(card.hanzi ?? card.simp, card.pinyin || card.pinyinNumeric)));
   const fresh = [];
   let existing = 0;
   for (const entry of entries) {
-    if (known.has(entry.hanzi)) existing += 1;
+    const key = entryKey(entry.hanzi, entry.pinyin);
+    if (known.has(key)) existing += 1;
     else {
-      known.add(entry.hanzi);
+      known.add(key);
       fresh.push(entry);
     }
   }
@@ -196,14 +208,19 @@ export async function previewImport(entries, db = storage) {
   return { new: fresh.length, existing };
 }
 
-/** Adds the new entries to the review deck. Example text is kept on the card record. */
+/** Adds the new entries through the deck API (one duplicate rule). Example text is kept on the card. */
 export async function importCards(entries, db = storage) {
-  const { fresh, existing } = await planImport(entries, db);
+  const { fresh } = await planImport(entries, db);
+  const deck = createDeck(db);
+  let added = 0;
   for (const entry of fresh) {
-    const card = makeCard(entry);
-    await db.set('srs', cardId(entry), entry.example ? { ...card, example: entry.example } : card);
+    const { card, created } = await deck.addToReview(entry);
+    if (created) {
+      if (entry.example) await db.set('srs', card.id, { ...card, example: entry.example });
+      added += 1;
+    }
   }
-  return { added: fresh.length, skipped: existing };
+  return { added, skipped: entries.length - added };
 }
 
 export function exportFilename(ts = Date.now()) {
