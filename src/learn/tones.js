@@ -69,8 +69,8 @@ export async function render(container, ctx) {
   const lesson = await loadLesson();
   const exercises = Array.isArray(lesson.exercises) ? lesson.exercises : [];
   const results = [];
-  // Plain (non-rich) body: Tones keeps no pinyin readings, right/wrong marking
-  // nor live region — it renders exactly as it did before the engine was shared.
+  // Same body as lessons: Tones also gets pinyin readings, right/wrong marking
+  // and the live region (the `rich` flag that hid them is gone, REVIEW-2 I3).
   const viewConfig = { promptOf: (exercise) => label(exercise.promptKey) || exercise.prompt || '' };
   let step = 'intro';
   let current = 0;

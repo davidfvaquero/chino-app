@@ -6,18 +6,15 @@
  * `choiceBody` and `finish`, and the copy had drifted from lessons.js. Both
  * screens now build the exercise from here.
  *
- * The two lessons differ only in how rich the body is. lessons.js shows the
- * pinyin readings under the hanzi, marks the right/wrong options and announces
- * the feedback to assistive tech (role=status); the Tones lesson renders plain
- * option buttons. That whole difference is the single `rich` flag, so each
- * screen keeps producing exactly the DOM it produced before.
+ * The two lessons now share one full body: pinyin readings under the hanzi,
+ * right/wrong marking on the options, the answer named in the failure text and
+ * a `role=status` live region (docs/REVIEW-2.md I3 removed the `rich` flag that
+ * kept Tones on a poorer copy).
  *
  * `config`:
- *   rich        boolean  lessons-style body: readings, is-correct/wrong/missed,
- *                        role=status live region. Default false (plain).
- *   readings    Map      hanzi -> pinyin, for the prompt/option reading (rich).
+ *   readings    Map      hanzi -> pinyin, for the prompt/option reading.
  *   vocabWords  Map      hanzi -> vocabulary entry, for the meaning in the
- *                        failure text (rich).
+ *                        failure text.
  *   promptOf    fn       exercise -> prompt text. Default `ex.prompt ?? ''`.
  *   listenClass string   class of the Play button. Default 'btn primary'.
  *   orderBody   fn       optional: (exercise, box, onContinue) for `order`.
@@ -80,8 +77,7 @@ export function progressBar(value, max) {
 }
 
 /** Live region for the right/wrong message (WCAG 4.1.3); the focus never moves to it. */
-export function feedbackBox(config = {}) {
-  if (!config.rich) return h('div', { class: 'feedback-box' });
+export function feedbackBox() {
   return h('div', { class: 'feedback-box', role: 'status', 'aria-live': 'polite' });
 }
 
@@ -93,9 +89,8 @@ function answerLabel(result, vocabWords) {
   return meaning ? `${expected} (${meaning})` : expected;
 }
 
-/** The failure text: names the right answer on the rich body, a plain message otherwise. */
+/** The failure text: names the right answer. */
 function wrongText(result, config = {}) {
-  if (!config.rich) return t('learn.lessons.incorrect');
   return t('learn.lessons.incorrectAnswer', { answer: answerLabel(result, config.vocabWords) });
 }
 
@@ -138,21 +133,6 @@ function choiceBody(exercise, box, onContinue, config = {}) {
   const options = h('div', { class: 'options' });
   for (const option of exercise.options ?? []) {
     const value = String(option);
-    if (!config.rich) {
-      options.append(
-        h('button', {
-          type: 'button',
-          class: 'btn option',
-          text: value,
-          onclick: () => {
-            const result = gradeExercise(exercise, option);
-            for (const btn of options.children) btn.disabled = true;
-            finish(feedback, result, onContinue, config);
-          },
-        }),
-      );
-      continue;
-    }
     const isHan = HAN.test(value);
     const reading = isHan ? pinyinForText(value, config.readings) : '';
     options.append(
@@ -185,10 +165,8 @@ export function exerciseView(exercise, onContinue, config = {}) {
   const promptOf = config.promptOf ?? ((value) => value.prompt ?? '');
   const box = h('div', { class: 'exercise-body' });
   box.append(h('p', { class: 'prompt', text: promptOf(exercise) }));
-  if (config.rich) {
-    const reading = promptReading(exercise, config.readings);
-    if (reading) box.append(h('p', { class: 'pinyin', html: pinyinHtml(reading) }));
-  }
+  const reading = promptReading(exercise, config.readings);
+  if (reading) box.append(h('p', { class: 'pinyin', html: pinyinHtml(reading) }));
   if (exercise.type === 'listen') {
     box.append(
       h('button', {

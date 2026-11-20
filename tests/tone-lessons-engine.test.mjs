@@ -334,7 +334,7 @@ test('lessons: the result screen shows the score, a live region and "review what
 
 /* ----------------------------------------------------------- tones screen -- */
 
-test('tones: a wrong answer shows the plain feedback, with no live region (current behaviour)', async () => {
+test('tones: a wrong answer names the answer and is announced as a live region', async () => {
   const events = [];
   const dom = installFakeDom(events);
   try {
@@ -347,11 +347,15 @@ test('tones: a wrong answer shows the plain feedback, with no live region (curre
 
     const feedback = withClass(container, 'feedback', 'bad')[0];
     assert.ok(feedback, 'a wrong answer must render feedback.bad');
-    assert.equal(feedback.textContent, 'Incorrect.', 'tones keeps its plain wrong text (it names no answer)');
+    assert.equal(
+      feedback.textContent,
+      'Incorrect. The answer is 1st tone (mā).',
+      'tones now names the right answer, like lessons',
+    );
 
     const box = withClass(container, 'feedback-box')[0];
-    assert.equal(box.getAttribute('role'), undefined, 'tones feedback box is not a live region');
-    assert.equal(box.getAttribute('aria-live'), undefined);
+    assert.equal(box.getAttribute('role'), 'status');
+    assert.equal(box.getAttribute('aria-live'), 'polite');
     assert.equal(withClass(container, 'progress').length, 0, 'tones keeps no progress bar');
   } finally {
     dom.restore();
