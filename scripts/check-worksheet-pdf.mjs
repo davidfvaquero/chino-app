@@ -1,23 +1,26 @@
 // Headless check for the worksheet PDF download (needs puppeteer — dev-only,
-// never picked up by `npm test`). Reproduces the mobile bug path: 390x844 touch
-// viewport, type characters, press "Download PDF", capture the real file with
-// Browser.setDownloadBehavior, and validate the bytes.
+// never picked up by `npm test`). Reproduces the real path on a 390x844 touch
+// viewport AND a desktop viewport: type characters, press "Download PDF",
+// capture the real file with Browser.setDownloadBehavior and validate the bytes.
 //
-//   OUT_DIR=/tmp/chino-worksheet npm run build
-//   node scripts/check-worksheet-pdf.mjs [dir]
+//   OUT_DIR=/tmp/chino-<id> npm run build
+//   node scripts/check-worksheet-pdf.mjs /tmp/chino-<id>
 //
-// Checks: starts %PDF-, ends %%EOF, xref offsets point at their objects, page
-// count + A4 MediaBox, the DCTDecode stream is a real JPEG, the offline reload
-// still downloads. Extracts each page JPEG to <dir>/worksheet-page-N.jpg for a
-// human/vision look (grid + hanzi). Exits non-zero on the first failure.
+// Checks: rows style by default, one step per stroke (你=7, 戴=17), copies=4,
+// %PDF-/%%EOF/xref offsets, page count + A4 MediaBox, DCTDecode streams are real
+// JPEGs, global pinyin off renders pinyin-free, offline reload still downloads.
+// Page JPEGs + the PDF are copied to <dir>/shots/ for a human/vision look.
+// Exits non-zero on the first failure.
 import { spawn } from 'node:child_process';
-import { mkdtempSync, mkdirSync, readdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
+import { copyFileSync, mkdtempSync, mkdirSync, readdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const dir = process.argv[2] || process.env.OUT_DIR || '/tmp/chino-worksheet-pdf';
 const serveScript = fileURLToPath(new URL('./serve.mjs', import.meta.url));
+const shotsDir = join(dir, 'shots');
+const TEST_TEXT = '你您好们吗嗨再见谢戴'; // 10 characters; 你=7 strokes, 戴=17
 
 const results = [];
 const ok = (step, detail = '') => { results.push({ step, detail }); console.log(`  OK  ${step}${detail ? ` — ${detail}` : ''}`); };
@@ -89,7 +92,7 @@ function validatePdf(bytes) {
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
-async function waitForDownload(downloadDir, { timeout = 20000, previous = new Set() } = {}) {
+async function waitForDownload(downloadDir, { timeout = 30000, previous = new Set() } = {}) {
   const deadline = Date.now() + timeout;
   while (Date.now() < deadline) {
     const files = readdirSync(downloadDir).filter((f) => f.endsWith('.pdf') && !f.endsWith('.crdownload') && !previous.has(f));
@@ -99,9 +102,24 @@ async function waitForDownload(downloadDir, { timeout = 20000, previous = new Se
   return null;
 }
 
+/** Worksheet state exposed by the module container. */
+const readState = (page) => page.evaluate(() => {
+  const container = document.querySelector('.worksheet')?.parentElement;
+  return container?.worksheetApi?.state?.() ?? null;
+});
+
+/** Type characters, generate, return true when the sheet is visible. */
+async function generate(page, text) {
+  await page.click('.ws-input');
+  await page.$eval('.ws-input', (el, value) => { el.value = value; el.dispatchEvent(new Event('input', { bubbles: true })); }, text);
+  await page.click('.ws-actions .ws-btn'); // first action = Generate
+  await page.waitForFunction(() => !document.querySelector('.ws-sheet')?.hidden, { timeout: 15000 });
+}
+
 /* ------------------------------------------------------------------- run --- */
 
 const downloadDir = mkdtempSync(join(tmpdir(), 'chino-ws-dl-'));
+const desktopDir = mkdtempSync(join(tmpdir(), 'chino-ws-dl-'));
 const server = spawn('node', [serveScript, dir], { stdio: ['ignore', 'pipe', 'pipe'] });
 let port = null;
 server.stdout.on('data', (d) => {
@@ -117,6 +135,7 @@ if (!port) {
 }
 const base = `http://localhost:${port}`;
 console.log(`serving ${dir} at ${base}`);
+mkdirSync(shotsDir, { recursive: true });
 
 const { default: puppeteer } = await import('puppeteer');
 const { existsSync } = await import('node:fs');
@@ -130,12 +149,14 @@ const chromeCandidates = [
 const executablePath = chromeCandidates.find((p) => existsSync(p));
 const browser = await puppeteer.launch({
   headless: true,
+  protocolTimeout: 300000,
   ...(executablePath ? { executablePath } : {}),
   args: ['--no-sandbox', '--disable-setuid-sandbox', '--font-render-hinting=none'],
 });
 
 let exitCode = 0;
 try {
+  /* --------------------------------------------------------- mobile flow --- */
   const page = await browser.newPage();
   await page.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
   const cdp = await page.target().createCDPSession();
@@ -148,14 +169,17 @@ try {
   await page.waitForSelector('.ws-input', { timeout: 8000 });
   ok('worksheet screen loads on a 390x844 touch viewport');
 
-  const chars = '戴维德中国语言文字'; // 戴维德 + 5 more characters (8 total)
-  await page.click('.ws-input');
-  await page.$eval('.ws-input', (el, value) => { el.value = value; el.dispatchEvent(new Event('input', { bubbles: true })); }, chars);
-  // Generate is the first action button; then the PDF button is enabled.
-  await page.click('.ws-actions .ws-btn');
-  await page.waitForFunction(() => !document.querySelector('.ws-sheet')?.hidden, { timeout: 10000 });
-  const pdfEnabled = await page.$eval('[data-action="download-pdf"]', (b) => !b.disabled);
-  assert(pdfEnabled, 'Generate enables "Download PDF"');
+  await generate(page, TEST_TEXT);
+  const state = await readState(page);
+  assert(Boolean(state), 'worksheet exposes its state for checks', state ? `${state.cards.length} chars` : 'no state');
+  assert(state?.style === 'rows', 'rows style with stroke-order steps is the default', state?.style);
+  assert(state?.copies === 4, 'default grey copies = 4', String(state?.copies));
+  const counts = Object.fromEntries((state?.cards ?? []).map((c) => [c.character, c.strokes]));
+  assert(counts['你'] === 7 && counts['戴'] === 17, '你 has 7 strokes and 戴 has 17', JSON.stringify({ 你: counts['你'], 戴: counts['戴'] }));
+  const stepsOk = (state?.cards ?? []).every((c) => c.steps === c.strokes);
+  assert(stepsOk, 'one step per stroke for every character');
+  const canvases = await page.$$eval('.ws-page', (nodes) => nodes.length);
+  assert(canvases === 1, 'preview renders the A4 page canvas (same drawing as the PDF)', `${canvases} canvas`);
 
   const before = new Set(readdirSync(downloadDir));
   await page.click('[data-action="download-pdf"]');
@@ -174,33 +198,57 @@ try {
     fail('PDF structure valid', err.message);
     throw err;
   }
+  assert(parsed.pages === 1, '10 characters fit on one A4 page', `${parsed.pages} page(s)`);
+  assert(parsed.jpegs[0].length > 3000, 'page image is a real JPEG', `${parsed.jpegs[0].length} bytes`);
 
-  assert(parsed.pages >= 1, 'PDF has at least one page', `${parsed.pages} pages`);
-  ok('every page embeds the sheet as a JPEG image (grid + gray hanzi, no fonts)');
-
+  copyFileSync(file, join(shotsDir, 'hoja-caligrafia.pdf'));
   parsed.jpegs.forEach((jpeg, i) => {
-    const out = join(downloadDir, `worksheet-page-${i + 1}.jpg`);
+    const out = join(shotsDir, `page-${i + 1}.jpg`);
     writeFileSync(out, jpeg);
     console.log(`  -> page ${i + 1} JPEG: ${out} (${jpeg.length} bytes)`);
   });
-  // Remove the first PDF so the offline download writes a fresh file with the
-  // same name (Chrome overwrites same-named downloads, hiding the second one).
+  ok('page images copied to the shots folder', shotsDir);
   rmSync(file, { force: true });
 
+  /* ------------------------------------------- 20 characters -> 2 A4 pages -- */
+  const TWENTY = '你您好们吗嗨再见谢戴爱学习中文很好我们了'; // 20 characters
+  await generate(page, TWENTY);
+  const twentyBefore = new Set(readdirSync(downloadDir));
+  await page.click('[data-action="download-pdf"]');
+  const twentyFile = await waitForDownload(downloadDir, { previous: twentyBefore });
+  if (twentyFile) {
+    try {
+      const twenty = validatePdf(readFileSync(twentyFile));
+      assert(twenty.pages === 2, '20 characters paginate on two A4 pages', `${twenty.pages} page(s)`);
+      writeFileSync(join(shotsDir, 'page-2.jpg'), twenty.jpegs[1]);
+      copyFileSync(twentyFile, join(shotsDir, 'hoja-caligrafia-20.pdf'));
+      ok('20-character PDF and page 2 copied to shots', `${readFileSync(twentyFile).length} bytes`);
+    } catch (err) {
+      fail('20 characters paginate on two A4 pages', err.message);
+    }
+    rmSync(twentyFile, { force: true });
+  } else {
+    fail('20 characters paginate on two A4 pages', 'no file');
+  }
+
   /* -------------------------------------------- global pinyin setting off -- */
+  console.log('  .. switching the global pinyin setting off');
   const setPinyin = (value) => page.evaluate(
     async (b, v) => { const m = await import(`${b}/src/settings.js`); await m.setSetting('pinyin', v); },
     base,
     value,
   );
   await setPinyin(false);
+  console.log('  .. pinyin off, regenerating');
+  await generate(page, TEST_TEXT);
+  console.log('  .. regenerated, downloading');
   const beforeOff = new Set(readdirSync(downloadDir));
   await page.click('[data-action="download-pdf"]');
   const offFile = await waitForDownload(downloadDir, { previous: beforeOff });
   if (offFile) {
     try {
       const off = validatePdf(readFileSync(offFile));
-      writeFileSync(join(downloadDir, 'worksheet-page1-nopinyin.jpg'), off.jpegs[0]);
+      writeFileSync(join(shotsDir, 'page-1-nopinyin.jpg'), off.jpegs[0]);
       ok('PDF renders with the global pinyin setting off', `${off.pages} pages`);
     } catch (err) {
       fail('PDF renders with the global pinyin setting off', err.message);
@@ -210,6 +258,32 @@ try {
     fail('PDF renders with the global pinyin setting off', 'no file');
   }
   await setPinyin(true);
+
+  /* ------------------------------- cards style kept + preferences stored --- */
+  await page.select('[data-option="style"]', 'cards');
+  await generate(page, '戴维德');
+  const cardBlocks = await page.$$eval('.ws-char-block', (nodes) => nodes.length);
+  assert(cardBlocks === 3, 'cards style still renders one block per character', `${cardBlocks} blocks`);
+  const beforeCards = new Set(readdirSync(downloadDir));
+  await page.click('[data-action="download-pdf"]');
+  const cardsFile = await waitForDownload(downloadDir, { previous: beforeCards });
+  assert(Boolean(cardsFile), 'cards style still downloads a PDF', cardsFile ? cardsFile.split('/').pop() : 'no file');
+  if (cardsFile) {
+    try {
+      validatePdf(readFileSync(cardsFile));
+      ok('cards-style PDF is structurally valid');
+    } catch (err) {
+      fail('cards-style PDF is structurally valid', err.message);
+    }
+    rmSync(cardsFile, { force: true });
+  }
+
+  await page.reload({ waitUntil: 'networkidle0' });
+  await page.waitForSelector('.ws-input', { timeout: 8000 });
+  const persisted = await readState(page);
+  assert(persisted?.options?.style === 'cards', 'style choice is persisted in storage', persisted?.options?.style);
+  await page.select('[data-option="style"]', 'rows');
+  assert((await readState(page))?.options?.style === 'rows', 'switching back to rows style works');
 
   /* ------------------------------------------------------------- offline -- */
   await page.evaluate(() => navigator.serviceWorker.ready);
@@ -226,10 +300,7 @@ try {
   await page.waitForSelector('.ws-input', { timeout: 8000 });
   ok('worksheet opens with no network (service worker cache)');
 
-  await page.click('.ws-input');
-  await page.$eval('.ws-input', (el, value) => { el.value = value; el.dispatchEvent(new Event('input', { bubbles: true })); }, '戴维德');
-  await page.click('.ws-actions .ws-btn');
-  await page.waitForFunction(() => !document.querySelector('.ws-sheet')?.hidden, { timeout: 10000 });
+  await generate(page, '戴维德');
   const previous = new Set(readdirSync(downloadDir));
   await page.click('[data-action="download-pdf"]');
   const offlineFile = await waitForDownload(downloadDir, { previous });
@@ -239,9 +310,8 @@ try {
   }
   assert(Boolean(offlineFile), 'PDF still downloads offline after a previous visit', offlineFile ? offlineFile.split('/').pop() : 'no file');
   if (offlineFile) {
-    const offlineBytes = readFileSync(offlineFile);
     try {
-      validatePdf(offlineBytes);
+      validatePdf(readFileSync(offlineFile));
       ok('offline PDF is structurally valid');
     } catch (err) {
       fail('offline PDF is structurally valid', err.message);
@@ -249,15 +319,53 @@ try {
   }
   await page.setOfflineMode(false);
 
+  /* --------------------------- desktop, separate browser (memory-hungry) --- */
+  // A second tab with a second 200 dpi A4 canvas deadlocks headless raster, and
+  // Browser.setDownloadBehavior is browser-wide, so give desktop its own browser.
+  await browser.close().catch(() => {});
+  const desktopBrowser = await puppeteer.launch({
+    headless: true,
+    protocolTimeout: 300000,
+    ...(executablePath ? { executablePath } : {}),
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--font-render-hinting=none'],
+  });
+  try {
+    const desktop = await desktopBrowser.newPage();
+    await desktop.setViewport({ width: 1366, height: 900, deviceScaleFactor: 1 });
+    const desktopCdp = await desktop.target().createCDPSession();
+    await desktopCdp.send('Browser.setDownloadBehavior', { behavior: 'allow', downloadPath: desktopDir });
+    desktop.on('pageerror', (err) => console.error('DESKTOP PAGE ERROR:', err.message));
+    await desktop.goto(OPEN, { waitUntil: 'networkidle0' });
+    await desktop.waitForSelector('.ws-input', { timeout: 8000 });
+    await generate(desktop, TEST_TEXT);
+    const desktopState = await readState(desktop);
+    assert(desktopState?.cards?.length === 10, 'desktop: 10 characters generate in rows style');
+    const desktopBefore = new Set(readdirSync(desktopDir));
+    await desktop.click('[data-action="download-pdf"]');
+    const desktopFile = await waitForDownload(desktopDir, { previous: desktopBefore });
+    assert(Boolean(desktopFile), 'desktop: "Download PDF" downloads a .pdf file', desktopFile ? desktopFile.split('/').pop() : 'no file');
+    if (desktopFile) {
+      try {
+        const desktopPdf = validatePdf(readFileSync(desktopFile));
+        ok('desktop PDF is structurally valid', `${desktopPdf.pages} page(s)`);
+        writeFileSync(join(shotsDir, 'page-1-desktop.jpg'), desktopPdf.jpegs[0]);
+      } catch (err) {
+        fail('desktop PDF is structurally valid', err.message);
+      }
+      rmSync(desktopFile, { force: true });
+    }
+  } finally {
+    await desktopBrowser.close().catch(() => {});
+  }
+
   if (results.some((r) => r.bad)) exitCode = 1;
 } catch (err) {
   console.error('CHECK ERROR:', err.stack || err.message);
   exitCode = 1;
 } finally {
-  await browser.close().catch(() => {});
   server.kill();
-  if (exitCode === 0 && process.env.KEEP_ARTIFACTS !== '1') rmSync(downloadDir, { recursive: true, force: true });
-  else console.error(`artifacts kept in ${downloadDir}`);
+  rmSync(downloadDir, { recursive: true, force: true });
+  rmSync(desktopDir, { recursive: true, force: true });
 }
 
 console.log(`\nworksheet PDF check: ${exitCode === 0 ? 'PASS' : 'FAIL'}`);

@@ -36,9 +36,21 @@ import { getDueCards } from '../srs.js';
 import { loadIndex } from '../learn/lessons.js';
 import { getSettings } from '../settings.js';
 import { buildPdf } from '../pdf.js';
+import storage from '../storage.js';
+import {
+  clampCopies,
+  MAX_COPIES,
+  MIN_COPIES,
+  DEFAULT_COPIES,
+  planWorksheet,
+  renderWorksheetPages,
+} from './worksheet-rows.js';
 
 export const titleKey = 'worksheet.title';
 export const MAX_CHARACTERS = 20;
+/** Sheet styles: 'rows' = one row per character with stroke-order steps (default). */
+export const STYLES = ['rows', 'cards'];
+const PREF = { style: 'worksheetStyle', copies: 'worksheetCopies', steps: 'worksheetSteps' };
 const STYLE_ID = 'worksheet-style';
 const HANZI_RE = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/gu;
 
@@ -237,6 +249,42 @@ export function dateStamp(date = new Date()) {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
 
+/** Persisted sheet preferences (same `settings` store as the other options). */
+async function loadPrefs() {
+  const prefs = { style: 'rows', copies: DEFAULT_COPIES, showSteps: true };
+  try {
+    const style = await storage.get('settings', PREF.style);
+    if (STYLES.includes(style)) prefs.style = style;
+    const copies = await storage.get('settings', PREF.copies);
+    if (copies !== undefined) prefs.copies = clampCopies(copies);
+    const steps = await storage.get('settings', PREF.steps);
+    if (typeof steps === 'boolean') prefs.showSteps = steps;
+  } catch {
+    /* storage unavailable — defaults are fine */
+  }
+  return prefs;
+}
+
+function savePref(key, value) {
+  try {
+    storage.set('settings', key, value).catch(() => {});
+  } catch {
+    /* storage unavailable — the control still works for this session */
+  }
+}
+
+/** Encode canvases as JPEG page images for src/pdf.js. */
+async function canvasesToJpegs(canvases, quality) {
+  const out = [];
+  for (const canvas of canvases) {
+    const blob = await new Promise((resolve, reject) => {
+      canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('canvas.toBlob returned null'))), 'image/jpeg', quality);
+    });
+    out.push({ jpeg: new Uint8Array(await blob.arrayBuffer()), width: canvas.width, height: canvas.height });
+  }
+  return out;
+}
+
 /* --------------------------------------------------------------- screen -- */
 
 const CSS = `
@@ -271,6 +319,8 @@ const CSS = `
 .ws-hint { margin: 0; min-height: 1.2em; opacity: 0.8; font-size: 0.9rem; }
 
 .ws-sheet { display: flex; flex-direction: column; gap: 1rem; }
+.ws-pages { display: flex; flex-direction: column; gap: 0.75rem; }
+.ws-page { display: block; width: 100%; height: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 0.35rem; }
 .ws-char-block { page-break-inside: avoid; break-inside: avoid; display: flex; flex-direction: column; gap: 0.5rem; }
 .ws-char-head { display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem; }
 .ws-char-large { font-size: 4.5rem; line-height: 1; }
@@ -290,11 +340,15 @@ const CSS = `
 @media print {
   .ws-form, .ws-actions, .ws-hint, .ws-warning { display: none !important; }
   .worksheet { gap: 0.5rem; }
+  .ws-sheet.ws-cards { padding: 12mm 14mm; }
   .ws-char-block { margin-bottom: 0.75rem; }
   .ws-char-large { font-size: 3.5rem; }
   .ws-grid { gap: 0.25rem; }
   .ws-cell { border-color: var(--line); }
-  @page { size: A4 portrait; margin: 1.5cm; }
+  .ws-pages { gap: 0; }
+  .ws-page { width: 100%; border: 0; border-radius: 0; page-break-after: always; break-after: page; }
+  .ws-page:last-child { page-break-after: auto; break-after: auto; }
+  @page { size: A4 portrait; margin: 0; }
   body { margin: 0; padding: 0; }
   .app-header, .tabbar, .screen > h2 { display: none !important; }
 }
@@ -424,9 +478,14 @@ async function renderCharBlock(character, set, entry, options, cellSize) {
 export async function render(container, ctx) {
   ensureStyles(document);
 
+  const prefs = await loadPrefs();
+
   // State
   let characters = '';
   let options = {
+    style: prefs.style,
+    copies: prefs.copies,
+    showSteps: prefs.showSteps,
     cellSize: 'medium',
     rowsPerChar: 5,
     showPinyin: true,
@@ -467,6 +526,34 @@ export async function render(container, ctx) {
   const sources = h('div', { class: 'ws-sources' }, lastReviewBtn, lessonWordsBtn);
 
   // Options
+  const styleSelect = h('select', { class: 'ws-select', 'data-option': 'style' },
+    ...STYLES.map((key) => h('option', { value: key, text: t(`worksheet.style.${key}`) })),
+  );
+  styleSelect.value = options.style;
+  styleSelect.addEventListener('change', () => {
+    options.style = styleSelect.value;
+    savePref(PREF.style, options.style);
+    syncOptionVisibility();
+  });
+
+  const copiesSelect = h('select', { class: 'ws-select', 'data-option': 'copies' },
+    ...Array.from({ length: MAX_COPIES - MIN_COPIES + 1 }, (_, i) => i + MIN_COPIES).map((n) =>
+      h('option', { value: String(n), text: String(n) })
+    ),
+  );
+  copiesSelect.value = String(options.copies);
+  copiesSelect.addEventListener('change', () => {
+    options.copies = clampCopies(copiesSelect.value);
+    copiesSelect.value = String(options.copies);
+    savePref(PREF.copies, options.copies);
+  });
+
+  const showStepsCheckbox = h('input', { type: 'checkbox', checked: options.showSteps, 'data-option': 'steps' });
+  showStepsCheckbox.addEventListener('change', () => {
+    options.showSteps = showStepsCheckbox.checked;
+    savePref(PREF.steps, options.showSteps);
+  });
+
   const cellSizeSelect = h('select', { class: 'ws-select' },
     ...Object.entries(CELL_SIZES).map(([key, cfg]) =>
       h('option', { value: key, text: t(cfg.labelKey) })
@@ -488,18 +575,39 @@ export async function render(container, ctx) {
   const showMeaningCheckbox = h('input', { type: 'checkbox', checked: options.showMeaning });
   showMeaningCheckbox.addEventListener('change', () => { options.showMeaning = showMeaningCheckbox.checked; });
 
-  const optionsDiv = h('div', { class: 'ws-options' },
-    h('div', { class: 'ws-opt-group' },
+  const cardsOnly = [
+    h('div', { class: 'ws-opt-group ws-cards-only' },
       h('span', { class: 'ws-opt-label', text: t('worksheet.cellSizeLabel') }),
       cellSizeSelect,
     ),
-    h('div', { class: 'ws-opt-group' },
+    h('div', { class: 'ws-opt-group ws-cards-only' },
       h('span', { class: 'ws-opt-label', text: t('worksheet.rowsLabel') }),
       rowsSelect,
     ),
+    h('label', { class: 'ws-checkbox ws-cards-only' }, showMeaningCheckbox, t('worksheet.showMeaning')),
+  ];
+
+  const optionsDiv = h('div', { class: 'ws-options' },
+    h('div', { class: 'ws-opt-group' },
+      h('span', { class: 'ws-opt-label', text: t('worksheet.styleLabel') }),
+      styleSelect,
+    ),
+    h('div', { class: 'ws-opt-group' },
+      h('span', { class: 'ws-opt-label', text: t('worksheet.copiesLabel') }),
+      copiesSelect,
+    ),
+    h('label', { class: 'ws-checkbox' }, showStepsCheckbox, t('worksheet.showSteps')),
+    ...cardsOnly,
     h('label', { class: 'ws-checkbox' }, showPinyinCheckbox, t('worksheet.showPinyin')),
-    h('label', { class: 'ws-checkbox' }, showMeaningCheckbox, t('worksheet.showMeaning')),
   );
+
+  function syncOptionVisibility() {
+    const rows = options.style === 'rows';
+    optionsDiv.querySelectorAll('.ws-cards-only').forEach((el) => { el.hidden = rows; });
+    optionsDiv.querySelector('[data-option="copies"]')?.closest('.ws-opt-group')?.toggleAttribute('hidden', !rows);
+    optionsDiv.querySelector('[data-option="steps"]')?.closest('.ws-checkbox')?.toggleAttribute('hidden', !rows);
+  }
+  syncOptionVisibility();
 
   const generateBtn = h('button', {
     type: 'button',
@@ -624,6 +732,13 @@ export async function render(container, ctx) {
     sheetBox.replaceChildren();
 
     generatedCards = [];
+    let pinyinOn = true;
+    try {
+      const settings = await getSettings();
+      pinyinOn = settings.pinyin !== false;
+    } catch {
+      /* settings unavailable — keep pinyin on */
+    }
 
     try {
       const loaded = await Promise.all(
@@ -644,39 +759,64 @@ export async function render(container, ctx) {
       generatedCards = loaded;
       const cellSize = CELL_SIZES[options.cellSize].size;
 
-      for (const card of loaded) {
-        if (card.hasData && card.set) {
-          const block = await renderCharBlock(card.character, card.set, card.entry, options, cellSize);
-          sheetBox.append(block);
-        } else {
-          // No stroke data — show placeholder block
-          const block = document.createElement('div');
-          block.className = 'ws-char-block';
-          block.dataset.character = card.character;
-          const head = document.createElement('div');
-          head.className = 'ws-char-head';
-          const charLarge = document.createElement('span');
-          charLarge.className = 'ws-char-large';
-          charLarge.textContent = card.character;
-          head.append(charLarge);
-          if (options.showPinyin && card.entry?.pinyinTone) {
-            const pinyinEl = document.createElement('span');
-            pinyinEl.className = 'ws-char-pinyin py-keep';
-            pinyinEl.innerHTML = pinyinHtml(card.entry.pinyinTone);
-            head.append(pinyinEl);
+      if (options.style === 'rows') {
+        const canvases = await renderWorksheetPages(loaded, {
+          copies: options.copies,
+          showSteps: options.showSteps,
+          showPinyin: options.showPinyin && pinyinOn,
+          dpi: 200,
+          labels: sheetLabels(),
+        });
+        if (!alive) return;
+        const pages = document.createElement('div');
+        pages.className = 'ws-pages';
+        canvases.forEach((canvas, index) => {
+          canvas.className = 'ws-page';
+          canvas.dataset.page = String(index + 1);
+          canvas.setAttribute('role', 'img');
+          canvas.setAttribute('aria-label', t('worksheet.pageFooter', { current: index + 1, total: canvases.length }));
+          pages.append(canvas);
+        });
+        sheetBox.classList.add('ws-rows');
+        sheetBox.classList.remove('ws-cards');
+        sheetBox.append(pages);
+      } else {
+        sheetBox.classList.add('ws-cards');
+        sheetBox.classList.remove('ws-rows');
+        for (const card of loaded) {
+          if (card.hasData && card.set) {
+            const block = await renderCharBlock(card.character, card.set, card.entry, options, cellSize);
+            sheetBox.append(block);
+          } else {
+            // No stroke data — show placeholder block
+            const block = document.createElement('div');
+            block.className = 'ws-char-block';
+            block.dataset.character = card.character;
+            const head = document.createElement('div');
+            head.className = 'ws-char-head';
+            const charLarge = document.createElement('span');
+            charLarge.className = 'ws-char-large';
+            charLarge.textContent = card.character;
+            head.append(charLarge);
+            if (options.showPinyin && pinyinOn && card.entry?.pinyinTone) {
+              const pinyinEl = document.createElement('span');
+              pinyinEl.className = 'ws-char-pinyin py-keep';
+              pinyinEl.innerHTML = pinyinHtml(card.entry.pinyinTone);
+              head.append(pinyinEl);
+            }
+            if (options.showMeaning && card.entry?.defs?.length) {
+              const meaningEl = document.createElement('span');
+              meaningEl.className = 'ws-char-meaning';
+              meaningEl.textContent = card.entry.defs.slice(0, 2).join('; ');
+              head.append(meaningEl);
+            }
+            const emptyMsg = document.createElement('p');
+            emptyMsg.style.color = 'var(--ink-soft)';
+            emptyMsg.style.fontSize = '0.9rem';
+            emptyMsg.textContent = t('worksheet.noStrokeData', { char: card.character });
+            block.append(head, emptyMsg);
+            sheetBox.append(block);
           }
-          if (options.showMeaning && card.entry?.defs?.length) {
-            const meaningEl = document.createElement('span');
-            meaningEl.className = 'ws-char-meaning';
-            meaningEl.textContent = card.entry.defs.slice(0, 2).join('; ');
-            head.append(meaningEl);
-          }
-          const emptyMsg = document.createElement('p');
-          emptyMsg.style.color = 'var(--ink-soft)';
-          emptyMsg.style.fontSize = '0.9rem';
-          emptyMsg.textContent = t('worksheet.noStrokeData', { char: card.character });
-          block.append(head, emptyMsg);
-          sheetBox.append(block);
         }
       }
 
@@ -688,6 +828,40 @@ export async function render(container, ctx) {
       console.error('worksheet: generate failed', err);
       hint.textContent = t('worksheet.generateError');
     }
+  }
+
+  /** Header/footer text of the printable page (es/en via i18n). */
+  function sheetLabels() {
+    return {
+      title: t('worksheet.title'),
+      name: t('worksheet.nameField'),
+      date: dateStamp(),
+      pageText: (current, total) => t('worksheet.pageFooter', { current, total }),
+    };
+  }
+
+  /** Rows-style page canvases at the requested raster resolution. */
+  function renderRowsCanvases(pinyinOn, dpi) {
+    return renderWorksheetPages(generatedCards, {
+      copies: options.copies,
+      showSteps: options.showSteps,
+      showPinyin: options.showPinyin && pinyinOn,
+      dpi,
+      labels: sheetLabels(),
+    });
+  }
+
+  /**
+   * Rows-style PDF images: 200 dpi / JPEG q=0.85 while the whole file stays
+   * under 3 MB (20 characters), otherwise fall back to the old 150 dpi.
+   */
+  async function renderRowsPdfImages(pinyinOn) {
+    let images = await canvasesToJpegs(await renderRowsCanvases(pinyinOn, 200), 0.85);
+    const total = images.reduce((sum, image) => sum + image.jpeg.length, 0);
+    if (total > 3 * 1024 * 1024) {
+      images = await canvasesToJpegs(await renderRowsCanvases(pinyinOn, 150), 0.85);
+    }
+    return images;
   }
 
   /**
@@ -707,7 +881,9 @@ export async function render(container, ctx) {
         /* settings unavailable — keep pinyin on */
       }
 
-      const images = await renderSheetToPages(generatedCards, options, { pinyinOn });
+      const images = options.style === 'rows'
+        ? await renderRowsPdfImages(pinyinOn)
+        : await renderSheetToPages(generatedCards, options, { pinyinOn });
       const bytes = buildPdf(images);
       const filename = `hoja-caligrafia-${dateStamp()}.pdf`;
       const blob = new Blob([bytes], { type: 'application/pdf' });
@@ -749,19 +925,29 @@ export async function render(container, ctx) {
   container.worksheetApi = {
     state: () => ({
       characters: generatedCards.map((c) => c.character),
-      cards: generatedCards.map((c) => ({
-        character: c.character,
-        hasData: c.hasData,
-        strokes: c.set?.strokes.length ?? 0,
-        rows: options.rowsPerChar,
-        cellsPerRow: 2,
-      })),
+      cards: generatedCards.map((c) => {
+        const strokes = c.set?.strokes.length ?? 0;
+        return {
+          character: c.character,
+          hasData: c.hasData,
+          strokes,
+          steps: options.style === 'rows' && options.showSteps ? strokes : 0,
+          rows: options.rowsPerChar,
+          cellsPerRow: options.style === 'rows' ? planWorksheet([c], options).cellsPerRow : 2,
+        };
+      }),
+      style: options.style,
+      copies: options.copies,
+      showSteps: options.showSteps,
       options: { ...options },
     }),
     /** Last generated PDF Blob (or null), for headless checks. */
     pdfBlob: () => lastPdfBlob,
     /** Re-render the current sheet to JPEG pages (headless checks). */
-    pdfPages: () => renderSheetToPages(generatedCards, options, { pinyinOn: true }),
+    pdfPages: async (pinyinOn = true) => {
+      if (options.style !== 'rows') return renderSheetToPages(generatedCards, options, { pinyinOn });
+      return canvasesToJpegs(await renderRowsCanvases(pinyinOn, 200), 0.85);
+    },
   };
 
   return () => {

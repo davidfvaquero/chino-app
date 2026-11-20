@@ -5,6 +5,15 @@
     "inputPlaceholder": "Type or paste up to 20 characters, e.g. 戴维德",
     "lastReview": "Last review characters",
     "lessonWords": "Lesson words",
+    "styleLabel": "Style",
+    "style": {
+      "rows": "Rows with stroke order",
+      "cards": "Cards"
+    },
+    "copiesLabel": "Grey copies",
+    "showSteps": "Show stroke steps",
+    "nameField": "Name",
+    "pageFooter": "Page {current}/{total}",
     "cellSizeLabel": "Cell size",
     "cellSize": {
       "small": "Small",

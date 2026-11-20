@@ -5,6 +5,15 @@
     "inputPlaceholder": "Escribe o pega hasta 20 caracteres, p. ej. 戴维德",
     "lastReview": "Caracteres del último repaso",
     "lessonWords": "Palabras de una lección",
+    "styleLabel": "Estilo",
+    "style": {
+      "rows": "Filas con orden de trazos",
+      "cards": "Tarjetas"
+    },
+    "copiesLabel": "Copias en gris",
+    "showSteps": "Mostrar pasos de trazos",
+    "nameField": "Nombre",
+    "pageFooter": "Página {current}/{total}",
     "cellSizeLabel": "Tamaño de celda",
     "cellSize": {
       "small": "Pequeño",
