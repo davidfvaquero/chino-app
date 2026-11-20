@@ -69,6 +69,7 @@ const CSS = `
   autocapitalize: none; autocorrect: off; spellcheck: false; inputmode: text;
 }
 .typing-input:focus { border-color: var(--accent); }
+.typing-input:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 .typing-feedback { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 1.25rem; line-height: 1.6; min-height: 1.6em; letter-spacing: 0.1em; }
 .typing-feedback .ok { color: var(--ok); }
