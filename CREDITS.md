@@ -23,6 +23,16 @@ the licence asks for it.
   any redistributed/derived versions of the CC-CEDICT *data* must keep this
   licence and attribution.
 
+### 1a. Spanish definitions (`public/data/es/dict/`) — derivative work
+
+The Spanish definitions are a **derivative work of CC-CEDICT** produced by
+machine translation (LLM) of the original English definitions, in importance
+order (see `scripts/dict-priority.mjs`, `scripts/translate-dict.mjs`). They are
+therefore distributed under the **same licence, CC BY-SA 4.0**, with the same
+attribution: © MDBG and the CC-CEDICT contributors. The English definitions in
+`public/data/dict/` are always kept as a fallback. Only the definitions change;
+the entry ids, characters and pinyin are untouched.
+
 ## 2. Make Me a Hanzi — stroke data (`public/data/strokes/`)
 
 - **Source:** Make Me a Hanzi, <https://github.com/skishore/makemeahanzi>
