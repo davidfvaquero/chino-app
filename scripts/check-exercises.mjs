@@ -35,6 +35,9 @@ const SERVE_SCRIPT = fileURLToPath(new URL('./serve.mjs', import.meta.url));
 
 const CHROME_CANDIDATES = [
   process.env.CHROME_BIN,
+  // Chrome in this build box (no system chromium): keep it so the checks run
+  // here; override with CHROME_BIN elsewhere.
+  '/home/homelab/.hermes/tools/chromium-1208/chrome-linux64/chrome',
   '/usr/bin/google-chrome',
   '/usr/bin/chromium',
   '/usr/bin/chromium-browser',
