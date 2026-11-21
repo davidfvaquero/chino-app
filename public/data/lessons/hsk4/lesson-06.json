@@ -1,0 +1,404 @@
+{
+  "id": "hsk4-06",
+  "title": "Money, shopping & guarantees",
+  "intro": "Learn essential vocabulary for shopping, payments, guarantees and discussing prices in Mandarin.",
+  "vocabulary": [
+    {
+      "hanzi": "观众",
+      "pinyin": "guānzhòng",
+      "english": "spectator; audience",
+      "example": {
+        "hanzi": "观众很多",
+        "pinyin": "guānzhòng hěn duō",
+        "english": "there are many spectators"
+      }
+    },
+    {
+      "hanzi": "管理",
+      "pinyin": "guǎnlǐ",
+      "english": "supervise; manage",
+      "example": {
+        "hanzi": "他管理公司",
+        "pinyin": "tā guǎnlǐ gōngsī",
+        "english": "he manages the company"
+      }
+    },
+    {
+      "hanzi": "光",
+      "pinyin": "guāng",
+      "english": "light; ray; bright; only; merely; used up",
+      "example": {
+        "hanzi": "光线很好",
+        "pinyin": "guāngxiàn hěn hǎo",
+        "english": "the light is very good"
+      }
+    },
+    {
+      "hanzi": "广播",
+      "pinyin": "guǎngbō",
+      "english": "broadcast; on the air",
+      "example": {
+        "hanzi": "听广播新闻",
+        "pinyin": "tīng guǎngbō xīnwén",
+        "english": "listen to broadcast news"
+      }
+    },
+    {
+      "hanzi": "广告",
+      "pinyin": "guǎnggào",
+      "english": "advertisement; a commercial",
+      "example": {
+        "hanzi": "看电视广告",
+        "pinyin": "kàn diànshì guǎnggào",
+        "english": "watch TV commercials"
+      }
+    },
+    {
+      "hanzi": "逛",
+      "pinyin": "guàng",
+      "english": "to stroll; to visit; go window shopping",
+      "example": {
+        "hanzi": "我们去逛街",
+        "pinyin": "wǒmen qù guàngjiē",
+        "english": "we go window shopping"
+      }
+    },
+    {
+      "hanzi": "规定",
+      "pinyin": "guīdìng",
+      "english": "regulation; stipulate; fix; set",
+      "example": {
+        "hanzi": "按规定办事",
+        "pinyin": "àn guīdìng bànshì",
+        "english": "follow the regulations"
+      }
+    },
+    {
+      "hanzi": "国籍",
+      "pinyin": "guójí",
+      "english": "nationality",
+      "example": {
+        "hanzi": "他的国籍是中国",
+        "pinyin": "tā de guójí shì zhōngguó",
+        "english": "his nationality is Chinese"
+      }
+    },
+    {
+      "hanzi": "国际",
+      "pinyin": "guójì",
+      "english": "international",
+      "example": {
+        "hanzi": "国际会议",
+        "pinyin": "guójì huìyì",
+        "english": "international conference"
+      }
+    },
+    {
+      "hanzi": "果汁",
+      "pinyin": "guǒzhī",
+      "english": "fruit juice",
+      "example": {
+        "hanzi": "我喝果汁",
+        "pinyin": "wǒ hē guǒzhī",
+        "english": "I drink fruit juice"
+      }
+    },
+    {
+      "hanzi": "过程",
+      "pinyin": "guòchéng",
+      "english": "course of events; process",
+      "example": {
+        "hanzi": "过程很重要",
+        "pinyin": "guòchéng hěn zhòngyào",
+        "english": "the process is important"
+      }
+    },
+    {
+      "hanzi": "海洋",
+      "pinyin": "hǎiyáng",
+      "english": "ocean",
+      "example": {
+        "hanzi": "海洋很大",
+        "pinyin": "hǎiyáng hěn dà",
+        "english": "the ocean is very big"
+      }
+    },
+    {
+      "hanzi": "害羞",
+      "pinyin": "hài xiū",
+      "english": "blush; shy",
+      "example": {
+        "hanzi": "她很害羞",
+        "pinyin": "tā hěn hàixiū",
+        "english": "she is very shy"
+      }
+    },
+    {
+      "hanzi": "寒假",
+      "pinyin": "hánjià",
+      "english": "winter vacation",
+      "example": {
+        "hanzi": "寒假快到了",
+        "pinyin": "hánjià kuài dào le",
+        "english": "winter break is coming soon"
+      }
+    },
+    {
+      "hanzi": "汗",
+      "pinyin": "hàn",
+      "english": "sweat; perspiration; Khan",
+      "example": {
+        "hanzi": "流了很多汗",
+        "pinyin": "liú le hěn duō hàn",
+        "english": "sweated a lot"
+      }
+    },
+    {
+      "hanzi": "航班",
+      "pinyin": "hángbān",
+      "english": "scheduled flight; flight number",
+      "example": {
+        "hanzi": "航班准时",
+        "pinyin": "hángbān zhǔnshí",
+        "english": "the flight is on time"
+      }
+    },
+    {
+      "hanzi": "好处",
+      "pinyin": "hǎochu",
+      "english": "benefit; advantage",
+      "example": {
+        "hanzi": "有很多好处",
+        "pinyin": "yǒu hěn duō hǎochù",
+        "english": "there are many benefits"
+      }
+    },
+    {
+      "hanzi": "好像",
+      "pinyin": "hǎoxiàng",
+      "english": "as if; seem to be",
+      "example": {
+        "hanzi": "好像要下雨",
+        "pinyin": "hǎoxiàng yào xiàyǔ",
+        "english": "it seems like it will rain"
+      }
+    },
+    {
+      "hanzi": "号码",
+      "pinyin": "hàomǎ",
+      "english": "number",
+      "example": {
+        "hanzi": "电话号码",
+        "pinyin": "diànhuà hàomǎ",
+        "english": "phone number"
+      }
+    },
+    {
+      "hanzi": "合格",
+      "pinyin": "hégé",
+      "english": "qualified; up to standard",
+      "example": {
+        "hanzi": "考试合格了",
+        "pinyin": "kǎoshì hégé le",
+        "english": "passed the exam"
+      }
+    },
+    {
+      "hanzi": "合适",
+      "pinyin": "héshì",
+      "english": "suitable; proper; appropriate",
+      "example": {
+        "hanzi": "这很合适",
+        "pinyin": "zhè hěn héshì",
+        "english": "this is very suitable"
+      }
+    },
+    {
+      "hanzi": "盒子",
+      "pinyin": "hézi",
+      "english": "box",
+      "example": {
+        "hanzi": "打开盒子",
+        "pinyin": "dǎkāi hézi",
+        "english": "open the box"
+      }
+    },
+    {
+      "hanzi": "后悔",
+      "pinyin": "hòuhuǐ",
+      "english": "to regret; repent",
+      "example": {
+        "hanzi": "我很后悔",
+        "pinyin": "wǒ hěn hòuhuǐ",
+        "english": "I really regret it"
+      }
+    },
+    {
+      "hanzi": "厚",
+      "pinyin": "hòu",
+      "english": "thick (for flat things); generous",
+      "example": {
+        "hanzi": "这本书很厚",
+        "pinyin": "zhè běn shū hěn hòu",
+        "english": "this book is very thick"
+      }
+    },
+    {
+      "hanzi": "互联网",
+      "pinyin": "Hùliánwǎng",
+      "english": "Internet",
+      "example": {
+        "hanzi": "用互联网",
+        "pinyin": "yòng hùliánwǎng",
+        "english": "use the internet"
+      }
+    },
+    {
+      "hanzi": "互相",
+      "pinyin": "hùxiāng",
+      "english": "mutually; with each other",
+      "example": {
+        "hanzi": "我们互相帮助",
+        "pinyin": "wǒmen hùxiāng bāngzhù",
+        "english": "we help each other"
+      }
+    },
+    {
+      "hanzi": "护士",
+      "pinyin": "hùshi",
+      "english": "nurse",
+      "example": {
+        "hanzi": "护士很忙",
+        "pinyin": "hùshi hěn máng",
+        "english": "the nurse is very busy"
+      }
+    },
+    {
+      "hanzi": "怀疑",
+      "pinyin": "huáiyí",
+      "english": "doubt; to suspect; be skeptical",
+      "example": {
+        "hanzi": "我怀疑他",
+        "pinyin": "wǒ huáiyí tā",
+        "english": "I suspect him"
+      }
+    },
+    {
+      "hanzi": "回忆",
+      "pinyin": "huíyì",
+      "english": "to recall; recollect",
+      "example": {
+        "hanzi": "回忆过去",
+        "pinyin": "huíyì guòqù",
+        "english": "recall the past"
+      }
+    },
+    {
+      "hanzi": "活动",
+      "pinyin": "huódòng",
+      "english": "activity; exercise; move about",
+      "example": {
+        "hanzi": "参加活动",
+        "pinyin": "cānjiā huódòng",
+        "english": "participate in activities"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "What does 号码 mean?",
+      "options": [
+        "number",
+        "process",
+        "ocean"
+      ],
+      "answer": "number"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which word means 'to regret'?",
+      "options": [
+        "后悔",
+        "厚",
+        "互相"
+      ],
+      "answer": "后悔"
+    },
+    {
+      "type": "listen",
+      "audio": "合格",
+      "pinyin": "hégé",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "合格",
+        "合适",
+        "好处"
+      ],
+      "answer": "合格"
+    },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        {
+          "hanzi": "观众",
+          "english": "spectator"
+        },
+        {
+          "hanzi": "管理",
+          "english": "manage"
+        },
+        {
+          "hanzi": "规定",
+          "english": "regulation"
+        },
+        {
+          "hanzi": "国籍",
+          "english": "nationality"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Make the phrase 'phone number'.",
+      "tokens": [
+        "码",
+        "号"
+      ],
+      "answer": "号码"
+    },
+    {
+      "type": "order",
+      "prompt": "Put the characters in order to say 'I regret it'.",
+      "tokens": [
+        "悔",
+        "我",
+        "后"
+      ],
+      "answer": "我后悔"
+    },
+    {
+      "type": "listen",
+      "audio": "互联网",
+      "pinyin": "hùliánwǎng",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "互联网",
+        "互相",
+        "护士"
+      ],
+      "answer": "互联网"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which character means 'box'?",
+      "options": [
+        "盒子",
+        "号码",
+        "好处"
+      ],
+      "answer": "盒子"
+    }
+  ]
+}
