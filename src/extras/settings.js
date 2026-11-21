@@ -183,7 +183,7 @@ export async function render(container, ctx) {
     section.append(h('p', { class: 'settings-hint', text: t('settings.credits.dictEs') }));
     // CC BY-SA 4.0 §3(a): attribution, changes and the licence URI, linked.
     const link = (href, label) =>
-      h('a', { href, target: '_blank', rel: 'noopener noreferrer', text: t(`settings.credits.${label}`) });
+      h('a', { class: 'licence-link', href, target: '_blank', rel: 'noopener noreferrer', text: t(`settings.credits.${label}`) });
     section.append(h('p', { class: 'settings-hint' },
       link('https://creativecommons.org/licenses/by-sa/4.0/', 'licenceName'),
       ' · ',

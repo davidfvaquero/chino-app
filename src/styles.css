@@ -110,6 +110,9 @@ button { touch-action: manipulation; }
 img,
 svg { max-width: 100%; }
 a { color: var(--accent); text-underline-offset: 0.2em; }
+/* Inline licence/credit links inside a running sentence still need a 44px tap
+   target (check-contrast, WCAG 2.5.5): make the link itself the target. */
+a.licence-link { display: inline-flex; align-items: center; min-height: 44px; }
 
 :focus-visible {
   outline: 3px solid var(--focus);

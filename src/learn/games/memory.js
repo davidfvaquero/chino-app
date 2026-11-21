@@ -32,7 +32,7 @@ const CSS = `
 .memory-stats { display: flex; gap: 1rem; font-variant-numeric: tabular-nums; opacity: 0.85; font-size: 0.9rem; }
 .memory-stats span { display: flex; align-items: center; gap: 0.3rem; }
 .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; max-width: 28rem; margin: 0 auto; }
-.memory-card { aspect-ratio: 1 / 1; perspective: 600px; cursor: pointer; touch-action: manipulation; }
+.memory-card { appearance: none; display: block; width: 100%; margin: 0; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; aspect-ratio: 1 / 1; perspective: 600px; cursor: pointer; touch-action: manipulation; }
 .memory-card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 0.75rem; }
 .memory-card.flipped .memory-card-inner { transform: rotateY(180deg); }
 .memory-card.matched .memory-card-inner { opacity: 0.6; }

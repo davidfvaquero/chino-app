@@ -81,6 +81,7 @@ export function render(container, ctx = {}) {
   // One small note per results screen (never per row) when Spanish shows.
   const note = h('p', { class: 'hint dict-note', hidden: true, text: t('dict.machineTranslation') });
   note.append(' ', h('a', {
+    class: 'licence-link',
     href: 'data/es/dict/LICENSE.md',
     target: '_blank',
     rel: 'noopener noreferrer',
