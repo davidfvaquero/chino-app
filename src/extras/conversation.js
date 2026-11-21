@@ -112,24 +112,29 @@ export function resetProviders() {
 
 async function loadConfig() {
   const get = (key, fallback) => storage.get('settings', key).then((v) => (v === undefined ? fallback : v));
-  const [provider, openrouterModel, ollamaUrl, ollamaModel, level, scenario, history] = await Promise.all([
+  const [provider, openrouterModel, ollamaUrl, ollamaModel, level, scenario] = await Promise.all([
     get(CONFIG_KEYS.provider, 'openrouter'),
     get(CONFIG_KEYS.openrouterModel, ''),
     get(CONFIG_KEYS.ollamaUrl, ''),
     get(CONFIG_KEYS.ollamaModel, ''),
     get(CONFIG_KEYS.level, 1),
     get(CONFIG_KEYS.scenario, 'introductions'),
-    get(CONFIG_KEYS.history, []),
   ]);
-  // The API key is a secret: it lives in `meta` (device-local, never synced nor
-  // included in a backup). Migrate it once out of `settings`.
-  let openrouterKey = (await storage.get('meta', CONFIG_KEYS.openrouterKey)) ?? '';
-  const legacyKey = await storage.get('settings', CONFIG_KEYS.openrouterKey);
-  if (legacyKey !== undefined) {
-    if (!openrouterKey) openrouterKey = legacyKey;
-    await storage.set('meta', CONFIG_KEYS.openrouterKey, openrouterKey);
-    await storage.remove('settings', CONFIG_KEYS.openrouterKey);
-  }
+  // The API key and the conversation history are device-local: they live in
+  // `meta` (never synced nor included in a backup). Migrate them once out of
+  // `settings`, which is synced.
+  const migrate = async (key, fallback) => {
+    let value = await storage.get('meta', key);
+    const legacy = await storage.get('settings', key);
+    if (legacy !== undefined) {
+      if (value === undefined) value = legacy;
+      await storage.set('meta', key, value);
+      await storage.remove('settings', key);
+    }
+    return value === undefined ? fallback : value;
+  };
+  const openrouterKey = await migrate(CONFIG_KEYS.openrouterKey, '');
+  const history = await migrate(CONFIG_KEYS.history, []);
   return { provider, openrouterKey, openrouterModel, ollamaUrl, ollamaModel, level, scenario, history };
 }
 
@@ -190,7 +195,8 @@ export function render(container, ctx = {}) {
   }
 
   function persist() {
-    return storage.set('settings', CONFIG_KEYS.history, state.messages.slice(-LOCAL_LIMIT));
+    // Device-local: `meta` is never synced nor backed up (settings is synced).
+    return storage.set('meta', CONFIG_KEYS.history, state.messages.slice(-LOCAL_LIMIT));
   }
 
   // ------------------------------------------------------ config panel
