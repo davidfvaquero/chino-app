@@ -15,9 +15,9 @@
       "english": "First brush teeth, wash face, then eat breakfast."
     },
     {
-      "hanzi": "早饭通常吃面包，喝牛奶。",
-      "pinyin": "Zǎofàn tōngcháng chī miànbāo, hē niúnǎi.",
-      "english": "Breakfast is usually bread and milk."
+      "hanzi": "早饭我吃面包，喝牛奶。",
+      "pinyin": "Zǎofàn wǒ chī miànbāo, hē niúnǎi.",
+      "english": "For breakfast I eat bread and drink milk."
     },
     {
       "hanzi": "八点半我坐地铁去上班。",
@@ -25,19 +25,19 @@
       "english": "At eight thirty I take the subway to work."
     },
     {
-      "hanzi": "中午十二点在公司食堂吃饭。",
-      "pinyin": "Zhōngwǔ shíèr diǎn zài gōngsī shítáng chīfàn.",
-      "english": "At noon twelve I eat at the company cafeteria."
+      "hanzi": "中午十二点在公司吃饭。",
+      "pinyin": "Zhōngwǔ shí'èr diǎn zài gōngsī chīfàn.",
+      "english": "At noon I eat at the company."
     },
     {
       "hanzi": "下午五点下班，回家的路上买菜。",
       "pinyin": "Xiàwǔ wǔ diǎn xiàbān, huíjiā de lùshang mǎi cài.",
-      "english": "At five PM I get off work, buy vegetables on the way home."
+      "english": "At five I finish work and buy vegetables on the way home."
     },
     {
-      "hanzi": "晚上七点做晚饭，全家一起吃。",
-      "pinyin": "Wǎnshang qī diǎn zuò wǎnfàn, quánjiā yīqǐ chī.",
-      "english": "At seven PM make dinner, the whole family eats together."
+      "hanzi": "晚上七点做晚饭，大家一起吃。",
+      "pinyin": "Wǎnshang qī diǎn zuò wǎnfàn, dàjiā yīqǐ chī.",
+      "english": "At seven I make dinner; everyone eats together."
     },
     {
       "hanzi": "饭后我看电视，或者看书。",
@@ -47,12 +47,12 @@
     {
       "hanzi": "十点半上床睡觉。",
       "pinyin": "Shí diǎn bàn shàngchuáng shuìjiào.",
-      "english": "At ten thirty go to bed and sleep."
+      "english": "At ten thirty I go to bed and sleep."
     },
     {
-      "hanzi": "我的一天很充实，也很快乐。",
-      "pinyin": "Wǒ de yī tiān hěn chōngshí, yě hěn kuàilè.",
-      "english": "My day is very fulfilling and also very happy."
+      "hanzi": "我的一天很忙，也很快乐。",
+      "pinyin": "Wǒ de yī tiān hěn máng, yě hěn kuàilè.",
+      "english": "My day is busy but also very happy."
     }
   ]
 }

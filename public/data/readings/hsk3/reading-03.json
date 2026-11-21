@@ -24,39 +24,39 @@
     },
     {
       "speaker": "B",
-      "pinyin": "有点儿难。写汉字最难。",
       "hanzi": "有点儿难。写汉字最难。",
+      "pinyin": "Yǒudiǎnr nán. Xiě Hànzì zuì nán.",
       "english": "A little difficult. Writing characters is the hardest."
     },
     {
       "speaker": "A",
-      "pinyin": "你怎么学习？",
       "hanzi": "你怎么学习？",
+      "pinyin": "Nǐ zěnme xuéxí?",
       "english": "How do you study?"
     },
     {
       "speaker": "B",
-      "pinyin": "我上课，也自己复习。每天听录音。",
-      "hanzi": "我上课，也自己复习。每天听录音。",
-      "english": "I take classes and also review on my own. I listen to recordings every day."
+      "hanzi": "我上课，也自己复习。每天听中文。",
+      "pinyin": "Wǒ shàngkè, yě zìjǐ fùxí. Měitiān tīng Zhōngwén.",
+      "english": "I take classes and also review on my own. I listen to Chinese every day."
     },
     {
       "speaker": "A",
-      "pinyin": "你会说很多汉语吗？",
       "hanzi": "你会说很多汉语吗？",
+      "pinyin": "Nǐ huì shuō hěn duō Hànyǔ ma?",
       "english": "Can you speak a lot of Chinese?"
     },
     {
       "speaker": "B",
-      "pinyin": "会说一些。但听不太懂快的语速。",
-      "hanzi": "会说一些。但听不太懂快的语速。",
-      "english": "I can speak some. But I can't understand fast speech well."
+      "hanzi": "会说一些。但是太快我就听不懂。",
+      "pinyin": "Huì shuō yīxiē. Dànshì tài kuài wǒ jiù tīng bu dǒng.",
+      "english": "I can speak some. But if it's too fast I can't understand."
     },
     {
       "speaker": "A",
-      "pinyin": "继续努力！你会进步的。",
-      "hanzi": "继续努力！你会进步的。",
-      "english": "Keep working hard! You'll improve."
+      "hanzi": "努力吧！你会越来越好的。",
+      "pinyin": "Nǔlì ba! Nǐ huì yuè lái yuè hǎo de.",
+      "english": "Keep at it! You'll get better and better."
     }
   ]
 }

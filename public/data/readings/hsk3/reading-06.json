@@ -24,9 +24,9 @@
     },
     {
       "speaker": "B",
-      "hanzi": "大概二十个小时。虽然长，但可以看风景。",
-      "pinyin": "Dàgài èrshí gè xiǎoshí. Suīrán cháng, dàn kěyǐ kàn fēngjǐng.",
-      "english": "About twenty hours. Although long, you can see the scenery."
+      "hanzi": "可能二十个小时。虽然长，但可以看很多地方。",
+      "pinyin": "Kěnéng èrshí gè xiǎoshí. Suīrán cháng, dàn kěyǐ kàn hěn duō dìfang.",
+      "english": "Maybe twenty hours. Although long, I can see many places."
     },
     {
       "speaker": "A",
@@ -38,7 +38,7 @@
       "speaker": "B",
       "hanzi": "带了。面包、水果、饮料都有。",
       "pinyin": "Dài le. Miànbāo, shuǐguǒ, yǐnliào dōu yǒu.",
-      "english": "Yes. Bread, fruit, drinks - all there."
+      "english": "Yes. Bread, fruit and drinks - all there."
     },
     {
       "speaker": "A",
@@ -48,15 +48,15 @@
     },
     {
       "speaker": "B",
-      "hanzi": "可以。我买了卧铺票，睡得很舒服。",
-      "pinyin": "Kěyǐ. Wǒ mǎi le wòpù piào, shuì de hěn shūfu.",
-      "english": "Yes. I bought a sleeper ticket, sleep very comfortably."
+      "hanzi": "可以。我买了火车票，睡得很舒服。",
+      "pinyin": "Kěyǐ. Wǒ mǎi le huǒchē piào, shuì de hěn shūfu.",
+      "english": "Yes. I bought a train ticket, and sleep very comfortably."
     },
     {
       "speaker": "A",
-      "hanzi": "祝你一路平安，旅途愉快！",
-      "pinyin": "Zhù nǐ yīlù píng'ān, lǚtú yúkuài!",
-      "english": "Wishing you a safe journey and happy travels!"
+      "hanzi": "希望你好好休息，早点回来！",
+      "pinyin": "Xīwàng nǐ hǎohǎo xiūxi, zǎodiǎn huílai!",
+      "english": "I hope you rest well and come back soon!"
     }
   ]
 }
