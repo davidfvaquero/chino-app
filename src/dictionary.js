@@ -269,7 +269,7 @@ async function searchHanzi(q) {
 const MAX_SHARDS = 8;
 const capShards = (ids) => [...new Set(ids)].slice(0, MAX_SHARDS);
 
-async function searchPinyin(q, { maxShards = MAX_SHARDS, mixed = false } = {}) {
+async function searchPinyin(q, { maxShards = MAX_SHARDS } = {}) {
   const key = tonelessKey(q);
   const letter = letterOf(key);
   if (!letter) return [];
@@ -292,9 +292,8 @@ async function searchPinyin(q, { maxShards = MAX_SHARDS, mixed = false } = {}) {
   for (const e of entries) {
     const ek = tonelessKey(e.pinyinNumeric || '');
     // An HSK entry outranks the rest of its shard: without a frequency signal
-    // 我/好/人 stayed buried under rare names (REVIEW-4 I1).
-    const hskScore = e.hsk ? 10 - e.hsk : 0;
-    if (ek === key) out.push({ e, score: mixed ? (e.hsk ? 2000 - e.hsk : 100) : 100 + hskScore });
+    // 我/好/人 stayed buried under rare names.
+    if (ek === key) out.push({ e, score: e.hsk ? 2000 - e.hsk : 100 });
     else if (ek.startsWith(key)) out.push({ e, score: 70 - Math.min(30, ek.length - key.length) });
   }
   return out;
@@ -414,11 +413,11 @@ export async function search(query, { limit = 20, spanish = false } = {}) {
     // most common way a student types, so it must not be a last resort
     // (REVIEW-3 I5). "ñ" is never pinyin, so that exception stays.
     // The pinyin side is capped to 2 shards here: both searches run at once, and
-    // the mixed path must stay inside the request budget (REVIEW-4 I1).
+    // the combined path must stay inside the request budget.
     const exactPinyin = !/ñ/i.test(q) && (await hasExactPinyin(q));
     const [es, py] = await Promise.all([
       searchSpanish(q),
-      exactPinyin ? searchPinyin(q, { maxShards: 2, mixed: true }) : Promise.resolve([]),
+      exactPinyin ? searchPinyin(q, { maxShards: 2 }) : Promise.resolve([]),
     ]);
     if (es.length || py.length) hits = [...es, ...py];
     else hits = await searchEnglish(q);
