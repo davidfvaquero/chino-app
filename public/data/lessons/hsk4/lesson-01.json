@@ -1,0 +1,405 @@
+{
+  "id": "hsk4-01",
+  "title": "Feelings, relations & society",
+  "intro": "Learn words about emotions, relationships and social situations: love, apologies, arrangements and everyday interactions.",
+  "vocabulary": [
+    {
+      "hanzi": "爱情",
+      "pinyin": "àiqíng",
+      "english": "(romantic) love",
+      "example": {
+        "hanzi": "爱情很美好",
+        "pinyin": "àiqíng hěn měihǎo",
+        "english": "love is beautiful"
+      }
+    },
+    {
+      "hanzi": "安排",
+      "pinyin": "ānpái",
+      "english": "arrange; to plan",
+      "example": {
+        "hanzi": "我安排好了",
+        "pinyin": "wǒ ānpái hǎo le",
+        "english": "I have arranged it"
+      }
+    },
+    {
+      "hanzi": "安全",
+      "pinyin": "ānquán",
+      "english": "safe; safety; secure; security",
+      "example": {
+        "hanzi": "安全最重要",
+        "pinyin": "ānquán zuì zhòngyào",
+        "english": "safety is most important"
+      }
+    },
+    {
+      "hanzi": "按时",
+      "pinyin": "ànshí",
+      "english": "on time; on schedule",
+      "example": {
+        "hanzi": "请按时来",
+        "pinyin": "qǐng ànshí lái",
+        "english": "please come on time"
+      }
+    },
+    {
+      "hanzi": "按照",
+      "pinyin": "ànzhào",
+      "english": "according to; in accordance with",
+      "example": {
+        "hanzi": "按规定办",
+        "pinyin": "àn guīdìng bàn",
+        "english": "do it according to regulations"
+      }
+    },
+    {
+      "hanzi": "百分之",
+      "pinyin": "bǎifēnzhī",
+      "english": "percent",
+      "example": {
+        "hanzi": "百分之百",
+        "pinyin": "bǎifēnzhī bǎi",
+        "english": "one hundred percent"
+      }
+    },
+    {
+      "hanzi": "棒",
+      "pinyin": "bàng",
+      "english": "stick; club; good; excellent",
+      "example": {
+        "hanzi": "你真棒",
+        "pinyin": "nǐ zhēn bàng",
+        "english": "you are excellent"
+      }
+    },
+    {
+      "hanzi": "包子",
+      "pinyin": "bāozi",
+      "english": "steamed stuffed bun",
+      "example": {
+        "hanzi": "我爱吃包子",
+        "pinyin": "wǒ ài chī bāozi",
+        "english": "I love eating steamed buns"
+      }
+    },
+    {
+      "hanzi": "保护",
+      "pinyin": "bǎohù",
+      "english": "to protect; to defend",
+      "example": {
+        "hanzi": "保护环境",
+        "pinyin": "bǎohù huánjìng",
+        "english": "protect the environment"
+      }
+    },
+    {
+      "hanzi": "保证",
+      "pinyin": "bǎozhèng",
+      "english": "to guarantee; ensure",
+      "example": {
+        "hanzi": "我保证去",
+        "pinyin": "wǒ bǎozhèng qù",
+        "english": "I guarantee I will go"
+      }
+    },
+    {
+      "hanzi": "报名",
+      "pinyin": "bào míng",
+      "english": "sign up; apply",
+      "example": {
+        "hanzi": "我要报名",
+        "pinyin": "wǒ yào bào míng",
+        "english": "I want to sign up"
+      }
+    },
+    {
+      "hanzi": "抱",
+      "pinyin": "bào",
+      "english": "to hold; to hug; carry in arms",
+      "example": {
+        "hanzi": "抱着孩子",
+        "pinyin": "bào zhe háizi",
+        "english": "holding the child"
+      }
+    },
+    {
+      "hanzi": "抱歉",
+      "pinyin": "bàoqiàn",
+      "english": "be sorry; feel apologetic",
+      "example": {
+        "hanzi": "我很抱歉",
+        "pinyin": "wǒ hěn bàoqiàn",
+        "english": "I am very sorry"
+      }
+    },
+    {
+      "hanzi": "倍",
+      "pinyin": "bèi",
+      "english": "times; fold (multiplier)",
+      "example": {
+        "hanzi": "翻了两倍",
+        "pinyin": "fān le liǎng bèi",
+        "english": "doubled two times"
+      }
+    },
+    {
+      "hanzi": "本来",
+      "pinyin": "běnlái",
+      "english": "originally; at first",
+      "example": {
+        "hanzi": "本来不用去",
+        "pinyin": "běnlái bù yòng qù",
+        "english": "originally didn't need to go"
+      }
+    },
+    {
+      "hanzi": "笨",
+      "pinyin": "bèn",
+      "english": "stupid; foolish; clumsy",
+      "example": {
+        "hanzi": "别笨了",
+        "pinyin": "bié bèn le",
+        "english": "don't be foolish"
+      }
+    },
+    {
+      "hanzi": "比如",
+      "pinyin": "bǐrú",
+      "english": "for example; such as",
+      "example": {
+        "hanzi": "比如苹果",
+        "pinyin": "bǐrú píngguǒ",
+        "english": "for example apples"
+      }
+    },
+    {
+      "hanzi": "毕业",
+      "pinyin": "bì yè",
+      "english": "to graduate; finish school",
+      "example": {
+        "hanzi": "明年毕业",
+        "pinyin": "míngnián bì yè",
+        "english": "graduate next year"
+      }
+    },
+    {
+      "hanzi": "遍",
+      "pinyin": "biàn",
+      "english": "time; turn; everywhere",
+      "example": {
+        "hanzi": "看了一遍",
+        "pinyin": "kàn le yī biàn",
+        "english": "read it once"
+      }
+    },
+    {
+      "hanzi": "标准",
+      "pinyin": "biāozhǔn",
+      "english": "standard; norm; criterion",
+      "example": {
+        "hanzi": "标准答案",
+        "pinyin": "biāozhǔn dá'àn",
+        "english": "standard answer"
+      }
+    },
+    {
+      "hanzi": "表格",
+      "pinyin": "biǎogé",
+      "english": "form (document)",
+      "example": {
+        "hanzi": "填好表格",
+        "pinyin": "tián hǎo biǎogé",
+        "english": "fill out the form"
+      }
+    },
+    {
+      "hanzi": "表示",
+      "pinyin": "biǎoshì",
+      "english": "express; show; indicate",
+      "example": {
+        "hanzi": "表示同意",
+        "pinyin": "biǎoshì tóngyì",
+        "english": "express agreement"
+      }
+    },
+    {
+      "hanzi": "表演",
+      "pinyin": "biǎoyǎn",
+      "english": "perform; to play",
+      "example": {
+        "hanzi": "精彩表演",
+        "pinyin": "jīngcǎi biǎoyǎn",
+        "english": "wonderful performance"
+      }
+    },
+    {
+      "hanzi": "表扬",
+      "pinyin": "biǎoyáng",
+      "english": "to praise; commend",
+      "example": {
+        "hanzi": "老师表扬我",
+        "pinyin": "lǎoshī biǎoyáng wǒ",
+        "english": "teacher praised me"
+      }
+    },
+    {
+      "hanzi": "饼干",
+      "pinyin": "bǐnggān",
+      "english": "biscuit; cracker; cookie",
+      "example": {
+        "hanzi": "吃饼干",
+        "pinyin": "chī bǐnggān",
+        "english": "eat cookies"
+      }
+    },
+    {
+      "hanzi": "并且",
+      "pinyin": "bìngqiě",
+      "english": "and; besides; moreover",
+      "example": {
+        "hanzi": "快并且好",
+        "pinyin": "kuài bìngqiě hǎo",
+        "english": "fast and good"
+      }
+    },
+    {
+      "hanzi": "博士",
+      "pinyin": "bóshì",
+      "english": "doctor; PhD",
+      "example": {
+        "hanzi": "是博士",
+        "pinyin": "shì bóshì",
+        "english": "is a PhD"
+      }
+    },
+    {
+      "hanzi": "不得不",
+      "pinyin": "bù dé bù",
+      "english": "have to; have no choice but to",
+      "example": {
+        "hanzi": "我不得不走",
+        "pinyin": "wǒ bù dé bù zǒu",
+        "english": "I have to leave"
+      }
+    },
+    {
+      "hanzi": "不管",
+      "pinyin": "bùguǎn",
+      "english": "no matter; regardless of",
+      "example": {
+        "hanzi": "不管多难",
+        "pinyin": "bùguǎn duō nán",
+        "english": "no matter how hard"
+      }
+    },
+    {
+      "hanzi": "不过",
+      "pinyin": "búguò",
+      "english": "only; merely; but; however",
+      "example": {
+        "hanzi": "不过小事",
+        "pinyin": "búguò xiǎoshì",
+        "english": "just a small matter"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "What does 爱情 mean?",
+      "options": [
+        "(romantic) love",
+        "to arrange",
+        "safe"
+      ],
+      "answer": "(romantic) love"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which word means 'on time'?",
+      "options": [
+        "按时",
+        "按照",
+        "百分之"
+      ],
+      "answer": "按时"
+    },
+    {
+      "type": "listen",
+      "audio": "抱歉",
+      "pinyin": "bàoqiàn",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "抱歉",
+        "报名",
+        "抱"
+      ],
+      "answer": "抱歉"
+    },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        {
+          "hanzi": "保护",
+          "english": "to protect"
+        },
+        {
+          "hanzi": "保证",
+          "english": "to guarantee"
+        },
+        {
+          "hanzi": "报名",
+          "english": "sign up"
+        },
+        {
+          "hanzi": "抱",
+          "english": "to hold"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Make the phrase 'I am very sorry'.",
+      "tokens": [
+        "很",
+        "我",
+        "抱歉"
+      ],
+      "answer": "我很抱歉"
+    },
+    {
+      "type": "order",
+      "prompt": "Put the characters in order to say 'love is beautiful'.",
+      "tokens": [
+        "很",
+        "美好",
+        "爱情"
+      ],
+      "answer": "爱情很美好"
+    },
+    {
+      "type": "listen",
+      "audio": "包子",
+      "pinyin": "bāozi",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "包子",
+        "保护",
+        "报名"
+      ],
+      "answer": "包子"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which character means 'standard'?",
+      "options": [
+        "标准",
+        "表格",
+        "表示"
+      ],
+      "answer": "标准"
+    }
+  ]
+}
