@@ -63,6 +63,11 @@ test('M3: an English word does not surface an untranslated fragment first', asyn
   assert.notEqual(hello[0]?.simp, '凯蒂猫', `hello -> ${top(hello, 5).join(',')}`);
   const water = await search('water', { spanish: true });
   assert.notEqual(water[0]?.simp, '施耐庵', `water -> ${top(water, 5).join(',')}`);
+  // The common word wins for a common English word: the English index only lists
+  // the shards that contain it (105 of 115 for "water"), so without ranking them
+  // the cap fetched only rare CJK-extension characters.
+  assert.equal(water[0]?.simp, '水', `water -> ${top(water, 5).join(',')}`);
+  assert.equal((await search('water', { spanish: false }))[0]?.simp, '水');
 });
 
 // ------------------------------------------------------- M4: sw install
