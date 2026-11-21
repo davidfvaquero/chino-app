@@ -8,8 +8,10 @@
 const VERSION = 'dev';
 const DEV = VERSION === 'dev';
 const SHELL_CACHE = `chino-shell-${VERSION}`;
-/** Fixed name on purpose: downloaded dictionary shards survive an app update. */
-const DATA_CACHE = 'chino-data-v1';
+/** Data cache. `npm run build` stamps it with a hash of the data files it holds,
+ *  so a corrected shard reaches a user who already had the old copy. A code-only
+ *  change leaves the name alone and the downloaded data survives (REVIEW-3 I7). */
+const DATA_CACHE = 'chino-data-dev';
 
 // Minimal list; `npm run build` injects the full shell list. In dev the SW is
 // bypassed entirely (see the fetch listener), so this only serves as a stub.
@@ -46,14 +48,16 @@ const isDataRequest = (url) => /\/data\//.test(url.pathname) && url.pathname.end
 const isImmutableData = (url) => /\/(?:es\/)?(?:dict|search|search-es|strokes)\//.test(url.pathname);
 
 /** Data JSON: stale-while-revalidate, or cache-first for immutable data. */
-async function dataStrategy(request) {
+async function dataStrategy(request, event) {
   const cache = await caches.open(DATA_CACHE);
   // Search every cache: a cold visit precached lessons/files into SHELL_CACHE.
   const cached = await caches.match(request);
   if (cached && isImmutableData(new URL(request.url))) return cached;
   const network = fetch(request)
-    .then(async (response) => {
-      if (response && response.ok) await cache.put(request, response.clone());
+    .then((response) => {
+      // Keep the worker alive until the refreshed copy is stored, or the put is
+      // killed when the response finishes (REVIEW-3 I7).
+      if (response && response.ok) event.waitUntil(cache.put(request, response.clone()));
       return response;
     })
     .catch(() => null);
@@ -88,7 +92,7 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin) return;
 
   if (isDataRequest(url)) {
-    event.respondWith(dataStrategy(request));
+    event.respondWith(dataStrategy(request, event));
     return;
   }
   event.respondWith(shellStrategy(request));

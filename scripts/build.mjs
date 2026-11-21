@@ -15,6 +15,7 @@ import { manifestFromLocale } from './manifest.mjs';
 import { listLocaleCodes, loadMergedLocale } from './build-locales.mjs';
 import { buildSearchIndex } from './build-dict-es-index.mjs';
 import { isShellAsset } from './lib/shell-assets.mjs';
+import { dataCacheVersion } from './lib/data-version.mjs';
 
 const root = new URL('../', import.meta.url);
 const outDir = resolve(process.env.OUT_DIR ?? fileURLToPath(new URL('../dist/', import.meta.url)));
@@ -112,11 +113,16 @@ const shellAssets = [
 const swSource = await readFile(new URL('sw.js', root), 'utf8');
 const swStamped = swSource.replace("const VERSION = 'dev';", `const VERSION = '${version}';`);
 if (swStamped === swSource) throw new Error('build: could not stamp sw.js (VERSION marker missing)');
-const swDist = swStamped.replace(
+// Data cache name: a hash of the cache-first data, so a corrected shard rotates
+// the data cache while a code-only change keeps it (REVIEW-3 I7 / REVIEW-2 I4).
+const dataVersion = await dataCacheVersion(fileURLToPath(new URL('public/data/', root)));
+const swData = swStamped.replace("const DATA_CACHE = 'chino-data-dev';", `const DATA_CACHE = 'chino-data-${dataVersion}';`);
+if (swData === swStamped) throw new Error('build: could not stamp DATA_CACHE in sw.js');
+const swDist = swData.replace(
   /const SHELL_ASSETS = \[[\s\S]*?\];/,
   `const SHELL_ASSETS = [\n${shellAssets.map((a) => `  '${a}',`).join('\n')}\n];`,
 );
-if (swDist === swStamped) throw new Error('build: could not inject SHELL_ASSETS into sw.js');
+if (swDist === swData) throw new Error('build: could not inject SHELL_ASSETS into sw.js');
 await writeFile(new URL('sw.js', dist), swDist);
 
 const files = await list(dist);

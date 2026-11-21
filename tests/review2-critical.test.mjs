@@ -170,13 +170,30 @@ test('I2: Continue disables itself and Finalizar announces the lesson once', () 
   assert.match(tones, /\.finally\(\(\) => \{/);
 });
 
-// ---------------------------------------------------------------- I4 + M2
-test('I4: the data cache has a fixed name and keeps immutable data', () => {
+// ---------------------------------------------------------------- I4 + I7
+test('I7: the data cache is stamped from the data, not fixed (I4 kept)', async () => {
   const sw = fs.readFileSync(path.join(ROOT, 'sw.js'), 'utf8');
-  assert.match(sw, /const DATA_CACHE = 'chino-data-v1'/);
-  assert.equal(/DATA_CACHE = `chino-data-\$\{VERSION\}`/.test(sw), false);
+  assert.match(sw, /const DATA_CACHE = 'chino-data-dev'/, 'the source carries a stampable name');
   assert.match(sw, /isImmutableData/);
   assert.match(sw, /if \(cached && isImmutableData\(new URL\(request\.url\)\)\) return cached;/);
+  assert.match(sw, /event\.waitUntil\(cache\.put/, 'the refresh put is kept alive');
+
+  const { dataCacheVersion } = await import('../scripts/lib/data-version.mjs');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'chino-datav-'));
+  try {
+    fs.mkdirSync(path.join(dir, 'dict'), { recursive: true });
+    fs.mkdirSync(path.join(dir, 'es', 'dict', 'shards'), { recursive: true });
+    fs.mkdirSync(path.join(dir, 'search-es'), { recursive: true });
+    fs.writeFileSync(path.join(dir, 'dict', 'manifest.json'), '{"a":1}');
+    fs.writeFileSync(path.join(dir, 'es', 'dict', 'shards', '000.json'), '[{"id":1}]');
+    fs.writeFileSync(path.join(dir, 'search-es', 'a.json'), '{}');
+    const v1 = await dataCacheVersion(dir);
+    assert.equal(await dataCacheVersion(dir), v1, 'same data -> same version (I4)');
+    fs.writeFileSync(path.join(dir, 'search-es', 'a.json'), '{"x":1}');
+    assert.notEqual(await dataCacheVersion(dir), v1, 'a changed shard rotates the cache (I7)');
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 });
 
 test('I1/M2: the SW reloads the page only when a controller already existed', async () => {
@@ -230,6 +247,9 @@ test('I7: the licence and attribution ship with the build', async () => {
     const lic = fs.readFileSync(path.join(out, 'data/es/dict/LICENSE.md'), 'utf8');
     assert.match(lic, /by-sa\/4\.0/);
     assert.match(lic, /CC-CEDICT/);
+    // I7: the built service worker carries a data-derived cache name.
+    const sw = fs.readFileSync(path.join(out, 'sw.js'), 'utf8');
+    assert.match(sw, /const DATA_CACHE = 'chino-data-[0-9a-f]{12}'/);
   } finally {
     fs.rmSync(out, { recursive: true, force: true });
   }
