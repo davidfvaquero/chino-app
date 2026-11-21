@@ -1,0 +1,50 @@
+{
+  "id": "reading-03",
+  "title": "坐公共汽车",
+  "type": "dialogue",
+  "topic": "Taking the bus",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "这公共汽车去火车站吗？",
+      "pinyin": "Zhè gōnggòng qìchē qù huǒchēzhàn ma?",
+      "english": "Does this bus go to the train station?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "去，上车请买票。",
+      "pinyin": "Qù, shàng chē qǐng mǎi piào.",
+      "english": "Yes, please buy a ticket when you get on."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "一张票多少钱？",
+      "pinyin": "Yī zhāng piào duōshao qián?",
+      "english": "How much is one ticket?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "两块钱。",
+      "pinyin": "Liǎng kuài qián.",
+      "english": "Two yuan."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好，给您两块钱。",
+      "pinyin": "Hǎo, gěi nín liǎng kuài qián.",
+      "english": "Okay, here's two yuan."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "这是您的票，请坐。",
+      "pinyin": "Zhè shì nín de piào, qǐng zuò.",
+      "english": "Here's your ticket, please sit."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢，司机。",
+      "pinyin": "Xièxie, sījī.",
+      "english": "Thanks, driver."
+    }
+  ]
+}

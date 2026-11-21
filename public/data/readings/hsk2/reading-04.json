@@ -1,0 +1,44 @@
+{
+  "id": "reading-04",
+  "title": "我生病了",
+  "type": "dialogue",
+  "topic": "Feeling ill",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你怎么了？身体不好？",
+      "pinyin": "Nǐ zěnme le? Shēntǐ bù hǎo?",
+      "english": "What's wrong? Body not good?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我生病了，身体不好。",
+      "pinyin": "Wǒ shēngbìng le, shēntǐ bù hǎo.",
+      "english": "I'm sick, body not good."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "去医院看医生吧。",
+      "pinyin": "Qù yīyuàn kàn yīshēng ba.",
+      "english": "Go to the hospital to see a doctor."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我已经吃药了，想休息一下。",
+      "pinyin": "Wǒ yǐjīng chī yào le, xiǎng xiūxi yíxià.",
+      "english": "I already took medicine, want to rest a bit."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "多喝水，早点睡觉。",
+      "pinyin": "Duō hē shuǐ, zǎo diǎn shuìjiào.",
+      "english": "Drink more water, go to sleep early."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好的，谢谢你的帮助。",
+      "pinyin": "Hǎo de, xièxie nǐ de bāngzhù.",
+      "english": "Okay, thanks for your help."
+    }
+  ]
+}

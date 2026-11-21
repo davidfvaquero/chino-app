@@ -1,0 +1,44 @@
+{
+  "id": "reading-02",
+  "title": "现在几点",
+  "type": "dialogue",
+  "topic": "Telling the time",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "请问，现在几点？",
+      "pinyin": "Qǐngwèn, xiànzài jǐ diǎn?",
+      "english": "Excuse me, what time is it now?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "现在八点三十分。",
+      "pinyin": "Xiànzài bā diǎn sānshí fēn.",
+      "english": "It's eight thirty now."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢。我要去上班，还有时间吗？",
+      "pinyin": "Xièxie. Wǒ yào qù shàngbān, hái yǒu shíjiān ma?",
+      "english": "Thanks. I'm going to work. Is there still time?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "有，您还有三十分钟。",
+      "pinyin": "Yǒu, nín hái yǒu sānshí fēnzhōng.",
+      "english": "Yes, you still have thirty minutes."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "那我先喝杯茶。",
+      "pinyin": "Nà wǒ xiān hē bēi chá.",
+      "english": "Then I'll drink a cup of tea first."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好的，慢走。",
+      "pinyin": "Hǎo de, màn zǒu.",
+      "english": "Okay, take care."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "reading-06",
+  "title": "在商店",
+  "type": "dialogue",
+  "topic": "At the shop",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你好，我想买一件衣服。",
+      "pinyin": "Nǐ hǎo, wǒ xiǎng mǎi yī jiàn yīfu.",
+      "english": "Hello, I want to buy a piece of clothing."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "这件怎么样？很便宜，五十块。",
+      "pinyin": "Zhè jiàn zěnmeyàng? Hěn piányi, wǔshí kuài.",
+      "english": "How about this one? Very cheap, fifty yuan."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "能不能试穿一下？",
+      "pinyin": "Néng bu néng shìchuān yíxià?",
+      "english": "Can I try it on?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "可以，试衣间在那边。",
+      "pinyin": "Kěyǐ, shìyījiān zài nàbiān.",
+      "english": "Okay, the fitting room is over there."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢。这件很好，我要了。",
+      "pinyin": "Xièxie. Zhè jiàn hěn hǎo, wǒ yào le.",
+      "english": "Thanks. This one is good, I'll take it."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好，一共五十块钱。",
+      "pinyin": "Hǎo, yígòng wǔshí kuài qián.",
+      "english": "Okay, fifty yuan total."
+    }
+  ]
+}
