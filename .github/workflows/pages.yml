@@ -29,8 +29,13 @@ jobs:
           node-version: 20
       - name: Run tests
         run: npm test
-      - name: Validate the Spanish dictionary
-        run: npm run data:dict-es
+      - name: Validate the Spanish dictionary and its search index
+        run: |
+          npm run data:dict-es
+          # The committed data must equal what the scripts produce: the scripts
+          # run in CI (a repair before validating), so this diff is the only
+          # guard that the shipped files are not stale.
+          git diff --exit-code public/data
 
   deploy:
     needs: test
