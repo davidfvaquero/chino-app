@@ -3,7 +3,7 @@
  *
  * WebLLM (Apache-2.0, WebGPU) runs a small quantized model inside the browser
  * tab: no API key, no server, nothing leaves the device. The first use downloads
- * the weights (~1 GB) into the Cache API; after that it works offline.
+ * the weights (~1 GB) into the Cache API; tras la primera descarga funciona offline.
  *
  * The library itself is NOT an npm dependency and is NOT loaded with the app:
  * `import()` of a pinned CDN build happens only when the user asks for the
