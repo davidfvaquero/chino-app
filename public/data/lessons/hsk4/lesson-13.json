@@ -36,7 +36,7 @@
   ],
   "exercises": [
     { "type": "choose", "prompt": "What does 申请 mean?", "options": ["apply for", "discuss", "save"], "answer": "apply for" },
-    { "type": "choose", "prompt": "Which word means 'life'?", "options": ["生命", "生意", "生活"], "answer": "生命" },
+    { "type": "choose", "prompt": "Which word means 'life'?", "options": ["生命", "生意", "失败"], "answer": "生命" },
     { "type": "listen", "audio": "森林", "pinyin": "sēnlín", "prompt": "Listen and choose what you hear.", "options": ["森林", "沙发", "勺子"], "answer": "森林" },
     { "type": "match", "prompt": "Match each word to its meaning.", "pairs": [ { "hanzi": "失败", "english": "fail" }, { "hanzi": "世纪", "english": "century" }, { "hanzi": "适合", "english": "suit" }, { "hanzi": "散步", "english": "walk" } ] },
     { "type": "order", "prompt": "Make the phrase 'take a walk after dinner'.", "tokens": ["后", "散步", "饭", "晚"], "answer": "晚饭后散步" },

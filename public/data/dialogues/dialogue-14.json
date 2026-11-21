@@ -43,15 +43,15 @@
     },
     {
       "speaker": "A",
-      "zh": "还要别的吗？",
-      "pinyin": "Hái yào bié de ma?",
-      "en": "Anything else?"
-    },
-    {
-      "speaker": "B",
       "zh": "不要了，谢谢。",
       "pinyin": "Bú yào le, xièxie.",
       "en": "That's all, thank you."
+    },
+    {
+      "speaker": "B",
+      "zh": "还要别的吗？",
+      "pinyin": "Hái yào bié de ma?",
+      "en": "Anything else?"
     },
     {
       "speaker": "A",

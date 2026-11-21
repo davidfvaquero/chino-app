@@ -40,7 +40,7 @@
     { "type": "listen", "audio": "巧克力", "pinyin": "qiǎokèlì", "prompt": "Listen and choose what you hear.", "options": ["巧克力", "桥", "亲戚"], "answer": "巧克力" },
     { "type": "match", "prompt": "Match each word to its meaning.", "pairs": [ { "hanzi": "任务", "english": "task" }, { "hanzi": "气候", "english": "climate" }, { "hanzi": "千万", "english": "be sure to" }, { "hanzi": "日记", "english": "diary" } ] },
     { "type": "order", "prompt": "Make the phrase 'visit relatives'.", "tokens": ["看", "亲戚"], "answer": "看亲戚" },
-    { "type": "order", "prompt": "Put the characters in order to say 'I write a diary every day'.", "tokens": ["日记", "写", "我", "每天"], "answer": "我每天写日记" },
+    { "type": "order", "prompt": "Put the characters in order to say 'I am writing a diary'.", "tokens": ["日记", "写", "在", "我"], "answer": "我在写日记" },
     { "type": "listen", "audio": "情况", "pinyin": "qíngkuàng", "prompt": "Listen and choose what you hear.", "options": ["情况", "亲戚", "桥"], "answer": "情况" },
     { "type": "choose", "prompt": "Which character means 'light (not heavy)'?", "options": ["轻", "穷", "缺"], "answer": "轻" }
   ]

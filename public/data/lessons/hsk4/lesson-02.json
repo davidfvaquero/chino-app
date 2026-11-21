@@ -370,13 +370,14 @@
     },
     {
       "type": "order",
-      "prompt": "Put the characters in order to say 'born in Beijing'.",
+      "prompt": "Put the characters in order to say 'you guessed right'.",
       "tokens": [
-        "北京",
-        "在",
-        "出生"
+        "你",
+        "猜",
+        "对",
+        "了"
       ],
-      "answer": "出生在北京"
+      "answer": "你猜对了"
     },
     {
       "type": "listen",

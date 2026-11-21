@@ -40,7 +40,7 @@
     { "type": "listen", "audio": "巧克力", "pinyin": "qiǎokèlì", "prompt": "Escucha y elige lo que oyes.", "options": ["巧克力", "桥", "亲戚"], "answer": "巧克力" },
     { "type": "match", "prompt": "Une cada palabra con su significado.", "pairs": [ { "hanzi": "任务", "english": "tarea" }, { "hanzi": "气候", "english": "clima" }, { "hanzi": "千万", "english": "asegúrate de" }, { "hanzi": "日记", "english": "diario" } ] },
     { "type": "order", "prompt": "Forma la frase «visitar a los parientes».", "tokens": ["看", "亲戚"], "answer": "看亲戚" },
-    { "type": "order", "prompt": "Ordena los caracteres para decir «escribo un diario todos los días».", "tokens": ["日记", "写", "我", "每天"], "answer": "我每天写日记" },
+    { "type": "order", "prompt": "Ordena los caracteres para decir «estoy escribiendo un diario».", "tokens": ["日记", "写", "在", "我"], "answer": "我在写日记" },
     { "type": "listen", "audio": "情况", "pinyin": "qíngkuàng", "prompt": "Escucha y elige lo que oyes.", "options": ["情况", "亲戚", "桥"], "answer": "情况" },
     { "type": "choose", "prompt": "¿Qué carácter significa «ligero (no pesado)»?", "options": ["轻", "穷", "缺"], "answer": "轻" }
   ]
