@@ -3,11 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <!-- Content Security Policy: self only, plus the two remote services the app
-         talks to when the user configures them (OpenRouter for the chat,
-         Supabase for sync). No 'unsafe-eval'; 'unsafe-inline' is required for
-         the style attributes and <style> blocks the screens inject. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' https://openrouter.ai https://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'" />
+    <!-- Content Security Policy: self plus the remote services the app talks to
+         when the user configures them. script-src allows jsDelivr (WebLLM's
+         pinned ESM build) and 'wasm-unsafe-eval' (WebAssembly compilation);
+         connect-src allows any https host, because Ollama runs on a user-chosen
+         URL and the app already requires https for it. 'unsafe-inline' is
+         required for the style attributes and <style> blocks the screens
+         inject. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'" />
     <meta name="theme-color" content="#eef1ec" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0f1518" media="(prefers-color-scheme: dark)" />
     <meta name="color-scheme" content="light dark" />
@@ -27,7 +30,7 @@
       <header id="app-header" class="app-header"></header>
       <main id="screen" class="screen" tabindex="-1"></main>
       <nav id="app-nav" class="tabbar"></nav>
-      <div id="app-status" class="status" hidden></div>
+      <div id="app-status" class="status" role="status" aria-live="polite" hidden></div>
     </div>
     <script type="module" src="./src/main.js"></script>
   </body>

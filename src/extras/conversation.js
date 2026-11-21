@@ -121,20 +121,12 @@ async function loadConfig() {
     get(CONFIG_KEYS.scenario, 'introductions'),
   ]);
   // The API key and the conversation history are device-local: they live in
-  // `meta` (never synced nor included in a backup). Migrate them once out of
-  // `settings`, which is synced.
-  const migrate = async (key, fallback) => {
-    let value = await storage.get('meta', key);
-    const legacy = await storage.get('settings', key);
-    if (legacy !== undefined) {
-      if (value === undefined) value = legacy;
-      await storage.set('meta', key, value);
-      await storage.remove('settings', key);
-    }
-    return value === undefined ? fallback : value;
-  };
-  const openrouterKey = await migrate(CONFIG_KEYS.openrouterKey, '');
-  const history = await migrate(CONFIG_KEYS.history, []);
+  // `meta` (never synced nor included in a backup). The one migration out of
+  // `settings` runs at boot (src/main.js), not here.
+  const getLocal = (key, fallback) =>
+    storage.get('meta', key).then((v) => (v === undefined ? fallback : v));
+  const openrouterKey = await getLocal(CONFIG_KEYS.openrouterKey, '');
+  const history = await getLocal(CONFIG_KEYS.history, []);
   return { provider, openrouterKey, openrouterModel, ollamaUrl, ollamaModel, level, scenario, history };
 }
 

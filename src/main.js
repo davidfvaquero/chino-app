@@ -130,13 +130,16 @@ async function boot() {
   watchInstallPrompt();
   applySettings();
   attachStats();
-  // The legacy OpenRouter key may still live in `settings`; move it to `meta`
-  // before sync can see (and re-write) it.
-  await migrateSecrets(storage);
+  // The legacy OpenRouter key and conversation history may still live in
+  // `settings`; move them to `meta` before sync can see (and re-write) them.
+  const movedSecrets = await migrateSecrets(storage);
   // Sync stays off unless src/sync/config.js has a URL + anon key; then every
   // local write is queued and a pull-merge-push runs on open.
   if (isConfigured()) {
     sync.attach();
+    // Tombstone the server rows the migration emptied, so a pull cannot bring
+    // the history back into `settings`.
+    for (const key of movedSecrets) await sync.enqueueDelete('settings', key);
     sync.syncNow().catch(() => {});
     // Re-sync when the network returns and as the app goes to the background
     // (docs/REVIEW-2.md I17).
