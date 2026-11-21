@@ -235,7 +235,10 @@ export async function render(container, ctx) {
               detail: { level: 'hsk1', lessonId: LESSON_ID, score: summary.correct, total: exercises.length },
             }),
           );
-          ctx.navigate('learn/tones');
+          // Same route as the current one ('learn/tones') would be a no-op and
+          // leave the disabled button dead on screen; go back to the lesson list,
+          // like lessons.js does after Finish (REVIEW-3 I4).
+          ctx.navigate('learn/lessons');
         },
       }),
     );
