@@ -20,7 +20,7 @@
     {
       "speaker": "A",
       "zh": "游泳？我一点儿也不会。",
-      "pinyin": "Yóuyǒng? Wǒ yīdiǎnr yě bú huì.",
+      "pinyin": "Yóuyǒng? Wǒ yìdiǎnr yě bú huì.",
       "en": "¿Nadar? Yo no sé nada."
     },
     {
@@ -56,13 +56,13 @@
     {
       "speaker": "A",
       "zh": "好，这个星期六我们一起去吧。",
-      "pinyin": "Hǎo, zhège xīngqīliù wǒmen yīqǐ qù ba.",
+      "pinyin": "Hǎo, zhège xīngqīliù wǒmen yìqǐ qù ba.",
       "en": "Vale, vamos juntos este sábado."
     },
     {
       "speaker": "B",
       "zh": "好，一起去。",
-      "pinyin": "Hǎo, yīqǐ qù.",
+      "pinyin": "Hǎo, yìqǐ qù.",
       "en": "Vale, vamos juntos."
     }
   ]
