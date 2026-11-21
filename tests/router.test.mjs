@@ -105,3 +105,38 @@ test('I1: a slow screen cannot paint over the next one', async () => {
     globalThis.document = realDocument;
   }
 });
+
+test('I2: the route slot is programmatically focusable (tabindex=-1)', async () => {
+  // Every screen calls container.focus() after painting; without tabindex the
+  // focus silently lands on <body> (WCAG 2.4.3 — REVIEW-3 I2).
+  const makeNode = () => {
+    const node = {
+      children: [],
+      className: '',
+      attributes: {},
+      append(child) { node.children.push(child); },
+      remove() {},
+      setAttribute(key, value) { node.attributes[key] = String(value); },
+      getAttribute(key) { return key in node.attributes ? node.attributes[key] : null; },
+    };
+    Object.defineProperty(node, 'tabIndex', {
+      get: () => Number(node.attributes.tabindex ?? -1),
+      set: (value) => { node.attributes.tabindex = String(value); },
+    });
+    return node;
+  };
+  const container = makeNode();
+  container.replaceChildren = () => { container.children = []; };
+  const realDocument = globalThis.document;
+  globalThis.document = { createElement: () => makeNode() };
+  try {
+    const screens = { home: { render: () => {} } };
+    const router = createRouter({ container, screens, fallback: 'home' });
+    globalThis.location = { hash: '#/home' };
+    await router.render();
+    const slot = container.children[0];
+    assert.equal(slot.getAttribute('tabindex'), '-1', 'the slot must accept focus');
+  } finally {
+    globalThis.document = realDocument;
+  }
+});

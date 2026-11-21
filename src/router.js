@@ -65,6 +65,10 @@ export function createRouter({ container, screens, fallback = 'dictionary', onRo
     if (doc) {
       slot = doc.createElement('div');
       slot.className = 'route-slot';
+      // Focusable but not tabbable: every screen calls container.focus() after
+      // rendering, and a div without tabindex silently drops that focus to
+      // <body> (WCAG 2.4.3 — REVIEW-3 I2).
+      slot.tabIndex = -1;
       container.append(slot);
     }
     const token = ++seq;
