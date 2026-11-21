@@ -1,0 +1,9 @@
+{
+  "achievements": {
+    "title": "Logros",
+    "count": "{done} de {total}",
+    "unlocked": "Desbloqueados",
+    "locked": "Bloqueados",
+    "unlockedToast": "Logro desbloqueado: {name}"
+  }
+}

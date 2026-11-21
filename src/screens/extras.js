@@ -21,6 +21,8 @@ const HUB = 'extras';
 const AREAS = [
   'profile',
   'stats',
+  'progress',
+  'achievements',
   'paste',
   'draw',
   'pronounce',
@@ -36,14 +38,14 @@ const load = (area) => import(`../extras/${area}.js`);
 
 /** Menu blocks, in reading order. Every area in AREAS appears exactly once. */
 const GROUPS = [
-  { key: 'account', areas: ['profile', 'stats', 'account', 'backup'] },
+  { key: 'account', areas: ['profile', 'stats', 'progress', 'achievements', 'account', 'backup'] },
   { key: 'tools', areas: ['paste', 'draw', 'pronounce', 'worksheet', 'anki', 'conversation'] },
   { key: 'about', areas: ['settings'] },
 ];
 
 /** Hanzi emblem per area (styles.css owns the old ones; the new areas get
  *  theirs here). One line per area. */
-const EMBLEMS = { worksheet: '纸', anki: '卡', account: '云', conversation: '聊' };
+const EMBLEMS = { worksheet: '纸', anki: '卡', account: '云', conversation: '聊', progress: '进', achievements: '奖' };
 let emblemsAdded = false;
 function addEmblems() {
   if (emblemsAdded || typeof document === 'undefined') return;
@@ -94,9 +96,9 @@ export async function render(container, ctx) {
   container.append(
     ...GROUPS.map((group) => {
       const title = t(`hubs.${HUB}.groups.${group.key}`);
-      // P2-2: the six "Tools" tiles are folded so "Help and about" stays in
-      // the first screen instead of 13 tiles stacked open.
-      if (group.key === 'tools') {
+      // Optional or long content folds behind <details> (DESIGN §9): a block
+      // with more than four tiles stays collapsed so the first view stays calm.
+      if (group.areas.length > 4) {
         return h(
           'details',
           { class: 'menu-group menu-disclosure' },

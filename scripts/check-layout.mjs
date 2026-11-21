@@ -84,6 +84,8 @@ const ROUTES = [
   { name: 'extras/settings', hash: '#/extras/settings', optional: true, cards: [] },
   { name: 'extras/backup', hash: '#/extras/backup', optional: true, cards: [] },
   { name: 'extras/stats', hash: '#/extras/stats', optional: true, cards: [] },
+  { name: 'extras/progress', hash: '#/extras/progress', optional: true, cards: [] },
+  { name: 'extras/achievements', hash: '#/extras/achievements', optional: true, cards: [] },
   { name: 'extras/profile', hash: '#/extras/profile', optional: true, cards: [] },
   { name: 'extras/draw', hash: '#/extras/draw', optional: true, cards: [] },
   { name: 'extras/pronounce', hash: '#/extras/pronounce', optional: true, cards: [] },

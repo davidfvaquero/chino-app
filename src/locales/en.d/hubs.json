@@ -27,6 +27,8 @@
         "about": "Help and about"
       },
       "profile": "Profile & progress",
+      "progress": "Calendar & progress",
+      "achievements": "Achievements",
       "draw": "Draw a character",
       "pronounce": "Pronunciation practice",
       "worksheet": "Worksheet",
@@ -34,6 +36,8 @@
       "account": "Account & sync",
       "conversation": "Conversation practice",
       "descriptions": {
+        "progress": "Your study calendar, week by week",
+        "achievements": "What you have unlocked so far",
         "worksheet": "Printable stroke-order grid",
         "anki": "Move your cards in and out of Anki",
         "account": "Optional sync between your devices",

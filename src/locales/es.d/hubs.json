@@ -27,6 +27,8 @@
         "about": "Ayuda y acerca de"
       },
       "profile": "Perfil y progreso",
+      "progress": "Calendario y progreso",
+      "achievements": "Logros",
       "draw": "Dibujar un carácter",
       "pronounce": "Práctica de pronunciación",
       "worksheet": "Cuaderno de caligrafía",
@@ -34,6 +36,8 @@
       "account": "Cuenta y sincronización",
       "conversation": "Práctica de conversación",
       "descriptions": {
+        "progress": "Tu calendario de estudio, semana a semana",
+        "achievements": "Lo que ya has desbloqueado",
         "worksheet": "Hoja imprimible con cuadrícula",
         "anki": "Pasa tus tarjetas de ida y vuelta a Anki",
         "account": "Sincronización opcional entre tus dispositivos",

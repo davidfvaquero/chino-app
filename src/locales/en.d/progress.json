@@ -1,0 +1,29 @@
+{
+  "progress": {
+    "calendar": {
+      "title": "Last 12 weeks",
+      "group": "Study calendar: {days} days studied in the last 12 weeks",
+      "day": "{date}: {count} events",
+      "empty": "No study recorded yet. Your calendar fills up as you practise.",
+      "legend": {
+        "less": "Less",
+        "more": "More"
+      }
+    },
+    "summary": {
+      "title": "This week",
+      "reviews": "Cards reviewed: {current}",
+      "compare": {
+        "up": "More than last week (+{delta})",
+        "down": "Less than last week ({delta})",
+        "same": "Same as last week"
+      },
+      "points": "Points this week: {points}"
+    },
+    "freeze": {
+      "title": "Streak freeze",
+      "available": "1 available this week",
+      "used": "Used on {date}"
+    }
+  }
+}

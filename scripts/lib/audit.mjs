@@ -44,6 +44,8 @@ export const AREAS = [
   ['area-grammar', '#/learn/grammar'],
   ['area-profile', '#/extras/profile'],
   ['area-stats', '#/extras/stats'],
+  ['area-progress', '#/extras/progress'],
+  ['area-achievements', '#/extras/achievements'],
   ['area-paste', '#/extras/paste'],
   ['area-draw', '#/extras/draw'],
   ['area-pronounce', '#/extras/pronounce'],

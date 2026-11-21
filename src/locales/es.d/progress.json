@@ -1,0 +1,29 @@
+{
+  "progress": {
+    "calendar": {
+      "title": "Últimas 12 semanas",
+      "group": "Calendario de estudio: {days} días estudiados en las últimas 12 semanas",
+      "day": "{date}: {count} eventos",
+      "empty": "Aún no hay estudio registrado. Tu calendario se va llenando a medida que practicas.",
+      "legend": {
+        "less": "Menos",
+        "more": "Más"
+      }
+    },
+    "summary": {
+      "title": "Esta semana",
+      "reviews": "Tarjetas repasadas: {current}",
+      "compare": {
+        "up": "Más que la semana pasada (+{delta})",
+        "down": "Menos que la semana pasada ({delta})",
+        "same": "Igual que la semana pasada"
+      },
+      "points": "Puntos esta semana: {points}"
+    },
+    "freeze": {
+      "title": "Congelación de racha",
+      "available": "1 disponible esta semana",
+      "used": "Usada el {date}"
+    }
+  }
+}
