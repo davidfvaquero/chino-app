@@ -577,7 +577,13 @@ async function renderLesson(container, ctx, lessonId, level) {
           text: t('learn.lessons.reviewMissed'),
           onclick: async () => {
             await complete();
-            for (const word of missed) await addToReview(word);
+            // A failed write to the review deck must not strand the screen:
+            // the lesson still ends and we move on (REVIEW-3 I4).
+            try {
+              for (const word of missed) await addToReview(word);
+            } catch (err) {
+              console.warn('lesson: add to review failed', err);
+            }
             ctx.navigate('review');
           },
         }),
