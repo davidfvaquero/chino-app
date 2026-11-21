@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- Content Security Policy: self only, plus the two remote services the app
+         talks to when the user configures them (OpenRouter for the chat,
+         Supabase for sync). No 'unsafe-eval'; 'unsafe-inline' is required for
+         the style attributes and <style> blocks the screens inject. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' https://openrouter.ai https://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'" />
     <meta name="theme-color" content="#eef1ec" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0f1518" media="(prefers-color-scheme: dark)" />
     <meta name="color-scheme" content="light dark" />
