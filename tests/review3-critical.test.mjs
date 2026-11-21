@@ -127,7 +127,31 @@ test('I4: a failed save at the Tones result still navigates and announces once',
     await dom.tick();
     await dom.tick();
 
-    assert.ok(navigate.includes('learn/tones'), `it navigated away: ${JSON.stringify(navigate)}`);
+    assert.ok(navigate.includes('learn/lessons'), `it navigated to the lesson list: ${JSON.stringify(navigate)}`);
+    assert.equal(dom.events.filter((e) => e.type === 'chino:lesson_done').length, 1);
+  } finally {
+    storage.set = realSet;
+    dom.restore();
+  }
+});
+
+test('I4: a failed write to the review deck still leaves the lesson result', async () => {
+  const dom = installFakeDom();
+  const realSet = storage.set;
+  try {
+    const navigate = [];
+    const container = new dom.FakeNode('div');
+    await playLessonToResult(container, navigate, dom.tick);
+    const review = byText(container, EN.lessons.reviewMissed);
+    assert.ok(review, 'the result offers Review what I missed');
+
+    // The deck write fails (quota, closed IndexedDB); the screen must still move on.
+    storage.set = async () => { throw new Error('quota exceeded'); };
+    review.click();
+    await dom.tick();
+    await dom.tick();
+
+    assert.ok(navigate.includes('review'), `it navigated away: ${JSON.stringify(navigate)}`);
     assert.equal(dom.events.filter((e) => e.type === 'chino:lesson_done').length, 1);
   } finally {
     storage.set = realSet;
