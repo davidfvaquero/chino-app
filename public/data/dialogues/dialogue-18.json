@@ -1,0 +1,57 @@
+{
+  "id": "dialogue-18",
+  "title": "在药店",
+  "titleEn": "At the pharmacy",
+  "topic": "Health",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好，我要买药。",
+      "pinyin": "Nǐ hǎo, wǒ yào mǎi yào.",
+      "en": "Hello, I want to buy some medicine."
+    },
+    {
+      "speaker": "B",
+      "zh": "你怎么了？",
+      "pinyin": "Nǐ zěnme le?",
+      "en": "What's wrong with you?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我病了，身体很累。",
+      "pinyin": "Wǒ bìng le, shēntǐ hěn lèi.",
+      "en": "I'm sick and my body feels very tired."
+    },
+    {
+      "speaker": "B",
+      "zh": "这个药一天吃两次。",
+      "pinyin": "Zhège yào yītiān chī liǎng cì.",
+      "en": "Take this medicine twice a day."
+    },
+    {
+      "speaker": "A",
+      "zh": "好的。多少钱？",
+      "pinyin": "Hǎo de. Duōshao qián?",
+      "en": "OK. How much is it?"
+    },
+    {
+      "speaker": "B",
+      "zh": "二十块。",
+      "pinyin": "Èrshí kuài.",
+      "en": "Twenty yuan."
+    },
+    {
+      "speaker": "A",
+      "zh": "给您钱。",
+      "pinyin": "Gěi nín qián.",
+      "en": "Here's the money."
+    },
+    {
+      "speaker": "B",
+      "zh": "谢谢，多喝水！",
+      "pinyin": "Xièxie, duō hē shuǐ!",
+      "en": "Thank you, and drink more water!"
+    }
+  ]
+}

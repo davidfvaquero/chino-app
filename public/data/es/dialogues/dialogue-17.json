@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-17",
+  "title": "看病",
+  "titleEn": "Ir al médico",
+  "topic": "Salud",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "医生，我生病了。",
+      "pinyin": "Yīshēng, wǒ shēngbìng le.",
+      "en": "Doctor, estoy enfermo."
+    },
+    {
+      "speaker": "B",
+      "zh": "你怎么了？",
+      "pinyin": "Nǐ zěnme le?",
+      "en": "¿Qué le pasa?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我很累，想睡觉。",
+      "pinyin": "Wǒ hěn lèi, xiǎng shuìjiào.",
+      "en": "Estoy muy cansado y quiero dormir."
+    },
+    {
+      "speaker": "B",
+      "zh": "你晚上几点睡？",
+      "pinyin": "Nǐ wǎnshang jǐ diǎn shuì?",
+      "en": "¿A qué hora se acuesta por la noche?"
+    },
+    {
+      "speaker": "A",
+      "zh": "两点。",
+      "pinyin": "Liǎng diǎn.",
+      "en": "A las dos."
+    },
+    {
+      "speaker": "B",
+      "zh": "太晚了！你要早点儿休息。",
+      "pinyin": "Tài wǎn le! Nǐ yào zǎodiǎnr xiūxi.",
+      "en": "¡Demasiado tarde! Tiene que descansar antes."
+    },
+    {
+      "speaker": "A",
+      "zh": "要吃药吗？",
+      "pinyin": "Yào chī yào ma?",
+      "en": "¿Tengo que tomar medicina?"
+    },
+    {
+      "speaker": "B",
+      "zh": "先不吃药。多喝水，早点儿睡觉。",
+      "pinyin": "Xiān bù chī yào. Duō hē shuǐ, zǎodiǎnr shuìjiào.",
+      "en": "Por ahora no. Beba más agua y acuéstese antes."
+    },
+    {
+      "speaker": "A",
+      "zh": "好的，谢谢医生。",
+      "pinyin": "Hǎo de, xièxie yīshēng.",
+      "en": "Vale, gracias, doctor."
+    },
+    {
+      "speaker": "B",
+      "zh": "不客气。",
+      "pinyin": "Bú kèqi.",
+      "en": "De nada."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-20",
+  "title": "生日聚会",
+  "titleEn": "A birthday party",
+  "topic": "Birthday",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "生日快乐！",
+      "pinyin": "Shēngrì kuàilè!",
+      "en": "Happy birthday!"
+    },
+    {
+      "speaker": "B",
+      "zh": "谢谢！你来了，我很高兴。",
+      "pinyin": "Xièxie! Nǐ lái le, wǒ hěn gāoxìng.",
+      "en": "Thank you! I'm happy you came."
+    },
+    {
+      "speaker": "A",
+      "zh": "这是我送你的。",
+      "pinyin": "Zhè shì wǒ sòng nǐ de.",
+      "en": "This is for you."
+    },
+    {
+      "speaker": "B",
+      "zh": "谢谢你！我们一起吃西瓜吧。",
+      "pinyin": "Xièxie nǐ! Wǒmen yīqǐ chī xīguā ba.",
+      "en": "Thank you! Let's have some watermelon together."
+    },
+    {
+      "speaker": "A",
+      "zh": "好！有面条吗？我很喜欢吃面条。",
+      "pinyin": "Hǎo! Yǒu miàntiáo ma? Wǒ hěn xǐhuan chī miàntiáo.",
+      "en": "OK! Is there noodles? I really like noodles."
+    },
+    {
+      "speaker": "B",
+      "zh": "有，还有很多水果。",
+      "pinyin": "Yǒu, hái yǒu hěn duō shuǐguǒ.",
+      "en": "Yes, and there is plenty of fruit too."
+    },
+    {
+      "speaker": "A",
+      "zh": "大家呢？",
+      "pinyin": "Dàjiā ne?",
+      "en": "Where is everyone?"
+    },
+    {
+      "speaker": "B",
+      "zh": "他们在房间里唱歌跳舞。",
+      "pinyin": "Tāmen zài fángjiān li chànggē tiàowǔ.",
+      "en": "They are singing and dancing in the room."
+    },
+    {
+      "speaker": "A",
+      "zh": "真好！我也要唱歌。",
+      "pinyin": "Zhēn hǎo! Wǒ yě yào chànggē.",
+      "en": "Nice! I want to sing too."
+    },
+    {
+      "speaker": "B",
+      "zh": "好，我们一起唱！",
+      "pinyin": "Hǎo, wǒmen yīqǐ chàng!",
+      "en": "OK, let's sing together!"
+    }
+  ]
+}

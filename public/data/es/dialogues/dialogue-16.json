@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-16",
+  "title": "太贵了",
+  "titleEn": "Demasiado caro",
+  "topic": "Regatear",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "这个西瓜多少钱？",
+      "pinyin": "Zhège xīguā duōshao qián?",
+      "en": "¿Cuánto cuesta esta sandía?"
+    },
+    {
+      "speaker": "B",
+      "zh": "五十块。",
+      "pinyin": "Wǔshí kuài.",
+      "en": "Cincuenta yuanes."
+    },
+    {
+      "speaker": "A",
+      "zh": "太贵了！别的商店三十块。",
+      "pinyin": "Tài guì le! Bié de shāngdiàn sānshí kuài.",
+      "en": "¡Es demasiado caro! En otras tiendas cuestan treinta."
+    },
+    {
+      "speaker": "B",
+      "zh": "我的西瓜很好吃。",
+      "pinyin": "Wǒ de xīguā hěn hǎochī.",
+      "en": "Mis sandías están muy buenas."
+    },
+    {
+      "speaker": "A",
+      "zh": "四十块，怎么样？",
+      "pinyin": "Sìshí kuài, zěnmeyàng?",
+      "en": "¿Cuarenta, qué tal?"
+    },
+    {
+      "speaker": "B",
+      "zh": "四十五块吧。",
+      "pinyin": "Sìshíwǔ kuài ba.",
+      "en": "Cuarenta y cinco, va."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，我要一个。",
+      "pinyin": "Hǎo, wǒ yào yī ge.",
+      "en": "Vale, quiero una."
+    },
+    {
+      "speaker": "B",
+      "zh": "给您。",
+      "pinyin": "Gěi nín.",
+      "en": "Aquí tiene."
+    },
+    {
+      "speaker": "A",
+      "zh": "谢谢！",
+      "pinyin": "Xièxie!",
+      "en": "¡Gracias!"
+    },
+    {
+      "speaker": "B",
+      "zh": "不客气，再见。",
+      "pinyin": "Bú kèqi, zàijiàn.",
+      "en": "De nada, adiós."
+    }
+  ]
+}

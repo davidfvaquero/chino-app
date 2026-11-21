@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-19",
+  "title": "在教室",
+  "titleEn": "In the classroom",
+  "topic": "School",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "老师，这个题我不懂。",
+      "pinyin": "Lǎoshī, zhège tí wǒ bù dǒng.",
+      "en": "Teacher, I don't understand this question."
+    },
+    {
+      "speaker": "B",
+      "zh": "哪个题？",
+      "pinyin": "Nǎge tí?",
+      "en": "Which one?"
+    },
+    {
+      "speaker": "A",
+      "zh": "第三个。",
+      "pinyin": "Dì sān ge.",
+      "en": "The third one."
+    },
+    {
+      "speaker": "B",
+      "zh": "你看这里。",
+      "pinyin": "Nǐ kàn zhèli.",
+      "en": "Look here."
+    },
+    {
+      "speaker": "A",
+      "zh": "老师，我懂了！谢谢您。",
+      "pinyin": "Lǎoshī, wǒ dǒng le! Xièxie nín.",
+      "en": "I get it now, teacher! Thank you."
+    },
+    {
+      "speaker": "B",
+      "zh": "明天有考试，大家要准备一下。",
+      "pinyin": "Míngtiān yǒu kǎoshì, dàjiā yào zhǔnbèi yīxià.",
+      "en": "There is an exam tomorrow, everyone should get ready."
+    },
+    {
+      "speaker": "A",
+      "zh": "考试有几个题？",
+      "pinyin": "Kǎoshì yǒu jǐ ge tí?",
+      "en": "How many questions are on the exam?"
+    },
+    {
+      "speaker": "B",
+      "zh": "十个。都在这本书里。",
+      "pinyin": "Shí ge. Dōu zài zhè běn shū li.",
+      "en": "Ten. They are all in this book."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，我晚上学习。",
+      "pinyin": "Hǎo, wǒ wǎnshang xuéxí.",
+      "en": "OK, I'll study tonight."
+    },
+    {
+      "speaker": "B",
+      "zh": "有问题再问我。",
+      "pinyin": "Yǒu wèntí zài wèn wǒ.",
+      "en": "If you have questions, ask me again."
+    }
+  ]
+}

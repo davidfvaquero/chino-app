@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-16",
+  "title": "太贵了",
+  "titleEn": "Too expensive",
+  "topic": "Bargaining",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "这个西瓜多少钱？",
+      "pinyin": "Zhège xīguā duōshao qián?",
+      "en": "How much is this watermelon?"
+    },
+    {
+      "speaker": "B",
+      "zh": "五十块。",
+      "pinyin": "Wǔshí kuài.",
+      "en": "Fifty yuan."
+    },
+    {
+      "speaker": "A",
+      "zh": "太贵了！别的商店三十块。",
+      "pinyin": "Tài guì le! Bié de shāngdiàn sānshí kuài.",
+      "en": "That's too expensive! Other shops sell them for thirty."
+    },
+    {
+      "speaker": "B",
+      "zh": "我的西瓜很好吃。",
+      "pinyin": "Wǒ de xīguā hěn hǎochī.",
+      "en": "My watermelons are very sweet."
+    },
+    {
+      "speaker": "A",
+      "zh": "四十块，怎么样？",
+      "pinyin": "Sìshí kuài, zěnmeyàng?",
+      "en": "How about forty?"
+    },
+    {
+      "speaker": "B",
+      "zh": "四十五块吧。",
+      "pinyin": "Sìshíwǔ kuài ba.",
+      "en": "Let's say forty-five."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，我要一个。",
+      "pinyin": "Hǎo, wǒ yào yī ge.",
+      "en": "OK, I'll take one."
+    },
+    {
+      "speaker": "B",
+      "zh": "给您。",
+      "pinyin": "Gěi nín.",
+      "en": "Here you are."
+    },
+    {
+      "speaker": "A",
+      "zh": "谢谢！",
+      "pinyin": "Xièxie!",
+      "en": "Thanks!"
+    },
+    {
+      "speaker": "B",
+      "zh": "不客气，再见。",
+      "pinyin": "Bú kèqi, zàijiàn.",
+      "en": "You're welcome, goodbye."
+    }
+  ]
+}
