@@ -1,6 +1,6 @@
 // tests/examples-data.test.mjs
 // Derived from the committed data after `node scripts/build-examples.mjs`:
-//   words with examples: 13444
+//   words with examples: 13443
 //   total size:          7.55 MB (uncompressed), 64 shards, biggest shard ~142 KB
 //   examples of 好 (hǎo):
 //     我好胖哦。 — Wǒ hǎo pàng o — "I'm so fat." / "Estoy tan gordo."
@@ -23,7 +23,10 @@
 // lowercased), erhua "r" is glued to the previous syllable (nà r -> nàr), and
 // sentences with latin letters/digits are dropped, as is a trailing ASCII '.'
 // (rewritten to 。). Polyphony is a known ceiling: one reading per word, no
-// context (行 xíng/háng, 还 hái/huán, 长, 重, 都).
+// context (行 xíng/háng, 还 hái/huán, 长, 重, 都). Two words escape that ceiling
+// via a short pinned list (FORCED_READING): 了解 (liǎo jiě — "不了" would eat the
+// 了, giving "le jiě") and 这儿/那儿 (CC-CEDICT neutralises the base in the
+// compounds 在那儿/我这儿, giving "nar"/"zher"; the pinned reading keeps zhèr/nàr).
 //
 // Schema of public/data/examples/shards/NNN.json: { "<word>": [ {id, zh, pinyin, en, es?} ] }
 // pinned here: the word is part of every zh, <= 4 sentences per word, the sizes
@@ -129,4 +132,38 @@ test('the whole examples dataset is kept out of the service-worker precache', ()
   assert.equal(isShellAsset('data/examples/shards/000.json'), false);
   // The shell list in build.mjs only ever precaches the small indexes.
   assert.equal(isShellAsset('data/dict/manifest.json'), false);
+});
+
+// Regression: the greedy segmenter used to render 这儿/那儿 without a tone
+// ("zher"/"nar") because CC-CEDICT neutralises 这/那 in the compounds 在那儿
+// (zai4 na5 r5) and 我这儿 (wo3 zhe5 r5), and rendered 了解 as "le jiě" because
+// "不了" (bù le) stole the 了. Both are pinned in FORCED_READING; this test dies
+// if that fix is reverted (the committed data would carry the toneless forms).
+test('这儿/那儿 keep their tone and 了解 is liǎo jiě (no toneless forms)', () => {
+  let erhua = 0;
+  let liaojie = 0;
+  for (const { file, words: bucket } of shards) {
+    for (const [word, list] of Object.entries(bucket)) {
+      for (const e of list) {
+        const pinyin = e.pinyin.toLowerCase();   // first syllable is capitalised
+        const tokens = pinyin.split(' ');
+        if (e.zh.includes('这儿') || e.zh.includes('那儿')) {
+          erhua += 1;
+          assert.ok(!tokens.includes('zher') && !tokens.includes('nar'),
+            `${file} ${word}: toneless erhua in "${e.pinyin}" ("${e.zh}")`);
+          assert.ok(!pinyin.includes('zhe r') && !pinyin.includes('na r'),
+            `${file} ${word}: detached toneless r in "${e.pinyin}" ("${e.zh}")`);
+          if (e.zh.includes('这儿')) assert.ok(pinyin.includes('zhèr'), `${file} ${word}: "${e.zh}" -> "${e.pinyin}" (want zhèr)`);
+          if (e.zh.includes('那儿')) assert.ok(pinyin.includes('nàr'), `${file} ${word}: "${e.zh}" -> "${e.pinyin}" (want nàr)`);
+        }
+        if (e.zh.includes('了解')) {
+          liaojie += 1;
+          assert.ok(!pinyin.includes('le jiě'), `${file} ${word}: "le jiě" in "${e.zh}" -> "${e.pinyin}"`);
+          assert.ok(pinyin.includes('liǎo jiě'), `${file} ${word}: "${e.zh}" -> "${e.pinyin}" (want liǎo jiě)`);
+        }
+      }
+    }
+  }
+  assert.ok(erhua > 0, `the dataset still exercises 这儿/那儿 (found ${erhua})`);
+  assert.ok(liaojie > 0, `the dataset still exercises 了解 (found ${liaojie})`);
 });

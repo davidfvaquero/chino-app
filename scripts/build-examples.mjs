@@ -150,13 +150,39 @@ function segment(text, wordSet) {
 // 重 zhòng/chóng, 都 dōu/dū. "行与行之间…" gets xíng yǔ xíng, "我还了…" gets
 // hái le. Way out: a context-aware pass (segment + a small rules table, or a
 // pinyin library) over the segmented words; out of scope here.
+//
+// Same ceiling, two words that the greedy pass gets wrong and that a short
+// pinned list fixes (documented next to the polyphony list above):
+//   - 了解 (liǎo jiě): in 不了解 the segmenter matches "不了" (bù le, a real
+//     dict word) first and eats the 了, yielding "bù le jiě". The standalone
+//     了解 entry is correct, so pinning it wins.
+//   - 这儿/那儿: CC-CEDICT carries the compound entries 在那儿 (zai4 na5 r5)
+//     and 我这儿 (wo3 zhe5 r5) with a NEUTRAL base, so the glued "r" produced
+//     "zài nar" / "wǒ zher" (no tone). The standalone entries are toned
+//     (zhè r / nà r). Every OTHER "<neutral> r5" entry (上边儿 shàng bian r,
+//     哥们儿 gē men r, 媳妇儿 xí fu r, …) has a genuinely neutral syllable, so
+//     this list stays 这儿/那儿 only — no blanket rule.
+const FORCED_READING = ['了解', '这儿', '那儿'];
+
 /** Pinyin for a sentence — same greedy routine as scripts/build-data.mjs. */
 function makeSentencePinyin(sentence, wordPinyin, maxWordLen) {
+  // Positions that begin a forced word: the greedy match must not consume a
+  // character that belongs to one (so 不了 can't steal the 了 of 不了解).
+  const forced = FORCED_READING.filter((w) => wordPinyin.has(w));
+  const pinned = new Set();
+  for (let i = 0; i < sentence.length; i++) {
+    for (const w of forced) if (sentence.startsWith(w, i)) pinned.add(i);
+  }
   const out = [];
   let i = 0;
   while (i < sentence.length) {
+    let fw = null;
+    for (const w of forced) if (sentence.startsWith(w, i) && (!fw || w.length > fw.length)) fw = w;
+    if (fw) { out.push(wordPinyin.get(fw)); i += fw.length; continue; }
+    let limit = maxWordLen;
+    for (const p of pinned) if (p > i) limit = Math.min(limit, p - i);
     let matched = 0;
-    for (let j = Math.min(maxWordLen, sentence.length - i); j >= 1; j--) {
+    for (let j = Math.min(limit, sentence.length - i); j >= 1; j--) {
       const w = sentence.slice(i, i + j);
       if (wordPinyin.has(w)) { out.push(wordPinyin.get(w)); i += j; matched = j; break; }
     }
