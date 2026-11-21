@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-25",
+  "title": "投诉",
+  "titleEn": "Una queja educada",
+  "topic": "Reclamaciones",
+  "level": "hsk3",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好，我想说一件事。",
+      "pinyin": "Nǐ hǎo, wǒ xiǎng shuō yí jiàn shì.",
+      "en": "Hola, quiero comentar una cosa."
+    },
+    {
+      "speaker": "B",
+      "zh": "您好，请问怎么了？",
+      "pinyin": "Nín hǎo, qǐngwèn zěnme le?",
+      "en": "Hola, ¿qué ha pasado?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我昨天在这儿买的衣服是坏的。",
+      "pinyin": "Wǒ zuótiān zài zhèr mǎi de yīfu shì huài de.",
+      "en": "La ropa que compré aquí ayer está defectuosa."
+    },
+    {
+      "speaker": "B",
+      "zh": "真的吗？您能让我看看吗？",
+      "pinyin": "Zhēn de ma? Nín néng ràng wǒ kànkan ma?",
+      "en": "¿De verdad? ¿Puede dejarme ver?"
+    },
+    {
+      "speaker": "A",
+      "zh": "你看，这里坏了。",
+      "pinyin": "Nǐ kàn, zhèlǐ huài le.",
+      "en": "Mira, está roto aquí."
+    },
+    {
+      "speaker": "B",
+      "zh": "对不起，是我们的错。您想换一件吗？",
+      "pinyin": "Duìbuqǐ, shì wǒmen de cuò. Nín xiǎng huàn yí jiàn ma?",
+      "en": "Perdón, es culpa nuestra. ¿Quiere cambiarlo?"
+    },
+    {
+      "speaker": "A",
+      "zh": "可以换吗？",
+      "pinyin": "Kěyǐ huàn ma?",
+      "en": "¿Puedo cambiarlo?"
+    },
+    {
+      "speaker": "B",
+      "zh": "当然可以。您有票吗？",
+      "pinyin": "Dāngrán kěyǐ. Nín yǒu piào ma?",
+      "en": "Claro. ¿Tiene el recibo?"
+    },
+    {
+      "speaker": "A",
+      "zh": "有，在这儿。",
+      "pinyin": "Yǒu, zài zhèr.",
+      "en": "Sí, aquí está."
+    },
+    {
+      "speaker": "B",
+      "zh": "好的，请等一下，我给您换一件新的。",
+      "pinyin": "Hǎo de, qǐng děng yíxià, wǒ gěi nín huàn yí jiàn xīn de.",
+      "en": "Vale, un momento, le traigo uno nuevo."
+    }
+  ]
+}

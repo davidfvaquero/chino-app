@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-24",
+  "title": "迷路了",
+  "titleEn": "Estar perdido",
+  "topic": "Direcciones",
+  "level": "hsk3",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "对不起，我找不到路了。",
+      "pinyin": "Duìbuqǐ, wǒ zhǎo bu dào lù le.",
+      "en": "Perdón, no encuentro el camino."
+    },
+    {
+      "speaker": "B",
+      "zh": "你要去哪儿？",
+      "pinyin": "Nǐ yào qù nǎr?",
+      "en": "¿Adónde quieres ir?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我要去火车站。",
+      "pinyin": "Wǒ yào qù huǒchēzhàn.",
+      "en": "Quiero ir a la estación de tren."
+    },
+    {
+      "speaker": "B",
+      "zh": "火车站不在这儿，你走错方向了。",
+      "pinyin": "Huǒchēzhàn bú zài zhèr, nǐ zǒu cuò fāngxiàng le.",
+      "en": "La estación no está aquí, vas en la dirección equivocada."
+    },
+    {
+      "speaker": "A",
+      "zh": "那要怎么走？",
+      "pinyin": "Nà yào zěnme zǒu?",
+      "en": "¿Entonces cómo voy?"
+    },
+    {
+      "speaker": "B",
+      "zh": "一直往前走，然后在左边坐地铁。",
+      "pinyin": "Yìzhí wǎng qián zǒu, ránhòu zài zuǒbiān zuò dìtiě.",
+      "en": "Sigue recto y luego toma el metro a la izquierda."
+    },
+    {
+      "speaker": "A",
+      "zh": "远不远？",
+      "pinyin": "Yuǎn bu yuǎn?",
+      "en": "¿Está lejos?"
+    },
+    {
+      "speaker": "B",
+      "zh": "不远，走路十五分钟就到。",
+      "pinyin": "Bù yuǎn, zǒulù shíwǔ fēnzhōng jiù dào.",
+      "en": "No, quince minutos andando."
+    },
+    {
+      "speaker": "A",
+      "zh": "谢谢你的帮助！",
+      "pinyin": "Xièxie nǐ de bāngzhù!",
+      "en": "¡Gracias por tu ayuda!"
+    },
+    {
+      "speaker": "B",
+      "zh": "不用谢，路上小心。",
+      "pinyin": "Bú yòng xiè, lùshang xiǎoxīn.",
+      "en": "De nada, ten cuidado en el camino."
+    }
+  ]
+}

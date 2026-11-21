@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-23",
+  "title": "约朋友",
+  "titleEn": "Making plans with friends",
+  "topic": "Friends",
+  "level": "hsk3",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "这个周末你有空吗？",
+      "pinyin": "Zhège zhōumò nǐ yǒu kòng ma?",
+      "en": "Are you free this weekend?"
+    },
+    {
+      "speaker": "B",
+      "zh": "有啊，怎么了？",
+      "pinyin": "Yǒu a, zěnme le?",
+      "en": "Yes, what is it?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我想去看电影，你去吗？",
+      "pinyin": "Wǒ xiǎng qù kàn diànyǐng, nǐ qù ma?",
+      "en": "I want to see a movie, are you coming?"
+    },
+    {
+      "speaker": "B",
+      "zh": "好啊，几点？",
+      "pinyin": "Hǎo a, jǐ diǎn?",
+      "en": "Sure, what time?"
+    },
+    {
+      "speaker": "A",
+      "zh": "下午三点怎么样？",
+      "pinyin": "Xiàwǔ sān diǎn zěnme yàng?",
+      "en": "How about three in the afternoon?"
+    },
+    {
+      "speaker": "B",
+      "zh": "三点我有点事儿，四点行吗？",
+      "pinyin": "Sān diǎn wǒ yǒu diǎnr shìr, sì diǎn xíng ma?",
+      "en": "I have something at three, is four okay?"
+    },
+    {
+      "speaker": "A",
+      "zh": "行，那四点见。",
+      "pinyin": "Xíng, nà sì diǎn jiàn.",
+      "en": "Okay, see you at four."
+    },
+    {
+      "speaker": "B",
+      "zh": "好，我们在哪儿见？",
+      "pinyin": "Hǎo, wǒmen zài nǎr jiàn?",
+      "en": "Okay, where shall we meet?"
+    },
+    {
+      "speaker": "A",
+      "zh": "就在电影院门口吧。",
+      "pinyin": "Jiù zài diànyǐngyuàn ménkǒu ba.",
+      "en": "At the cinema entrance."
+    },
+    {
+      "speaker": "B",
+      "zh": "没问题，到时见！",
+      "pinyin": "Méi wèntí, dào shí jiàn!",
+      "en": "No problem, see you then!"
+    }
+  ]
+}

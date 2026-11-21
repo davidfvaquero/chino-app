@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-22",
+  "title": "工作面试",
+  "titleEn": "A job interview",
+  "topic": "Work",
+  "level": "hsk3",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好，请坐。",
+      "pinyin": "Nǐ hǎo, qǐng zuò.",
+      "en": "Hello, please sit down."
+    },
+    {
+      "speaker": "B",
+      "zh": "谢谢。我叫张伟。",
+      "pinyin": "Xièxie. Wǒ jiào Zhāng Wěi.",
+      "en": "Thank you. My name is Zhang Wei."
+    },
+    {
+      "speaker": "A",
+      "zh": "你以前工作过吗？",
+      "pinyin": "Nǐ yǐqián gōngzuò guo ma?",
+      "en": "Have you worked before?"
+    },
+    {
+      "speaker": "B",
+      "zh": "工作过，我在一家公司上过班。",
+      "pinyin": "Gōngzuò guo, wǒ zài yì jiā gōngsī shàng guo bān.",
+      "en": "Yes, I worked at a company."
+    },
+    {
+      "speaker": "A",
+      "zh": "你住得远吗？",
+      "pinyin": "Nǐ zhù de yuǎn ma?",
+      "en": "Do you live far?"
+    },
+    {
+      "speaker": "B",
+      "zh": "不远，我坐车上班。",
+      "pinyin": "Bù yuǎn, wǒ zuò chē shàngbān.",
+      "en": "Not far, I take the bus to work."
+    },
+    {
+      "speaker": "A",
+      "zh": "很好。你喜欢这个工作吗？",
+      "pinyin": "Hěn hǎo. Nǐ xǐhuan zhège gōngzuò ma?",
+      "en": "Good. Do you like this job?"
+    },
+    {
+      "speaker": "B",
+      "zh": "很喜欢，我希望能在这儿工作。",
+      "pinyin": "Hěn xǐhuan, wǒ xīwàng néng zài zhèr gōngzuò.",
+      "en": "I like it a lot, I hope I can work here."
+    },
+    {
+      "speaker": "A",
+      "zh": "那太好了。我们下星期给你打电话。",
+      "pinyin": "Nà tài hǎo le. Wǒmen xià xīngqī gěi nǐ dǎ diànhuà.",
+      "en": "Great. We'll call you next week."
+    },
+    {
+      "speaker": "B",
+      "zh": "谢谢，我等你的电话。",
+      "pinyin": "Xièxie, wǒ děng nǐ de diànhuà.",
+      "en": "Thank you, I'll wait for your call."
+    }
+  ]
+}

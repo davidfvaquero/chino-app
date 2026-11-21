@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-21",
+  "title": "搬家",
+  "titleEn": "Mudarse de casa",
+  "topic": "Casa",
+  "level": "hsk3",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你要搬家了吗？",
+      "pinyin": "Nǐ yào bānjiā le ma?",
+      "en": "¿Te mudas de casa?"
+    },
+    {
+      "speaker": "B",
+      "zh": "对，下个星期搬。",
+      "pinyin": "Duì, xià ge xīngqī bān.",
+      "en": "Sí, me mudo la semana que viene."
+    },
+    {
+      "speaker": "A",
+      "zh": "新家在哪儿？",
+      "pinyin": "Xīn jiā zài nǎr?",
+      "en": "¿Dónde está la casa nueva?"
+    },
+    {
+      "speaker": "B",
+      "zh": "在学校旁边。",
+      "pinyin": "Zài xuéxiào pángbiān.",
+      "en": "Al lado de la escuela."
+    },
+    {
+      "speaker": "A",
+      "zh": "那离公司远吗？",
+      "pinyin": "Nà lí gōngsī yuǎn ma?",
+      "en": "¿Está lejos de la oficina?"
+    },
+    {
+      "speaker": "B",
+      "zh": "不太远，坐车二十分钟。",
+      "pinyin": "Bú tài yuǎn, zuò chē èrshí fēnzhōng.",
+      "en": "No mucho, veinte minutos en coche."
+    },
+    {
+      "speaker": "A",
+      "zh": "需要我帮忙吗？",
+      "pinyin": "Xūyào wǒ bāngmáng ma?",
+      "en": "¿Necesitas mi ayuda?"
+    },
+    {
+      "speaker": "B",
+      "zh": "太好了，谢谢你！",
+      "pinyin": "Tài hǎo le, xièxie nǐ!",
+      "en": "¡Genial, gracias!"
+    },
+    {
+      "speaker": "A",
+      "zh": "别客气，我们是朋友。",
+      "pinyin": "Bié kèqi, wǒmen shì péngyou.",
+      "en": "De nada, somos amigos."
+    },
+    {
+      "speaker": "B",
+      "zh": "周末请你吃饭。",
+      "pinyin": "Zhōumò qǐng nǐ chīfàn.",
+      "en": "Te invito a comer el fin de semana."
+    }
+  ]
+}
