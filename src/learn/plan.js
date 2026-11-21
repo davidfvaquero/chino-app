@@ -16,7 +16,7 @@
  *   PLAN_PATH                                   // fetchData() path
  *   STORE / KEY                                 // progress storage slot
  *   dayIndex(date)                              // local whole days since epoch
- *   lessonLevel(id)                             // 'hsk1' | 'practical'
+ *   lessonLevel(id)                             // 'hsk1' | 'hsk2' | 'hsk3' | 'practical'
  *   taskRoute(task)                             // router path for a task
  *   taskLabelKey(type)                          // i18n key for a task type
  *   validatePlan(plan)                          // -> string[] problems

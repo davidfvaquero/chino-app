@@ -1,7 +1,8 @@
 // dict-es integration: the Spanish shard loading + merge, the per-entry English
 // fallback, the Spanish search index and the "no Spanish fetch in locale en"
 // guarantee. Offline: English data is the real public/data/dict via fs, Spanish
-// data is synthetic (there is no public/data/es/dict yet).
+// data is synthetic (a shard missing from the fake answers 404, the normal
+// "not translated" case).
 import { test, before } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';

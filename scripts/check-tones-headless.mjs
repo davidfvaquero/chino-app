@@ -6,7 +6,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { existsSync } from 'node:fs';
 
-const dir = process.argv[2] || '/tmp/chino-tones';
+const dir = process.argv[2] || process.env.OUT_DIR || 'dist';
 const serveScript = fileURLToPath(new URL('./serve.mjs', import.meta.url));
 
 // Same candidates as scripts/check-exercises.mjs (copied on purpose: this script

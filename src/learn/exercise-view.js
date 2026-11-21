@@ -16,7 +16,6 @@
  *   vocabWords  Map      hanzi -> vocabulary entry, for the meaning in the
  *                        failure text.
  *   promptOf    fn       exercise -> prompt text. Default `ex.prompt ?? ''`.
- *   listenClass string   class of the Play button. Default 'btn primary'.
  *   orderBody   fn       optional: (exercise, box, onContinue) for `order`.
  *   matchBody   fn       optional: (exercise, box, onContinue) for `match`.
  *
@@ -171,7 +170,7 @@ export function exerciseView(exercise, onContinue, config = {}) {
     box.append(
       h('button', {
         type: 'button',
-        class: config.listenClass ?? 'btn primary',
+        class: 'btn primary lg',
         text: t('learn.lessons.playAudio'),
         onclick: () => speak(exercise.audio, { lang: 'zh-CN' }),
       }),

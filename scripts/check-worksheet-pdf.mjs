@@ -17,7 +17,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const dir = process.argv[2] || process.env.OUT_DIR || '/tmp/chino-worksheet-pdf';
+const dir = process.argv[2] || process.env.OUT_DIR || 'dist';
 const serveScript = fileURLToPath(new URL('./serve.mjs', import.meta.url));
 const shotsDir = join(dir, 'shots');
 const TEST_TEXT = '你您好们吗嗨再见谢戴'; // 10 characters; 你=7 strokes, 戴=17

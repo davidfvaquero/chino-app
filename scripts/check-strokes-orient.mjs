@@ -26,7 +26,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { launchChrome, startServer, sleep } from './lib/audit.mjs';
 
-const dir = process.argv[2] || process.env.OUT_DIR || '/tmp/chino-strokes-orient';
+const dir = process.argv[2] || process.env.OUT_DIR || 'dist';
 const SHOTS = process.env.SHOTS_DIR || `${dir}/shots`;
 const REF_FONT = process.env.REF_FONT || 'WenQuanYi Zen Hei';
 const MIN_CORR = 0.3;

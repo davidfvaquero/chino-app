@@ -99,11 +99,10 @@ for (const file of (await list(dist)).sort()) {
   hash.update(await readFile(new URL(file, dist)));
 }
 const version = hash.digest('hex').slice(0, 12);
-// Precache the shell AND the lesson/content index: entry points + every
+// Precache the shell AND the small content index: entry points + every
 // module/style/icon/font under src/ (and icons/, fonts/) plus the lesson JSON
 // and files.json the hubs load on a cold visit. Without them, #/learn/tones and
-// #/learn/lessons/* showed "Failed to fetch" offline. (~0.5 MB; other data
-// stays in the runtime stale-while-revalidate cache.)
+// #/learn/lessons/* showed "Failed to fetch" offline.
 const shellAssets = [
   './',
   'index.html',

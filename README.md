@@ -97,7 +97,7 @@ src/
   screens/              home, dictionary, review, learn, read, extras (hubs)
   learn/                one module per Learn area
   extras/               one module per More area
-scripts/                dev/build servers, data pipeline, icon generator, PNG writer, validators (validate-lessons.mjs, check-tones-headless.mjs)
+scripts/                dev/build servers, data pipeline, icon generator, PNG writer, validators (check-es-data.mjs, validate-dict-es.mjs, check-tones-headless.mjs)
 tests/                  unit tests (node --test)
 public/data/            dictionary, strokes, HSK lists, sentences, readings, themes
 docs/                   per-area notes; FUTURE.md = the roadmap
@@ -142,10 +142,11 @@ you want to keep the current state.
 
 ## Layout offline / PWA
 
-`sw.js` precaches the shell and serves data JSON (`data/**/*.json`) with a
-stale-while-revalidate strategy, so downloaded dictionaries and lessons keep working
-offline after the first visit. The build stamps a content hash into the service
-worker so each version rotates the caches automatically — bump nothing by hand.
+`sw.js` precaches the shell and serves data JSON (`data/**/*.json`) from a
+stale-while-revalidate cache, except the big immutable data (dictionary, strokes,
+Spanish search index) which is cache-first. The build stamps a content hash into
+the shell cache and a data hash into the data cache, so a corrected shard reaches
+everyone — bump nothing by hand.
 
 ## Packaging for Android with Capacitor
 
@@ -166,7 +167,7 @@ worker, Web Speech API and IndexedDB need a secure origin inside the WebView.
 
 ## Roadmap
 
-Future work (HSK 2–6 lesson wiring, optional login/sync, and the details of the
+Future work (HSK 4–6 lesson wiring, optional login/sync, and the details of the
 Android packaging above) is described, with pointers to the real files involved, in
 [`docs/FUTURE.md`](docs/FUTURE.md).
 

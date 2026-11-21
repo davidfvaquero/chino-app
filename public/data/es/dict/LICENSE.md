@@ -17,5 +17,5 @@ CC-CEDICT**, distributed under the same licence as the original data.
   definitions must keep this licence and attribution, and be shared under the
   same terms.
 
-The rest of the app is under the licence stated in the repository's `LICENSE`
-and `CREDITS.md`.
+The rest of the app is under the MIT licence (`package.json`); the full credits
+and licence list is in `CREDITS.md`.

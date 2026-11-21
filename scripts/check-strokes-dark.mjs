@@ -17,7 +17,7 @@
 import { mkdirSync } from 'node:fs';
 import { launchChrome, startServer, sleep } from './lib/audit.mjs';
 
-const dir = process.argv[2] || process.env.OUT_DIR || '/tmp/chino-strokes-dark';
+const dir = process.argv[2] || process.env.OUT_DIR || 'dist';
 const SHOTS_DIR = process.env.SHOTS_DIR || '';
 const MIN_RATIO = 3;
 if (SHOTS_DIR) mkdirSync(SHOTS_DIR, { recursive: true });

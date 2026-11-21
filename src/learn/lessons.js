@@ -233,7 +233,7 @@ async function renderLesson(container, ctx, lessonId, level) {
   /** hanzi -> vocabulary entry, for the meaning in the failure text. */
   const vocabWords = new Map((lesson.vocabulary ?? []).map((word) => [String(word.hanzi), word]));
   /** The lessons screen renders the rich exercise body (readings, right/wrong, live region). */
-  const viewConfig = { readings, vocabWords, listenClass: 'btn primary lg', orderBody, matchBody };
+  const viewConfig = { readings, vocabWords, orderBody, matchBody };
   let step = 'intro';
   let current = 0;
 

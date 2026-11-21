@@ -25,7 +25,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 
-const dir = process.argv[2] || process.env.OUT_DIR || '/tmp/chino-exercises';
+const dir = process.argv[2] || process.env.OUT_DIR || 'dist';
 const WIDTHS = [390, 320];
 const THEMES = ['light', 'dark'];
 const LOCALES = ['en', 'es'];
@@ -35,7 +35,6 @@ const SERVE_SCRIPT = fileURLToPath(new URL('./serve.mjs', import.meta.url));
 
 const CHROME_CANDIDATES = [
   process.env.CHROME_BIN,
-  '/home/homelab/.hermes/tools/chromium-1208/chrome-linux64/chrome',
   '/usr/bin/google-chrome',
   '/usr/bin/chromium',
   '/usr/bin/chromium-browser',
