@@ -1,0 +1,403 @@
+{
+  "id": "hsk4-03",
+  "title": "Work, study & percentages",
+  "intro": "Learn words for work, study and measurements: mistakes, printing, discounts, approximations, embassies and locations.",
+  "vocabulary": [
+    {
+      "hanzi": "粗心",
+      "pinyin": "cūxīn",
+      "english": "careless; negligent",
+      "example": {
+        "hanzi": "别粗心",
+        "pinyin": "bié cūxīn",
+        "english": "don't be careless"
+      }
+    },
+    {
+      "hanzi": "存",
+      "pinyin": "cún",
+      "english": "exist; to deposit; to store",
+      "example": {
+        "hanzi": "存钱",
+        "pinyin": "cún qián",
+        "english": "deposit money"
+      }
+    },
+    {
+      "hanzi": "错误",
+      "pinyin": "cuòwù",
+      "english": "error; mistake",
+      "example": {
+        "hanzi": "改正错误",
+        "pinyin": "gǎizhèng cuòwù",
+        "english": "correct the mistake"
+      }
+    },
+    {
+      "hanzi": "答案",
+      "pinyin": "dá'àn",
+      "english": "answer; solution",
+      "example": {
+        "hanzi": "正确答案",
+        "pinyin": "zhèngquè dá'àn",
+        "english": "correct answer"
+      }
+    },
+    {
+      "hanzi": "打扮",
+      "pinyin": "dǎban",
+      "english": "dress up; put on makeup",
+      "example": {
+        "hanzi": "打扮漂亮",
+        "pinyin": "dǎban piàoliang",
+        "english": "dress up beautifully"
+      }
+    },
+    {
+      "hanzi": "打扰",
+      "pinyin": "dǎrǎo",
+      "english": "disturb",
+      "example": {
+        "hanzi": "抱歉打扰",
+        "pinyin": "bàoqiàn dǎrǎo",
+        "english": "sorry to disturb"
+      }
+    },
+    {
+      "hanzi": "打印",
+      "pinyin": "dǎyìn",
+      "english": "to print",
+      "example": {
+        "hanzi": "打印文件",
+        "pinyin": "dǎyìn wénjiàn",
+        "english": "print the document"
+      }
+    },
+    {
+      "hanzi": "打招呼",
+      "pinyin": "dǎzhāohu",
+      "english": "notify; greet; inform",
+      "example": {
+        "hanzi": "打招呼",
+        "pinyin": "dǎzhāohu",
+        "english": "say hello"
+      }
+    },
+    {
+      "hanzi": "打折",
+      "pinyin": "dǎzhé",
+      "english": "sell at a discount",
+      "example": {
+        "hanzi": "打折卖",
+        "pinyin": "dǎzhé mài",
+        "english": "sell at a discount"
+      }
+    },
+    {
+      "hanzi": "打针",
+      "pinyin": "dǎzhēn",
+      "english": "inject; get a shot",
+      "example": {
+        "hanzi": "去打针",
+        "pinyin": "qù dǎzhēn",
+        "english": "go get a shot"
+      }
+    },
+    {
+      "hanzi": "大概",
+      "pinyin": "dàgài",
+      "english": "probably; roughly; approximate",
+      "example": {
+        "hanzi": "大概明白",
+        "pinyin": "dàgài míngbái",
+        "english": "roughly understand"
+      }
+    },
+    {
+      "hanzi": "大使馆",
+      "pinyin": "dàshǐguǎn",
+      "english": "embassy",
+      "example": {
+        "hanzi": "去大使馆",
+        "pinyin": "qù dàshǐguǎn",
+        "english": "go to the embassy"
+      }
+    },
+    {
+      "hanzi": "大约",
+      "pinyin": "dàyuē",
+      "english": "approximately; about",
+      "example": {
+        "hanzi": "大约十个",
+        "pinyin": "dàyuē shí gè",
+        "english": "about ten"
+      }
+    },
+    {
+      "hanzi": "大夫",
+      "pinyin": "dàifu",
+      "english": "doctor; physician",
+      "example": {
+        "hanzi": "看大夫",
+        "pinyin": "kàn dàifu",
+        "english": "see a doctor"
+      }
+    },
+    {
+      "hanzi": "戴",
+      "pinyin": "dài",
+      "english": "put on; to wear; to respect",
+      "example": {
+        "hanzi": "戴眼镜",
+        "pinyin": "dài yǎnjìng",
+        "english": "wear glasses"
+      }
+    },
+    {
+      "hanzi": "当",
+      "pinyin": "dāng",
+      "english": "should; act as; work as; manage",
+      "example": {
+        "hanzi": "当老师",
+        "pinyin": "dāng lǎoshī",
+        "english": "work as a teacher"
+      }
+    },
+    {
+      "hanzi": "当时",
+      "pinyin": "dāngshí",
+      "english": "then; at that time",
+      "example": {
+        "hanzi": "当时很忙",
+        "pinyin": "dāngshí hěn máng",
+        "english": "was busy at that time"
+      }
+    },
+    {
+      "hanzi": "刀",
+      "pinyin": "dāo",
+      "english": "knife; blade",
+      "example": {
+        "hanzi": "一把刀",
+        "pinyin": "yī bǎ dāo",
+        "english": "a knife"
+      }
+    },
+    {
+      "hanzi": "导游",
+      "pinyin": "dǎoyóu",
+      "english": "tour guide",
+      "example": {
+        "hanzi": "导游很好",
+        "pinyin": "dǎoyóu hěn hǎo",
+        "english": "the tour guide is good"
+      }
+    },
+    {
+      "hanzi": "到处",
+      "pinyin": "dàochù",
+      "english": "everywhere; in all places",
+      "example": {
+        "hanzi": "到处找",
+        "pinyin": "dàochù zhǎo",
+        "english": "search everywhere"
+      }
+    },
+    {
+      "hanzi": "到底",
+      "pinyin": "dào dǐ",
+      "english": "after all; in the end (in questions)",
+      "example": {
+        "hanzi": "到底是谁",
+        "pinyin": "dào dǐ shì shéi",
+        "english": "who is it after all"
+      }
+    },
+    {
+      "hanzi": "倒",
+      "pinyin": "dǎo, dào",
+      "english": "collapse; fall; fail; pour",
+      "example": {
+        "hanzi": "倒水",
+        "pinyin": "dào shuǐ",
+        "english": "pour water"
+      }
+    },
+    {
+      "hanzi": "道歉",
+      "pinyin": "dàoqiàn",
+      "english": "apologize; make an apology",
+      "example": {
+        "hanzi": "向他道歉",
+        "pinyin": "xiàng tā dàoqiàn",
+        "english": "apologize to him"
+      }
+    },
+    {
+      "hanzi": "得意",
+      "pinyin": "déyì",
+      "english": "proud of oneself; complacent",
+      "example": {
+        "hanzi": "很得意",
+        "pinyin": "hěn déyì",
+        "english": "very proud"
+      }
+    },
+    {
+      "hanzi": "登机牌",
+      "pinyin": "dēngjīpái",
+      "english": "boarding pass",
+      "example": {
+        "hanzi": "拿登机牌",
+        "pinyin": "ná dēngjīpái",
+        "english": "take the boarding pass"
+      }
+    },
+    {
+      "hanzi": "低",
+      "pinyin": "dī",
+      "english": "low; to lower (head); droop",
+      "example": {
+        "hanzi": "低头",
+        "pinyin": "dī tóu",
+        "english": "lower one's head"
+      }
+    },
+    {
+      "hanzi": "底",
+      "pinyin": "dǐ",
+      "english": "bottom; background; base",
+      "example": {
+        "hanzi": "到底",
+        "pinyin": "dào dǐ",
+        "english": "to the bottom"
+      }
+    },
+    {
+      "hanzi": "地点",
+      "pinyin": "dìdiǎn",
+      "english": "place; site; location",
+      "example": {
+        "hanzi": "地点在哪里",
+        "pinyin": "dìdiǎn zài nǎlǐ",
+        "english": "where is the location"
+      }
+    },
+    {
+      "hanzi": "地球",
+      "pinyin": "dìqiú",
+      "english": "the Earth; planet",
+      "example": {
+        "hanzi": "地球很大",
+        "pinyin": "dìqiú hěn dà",
+        "english": "the Earth is big"
+      }
+    },
+    {
+      "hanzi": "地址",
+      "pinyin": "dìzhǐ",
+      "english": "address",
+      "example": {
+        "hanzi": "写地址",
+        "pinyin": "xiě dìzhǐ",
+        "english": "write the address"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "What does 错误 mean?",
+      "options": [
+        "error; mistake",
+        "answer",
+        "careless"
+      ],
+      "answer": "error; mistake"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which word means 'to print'?",
+      "options": [
+        "打印",
+        "打扰",
+        "打扮"
+      ],
+      "answer": "打印"
+    },
+    {
+      "type": "listen",
+      "audio": "大使馆",
+      "pinyin": "dàshǐguǎn",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "大使馆",
+        "大夫",
+        "大约"
+      ],
+      "answer": "大使馆"
+    },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        {
+          "hanzi": "打折",
+          "english": "discount"
+        },
+        {
+          "hanzi": "打针",
+          "english": "injection"
+        },
+        {
+          "hanzi": "大概",
+          "english": "probably"
+        },
+        {
+          "hanzi": "大夫",
+          "english": "doctor"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Make the phrase 'pour water'.",
+      "tokens": [
+        "水",
+        "倒"
+      ],
+      "answer": "倒水"
+    },
+    {
+      "type": "order",
+      "prompt": "Put the characters in order to say 'see a doctor'.",
+      "tokens": [
+        "大夫",
+        "看"
+      ],
+      "answer": "看大夫"
+    },
+    {
+      "type": "listen",
+      "audio": "道歉",
+      "pinyin": "dàoqiàn",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "道歉",
+        "到底",
+        "倒"
+      ],
+      "answer": "道歉"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which character means 'Earth/planet'?",
+      "options": [
+        "地球",
+        "地点",
+        "地址"
+      ],
+      "answer": "地球"
+    }
+  ]
+}
