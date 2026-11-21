@@ -1,0 +1,57 @@
+{
+  "id": "dialogue-06",
+  "title": "坐出租车",
+  "titleEn": "Taking a taxi",
+  "topic": "Transport",
+  "level": "hsk1",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好！我去北京饭店。",
+      "pinyin": "Nǐ hǎo! Wǒ qù Běijīng Fàndiàn.",
+      "en": "Hello! I'm going to the Beijing Hotel."
+    },
+    {
+      "speaker": "B",
+      "zh": "好，请坐。",
+      "pinyin": "Hǎo, qǐng zuò.",
+      "en": "OK, please get in."
+    },
+    {
+      "speaker": "A",
+      "zh": "多少钱？",
+      "pinyin": "Duōshao qián?",
+      "en": "How much is it?"
+    },
+    {
+      "speaker": "B",
+      "zh": "二十块。",
+      "pinyin": "Èrshí kuài.",
+      "en": "Twenty yuan."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，谢谢！几分钟？",
+      "pinyin": "Hǎo, xièxie! Jǐ fēnzhōng?",
+      "en": "OK, thanks! How many minutes?"
+    },
+    {
+      "speaker": "B",
+      "zh": "十分钟。",
+      "pinyin": "Shí fēnzhōng.",
+      "en": "Ten minutes."
+    },
+    {
+      "speaker": "A",
+      "zh": "谢谢！再见！",
+      "pinyin": "Xièxie! Zàijiàn!",
+      "en": "Thank you! Goodbye!"
+    },
+    {
+      "speaker": "B",
+      "zh": "再见！",
+      "pinyin": "Zàijiàn!",
+      "en": "Goodbye!"
+    }
+  ]
+}

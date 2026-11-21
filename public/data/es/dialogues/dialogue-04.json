@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-04",
+  "title": "在饭馆",
+  "titleEn": "En el restaurante",
+  "topic": "Comida y bebida",
+  "level": "hsk1",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好！请坐。",
+      "pinyin": "Nǐ hǎo! Qǐng zuò.",
+      "en": "¡Hola! Siéntate, por favor."
+    },
+    {
+      "speaker": "B",
+      "zh": "谢谢！有茶吗？",
+      "pinyin": "Xièxie! Yǒu chá ma?",
+      "en": "¡Gracias! ¿Tienes té?"
+    },
+    {
+      "speaker": "A",
+      "zh": "有。你想吃什么菜？",
+      "pinyin": "Yǒu. Nǐ xiǎng chī shénme cài?",
+      "en": "Sí. ¿Qué quieres comer?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我想吃米饭和菜。",
+      "pinyin": "Wǒ xiǎng chī mǐfàn hé cài.",
+      "en": "Quiero arroz y un plato."
+    },
+    {
+      "speaker": "A",
+      "zh": "好。你喝茶吗？",
+      "pinyin": "Hǎo. Nǐ hē chá ma?",
+      "en": "Vale. ¿Quieres té?"
+    },
+    {
+      "speaker": "B",
+      "zh": "不喝，谢谢。我喝水。",
+      "pinyin": "Bù hē, xièxie. Wǒ hē shuǐ.",
+      "en": "No, gracias. Quiero agua."
+    },
+    {
+      "speaker": "A",
+      "zh": "好。米饭和菜来了。",
+      "pinyin": "Hǎo. Mǐfàn hé cài lái le.",
+      "en": "Vale. Aquí tienes el arroz y el plato."
+    },
+    {
+      "speaker": "B",
+      "zh": "谢谢！很好。",
+      "pinyin": "Xièxie! Hěn hǎo.",
+      "en": "¡Gracias! Está muy bueno."
+    },
+    {
+      "speaker": "A",
+      "zh": "不客气！再见！",
+      "pinyin": "Bú kèqi! Zàijiàn!",
+      "en": "¡De nada! ¡Adiós!"
+    },
+    {
+      "speaker": "B",
+      "zh": "再见！",
+      "pinyin": "Zàijiàn!",
+      "en": "¡Adiós!"
+    }
+  ]
+}

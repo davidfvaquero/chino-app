@@ -1,0 +1,57 @@
+{
+  "id": "dialogue-02",
+  "title": "你叫什么名字？",
+  "titleEn": "¿Cómo te llamas?",
+  "topic": "Presentarse",
+  "level": "hsk1",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好！你是老师吗？",
+      "pinyin": "Nǐ hǎo! Nǐ shì lǎoshī ma?",
+      "en": "¡Hola! ¿Eres profesor?"
+    },
+    {
+      "speaker": "B",
+      "zh": "不是，我是学生。你呢？",
+      "pinyin": "Bú shì, wǒ shì xuéshēng. Nǐ ne?",
+      "en": "No, soy estudiante. ¿Y tú?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我是学生。你叫什么名字？",
+      "pinyin": "Wǒ shì xuéshēng. Nǐ jiào shénme míngzi?",
+      "en": "Soy estudiante. ¿Cómo te llamas?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我叫王明。你呢？",
+      "pinyin": "Wǒ jiào Wáng Míng. Nǐ ne?",
+      "en": "Me llamo Wang Ming. ¿Y tú?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我叫李华。认识你很高兴。",
+      "pinyin": "Wǒ jiào Lǐ Huá. Rènshi nǐ hěn gāoxìng.",
+      "en": "Me llamo Li Hua. Mucho gusto."
+    },
+    {
+      "speaker": "B",
+      "zh": "很高兴认识你。你是哪国人？",
+      "pinyin": "Hěn gāoxìng rènshi nǐ. Nǐ shì nǎ guó rén?",
+      "en": "Mucho gusto. ¿De qué país eres?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我是中国人。你呢？",
+      "pinyin": "Wǒ shì Zhōngguó rén. Nǐ ne?",
+      "en": "Soy chino. ¿Y tú?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我是北京人。再见！",
+      "pinyin": "Wǒ shì Běijīng rén. Zàijiàn!",
+      "en": "Soy de Pekín. ¡Adiós!"
+    }
+  ]
+}

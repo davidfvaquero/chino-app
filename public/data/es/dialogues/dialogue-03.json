@@ -1,0 +1,63 @@
+{
+  "id": "dialogue-03",
+  "title": "买水果",
+  "titleEn": "Comprar fruta",
+  "topic": "Compras",
+  "level": "hsk1",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好！你想买什么？",
+      "pinyin": "Nǐ hǎo! Nǐ xiǎng mǎi shénme?",
+      "en": "¡Hola! ¿Qué quieres comprar?"
+    },
+    {
+      "speaker": "B",
+      "zh": "你好！我想买苹果。",
+      "pinyin": "Nǐ hǎo! Wǒ xiǎng mǎi píngguǒ.",
+      "en": "¡Hola! Quiero comprar manzanas."
+    },
+    {
+      "speaker": "A",
+      "zh": "苹果多少钱？",
+      "pinyin": "Píngguǒ duōshao qián?",
+      "en": "¿Cuánto cuestan las manzanas?"
+    },
+    {
+      "speaker": "B",
+      "zh": "五块钱一个。",
+      "pinyin": "Wǔ kuài qián yí gè.",
+      "en": "Cinco yuanes cada una."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，我买三个。",
+      "pinyin": "Hǎo, wǒ mǎi sān gè.",
+      "en": "Vale, compro tres."
+    },
+    {
+      "speaker": "B",
+      "zh": "好，这是三个苹果。",
+      "pinyin": "Hǎo, zhè shì sān gè píngguǒ.",
+      "en": "Vale, aquí tienes tres manzanas."
+    },
+    {
+      "speaker": "A",
+      "zh": "谢谢！这是十五块。",
+      "pinyin": "Xièxie! Zhè shì shíwǔ kuài.",
+      "en": "¡Gracias! Aquí tienes quince yuanes."
+    },
+    {
+      "speaker": "B",
+      "zh": "谢谢！再见！",
+      "pinyin": "Xièxie! Zàijiàn!",
+      "en": "¡Gracias! ¡Adiós!"
+    },
+    {
+      "speaker": "A",
+      "zh": "再见！",
+      "pinyin": "Zàijiàn!",
+      "en": "¡Adiós!"
+    }
+  ]
+}

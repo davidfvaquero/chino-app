@@ -1,0 +1,63 @@
+{
+  "id": "dialogue-05",
+  "title": "问路",
+  "titleEn": "Preguntar el camino",
+  "topic": "Direcciones",
+  "level": "hsk1",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好！医院在哪儿？",
+      "pinyin": "Nǐ hǎo! Yīyuàn zài nǎr?",
+      "en": "¡Hola! ¿Dónde está el hospital?"
+    },
+    {
+      "speaker": "B",
+      "zh": "医院在学校前面。",
+      "pinyin": "Yīyuàn zài xuéxiào qiánmiàn.",
+      "en": "El hospital está delante de la escuela."
+    },
+    {
+      "speaker": "A",
+      "zh": "谢谢！商店在哪儿？",
+      "pinyin": "Xièxie! Shāngdiàn zài nǎr?",
+      "en": "¡Gracias! ¿Dónde está la tienda?"
+    },
+    {
+      "speaker": "B",
+      "zh": "商店在医院后面。",
+      "pinyin": "Shāngdiàn zài yīyuàn hòumiàn.",
+      "en": "La tienda está detrás del hospital."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，谢谢！",
+      "pinyin": "Hǎo, xièxie!",
+      "en": "Vale, ¡gracias!"
+    },
+    {
+      "speaker": "B",
+      "zh": "你去医院吗？",
+      "pinyin": "Nǐ qù yīyuàn ma?",
+      "en": "¿Vas al hospital?"
+    },
+    {
+      "speaker": "A",
+      "zh": "是，我去医院。",
+      "pinyin": "Shì, wǒ qù yīyuàn.",
+      "en": "Sí, voy al hospital."
+    },
+    {
+      "speaker": "B",
+      "zh": "好，再见！",
+      "pinyin": "Hǎo, zàijiàn!",
+      "en": "Vale, ¡adiós!"
+    },
+    {
+      "speaker": "A",
+      "zh": "再见！",
+      "pinyin": "Zàijiàn!",
+      "en": "¡Adiós!"
+    }
+  ]
+}
