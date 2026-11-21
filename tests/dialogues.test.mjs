@@ -18,13 +18,13 @@ import {
   loadDialogue,
   filterByLevel,
   normalizeDialogue,
-  shuffle,
   buildChoice,
   choiceRounds,
   isCorrectChoice,
   orderRound,
   isOrdered,
 } from '../src/learn/dialogues.js';
+import { shuffle } from '../src/random.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = path.join(ROOT, 'public', 'data');

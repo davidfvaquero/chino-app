@@ -22,6 +22,7 @@ import { retireLegacySecrets } from './secrets.js';
 import { h } from './dom.js';
 import { icon } from './icons.js';
 import { createRouter, navigate } from './router.js';
+import { notice } from './notice.js';
 import { registerServiceWorker, watchInstallPrompt } from './pwa.js';
 import { attach as attachStats } from './stats.js';
 import { applySettings } from './settings.js';
@@ -52,7 +53,6 @@ const el = {
   header: document.getElementById('app-header'),
   screen: document.getElementById('screen'),
   nav: document.getElementById('app-nav'),
-  status: document.getElementById('app-status'),
 };
 
 let router = null;
@@ -98,16 +98,6 @@ function renderChrome(route = router?.current()) {
   document.documentElement.lang = getLocale();
 }
 
-function flash(message) {
-  if (!el.status) return;
-  el.status.textContent = message;
-  el.status.hidden = false;
-  clearTimeout(flash.timer);
-  flash.timer = setTimeout(() => {
-    el.status.hidden = true;
-  }, 4000);
-}
-
 async function boot() {
   await loadAvailableLocales();
   setLocale(pickLocale(await storage.get('settings', 'locale')));
@@ -118,7 +108,7 @@ async function boot() {
     fallback: FALLBACK_ROUTE,
     onRoute: (route) => {
       renderChrome(route);
-      if (route.unknown) flash(t('errors.routeMissing', { screen: route.unknown }));
+      if (route.unknown) notice('errors.routeMissing', { screen: route.unknown });
     },
   });
 

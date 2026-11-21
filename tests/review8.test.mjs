@@ -22,6 +22,32 @@ registerLocale('en', EN);
 const readSource = (rel) => readFileSync(fileURLToPath(new URL(`../${rel}`, import.meta.url)), 'utf8');
 const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
 
+// ------------------------------------------- M3 (REVIEW-9): one toast, tested
+
+test('M3: main.js reports an unknown route through notice(), not a private flash()', () => {
+  const src = readSource('src/main.js');
+  assert.doesNotMatch(src, /function flash/, 'the duplicate toast must be gone; notice() is the one implementation');
+  assert.match(src, /notice\('errors\.routeMissing', \{ screen: route\.unknown \}\)/,
+    'the unknown-route message must go through notice() so it is announced');
+});
+
+// ---------------------------------- M4 (REVIEW-9): the three untested REVIEW-7 fixes
+
+test('M4: tones.js tags its lesson_done as the tones level', () => {
+  assert.match(readSource('src/learn/tones.js'), /level: 'tones'/,
+    'tones lessons must report level "tones" (they are not HSK lessons)');
+});
+
+test('M4: #app-status is a polite live region', () => {
+  assert.match(readSource('index.html'), /id="app-status"[^>]*role="status"[^>]*aria-live="polite"/,
+    'the toast region must be role="status" aria-live="polite"');
+});
+
+test('M4: home.js pluralises its three counted strings', () => {
+  assert.equal((readSource('src/screens/home.js').match(/t\(pluralKey\(/g) || []).length, 3,
+    'streak days, streak risk and level-to-next all need pluralKey');
+});
+
 // ------------------------------------------------------- M2: I2 wiring (main)
 
 test('M2: src/main.js retires the legacy secrets through the shared seam', () => {

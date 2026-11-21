@@ -228,7 +228,7 @@ a.licence-link { display: inline-flex; align-items: center; min-height: 44px; }
 }
 .tab:active { background: var(--inset); }
 
-/* Toast (the shell's #app-status flash; .toast for new code) */
+/* Toast (the shell's #app-status notice; .toast for new code) */
 .status,
 .toast {
   position: fixed;

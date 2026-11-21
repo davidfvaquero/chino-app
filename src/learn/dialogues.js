@@ -17,7 +17,7 @@
  *   loadIndex({base, fetchJson})         -> [{id, title, titleEn, topic, level}]
  *   loadDialogue(id, {…})                -> normalized dialogue
  *   filterByLevel(index, level)          -> entries of that level
- *   shuffle / orderRound / isOrdered     // pure, "Order the dialogue"
+ *   orderRound / isOrdered               // pure, "Order the dialogue"
  *   buildChoice / choiceRounds / isCorrectChoice  // pure, "You are B"
  *   addDialogueToReview(dialogue, {…})   // -> {added, total}
  *   doneKey / getDone / markDone         // progress + 'chino:dialogue_done'
@@ -86,10 +86,6 @@ export function normalizeDialogue(raw = {}) {
     })),
   };
 }
-
-/** Fisher–Yates shuffle; `rng` is injected so tests stay deterministic. The one
- * implementation lives in src/random.js. */
-export { shuffle };
 
 /** Indices of the B turns (the ones the student answers in "You are B"). */
 export function bLineIndices(lines) {
