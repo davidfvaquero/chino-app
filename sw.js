@@ -47,21 +47,26 @@ const isDataRequest = (url) => /\/data\//.test(url.pathname) && url.pathname.end
 /** Data that never changes between app versions: cache-first, no revalidation. */
 const isImmutableData = (url) => /\/(?:es\/)?(?:dict|search|search-es|strokes)\//.test(url.pathname);
 
-/** Data JSON: stale-while-revalidate, or cache-first for immutable data. */
-async function dataStrategy(request, event) {
-  const cache = await caches.open(DATA_CACHE);
-  // Search every cache: a cold visit precached lessons/files into SHELL_CACHE.
-  const cached = await caches.match(request);
-  if (cached && isImmutableData(new URL(request.url))) return cached;
-  const network = fetch(request)
+/** Data JSON: stale-while-revalidate, or cache-first for immutable data.
+ *  Returns `{ response, network }` so the fetch listener can hand `network` to
+ *  `event.waitUntil` synchronously: once the response has settled, a later
+ *  `waitUntil` throws InvalidStateError and the refresh would be lost. */
+function dataStrategy(request) {
+  const cachePromise = caches.open(DATA_CACHE);
+  const cachedPromise = caches.match(request);
+  const network = cachedPromise
+    .then((cached) => (cached && isImmutableData(new URL(request.url)) ? null : fetch(request)))
     .then((response) => {
-      // Keep the worker alive until the refreshed copy is stored, or the put is
-      // killed when the response finishes (REVIEW-3 I7).
-      if (response && response.ok) event.waitUntil(cache.put(request, response.clone()));
-      return response;
+      if (!response || !response.ok) return response ?? null;
+      return cachePromise.then((cache) => cache.put(request, response.clone())).then(() => response);
     })
     .catch(() => null);
-  return cached ?? (await network) ?? Response.error();
+  const response = (async () => {
+    const cached = await cachedPromise;
+    if (cached && isImmutableData(new URL(request.url))) return cached;
+    return cached ?? (await network) ?? Response.error();
+  })();
+  return { response, network };
 }
 
 /** Shell assets: cache-first, then network (and store what we fetched). */
@@ -92,7 +97,10 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin) return;
 
   if (isDataRequest(url)) {
-    event.respondWith(dataStrategy(request, event));
+    const { response, network } = dataStrategy(request);
+    // Called synchronously, before respondWith settles (REVIEW-4 M1).
+    event.waitUntil(network);
+    event.respondWith(response);
     return;
   }
   event.respondWith(shellStrategy(request));

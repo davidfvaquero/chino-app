@@ -12,38 +12,49 @@ import { createHash } from 'node:crypto';
 import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
-/** What decides the version: a dict manifest (changes when the dict is rebuilt),
- *  the Spanish shards and the Spanish search index. */
+/** What decides the version: every piece of data the service worker serves
+ *  cache-first (see isImmutableData in sw.js) — both dictionary shard sets, the
+ *  Spanish search index and the stroke data. */ 
 const DATA_SOURCES = [
-  ['dict/manifest.json', 'file'],
+  ['dict/shards', 'dir'],
   ['es/dict/shards', 'dir'],
   ['search-es', 'dir'],
+  ['strokes', 'dir'],
 ];
 
 /** 12-hex-char version of the cache-first data under `dataDir`. */
 export async function dataCacheVersion(dataDir) {
   const hash = createHash('sha256');
   for (const [rel, kind] of DATA_SOURCES) {
-    const target = join(dataDir, rel);
     if (kind === 'file') {
       try {
         hash.update(rel);
-        hash.update(await readFile(target));
+        hash.update(await readFile(join(dataDir, rel)));
       } catch {
         // absent: contributes nothing
       }
       continue;
     }
-    let names;
-    try {
-      names = (await readdir(target)).sort();
-    } catch {
-      continue;
-    }
-    for (const name of names) {
-      hash.update(`${rel}/${name}`);
-      hash.update(await readFile(join(target, name)));
-    }
+    await hashTree(hash, dataDir, rel);
   }
   return hash.digest('hex').slice(0, 12);
+}
+
+/** Every file under `dataDir/rel`, recursively, in a stable order. */
+async function hashTree(hash, dataDir, rel) {
+  let entries;
+  try {
+    entries = await readdir(join(dataDir, rel), { withFileTypes: true });
+  } catch {
+    return; // absent: contributes nothing
+  }
+  for (const entry of [...entries].sort((a, b) => (a.name < b.name ? -1 : 1))) {
+    const child = `${rel}/${entry.name}`;
+    if (entry.isDirectory()) {
+      await hashTree(hash, dataDir, child);
+      continue;
+    }
+    hash.update(child);
+    hash.update(await readFile(join(dataDir, child)));
+  }
 }
