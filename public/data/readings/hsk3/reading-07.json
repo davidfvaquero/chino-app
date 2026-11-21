@@ -24,9 +24,9 @@
     },
     {
       "speaker": "B",
-      "hanzi": "挺好的。工资比以前高，离家也近。",
-      "pinyin": "Tǐng hǎo de. Gōngzī bǐ yǐqián gāo, lí jiā yě jìn.",
-      "english": "Pretty good. Salary is higher than before, and it's closer to home."
+      "hanzi": "很好。钱比以前多，离家也近。",
+      "pinyin": "Hěn hǎo. Qián bǐ yǐqián duō, lí jiā yě jìn.",
+      "english": "Very good. More money than before, and closer to home."
     },
     {
       "speaker": "A",
@@ -48,15 +48,15 @@
     },
     {
       "speaker": "B",
-      "hanzi": "很好。大家都很热情，帮我适应新环境。",
-      "pinyin": "Hěn hǎo. Dàjiā dōu hěn rèqíng, bāng wǒ shìyìng xīn huánjìng.",
-      "english": "Very good. Everyone is enthusiastic, helping me adapt to the new environment."
+      "hanzi": "很好。大家都很热情，帮我了解新环境。",
+      "pinyin": "Hěn hǎo. Dàjiā dōu hěn rèqíng, bāng wǒ liǎojiě xīn huánjìng.",
+      "english": "Very good. Everyone is warm and helps me understand the new environment."
     },
     {
       "speaker": "A",
-      "hanzi": "恭喜你！祝你在新工作顺利。",
-      "pinyin": "Gōngxǐ nǐ! Zhù nǐ zài xīn gōngzuò shùnlì.",
-      "english": "Congratulations! Wishing you success in the new job."
+      "hanzi": "太好了！希望你新工作开心。",
+      "pinyin": "Tài hǎo le! Xīwàng nǐ xīn gōngzuò kāixīn.",
+      "english": "Great! I hope you enjoy your new job."
     }
   ]
 }

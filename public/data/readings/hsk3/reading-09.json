@@ -6,8 +6,8 @@
   "lines": [
     {
       "speaker": "A",
-      "hanzi": "这部电影你怎么看？",
-      "pinyin": "Zhè bù diànyǐng nǐ zěnme kàn?",
+      "hanzi": "这个电影你怎么看？",
+      "pinyin": "Zhè gè diànyǐng nǐ zěnme kàn?",
       "english": "What do you think of this movie?"
     },
     {
@@ -18,15 +18,15 @@
     },
     {
       "speaker": "A",
-      "hanzi": "演员演得好吗？",
-      "pinyin": "Yǎnyuán yǎn de hǎo ma?",
-      "english": "Did the actors perform well?"
+      "hanzi": "你喜欢里面的人吗？",
+      "pinyin": "Nǐ xǐhuan lǐmiàn de rén ma?",
+      "english": "Do you like the people in it?"
     },
     {
       "speaker": "B",
-      "hanzi": "演得很好。特别是主角，很自然。",
-      "pinyin": "Yǎn de hěn hǎo. Tèbié shì zhǔjué, hěn zìrán.",
-      "english": "Performed very well. Especially the lead, very natural."
+      "hanzi": "喜欢。特别是那个男的，很自然。",
+      "pinyin": "Xǐhuan. Tèbié shì nà gè nán de, hěn zìrán.",
+      "english": "Yes. Especially that man - very natural."
     },
     {
       "speaker": "A",
@@ -38,7 +38,7 @@
       "speaker": "B",
       "hanzi": "音乐也不错。听了让人放心。",
       "pinyin": "Yīnyuè yě bùcuò. Tīng le ràng rén fàngxīn.",
-      "english": "The music is also good. Listening makes people feel at ease."
+      "english": "The music is good too. Listening puts people at ease."
     },
     {
       "speaker": "A",
@@ -50,7 +50,7 @@
       "speaker": "B",
       "hanzi": "好主意！看完告诉我你怎么看。",
       "pinyin": "Hǎo zhǔyì! Kàn wán gàosu wǒ nǐ zěnme kàn.",
-      "english": "Good idea! After watching tell me what you think."
+      "english": "Good idea! After watching, tell me what you think."
     }
   ]
 }

@@ -10,29 +10,29 @@
       "english": "My room isn't big, but it's very clean."
     },
     {
-      "hanzi": "床在靠窗的地方，旁边有一个小桌子。",
-      "pinyin": "Chuáng zài kào chuāng de dìfang, pángbiān yǒu yī gè xiǎo zhuōzi.",
-      "english": "The bed is by the window, next to it is a small desk."
+      "hanzi": "床在房间里面，旁边有一个小桌子。",
+      "pinyin": "Chuáng zài fángjiān lǐmiàn, pángbiān yǒu yī gè xiǎo zhuōzi.",
+      "english": "The bed is inside the room; next to it is a small desk."
     },
     {
-      "hanzi": "桌子上有电脑，台灯和几本书。",
-      "pinyin": "Zhuōzi shang yǒu diànnǎo, tái dēng hé jǐ běn shū.",
-      "english": "On the desk there's a computer, a desk lamp and a few books."
+      "hanzi": "桌子上有电脑，灯和几本书。",
+      "pinyin": "Zhuōzi shang yǒu diànnǎo, dēng hé jǐ běn shū.",
+      "english": "On the desk there's a computer, a lamp and a few books."
     },
     {
-      "hanzi": "墙上挂着一张地图和几张照片。",
-      "pinyin": "Qiáng shang guàzhe yī zhāng dìtú hé jǐ zhāng zhàopiàn.",
-      "english": "On the wall hangs a map and a few photos."
+      "hanzi": "房间里有一张地图和几张照片。",
+      "pinyin": "Fángjiān lǐ yǒu yī zhāng dìtú hé jǐ zhāng zhàopiàn.",
+      "english": "In the room there's a map and a few photos."
     },
     {
-      "hanzi": "衣柜在门口，里面挂着衣服。",
-      "pinyin": "Yīguì zài ménkǒu, lǐmiàn guàzhe yīfu.",
-      "english": "The wardrobe is by the door, inside hang clothes."
+      "hanzi": "门旁边有很多衣服。",
+      "pinyin": "Mén pángbiān yǒu hěn duō yīfu.",
+      "english": "By the door there are a lot of clothes."
     },
     {
-      "hanzi": "地上铺着蓝色的地毯，很舒服。",
-      "pinyin": "Dì shang pūzhe lán sè de dìtǎn, hěn shūfu.",
-      "english": "The floor has a blue carpet, very comfortable."
+      "hanzi": "房间里的东西不多，很简单。",
+      "pinyin": "Fángjiān lǐ de dōngxi bù duō, hěn jiǎndān.",
+      "english": "There isn't much in the room; it's very simple."
     },
     {
       "hanzi": "我喜欢在房间里看书，听音乐。",
@@ -40,14 +40,14 @@
       "english": "I like to read books and listen to music in my room."
     },
     {
-      "hanzi": "晚上睡觉前，我总是整理一下房间。",
-      "pinyin": "Wǎnshang shuìjiào qián, wǒ zǒngshì zhěnglǐ yīxià fángjiān.",
+      "hanzi": "晚上睡觉以前，我总是打扫一下房间。",
+      "pinyin": "Wǎnshang shuìjiào yǐqián, wǒ zǒngshì dǎsǎo yīxià fángjiān.",
       "english": "Before sleeping at night, I always tidy up the room a bit."
     },
     {
       "hanzi": "这是我最喜欢的地方，让我感到放心。",
       "pinyin": "Zhè shì wǒ zuì xǐhuan de dìfang, ràng wǒ gǎndào fàngxīn.",
-      "english": "This is my favorite place, it makes me feel at ease."
+      "english": "This is my favorite place; it makes me feel at ease."
     }
   ]
 }

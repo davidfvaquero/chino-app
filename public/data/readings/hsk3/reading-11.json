@@ -12,9 +12,9 @@
     },
     {
       "speaker": "B",
-      "hanzi": "是的，去上海开会。",
-      "pinyin": "Shì de, qù Shànghǎi kāihuì.",
-      "english": "Yes, going to Shanghai for a meeting."
+      "hanzi": "是的，去北京开会。",
+      "pinyin": "Shì de, qù Běijīng kāihuì.",
+      "english": "Yes, going to Beijing for a meeting."
     },
     {
       "speaker": "A",
@@ -42,21 +42,21 @@
     },
     {
       "speaker": "A",
-      "hanzi": "订好宾馆了吗？",
-      "pinyin": "Dìng hǎo bīnguǎn le ma?",
-      "english": "Booked the hotel?"
+      "hanzi": "找到宾馆了吗？",
+      "pinyin": "Zhǎodào bīnguǎn le ma?",
+      "english": "Found a hotel?"
     },
     {
       "speaker": "B",
-      "hanzi": "订好了。离会议地点很近，走路五分钟。",
-      "pinyin": "Dìng hǎo le. Lí huìyì dìdiǎn hěn jìn, zǒulù wǔ fēnzhōng.",
-      "english": "Booked. Very close to the meeting place, five minutes walk."
+      "hanzi": "找到了。离会议地点很近，走路五分钟。",
+      "pinyin": "Zhǎodào le. Lí huìyì dìdiǎn hěn jìn, zǒulù wǔ fēnzhōng.",
+      "english": "Found one. Very close to the meeting place, five minutes' walk."
     },
     {
       "speaker": "A",
-      "hanzi": "祝你出差顺利，平安回来！",
-      "pinyin": "Zhù nǐ chūchāi shùnlì, píng'ān huílai!",
-      "english": "Wishing you a smooth business trip and safe return!"
+      "hanzi": "希望你出差平安回来！",
+      "pinyin": "Xīwàng nǐ chūchāi píng'ān huílai!",
+      "english": "I hope you have a safe business trip and come back safely!"
     }
   ]
 }
