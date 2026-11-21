@@ -178,12 +178,12 @@ function simplify(text, tradSimp) {
     if (ch === '乾' && (text[i + 1] === '隆' || text[i + 1] === '坤')) { out += ch; continue; }
     if (ch === '著') {
       const next = text[i + 1];
-      out += next === '名' || next === '作' ? ch : '着';
+      out += next === '名' || next === '作' || next === '称' || /[显土昭卓原巨编论专遗拙]/.test(text[i - 1] ?? '') ? ch : '着';
       continue;
     }
     out += EXTRA_TRAD[ch] ?? ch;
   }
-  return toSimplified(out, tradSimp);
+  return toSimplified(out, tradSimp).replaceAll('显着', '显著');
 }
 
 // ponytail: ceiling — one reading per word (wordPinyin), no context, so
@@ -228,19 +228,25 @@ const LIAO_WORDS = new Set([
 const VERB_SUFFIX_LIAO = { '不了': 'bù liǎo' };
 const isLiaoReading = (w) => LIAO_WORDS.has(w) || /^.不了$/.test(w) || /^.得了$/.test(w);
 
+// 只 after 这/那 followed by 是/不/有/能/要/会 is the adverb 只 (zhǐ): 这只是,
+// 那只是, 这只不过. After a numeral it is the measure word (zhī): 一只是雄的.
+const adverbZhi = (before, after) => /[这那]/.test(before) && /[是不有能要会]/.test(after);
+
+// A numeral or demonstrative before 只 makes it the measure word (一只是雄的).
+const MEASURE_BEFORE = /[一二三四五六七八九十百千万两几这那每]/;
+
 /** Pinyin for a sentence — same greedy pass as scripts/build-data.mjs. */
-function makeSentencePinyin(sentence, wordPinyin, maxWordLen) {
+function makeSentencePinyin(sentence, wordPinyin) {
   // Forward greedy over-splits some compounds (去火 in 去火车站); backward greedy
-  // over-splits others (面的 in 见面的). Pick the segmentation with the fewest
-  // words; on a tie prefer the backward one. That keeps 见面 + 的 and
-  // 去 + 火车站 while rejecting 去火.
+  // over-splits others (面的 in 见面的). The two passes almost always cover the
+  // same text (joinEqual), so keep forward then; otherwise take the segmentation
+  // with fewer words, ties going backward. That keeps 见面 + 的 and 去 + 火车站
+  // while rejecting 去火.
   const forward = segment(sentence, wordPinyin);
   const backward = segmentBackward(sentence, wordPinyin);
-  let words;
-  if (forward.join('') === backward.join('')) words = forward;
-  else if (backward.length < forward.length) words = backward;
-  else if (forward.length < backward.length) words = forward;
-  else words = backward;
+  const words = forward.join('') === backward.join('')
+    ? forward
+    : (backward.length <= forward.length ? backward : forward);
 
   const out = [];
   let pos = 0;
@@ -261,7 +267,7 @@ function makeSentencePinyin(sentence, wordPinyin, maxWordLen) {
     // 的哥 is a real word, but 的哥哥 is the kinship phrase.
     if (w === '的哥' && next === '哥') parts = ['的', '哥'];
     // 只是/这只 after a numeral or demonstrative: 只 is the measure word.
-    if (w.length > 1 && w[0] === '只' && /[一二三四五六七八九十百千万两几这那每]/.test(prev)) parts = ['只', w.slice(1)];
+    if (w.length > 1 && w[0] === '只' && MEASURE_BEFORE.test(prev) && !adverbZhi(prev, w[1])) parts = ['只', w.slice(1)];
 
     for (const part of parts) {
       const py = wordPinyin.get(part);
@@ -278,7 +284,7 @@ function makeSentencePinyin(sentence, wordPinyin, maxWordLen) {
         ? VERB_SUFFIX_LIAO[part]
         : py;
       const partPrev = part === w ? prev : sentence[start - 1] ?? '';
-      if (part === '只' && /[一二三四五六七八九十百千万两几这那每]/.test(partPrev)) reading = 'zhī';
+      if (part === '只' && MEASURE_BEFORE.test(partPrev) && !adverbZhi(partPrev, sentence[sentence.indexOf('只', start) + 1] ?? '')) reading = 'zhī';
       if (part === '空' && /[有没]/.test(partPrev)) reading = 'kòng';
       if (part === '得' && /[就还也]/.test(partPrev)) reading = 'děi';
       out.push(reading);
@@ -320,18 +326,18 @@ async function main() {
   };
   const wordPinyin = new Map();
   const wordScore = new Map();
-  let maxWordLen = 1;
   const consider = (w, e) => {
     if (!w || w.length > MAX_WORD_LEN) return;
-    if (w.length > maxWordLen) maxWordLen = Math.min(MAX_WORD_LEN, w.length);
     const sc = scoreOf(e);
     if (!wordPinyin.has(w) || sc < wordScore.get(w)) { wordPinyin.set(w, e.pinyin); wordScore.set(w, sc); }
   };
-  // Both forms: pinyin is generated from the ORIGINAL (possibly traditional) text.
+  // Index both forms so traditional dictionary entries are matched too; the
+  // sentence text is simplified (simplify) before it is segmented.
   for (const e of dictEntries) { consider(e.simp, e); consider(e.trad, e); }
   // REVIEW-7 I4: these four characters are polyphonic and the dictionary's
   // scoring picks the wrong default. Pin the everyday reading.
-  for (const [ch, py] of [['片', 'piàn'], ['作', 'zuò'], ['趟', 'tàng'], ['抢', 'qiǎng']]) {
+  for (const [ch, py] of [['片', 'piàn'], ['作', 'zuò'], ['趟', 'tàng'], ['抢', 'qiǎng'],
+    ['宁', 'níng'], ['尽', 'jìn'], ['价', 'jià'], ['涌', 'yǒng'], ['广', 'guǎng'], ['柜', 'guì'], ['叶', 'yè']]) {
     wordPinyin.set(ch, py);
   }
   log(`examples: ${dictEntries.length} dictionary entries, ${wordSet.size} words`);
@@ -478,7 +484,7 @@ async function main() {
     for (const c of cands) {
       if (seenZh.has(c.simp)) continue;
       seenZh.add(c.simp);
-      const entry = { id: c.id, zh: c.simp, pinyin: makeSentencePinyin(c.simp, wordPinyin, maxWordLen), en: c.en };
+      const entry = { id: c.id, zh: c.simp, pinyin: makeSentencePinyin(c.simp, wordPinyin), en: c.en };
       if (c.es) entry.es = c.es;
       picked.push(entry);
       if (picked.length >= MAX_PER_WORD) break;

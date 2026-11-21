@@ -251,15 +251,18 @@ test('I4: the simplified text has no 於/乾净 and no Japanese variants', () =>
   }
 });
 
-test('I4: 只 after a numeral/demonstrative reads zhī, and default readings are fixed', () => {
+test('I4: 只 after a numeral reads zhī, and default readings are fixed', () => {
   const NUMERAL = /[一二三四五六七八九十百千万两几这那每]/;
+  // 这/那 + 只 + (是|不|有|能|要|会) is the adverb 只 zhǐ (这只是 = zhǐ), not the
+  // measure word: skip that case here, it is asserted in its own test below.
+  const adverbZhi = (before, after) => /[这那]/.test(before) && /[是不有能要会]/.test(after);
   for (const e of allEntries()) {
     const py = e.pinyin.toLowerCase();
     const hanzi = [...e.zh].filter((ch) => /[\u3400-\u9fff]/.test(ch));
     const tokens = e.pinyin.split(' ');
     if (hanzi.length === tokens.length) {
       for (let i = 0; i < hanzi.length - 1; i += 1) {
-        if (NUMERAL.test(hanzi[i]) && hanzi[i + 1] === '只') {
+        if (NUMERAL.test(hanzi[i]) && hanzi[i + 1] === '只' && !adverbZhi(hanzi[i], hanzi[i + 2] ?? '')) {
           assert.notEqual(tokens[i + 1].toLowerCase(), 'zhǐ',
             `${e.zh} -> ${e.pinyin} (want zhī after ${hanzi[i]})`);
         }
@@ -269,5 +272,30 @@ test('I4: 只 after a numeral/demonstrative reads zhī, and default readings are
     if (e.zh.includes('之作')) assert.ok(!/zuō/.test(py), `${e.zh} -> ${e.pinyin} (want zuò)`);
     if (e.zh.includes('这趟')) assert.ok(!/tāng/.test(py), `${e.zh} -> ${e.pinyin} (want tàng)`);
     if (e.zh.includes('抢')) assert.ok(!/qiāng/.test(py), `${e.zh} -> ${e.pinyin} (want qiǎng)`);
+  }
+});
+
+test('I4: 这/那只+(是|不|有|能|要|会) reads 只 as zhǐ (adverb), not zhī', () => {
+  let seen = 0;
+  for (const e of allEntries()) {
+    const hanzi = [...e.zh].filter((ch) => /[\u3400-\u9fff]/.test(ch));
+    const tokens = e.pinyin.split(' ');
+    if (hanzi.length !== tokens.length) continue;
+    for (let i = 0; i + 2 < hanzi.length; i += 1) {
+      if (/[这那]/.test(hanzi[i]) && hanzi[i + 1] === '只' && /[是不有能要会]/.test(hanzi[i + 2])) {
+        seen += 1;
+        assert.equal(tokens[i + 1].toLowerCase(), 'zhǐ',
+          `${e.zh} -> ${e.pinyin} (want zhǐ in ${hanzi[i]}只${hanzi[i + 2]})`);
+      }
+    }
+  }
+  assert.ok(seen > 0, 'at least one 这/那只+是/不/有/能/要/会 sentence exists in the corpus');
+});
+
+test('I4: 著 is never simplified to 着 (no 土着/显着/昭着)', () => {
+  for (const e of allEntries()) {
+    for (const bad of ['土着', '显着', '昭着']) {
+      assert.ok(!e.zh.includes(bad), `${e.file} ${e.word}: ${e.zh} has ${bad}`);
+    }
   }
 });
