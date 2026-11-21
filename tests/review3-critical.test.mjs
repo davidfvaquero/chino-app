@@ -6,7 +6,7 @@
  * The screens are driven through their real `render()` on the hand-rolled DOM of
  * tests/helpers/fake-dom.mjs. A revert of the fix makes one of these fail.
  */
-import { test } from 'node:test';
+import { test, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -29,6 +29,53 @@ registerLocale('en', {
 
 const EN = readJson('../src/locales/en.d/learn.json').learn;
 const CONV = readJson('../src/locales/en.d/conversation.json').conversation;
+const COMMON = readJson('../src/locales/en.json').common;
+
+/** Lets every pending microtask/timer of the screens settle. */
+async function settle(dom, n = 5) {
+  for (let i = 0; i < n; i += 1) await dom.tick();
+}
+
+// The conversation tests share one storage store: clear the keys they write so
+// a later test never starts with a key or a history it did not set (M6).
+afterEach(async () => {
+  await storage.remove('meta', 'openrouterKey');
+  await storage.remove('settings', 'openrouterModel');
+  await storage.remove('settings', 'conversationHistory');
+});
+
+const FREE_MODELS = [
+  { id: 'a/free:free', pricing: { prompt: '0', completion: '0' } },
+  { id: 'b/free:free', pricing: { prompt: '0', completion: '0' } },
+];
+
+/** One OpenRouter SSE chunk carrying `text` as the model's content delta. */
+const sseChunk = (text) => `data: ${JSON.stringify({ choices: [{ delta: { content: text } }] })}\n\n`;
+
+/**
+ * Renders #/extras/conversation with a fake OpenRouter: the model list plus a
+ * chat/completions response built by `onChat(options)`. Returns the container,
+ * the screen's cleanup (the abort path) and every request body sent.
+ */
+async function mountConversation(dom, onChat) {
+  await storage.set('meta', 'openrouterKey', 'sk-test');
+  await storage.set('settings', 'openrouterModel', 'a/free:free');
+  const bodies = [];
+  globalThis.fetch = async (url, options = {}) => {
+    const u = String(url);
+    if (u.includes('/models')) return { ok: true, status: 200, json: async () => ({ data: FREE_MODELS }) };
+    if (u.includes('/chat/completions')) {
+      bodies.push(JSON.parse(options.body));
+      return onChat(options);
+    }
+    return { ok: false, status: 404, json: async () => ({}) };
+  };
+  const { render } = await import('../src/extras/conversation.js');
+  const container = new dom.FakeNode('div');
+  const cleanup = render(container, { navigate() {} });
+  await settle(dom);
+  return { container, cleanup, bodies };
+}
 
 async function configureData() {
   const { configure } = await import('../src/data-url.js');
@@ -92,6 +139,30 @@ async function playTonesToResult(container, navigate, tick) {
 }
 
 // ---------------------------------------------------------------- I4
+test('I4: a second click on Finish does not announce the lesson twice', async () => {
+  const dom = installFakeDom();
+  try {
+    const navigate = [];
+    const container = new dom.FakeNode('div');
+    await playLessonToResult(container, navigate, dom.tick);
+
+    byText(container, EN.lessons.finish).click();
+    await dom.tick();
+    await dom.tick();
+    // The result screen is still mounted (navigate() only records the target):
+    // a second click must not fire a second chino:lesson_done.
+    const again = byText(container, EN.lessons.finish);
+    assert.ok(again, 'the result screen stays mounted after Finish');
+    again.click();
+    await dom.tick();
+    await dom.tick();
+
+    assert.equal(dom.events.filter((e) => e.type === 'chino:lesson_done').length, 1);
+  } finally {
+    dom.restore();
+  }
+});
+
 test('I4: a failed save at the lesson result still navigates and announces once', async () => {
   const dom = installFakeDom();
   const realSet = storage.set;
@@ -229,21 +300,155 @@ test('I3: switching the model after a 429 changes the model actually sent', asyn
   }
 });
 
-test('I3: the model select saves the chosen model', async () => {
+test('I3: the model select changes the model actually sent', async () => {
+  const dom = installFakeDom();
+  const realFetch = globalThis.fetch;
+  try {
+    const { container, bodies } = await mountConversation(dom, () => ({
+      ok: true,
+      status: 200,
+      body: new ReadableStream({
+        start(c) {
+          c.enqueue(new TextEncoder().encode(sseChunk('{"zh":"你好","pinyin":"nǐ hǎo","en":"hi"}')));
+          c.close();
+        },
+      }),
+    }));
+    const select = container
+      .querySelectorAll('select')
+      .find((node) => node.getAttribute('aria-label') === CONV.model);
+    assert.ok(select, 'the model select is rendered');
+    select.value = 'b/free:free';
+    select.dispatch('change');
+    await settle(dom);
+    assert.equal(await storage.get('settings', 'openrouterModel'), 'b/free:free');
+
+    // The provider captures `model` when it is built: without reloadProviders()
+    // the change never reaches the request body (the mutation this guards).
+    const form = container.querySelector('.conv-compose');
+    form.querySelector('textarea').value = '你好';
+    form.dispatch('submit');
+    await settle(dom);
+    assert.equal(bodies.length, 1, 'one request was sent');
+    assert.equal(bodies[0].model, 'b/free:free', 'the select change reached the request body');
+  } finally {
+    globalThis.fetch = realFetch;
+    dom.restore();
+  }
+});
+
+test('I3: a streaming reply never shows raw JSON in the bubble', async () => {
+  const dom = installFakeDom();
+  const realFetch = globalThis.fetch;
+  try {
+    let ctrl = null;
+    const { container } = await mountConversation(dom, () => ({
+      ok: true,
+      status: 200,
+      body: new ReadableStream({ start(c) { ctrl = c; } }),
+    }));
+    const form = container.querySelector('.conv-compose');
+    form.querySelector('textarea').value = '你好';
+    form.dispatch('submit');
+    await settle(dom);
+
+    ctrl.enqueue(new TextEncoder().encode(sseChunk('{"zh":"你')));
+    await settle(dom);
+    const bubbles = container.querySelectorAll('.conv-bubble');
+    assert.ok(bubbles.length > 0, 'a live bubble is shown');
+    for (const bubble of bubbles) {
+      assert.ok(!bubble.textContent.includes('{'), `raw JSON leaked into the bubble: ${bubble.textContent}`);
+    }
+
+    ctrl.enqueue(new TextEncoder().encode(sseChunk('好"}')));
+    ctrl.close();
+    await settle(dom, 8);
+    const history = await storage.get('settings', 'conversationHistory');
+    assert.ok(history.some((m) => m.role === 'assistant' && m.zh === '你好'), `reply stored: ${JSON.stringify(history)}`);
+  } finally {
+    globalThis.fetch = realFetch;
+    dom.restore();
+  }
+});
+
+test('I3: aborting mid-stream does not persist a partial reply', async () => {
+  const dom = installFakeDom();
+  const realFetch = globalThis.fetch;
+  try {
+    let ctrl = null;
+    await storage.set('settings', 'conversationHistory', [{ role: 'assistant', zh: '你好！你叫什么名字？' }]);
+    const { container, cleanup } = await mountConversation(dom, (options) => ({
+      ok: true,
+      status: 200,
+      body: new ReadableStream({
+        start(c) {
+          ctrl = c;
+          options.signal?.addEventListener('abort', () => { try { c.close(); } catch { /* already closed */ } });
+        },
+      }),
+    }));
+    const form = container.querySelector('.conv-compose');
+    form.querySelector('textarea').value = '你好';
+    form.dispatch('submit');
+    await settle(dom);
+    ctrl.enqueue(new TextEncoder().encode(sseChunk('{"zh":"你')));
+    await settle(dom);
+
+    cleanup(); // leaving the screen aborts the stream
+    await settle(dom, 8);
+
+    const history = await storage.get('settings', 'conversationHistory');
+    assert.ok(Array.isArray(history));
+    assert.ok(
+      !history.some((m) => m.role === 'assistant' && String(m.zh || '').includes('{')),
+      `a partial reply was persisted: ${JSON.stringify(history)}`,
+    );
+  } finally {
+    globalThis.fetch = realFetch;
+    dom.restore();
+  }
+});
+
+test('I3: a failed request does not leave the user message orphaned', async () => {
+  const dom = installFakeDom();
+  const realFetch = globalThis.fetch;
+  try {
+    const { container } = await mountConversation(dom, () => ({ ok: false, status: 500, json: async () => ({}) }));
+    const form = container.querySelector('.conv-compose');
+    form.querySelector('textarea').value = '你好';
+    form.dispatch('submit');
+    await settle(dom, 8);
+
+    const history = await storage.get('settings', 'conversationHistory');
+    assert.ok(Array.isArray(history) && history.length > 0);
+    assert.notEqual(history[history.length - 1].role, 'user', `orphan user message: ${JSON.stringify(history)}`);
+  } finally {
+    globalThis.fetch = realFetch;
+    dom.restore();
+  }
+});
+
+test('I3/C1: with only the API key the model list unlocks the chat', async () => {
   const dom = installFakeDom();
   const realFetch = globalThis.fetch;
   try {
     await storage.set('meta', 'openrouterKey', 'sk-test');
-    await storage.set('settings', 'openrouterModel', 'a/free:free');
-    globalThis.fetch = async (url) => {
-      if (String(url).includes('/models')) {
+    await storage.remove('settings', 'openrouterModel');
+    const bodies = [];
+    globalThis.fetch = async (url, options = {}) => {
+      const u = String(url);
+      if (u.includes('/models')) return { ok: true, status: 200, json: async () => ({ data: FREE_MODELS }) };
+      if (u.includes('/chat/completions')) {
+        bodies.push(JSON.parse(options.body));
         return {
           ok: true,
           status: 200,
-          json: async () => ({ data: [
-            { id: 'a/free:free', pricing: { prompt: '0', completion: '0' } },
-            { id: 'b/free:free', pricing: { prompt: '0', completion: '0' } },
-          ] }),
+          body: new ReadableStream({
+            start(c) {
+              c.enqueue(new TextEncoder().encode(sseChunk('{"zh":"你好"}')));
+              c.close();
+            },
+          }),
         };
       }
       return { ok: false, status: 404, json: async () => ({}) };
@@ -251,21 +456,35 @@ test('I3: the model select saves the chosen model', async () => {
     const { render } = await import('../src/extras/conversation.js');
     const container = new dom.FakeNode('div');
     render(container, { navigate() {} });
-    await dom.tick();
-    await dom.tick();
-    await dom.tick();
+    await settle(dom, 8);
 
-    const select = container
-      .querySelectorAll('select')
-      .find((node) => node.getAttribute('aria-label') === CONV.model);
-    assert.ok(select, 'the model select is rendered');
-    select.value = 'b/free:free';
-    select.dispatch('change');
-    await dom.tick();
-    await dom.tick();
-    assert.equal(await storage.get('settings', 'openrouterModel'), 'b/free:free');
+    // loadModelsOnce must run even with no provider yet, and adopt a free model:
+    // otherwise pasting only the API key never unlocks the chat.
+    const form = container.querySelector('.conv-compose');
+    assert.ok(form, 'the chat opens with just the API key');
+    assert.equal(await storage.get('settings', 'openrouterModel'), 'a/free:free');
+    form.querySelector('textarea').value = '你好';
+    form.dispatch('submit');
+    await settle(dom);
+    assert.equal(bodies[0].model, 'a/free:free');
   } finally {
     globalThis.fetch = realFetch;
+    dom.restore();
+  }
+});
+
+test('I3: Frases shows the offline message instead of rejecting', async () => {
+  const dom = installFakeDom();
+  const { configure } = await import('../src/data-url.js');
+  const realFetch = globalThis.fetch;
+  try {
+    configure({ base: 'http://localhost/data/', fetch: async () => { throw new TypeError('Failed to fetch'); } });
+    const { render } = await import('../src/learn/sentences.js');
+    const container = new dom.FakeNode('div');
+    await render(container, { route: { name: 'learn', segments: ['sentences'] } });
+    assert.ok(container.textContent.includes(COMMON.offline), `got: ${container.textContent}`);
+  } finally {
+    configure({ base: null, fetch: realFetch });
     dom.restore();
   }
 });
