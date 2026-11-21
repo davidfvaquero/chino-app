@@ -27,6 +27,9 @@
 // via a short pinned list (FORCED_READING): 了解 (liǎo jiě — "不了" would eat the
 // 了, giving "le jiě") and 这儿/那儿 (CC-CEDICT neutralises the base in the
 // compounds 在那儿/我这儿, giving "nar"/"zher"; the pinned reading keeps zhèr/nàr).
+// The aspect particle 了 reads 'le': a CC-CEDICT word that only starts or ends in
+// 了 (到了 "at last", 了事, 知了 "cicada") must not force 'liǎo'. The only 'liǎo'
+// readings kept are the documented LIAO_WORDS list and the V不了 / V得了 pattern.
 //
 // Schema of public/data/examples/shards/NNN.json: { "<word>": [ {id, zh, pinyin, en, es?} ] }
 // pinned here: the word is part of every zh, <= 4 sentences per word, the sizes
@@ -166,4 +169,47 @@ test('这儿/那儿 keep their tone and 了解 is liǎo jiě (no toneless forms)
   }
   assert.ok(erhua > 0, `the dataset still exercises 这儿/那儿 (found ${erhua})`);
   assert.ok(liaojie > 0, `the dataset still exercises 了解 (found ${liaojie})`);
+});
+
+// Regression: CC-CEDICT carries compounds that only start or end in 了 with a
+// 'liǎo' reading (到了 "at last", 了事, 知了 "cicada"), and the greedy longest-match
+// used to pick them, rendering the aspect particle 了 as 'liǎo' ("dào liǎo",
+// "liǎo shì", "zhī liǎo"). makeSentencePinyin now rejects a 了-edge word unless it
+// is a documented whole-word reading (LIAO_WORDS / V不了 / V得了). This test dies if
+// that fix is reverted: the committed data would carry "dào liǎo" again.
+test('particle 了 reads le, not liǎo (到了 is dào le, no liǎo shì / zhī liǎo)', () => {
+  let daoliao = 0;
+  let liaoshi = 0;
+  let zhiliao = 0;
+  let daole = 0;
+  let liaojie = 0;
+  let legit = 0;   // legitimate liǎo readings that must survive
+  for (const { file, words: bucket } of shards) {
+    for (const [word, list] of Object.entries(bucket)) {
+      for (const e of list) {
+        const pinyin = e.pinyin.toLowerCase();
+        if (pinyin.includes('dào liǎo')) daoliao += 1;
+        if (pinyin.includes('zhī liǎo')) zhiliao += 1;
+        if (/(事故|事实|事业)/.test(e.zh) && pinyin.includes('liǎo shì')) liaoshi += 1;
+        if (e.zh.includes('到了')) {
+          daole += 1;
+          assert.ok(!pinyin.includes('dào liǎo'), `${file} ${word}: "dào liǎo" in "${e.zh}" -> "${e.pinyin}"`);
+        }
+        if (e.zh.includes('了解')) {
+          liaojie += 1;
+          assert.ok(pinyin.includes('liǎo jiě'), `${file} ${word}: 了解 is not liǎo jiě in "${e.zh}" -> "${e.pinyin}"`);
+        }
+        if (/(了不起|受不了|来不了|吃不了)/.test(e.zh)) {
+          legit += 1;
+          assert.ok(pinyin.includes('liǎo'), `${file} ${word}: legit liǎo lost in "${e.zh}" -> "${e.pinyin}"`);
+        }
+      }
+    }
+  }
+  assert.equal(daoliao, 0, `"dào liǎo" entries left: ${daoliao}`);
+  assert.equal(zhiliao, 0, `"zhī liǎo" entries left: ${zhiliao}`);
+  assert.equal(liaoshi, 0, `"liǎo shì" entries left: ${liaoshi}`);
+  assert.ok(daole > 0, `the dataset still exercises 到了 (found ${daole})`);
+  assert.ok(liaojie > 0, `the dataset still exercises 了解 (found ${liaojie})`);
+  assert.ok(legit > 0, `the dataset still exercises legit liǎo readings (found ${legit})`);
 });

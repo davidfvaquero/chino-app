@@ -164,6 +164,29 @@ function segment(text, wordSet) {
 //     this list stays 这儿/那儿 only — no blanket rule.
 const FORCED_READING = ['了解', '这儿', '那儿'];
 
+// 了 as the aspect particle reads 'le'; it is 'liǎo' only inside the whole words
+// listed here (documented next to the pinned list above). CC-CEDICT also carries
+// compounds that merely start or end in 了 with a 'liǎo' reading — 到了 ("at
+// last"), 了事, 知了 ("cicada"), 了无, 了知 … — and the greedy longest-match used
+// to pick them, rendering a plain particle as 'liǎo' ("dào liǎo", "liǎo shì",
+// "zhī liǎo"). makeSentencePinyin now rejects such a match, so the 了 falls
+// through to its standalone 'le' entry. Kept as 'liǎo' below: the task's list plus
+// the whole words whose 了 genuinely is 'liǎo' and that the corpus uses (folding
+// them to 'le' would be a fresh error). The V不了 / V得了 pattern (不了/得了 after
+// a verb: 受不了, 来不了, 吃不了, …) is the only non-listed reading kept.
+const LIAO_WORDS = new Set([
+  '了解', '了不起', '了得', '了结', '了断', '了然', '了却', '不得了', '大不了',
+  '了如指掌', '了若指掌', '没完没了', '明了', '了了',
+]);
+// V不了: 不了 right after a verb reads 'liǎo' (来不了, 吃不了, 做不了, 忍不了). Not
+// every such compound is a CC-CEDICT word (来不了 and 吃不了 are not), so the
+// split-off 不了 would otherwise take its other reading ("bù le", "no thanks") —
+// see the override in makeSentencePinyin. No such rule for 得了: there 得 is far
+// more often the verb "to get" + particle 了 (得了病, 得了一等奖 = dé le), so the
+// V得了 reading is left to the CC-CEDICT whole words that carry it (受得了, 算得了).
+const VERB_SUFFIX_LIAO = { '不了': 'bù liǎo' };
+const isLiaoReading = (w) => LIAO_WORDS.has(w) || /^.不了$/.test(w) || /^.得了$/.test(w);
+
 /** Pinyin for a sentence — same greedy routine as scripts/build-data.mjs. */
 function makeSentencePinyin(sentence, wordPinyin, maxWordLen) {
   // Positions that begin a forced word: the greedy match must not consume a
@@ -184,7 +207,16 @@ function makeSentencePinyin(sentence, wordPinyin, maxWordLen) {
     let matched = 0;
     for (let j = Math.min(limit, sentence.length - i); j >= 1; j--) {
       const w = sentence.slice(i, i + j);
-      if (wordPinyin.has(w)) { out.push(wordPinyin.get(w)); i += j; matched = j; break; }
+      const py = wordPinyin.get(w);
+      if (py === undefined) continue;
+      // A word that starts or ends in 了 must not force 'liǎo' unless it is a
+      // documented whole-word reading (see isLiaoReading); skip it and let the
+      // greedy pass try a shorter match so 了 reads 'le'.
+      const edgeLiao = w[0] === '了' || w[w.length - 1] === '了';
+      if (edgeLiao && /liǎo/.test(py) && !isLiaoReading(w)) continue;
+      // V不了 / V得了: a split-off 不了/得了 right after a verb reads 'liǎo'.
+      const reading = VERB_SUFFIX_LIAO[w] && i > 0 && hanzi(sentence[i - 1]) ? VERB_SUFFIX_LIAO[w] : py;
+      out.push(reading); i += j; matched = j; break;
     }
     if (!matched) i += 1;
   }
