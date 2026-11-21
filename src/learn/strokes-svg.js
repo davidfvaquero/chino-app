@@ -148,7 +148,7 @@ export function createStrokeEngine({
  * (one per median) plus the shared engine painting their dash offset. `onState`
  * lets the host reset its Play button when the animation ends (I14).
  */
-export function createStrokeAnimation(set, { perStrokeMs = ANIM_PER_STROKE_MS, tickMs = TICK_MS, onState } = {}) {
+export function createStrokeAnimation(set, { perStrokeMs = ANIM_PER_STROKE_MS, tickMs = TICK_MS, onState, reduced = false } = {}) {
   const svg = svgEl('svg', {
     viewBox: `0 0 ${VIEW_BOX_SIZE} ${VIEW_BOX_SIZE}`,
     preserveAspectRatio: 'xMidYMid meet',
@@ -170,6 +170,7 @@ export function createStrokeAnimation(set, { perStrokeMs = ANIM_PER_STROKE_MS, t
     perStrokeMs,
     tickMs,
     onState,
+    reduced,
     paint: (index, progress) => {
       const ink = inks[index];
       if (!ink) return;

@@ -35,6 +35,10 @@ const STYLE_ID = 'strokes-sheet-style';
 const HANZI_RE = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/gu;
 const DOT_MAX_LENGTH = 350;
 
+/** prefers-reduced-motion: the sheet must not animate when the user asks not to. */
+const prefersReducedMotion = () =>
+  typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 /* ------------------------------------------------------------- pure logic -- */
 
 /** Hanzi of `text`, in order, capped at `max`; `overflow` when more were typed. */
@@ -281,6 +285,7 @@ export async function render(container, ctx = {}) {
         // The sheet drives the shared engine; on 'done' the button goes back to
         // Play so the state is not stuck on "Pause" (docs/REVIEW-2.md I14).
         card.anim = createStrokeAnimation(card.set, {
+          reduced: prefersReducedMotion(),
           onState: ({ state }) => {
             button.textContent = t(state === 'playing' ? 'strokesSheet.pause' : 'strokesSheet.play');
             button.dataset.state = state;
