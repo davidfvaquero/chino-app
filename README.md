@@ -25,6 +25,10 @@ npm run icons    # regenerate public/icons/*.png (only if you change the art)
 npm run data     # rebuild the dataset shards under public/data/ (needs network)
 ```
 
+`npm run data` needs the network, so CI never runs it: after editing
+`scripts/build-data.mjs`, run it locally and commit the `public/data` diff (it
+generates `pinyinRank`), or the shipped files drift from the generator.
+
 `npm run build` merges every locale, generates `manifest.webmanifest` and stamps a
 content hash into `sw.js` so each build rotates the service-worker caches. The
 build fails (on purpose) if two locale files define the same key or if the
