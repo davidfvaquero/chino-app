@@ -41,7 +41,7 @@ async function settle(dom, n = 5) {
 afterEach(async () => {
   await storage.remove('meta', 'openrouterKey');
   await storage.remove('settings', 'openrouterModel');
-  await storage.remove('settings', 'conversationHistory');
+  await storage.remove('meta', 'conversationHistory');
   await storage.remove('gamification', 'conversationRewardDay');
 });
 
@@ -364,7 +364,7 @@ test('I3: a streaming reply never shows raw JSON in the bubble', async () => {
     ctrl.enqueue(new TextEncoder().encode(sseChunk('好"}')));
     ctrl.close();
     await settle(dom, 8);
-    const history = await storage.get('settings', 'conversationHistory');
+    const history = await storage.get('meta', 'conversationHistory');
     assert.ok(history.some((m) => m.role === 'assistant' && m.zh === '你好'), `reply stored: ${JSON.stringify(history)}`);
   } finally {
     globalThis.fetch = realFetch;
@@ -377,7 +377,7 @@ test('I3: aborting mid-stream does not persist a partial reply', async () => {
   const realFetch = globalThis.fetch;
   try {
     let ctrl = null;
-    await storage.set('settings', 'conversationHistory', [{ role: 'assistant', zh: '你好！你叫什么名字？' }]);
+    await storage.set('meta', 'conversationHistory', [{ role: 'assistant', zh: '你好！你叫什么名字？' }]);
     const { container, cleanup } = await mountConversation(dom, (options) => ({
       ok: true,
       status: 200,
@@ -398,7 +398,7 @@ test('I3: aborting mid-stream does not persist a partial reply', async () => {
     cleanup(); // leaving the screen aborts the stream
     await settle(dom, 8);
 
-    const history = await storage.get('settings', 'conversationHistory');
+    const history = await storage.get('meta', 'conversationHistory');
     assert.ok(Array.isArray(history));
     // The user message and the partial reply are both discarded: nothing is
     // persisted on abort (not even an empty or partial `zh`).
@@ -423,7 +423,7 @@ test('I3: a failed request does not leave the user message orphaned', async () =
     form.dispatch('submit');
     await settle(dom, 8);
 
-    const history = await storage.get('settings', 'conversationHistory');
+    const history = await storage.get('meta', 'conversationHistory');
     assert.ok(Array.isArray(history) && history.length > 0);
     assert.notEqual(history[history.length - 1].role, 'user', `orphan user message: ${JSON.stringify(history)}`);
   } finally {
@@ -525,7 +525,7 @@ test('I3: the daily conversation reward fires once, even after a new conversatio
     // .conv-row wrapper (same text, no handler) and the click would do nothing.
     container.querySelectorAll('button').find((b) => b.textContent === CONV.newChat).click();
     await settle(dom);
-    assert.equal((await storage.get('settings', 'conversationHistory')).length, 1, 'new conversation resets the history');
+    assert.equal((await storage.get('meta', 'conversationHistory')).length, 1, 'new conversation resets the history');
     await sendFive();
     assert.equal(rewards(), 1, 'a second round the same day does not reward again');
   } finally {
