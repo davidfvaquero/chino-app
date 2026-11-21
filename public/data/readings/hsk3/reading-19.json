@@ -12,15 +12,15 @@
     },
     {
       "speaker": "B",
-      "hanzi": "我最喜欢春天。不冷不热，花开得漂亮。",
-      "pinyin": "Wǒ zuì xǐhuan chūntiān. Bù lěng bù rè, huā kāi de piàoliang.",
-      "english": "I like spring best. Not cold not hot, flowers bloom beautifully."
+      "hanzi": "我最喜欢春天。不冷不热，花开得好看。",
+      "pinyin": "Wǒ zuì xǐhuan chūntiān. Bù lěng bù rè, huā kāi de hǎokàn.",
+      "english": "I like spring best. Not cold, not hot, and the flowers bloom beautifully."
     },
     {
       "speaker": "A",
-      "hanzi": "春天确实好。可是春天常刮风。",
-      "pinyin": "Chūntiān quèshì hǎo. Kěshì chūntiān cháng guāfēng.",
-      "english": "Spring is indeed good. But spring often has wind."
+      "hanzi": "春天真好。可是春天常有风。",
+      "pinyin": "Chūntiān zhēn hǎo. Kěshì chūntiān cháng yǒu fēng.",
+      "english": "Spring is really good. But spring often has wind."
     },
     {
       "speaker": "B",
@@ -30,27 +30,27 @@
     },
     {
       "speaker": "A",
-      "hanzi": "夏天太热了。但可以游泳，吃冰淇淋。",
-      "pinyin": "Xiàtiān tài rè le. Dàn kěyǐ yóuyǒng, chī bīngqílín.",
-      "english": "Summer too hot. But can swim, eat ice cream."
+      "hanzi": "夏天太热了。但可以游泳，吃冷饮。",
+      "pinyin": "Xiàtiān tài rè le. Dàn kěyǐ yóuyǒng, chī lěngyǐn.",
+      "english": "Summer is too hot. But I can swim and eat cold drinks."
     },
     {
       "speaker": "B",
-      "hanzi": "秋天最舒服。天气凉快，水果也多。",
-      "pinyin": "Qiūtiān zuì shūfu. Tiānqì liángkuai, shuǐguǒ yě duō.",
-      "english": "Autumn most comfortable. Weather cool, fruits also many."
+      "hanzi": "秋天最舒服。天气不冷不热，水果也多。",
+      "pinyin": "Qiūtiān zuì shūfu. Tiānqì bù lěng bù rè, shuǐguǒ yě duō.",
+      "english": "Autumn is the most comfortable. Not cold, not hot, and there's lots of fruit."
     },
     {
       "speaker": "A",
-      "hanzi": "冬天冷，但可以滑雪，过年也开心。",
-      "pinyin": "Dōngtiān lěng, dàn kěyǐ huáxuě, guònián yě kāixīn.",
-      "english": "Winter cold, but can ski, New Year also happy."
+      "hanzi": "冬天冷，但可以看雪，过年也开心。",
+      "pinyin": "Dōngtiān lěng, dàn kěyǐ kàn xuě, guònián yě kāixīn.",
+      "english": "Winter is cold, but you can see snow and enjoy the New Year."
     },
     {
       "speaker": "B",
-      "hanzi": "每个季节都有好处。适应就好。",
-      "pinyin": "Měi gè jìjié dōu yǒu hǎochù. Shìyìng jiù hǎo.",
-      "english": "Every season has its benefits. Adapt and it's fine."
+      "hanzi": "每个季节都有好。习惯就好。",
+      "pinyin": "Měi gè jìjié dōu yǒu hǎo. Xíguàn jiù hǎo.",
+      "english": "Every season has its good side. You just get used to it."
     },
     {
       "speaker": "A",

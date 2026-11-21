@@ -12,9 +12,9 @@
     },
     {
       "speaker": "B",
-      "hanzi": "好啊！去食堂还是外面？",
-      "pinyin": "Hǎo a! Qù shítáng háishi wàimiàn?",
-      "english": "Sure! Go to cafeteria or outside?"
+      "hanzi": "好啊！去哪儿吃？",
+      "pinyin": "Hǎo a! Qù nǎr chī?",
+      "english": "Sure! Where to eat?"
     },
     {
       "speaker": "A",
@@ -32,31 +32,31 @@
       "speaker": "A",
       "hanzi": "好主意。他们在开会，开完叫他们。",
       "pinyin": "Hǎo zhǔyì. Tāmen zài kāihuì, kāi wán jiào tāmen.",
-      "english": "Good idea. They're in a meeting, will call them after."
+      "english": "Good idea. They're in a meeting; I'll call them after."
     },
     {
       "speaker": "B",
-      "hanzi": "我们聊聊工作的事吧。最近项目很忙。",
-      "pinyin": "Wǒmen liáo liáo gōngzuò de shì ba. Zuìjìn xiàngmù hěn máng.",
-      "english": "Let's chat about work. Recently the project is very busy."
+      "hanzi": "我们聊聊工作的事吧。最近特别忙。",
+      "pinyin": "Wǒmen liáoliao gōngzuò de shì ba. Zuìjìn tèbié máng.",
+      "english": "Let's chat about work. It's especially busy lately."
     },
     {
       "speaker": "A",
-      "hanzi": "是啊。但是大家配合得很好，进度快。",
-      "pinyin": "Shì a. Dànshì dàjiā pèihé de hěn hǎo, jìndù kuài.",
-      "english": "Yeah. But everyone cooperates well, progress is fast."
+      "hanzi": "是啊。但是大家都很努力，做得很快。",
+      "pinyin": "Shì a. Dànshì dàjiā dōu hěn nǔlì, zuò de hěn kuài.",
+      "english": "Yeah. But everyone works hard and it goes fast."
     },
     {
       "speaker": "B",
-      "hanzi": "下个星期项目结束，大家可以休息一下。",
-      "pinyin": "Xià gè xīngqí xiàngmù jiéshù, dàjiā kěyǐ xiūxi yīxià.",
-      "english": "Next week project ends, everyone can rest a bit."
+      "hanzi": "下个星期工作结束，大家可以休息一下。",
+      "pinyin": "Xià gè xīngqí gōngzuò jiéshù, dàjiā kěyǐ xiūxi yīxià.",
+      "english": "Next week the work ends; everyone can rest a bit."
     },
     {
       "speaker": "A",
-      "hanzi": "期待！现在先去吃饭。",
-      "pinyin": "Qīdài! Xiànzài xiān qù chīfàn.",
-      "english": "Looking forward! Now let's go eat first."
+      "hanzi": "太好了！现在先去吃饭。",
+      "pinyin": "Tài hǎo le! Xiànzài xiān qù chīfàn.",
+      "english": "Great! Let's go eat first."
     }
   ]
 }
