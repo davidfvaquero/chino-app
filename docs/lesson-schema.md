@@ -12,6 +12,11 @@ public/data/lessons/
     lesson-01.json      # one file per lesson
     lesson-02.json      # (written by the filler tasks)
     …
+  hsk4/
+    index.json          # the 20-lesson plan for the level (598 words, 30 per lesson)
+    lesson-01.json      # one file per lesson (to be written)
+    lesson-02.json
+    …
 ```
 
 ## 1. `index.json` (the plan)

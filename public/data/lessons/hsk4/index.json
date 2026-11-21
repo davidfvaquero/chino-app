@@ -1,0 +1,30 @@
+{
+  "level": "hsk4",
+  "title": "HSK 4",
+  "source": "public/data/hsk/4.json",
+  "wordCount": 598,
+  "wordsPerLesson": 30,
+  "note": "Fixed 20-lesson plan for HSK4. `range` is the suggested slice of the 598 HSK4 words (1-based, inclusive, alphabetical list) for a lesson that is still to be written; the filler tasks write lesson-02.json .. lesson-20.json without touching this index. Lesson 20 covers the last 28 words (598 is not divisible by 20). See docs/lesson-schema.md.",
+  "lessons": [
+    { "id": "hsk4-01", "title": "Feelings, relations & society", "file": "lesson-01.json", "range": { "from": 1, "to": 30 } },
+    { "id": "hsk4-02", "title": "Plans, arrangements & safety", "file": "lesson-02.json", "range": { "from": 31, "to": 60 } },
+    { "id": "hsk4-03", "title": "Work, study & percentages", "file": "lesson-03.json", "range": { "from": 61, "to": 90 } },
+    { "id": "hsk4-04", "title": "Food, health & protection", "file": "lesson-04.json", "range": { "from": 91, "to": 120 } },
+    { "id": "hsk4-05", "title": "Travel, city life & services", "file": "lesson-05.json", "range": { "from": 121, "to": 150 } },
+    { "id": "hsk4-06", "title": "Money, shopping & guarantees", "file": "lesson-06.json", "range": { "from": 151, "to": 180 } },
+    { "id": "hsk4-07", "title": "Time, frequency & order", "file": "lesson-07.json", "range": { "from": 181, "to": 210 } },
+    { "id": "hsk4-08", "title": "Communication, media & society", "file": "lesson-08.json", "range": { "from": 211, "to": 240 } },
+    { "id": "hsk4-09", "title": "Actions, qualities & connectors", "file": "lesson-09.json", "range": { "from": 241, "to": 270 } },
+    { "id": "hsk4-10", "title": "Everyday expressions & idioms", "file": "lesson-10.json", "range": { "from": 271, "to": 300 } },
+    { "id": "hsk4-11", "title": "Abstract concepts & formal terms", "file": "lesson-11.json", "range": { "from": 301, "to": 330 } },
+    { "id": "hsk4-12", "title": "Business, law & administration", "file": "lesson-12.json", "range": { "from": 331, "to": 360 } },
+    { "id": "hsk4-13", "title": "Science, tech & education", "file": "lesson-13.json", "range": { "from": 361, "to": 390 } },
+    { "id": "hsk4-14", "title": "Culture, arts & history", "file": "lesson-14.json", "range": { "from": 391, "to": 420 } },
+    { "id": "hsk4-15", "title": "Nature, environment & weather", "file": "lesson-15.json", "range": { "from": 421, "to": 450 } },
+    { "id": "hsk4-16", "title": "Health, body & medical terms", "file": "lesson-16.json", "range": { "from": 451, "to": 480 } },
+    { "id": "hsk4-17", "title": "Emotions, psychology & relations", "file": "lesson-17.json", "range": { "from": 481, "to": 510 } },
+    { "id": "hsk4-18", "title": "Society, politics & economy", "file": "lesson-18.json", "range": { "from": 511, "to": 540 } },
+    { "id": "hsk4-19", "title": "Advanced verbs & connectors", "file": "lesson-19.json", "range": { "from": 541, "to": 570 } },
+    { "id": "hsk4-20", "title": "Final words & expressions", "file": "lesson-20.json", "range": { "from": 571, "to": 598 } }
+  ]
+}

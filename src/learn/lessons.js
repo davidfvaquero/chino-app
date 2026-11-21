@@ -105,9 +105,9 @@ function ensureStyles(doc) {
 export const titleKey = 'hubs.learn.lessons';
 export const DEFAULT_LEVEL = 'hsk1';
 /** Selectable levels; each reads public/data/lessons/<level>/index.json. Chosen with `?level=`. */
-export const LEVELS = ['hsk1', 'hsk2', 'hsk3', 'practical'];
+export const LEVELS = ['hsk1', 'hsk2', 'hsk3', 'hsk4', 'practical'];
 /** Picker label keys per level; levels not listed fall back to `home.level.<name>`. */
-const LEVEL_LABEL_KEYS = { hsk2: 'hsk2.level', hsk3: 'hsk3.level' };
+const LEVEL_LABEL_KEYS = { hsk2: 'hsk2.level', hsk3: 'hsk3.level', hsk4: 'hsk4.level' };
 export const PROGRESS_STORE = 'progress';
 
 /** Root of the lesson data, relative to this module (works in src/ and dist/). */
