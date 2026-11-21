@@ -29,6 +29,12 @@
       "directions": "Directions",
       "shopping": "Shopping"
     },
+    "opener": {
+      "introductions": "Hello! What is your name?",
+      "food": "What would you like to eat?",
+      "directions": "Where do you want to go?",
+      "shopping": "What do you want to buy?"
+    },
     "level": "HSK level",
     "inputPlaceholder": "Write in Chinese...",
     "send": "Send",

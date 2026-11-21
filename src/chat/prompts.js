@@ -11,6 +11,7 @@
  */
 
 import { trimHistory } from './providers.js';
+import { t } from '../i18n.js';
 
 export const HSK_LEVELS = [1, 2, 3];
 
@@ -30,16 +31,19 @@ const SCENARIO_TOPICS = {
   shopping: 'buying things in a shop: prices, sizes, paying',
 };
 
-/** A canned opening line per scenario, so a new conversation starts without an API call. */
-export const OPENERS = {
-  introductions: { zh: '你好！你叫什么名字？', pinyin: 'nǐ hǎo! nǐ jiào shén me míng zi?', en: 'Hello! What is your name?' },
-  food: { zh: '你想吃什么？', pinyin: 'nǐ xiǎng chī shén me?', en: 'What would you like to eat?' },
-  directions: { zh: '你想去哪儿？', pinyin: 'nǐ xiǎng qù nǎr?', en: 'Where do you want to go?' },
-  shopping: { zh: '你想买什么？', pinyin: 'nǐ xiǎng mǎi shén me?', en: 'What do you want to buy?' },
+/** A canned opening line per scenario, so a new conversation starts without an API call.
+ *  The Chinese and pinyin are fixed; the translation follows the app language. */
+const OPENERS = {
+  introductions: { zh: '你好！你叫什么名字？', pinyin: 'nǐ hǎo! nǐ jiào shén me míng zi?' },
+  food: { zh: '你想吃什么？', pinyin: 'nǐ xiǎng chī shén me?' },
+  directions: { zh: '你想去哪儿？', pinyin: 'nǐ xiǎng qù nǎr?' },
+  shopping: { zh: '你想买什么？', pinyin: 'nǐ xiǎng mǎi shén me?' },
 };
 
 export function openerFor(scenario) {
-  return { ...(OPENERS[scenario] || OPENERS.introductions) };
+  const id = OPENERS[scenario] ? scenario : 'introductions';
+  // The translation follows the app language: "en" used to be hard-coded.
+  return { ...OPENERS[id], en: t(`conversation.opener.${id}`) };
 }
 
 export function scenarioTopic(scenario) {

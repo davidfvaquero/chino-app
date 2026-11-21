@@ -29,6 +29,12 @@
       "directions": "Direcciones",
       "shopping": "Comprar"
     },
+    "opener": {
+      "introductions": "¡Hola! ¿Cómo te llamas?",
+      "food": "¿Qué quieres comer?",
+      "directions": "¿Adónde quieres ir?",
+      "shopping": "¿Qué quieres comprar?"
+    },
     "level": "Nivel HSK",
     "inputPlaceholder": "Escribe en chino...",
     "send": "Enviar",
