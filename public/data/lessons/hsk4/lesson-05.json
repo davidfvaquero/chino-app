@@ -1,0 +1,403 @@
+{
+  "id": "hsk4-05",
+  "title": "Travel, city life & services",
+  "intro": "Learn words for travel, city services and daily transactions: payments, responsibilities, shopping, highways and customer service.",
+  "vocabulary": [
+    {
+      "hanzi": "付款",
+      "pinyin": "fù kuǎn",
+      "english": "to pay",
+      "example": {
+        "hanzi": "付款成功",
+        "pinyin": "fù kuǎn chénggōng",
+        "english": "payment successful"
+      }
+    },
+    {
+      "hanzi": "负责",
+      "pinyin": "fùzé",
+      "english": "responsible for; in charge of",
+      "example": {
+        "hanzi": "我负责这个",
+        "pinyin": "wǒ fùzé zhège",
+        "english": "I'm responsible for this"
+      }
+    },
+    {
+      "hanzi": "复印",
+      "pinyin": "fùyìn",
+      "english": "photocopy; duplicate",
+      "example": {
+        "hanzi": "复印件",
+        "pinyin": "fùyìn jiàn",
+        "english": "a photocopy"
+      }
+    },
+    {
+      "hanzi": "复杂",
+      "pinyin": "fùzá",
+      "english": "complicated; complex",
+      "example": {
+        "hanzi": "很复杂",
+        "pinyin": "hěn fùzá",
+        "english": "very complicated"
+      }
+    },
+    {
+      "hanzi": "富",
+      "pinyin": "fù",
+      "english": "wealthy",
+      "example": {
+        "hanzi": "富人",
+        "pinyin": "fù rén",
+        "english": "wealthy person"
+      }
+    },
+    {
+      "hanzi": "改变",
+      "pinyin": "gǎibiàn",
+      "english": "to change; alter; transform",
+      "example": {
+        "hanzi": "改变主意",
+        "pinyin": "gǎibiàn zhǔyi",
+        "english": "change one's mind"
+      }
+    },
+    {
+      "hanzi": "干杯",
+      "pinyin": "gān bēi",
+      "english": "to drink a toast; cheers",
+      "example": {
+        "hanzi": "干杯",
+        "pinyin": "gān bēi",
+        "english": "cheers"
+      }
+    },
+    {
+      "hanzi": "赶",
+      "pinyin": "gǎn",
+      "english": "catch up; overtake; drive away",
+      "example": {
+        "hanzi": "赶时间",
+        "pinyin": "gǎn shíjiān",
+        "english": "rush for time"
+      }
+    },
+    {
+      "hanzi": "敢",
+      "pinyin": "gǎn",
+      "english": "to dare",
+      "example": {
+        "hanzi": "敢不敢",
+        "pinyin": "gǎn bù gǎn",
+        "english": "dare or not"
+      }
+    },
+    {
+      "hanzi": "感动",
+      "pinyin": "gǎndòng",
+      "english": "be moved; touch emotionally",
+      "example": {
+        "hanzi": "很感动",
+        "pinyin": "hěn gǎndòng",
+        "english": "very moved"
+      }
+    },
+    {
+      "hanzi": "感觉",
+      "pinyin": "gǎnjué",
+      "english": "to feel; become aware of; feeling",
+      "example": {
+        "hanzi": "感觉很好",
+        "pinyin": "gǎnjué hěn hǎo",
+        "english": "feels very good"
+      }
+    },
+    {
+      "hanzi": "感情",
+      "pinyin": "gǎnqíng",
+      "english": "feeling; emotion; sensation",
+      "example": {
+        "hanzi": "感情深",
+        "pinyin": "gǎnqíng shēn",
+        "english": "deep feelings"
+      }
+    },
+    {
+      "hanzi": "感谢",
+      "pinyin": "gǎnxiè",
+      "english": "thank; be grateful",
+      "example": {
+        "hanzi": "感谢你",
+        "pinyin": "gǎnxiè nǐ",
+        "english": "thank you"
+      }
+    },
+    {
+      "hanzi": "干",
+      "pinyin": "gān",
+      "english": "to concern; shield; dry; clean",
+      "example": {
+        "hanzi": "干净",
+        "pinyin": "gānjìng",
+        "english": "clean"
+      }
+    },
+    {
+      "hanzi": "刚",
+      "pinyin": "gāng",
+      "english": "just (recently); firm",
+      "example": {
+        "hanzi": "刚回来",
+        "pinyin": "gāng huílái",
+        "english": "just came back"
+      }
+    },
+    {
+      "hanzi": "高速公路",
+      "pinyin": "gāosù gōnglù",
+      "english": "highway",
+      "example": {
+        "hanzi": "上高速公路",
+        "pinyin": "shàng gāosù gōnglù",
+        "english": "get on the highway"
+      }
+    },
+    {
+      "hanzi": "胳膊",
+      "pinyin": "gēbo",
+      "english": "arm",
+      "example": {
+        "hanzi": "胳膊疼",
+        "pinyin": "gēbo téng",
+        "english": "arm hurts"
+      }
+    },
+    {
+      "hanzi": "各",
+      "pinyin": "gè",
+      "english": "each; every",
+      "example": {
+        "hanzi": "各种各样",
+        "pinyin": "gè zhǒng gè yàng",
+        "english": "all kinds"
+      }
+    },
+    {
+      "hanzi": "工资",
+      "pinyin": "gōngzī",
+      "english": "wages; pay; salary",
+      "example": {
+        "hanzi": "工资高",
+        "pinyin": "gōngzī gāo",
+        "english": "high salary"
+      }
+    },
+    {
+      "hanzi": "公里",
+      "pinyin": "gōnglǐ",
+      "english": "kilometer",
+      "example": {
+        "hanzi": "五公里",
+        "pinyin": "wǔ gōnglǐ",
+        "english": "five kilometers"
+      }
+    },
+    {
+      "hanzi": "功夫",
+      "pinyin": "gōngfu",
+      "english": "kung fu; skill; labor",
+      "example": {
+        "hanzi": "练功夫",
+        "pinyin": "liàn gōngfu",
+        "english": "practice kung fu"
+      }
+    },
+    {
+      "hanzi": "共同",
+      "pinyin": "gòngtóng",
+      "english": "together; common; joint",
+      "example": {
+        "hanzi": "共同努力",
+        "pinyin": "gòngtóng nǔlì",
+        "english": "work together"
+      }
+    },
+    {
+      "hanzi": "购物",
+      "pinyin": "gòuwù",
+      "english": "go shopping; buy goods",
+      "example": {
+        "hanzi": "去购物",
+        "pinyin": "qù gòuwù",
+        "english": "go shopping"
+      }
+    },
+    {
+      "hanzi": "够",
+      "pinyin": "gòu",
+      "english": "enough; to reach",
+      "example": {
+        "hanzi": "够了",
+        "pinyin": "gòu le",
+        "english": "that's enough"
+      }
+    },
+    {
+      "hanzi": "估计",
+      "pinyin": "gūjì",
+      "english": "appraise; estimate",
+      "example": {
+        "hanzi": "估计明天到",
+        "pinyin": "gūjì míngtiān dào",
+        "english": "estimate arrival tomorrow"
+      }
+    },
+    {
+      "hanzi": "鼓励",
+      "pinyin": "gǔlì",
+      "english": "encourage; inspire",
+      "example": {
+        "hanzi": "鼓励我",
+        "pinyin": "gǔlì wǒ",
+        "english": "encourage me"
+      }
+    },
+    {
+      "hanzi": "故意",
+      "pinyin": "gùyì",
+      "english": "deliberately; intentional; on purpose",
+      "example": {
+        "hanzi": "故意的",
+        "pinyin": "gùyì de",
+        "english": "intentional"
+      }
+    },
+    {
+      "hanzi": "顾客",
+      "pinyin": "gùkè",
+      "english": "customer; client",
+      "example": {
+        "hanzi": "顾客来了",
+        "pinyin": "gùkè lái le",
+        "english": "customer arrived"
+      }
+    },
+    {
+      "hanzi": "挂",
+      "pinyin": "guà",
+      "english": "hang; put up; suspend",
+      "example": {
+        "hanzi": "挂画",
+        "pinyin": "guà huà",
+        "english": "hang a painting"
+      }
+    },
+    {
+      "hanzi": "关键",
+      "pinyin": "guānjiàn",
+      "english": "crucial; key; pivotal",
+      "example": {
+        "hanzi": "关键时刻",
+        "pinyin": "guānjiàn shíkè",
+        "english": "critical moment"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "What does 付款 mean?",
+      "options": [
+        "to pay",
+        "responsible for",
+        "photocopy"
+      ],
+      "answer": "to pay"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which word means 'highway'?",
+      "options": [
+        "高速公路",
+        "公里",
+        "功夫"
+      ],
+      "answer": "高速公路"
+    },
+    {
+      "type": "listen",
+      "audio": "感谢",
+      "pinyin": "gǎnxiè",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "感谢",
+        "感动",
+        "感觉"
+      ],
+      "answer": "感谢"
+    },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        {
+          "hanzi": "工资",
+          "english": "salary"
+        },
+        {
+          "hanzi": "购物",
+          "english": "shopping"
+        },
+        {
+          "hanzi": "顾客",
+          "english": "customer"
+        },
+        {
+          "hanzi": "胳膊",
+          "english": "arm"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Make the phrase 'cheers'.",
+      "tokens": [
+        "杯",
+        "干"
+      ],
+      "answer": "干杯"
+    },
+    {
+      "type": "order",
+      "prompt": "Put the characters in order to say 'just came back'.",
+      "tokens": [
+        "回来",
+        "刚"
+      ],
+      "answer": "刚回来"
+    },
+    {
+      "type": "listen",
+      "audio": "鼓励",
+      "pinyin": "gǔlì",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "鼓励",
+        "估计",
+        "故意"
+      ],
+      "answer": "鼓励"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which character means 'crucial/key'?",
+      "options": [
+        "关键",
+        "挂",
+        "顾客"
+      ],
+      "answer": "关键"
+    }
+  ]
+}
