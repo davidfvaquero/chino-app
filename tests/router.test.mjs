@@ -1,6 +1,14 @@
-import { test } from 'node:test';
+import { test, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { createRouter, href, parseRoute } from '../src/router.js';
+
+// Several tests below assign globalThis.location; restore it so a later test
+// never inherits another's hash (REVIEW-4 M6).
+const realLocation = globalThis.location;
+afterEach(() => {
+  if (realLocation === undefined) delete globalThis.location;
+  else globalThis.location = realLocation;
+});
 
 test('parseRoute handles an empty hash with the fallback route', () => {
   assert.deepEqual(parseRoute('', 'dictionary'), {
@@ -139,4 +147,28 @@ test('I2: the route slot is programmatically focusable (tabindex=-1)', async () 
   } finally {
     globalThis.document = realDocument;
   }
+});
+
+test('M3: the router focuses the slot when the screen does not', async () => {
+  // strokes-sheet, themes, hardwords… never call container.focus(), so without
+  // the router fallback the focus lands on <body> (REVIEW-4 M3).
+  const makeNode = () => ({
+    children: [],
+    className: '',
+    tabIndex: 0,
+    append(child) { this.children.push(child); },
+    remove() {},
+    focus() { this.focused = true; },
+    contains(node) { return node === this || this.children.includes(node); },
+  });
+  const doc = { createElement: () => makeNode(), activeElement: null };
+  const container = makeNode();
+  container.ownerDocument = doc;
+  container.replaceChildren = () => { container.children = []; };
+
+  const screens = { home: { render: () => {} } }; // deliberately never focuses
+  const router = createRouter({ container, screens, fallback: 'home' });
+  globalThis.location = { hash: '#/home' };
+  await router.render();
+  assert.equal(container.children[0].focused, true, 'the slot took the focus');
 });

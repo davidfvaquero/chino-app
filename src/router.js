@@ -82,6 +82,14 @@ export function createRouter({ container, screens, fallback = 'dictionary', onRo
     }
     if (typeof result === 'function') cleanup = result;
 
+    // A screen that never calls container.focus() would leave the focus on
+    // <body> after the route change; the slot is focusable, so put it back
+    // (WCAG 2.4.3 — REVIEW-4 M3).
+    if (doc && typeof slot.focus === 'function' && typeof slot.contains === 'function'
+      && !slot.contains(doc.activeElement)) {
+      slot.focus({ preventScroll: true });
+    }
+
     currentRoute = route;
     if (onRoute) onRoute(route);
     return route;
