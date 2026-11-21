@@ -78,17 +78,49 @@ test('I8 + C3: pinyin search is capped too (no ~30 MB syllable lookup)', async (
   assert.ok(results.some((r) => r.simp === '你'));
 });
 
-test('I5: pinyin without tones finds the common word in Spanish too', async () => {
+test('I5: pinyin without tones finds the common word in the top 3 of Spanish', async () => {
   // The ES index used to index the pinyin inside [wo3]/[jia1] references, so
   // "wo" returned 与/word/word姐 and 我 was pushed out. The tokenizer now drops
-  // that markup and the pinyin search runs alongside the Spanish one.
+  // that markup, the HSK level ranks the common word first and the pinyin search
+  // runs alongside the Spanish one.
   const wo = await search('wo', { spanish: true });
-  assert.ok(wo.some((r) => r.simp === '我'), `wo -> ${wo.slice(0, 8).map((r) => r.simp).join(',')}`);
+  assert.ok(simpTop(wo, 3).includes('我'), `wo -> ${wo.slice(0, 8).map((r) => r.simp).join(',')}`);
   assert.ok(!wo.some((r) => r.simp === '与'), 'the pinyin leak entry is gone');
   const hao = await search('hao', { spanish: true });
-  assert.ok(hao.some((r) => r.simp === '好'));
+  assert.ok(simpTop(hao, 3).includes('好'), `hao -> ${hao.slice(0, 8).map((r) => r.simp).join(',')}`);
   const ren = await search('ren', { spanish: true });
-  assert.ok(ren.some((r) => r.simp === '人'));
+  assert.ok(simpTop(ren, 3).includes('人'), `ren -> ${ren.slice(0, 8).map((r) => r.simp).join(',')}`);
+});
+
+test('I1: pinyin without tones finds the common word in the top 3 without Spanish too', async () => {
+  for (const [q, ch] of [['wo', '我'], ['hao', '好'], ['ren', '人']]) {
+    const results = await search(q, { spanish: false });
+    assert.ok(simpTop(results, 3).includes(ch), `${q} -> ${results.slice(0, 8).map((r) => r.simp).join(',')}`);
+  }
+});
+
+test('I1: the mixed Spanish+pinyin path stays inside the request budget', async () => {
+  // Both searches run at once, so the pinyin side is capped to 2 shards: without
+  // it "pan" downloaded 26 shards / 3.1 MB (REVIEW-4 I1, the C3 regression).
+  for (const q of ['pan', 'wo', 'hao', 'mi']) {
+    calls = [];
+    bytes = 0;
+    resetCache();
+    await search(q, { spanish: true });
+    assert.ok(calls.length <= 14, `${q}: ${calls.length} requests`);
+    assert.ok(bytes < 2 * 1024 * 1024, `${q}: ${(bytes / 1048576).toFixed(2)} MB`);
+  }
+});
+
+test('I2: casa finds 家, not just 宾馆', async () => {
+  const results = await search('casa', { spanish: true });
+  assert.ok(simpTop(results, 3).includes('家'), `casa -> ${results.slice(0, 5).map((r) => r.simp).join(',')}`);
+  // The neighbours REVIEW-3 I6 fixed must not regress.
+  assert.equal((await search('agua', { spanish: true }))[0].simp, '水');
+  assert.equal((await search('pan', { spanish: true }))[0].simp, '面包');
+  assert.ok(simpTop(await search('árbol', { spanish: true })).includes('树'));
+  assert.ok(simpTop(await search('año', { spanish: true })).includes('年'));
+  assert.ok(simpTop(await search('café', { spanish: true }), 3).includes('咖啡'));
 });
 
 test('I6: agua ranks 水 first and pan ranks 面包 first', async () => {
