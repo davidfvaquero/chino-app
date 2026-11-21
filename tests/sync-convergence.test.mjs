@@ -43,16 +43,21 @@ function createServer({ now = () => Date.now() } = {}) {
       // device cannot overwrite a newer server row (deploy/supabase-schema.sql).
       // A clock more than 5 minutes ahead is capped, so a skewed clock cannot
       // block a row for long (REVIEW-2 I17).
+      const saved = [];
       for (const row of body) {
         const key = idOf(row.store, row.key);
         const prev = rows.get(key);
         let stamp = Date.parse(row.updated_at);
         if (stamp > now() + FUTURE_CAP_MS) stamp = now() + FUTURE_CAP_MS;
-        if (prev && stamp < Date.parse(prev.updated_at)) continue;
-        rows.set(key, { ...row, updated_at: new Date(stamp).toISOString(), user_id: 'u1' });
+        if (prev && stamp < Date.parse(prev.updated_at)) { saved.push({ ...prev }); continue; }
+        const stored = { ...row, updated_at: new Date(stamp).toISOString(), user_id: 'u1' };
+        rows.set(key, stored);
+        saved.push({ ...stored });
       }
       if (server.onPost) await server.onPost(label);
-      return respond({}, 201);
+      // `Prefer: return=representation`: the client adopts the stored (capped)
+      // updated_at, exactly like Supabase (REVIEW-3 I11).
+      return respond(saved, 201);
     }
     if (method === 'DELETE') {
       rows.clear();
@@ -393,4 +398,58 @@ test('I17: a clock a year ahead is capped by the server and does not block', asy
   await B.store.set('settings', 'theme', 'light');
   assert.equal((await B.sync.syncNow()).ok, true);
   assert.equal(server.rows.get(idOf('settings', 'theme')).value, 'light');
+});
+
+test('I11: a year-ahead clock adopts the capped stamp and cannot beat a later edit', async () => {
+  const base = 1_000_000;
+  let serverNow = base;
+  const server = createServer({ now: () => serverNow });
+  const A = await ready(server, 'A', base + 365 * 24 * 3600 * 1000);
+  const B = await ready(server, 'B', base);
+
+  // The first upload is an INSERT; the cap must fire on it too (the old trigger
+  // only ran on UPDATE) and A must adopt the returned stamp.
+  await A.store.set('settings', 'theme', 'dark');
+  assert.equal((await A.sync.syncNow()).ok, true);
+  const inserted = Date.parse(server.rows.get(idOf('settings', 'theme')).updated_at);
+  assert.ok(inserted <= base + 5 * 60 * 1000, `insert capped (got +${(inserted - base) / 1000}s)`);
+
+  // Server clock moves past the cap; B edits normally and must win for good.
+  serverNow = base + 10 * 60 * 1000;
+  B.clock.t = base + 10 * 60 * 1000;
+  await B.store.set('settings', 'theme', 'light');
+  assert.equal((await B.sync.syncNow()).ok, true);
+
+  assert.equal((await A.sync.syncNow()).ok, true);
+  assert.equal(await A.store.get('settings', 'theme'), 'light');
+  assert.equal(await B.store.get('settings', 'theme'), 'light');
+  assert.equal(server.rows.get(idOf('settings', 'theme')).value, 'light');
+});
+
+test('I12: a local write does not wait for a slow push', async () => {
+  const server = createServer();
+  const A = await ready(server, 'A', 1000);
+
+  await A.store.set('settings', 'theme', 'dark');
+
+  let release;
+  const gate = new Promise((resolve) => { release = resolve; });
+  let postStarted;
+  const started = new Promise((resolve) => { postStarted = resolve; });
+  server.onPost = async () => { postStarted(); await gate; };
+
+  const syncing = A.sync.syncNow();
+  await started; // the POST is now held open
+
+  const t0 = Date.now();
+  await A.store.set('srs', 'card-1', { id: 'card-1', reviews: 1 });
+  const elapsed = Date.now() - t0;
+  assert.ok(elapsed < 50, `the write waited ${elapsed}ms for the push`);
+  assert.equal((await A.store.get('srs', 'card-1')).id, 'card-1');
+
+  release();
+  assert.equal((await syncing).ok, true);
+  assert.equal((await A.sync.pending()) >= 1, true, 'the mid-push write stays queued');
+  assert.equal((await A.sync.syncNow()).ok, true);
+  assert.equal(server.rows.get(idOf('srs', 'card-1')).value.reviews, 1);
 });

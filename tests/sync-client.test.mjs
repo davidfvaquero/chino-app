@@ -125,7 +125,9 @@ test('push uploads every local record of the synced stores and clears the queue'
   const call = fetchImpl.calls.find((c) => c.url.includes('/rest/v1/sync_blobs'));
   assert.equal(call.options.method, 'POST');
   assert.equal(call.options.headers.Authorization, 'Bearer TOKEN');
-  assert.equal(call.options.headers.Prefer, 'resolution=merge-duplicates');
+  // return=representation so the client can adopt the server's (clock-capped)
+  // updated_at (REVIEW-3 I11).
+  assert.equal(call.options.headers.Prefer, 'return=representation,resolution=merge-duplicates');
   assert.equal(call.body.length, 2);
   assert.deepEqual(call.body.map((r) => [r.store, r.key]).sort(), [['settings', 'theme'], ['srs', 'd1']]);
   assert.equal(call.body[0].updated_at, new Date(1000).toISOString());

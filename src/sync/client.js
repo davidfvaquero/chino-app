@@ -229,7 +229,10 @@ export function createSync({
     const session = await getSession();
     if (!session?.access_token) return { ok: false, reason: 'not-signed-in' };
 
-    return mutate(async (state) => {
+    // 1. Prepare the batch inside the state chain (fast, no network). The stamp
+    //    sent per id is remembered so a write that lands while the request is in
+    //    flight is not dequeued (REVIEW-2 I17).
+    const prepared = await mutate(async (state) => {
       const collected = await collectLocal(state, true);
       const rows = collected.map((record) => ({
         store: record.store,
@@ -238,27 +241,60 @@ export function createSync({
         deleted: record.deleted,
         updated_at: new Date(record.updated_at).toISOString(),
       }));
-      // Ids sent in this batch: only these leave the queue (a write that landed
-      // while the request was in flight stays queued, I17).
-      const sentIds = new Set(collected.map((record) => idOf(record.store, record.key)));
+      const sentStamps = new Map(collected.map((record) => [idOf(record.store, record.key), record.updated_at]));
+      return { rows, sentStamps };
+    });
 
-      if (rows.length) {
-        try {
-          const sent = await authedFetch(`${base()}/rest/v1/${TABLE}`, {
-            method: 'POST',
-            headers: { Prefer: 'resolution=merge-duplicates' },
-            body: JSON.stringify(rows),
-          });
-          if (!sent.ok) return sent;
-          if (!sent.response.ok) return { ok: false, reason: 'http', status: sent.response.status };
-        } catch (error) {
-          return { ok: false, reason: 'offline', error };
+    if (!prepared.rows.length) {
+      await mutate(async (state) => { state.lastSync = now(); });
+      return { ok: true, pushed: 0 };
+    }
+
+    // 2. The request goes OUTSIDE the state chain: a local write (enqueue) must
+    //    never wait for the network (REVIEW-3 I12). `return=representation` makes
+    //    the server send back the stored rows, whose updated_at is already capped.
+    let saved = null;
+    try {
+      const sent = await authedFetch(`${base()}/rest/v1/${TABLE}`, {
+        method: 'POST',
+        headers: { Prefer: 'return=representation,resolution=merge-duplicates' },
+        body: JSON.stringify(prepared.rows),
+      });
+      if (!sent.ok) return sent;
+      if (!sent.response.ok) return { ok: false, reason: 'http', status: sent.response.status };
+      saved = await sent.response.json().catch(() => null);
+    } catch (error) {
+      return { ok: false, reason: 'offline', error };
+    }
+
+    // 3. Dequeue only the ids whose stamp is still the one we sent, and adopt the
+    //    server's stamp so a skewed local clock cannot keep pushing a future
+    //    timestamp (REVIEW-3 I11).
+    return mutate(async (state) => {
+      const returned = new Map();
+      if (Array.isArray(saved)) {
+        for (const row of saved) {
+          if (!row || row.store == null || row.key == null) continue;
+          const at = row.updated_at ? Date.parse(row.updated_at) : 0;
+          if (at) returned.set(idOf(row.store, row.key), at);
         }
       }
-
-      state.queue = state.queue.filter((item) => !sentIds.has(idOf(item.store, item.key)));
+      state.queue = state.queue.filter((item) => {
+        const id = idOf(item.store, item.key);
+        if (!prepared.sentStamps.has(id)) return true;
+        return prepared.sentStamps.get(id) !== state.updatedAt[id];
+      });
+      for (const [id, at] of returned) {
+        // Adopt the server stamp only when it PULLED OURS BACK (the clock cap):
+        // then a skewed local clock must not keep pushing a future timestamp
+        // (REVIEW-3 I11). A plain stale push returns a newer stamp, and adopting
+        // it without its value would fake a fresh local edit.
+        if (state.updatedAt[id] === prepared.sentStamps.get(id) && at < prepared.sentStamps.get(id)) {
+          state.updatedAt[id] = at;
+        }
+      }
       state.lastSync = now();
-      return { ok: true, pushed: rows.length };
+      return { ok: true, pushed: prepared.rows.length };
     });
   }
 

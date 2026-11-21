@@ -34,10 +34,12 @@ create policy "sync_blobs own rows" on public.sync_blobs
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
 
--- Keep the row with the NEWER updated_at on every UPDATE. An upsert that hits
+-- Keep the row with the NEWER updated_at on every write. An upsert that hits
 -- the primary key becomes an UPDATE, so this trigger fires on it: a device that
 -- pushes an older copy of a row (its pull raced another device's write) cannot
 -- overwrite the newer row — the trigger returns the existing one instead.
+-- It also fires on INSERT, because the FIRST upload of a row is an insert and
+-- the clock cap must apply to it too (REVIEW-3 I11).
 create or replace function public.sync_blobs_keep_newer()
 returns trigger
 language plpgsql
@@ -48,7 +50,9 @@ begin
   if new.updated_at > now() + interval '5 minutes' then
     new.updated_at := now() + interval '5 minutes';
   end if;
-  if new.updated_at < old.updated_at then
+  -- Only an UPDATE has an OLD row to compare against: on the first INSERT the
+  -- row does not exist yet, so the cap above is the only guard.
+  if tg_op = 'UPDATE' and new.updated_at < old.updated_at then
     return old;
   end if;
   return new;
@@ -57,5 +61,5 @@ $$;
 
 drop trigger if exists sync_blobs_keep_newer on public.sync_blobs;
 create trigger sync_blobs_keep_newer
-  before update on public.sync_blobs
+  before insert or update on public.sync_blobs
   for each row execute function public.sync_blobs_keep_newer();
