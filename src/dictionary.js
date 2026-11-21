@@ -277,7 +277,47 @@ async function searchHanzi(q) {
 
 /** Max shards one latin search may fetch (a syllable appears in most shards). */
 const MAX_SHARDS = 8;
-const capShards = (ids) => [...new Set(ids)].slice(0, MAX_SHARDS);
+
+/** HSK vocabulary levels — the app's own list of common words. */
+const HSK_LEVELS = [1, 2, 3, 4, 5, 6];
+
+/**
+ * Shards holding the common entry for an English word. The HSK word lists carry
+ * an English gloss per word, so a query that IS one of those glosses names the
+ * entry a student means ("water" -> 水). Empty when the word is not an HSK
+ * gloss (or the HSK data is missing, e.g. a trimmed build).
+ */
+async function commonShards(word) {
+  for (const level of HSK_LEVELS) {
+    const list = await orNullOn404(getJSON(`../hsk/${level}.json`, BASE));
+    if (!list) return [];
+    const item = (list.items ?? []).find(
+      (it) => String(it?.english ?? '').trim().toLowerCase() === word,
+    );
+    if (item?.hanzi) return hanziShards(item.hanzi);
+  }
+  return [];
+}
+
+/**
+ * Shards to fetch for an English query. The English index only says *which*
+ * shards contain a word, so for a common word the list is nearly every shard
+ * (105 of 115 for "water") and the cap kept whichever came first by number —
+ * all CJK-extension rarities, while the HSK entry 水 lives in shard 62 and was
+ * never fetched. When the cap has to drop candidates, the shards of the word's
+ * HSK entry go first, so the common reading is fetched and wins on score.
+ * ponytail: a word -> shard hint, not a ranked English index (that is a data
+ * change); the hint costs nothing until the cap actually drops shards.
+ */
+async function englishShards(ids, word) {
+  const unique = [...new Set(ids)];
+  if (unique.length <= MAX_SHARDS) return unique;
+  const hot = new Set(await commonShards(word));
+  if (!hot.size) return unique.slice(0, MAX_SHARDS);
+  return unique
+    .sort((a, b) => (hot.has(b) ? 1 : 0) - (hot.has(a) ? 1 : 0) || a - b)
+    .slice(0, MAX_SHARDS);
+}
 
 async function searchPinyin(q, { maxShards = MAX_SHARDS } = {}) {
   const key = tonelessKey(q);
@@ -324,7 +364,7 @@ async function searchEnglish(q) {
     if (k === primary) ids.push(...idx[k]);
     else if (ids.length < 200 && k.startsWith(primary)) ids.push(...idx[k]);
   }
-  const entries = await shardsFor(capShards(ids));
+  const entries = await shardsFor(await englishShards(ids, primary));
   const wanted = new Set(words);
   const out = [];
   for (const e of entries) {
