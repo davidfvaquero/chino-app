@@ -1,0 +1,404 @@
+{
+  "id": "hsk4-04",
+  "title": "Comida, salud y protección",
+  "intro": "Aprende palabras sobre comida, salud, investigaciones y vida diaria: encuestas, tráfico, mensajes, conversaciones y relaciones.",
+  "vocabulary": [
+    {
+      "hanzi": "调查",
+      "pinyin": "diàochá",
+      "english": "investigar; encuesta; investigación",
+      "example": {
+        "hanzi": "做调查",
+        "pinyin": "zuò diàochá",
+        "english": "realizar una encuesta"
+      }
+    },
+    {
+      "hanzi": "掉",
+      "pinyin": "diào",
+      "english": "caer; dejar caer",
+      "example": {
+        "hanzi": "掉了",
+        "pinyin": "diào le",
+        "english": "se cayó"
+      }
+    },
+    {
+      "hanzi": "丢",
+      "pinyin": "diū",
+      "english": "perder (algo); tirar",
+      "example": {
+        "hanzi": "丢了钥匙",
+        "pinyin": "diū le yàoshi",
+        "english": "perdió las llaves"
+      }
+    },
+    {
+      "hanzi": "动作",
+      "pinyin": "dòngzuò",
+      "english": "movimiento; movimiento; acción",
+      "example": {
+        "hanzi": "动作快",
+        "pinyin": "dòngzuò kuài",
+        "english": "movimientos rápidos"
+      }
+    },
+    {
+      "hanzi": "堵车",
+      "pinyin": "dǔchē",
+      "english": "atasco de tráfico",
+      "example": {
+        "hanzi": "堵车了",
+        "pinyin": "dǔchē le",
+        "english": "hay un atasco"
+      }
+    },
+    {
+      "hanzi": "肚子",
+      "pinyin": "dùzi",
+      "english": "vientre; abdomen; estómago",
+      "example": {
+        "hanzi": "肚子饿",
+        "pinyin": "dùzi è",
+        "english": "el estómago tiene hambre"
+      }
+    },
+    {
+      "hanzi": "短信",
+      "pinyin": "duǎnxìn",
+      "english": "mensaje de texto; SMS",
+      "example": {
+        "hanzi": "发短信",
+        "pinyin": "fā duǎnxìn",
+        "english": "enviar un mensaje de texto"
+      }
+    },
+    {
+      "hanzi": "对话",
+      "pinyin": "duìhuà",
+      "english": "diálogo; conversación",
+      "example": {
+        "hanzi": "听对话",
+        "pinyin": "tīng duìhuà",
+        "english": "escuchar el diálogo"
+      }
+    },
+    {
+      "hanzi": "对面",
+      "pinyin": "duìmiàn",
+      "english": "enfrente; al otro lado",
+      "example": {
+        "hanzi": "在对面",
+        "pinyin": "zài duìmiàn",
+        "english": "al otro lado de aquí"
+      }
+    },
+    {
+      "hanzi": "对于",
+      "pinyin": "duìyú",
+      "english": "respecto a; en cuanto a",
+      "example": {
+        "hanzi": "对于这个",
+        "pinyin": "duìyú zhège",
+        "english": "respecto a esto"
+      }
+    },
+    {
+      "hanzi": "儿童",
+      "pinyin": "értóng",
+      "english": "niño; niños",
+      "example": {
+        "hanzi": "儿童节",
+        "pinyin": "értóng jié",
+        "english": "Día del Niño"
+      }
+    },
+    {
+      "hanzi": "而",
+      "pinyin": "ér",
+      "english": "y; pero; sin embargo; mientras",
+      "example": {
+        "hanzi": "既快而好",
+        "pinyin": "jì kuài ér hǎo",
+        "english": "tanto rápido como bueno"
+      }
+    },
+    {
+      "hanzi": "发生",
+      "pinyin": "fāshēng",
+      "english": "ocurrir; suceder; tener lugar",
+      "example": {
+        "hanzi": "发生了什么",
+        "pinyin": "fāshēng le shénme",
+        "english": "¿qué pasó?"
+      }
+    },
+    {
+      "hanzi": "发展",
+      "pinyin": "fāzhǎn",
+      "english": "desarrollar; desarrollo; crecimiento",
+      "example": {
+        "hanzi": "发展快",
+        "pinyin": "fāzhǎn kuài",
+        "english": "se desarrolla rápido"
+      }
+    },
+    {
+      "hanzi": "法律",
+      "pinyin": "fǎlǜ",
+      "english": "ley; estatuto",
+      "example": {
+        "hanzi": "遵守法律",
+        "pinyin": "zūnshǒu fǎlǜ",
+        "english": "cumplir la ley"
+      }
+    },
+    {
+      "hanzi": "翻译",
+      "pinyin": "fānyì",
+      "english": "traducir; traducción",
+      "example": {
+        "hanzi": "翻译成中文",
+        "pinyin": "fānyì chéng zhōngwén",
+        "english": "traducir al chino"
+      }
+    },
+    {
+      "hanzi": "烦恼",
+      "pinyin": "fánnǎo",
+      "english": "preocupado; molesto",
+      "example": {
+        "hanzi": "没有烦恼",
+        "pinyin": "méiyǒu fánnǎo",
+        "english": "sin preocupaciones"
+      }
+    },
+    {
+      "hanzi": "反对",
+      "pinyin": "fǎnduì",
+      "english": "oponerse; luchar contra",
+      "example": {
+        "hanzi": "反对意见",
+        "pinyin": "fǎnduì yìjiàn",
+        "english": "opinión contraria"
+      }
+    },
+    {
+      "hanzi": "方法",
+      "pinyin": "fāngfǎ",
+      "english": "método; manera; medio",
+      "example": {
+        "hanzi": "好方法",
+        "pinyin": "hǎo fāngfǎ",
+        "english": "buen método"
+      }
+    },
+    {
+      "hanzi": "方面",
+      "pinyin": "fāngmiàn",
+      "english": "aspecto; campo; lado",
+      "example": {
+        "hanzi": "各方面",
+        "pinyin": "gè fāngmiàn",
+        "english": "todos los aspectos"
+      }
+    },
+    {
+      "hanzi": "方向",
+      "pinyin": "fāngxiàng",
+      "english": "dirección; orientación",
+      "example": {
+        "hanzi": "方向错了",
+        "pinyin": "fāngxiàng cuò le",
+        "english": "dirección equivocada"
+      }
+    },
+    {
+      "hanzi": "房东",
+      "pinyin": "fángdōng",
+      "english": "casero; arrendador",
+      "example": {
+        "hanzi": "房东很好",
+        "pinyin": "fángdōng hěn hǎo",
+        "english": "el casero es amable"
+      }
+    },
+    {
+      "hanzi": "放弃",
+      "pinyin": "fàngqì",
+      "english": "abandonar; renunciar; rendirse",
+      "example": {
+        "hanzi": "别放弃",
+        "pinyin": "bié fàngqì",
+        "english": "no te rindas"
+      }
+    },
+    {
+      "hanzi": "放暑假",
+      "pinyin": "fàng shǔjià",
+      "english": "tener vacaciones de verano",
+      "example": {
+        "hanzi": "放暑假了",
+        "pinyin": "fàng shǔjià le",
+        "english": "empezaron las vacaciones de verano"
+      }
+    },
+    {
+      "hanzi": "放松",
+      "pinyin": "fàngsōng",
+      "english": "relajar; aflojar; soltar",
+      "example": {
+        "hanzi": "放松一下",
+        "pinyin": "fàngsōng yīxià",
+        "english": "relájate un poco"
+      }
+    },
+    {
+      "hanzi": "份",
+      "pinyin": "fèn",
+      "english": "parte; porción; (clasificador para documentos)",
+      "example": {
+        "hanzi": "一份工作",
+        "pinyin": "yī fèn gōngzuò",
+        "english": "un trabajo"
+      }
+    },
+    {
+      "hanzi": "丰富",
+      "pinyin": "fēngfù",
+      "english": "rico; enriquecer; abundante",
+      "example": {
+        "hanzi": "经验丰富",
+        "pinyin": "jīngyàn fēngfù",
+        "english": "experiencia rica"
+      }
+    },
+    {
+      "hanzi": "否则",
+      "pinyin": "fǒuzé",
+      "english": "si no; de lo contrario; o sino",
+      "example": {
+        "hanzi": "快去否则迟到",
+        "pinyin": "kuài qù fǒuzé chídào",
+        "english": "ve rápido o llegarás tarde"
+      }
+    },
+    {
+      "hanzi": "符合",
+      "pinyin": "fúhé",
+      "english": "conformar; de acuerdo con",
+      "example": {
+        "hanzi": "符合标准",
+        "pinyin": "fúhé biāozhǔn",
+        "english": "cumple el estándar"
+      }
+    },
+    {
+      "hanzi": "父亲",
+      "pinyin": "fùqin",
+      "english": "padre",
+      "example": {
+        "hanzi": "我的父亲",
+        "pinyin": "wǒ de fùqin",
+        "english": "mi padre"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "¿Qué significa 堵车?",
+      "options": [
+        "atasco de tráfico",
+        "estómago",
+        "mensaje de texto"
+      ],
+      "answer": "atasco de tráfico"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué palabra significa «diálogo»?",
+      "options": [
+        "对话",
+        "对面",
+        "对于"
+      ],
+      "answer": "对话"
+    },
+    {
+      "type": "listen",
+      "audio": "放弃",
+      "pinyin": "fàngqì",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "放弃",
+        "放松",
+        "放暑假"
+      ],
+      "answer": "放弃"
+    },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        {
+          "hanzi": "短信",
+          "english": "mensaje de texto"
+        },
+        {
+          "hanzi": "肚子",
+          "english": "estómago"
+        },
+        {
+          "hanzi": "丢",
+          "english": "perder"
+        },
+        {
+          "hanzi": "掉",
+          "english": "caer"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Forma la frase «mi padre».",
+      "tokens": [
+        "的",
+        "我",
+        "父亲"
+      ],
+      "answer": "我的父亲"
+    },
+    {
+      "type": "order",
+      "prompt": "Ordena los caracteres para decir «el estómago tiene hambre».",
+      "tokens": [
+        "饿",
+        "肚子"
+      ],
+      "answer": "肚子饿"
+    },
+    {
+      "type": "listen",
+      "audio": "翻译",
+      "pinyin": "fānyì",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "翻译",
+        "发展",
+        "发生"
+      ],
+      "answer": "翻译"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué carácter significa «ley»?",
+      "options": [
+        "法律",
+        "方法",
+        "方面"
+      ],
+      "answer": "法律"
+    }
+  ]
+}

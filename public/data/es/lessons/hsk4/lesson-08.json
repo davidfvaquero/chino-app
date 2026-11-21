@@ -1,0 +1,405 @@
+{
+  "id": "hsk4-08",
+  "title": "Comunicación, medios y sociedad",
+  "intro": "Estudia términos para medios, comunicación, interacción social y servicios públicos en chino.",
+  "vocabulary": [
+    {
+      "hanzi": "交通",
+      "pinyin": "jiāotōng",
+      "english": "tráfico; transporte",
+      "example": {
+        "hanzi": "交通很方便",
+        "pinyin": "jiāotōng hěn fāngbiàn",
+        "english": "el transporte es muy conveniente"
+      }
+    },
+    {
+      "hanzi": "郊区",
+      "pinyin": "jiāoqū",
+      "english": "suburbios; afueras",
+      "example": {
+        "hanzi": "住在郊区",
+        "pinyin": "zhù zài jiāoqū",
+        "english": "vivir en los suburbios"
+      }
+    },
+    {
+      "hanzi": "骄傲",
+      "pinyin": "jiāo'ào",
+      "english": "orgulloso; arrogante; engreído; enorgullecerse de",
+      "example": {
+        "hanzi": "他很骄傲",
+        "pinyin": "tā hěn jiāo'ào",
+        "english": "él está muy orgulloso"
+      }
+    },
+    {
+      "hanzi": "饺子",
+      "pinyin": "jiǎozi",
+      "english": "empanadilla; gyozas",
+      "example": {
+        "hanzi": "吃饺子",
+        "pinyin": "chī jiǎozi",
+        "english": "comer empanadillas"
+      }
+    },
+    {
+      "hanzi": "教授",
+      "pinyin": "jiàoshòu",
+      "english": "profesor; instruir; dar una conferencia",
+      "example": {
+        "hanzi": "教授讲课",
+        "pinyin": "jiàoshòu jiǎngkè",
+        "english": "el profesor da una conferencia"
+      }
+    },
+    {
+      "hanzi": "教育",
+      "pinyin": "jiàoyù",
+      "english": "educación",
+      "example": {
+        "hanzi": "教育很重要",
+        "pinyin": "jiàoyù hěn zhòngyào",
+        "english": "la educación es muy importante"
+      }
+    },
+    {
+      "hanzi": "接受",
+      "pinyin": "jiēshòu",
+      "english": "aceptar; recibir (honores, etc.)",
+      "example": {
+        "hanzi": "接受建议",
+        "pinyin": "jiēshòu jiànyì",
+        "english": "aceptar la sugerencia"
+      }
+    },
+    {
+      "hanzi": "接着",
+      "pinyin": "jiēzhe",
+      "english": "continuar; seguir; atrapar; seguir",
+      "example": {
+        "hanzi": "接着做",
+        "pinyin": "jiēzhe zuò",
+        "english": "seguir haciendo"
+      }
+    },
+    {
+      "hanzi": "节",
+      "pinyin": "jié",
+      "english": "sección; parte; festival; integridad moral; ahorrar; (clasificador para períodos de clase)",
+      "example": {
+        "hanzi": "过春节",
+        "pinyin": "guò chūnjié",
+        "english": "celebrar el Festival de Primavera"
+      }
+    },
+    {
+      "hanzi": "节约",
+      "pinyin": "jiéyuē",
+      "english": "frugal; ahorrar",
+      "example": {
+        "hanzi": "节约用水",
+        "pinyin": "jiéyuē yòngshuǐ",
+        "english": "ahorrar agua"
+      }
+    },
+    {
+      "hanzi": "结果",
+      "pinyin": "jiéguǒ",
+      "english": "resultado; desenlace; finalmente",
+      "example": {
+        "hanzi": "结果很好",
+        "pinyin": "jiéguǒ hěn hǎo",
+        "english": "el resultado es bueno"
+      }
+    },
+    {
+      "hanzi": "解释",
+      "pinyin": "jiěshì",
+      "english": "explicar",
+      "example": {
+        "hanzi": "请解释一下",
+        "pinyin": "qǐng jiěshì yīxià",
+        "english": "por favor explique"
+      }
+    },
+    {
+      "hanzi": "尽管",
+      "pinyin": "jǐnguǎn",
+      "english": "a pesar de; aunque; incluso aunque | libremente; sin dudar",
+      "example": {
+        "hanzi": "尽管去做",
+        "pinyin": "jǐnguǎn qù zuò",
+        "english": "adelante, hazlo"
+      }
+    },
+    {
+      "hanzi": "紧张",
+      "pinyin": "jǐnzhāng",
+      "english": "nervioso; tensión; tensión",
+      "example": {
+        "hanzi": "很紧张",
+        "pinyin": "hěn jǐnzhāng",
+        "english": "muy nervioso"
+      }
+    },
+    {
+      "hanzi": "进行",
+      "pinyin": "jìnxíng",
+      "english": "llevar a cabo; realizar; emprender",
+      "example": {
+        "hanzi": "正在进行",
+        "pinyin": "zhèngzài jìnxíng",
+        "english": "en progreso"
+      }
+    },
+    {
+      "hanzi": "禁止",
+      "pinyin": "jìnzhǐ",
+      "english": "prohibir; vetar",
+      "example": {
+        "hanzi": "禁止吸烟",
+        "pinyin": "jìnzhǐ xīyān",
+        "english": "prohibido fumar"
+      }
+    },
+    {
+      "hanzi": "京剧",
+      "pinyin": "jīngjù",
+      "english": "Ópera de Pekín",
+      "example": {
+        "hanzi": "看京剧",
+        "pinyin": "kàn jīngjù",
+        "english": "ver la Ópera de Pekín"
+      }
+    },
+    {
+      "hanzi": "经济",
+      "pinyin": "jīngjì",
+      "english": "economía; económico",
+      "example": {
+        "hanzi": "经济发展",
+        "pinyin": "jīngjì fāzhǎn",
+        "english": "desarrollo económico"
+      }
+    },
+    {
+      "hanzi": "经历",
+      "pinyin": "jīnglì",
+      "english": "someterse a; experimentar",
+      "example": {
+        "hanzi": "经历很多事",
+        "pinyin": "jīnglì hěn duō shì",
+        "english": "experimentó muchas cosas"
+      }
+    },
+    {
+      "hanzi": "经验",
+      "pinyin": "jīngyàn",
+      "english": "experiencia",
+      "example": {
+        "hanzi": "没有经验",
+        "pinyin": "méiyǒu jīngyàn",
+        "english": "sin experiencia"
+      }
+    },
+    {
+      "hanzi": "精彩",
+      "pinyin": "jīngcǎi",
+      "english": "brillante; espectacular; maravilloso",
+      "example": {
+        "hanzi": "比赛很精彩",
+        "pinyin": "bǐsài hěn jīngcǎi",
+        "english": "el partido fue brillante"
+      }
+    },
+    {
+      "hanzi": "景色",
+      "pinyin": "jǐngsè",
+      "english": "paisaje; paisaje; escena; vista",
+      "example": {
+        "hanzi": "景色很美",
+        "pinyin": "jǐngsè hěn měi",
+        "english": "el paisaje es hermoso"
+      }
+    },
+    {
+      "hanzi": "警察",
+      "pinyin": "jǐngchá",
+      "english": "policía",
+      "example": {
+        "hanzi": "警察来了",
+        "pinyin": "jǐngchá lái le",
+        "english": "llegó la policía"
+      }
+    },
+    {
+      "hanzi": "竞争",
+      "pinyin": "jìngzhēng",
+      "english": "competir",
+      "example": {
+        "hanzi": "竞争激烈",
+        "pinyin": "jìngzhēng jīliè",
+        "english": "competencia feroz"
+      }
+    },
+    {
+      "hanzi": "竟然",
+      "pinyin": "jìngrán",
+      "english": "inesperadamente; para sorpresa de uno; llegar al extremo de",
+      "example": {
+        "hanzi": "他竟然来了",
+        "pinyin": "tā jìngrán lái le",
+        "english": "él vino inesperadamente"
+      }
+    },
+    {
+      "hanzi": "镜子",
+      "pinyin": "jìngzi",
+      "english": "espejo",
+      "example": {
+        "hanzi": "看镜子",
+        "pinyin": "kàn jìngzi",
+        "english": "mirar en el espejo"
+      }
+    },
+    {
+      "hanzi": "究竟",
+      "pinyin": "jiūjìng",
+      "english": "al fin y al cabo; cuando todo está dicho y hecho; realmente",
+      "example": {
+        "hanzi": "究竟发生什么",
+        "pinyin": "jiūjìng fāshēng shénme",
+        "english": "¿qué pasó realmente?"
+      }
+    },
+    {
+      "hanzi": "举",
+      "pinyin": "jǔ",
+      "english": "levantar; alzar; citar",
+      "example": {
+        "hanzi": "举手",
+        "pinyin": "jǔ shǒu",
+        "english": "levantar la mano"
+      }
+    },
+    {
+      "hanzi": "举办",
+      "pinyin": "jǔbàn",
+      "english": "dirigir; celebrar",
+      "example": {
+        "hanzi": "举办比赛",
+        "pinyin": "jǔbàn bǐsài",
+        "english": "celebrar una competencia"
+      }
+    },
+    {
+      "hanzi": "举行",
+      "pinyin": "jǔxíng",
+      "english": "convocar; celebrar (una reunión, ceremonia, etc.)",
+      "example": {
+        "hanzi": "举行仪式",
+        "pinyin": "jǔxíng yíshì",
+        "english": "celebrar una ceremonia"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "¿Qué significa 交通?",
+      "options": [
+        "transporte",
+        "suburbios",
+        "orgulloso"
+      ],
+      "answer": "transporte"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué palabra significa «educación»?",
+      "options": [
+        "教育",
+        "接受",
+        "解释"
+      ],
+      "answer": "教育"
+    },
+    {
+      "type": "listen",
+      "audio": "结果",
+      "pinyin": "jiéguǒ",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "结果",
+        "节约",
+        "解释"
+      ],
+      "answer": "结果"
+    },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        {
+          "hanzi": "郊区",
+          "english": "suburbios"
+        },
+        {
+          "hanzi": "饺子",
+          "english": "empanadilla"
+        },
+        {
+          "hanzi": "教授",
+          "english": "profesor"
+        },
+        {
+          "hanzi": "竞争",
+          "english": "competir"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Forma la frase «ahorrar agua».",
+      "tokens": [
+        "水",
+        "用",
+        "约",
+        "节"
+      ],
+      "answer": "节约用水"
+    },
+    {
+      "type": "order",
+      "prompt": "Ordena los caracteres para decir «celebrar una reunión».",
+      "tokens": [
+        "行",
+        "举"
+      ],
+      "answer": "举行"
+    },
+    {
+      "type": "listen",
+      "audio": "警察",
+      "pinyin": "jǐngchá",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "警察",
+        "经济",
+        "镜子"
+      ],
+      "answer": "警察"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué carácter significa «paisaje»?",
+      "options": [
+        "景色",
+        "精彩",
+        "竟然"
+      ],
+      "answer": "景色"
+    }
+  ]
+}

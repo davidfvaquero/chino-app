@@ -1,0 +1,407 @@
+{
+  "id": "hsk4-09",
+  "title": "Acciones, cualidades y conectores",
+  "intro": "Explora verbos de acción, adjetivos de cualidad y conectores lógicos para construir oraciones complejas.",
+  "vocabulary": [
+    {
+      "hanzi": "拒绝",
+      "pinyin": "jùjué",
+      "english": "rechazar; declinar; negarse",
+      "example": {
+        "hanzi": "拒绝邀请",
+        "pinyin": "jùjué yāoqǐng",
+        "english": "rechazar la invitación"
+      }
+    },
+    {
+      "hanzi": "距离",
+      "pinyin": "jùlí",
+      "english": "distancia; estar aparte; lejos de",
+      "example": {
+        "hanzi": "距离不远",
+        "pinyin": "jùlí bù yuǎn",
+        "english": "la distancia no es lejos"
+      }
+    },
+    {
+      "hanzi": "聚会",
+      "pinyin": "jùhuì",
+      "english": "celebrar una reunión; reunirse; una fiesta",
+      "example": {
+        "hanzi": "参加聚会",
+        "pinyin": "cānjiā jùhuì",
+        "english": "asistir a una reunión"
+      }
+    },
+    {
+      "hanzi": "开玩笑",
+      "pinyin": "kāi wánxiào",
+      "english": "bromear; gastar una broma; burlarse de",
+      "example": {
+        "hanzi": "别开玩笑",
+        "pinyin": "bié kāi wánxiào",
+        "english": "no bromees"
+      }
+    },
+    {
+      "hanzi": "开心",
+      "pinyin": "kāixīn",
+      "english": "sentirse feliz; pasarlo genial; burlarse de alguien",
+      "example": {
+        "hanzi": "我很开心",
+        "pinyin": "wǒ hěn kāixīn",
+        "english": "estoy muy feliz"
+      }
+    },
+    {
+      "hanzi": "看法",
+      "pinyin": "kànfǎ",
+      "english": "punto de vista; opinión",
+      "example": {
+        "hanzi": "我的看法",
+        "pinyin": "wǒ de kànfǎ",
+        "english": "mi opinión"
+      }
+    },
+    {
+      "hanzi": "考虑",
+      "pinyin": "kǎolǜ",
+      "english": "pensar; considerar",
+      "example": {
+        "hanzi": "考虑一下",
+        "pinyin": "kǎolǜ yīxià",
+        "english": "considéralo"
+      }
+    },
+    {
+      "hanzi": "烤鸭",
+      "pinyin": "kǎoyā",
+      "english": "pato asado",
+      "example": {
+        "hanzi": "吃烤鸭",
+        "pinyin": "chī kǎoyā",
+        "english": "comer pato asado"
+      }
+    },
+    {
+      "hanzi": "科学",
+      "pinyin": "kēxué",
+      "english": "ciencia; conocimiento científico",
+      "example": {
+        "hanzi": "科学进步",
+        "pinyin": "kēxué jìnbù",
+        "english": "progreso científico"
+      }
+    },
+    {
+      "hanzi": "棵",
+      "pinyin": "kē",
+      "english": "(clasificador para plantas)",
+      "example": {
+        "hanzi": "两棵树",
+        "pinyin": "liǎng kē shù",
+        "english": "dos árboles"
+      }
+    },
+    {
+      "hanzi": "咳嗽",
+      "pinyin": "késou",
+      "english": "toser",
+      "example": {
+        "hanzi": "他在咳嗽",
+        "pinyin": "tā zài késou",
+        "english": "él está tosiendo"
+      }
+    },
+    {
+      "hanzi": "可怜",
+      "pinyin": "kělián",
+      "english": "lástima; pobre; patético",
+      "example": {
+        "hanzi": "很可怜",
+        "pinyin": "hěn kělián",
+        "english": "muy lamentable"
+      }
+    },
+    {
+      "hanzi": "可是",
+      "pinyin": "kěshì",
+      "english": "pero; sin embargo",
+      "example": {
+        "hanzi": "可是我不去",
+        "pinyin": "kěshì wǒ bù qù",
+        "english": "pero no voy"
+      }
+    },
+    {
+      "hanzi": "可惜",
+      "pinyin": "kěxī",
+      "english": "es una lástima; lamentable; qué lástima",
+      "example": {
+        "hanzi": "真可惜",
+        "pinyin": "zhēn kěxī",
+        "english": "qué lástima"
+      }
+    },
+    {
+      "hanzi": "客厅",
+      "pinyin": "kètīng",
+      "english": "salón; sala de estar",
+      "example": {
+        "hanzi": "在客厅",
+        "pinyin": "zài kètīng",
+        "english": "en la sala de estar"
+      }
+    },
+    {
+      "hanzi": "肯定",
+      "pinyin": "kěndìng",
+      "english": "seguro; definitivo; afirmar; aprobar",
+      "example": {
+        "hanzi": "我肯定去",
+        "pinyin": "wǒ kěndìng qù",
+        "english": "definitivamente iré"
+      }
+    },
+    {
+      "hanzi": "空",
+      "pinyin": "kōng, kòng",
+      "english": "vacío; cielo | dejar en blanco; ocio",
+      "example": {
+        "hanzi": "房间是空的",
+        "pinyin": "fángjiān shì kōng de",
+        "english": "la habitación está vacía"
+      }
+    },
+    {
+      "hanzi": "空气",
+      "pinyin": "kōngqì",
+      "english": "aire",
+      "example": {
+        "hanzi": "空气很好",
+        "pinyin": "kōngqì hěn hǎo",
+        "english": "el aire es muy bueno"
+      }
+    },
+    {
+      "hanzi": "恐怕",
+      "pinyin": "kǒngpà",
+      "english": "tener miedo; temer; me temo que...",
+      "example": {
+        "hanzi": "恐怕不行",
+        "pinyin": "kǒngpà bù xíng",
+        "english": "me temo que no funcionará"
+      }
+    },
+    {
+      "hanzi": "苦",
+      "pinyin": "kǔ",
+      "english": "amargo; miserable",
+      "example": {
+        "hanzi": "药很苦",
+        "pinyin": "yào hěn kǔ",
+        "english": "la medicina es amarga"
+      }
+    },
+    {
+      "hanzi": "矿泉水",
+      "pinyin": "kuàngquánshuǐ",
+      "english": "agua mineral",
+      "example": {
+        "hanzi": "喝矿泉水",
+        "pinyin": "hē kuàngquánshuǐ",
+        "english": "beber agua mineral"
+      }
+    },
+    {
+      "hanzi": "困",
+      "pinyin": "kùn",
+      "english": "somnoliento; rodear; apurado",
+      "example": {
+        "hanzi": "我很困",
+        "pinyin": "wǒ hěn kùn",
+        "english": "tengo mucho sueño"
+      }
+    },
+    {
+      "hanzi": "困难",
+      "pinyin": "kùnnan",
+      "english": "dificultad; difícil; problema",
+      "example": {
+        "hanzi": "有困难",
+        "pinyin": "yǒu kùnnan",
+        "english": "tener dificultades"
+      }
+    },
+    {
+      "hanzi": "垃圾桶",
+      "pinyin": "lājītǒng",
+      "english": "cubo de basura",
+      "example": {
+        "hanzi": "扔垃圾桶",
+        "pinyin": "rēng lājītǒng",
+        "english": "tirar a la basura"
+      }
+    },
+    {
+      "hanzi": "拉",
+      "pinyin": "lā",
+      "english": "tirar; tocar (instrumentos de cuerda); arrastrar",
+      "example": {
+        "hanzi": "拉门",
+        "pinyin": "lā mén",
+        "english": "tirar de la puerta"
+      }
+    },
+    {
+      "hanzi": "辣",
+      "pinyin": "là",
+      "english": "picante",
+      "example": {
+        "hanzi": "很好吃不辣",
+        "pinyin": "hěn hǎochī bù là",
+        "english": "delicioso no picante"
+      }
+    },
+    {
+      "hanzi": "来不及",
+      "pinyin": "lái bu jí",
+      "english": "no hay tiempo suficiente (para hacer algo); ya es demasiado tarde",
+      "example": {
+        "hanzi": "来不及了",
+        "pinyin": "lái bu jí le",
+        "english": "ya es demasiado tarde"
+      }
+    },
+    {
+      "hanzi": "来得及",
+      "pinyin": "lái de jí",
+      "english": "aún hay tiempo",
+      "example": {
+        "hanzi": "还来得及",
+        "pinyin": "hái lái de jí",
+        "english": "aún hay tiempo"
+      }
+    },
+    {
+      "hanzi": "来自",
+      "pinyin": "láizì",
+      "english": "venir de (un lugar)",
+      "example": {
+        "hanzi": "来自北京",
+        "pinyin": "láizì běijīng",
+        "english": "venir de Pekín"
+      }
+    },
+    {
+      "hanzi": "懒",
+      "pinyin": "lǎn",
+      "english": "perezoso",
+      "example": {
+        "hanzi": "别懒",
+        "pinyin": "bié lǎn",
+        "english": "no seas perezoso"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "¿Qué significa 拒绝?",
+      "options": [
+        "rechazar",
+        "distancia",
+        "reunión"
+      ],
+      "answer": "rechazar"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué palabra significa «opinión»?",
+      "options": [
+        "看法",
+        "考虑",
+        "可怜"
+      ],
+      "answer": "看法"
+    },
+    {
+      "type": "listen",
+      "audio": "开心",
+      "pinyin": "kāixīn",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "开心",
+        "科学",
+        "咳嗽"
+      ],
+      "answer": "开心"
+    },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        {
+          "hanzi": "烤鸭",
+          "english": "pato asado"
+        },
+        {
+          "hanzi": "可惜",
+          "english": "qué lástima"
+        },
+        {
+          "hanzi": "客厅",
+          "english": "salón"
+        },
+        {
+          "hanzi": "空气",
+          "english": "aire"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Forma la frase «no bromees».",
+      "tokens": [
+        "玩",
+        "笑",
+        "开",
+        "别"
+      ],
+      "answer": "别开玩笑"
+    },
+    {
+      "type": "order",
+      "prompt": "Ordena los caracteres para decir «definitivamente iré».",
+      "tokens": [
+        "去",
+        "定",
+        "肯",
+        "我"
+      ],
+      "answer": "我肯定去"
+    },
+    {
+      "type": "listen",
+      "audio": "矿泉水",
+      "pinyin": "kuàngquánshuǐ",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "矿泉水",
+        "困难",
+        "垃圾桶"
+      ],
+      "answer": "矿泉水"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué carácter significa «perezoso»?",
+      "options": [
+        "懒",
+        "拉",
+        "辣"
+      ],
+      "answer": "懒"
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+{
+  "id": "hsk4-02",
+  "title": "Planes, arreglos y seguridad",
+  "intro": "Aprende palabras para hacer planes, arreglos diarios y conceptos de seguridad: citas, viajes, lugares y situaciones comunes.",
+  "vocabulary": [
+    {
+      "hanzi": "不仅",
+      "pinyin": "bùjǐn",
+      "english": "no solo; no solo",
+      "example": {
+        "hanzi": "不仅聪明而且努力",
+        "pinyin": "bùjǐn cōngming érqiě nǔlì",
+        "english": "no solo listo sino también trabajador"
+      }
+    },
+    {
+      "hanzi": "部分",
+      "pinyin": "bùfen",
+      "english": "parte; parte; sección",
+      "example": {
+        "hanzi": "这是一部分",
+        "pinyin": "zhè shì yī bùfen",
+        "english": "esto es una parte"
+      }
+    },
+    {
+      "hanzi": "擦",
+      "pinyin": "cā",
+      "english": "limpiar; frotar; pulir",
+      "example": {
+        "hanzi": "擦桌子",
+        "pinyin": "cā zhuōzi",
+        "english": "limpiar la mesa"
+      }
+    },
+    {
+      "hanzi": "猜",
+      "pinyin": "cāi",
+      "english": "adivinar",
+      "example": {
+        "hanzi": "你猜对了",
+        "pinyin": "nǐ cāi duì le",
+        "english": "adivinaste bien"
+      }
+    },
+    {
+      "hanzi": "材料",
+      "pinyin": "cáiliào",
+      "english": "material",
+      "example": {
+        "hanzi": "准备材料",
+        "pinyin": "zhǔnbèi cáiliào",
+        "english": "preparar materiales"
+      }
+    },
+    {
+      "hanzi": "参观",
+      "pinyin": "cānguān",
+      "english": "visitar; inspeccionar",
+      "example": {
+        "hanzi": "参观博物馆",
+        "pinyin": "cānguān bówùguǎn",
+        "english": "visitar el museo"
+      }
+    },
+    {
+      "hanzi": "餐厅",
+      "pinyin": "cāntīng",
+      "english": "comedor; cafetería; restaurante",
+      "example": {
+        "hanzi": "在餐厅吃饭",
+        "pinyin": "zài cāntīng chīfàn",
+        "english": "comer en el restaurante"
+      }
+    },
+    {
+      "hanzi": "厕所",
+      "pinyin": "cèsuǒ",
+      "english": "baño; retrete; lavabo",
+      "example": {
+        "hanzi": "厕所在哪里",
+        "pinyin": "cèsuǒ zài nǎlǐ",
+        "english": "¿dónde está el baño?"
+      }
+    },
+    {
+      "hanzi": "差不多",
+      "pinyin": "chàbuduō",
+      "english": "casi; aproximadamente igual",
+      "example": {
+        "hanzi": "差不多了",
+        "pinyin": "chàbuduō le",
+        "english": "casi está hecho"
+      }
+    },
+    {
+      "hanzi": "长城",
+      "pinyin": "chángchéng",
+      "english": "la Gran Muralla",
+      "example": {
+        "hanzi": "爬长城",
+        "pinyin": "pá chángchéng",
+        "english": "escalar la Gran Muralla"
+      }
+    },
+    {
+      "hanzi": "长江",
+      "pinyin": "Chángjiāng",
+      "english": "el río Yangtsé",
+      "example": {
+        "hanzi": "长江很长",
+        "pinyin": "Chángjiāng hěn cháng",
+        "english": "el Yangtsé es muy largo"
+      }
+    },
+    {
+      "hanzi": "尝",
+      "pinyin": "cháng",
+      "english": "probar; sabor",
+      "example": {
+        "hanzi": "尝一尝",
+        "pinyin": "cháng yī cháng",
+        "english": "pruébalo"
+      }
+    },
+    {
+      "hanzi": "场",
+      "pinyin": "chǎng",
+      "english": "lugar; campo; (clasificador para eventos)",
+      "example": {
+        "hanzi": "一场比赛",
+        "pinyin": "yī chǎng bǐsài",
+        "english": "un partido"
+      }
+    },
+    {
+      "hanzi": "超过",
+      "pinyin": "chāoguò",
+      "english": "superar; exceder; sobrepasar",
+      "example": {
+        "hanzi": "超过一百",
+        "pinyin": "chāoguò yībǎi",
+        "english": "supera cien"
+      }
+    },
+    {
+      "hanzi": "成功",
+      "pinyin": "chénggōng",
+      "english": "éxito; tener éxito",
+      "example": {
+        "hanzi": "成功了",
+        "pinyin": "chénggōng le",
+        "english": "tuvo éxito"
+      }
+    },
+    {
+      "hanzi": "成为",
+      "pinyin": "chéngwéi",
+      "english": "convertirse en; transformarse en",
+      "example": {
+        "hanzi": "成为医生",
+        "pinyin": "chéngwéi yīshēng",
+        "english": "convertirse en médico"
+      }
+    },
+    {
+      "hanzi": "诚实",
+      "pinyin": "chéngshí",
+      "english": "honesto; honorable",
+      "example": {
+        "hanzi": "诚实的人",
+        "pinyin": "chéngshí de rén",
+        "english": "una persona honesta"
+      }
+    },
+    {
+      "hanzi": "乘坐",
+      "pinyin": "chéngzuò",
+      "english": "montar; subirse a (vehículo)",
+      "example": {
+        "hanzi": "乘坐地铁",
+        "pinyin": "chéngzuò dìtiě",
+        "english": "tomar el metro"
+      }
+    },
+    {
+      "hanzi": "吃惊",
+      "pinyin": "chī jīng",
+      "english": "sorprenderse; impactarse; asombrarse",
+      "example": {
+        "hanzi": "他很吃惊",
+        "pinyin": "tā hěn chī jīng",
+        "english": "estaba muy sorprendido"
+      }
+    },
+    {
+      "hanzi": "重新",
+      "pinyin": "chóngxīn",
+      "english": "de nuevo; otra vez; una vez más",
+      "example": {
+        "hanzi": "重新开始",
+        "pinyin": "chóngxīn kāishǐ",
+        "english": "empezar de nuevo"
+      }
+    },
+    {
+      "hanzi": "抽烟",
+      "pinyin": "chōuyān",
+      "english": "fumar (cigarrillo)",
+      "example": {
+        "hanzi": "不抽烟",
+        "pinyin": "bù chōuyān",
+        "english": "no fumes"
+      }
+    },
+    {
+      "hanzi": "出差",
+      "pinyin": "chū chāi",
+      "english": "ir de viaje de negocios",
+      "example": {
+        "hanzi": "下周出差",
+        "pinyin": "xià zhōu chū chāi",
+        "english": "viaje de negocios la próxima semana"
+      }
+    },
+    {
+      "hanzi": "出发",
+      "pinyin": "chūfā",
+      "english": "partir; salir",
+      "example": {
+        "hanzi": "马上出发",
+        "pinyin": "mǎshàng chūfā",
+        "english": "salir inmediatamente"
+      }
+    },
+    {
+      "hanzi": "出生",
+      "pinyin": "chūshēng",
+      "english": "nacer",
+      "example": {
+        "hanzi": "出生在北京",
+        "pinyin": "chūshēng zài Běijīng",
+        "english": "nacido en Pekín"
+      }
+    },
+    {
+      "hanzi": "出现",
+      "pinyin": "chūxiàn",
+      "english": "aparecer; surgir; emerger",
+      "example": {
+        "hanzi": "出现问题",
+        "pinyin": "chūxiàn wèntí",
+        "english": "apareció un problema"
+      }
+    },
+    {
+      "hanzi": "厨房",
+      "pinyin": "chúfáng",
+      "english": "cocina",
+      "example": {
+        "hanzi": "在厨房做饭",
+        "pinyin": "zài chúfáng zuòfàn",
+        "english": "cocinar en la cocina"
+      }
+    },
+    {
+      "hanzi": "传真",
+      "pinyin": "chuánzhēn",
+      "english": "fax; facsímil",
+      "example": {
+        "hanzi": "发传真",
+        "pinyin": "fā chuánzhēn",
+        "english": "enviar un fax"
+      }
+    },
+    {
+      "hanzi": "窗户",
+      "pinyin": "chuānghu",
+      "english": "ventana",
+      "example": {
+        "hanzi": "打开窗户",
+        "pinyin": "dǎkāi chuānghu",
+        "english": "abrir la ventana"
+      }
+    },
+    {
+      "hanzi": "词语",
+      "pinyin": "cíyǔ",
+      "english": "palabras y expresiones; términos",
+      "example": {
+        "hanzi": "新词语",
+        "pinyin": "xīn cíyǔ",
+        "english": "vocabulario nuevo"
+      }
+    },
+    {
+      "hanzi": "从来",
+      "pinyin": "cónglái",
+      "english": "siempre; en todo momento",
+      "example": {
+        "hanzi": "从来不迟到",
+        "pinyin": "cónglái bù chídào",
+        "english": "nunca tarde"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "¿Qué significa 参观?",
+      "options": [
+        "visitar",
+        "restaurante",
+        "ventana"
+      ],
+      "answer": "visitar"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué palabra significa «cocina»?",
+      "options": [
+        "厨房",
+        "厕所",
+        "窗户"
+      ],
+      "answer": "厨房"
+    },
+    {
+      "type": "listen",
+      "audio": "出发",
+      "pinyin": "chūfā",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "出发",
+        "出差",
+        "出生"
+      ],
+      "answer": "出发"
+    },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        {
+          "hanzi": "餐厅",
+          "english": "restaurante"
+        },
+        {
+          "hanzi": "厕所",
+          "english": "baño"
+        },
+        {
+          "hanzi": "窗户",
+          "english": "ventana"
+        },
+        {
+          "hanzi": "厨房",
+          "english": "cocina"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Forma la frase «salir inmediatamente».",
+      "tokens": [
+        "马上",
+        "出发"
+      ],
+      "answer": "马上出发"
+    },
+    {
+      "type": "order",
+      "prompt": "Ordena los caracteres para decir «nacido en Pekín».",
+      "tokens": [
+        "北京",
+        "在",
+        "出生"
+      ],
+      "answer": "出生在北京"
+    },
+    {
+      "type": "listen",
+      "audio": "猜",
+      "pinyin": "cāi",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "猜",
+        "擦",
+        "材料"
+      ],
+      "answer": "猜"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué carácter significa «éxito»?",
+      "options": [
+        "成功",
+        "超过",
+        "成为"
+      ],
+      "answer": "成功"
+    }
+  ]
+}

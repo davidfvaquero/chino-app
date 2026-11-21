@@ -1,0 +1,405 @@
+{
+  "id": "hsk4-10",
+  "title": "Expresiones cotidianas e idiomas",
+  "intro": "Practica modismos comunes, expresiones coloquiales y frases prácticas para situaciones cotidianas.",
+  "vocabulary": [
+    {
+      "hanzi": "浪费",
+      "pinyin": "làngfèi",
+      "english": "desperdiciar; malgastar",
+      "example": {
+        "hanzi": "别浪费时间",
+        "pinyin": "bié làngfèi shíjiān",
+        "english": "no desperdicies tiempo"
+      }
+    },
+    {
+      "hanzi": "浪漫",
+      "pinyin": "làngmàn",
+      "english": "romántico",
+      "example": {
+        "hanzi": "很浪漫",
+        "pinyin": "hěn làngmàn",
+        "english": "muy romántico"
+      }
+    },
+    {
+      "hanzi": "老虎",
+      "pinyin": "lǎohǔ",
+      "english": "tigre",
+      "example": {
+        "hanzi": "老虎很凶",
+        "pinyin": "lǎohǔ hěn xiōng",
+        "english": "el tigre es feroz"
+      }
+    },
+    {
+      "hanzi": "冷静",
+      "pinyin": "lěngjìng",
+      "english": "tranquilo; sereno; sobrio",
+      "example": {
+        "hanzi": "保持冷静",
+        "pinyin": "bǎochí lěngjìng",
+        "english": "mantén la calma"
+      }
+    },
+    {
+      "hanzi": "礼拜天",
+      "pinyin": "lǐbàitiān",
+      "english": "domingo",
+      "example": {
+        "hanzi": "礼拜天休息",
+        "pinyin": "lǐbàitiān xiūxi",
+        "english": "descansar el domingo"
+      }
+    },
+    {
+      "hanzi": "礼貌",
+      "pinyin": "lǐmào",
+      "english": "cortesía; educación; modales",
+      "example": {
+        "hanzi": "很有礼貌",
+        "pinyin": "hěn yǒu lǐmào",
+        "english": "muy educado"
+      }
+    },
+    {
+      "hanzi": "理发",
+      "pinyin": "lǐfà",
+      "english": "un barbero, peluquería; corte de pelo",
+      "example": {
+        "hanzi": "去理发",
+        "pinyin": "qù lǐfà",
+        "english": "ir a cortarse el pelo"
+      }
+    },
+    {
+      "hanzi": "理解",
+      "pinyin": "lǐjiě",
+      "english": "comprender; entender",
+      "example": {
+        "hanzi": "我理解你",
+        "pinyin": "wǒ lǐjiě nǐ",
+        "english": "te entiendo"
+      }
+    },
+    {
+      "hanzi": "理想",
+      "pinyin": "lǐxiǎng",
+      "english": "ideal",
+      "example": {
+        "hanzi": "我的理想",
+        "pinyin": "wǒ de lǐxiǎng",
+        "english": "mi ideal"
+      }
+    },
+    {
+      "hanzi": "力气",
+      "pinyin": "lìqi",
+      "english": "fuerza física; esfuerzo",
+      "example": {
+        "hanzi": "用力气",
+        "pinyin": "yòng lìqi",
+        "english": "usar fuerza"
+      }
+    },
+    {
+      "hanzi": "厉害",
+      "pinyin": "lìhai",
+      "english": "terrible; formidable; feroz; genial; impresionante",
+      "example": {
+        "hanzi": "真厉害",
+        "pinyin": "zhēn lìhai",
+        "english": "realmente impresionante"
+      }
+    },
+    {
+      "hanzi": "例如",
+      "pinyin": "lìrú",
+      "english": "por ejemplo; por ejemplo",
+      "example": {
+        "hanzi": "例如苹果",
+        "pinyin": "lìrú píngguǒ",
+        "english": "por ejemplo manzanas"
+      }
+    },
+    {
+      "hanzi": "俩",
+      "pinyin": "liǎng",
+      "english": "(coloquial) dos (personas)",
+      "example": {
+        "hanzi": "我们俩去",
+        "pinyin": "wǒmen liǎ qù",
+        "english": "los dos vamos"
+      }
+    },
+    {
+      "hanzi": "连",
+      "pinyin": "lián",
+      "english": "incluso; incluyendo; unir",
+      "example": {
+        "hanzi": "他连我也不认识",
+        "pinyin": "tā lián wǒ yě bù rènshi",
+        "english": "él ni siquiera me conoce"
+      }
+    },
+    {
+      "hanzi": "联系",
+      "pinyin": "liánxì",
+      "english": "integrar; enlazar; conexión; contacto",
+      "example": {
+        "hanzi": "保持联系",
+        "pinyin": "bǎochí liánxì",
+        "english": "mantener el contacto"
+      }
+    },
+    {
+      "hanzi": "凉快",
+      "pinyin": "liángkuai",
+      "english": "agradablemente fresco; agradablemente fresco",
+      "example": {
+        "hanzi": "今天很凉快",
+        "pinyin": "jīntiān hěn liángkuai",
+        "english": "hoy está agradablemente fresco"
+      }
+    },
+    {
+      "hanzi": "零钱",
+      "pinyin": "língqián",
+      "english": "cambio pequeño (de dinero)",
+      "example": {
+        "hanzi": "有零钱吗",
+        "pinyin": "yǒu língqián ma",
+        "english": "¿tienes cambio pequeño?"
+      }
+    },
+    {
+      "hanzi": "另外",
+      "pinyin": "lìngwài",
+      "english": "otro; además; por otra parte",
+      "example": {
+        "hanzi": "另外再说",
+        "pinyin": "lìngwài zài shuō",
+        "english": "hablar de eso otro momento"
+      }
+    },
+    {
+      "hanzi": "留",
+      "pinyin": "liú",
+      "english": "dejar (atrás, un mensaje); retener; quedarse",
+      "example": {
+        "hanzi": "留下来",
+        "pinyin": "liú xiàlái",
+        "english": "quedarse atrás"
+      }
+    },
+    {
+      "hanzi": "流利",
+      "pinyin": "liúlì",
+      "english": "fluido",
+      "example": {
+        "hanzi": "英语很流利",
+        "pinyin": "yīngyǔ hěn liúlì",
+        "english": "el inglés es muy fluido"
+      }
+    },
+    {
+      "hanzi": "流行",
+      "pinyin": "liúxíng",
+      "english": "propagarse; prevalente; ser popular",
+      "example": {
+        "hanzi": "这歌很流行",
+        "pinyin": "zhè gē hěn liúxíng",
+        "english": "esta canción es popular"
+      }
+    },
+    {
+      "hanzi": "旅行",
+      "pinyin": "lǚxíng",
+      "english": "viajar",
+      "example": {
+        "hanzi": "去旅行",
+        "pinyin": "qù lǚxíng",
+        "english": "ir a viajar"
+      }
+    },
+    {
+      "hanzi": "律师",
+      "pinyin": "lǜshī",
+      "english": "abogado",
+      "example": {
+        "hanzi": "找律师",
+        "pinyin": "zhǎo lǜshī",
+        "english": "buscar un abogado"
+      }
+    },
+    {
+      "hanzi": "乱",
+      "pinyin": "luàn",
+      "english": "desorden; confusión; arbitrariamente",
+      "example": {
+        "hanzi": "别乱跑",
+        "pinyin": "bié luàn pǎo",
+        "english": "no corras por ahí"
+      }
+    },
+    {
+      "hanzi": "麻烦",
+      "pinyin": "máfan",
+      "english": "molestar (a alguien); molesto; fastidioso",
+      "example": {
+        "hanzi": "很麻烦",
+        "pinyin": "hěn máfan",
+        "english": "muy molesto"
+      }
+    },
+    {
+      "hanzi": "马虎",
+      "pinyin": "mǎhu",
+      "english": "descuidado; chapucero; informal",
+      "example": {
+        "hanzi": "做事马虎",
+        "pinyin": "zuòshì mǎhu",
+        "english": "descuidado en el trabajo"
+      }
+    },
+    {
+      "hanzi": "满",
+      "pinyin": "mǎn",
+      "english": "lleno; abreviatura de manchú",
+      "example": {
+        "hanzi": "满了",
+        "pinyin": "mǎn le",
+        "english": "está lleno"
+      }
+    },
+    {
+      "hanzi": "毛",
+      "pinyin": "máo",
+      "english": "pelo; piel; pluma; diez centavos (radical Kangxi 82)",
+      "example": {
+        "hanzi": "一毛钱",
+        "pinyin": "yī máo qián",
+        "english": "diez centavos"
+      }
+    },
+    {
+      "hanzi": "毛巾",
+      "pinyin": "máojīn",
+      "english": "toalla; paño",
+      "example": {
+        "hanzi": "用毛巾",
+        "pinyin": "yòng máojīn",
+        "english": "usar una toalla"
+      }
+    },
+    {
+      "hanzi": "美丽",
+      "pinyin": "měilì",
+      "english": "hermoso",
+      "example": {
+        "hanzi": "很美丽",
+        "pinyin": "hěn měilì",
+        "english": "muy hermoso"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "¿Qué significa 浪费?",
+      "options": [
+        "desperdiciar",
+        "romántico",
+        "tigre"
+      ],
+      "answer": "desperdiciar"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué palabra significa «educado»?",
+      "options": [
+        "礼貌",
+        "理发",
+        "理想"
+      ],
+      "answer": "礼貌"
+    },
+    {
+      "type": "listen",
+      "audio": "理解",
+      "pinyin": "lǐjiě",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "理解",
+        "力气",
+        "厉害"
+      ],
+      "answer": "理解"
+    },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        {
+          "hanzi": "冷静",
+          "english": "tranquilo"
+        },
+        {
+          "hanzi": "联系",
+          "english": "contacto"
+        },
+        {
+          "hanzi": "旅行",
+          "english": "viajar"
+        },
+        {
+          "hanzi": "律师",
+          "english": "abogado"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Forma la frase «cambio pequeño».",
+      "tokens": [
+        "钱",
+        "零"
+      ],
+      "answer": "零钱"
+    },
+    {
+      "type": "order",
+      "prompt": "Ordena los caracteres para decir «mantén la calma».",
+      "tokens": [
+        "静",
+        "冷",
+        "持",
+        "保"
+      ],
+      "answer": "保持冷静"
+    },
+    {
+      "type": "listen",
+      "audio": "流利",
+      "pinyin": "liúlì",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "流利",
+        "流行",
+        "旅行"
+      ],
+      "answer": "流利"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué carácter significa «hermoso»?",
+      "options": [
+        "美丽",
+        "满",
+        "毛巾"
+      ],
+      "answer": "美丽"
+    }
+  ]
+}

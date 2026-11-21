@@ -1,0 +1,406 @@
+{
+  "id": "hsk4-07",
+  "title": "Tiempo, frecuencia y orden",
+  "intro": "Domina palabras para decir la hora, frecuencia, secuencia y ordenar eventos en la conversación diaria.",
+  "vocabulary": [
+    {
+      "hanzi": "活泼",
+      "pinyin": "huópo",
+      "english": "animado; vivaz",
+      "example": {
+        "hanzi": "孩子很活泼",
+        "pinyin": "háizi hěn huópō",
+        "english": "el niño es muy animado"
+      }
+    },
+    {
+      "hanzi": "火",
+      "pinyin": "huǒ",
+      "english": "fuego (radical Kangxi 86)",
+      "example": {
+        "hanzi": "火很大",
+        "pinyin": "huǒ hěn dà",
+        "english": "el fuego es grande"
+      }
+    },
+    {
+      "hanzi": "获得",
+      "pinyin": "huòdé",
+      "english": "obtener; adquirir; ganar",
+      "example": {
+        "hanzi": "获得成功",
+        "pinyin": "huòdé chénggōng",
+        "english": "lograr el éxito"
+      }
+    },
+    {
+      "hanzi": "积极",
+      "pinyin": "jījí",
+      "english": "activo; positivo; enérgico",
+      "example": {
+        "hanzi": "态度很积极",
+        "pinyin": "tàidù hěn jījí",
+        "english": "la actitud es muy positiva"
+      }
+    },
+    {
+      "hanzi": "积累",
+      "pinyin": "jīlěi",
+      "english": "acumular; acumulación",
+      "example": {
+        "hanzi": "积累经验",
+        "pinyin": "jīlěi jīngyàn",
+        "english": "acumular experiencia"
+      }
+    },
+    {
+      "hanzi": "基础",
+      "pinyin": "jīchǔ",
+      "english": "base; fundamento",
+      "example": {
+        "hanzi": "基础很重要",
+        "pinyin": "jīchǔ hěn zhòngyào",
+        "english": "el fundamento es importante"
+      }
+    },
+    {
+      "hanzi": "激动",
+      "pinyin": "jīdòng",
+      "english": "excitar; agitar",
+      "example": {
+        "hanzi": "我很激动",
+        "pinyin": "wǒ hěn jīdòng",
+        "english": "estoy muy emocionado"
+      }
+    },
+    {
+      "hanzi": "及时",
+      "pinyin": "jíshí",
+      "english": "oportuno; a tiempo; puntualmente; sin demora",
+      "example": {
+        "hanzi": "及时赶到",
+        "pinyin": "jíshí gǎndào",
+        "english": "llegar a tiempo"
+      }
+    },
+    {
+      "hanzi": "即使",
+      "pinyin": "jíshǐ",
+      "english": "incluso si; aunque",
+      "example": {
+        "hanzi": "即使困难也要做",
+        "pinyin": "jíshǐ kùnnan yě yào zuò",
+        "english": "incluso si es difícil, hay que hacerlo"
+      }
+    },
+    {
+      "hanzi": "计划",
+      "pinyin": "jìhuà",
+      "english": "plan; proyecto",
+      "example": {
+        "hanzi": "制定计划",
+        "pinyin": "zhìdìng jìhuà",
+        "english": "hacer un plan"
+      }
+    },
+    {
+      "hanzi": "记者",
+      "pinyin": "jìzhě",
+      "english": "reportero; periodista",
+      "example": {
+        "hanzi": "记者提问",
+        "pinyin": "jìzhě tíwèn",
+        "english": "el reportero pregunta"
+      }
+    },
+    {
+      "hanzi": "技术",
+      "pinyin": "jìshù",
+      "english": "tecnología; técnica; habilidad",
+      "example": {
+        "hanzi": "技术很好",
+        "pinyin": "jìshù hěn hǎo",
+        "english": "la tecnología es buena"
+      }
+    },
+    {
+      "hanzi": "既然",
+      "pinyin": "jìrán",
+      "english": "ya que; dado que; ahora que",
+      "example": {
+        "hanzi": "既然来了就留下",
+        "pinyin": "jìrán lái le jiù liú xià",
+        "english": "ya que viniste, quédate"
+      }
+    },
+    {
+      "hanzi": "继续",
+      "pinyin": "jìxù",
+      "english": "continuar; seguir; proceder",
+      "example": {
+        "hanzi": "继续努力",
+        "pinyin": "jìxù nǔlì",
+        "english": "seguir esforzándose"
+      }
+    },
+    {
+      "hanzi": "寄",
+      "pinyin": "jì",
+      "english": "enviar por correo",
+      "example": {
+        "hanzi": "寄一封信",
+        "pinyin": "jì yī fēng xìn",
+        "english": "enviar una carta"
+      }
+    },
+    {
+      "hanzi": "加班",
+      "pinyin": "jiā bān",
+      "english": "trabajar horas extra",
+      "example": {
+        "hanzi": "今天要加班",
+        "pinyin": "jīntiān yào jiābān",
+        "english": "hoy tengo que trabajar horas extra"
+      }
+    },
+    {
+      "hanzi": "加油站",
+      "pinyin": "jiāyóuzhàn",
+      "english": "gasolinera",
+      "example": {
+        "hanzi": "去加油站",
+        "pinyin": "qù jiāyóuzhàn",
+        "english": "ir a la gasolinera"
+      }
+    },
+    {
+      "hanzi": "家具",
+      "pinyin": "jiājù",
+      "english": "muebles",
+      "example": {
+        "hanzi": "买新家具",
+        "pinyin": "mǎi xīn jiājù",
+        "english": "comprar muebles nuevos"
+      }
+    },
+    {
+      "hanzi": "假",
+      "pinyin": "jiǎ, jià",
+      "english": "falso; si; prestar | vacaciones; festivo",
+      "example": {
+        "hanzi": "这是假的",
+        "pinyin": "zhè shì jiǎ de",
+        "english": "esto es falso"
+      }
+    },
+    {
+      "hanzi": "价格",
+      "pinyin": "jiàgé",
+      "english": "precio",
+      "example": {
+        "hanzi": "价格很高",
+        "pinyin": "jiàgé hěn gāo",
+        "english": "el precio es muy alto"
+      }
+    },
+    {
+      "hanzi": "坚持",
+      "pinyin": "jiānchí",
+      "english": "persistir en; perseverar",
+      "example": {
+        "hanzi": "坚持到底",
+        "pinyin": "jiānchí dàodǐ",
+        "english": "persistir hasta el final"
+      }
+    },
+    {
+      "hanzi": "减肥",
+      "pinyin": "jiǎnféi",
+      "english": "hacer dieta; perder peso",
+      "example": {
+        "hanzi": "想减肥",
+        "pinyin": "xiǎng jiǎnféi",
+        "english": "querer perder peso"
+      }
+    },
+    {
+      "hanzi": "减少",
+      "pinyin": "jiǎnshǎo",
+      "english": "reducir; disminuir",
+      "example": {
+        "hanzi": "减少错误",
+        "pinyin": "jiǎnshǎo cuòwù",
+        "english": "reducir errores"
+      }
+    },
+    {
+      "hanzi": "建议",
+      "pinyin": "jiànyì",
+      "english": "proponer; sugerir; recomendar",
+      "example": {
+        "hanzi": "我有建议",
+        "pinyin": "wǒ yǒu jiànyì",
+        "english": "tengo una sugerencia"
+      }
+    },
+    {
+      "hanzi": "将来",
+      "pinyin": "jiānglái",
+      "english": "el futuro",
+      "example": {
+        "hanzi": "将来会更好",
+        "pinyin": "jiānglái huì gèng hǎo",
+        "english": "el futuro será mejor"
+      }
+    },
+    {
+      "hanzi": "奖金",
+      "pinyin": "jiǎngjīn",
+      "english": "bono; prima",
+      "example": {
+        "hanzi": "拿到奖金",
+        "pinyin": "ná dào jiǎngjīn",
+        "english": "recibí un bono"
+      }
+    },
+    {
+      "hanzi": "降低",
+      "pinyin": "jiàngdī",
+      "english": "reducir; bajar; dejar caer",
+      "example": {
+        "hanzi": "降低价格",
+        "pinyin": "jiàngdī jiàgé",
+        "english": "bajar el precio"
+      }
+    },
+    {
+      "hanzi": "降落",
+      "pinyin": "jiàngluò",
+      "english": "descender; aterrizar; poner abajo",
+      "example": {
+        "hanzi": "飞机降落",
+        "pinyin": "fēijī jiàngluò",
+        "english": "el avión aterriza"
+      }
+    },
+    {
+      "hanzi": "交",
+      "pinyin": "jiāo",
+      "english": "entregar; devolver; intersectar; pagar (dinero); amistad",
+      "example": {
+        "hanzi": "交朋友",
+        "pinyin": "jiāo péngyou",
+        "english": "hacer amigos"
+      }
+    },
+    {
+      "hanzi": "交流",
+      "pinyin": "jiāoliú",
+      "english": "comunicar; intercambiar; dar y recibir; interacción; alternar",
+      "example": {
+        "hanzi": "交流经验",
+        "pinyin": "jiāoliú jīngyàn",
+        "english": "intercambiar experiencia"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "¿Qué significa 计划?",
+      "options": [
+        "plan",
+        "reportero",
+        "tecnología"
+      ],
+      "answer": "plan"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué palabra significa «persistir»?",
+      "options": [
+        "坚持",
+        "减肥",
+        "建议"
+      ],
+      "answer": "坚持"
+    },
+    {
+      "type": "listen",
+      "audio": "将来",
+      "pinyin": "jiānglái",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "将来",
+        "奖金",
+        "降低"
+      ],
+      "answer": "将来"
+    },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        {
+          "hanzi": "积极",
+          "english": "positivo"
+        },
+        {
+          "hanzi": "基础",
+          "english": "base"
+        },
+        {
+          "hanzi": "既然",
+          "english": "ya que"
+        },
+        {
+          "hanzi": "继续",
+          "english": "continuar"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Forma la frase «trabajar horas extra».",
+      "tokens": [
+        "班",
+        "加"
+      ],
+      "answer": "加班"
+    },
+    {
+      "type": "order",
+      "prompt": "Ordena los caracteres para decir «el futuro será mejor».",
+      "tokens": [
+        "好",
+        "更",
+        "会",
+        "来",
+        "将"
+      ],
+      "answer": "将来会更好"
+    },
+    {
+      "type": "listen",
+      "audio": "技术",
+      "pinyin": "jìshù",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "技术",
+        "既然",
+        "记者"
+      ],
+      "answer": "技术"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué carácter significa «bono»?",
+      "options": [
+        "奖金",
+        "降低",
+        "交流"
+      ],
+      "answer": "奖金"
+    }
+  ]
+}

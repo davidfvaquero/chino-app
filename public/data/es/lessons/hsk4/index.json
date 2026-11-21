@@ -1,0 +1,190 @@
+{
+  "level": "hsk4",
+  "title": "HSK 4",
+  "source": "public/data/hsk/4.json",
+  "wordCount": 598,
+  "wordsPerLesson": 30,
+  "note": "Plan fijo de 20 lecciones para HSK4. `range` es el tramo sugerido de las 598 palabras de HSK4 (1-based, inclusive, lista alfabética) para una lección que aún no se ha escrito; las tareas de relleno escriben lesson-02.json .. lesson-20.json sin tocar este índice. La lección 20 cubre las últimas 28 palabras (598 no es divisible por 20). Véase docs/lesson-schema.md.",
+  "lessons": [
+    {
+      "id": "hsk4-01",
+      "title": "Sentimientos, relaciones y sociedad",
+      "file": "lesson-01.json",
+      "range": {
+        "from": 1,
+        "to": 30
+      }
+    },
+    {
+      "id": "hsk4-02",
+      "title": "Planes, arreglos y seguridad",
+      "file": "lesson-02.json",
+      "range": {
+        "from": 31,
+        "to": 60
+      }
+    },
+    {
+      "id": "hsk4-03",
+      "title": "Trabajo, estudio y porcentajes",
+      "file": "lesson-03.json",
+      "range": {
+        "from": 61,
+        "to": 90
+      }
+    },
+    {
+      "id": "hsk4-04",
+      "title": "Comida, salud y protección",
+      "file": "lesson-04.json",
+      "range": {
+        "from": 91,
+        "to": 120
+      }
+    },
+    {
+      "id": "hsk4-05",
+      "title": "Viajes, vida urbana y servicios",
+      "file": "lesson-05.json",
+      "range": {
+        "from": 121,
+        "to": 150
+      }
+    },
+    {
+      "id": "hsk4-06",
+      "title": "Dinero, compras y garantías",
+      "file": "lesson-06.json",
+      "range": {
+        "from": 151,
+        "to": 180
+      }
+    },
+    {
+      "id": "hsk4-07",
+      "title": "Tiempo, frecuencia y orden",
+      "file": "lesson-07.json",
+      "range": {
+        "from": 181,
+        "to": 210
+      }
+    },
+    {
+      "id": "hsk4-08",
+      "title": "Comunicación, medios y sociedad",
+      "file": "lesson-08.json",
+      "range": {
+        "from": 211,
+        "to": 240
+      }
+    },
+    {
+      "id": "hsk4-09",
+      "title": "Acciones, cualidades y conectores",
+      "file": "lesson-09.json",
+      "range": {
+        "from": 241,
+        "to": 270
+      }
+    },
+    {
+      "id": "hsk4-10",
+      "title": "Expresiones cotidianas e idiomas",
+      "file": "lesson-10.json",
+      "range": {
+        "from": 271,
+        "to": 300
+      }
+    },
+    {
+      "id": "hsk4-11",
+      "title": "Conceptos abstractos y términos formales",
+      "file": "lesson-11.json",
+      "range": {
+        "from": 301,
+        "to": 330
+      }
+    },
+    {
+      "id": "hsk4-12",
+      "title": "Negocios, derecho y administración",
+      "file": "lesson-12.json",
+      "range": {
+        "from": 331,
+        "to": 360
+      }
+    },
+    {
+      "id": "hsk4-13",
+      "title": "Ciencia, tecnología y educación",
+      "file": "lesson-13.json",
+      "range": {
+        "from": 361,
+        "to": 390
+      }
+    },
+    {
+      "id": "hsk4-14",
+      "title": "Cultura, arte e historia",
+      "file": "lesson-14.json",
+      "range": {
+        "from": 391,
+        "to": 420
+      }
+    },
+    {
+      "id": "hsk4-15",
+      "title": "Naturaleza, medio ambiente y clima",
+      "file": "lesson-15.json",
+      "range": {
+        "from": 421,
+        "to": 450
+      }
+    },
+    {
+      "id": "hsk4-16",
+      "title": "Salud, cuerpo y términos médicos",
+      "file": "lesson-16.json",
+      "range": {
+        "from": 451,
+        "to": 480
+      }
+    },
+    {
+      "id": "hsk4-17",
+      "title": "Emociones, psicología y relaciones",
+      "file": "lesson-17.json",
+      "range": {
+        "from": 481,
+        "to": 510
+      }
+    },
+    {
+      "id": "hsk4-18",
+      "title": "Sociedad, política y economía",
+      "file": "lesson-18.json",
+      "range": {
+        "from": 511,
+        "to": 540
+      }
+    },
+    {
+      "id": "hsk4-19",
+      "title": "Verbos avanzados y conectores",
+      "file": "lesson-19.json",
+      "range": {
+        "from": 541,
+        "to": 570
+      }
+    },
+    {
+      "id": "hsk4-20",
+      "title": "Palabras y expresiones finales",
+      "file": "lesson-20.json",
+      "range": {
+        "from": 571,
+        "to": 598
+      }
+    }
+  ]
+}
