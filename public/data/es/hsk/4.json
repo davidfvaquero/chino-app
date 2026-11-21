@@ -1,0 +1,4797 @@
+{
+  "level": 4,
+  "source": {
+    "name": "HSK official vocabulary (2012, HSK 2.0) via hskhsk.com",
+    "url": "https://raw.githubusercontent.com/glxxyz/hskhsk.com/main/data/lists/HSK%20Official%20With%20Definitions%202012%20L{level}.txt",
+    "license": "MIT (list compilation); word lists are the official Hanban HSK vocabulary",
+    "homepage": "https://github.com/glxxyz/hskhsk.com"
+  },
+  "license": "MIT (list compilation); word lists are the official Hanban HSK vocabulary",
+  "count": 598,
+  "items": [
+    {
+      "level": 4,
+      "hanzi": "爱情",
+      "trad": "愛情",
+      "pinyin": "àiqíng",
+      "pinyinNumeric": "ai4qing2",
+      "english": "amor (romántico)"
+    },
+    {
+      "level": 4,
+      "hanzi": "安排",
+      "trad": "安排",
+      "pinyin": "ānpái",
+      "pinyinNumeric": "an1pai2",
+      "english": "organizar; planificar"
+    },
+    {
+      "level": 4,
+      "hanzi": "安全",
+      "trad": "安全",
+      "pinyin": "ānquán",
+      "pinyinNumeric": "an1quan2",
+      "english": "seguro; seguridad"
+    },
+    {
+      "level": 4,
+      "hanzi": "按时",
+      "trad": "按時",
+      "pinyin": "ànshí",
+      "pinyinNumeric": "an4shi2",
+      "english": "a tiempo; puntual"
+    },
+    {
+      "level": 4,
+      "hanzi": "按照",
+      "trad": "按照",
+      "pinyin": "ànzhào",
+      "pinyinNumeric": "an4zhao4",
+      "english": "según; de acuerdo con; a la luz de"
+    },
+    {
+      "level": 4,
+      "hanzi": "百分之",
+      "trad": "百分之",
+      "pinyin": "bǎifēnzhī",
+      "pinyinNumeric": "bai3fen1zhi1",
+      "english": "por ciento; porcentaje"
+    },
+    {
+      "level": 4,
+      "hanzi": "棒",
+      "trad": "棒",
+      "pinyin": "bàng",
+      "pinyinNumeric": "bang4",
+      "english": "palo; garrote; bueno; excelente"
+    },
+    {
+      "level": 4,
+      "hanzi": "包子",
+      "trad": "包子",
+      "pinyin": "bāozi",
+      "pinyinNumeric": "bao1zi",
+      "english": "bollo al vapor relleno"
+    },
+    {
+      "level": 4,
+      "hanzi": "保护",
+      "trad": "保護",
+      "pinyin": "bǎohù",
+      "pinyinNumeric": "bao3hu4",
+      "english": "proteger; defender"
+    },
+    {
+      "level": 4,
+      "hanzi": "保证",
+      "trad": "保證",
+      "pinyin": "bǎozhèng",
+      "pinyinNumeric": "bao3zheng4",
+      "english": "garantizar; asegurar"
+    },
+    {
+      "level": 4,
+      "hanzi": "报名",
+      "trad": "報名",
+      "pinyin": "bào míng",
+      "pinyinNumeric": "bao4 ming2",
+      "english": "inscribirse; aplicar"
+    },
+    {
+      "level": 4,
+      "hanzi": "抱",
+      "trad": "抱",
+      "pinyin": "bào",
+      "pinyinNumeric": "bao4",
+      "english": "sostener; abrazar; llevar en brazos; acunar"
+    },
+    {
+      "level": 4,
+      "hanzi": "抱歉",
+      "trad": "抱歉",
+      "pinyin": "bàoqiàn",
+      "pinyinNumeric": "bao4qian4",
+      "english": "disculparse; sentir mucho; arrepentirse"
+    },
+    {
+      "level": 4,
+      "hanzi": "倍",
+      "trad": "倍",
+      "pinyin": "bèi",
+      "pinyinNumeric": "bei4",
+      "english": "(dos, tres, etc.) veces; múltiplo"
+    },
+    {
+      "level": 4,
+      "hanzi": "本来",
+      "trad": "本來",
+      "pinyin": "běnlái",
+      "pinyinNumeric": "ben3lai2",
+      "english": "originalmente; al principio"
+    },
+    {
+      "level": 4,
+      "hanzi": "笨",
+      "trad": "笨",
+      "pinyin": "bèn",
+      "pinyinNumeric": "ben4",
+      "english": "tonto; necio; torpe"
+    },
+    {
+      "level": 4,
+      "hanzi": "比如",
+      "trad": "比如",
+      "pinyin": "bǐrú",
+      "pinyinNumeric": "bi3ru2",
+      "english": "por ejemplo; por ejemplo; such as"
+    },
+    {
+      "level": 4,
+      "hanzi": "毕业",
+      "trad": "畢業",
+      "pinyin": "bì yè",
+      "pinyinNumeric": "bi4 ye4",
+      "english": "graduarse; terminar los estudios"
+    },
+    {
+      "level": 4,
+      "hanzi": "遍",
+      "trad": "遍",
+      "pinyin": "biàn",
+      "pinyinNumeric": "bian4",
+      "english": "vez; por todas partes; turno; (clasificador para veces o turnos)"
+    },
+    {
+      "level": 4,
+      "hanzi": "标准",
+      "trad": "標准",
+      "pinyin": "biāozhǔn",
+      "pinyinNumeric": "biao1zhun3",
+      "english": "(an official) estándar; norma; criterio"
+    },
+    {
+      "level": 4,
+      "hanzi": "表格",
+      "trad": "表格",
+      "pinyin": "biǎogé",
+      "pinyinNumeric": "biao3ge2",
+      "english": "formulario (documento)"
+    },
+    {
+      "level": 4,
+      "hanzi": "表示",
+      "trad": "表示",
+      "pinyin": "biǎoshì",
+      "pinyinNumeric": "biao3shi4",
+      "english": "expresar; mostrar; indicar"
+    },
+    {
+      "level": 4,
+      "hanzi": "表演",
+      "trad": "表演",
+      "pinyin": "biǎoyǎn",
+      "pinyinNumeric": "biao3yan3",
+      "english": "actuar; representar"
+    },
+    {
+      "level": 4,
+      "hanzi": "表扬",
+      "trad": "表揚",
+      "pinyin": "biǎoyáng",
+      "pinyinNumeric": "biao3yang2",
+      "english": "alabar; elogiar"
+    },
+    {
+      "level": 4,
+      "hanzi": "饼干",
+      "trad": "餅幹",
+      "pinyin": "bǐnggān",
+      "pinyinNumeric": "bing3gan1",
+      "english": "galleta; cracker; galleta"
+    },
+    {
+      "level": 4,
+      "hanzi": "并且",
+      "trad": "並且",
+      "pinyin": "bìngqiě",
+      "pinyinNumeric": "bing4qie3",
+      "english": "y; además; por otra parte"
+    },
+    {
+      "level": 4,
+      "hanzi": "博士",
+      "trad": "博士",
+      "pinyin": "bóshì",
+      "pinyinNumeric": "bo2shi4",
+      "english": "doctor; doctorado"
+    },
+    {
+      "level": 4,
+      "hanzi": "不得不",
+      "trad": "不得不",
+      "pinyin": "bù dé bù",
+      "pinyinNumeric": "bu4 de2 bu4",
+      "english": "tener que; no tener más remedio que; cannot but"
+    },
+    {
+      "level": 4,
+      "hanzi": "不管",
+      "trad": "不管",
+      "pinyin": "bùguǎn",
+      "pinyinNumeric": "bu4guan3",
+      "english": "sin importar (qué, cómo, etc.); independientemente de"
+    },
+    {
+      "level": 4,
+      "hanzi": "不过",
+      "trad": "不過",
+      "pinyin": "búguò",
+      "pinyinNumeric": "bu2guo4",
+      "english": "solo; meramente; pero; sin embargo"
+    },
+    {
+      "level": 4,
+      "hanzi": "不仅",
+      "trad": "不僅",
+      "pinyin": "bùjǐn",
+      "pinyinNumeric": "bu4jin3",
+      "english": "no solo; no solo"
+    },
+    {
+      "level": 4,
+      "hanzi": "部分",
+      "trad": "部分",
+      "pinyin": "bùfen",
+      "pinyinNumeric": "bu4fen",
+      "english": "parte; parte; sección"
+    },
+    {
+      "level": 4,
+      "hanzi": "擦",
+      "trad": "擦",
+      "pinyin": "cā",
+      "pinyinNumeric": "ca1",
+      "english": "limpiar; frotar; pulir"
+    },
+    {
+      "level": 4,
+      "hanzi": "猜",
+      "trad": "猜",
+      "pinyin": "cāi",
+      "pinyinNumeric": "cai1",
+      "english": "adivinar"
+    },
+    {
+      "level": 4,
+      "hanzi": "材料",
+      "trad": "材料",
+      "pinyin": "cáiliào",
+      "pinyinNumeric": "cai2liao4",
+      "english": "material"
+    },
+    {
+      "level": 4,
+      "hanzi": "参观",
+      "trad": "參觀",
+      "pinyin": "cānguān",
+      "pinyinNumeric": "cang1uan1",
+      "english": "visitar (un lugar, como un sitio turístico); inspeccionar"
+    },
+    {
+      "level": 4,
+      "hanzi": "餐厅",
+      "trad": "餐廳",
+      "pinyin": "cāntīng",
+      "pinyinNumeric": "can1ting1",
+      "english": "comedor; cafetería; restaurante"
+    },
+    {
+      "level": 4,
+      "hanzi": "厕所",
+      "trad": "廁所",
+      "pinyin": "cèsuǒ",
+      "pinyinNumeric": "ce4suo3",
+      "english": "baño; retrete; lavabo"
+    },
+    {
+      "level": 4,
+      "hanzi": "差不多",
+      "trad": "差不多",
+      "pinyin": "chàbuduō",
+      "pinyinNumeric": "cha4buduo1",
+      "english": "casi; aproximadamente igual"
+    },
+    {
+      "level": 4,
+      "hanzi": "长城",
+      "trad": "長城",
+      "pinyin": "chángchéng",
+      "pinyinNumeric": "chang2cheng2",
+      "english": "la Gran Muralla"
+    },
+    {
+      "level": 4,
+      "hanzi": "长江",
+      "trad": "長江",
+      "pinyin": "Chángjiāng",
+      "pinyinNumeric": "Chang2jiang1",
+      "english": "el río Yangtsé; the Changjiang River"
+    },
+    {
+      "level": 4,
+      "hanzi": "尝",
+      "trad": "嘗",
+      "pinyin": "cháng",
+      "pinyinNumeric": "chang2",
+      "english": "probar; sabor; (past tense marker)"
+    },
+    {
+      "level": 4,
+      "hanzi": "场",
+      "trad": "場",
+      "pinyin": "chǎng",
+      "pinyinNumeric": "chang3",
+      "english": "patio; lugar; campo; (clasificador para juegos, actuaciones, etc.)"
+    },
+    {
+      "level": 4,
+      "hanzi": "超过",
+      "trad": "超過",
+      "pinyin": "chāoguò",
+      "pinyinNumeric": "chao1guo4",
+      "english": "superar; exceder; sobrepasar"
+    },
+    {
+      "level": 4,
+      "hanzi": "成功",
+      "trad": "成功",
+      "pinyin": "chénggōng",
+      "pinyinNumeric": "cheng2gong1",
+      "english": "éxito; tener éxito"
+    },
+    {
+      "level": 4,
+      "hanzi": "成为",
+      "trad": "成爲",
+      "pinyin": "chéngwéi",
+      "pinyinNumeric": "cheng2wei2",
+      "english": "convertirse en; transformarse en"
+    },
+    {
+      "level": 4,
+      "hanzi": "诚实",
+      "trad": "誠實",
+      "pinyin": "chéngshí",
+      "pinyinNumeric": "cheng2shi2",
+      "english": "honesto; honorable"
+    },
+    {
+      "level": 4,
+      "hanzi": "乘坐",
+      "trad": "乘坐",
+      "pinyin": "chéngzuò",
+      "pinyinNumeric": "cheng2zuo4",
+      "english": "montar; subir (a un vehículo)"
+    },
+    {
+      "level": 4,
+      "hanzi": "吃惊",
+      "trad": "吃驚",
+      "pinyin": "chī jīng",
+      "pinyinNumeric": "chi1 jing1",
+      "english": "sobresaltarse; sorprenderse; asombrarse"
+    },
+    {
+      "level": 4,
+      "hanzi": "重新",
+      "trad": "重新",
+      "pinyin": "chóngxīn",
+      "pinyinNumeric": "chong2xin1",
+      "english": "de nuevo; otra vez; una vez más"
+    },
+    {
+      "level": 4,
+      "hanzi": "抽烟",
+      "trad": "抽煙",
+      "pinyin": "chōuyān",
+      "pinyinNumeric": "chou1yan1",
+      "english": "fumar (un cigarrillo, pipa, etc.)"
+    },
+    {
+      "level": 4,
+      "hanzi": "出差",
+      "trad": "出差",
+      "pinyin": "chū chāi",
+      "pinyinNumeric": "chu1 chai1",
+      "english": "ir de viaje de negocios"
+    },
+    {
+      "level": 4,
+      "hanzi": "出发",
+      "trad": "出發",
+      "pinyin": "chūfā",
+      "pinyinNumeric": "chu1fa1",
+      "english": "partir; salir"
+    },
+    {
+      "level": 4,
+      "hanzi": "出生",
+      "trad": "出生",
+      "pinyin": "chūshēng",
+      "pinyinNumeric": "chu1sheng1",
+      "english": "nacer"
+    },
+    {
+      "level": 4,
+      "hanzi": "出现",
+      "trad": "出現",
+      "pinyin": "chūxiàn",
+      "pinyinNumeric": "chu1xian4",
+      "english": "aparecer; surgir; emerger"
+    },
+    {
+      "level": 4,
+      "hanzi": "厨房",
+      "trad": "廚房",
+      "pinyin": "chúfáng",
+      "pinyinNumeric": "chu2fang2",
+      "english": "cocina"
+    },
+    {
+      "level": 4,
+      "hanzi": "传真",
+      "trad": "傳真",
+      "pinyin": "chuánzhēn",
+      "pinyinNumeric": "chuan2zhen1",
+      "english": "fax; facsímil"
+    },
+    {
+      "level": 4,
+      "hanzi": "窗户",
+      "trad": "窗戶",
+      "pinyin": "chuānghu",
+      "pinyinNumeric": "chuang1hu",
+      "english": "ventana"
+    },
+    {
+      "level": 4,
+      "hanzi": "词语",
+      "trad": "詞語",
+      "pinyin": "cíyǔ",
+      "pinyinNumeric": "ci2yu3",
+      "english": "palabras y expresiones; términos"
+    },
+    {
+      "level": 4,
+      "hanzi": "从来",
+      "trad": "從來",
+      "pinyin": "cónglái",
+      "pinyinNumeric": "cong2lai2",
+      "english": "siempre; en todo momento"
+    },
+    {
+      "level": 4,
+      "hanzi": "粗心",
+      "trad": "粗心",
+      "pinyin": "cūxīn",
+      "pinyinNumeric": "cu1xin1",
+      "english": "descuidado; inadvertido; negligente"
+    },
+    {
+      "level": 4,
+      "hanzi": "存",
+      "trad": "存",
+      "pinyin": "cún",
+      "pinyinNumeric": "cun2",
+      "english": "existir; depositar; almacenar"
+    },
+    {
+      "level": 4,
+      "hanzi": "错误",
+      "trad": "錯誤",
+      "pinyin": "cuòwù",
+      "pinyinNumeric": "cuo4wu4",
+      "english": "error; equivocación; mistaken"
+    },
+    {
+      "level": 4,
+      "hanzi": "答案",
+      "trad": "答案",
+      "pinyin": "dá'àn",
+      "pinyinNumeric": "da2'an4",
+      "english": "respuesta; solución"
+    },
+    {
+      "level": 4,
+      "hanzi": "打扮",
+      "trad": "打扮",
+      "pinyin": "dǎban",
+      "pinyinNumeric": "da3ban",
+      "english": "arreglarse; maquillarse"
+    },
+    {
+      "level": 4,
+      "hanzi": "打扰",
+      "trad": "打擾",
+      "pinyin": "dǎrǎo",
+      "pinyinNumeric": "da3rao3",
+      "english": "molestar; interrumpir"
+    },
+    {
+      "level": 4,
+      "hanzi": "打印",
+      "trad": "打印",
+      "pinyin": "dǎyìn",
+      "pinyinNumeric": "da3yin4",
+      "english": "imprimir"
+    },
+    {
+      "level": 4,
+      "hanzi": "打招呼",
+      "trad": "打招呼",
+      "pinyin": "dǎzhāohu",
+      "pinyinNumeric": "da3zhao1hu",
+      "english": "notificar; saludar; informar"
+    },
+    {
+      "level": 4,
+      "hanzi": "打折",
+      "trad": "打折",
+      "pinyin": "dǎzhé",
+      "pinyinNumeric": "da3zhe2",
+      "english": "vender con descuento"
+    },
+    {
+      "level": 4,
+      "hanzi": "打针",
+      "trad": "打針",
+      "pinyin": "dǎzhēn",
+      "pinyinNumeric": "da3zhen1",
+      "english": "inyectar; ponerse una inyección"
+    },
+    {
+      "level": 4,
+      "hanzi": "大概",
+      "trad": "大概",
+      "pinyin": "dàgài",
+      "pinyinNumeric": "da4gai4",
+      "english": "probablemente; aproximadamente"
+    },
+    {
+      "level": 4,
+      "hanzi": "大使馆",
+      "trad": "大使館",
+      "pinyin": "dàshǐguǎn",
+      "pinyinNumeric": "da4shi3guan3",
+      "english": "embajada"
+    },
+    {
+      "level": 4,
+      "hanzi": "大约",
+      "trad": "大約",
+      "pinyin": "dàyuē",
+      "pinyinNumeric": "da4yue1",
+      "english": "aproximadamente; sobre"
+    },
+    {
+      "level": 4,
+      "hanzi": "大夫",
+      "trad": "大夫",
+      "pinyin": "dàifu",
+      "pinyinNumeric": "dai4fu",
+      "english": "médico; doctor"
+    },
+    {
+      "level": 4,
+      "hanzi": "戴",
+      "trad": "戴",
+      "pinyin": "dài",
+      "pinyinNumeric": "dai4",
+      "english": "ponerse; llevar puesto; respetar"
+    },
+    {
+      "level": 4,
+      "hanzi": "当",
+      "trad": "當",
+      "pinyin": "dāng",
+      "pinyinNumeric": "dang1",
+      "english": "deber; actuar como; trabajar como; gestionar; match; (sound of bells)"
+    },
+    {
+      "level": 4,
+      "hanzi": "当时",
+      "trad": "當時",
+      "pinyin": "dāngshí",
+      "pinyinNumeric": "dang1shi2",
+      "english": "entonces; en ese momento; while"
+    },
+    {
+      "level": 4,
+      "hanzi": "刀",
+      "trad": "刀",
+      "pinyin": "dāo",
+      "pinyinNumeric": "dao1",
+      "english": "cuchillo; hoja (Kangxi radical 18)"
+    },
+    {
+      "level": 4,
+      "hanzi": "导游",
+      "trad": "導遊",
+      "pinyin": "dǎoyóu",
+      "pinyinNumeric": "dao3you2",
+      "english": "guía turístico"
+    },
+    {
+      "level": 4,
+      "hanzi": "到处",
+      "trad": "到處",
+      "pinyin": "dàochù",
+      "pinyinNumeric": "dao4chu4",
+      "english": "por todas partes; en todos los lugares; all over"
+    },
+    {
+      "level": 4,
+      "hanzi": "到底",
+      "trad": "到底",
+      "pinyin": "dào dǐ",
+      "pinyinNumeric": "dao4 di3",
+      "english": "después de todo; al final (usado en preguntas)"
+    },
+    {
+      "level": 4,
+      "hanzi": "倒",
+      "trad": "倒",
+      "pinyin": "dǎo, dào",
+      "pinyinNumeric": "dao3, dao4",
+      "english": "derrumbarse; caer; fracasar; cambiar | verter; en contra de lo esperado"
+    },
+    {
+      "level": 4,
+      "hanzi": "道歉",
+      "trad": "道歉",
+      "pinyin": "dàoqiàn",
+      "pinyinNumeric": "dao4qian4",
+      "english": "disculparse; pedir perdón"
+    },
+    {
+      "level": 4,
+      "hanzi": "得意",
+      "trad": "得意",
+      "pinyin": "déyì",
+      "pinyinNumeric": "de2yi4",
+      "english": "orgulloso de sí mismo; complaciente"
+    },
+    {
+      "level": 4,
+      "hanzi": "登机牌",
+      "trad": "登機牌",
+      "pinyin": "dēngjīpái",
+      "pinyinNumeric": "deng1ji1pai2",
+      "english": "tarjeta de embarque"
+    },
+    {
+      "level": 4,
+      "hanzi": "低",
+      "trad": "低",
+      "pinyin": "dī",
+      "pinyinNumeric": "di1",
+      "english": "bajo; bajar (la cabeza); inclinarse"
+    },
+    {
+      "level": 4,
+      "hanzi": "底",
+      "trad": "底",
+      "pinyin": "dǐ",
+      "pinyinNumeric": "di3",
+      "english": "fondo; fondo; base"
+    },
+    {
+      "level": 4,
+      "hanzi": "地点",
+      "trad": "地點",
+      "pinyin": "dìdiǎn",
+      "pinyinNumeric": "di4dian3",
+      "english": "lugar; sitio; ubicación"
+    },
+    {
+      "level": 4,
+      "hanzi": "地球",
+      "trad": "地球",
+      "pinyin": "dìqiú",
+      "pinyinNumeric": "di4qiu2",
+      "english": "la Tierra; planeta"
+    },
+    {
+      "level": 4,
+      "hanzi": "地址",
+      "trad": "地址",
+      "pinyin": "dìzhǐ",
+      "pinyinNumeric": "di4zhi3",
+      "english": "dirección"
+    },
+    {
+      "level": 4,
+      "hanzi": "调查",
+      "trad": "調查",
+      "pinyin": "diàochá",
+      "pinyinNumeric": "diao4cha2",
+      "english": "investigar; encuesta; investigación"
+    },
+    {
+      "level": 4,
+      "hanzi": "掉",
+      "trad": "掉",
+      "pinyin": "diào",
+      "pinyinNumeric": "diao4",
+      "english": "caer; dejar caer"
+    },
+    {
+      "level": 4,
+      "hanzi": "丢",
+      "trad": "丟",
+      "pinyin": "diū",
+      "pinyinNumeric": "diu1",
+      "english": "perder (algo); tirar; put aside"
+    },
+    {
+      "level": 4,
+      "hanzi": "动作",
+      "trad": "動作",
+      "pinyin": "dòngzuò",
+      "pinyinNumeric": "dong4zuo4",
+      "english": "movimiento; movimiento; acción"
+    },
+    {
+      "level": 4,
+      "hanzi": "堵车",
+      "trad": "堵車",
+      "pinyin": "dǔchē",
+      "pinyinNumeric": "du3che1",
+      "english": "atasco de tráfico"
+    },
+    {
+      "level": 4,
+      "hanzi": "肚子",
+      "trad": "肚子",
+      "pinyin": "dùzi",
+      "pinyinNumeric": "du4zi",
+      "english": "vientre; abdomen; estómago"
+    },
+    {
+      "level": 4,
+      "hanzi": "短信",
+      "trad": "短信",
+      "pinyin": "duǎnxìn",
+      "pinyinNumeric": "duan3xin4",
+      "english": "mensaje de texto; SMS"
+    },
+    {
+      "level": 4,
+      "hanzi": "对话",
+      "trad": "對話",
+      "pinyin": "duìhuà",
+      "pinyinNumeric": "dui4hua4",
+      "english": "diálogo; conversación"
+    },
+    {
+      "level": 4,
+      "hanzi": "对面",
+      "trad": "對面",
+      "pinyin": "duìmiàn",
+      "pinyinNumeric": "dui4mian4",
+      "english": "enfrente; al otro lado; the other side"
+    },
+    {
+      "level": 4,
+      "hanzi": "对于",
+      "trad": "對于",
+      "pinyin": "duìyú",
+      "pinyinNumeric": "dui4yu2",
+      "english": "en cuanto a; por lo que respecta a; respecto a; para"
+    },
+    {
+      "level": 4,
+      "hanzi": "儿童",
+      "trad": "兒童",
+      "pinyin": "értóng",
+      "pinyinNumeric": "er2tong2",
+      "english": "niño; niños"
+    },
+    {
+      "level": 4,
+      "hanzi": "而",
+      "trad": "而",
+      "pinyin": "ér",
+      "pinyinNumeric": "er2",
+      "english": "y; pero; sin embargo; mientras (Kangxi radical 126)"
+    },
+    {
+      "level": 4,
+      "hanzi": "发生",
+      "trad": "發生",
+      "pinyin": "fāshēng",
+      "pinyinNumeric": "fa1sheng1",
+      "english": "ocurrir; suceder; tener lugar"
+    },
+    {
+      "level": 4,
+      "hanzi": "发展",
+      "trad": "發展",
+      "pinyin": "fāzhǎn",
+      "pinyinNumeric": "fa1zhan3",
+      "english": "desarrollar; desarrollo; crecimiento"
+    },
+    {
+      "level": 4,
+      "hanzi": "法律",
+      "trad": "法律",
+      "pinyin": "fǎlǜ",
+      "pinyinNumeric": "fa3lü4",
+      "english": "ley; estatuto"
+    },
+    {
+      "level": 4,
+      "hanzi": "翻译",
+      "trad": "翻譯",
+      "pinyin": "fānyì",
+      "pinyinNumeric": "fan1yi4",
+      "english": "traducir; traducción; interpret"
+    },
+    {
+      "level": 4,
+      "hanzi": "烦恼",
+      "trad": "煩惱",
+      "pinyin": "fánnǎo",
+      "pinyinNumeric": "fan2nao3",
+      "english": "preocupado; molesto"
+    },
+    {
+      "level": 4,
+      "hanzi": "反对",
+      "trad": "反對",
+      "pinyin": "fǎnduì",
+      "pinyinNumeric": "fan3dui4",
+      "english": "oponerse; luchar contra"
+    },
+    {
+      "level": 4,
+      "hanzi": "方法",
+      "trad": "方法",
+      "pinyin": "fāngfǎ",
+      "pinyinNumeric": "fang1fa3",
+      "english": "método; manera; medio"
+    },
+    {
+      "level": 4,
+      "hanzi": "方面",
+      "trad": "方面",
+      "pinyin": "fāngmiàn",
+      "pinyinNumeric": "fang1mian4",
+      "english": "aspecto; campo; lado"
+    },
+    {
+      "level": 4,
+      "hanzi": "方向",
+      "trad": "方向",
+      "pinyin": "fāngxiàng",
+      "pinyinNumeric": "fang1xiang4",
+      "english": "dirección; orientación"
+    },
+    {
+      "level": 4,
+      "hanzi": "房东",
+      "trad": "房東",
+      "pinyin": "fángdōng",
+      "pinyinNumeric": "fang2dong1",
+      "english": "casero; arrendador"
+    },
+    {
+      "level": 4,
+      "hanzi": "放弃",
+      "trad": "放棄",
+      "pinyin": "fàngqì",
+      "pinyinNumeric": "fang4qi4",
+      "english": "abandonar; renunciar; rendirse"
+    },
+    {
+      "level": 4,
+      "hanzi": "放暑假",
+      "trad": "放暑假",
+      "pinyin": "fàng shǔjià",
+      "pinyinNumeric": "fang4 shu3jia4",
+      "english": "tener vacaciones de verano"
+    },
+    {
+      "level": 4,
+      "hanzi": "放松",
+      "trad": "放松",
+      "pinyin": "fàngsōng",
+      "pinyinNumeric": "fang4song1",
+      "english": "relajar; aflojar; soltar"
+    },
+    {
+      "level": 4,
+      "hanzi": "份",
+      "trad": "份",
+      "pinyin": "fèn",
+      "pinyinNumeric": "fen4",
+      "english": "parte; porción; (clasificador para documentos, papeles, trabajos, etc.)"
+    },
+    {
+      "level": 4,
+      "hanzi": "丰富",
+      "trad": "豐富",
+      "pinyin": "fēngfù",
+      "pinyinNumeric": "feng1fu4",
+      "english": "rico; enriquecer; abundante; plentiful"
+    },
+    {
+      "level": 4,
+      "hanzi": "否则",
+      "trad": "否則",
+      "pinyin": "fǒuzé",
+      "pinyinNumeric": "fou3ze2",
+      "english": "si no; de lo contrario; o sino"
+    },
+    {
+      "level": 4,
+      "hanzi": "符合",
+      "trad": "符合",
+      "pinyin": "fúhé",
+      "pinyinNumeric": "fu2he2",
+      "english": "estar en consonancia con; conforme a; ajustarse"
+    },
+    {
+      "level": 4,
+      "hanzi": "父亲",
+      "trad": "父親",
+      "pinyin": "fùqin",
+      "pinyinNumeric": "fu4qin",
+      "english": "padre"
+    },
+    {
+      "level": 4,
+      "hanzi": "付款",
+      "trad": "付款",
+      "pinyin": "fù kuǎn",
+      "pinyinNumeric": "fu4 kuan3",
+      "english": "pagar"
+    },
+    {
+      "level": 4,
+      "hanzi": "负责",
+      "trad": "負責",
+      "pinyin": "fùzé",
+      "pinyinNumeric": "fu4ze2",
+      "english": "responsable de (algo); encargado de"
+    },
+    {
+      "level": 4,
+      "hanzi": "复印",
+      "trad": "複印",
+      "pinyin": "fùyìn",
+      "pinyinNumeric": "fu4yin4",
+      "english": "fotocopia; duplicado"
+    },
+    {
+      "level": 4,
+      "hanzi": "复杂",
+      "trad": "複雜",
+      "pinyin": "fùzá",
+      "pinyinNumeric": "fu4za2",
+      "english": "complicado; complejo"
+    },
+    {
+      "level": 4,
+      "hanzi": "富",
+      "trad": "富",
+      "pinyin": "fù",
+      "pinyinNumeric": "fu4",
+      "english": "rico; adinerado"
+    },
+    {
+      "level": 4,
+      "hanzi": "改变",
+      "trad": "改變",
+      "pinyin": "gǎibiàn",
+      "pinyinNumeric": "gai3bian4",
+      "english": "cambiar; alterar; transformar"
+    },
+    {
+      "level": 4,
+      "hanzi": "干杯",
+      "trad": "幹杯",
+      "pinyin": "gān bēi",
+      "pinyinNumeric": "gan1 bei1",
+      "english": "brindar; ¡salud!!; bottoms up!"
+    },
+    {
+      "level": 4,
+      "hanzi": "赶",
+      "trad": "趕",
+      "pinyin": "gǎn",
+      "pinyinNumeric": "gan3",
+      "english": "alcanzar; adelantar; echar"
+    },
+    {
+      "level": 4,
+      "hanzi": "敢",
+      "trad": "敢",
+      "pinyin": "gǎn",
+      "pinyinNumeric": "gan3",
+      "english": "atreverse"
+    },
+    {
+      "level": 4,
+      "hanzi": "感动",
+      "trad": "感動",
+      "pinyin": "gǎndòng",
+      "pinyinNumeric": "gan3dong4",
+      "english": "conmoverse; emocionar"
+    },
+    {
+      "level": 4,
+      "hanzi": "感觉",
+      "trad": "感覺",
+      "pinyin": "gǎnjué",
+      "pinyinNumeric": "gan3jue2",
+      "english": "sentir; darse cuenta de; sensación"
+    },
+    {
+      "level": 4,
+      "hanzi": "感情",
+      "trad": "感情",
+      "pinyin": "gǎnqíng",
+      "pinyinNumeric": "gan3qing2",
+      "english": "sentimiento; emoción; sensación"
+    },
+    {
+      "level": 4,
+      "hanzi": "感谢",
+      "trad": "感謝",
+      "pinyin": "gǎnxiè",
+      "pinyinNumeric": "gan3xie4",
+      "english": "agradecer; estar agradecido"
+    },
+    {
+      "level": 4,
+      "hanzi": "干",
+      "trad": "幹",
+      "pinyin": "gān",
+      "pinyinNumeric": "gan1",
+      "english": "concernir; proteger; seco; limpio (Kangxi radical 51)"
+    },
+    {
+      "level": 4,
+      "hanzi": "刚",
+      "trad": "剛",
+      "pinyin": "gāng",
+      "pinyinNumeric": "gang1",
+      "english": "acabar de (indica pasado inmediato); recientemente; firme"
+    },
+    {
+      "level": 4,
+      "hanzi": "高速公路",
+      "trad": "高速公路",
+      "pinyin": "gāosù gōnglù",
+      "pinyinNumeric": "gao1su4 gong1lu4",
+      "english": "autopista"
+    },
+    {
+      "level": 4,
+      "hanzi": "胳膊",
+      "trad": "胳膊",
+      "pinyin": "gēbo",
+      "pinyinNumeric": "ge1bo",
+      "english": "brazo"
+    },
+    {
+      "level": 4,
+      "hanzi": "各",
+      "trad": "各",
+      "pinyin": "gè",
+      "pinyinNumeric": "ge4",
+      "english": "cada; cada uno"
+    },
+    {
+      "level": 4,
+      "hanzi": "工资",
+      "trad": "工資",
+      "pinyin": "gōngzī",
+      "pinyinNumeric": "gong1zi1",
+      "english": "salario; paga; ingresos; sueldo"
+    },
+    {
+      "level": 4,
+      "hanzi": "公里",
+      "trad": "公裏",
+      "pinyin": "gōnglǐ",
+      "pinyinNumeric": "gong1li3",
+      "english": "kilómetro"
+    },
+    {
+      "level": 4,
+      "hanzi": "功夫",
+      "trad": "功夫",
+      "pinyin": "gōngfu",
+      "pinyinNumeric": "gong1fu",
+      "english": "kung fu; habilidad; arte; trabajo"
+    },
+    {
+      "level": 4,
+      "hanzi": "共同",
+      "trad": "共同",
+      "pinyin": "gòngtóng",
+      "pinyinNumeric": "gong4tong2",
+      "english": "juntos; común; conjunto"
+    },
+    {
+      "level": 4,
+      "hanzi": "购物",
+      "trad": "購物",
+      "pinyin": "gòuwù",
+      "pinyinNumeric": "gou4wu4",
+      "english": "ir de compras; comprar mercancías"
+    },
+    {
+      "level": 4,
+      "hanzi": "够",
+      "trad": "夠",
+      "pinyin": "gòu",
+      "pinyinNumeric": "gou4",
+      "english": "suficiente; alcanzar"
+    },
+    {
+      "level": 4,
+      "hanzi": "估计",
+      "trad": "估計",
+      "pinyin": "gūjì",
+      "pinyinNumeric": "gu1ji4",
+      "english": "valorar; estimar"
+    },
+    {
+      "level": 4,
+      "hanzi": "鼓励",
+      "trad": "鼓勵",
+      "pinyin": "gǔlì",
+      "pinyinNumeric": "gu3li4",
+      "english": "animar; inspirar"
+    },
+    {
+      "level": 4,
+      "hanzi": "故意",
+      "trad": "故意",
+      "pinyin": "gùyì",
+      "pinyinNumeric": "gu4yi4",
+      "english": "deliberadamente; intencional; a propósito"
+    },
+    {
+      "level": 4,
+      "hanzi": "顾客",
+      "trad": "顧客",
+      "pinyin": "gùkè",
+      "pinyinNumeric": "gu4ke4",
+      "english": "cliente; cliente"
+    },
+    {
+      "level": 4,
+      "hanzi": "挂",
+      "trad": "挂",
+      "pinyin": "guà",
+      "pinyinNumeric": "gua4",
+      "english": "colgar; poner; suspender"
+    },
+    {
+      "level": 4,
+      "hanzi": "关键",
+      "trad": "關鍵",
+      "pinyin": "guānjiàn",
+      "pinyinNumeric": "guan1jian4",
+      "english": "crucial; clave; fundamental"
+    },
+    {
+      "level": 4,
+      "hanzi": "观众",
+      "trad": "觀衆",
+      "pinyin": "guānzhòng",
+      "pinyinNumeric": "guan1zhong4",
+      "english": "espectador; audiencia"
+    },
+    {
+      "level": 4,
+      "hanzi": "管理",
+      "trad": "管理",
+      "pinyin": "guǎnlǐ",
+      "pinyinNumeric": "guan3li3",
+      "english": "supervisar; gestionar"
+    },
+    {
+      "level": 4,
+      "hanzi": "光",
+      "trad": "光",
+      "pinyin": "guāng",
+      "pinyinNumeric": "guang1",
+      "english": "luz; rayo; brillante; solo; meramente; gastado"
+    },
+    {
+      "level": 4,
+      "hanzi": "广播",
+      "trad": "廣播",
+      "pinyin": "guǎngbō",
+      "pinyinNumeric": "guang3bo1",
+      "english": "transmisión; en el aire"
+    },
+    {
+      "level": 4,
+      "hanzi": "广告",
+      "trad": "廣告",
+      "pinyin": "guǎnggào",
+      "pinyinNumeric": "guang3gao4",
+      "english": "anuncio; un comercial"
+    },
+    {
+      "level": 4,
+      "hanzi": "逛",
+      "trad": "逛",
+      "pinyin": "guàng",
+      "pinyinNumeric": "guang4",
+      "english": "pasear; visitar; ir de vitrinas"
+    },
+    {
+      "level": 4,
+      "hanzi": "规定",
+      "trad": "規定",
+      "pinyin": "guīdìng",
+      "pinyinNumeric": "gui1ding4",
+      "english": "reglamento; estipular; fijar; establecer"
+    },
+    {
+      "level": 4,
+      "hanzi": "国籍",
+      "trad": "國籍",
+      "pinyin": "guójí",
+      "pinyinNumeric": "guo2ji2",
+      "english": "nacionalidad"
+    },
+    {
+      "level": 4,
+      "hanzi": "国际",
+      "trad": "國際",
+      "pinyin": "guójì",
+      "pinyinNumeric": "guo2ji4",
+      "english": "internacional"
+    },
+    {
+      "level": 4,
+      "hanzi": "果汁",
+      "trad": "果汁",
+      "pinyin": "guǒzhī",
+      "pinyinNumeric": "guo3zhi1",
+      "english": "jugo de fruta"
+    },
+    {
+      "level": 4,
+      "hanzi": "过程",
+      "trad": "過程",
+      "pinyin": "guòchéng",
+      "pinyinNumeric": "guo4cheng2",
+      "english": "curso de los eventos; proceso"
+    },
+    {
+      "level": 4,
+      "hanzi": "海洋",
+      "trad": "海洋",
+      "pinyin": "hǎiyáng",
+      "pinyinNumeric": "hai3yang2",
+      "english": "océano"
+    },
+    {
+      "level": 4,
+      "hanzi": "害羞",
+      "trad": "害羞",
+      "pinyin": "hài xiū",
+      "pinyinNumeric": "hai4 xiu1",
+      "english": "sonrojarse; tímido"
+    },
+    {
+      "level": 4,
+      "hanzi": "寒假",
+      "trad": "寒假",
+      "pinyin": "hánjià",
+      "pinyinNumeric": "han2jia4",
+      "english": "vacaciones de invierno"
+    },
+    {
+      "level": 4,
+      "hanzi": "汗",
+      "trad": "汗",
+      "pinyin": "hàn",
+      "pinyinNumeric": "han4",
+      "english": "sudor; transpiración; Kan"
+    },
+    {
+      "level": 4,
+      "hanzi": "航班",
+      "trad": "航班",
+      "pinyin": "hángbān",
+      "pinyinNumeric": "hang2ban1",
+      "english": "vuelo programado; número de vuelo"
+    },
+    {
+      "level": 4,
+      "hanzi": "好处",
+      "trad": "好處",
+      "pinyin": "hǎochu",
+      "pinyinNumeric": "hao3chu",
+      "english": "beneficio; ventaja"
+    },
+    {
+      "level": 4,
+      "hanzi": "好像",
+      "trad": "好像",
+      "pinyin": "hǎoxiàng",
+      "pinyinNumeric": "hao3xiang4",
+      "english": "como si; parecer que"
+    },
+    {
+      "level": 4,
+      "hanzi": "号码",
+      "trad": "號碼",
+      "pinyin": "hàomǎ",
+      "pinyinNumeric": "hao4ma3",
+      "english": "número"
+    },
+    {
+      "level": 4,
+      "hanzi": "合格",
+      "trad": "合格",
+      "pinyin": "hégé",
+      "pinyinNumeric": "he2ge2",
+      "english": "cualificado; a la altura"
+    },
+    {
+      "level": 4,
+      "hanzi": "合适",
+      "trad": "合適",
+      "pinyin": "héshì",
+      "pinyinNumeric": "he2shi4",
+      "english": "adecuado; apropiado; conveniente"
+    },
+    {
+      "level": 4,
+      "hanzi": "盒子",
+      "trad": "盒子",
+      "pinyin": "hézi",
+      "pinyinNumeric": "he2zi",
+      "english": "caja"
+    },
+    {
+      "level": 4,
+      "hanzi": "后悔",
+      "trad": "後悔",
+      "pinyin": "hòuhuǐ",
+      "pinyinNumeric": "hou4hui3",
+      "english": "arrepentirse; arrepentirse"
+    },
+    {
+      "level": 4,
+      "hanzi": "厚",
+      "trad": "厚",
+      "pinyin": "hòu",
+      "pinyinNumeric": "hou4",
+      "english": "grueso (para cosas planas); generoso"
+    },
+    {
+      "level": 4,
+      "hanzi": "互联网",
+      "trad": "互聯網",
+      "pinyin": "Hùliánwǎng",
+      "pinyinNumeric": "Hu4lian2wang3",
+      "english": "Internet"
+    },
+    {
+      "level": 4,
+      "hanzi": "互相",
+      "trad": "互相",
+      "pinyin": "hùxiāng",
+      "pinyinNumeric": "hu4xiang1",
+      "english": "mutuamente; el uno al otro"
+    },
+    {
+      "level": 4,
+      "hanzi": "护士",
+      "trad": "護士",
+      "pinyin": "hùshi",
+      "pinyinNumeric": "hu4shi",
+      "english": "enfermera"
+    },
+    {
+      "level": 4,
+      "hanzi": "怀疑",
+      "trad": "懷疑",
+      "pinyin": "huáiyí",
+      "pinyinNumeric": "huai2yi2",
+      "english": "duda; sospechar; ser escéptico"
+    },
+    {
+      "level": 4,
+      "hanzi": "回忆",
+      "trad": "回憶",
+      "pinyin": "huíyì",
+      "pinyinNumeric": "hui2yi4",
+      "english": "recordar; rememorar"
+    },
+    {
+      "level": 4,
+      "hanzi": "活动",
+      "trad": "活動",
+      "pinyin": "huódòng",
+      "pinyinNumeric": "huo2dong4",
+      "english": "actividad; ejercicio; moverse"
+    },
+    {
+      "level": 4,
+      "hanzi": "活泼",
+      "trad": "活潑",
+      "pinyin": "huópo",
+      "pinyinNumeric": "huo2po",
+      "english": "animado; vivaz"
+    },
+    {
+      "level": 4,
+      "hanzi": "火",
+      "trad": "火",
+      "pinyin": "huǒ",
+      "pinyinNumeric": "huo3",
+      "english": "fuego (radical Kangxi 86)"
+    },
+    {
+      "level": 4,
+      "hanzi": "获得",
+      "trad": "獲得",
+      "pinyin": "huòdé",
+      "pinyinNumeric": "huo4de2",
+      "english": "obtener; adquirir; ganar"
+    },
+    {
+      "level": 4,
+      "hanzi": "积极",
+      "trad": "積極",
+      "pinyin": "jījí",
+      "pinyinNumeric": "ji1ji2",
+      "english": "activo; positivo; enérgico"
+    },
+    {
+      "level": 4,
+      "hanzi": "积累",
+      "trad": "積累",
+      "pinyin": "jīlěi",
+      "pinyinNumeric": "ji1lei3",
+      "english": "acumular; acumulación"
+    },
+    {
+      "level": 4,
+      "hanzi": "基础",
+      "trad": "基礎",
+      "pinyin": "jīchǔ",
+      "pinyinNumeric": "ji1chu3",
+      "english": "base; fundamento"
+    },
+    {
+      "level": 4,
+      "hanzi": "激动",
+      "trad": "激動",
+      "pinyin": "jīdòng",
+      "pinyinNumeric": "ji1dong4",
+      "english": "excitar; agitar"
+    },
+    {
+      "level": 4,
+      "hanzi": "及时",
+      "trad": "及時",
+      "pinyin": "jíshí",
+      "pinyinNumeric": "ji2shi2",
+      "english": "oportuno; a tiempo; puntualmente; sin demora"
+    },
+    {
+      "level": 4,
+      "hanzi": "即使",
+      "trad": "即使",
+      "pinyin": "jíshǐ",
+      "pinyinNumeric": "ji2shi3",
+      "english": "incluso si; aunque"
+    },
+    {
+      "level": 4,
+      "hanzi": "计划",
+      "trad": "計劃",
+      "pinyin": "jìhuà",
+      "pinyinNumeric": "ji4hua4",
+      "english": "plan; proyecto"
+    },
+    {
+      "level": 4,
+      "hanzi": "记者",
+      "trad": "記者",
+      "pinyin": "jìzhě",
+      "pinyinNumeric": "ji4zhe3",
+      "english": "reportero; periodista"
+    },
+    {
+      "level": 4,
+      "hanzi": "技术",
+      "trad": "技術",
+      "pinyin": "jìshù",
+      "pinyinNumeric": "ji4shu4",
+      "english": "tecnología; técnica; habilidad"
+    },
+    {
+      "level": 4,
+      "hanzi": "既然",
+      "trad": "既然",
+      "pinyin": "jìrán",
+      "pinyinNumeric": "ji4ran2",
+      "english": "ya que; dado que; ahora que"
+    },
+    {
+      "level": 4,
+      "hanzi": "继续",
+      "trad": "繼續",
+      "pinyin": "jìxù",
+      "pinyinNumeric": "ji4xu4",
+      "english": "continuar; seguir; proceder"
+    },
+    {
+      "level": 4,
+      "hanzi": "寄",
+      "trad": "寄",
+      "pinyin": "jì",
+      "pinyinNumeric": "ji4",
+      "english": "enviar por correo"
+    },
+    {
+      "level": 4,
+      "hanzi": "加班",
+      "trad": "加班",
+      "pinyin": "jiā bān",
+      "pinyinNumeric": "jia1 ban1",
+      "english": "trabajar horas extra"
+    },
+    {
+      "level": 4,
+      "hanzi": "加油站",
+      "trad": "加油站",
+      "pinyin": "jiāyóuzhàn",
+      "pinyinNumeric": "jia1you2zhan4",
+      "english": "gasolinera"
+    },
+    {
+      "level": 4,
+      "hanzi": "家具",
+      "trad": "家具",
+      "pinyin": "jiājù",
+      "pinyinNumeric": "jia1ju4",
+      "english": "muebles"
+    },
+    {
+      "level": 4,
+      "hanzi": "假",
+      "trad": "假",
+      "pinyin": "jiǎ, jià",
+      "pinyinNumeric": "jia3, jia4",
+      "english": "falso; si; prestar | vacaciones; festivo"
+    },
+    {
+      "level": 4,
+      "hanzi": "价格",
+      "trad": "價格",
+      "pinyin": "jiàgé",
+      "pinyinNumeric": "jia4ge2",
+      "english": "precio"
+    },
+    {
+      "level": 4,
+      "hanzi": "坚持",
+      "trad": "堅持",
+      "pinyin": "jiānchí",
+      "pinyinNumeric": "jian1chi2",
+      "english": "persistir en; perseverar"
+    },
+    {
+      "level": 4,
+      "hanzi": "减肥",
+      "trad": "減肥",
+      "pinyin": "jiǎnféi",
+      "pinyinNumeric": "jian3fei2",
+      "english": "hacer dieta; perder peso"
+    },
+    {
+      "level": 4,
+      "hanzi": "减少",
+      "trad": "減少",
+      "pinyin": "jiǎnshǎo",
+      "pinyinNumeric": "jian3shao3",
+      "english": "reducir; disminuir"
+    },
+    {
+      "level": 4,
+      "hanzi": "建议",
+      "trad": "建議",
+      "pinyin": "jiànyì",
+      "pinyinNumeric": "jian4yi4",
+      "english": "proponer; sugerir; recomendar"
+    },
+    {
+      "level": 4,
+      "hanzi": "将来",
+      "trad": "將來",
+      "pinyin": "jiānglái",
+      "pinyinNumeric": "jiang1lai2",
+      "english": "el futuro"
+    },
+    {
+      "level": 4,
+      "hanzi": "奖金",
+      "trad": "獎金",
+      "pinyin": "jiǎngjīn",
+      "pinyinNumeric": "jiang3jin1",
+      "english": "bono; prima"
+    },
+    {
+      "level": 4,
+      "hanzi": "降低",
+      "trad": "降低",
+      "pinyin": "jiàngdī",
+      "pinyinNumeric": "jiang4di1",
+      "english": "reducir; bajar; dejar caer"
+    },
+    {
+      "level": 4,
+      "hanzi": "降落",
+      "trad": "降落",
+      "pinyin": "jiàngluò",
+      "pinyinNumeric": "jiang4luo4",
+      "english": "descender; aterrizar; poner abajo"
+    },
+    {
+      "level": 4,
+      "hanzi": "交",
+      "trad": "交",
+      "pinyin": "jiāo",
+      "pinyinNumeric": "jiao1",
+      "english": "entregar; devolver; intersectar; pagar (dinero); amistad"
+    },
+    {
+      "level": 4,
+      "hanzi": "交流",
+      "trad": "交流",
+      "pinyin": "jiāoliú",
+      "pinyinNumeric": "jiao1liu2",
+      "english": "comunicar; intercambiar; dar y recibir; interacción; alternar"
+    },
+    {
+      "level": 4,
+      "hanzi": "交通",
+      "trad": "交通",
+      "pinyin": "jiāotōng",
+      "pinyinNumeric": "jiao1tong1",
+      "english": "tráfico; transporte"
+    },
+    {
+      "level": 4,
+      "hanzi": "郊区",
+      "trad": "郊區",
+      "pinyin": "jiāoqū",
+      "pinyinNumeric": "jiao1qu1",
+      "english": "suburbios; afueras"
+    },
+    {
+      "level": 4,
+      "hanzi": "骄傲",
+      "trad": "驕傲",
+      "pinyin": "jiāo'ào",
+      "pinyinNumeric": "jiao1'ao4",
+      "english": "orgulloso; arrogante; engreído; enorgullecerse de"
+    },
+    {
+      "level": 4,
+      "hanzi": "饺子",
+      "trad": "餃子",
+      "pinyin": "jiǎozi",
+      "pinyinNumeric": "jiao3zi",
+      "english": "empanadilla; gyozas"
+    },
+    {
+      "level": 4,
+      "hanzi": "教授",
+      "trad": "教授",
+      "pinyin": "jiàoshòu",
+      "pinyinNumeric": "jiao4shou4",
+      "english": "profesor; instruir; dar una conferencia"
+    },
+    {
+      "level": 4,
+      "hanzi": "教育",
+      "trad": "教育",
+      "pinyin": "jiàoyù",
+      "pinyinNumeric": "jiao4yu4",
+      "english": "educación"
+    },
+    {
+      "level": 4,
+      "hanzi": "接受",
+      "trad": "接受",
+      "pinyin": "jiēshòu",
+      "pinyinNumeric": "jie1shou4",
+      "english": "aceptar; recibir (honores, etc.)"
+    },
+    {
+      "level": 4,
+      "hanzi": "接着",
+      "trad": "接著",
+      "pinyin": "jiēzhe",
+      "pinyinNumeric": "jie1zhe",
+      "english": "continuar; seguir; atrapar; seguir"
+    },
+    {
+      "level": 4,
+      "hanzi": "节",
+      "trad": "節",
+      "pinyin": "jié",
+      "pinyinNumeric": "jie2",
+      "english": "sección; parte; festival; integridad moral; ahorrar; (clasificador para períodos de clase)"
+    },
+    {
+      "level": 4,
+      "hanzi": "节约",
+      "trad": "節約",
+      "pinyin": "jiéyuē",
+      "pinyinNumeric": "jie2yue1",
+      "english": "frugal; ahorrar"
+    },
+    {
+      "level": 4,
+      "hanzi": "结果",
+      "trad": "結果",
+      "pinyin": "jiéguǒ",
+      "pinyinNumeric": "jie2guo3",
+      "english": "resultado; desenlace; finalmente"
+    },
+    {
+      "level": 4,
+      "hanzi": "解释",
+      "trad": "解釋",
+      "pinyin": "jiěshì",
+      "pinyinNumeric": "jie3shi4",
+      "english": "explicar"
+    },
+    {
+      "level": 4,
+      "hanzi": "尽管",
+      "trad": "盡管",
+      "pinyin": "jǐnguǎn",
+      "pinyinNumeric": "jing3uan3",
+      "english": "a pesar de; aunque; incluso aunque | libremente; sin dudar"
+    },
+    {
+      "level": 4,
+      "hanzi": "紧张",
+      "trad": "緊張",
+      "pinyin": "jǐnzhāng",
+      "pinyinNumeric": "jin3zhang1",
+      "english": "nervioso; tensión; tensión"
+    },
+    {
+      "level": 4,
+      "hanzi": "进行",
+      "trad": "進行",
+      "pinyin": "jìnxíng",
+      "pinyinNumeric": "jin4xing2",
+      "english": "llevar a cabo; realizar; emprender"
+    },
+    {
+      "level": 4,
+      "hanzi": "禁止",
+      "trad": "禁止",
+      "pinyin": "jìnzhǐ",
+      "pinyinNumeric": "jin4zhi3",
+      "english": "prohibir; vetar"
+    },
+    {
+      "level": 4,
+      "hanzi": "京剧",
+      "trad": "京劇",
+      "pinyin": "jīngjù",
+      "pinyinNumeric": "jing1ju4",
+      "english": "Ópera de Pekín"
+    },
+    {
+      "level": 4,
+      "hanzi": "经济",
+      "trad": "經濟",
+      "pinyin": "jīngjì",
+      "pinyinNumeric": "jing1ji4",
+      "english": "economía; económico"
+    },
+    {
+      "level": 4,
+      "hanzi": "经历",
+      "trad": "經曆",
+      "pinyin": "jīnglì",
+      "pinyinNumeric": "jing1li4",
+      "english": "someterse a; experimentar"
+    },
+    {
+      "level": 4,
+      "hanzi": "经验",
+      "trad": "經驗",
+      "pinyin": "jīngyàn",
+      "pinyinNumeric": "jing1yan4",
+      "english": "experiencia"
+    },
+    {
+      "level": 4,
+      "hanzi": "精彩",
+      "trad": "精彩",
+      "pinyin": "jīngcǎi",
+      "pinyinNumeric": "jing1cai3",
+      "english": "brillante; espectacular; maravilloso"
+    },
+    {
+      "level": 4,
+      "hanzi": "景色",
+      "trad": "景色",
+      "pinyin": "jǐngsè",
+      "pinyinNumeric": "jing3se4",
+      "english": "paisaje; paisaje; escena; vista"
+    },
+    {
+      "level": 4,
+      "hanzi": "警察",
+      "trad": "警察",
+      "pinyin": "jǐngchá",
+      "pinyinNumeric": "jing3cha2",
+      "english": "policía"
+    },
+    {
+      "level": 4,
+      "hanzi": "竞争",
+      "trad": "競爭",
+      "pinyin": "jìngzhēng",
+      "pinyinNumeric": "jing4zheng1",
+      "english": "competir"
+    },
+    {
+      "level": 4,
+      "hanzi": "竟然",
+      "trad": "竟然",
+      "pinyin": "jìngrán",
+      "pinyinNumeric": "jing4ran2",
+      "english": "inesperadamente; para sorpresa de uno; llegar al extremo de"
+    },
+    {
+      "level": 4,
+      "hanzi": "镜子",
+      "trad": "鏡子",
+      "pinyin": "jìngzi",
+      "pinyinNumeric": "jing4zi",
+      "english": "espejo"
+    },
+    {
+      "level": 4,
+      "hanzi": "究竟",
+      "trad": "究竟",
+      "pinyin": "jiūjìng",
+      "pinyinNumeric": "jiu1jing4",
+      "english": "al fin y al cabo; cuando todo está dicho y hecho; realmente"
+    },
+    {
+      "level": 4,
+      "hanzi": "举",
+      "trad": "舉",
+      "pinyin": "jǔ",
+      "pinyinNumeric": "ju3",
+      "english": "levantar; alzar; citar"
+    },
+    {
+      "level": 4,
+      "hanzi": "举办",
+      "trad": "舉辦",
+      "pinyin": "jǔbàn",
+      "pinyinNumeric": "ju3ban4",
+      "english": "dirigir; celebrar"
+    },
+    {
+      "level": 4,
+      "hanzi": "举行",
+      "trad": "舉行",
+      "pinyin": "jǔxíng",
+      "pinyinNumeric": "ju3xing2",
+      "english": "convocar; celebrar (una reunión, ceremonia, etc.)"
+    },
+    {
+      "level": 4,
+      "hanzi": "拒绝",
+      "trad": "拒絕",
+      "pinyin": "jùjué",
+      "pinyinNumeric": "ju4jue2",
+      "english": "rechazar; declinar; negarse"
+    },
+    {
+      "level": 4,
+      "hanzi": "距离",
+      "trad": "距離",
+      "pinyin": "jùlí",
+      "pinyinNumeric": "ju4li2",
+      "english": "distancia; estar aparte; lejos de"
+    },
+    {
+      "level": 4,
+      "hanzi": "聚会",
+      "trad": "聚會",
+      "pinyin": "jùhuì",
+      "pinyinNumeric": "ju4hui4",
+      "english": "celebrar una reunión; reunirse; una fiesta"
+    },
+    {
+      "level": 4,
+      "hanzi": "开玩笑",
+      "trad": "開玩笑",
+      "pinyin": "kāi wánxiào",
+      "pinyinNumeric": "kai1 wan2xiao4",
+      "english": "bromear; gastar una broma; burlarse de"
+    },
+    {
+      "level": 4,
+      "hanzi": "开心",
+      "trad": "開心",
+      "pinyin": "kāixīn",
+      "pinyinNumeric": "kai1xin1",
+      "english": "sentirse feliz; pasarlo genial; burlarse de alguien"
+    },
+    {
+      "level": 4,
+      "hanzi": "看法",
+      "trad": "看法",
+      "pinyin": "kànfǎ",
+      "pinyinNumeric": "kan4fa3",
+      "english": "punto de vista; opinión"
+    },
+    {
+      "level": 4,
+      "hanzi": "考虑",
+      "trad": "考慮",
+      "pinyin": "kǎolǜ",
+      "pinyinNumeric": "kao3lü4",
+      "english": "pensar; considerar"
+    },
+    {
+      "level": 4,
+      "hanzi": "烤鸭",
+      "trad": "烤鴨",
+      "pinyin": "kǎoyā",
+      "pinyinNumeric": "kao3ya1",
+      "english": "pato asado"
+    },
+    {
+      "level": 4,
+      "hanzi": "科学",
+      "trad": "科學",
+      "pinyin": "kēxué",
+      "pinyinNumeric": "ke1xue2",
+      "english": "ciencia; conocimiento científico"
+    },
+    {
+      "level": 4,
+      "hanzi": "棵",
+      "trad": "棵",
+      "pinyin": "kē",
+      "pinyinNumeric": "ke1",
+      "english": "(clasificador para plantas)"
+    },
+    {
+      "level": 4,
+      "hanzi": "咳嗽",
+      "trad": "咳嗽",
+      "pinyin": "késou",
+      "pinyinNumeric": "ke2sou",
+      "english": "toser"
+    },
+    {
+      "level": 4,
+      "hanzi": "可怜",
+      "trad": "可憐",
+      "pinyin": "kělián",
+      "pinyinNumeric": "ke3lian2",
+      "english": "lástima; pobre; patético"
+    },
+    {
+      "level": 4,
+      "hanzi": "可是",
+      "trad": "可是",
+      "pinyin": "kěshì",
+      "pinyinNumeric": "ke3shi4",
+      "english": "pero; sin embargo"
+    },
+    {
+      "level": 4,
+      "hanzi": "可惜",
+      "trad": "可惜",
+      "pinyin": "kěxī",
+      "pinyinNumeric": "ke3xi1",
+      "english": "es una lástima; lamentable; qué lástima"
+    },
+    {
+      "level": 4,
+      "hanzi": "客厅",
+      "trad": "客廳",
+      "pinyin": "kètīng",
+      "pinyinNumeric": "ke4ting1",
+      "english": "salón; sala de estar"
+    },
+    {
+      "level": 4,
+      "hanzi": "肯定",
+      "trad": "肯定",
+      "pinyin": "kěndìng",
+      "pinyinNumeric": "ken3ding4",
+      "english": "seguro; definitivo; afirmar; aprobar"
+    },
+    {
+      "level": 4,
+      "hanzi": "空",
+      "trad": "空",
+      "pinyin": "kōng, kòng",
+      "pinyinNumeric": "kong1, kong4",
+      "english": "vacío; cielo | dejar en blanco; ocio"
+    },
+    {
+      "level": 4,
+      "hanzi": "空气",
+      "trad": "空氣",
+      "pinyin": "kōngqì",
+      "pinyinNumeric": "kong1qi4",
+      "english": "aire"
+    },
+    {
+      "level": 4,
+      "hanzi": "恐怕",
+      "trad": "恐怕",
+      "pinyin": "kǒngpà",
+      "pinyinNumeric": "kong3pa4",
+      "english": "tener miedo; temer; me temo que..."
+    },
+    {
+      "level": 4,
+      "hanzi": "苦",
+      "trad": "苦",
+      "pinyin": "kǔ",
+      "pinyinNumeric": "ku3",
+      "english": "amargo; miserable"
+    },
+    {
+      "level": 4,
+      "hanzi": "矿泉水",
+      "trad": "礦泉水",
+      "pinyin": "kuàngquánshuǐ",
+      "pinyinNumeric": "kuang4quan2shui3",
+      "english": "agua mineral"
+    },
+    {
+      "level": 4,
+      "hanzi": "困",
+      "trad": "困",
+      "pinyin": "kùn",
+      "pinyinNumeric": "kun4",
+      "english": "somnoliento; rodear; apurado"
+    },
+    {
+      "level": 4,
+      "hanzi": "困难",
+      "trad": "困難",
+      "pinyin": "kùnnan",
+      "pinyinNumeric": "kun4nan",
+      "english": "dificultad; difícil; problema"
+    },
+    {
+      "level": 4,
+      "hanzi": "垃圾桶",
+      "trad": "垃圾桶",
+      "pinyin": "lājītǒng",
+      "pinyinNumeric": "la1ji1tong3",
+      "english": "cubo de basura"
+    },
+    {
+      "level": 4,
+      "hanzi": "拉",
+      "trad": "拉",
+      "pinyin": "lā",
+      "pinyinNumeric": "la1",
+      "english": "tirar; tocar (instrumentos de cuerda); arrastrar"
+    },
+    {
+      "level": 4,
+      "hanzi": "辣",
+      "trad": "辣",
+      "pinyin": "là",
+      "pinyinNumeric": "la4",
+      "english": "picante"
+    },
+    {
+      "level": 4,
+      "hanzi": "来不及",
+      "trad": "來不及",
+      "pinyin": "lái bu jí",
+      "pinyinNumeric": "lai2 bu ji2",
+      "english": "no hay tiempo suficiente (para hacer algo); ya es demasiado tarde"
+    },
+    {
+      "level": 4,
+      "hanzi": "来得及",
+      "trad": "來得及",
+      "pinyin": "lái de jí",
+      "pinyinNumeric": "lai2 de ji2",
+      "english": "aún hay tiempo"
+    },
+    {
+      "level": 4,
+      "hanzi": "来自",
+      "trad": "來自",
+      "pinyin": "láizì",
+      "pinyinNumeric": "lai2zi4",
+      "english": "venir de (un lugar)"
+    },
+    {
+      "level": 4,
+      "hanzi": "懒",
+      "trad": "懶",
+      "pinyin": "lǎn",
+      "pinyinNumeric": "lan3",
+      "english": "perezoso"
+    },
+    {
+      "level": 4,
+      "hanzi": "浪费",
+      "trad": "浪費",
+      "pinyin": "làngfèi",
+      "pinyinNumeric": "lang4fei4",
+      "english": "desperdiciar; malgastar"
+    },
+    {
+      "level": 4,
+      "hanzi": "浪漫",
+      "trad": "浪漫",
+      "pinyin": "làngmàn",
+      "pinyinNumeric": "lang4man4",
+      "english": "romántico"
+    },
+    {
+      "level": 4,
+      "hanzi": "老虎",
+      "trad": "老虎",
+      "pinyin": "lǎohǔ",
+      "pinyinNumeric": "lao3hu3",
+      "english": "tigre"
+    },
+    {
+      "level": 4,
+      "hanzi": "冷静",
+      "trad": "冷靜",
+      "pinyin": "lěngjìng",
+      "pinyinNumeric": "leng3jing4",
+      "english": "tranquilo; sereno; sobrio"
+    },
+    {
+      "level": 4,
+      "hanzi": "礼拜天",
+      "trad": "禮拜天",
+      "pinyin": "lǐbàitiān",
+      "pinyinNumeric": "li3bai4tian1",
+      "english": "domingo"
+    },
+    {
+      "level": 4,
+      "hanzi": "礼貌",
+      "trad": "禮貌",
+      "pinyin": "lǐmào",
+      "pinyinNumeric": "li3mao4",
+      "english": "cortesía; educación; modales"
+    },
+    {
+      "level": 4,
+      "hanzi": "理发",
+      "trad": "理發",
+      "pinyin": "lǐfà",
+      "pinyinNumeric": "li3fa4",
+      "english": "un barbero, peluquería; corte de pelo"
+    },
+    {
+      "level": 4,
+      "hanzi": "理解",
+      "trad": "理解",
+      "pinyin": "lǐjiě",
+      "pinyinNumeric": "li3jie3",
+      "english": "comprender; entender"
+    },
+    {
+      "level": 4,
+      "hanzi": "理想",
+      "trad": "理想",
+      "pinyin": "lǐxiǎng",
+      "pinyinNumeric": "li3xiang3",
+      "english": "ideal"
+    },
+    {
+      "level": 4,
+      "hanzi": "力气",
+      "trad": "力氣",
+      "pinyin": "lìqi",
+      "pinyinNumeric": "li4qi",
+      "english": "fuerza física; esfuerzo"
+    },
+    {
+      "level": 4,
+      "hanzi": "厉害",
+      "trad": "厲害",
+      "pinyin": "lìhai",
+      "pinyinNumeric": "li4hai",
+      "english": "terrible; formidable; feroz; genial; impresionante"
+    },
+    {
+      "level": 4,
+      "hanzi": "例如",
+      "trad": "例如",
+      "pinyin": "lìrú",
+      "pinyinNumeric": "li4ru2",
+      "english": "por ejemplo; por ejemplo"
+    },
+    {
+      "level": 4,
+      "hanzi": "俩",
+      "trad": "倆",
+      "pinyin": "liǎng",
+      "pinyinNumeric": "liang3",
+      "english": "(coloquial) dos (personas)"
+    },
+    {
+      "level": 4,
+      "hanzi": "连",
+      "trad": "連",
+      "pinyin": "lián",
+      "pinyinNumeric": "lian2",
+      "english": "incluso; incluyendo; unir"
+    },
+    {
+      "level": 4,
+      "hanzi": "联系",
+      "trad": "聯系",
+      "pinyin": "liánxì",
+      "pinyinNumeric": "lian2xi4",
+      "english": "integrar; enlazar; conexión; contacto"
+    },
+    {
+      "level": 4,
+      "hanzi": "凉快",
+      "trad": "涼快",
+      "pinyin": "liángkuai",
+      "pinyinNumeric": "liang2kuai",
+      "english": "agradablemente fresco; agradablemente fresco"
+    },
+    {
+      "level": 4,
+      "hanzi": "零钱",
+      "trad": "零錢",
+      "pinyin": "língqián",
+      "pinyinNumeric": "ling2qian2",
+      "english": "cambio pequeño (de dinero)"
+    },
+    {
+      "level": 4,
+      "hanzi": "另外",
+      "trad": "另外",
+      "pinyin": "lìngwài",
+      "pinyinNumeric": "ling4wai4",
+      "english": "otro; además; por otra parte"
+    },
+    {
+      "level": 4,
+      "hanzi": "留",
+      "trad": "留",
+      "pinyin": "liú",
+      "pinyinNumeric": "liu2",
+      "english": "dejar (atrás, un mensaje); retener; quedarse"
+    },
+    {
+      "level": 4,
+      "hanzi": "流利",
+      "trad": "流利",
+      "pinyin": "liúlì",
+      "pinyinNumeric": "liu2li4",
+      "english": "fluido"
+    },
+    {
+      "level": 4,
+      "hanzi": "流行",
+      "trad": "流行",
+      "pinyin": "liúxíng",
+      "pinyinNumeric": "liu2xing2",
+      "english": "propagarse; prevalente; ser popular"
+    },
+    {
+      "level": 4,
+      "hanzi": "旅行",
+      "trad": "旅行",
+      "pinyin": "lǚxíng",
+      "pinyinNumeric": "lü3xing2",
+      "english": "viajar"
+    },
+    {
+      "level": 4,
+      "hanzi": "律师",
+      "trad": "律師",
+      "pinyin": "lǜshī",
+      "pinyinNumeric": "lü4shi1",
+      "english": "abogado"
+    },
+    {
+      "level": 4,
+      "hanzi": "乱",
+      "trad": "亂",
+      "pinyin": "luàn",
+      "pinyinNumeric": "luan4",
+      "english": "desorden; confusión; arbitrariamente"
+    },
+    {
+      "level": 4,
+      "hanzi": "麻烦",
+      "trad": "麻煩",
+      "pinyin": "máfan",
+      "pinyinNumeric": "ma2fan",
+      "english": "molestar (a alguien); molesto; fastidioso"
+    },
+    {
+      "level": 4,
+      "hanzi": "马虎",
+      "trad": "馬虎",
+      "pinyin": "mǎhu",
+      "pinyinNumeric": "ma3hu",
+      "english": "descuidado; chapucero; informal"
+    },
+    {
+      "level": 4,
+      "hanzi": "满",
+      "trad": "滿",
+      "pinyin": "mǎn",
+      "pinyinNumeric": "man3",
+      "english": "lleno; abreviatura de manchú"
+    },
+    {
+      "level": 4,
+      "hanzi": "毛",
+      "trad": "毛",
+      "pinyin": "máo",
+      "pinyinNumeric": "mao2",
+      "english": "pelo; piel; pluma; diez centavos (radical Kangxi 82)"
+    },
+    {
+      "level": 4,
+      "hanzi": "毛巾",
+      "trad": "毛巾",
+      "pinyin": "máojīn",
+      "pinyinNumeric": "mao2jin1",
+      "english": "toalla; paño"
+    },
+    {
+      "level": 4,
+      "hanzi": "美丽",
+      "trad": "美麗",
+      "pinyin": "měilì",
+      "pinyinNumeric": "mei3li4",
+      "english": "hermoso"
+    },
+    {
+      "level": 4,
+      "hanzi": "梦",
+      "trad": "夢",
+      "pinyin": "mèng",
+      "pinyinNumeric": "meng4",
+      "english": "soñar; sueño"
+    },
+    {
+      "level": 4,
+      "hanzi": "迷路",
+      "trad": "迷路",
+      "pinyin": "mílù",
+      "pinyinNumeric": "mi2lu4",
+      "english": "perderse"
+    },
+    {
+      "level": 4,
+      "hanzi": "密码",
+      "trad": "密碼",
+      "pinyin": "mìmǎ",
+      "pinyinNumeric": "mi4ma3",
+      "english": "contraseña; código secreto"
+    },
+    {
+      "level": 4,
+      "hanzi": "免费",
+      "trad": "免費",
+      "pinyin": "miǎn fèi",
+      "pinyinNumeric": "mian3 fei4",
+      "english": "gratis; sin coste"
+    },
+    {
+      "level": 4,
+      "hanzi": "秒",
+      "trad": "秒",
+      "pinyin": "miǎo",
+      "pinyinNumeric": "miao3",
+      "english": "segundo (unidad de tiempo o ángulo)"
+    },
+    {
+      "level": 4,
+      "hanzi": "民族",
+      "trad": "民族",
+      "pinyin": "mínzú",
+      "pinyinNumeric": "min2zu2",
+      "english": "nacionalidad; ethnic group"
+    },
+    {
+      "level": 4,
+      "hanzi": "母亲",
+      "trad": "母親",
+      "pinyin": "mǔqin",
+      "pinyinNumeric": "mu3qin",
+      "english": "madre"
+    },
+    {
+      "level": 4,
+      "hanzi": "目的",
+      "trad": "目的",
+      "pinyin": "mùdì",
+      "pinyinNumeric": "mu4di4",
+      "english": "propósito; objetivo; meta"
+    },
+    {
+      "level": 4,
+      "hanzi": "耐心",
+      "trad": "耐心",
+      "pinyin": "nàixīn",
+      "pinyinNumeric": "nai4xin1",
+      "english": "paciente; tener paciencia"
+    },
+    {
+      "level": 4,
+      "hanzi": "难道",
+      "trad": "難道",
+      "pinyin": "nándào",
+      "pinyinNumeric": "nan2dao4",
+      "english": "¿podría ser que...?; no me digas que..."
+    },
+    {
+      "level": 4,
+      "hanzi": "难受",
+      "trad": "難受",
+      "pinyin": "nánshòu",
+      "pinyinNumeric": "nan2shou4",
+      "english": "sentirse mal; sufrir dolor"
+    },
+    {
+      "level": 4,
+      "hanzi": "内",
+      "trad": "內",
+      "pinyin": "nèi",
+      "pinyinNumeric": "nei4",
+      "english": "interior; interno; dentro"
+    },
+    {
+      "level": 4,
+      "hanzi": "内容",
+      "trad": "內容",
+      "pinyin": "nèiróng",
+      "pinyinNumeric": "nei4rong2",
+      "english": "contenido; sustancia; detalles"
+    },
+    {
+      "level": 4,
+      "hanzi": "能力",
+      "trad": "能力",
+      "pinyin": "nénglì",
+      "pinyinNumeric": "neng2li4",
+      "english": "capacidad; capaz; habilidad"
+    },
+    {
+      "level": 4,
+      "hanzi": "年龄",
+      "trad": "年齡",
+      "pinyin": "niánlíng",
+      "pinyinNumeric": "nian2ling2",
+      "english": "edad (de una persona)"
+    },
+    {
+      "level": 4,
+      "hanzi": "弄",
+      "trad": "弄",
+      "pinyin": "nòng",
+      "pinyinNumeric": "nong4",
+      "english": "hacer; manejar; arreglar"
+    },
+    {
+      "level": 4,
+      "hanzi": "暖和",
+      "trad": "暖和",
+      "pinyin": "nuǎnhuo",
+      "pinyinNumeric": "nuan3huo",
+      "english": "wbrazo; nice and wbrazo"
+    },
+    {
+      "level": 4,
+      "hanzi": "偶尔",
+      "trad": "偶爾",
+      "pinyin": "ǒu'ěr",
+      "pinyinNumeric": "ou3'er3",
+      "english": "ocasionalmente; de vez en cuando; a veces"
+    },
+    {
+      "level": 4,
+      "hanzi": "排队",
+      "trad": "排隊",
+      "pinyin": "pái duì",
+      "pinyinNumeric": "pai2 dui4",
+      "english": "hacer cola; ponerse en fila"
+    },
+    {
+      "level": 4,
+      "hanzi": "排列",
+      "trad": "排列",
+      "pinyin": "páiliè",
+      "pinyinNumeric": "pai2lie4",
+      "english": "ordenar; alinear; permutación"
+    },
+    {
+      "level": 4,
+      "hanzi": "判断",
+      "trad": "判斷",
+      "pinyin": "pànduàn",
+      "pinyinNumeric": "pan4duan4",
+      "english": "juzgar; juicio; decidir"
+    },
+    {
+      "level": 4,
+      "hanzi": "陪",
+      "trad": "陪",
+      "pinyin": "péi",
+      "pinyinNumeric": "pei2",
+      "english": "acompañar; hacer compañía"
+    },
+    {
+      "level": 4,
+      "hanzi": "批评",
+      "trad": "批評",
+      "pinyin": "pīpíng",
+      "pinyinNumeric": "pi1ping2",
+      "english": "criticar"
+    },
+    {
+      "level": 4,
+      "hanzi": "皮肤",
+      "trad": "皮膚",
+      "pinyin": "pífū",
+      "pinyinNumeric": "pi2fu1",
+      "english": "piel"
+    },
+    {
+      "level": 4,
+      "hanzi": "脾气",
+      "trad": "脾氣",
+      "pinyin": "píqi",
+      "pinyinNumeric": "pi2qi",
+      "english": "temperamento; carácter; genio"
+    },
+    {
+      "level": 4,
+      "hanzi": "篇",
+      "trad": "篇",
+      "pinyin": "piān",
+      "pinyinNumeric": "pian1",
+      "english": "hoja; (clasificador para artículos); escrito"
+    },
+    {
+      "level": 4,
+      "hanzi": "骗",
+      "trad": "騙",
+      "pinyin": "piàn",
+      "pinyinNumeric": "pian4",
+      "english": "engañar; estafar; timar"
+    },
+    {
+      "level": 4,
+      "hanzi": "乒乓球",
+      "trad": "乒乓球",
+      "pinyin": "pīngpāngqiú",
+      "pinyinNumeric": "ping1pang1qiu2",
+      "english": "ping pong; tenis de mesa"
+    },
+    {
+      "level": 4,
+      "hanzi": "平时",
+      "trad": "平時",
+      "pinyin": "píngshí",
+      "pinyinNumeric": "ping2shi2",
+      "english": "normalmente; en tiempos normales; en tiempo de paz"
+    },
+    {
+      "level": 4,
+      "hanzi": "破",
+      "trad": "破",
+      "pinyin": "pò",
+      "pinyinNumeric": "po4",
+      "english": "roto; dañado; partir"
+    },
+    {
+      "level": 4,
+      "hanzi": "葡萄",
+      "trad": "葡萄",
+      "pinyin": "pútao",
+      "pinyinNumeric": "pu2tao",
+      "english": "uva"
+    },
+    {
+      "level": 4,
+      "hanzi": "普遍",
+      "trad": "普遍",
+      "pinyin": "pǔbiàn",
+      "pinyinNumeric": "pu3bian4",
+      "english": "común; universal; general; extendido"
+    },
+    {
+      "level": 4,
+      "hanzi": "普通话",
+      "trad": "普通話",
+      "pinyin": "pǔtōnghuà",
+      "pinyinNumeric": "pu3tong1hua4",
+      "english": "mandarín (lengua común)"
+    },
+    {
+      "level": 4,
+      "hanzi": "其次",
+      "trad": "其次",
+      "pinyin": "qícì",
+      "pinyinNumeric": "qi2ci4",
+      "english": "luego; en segundo lugar"
+    },
+    {
+      "level": 4,
+      "hanzi": "其中",
+      "trad": "其中",
+      "pinyin": "qízhōng",
+      "pinyinNumeric": "qi2zhong1",
+      "english": "entre; dentro; incluido entre estos"
+    },
+    {
+      "level": 4,
+      "hanzi": "气候",
+      "trad": "氣候",
+      "pinyin": "qìhòu",
+      "pinyinNumeric": "qi4hou4",
+      "english": "clima; atmósfera; tiempo"
+    },
+    {
+      "level": 4,
+      "hanzi": "千万",
+      "trad": "千萬",
+      "pinyin": "qiānwàn",
+      "pinyinNumeric": "qian1wan4",
+      "english": "diez millones; asegúrate de; debes"
+    },
+    {
+      "level": 4,
+      "hanzi": "签证",
+      "trad": "簽證",
+      "pinyin": "qiānzhèng",
+      "pinyinNumeric": "qian1zheng4",
+      "english": "visado"
+    },
+    {
+      "level": 4,
+      "hanzi": "敲",
+      "trad": "敲",
+      "pinyin": "qiāo",
+      "pinyinNumeric": "qiao1",
+      "english": "golpear; chantajear"
+    },
+    {
+      "level": 4,
+      "hanzi": "桥",
+      "trad": "橋",
+      "pinyin": "qiáo",
+      "pinyinNumeric": "qiao2",
+      "english": "puente"
+    },
+    {
+      "level": 4,
+      "hanzi": "巧克力",
+      "trad": "巧克力",
+      "pinyin": "qiǎokèlì",
+      "pinyinNumeric": "qiao3ke4li4",
+      "english": "chocolate"
+    },
+    {
+      "level": 4,
+      "hanzi": "亲戚",
+      "trad": "親戚",
+      "pinyin": "qīnqi",
+      "pinyinNumeric": "qin1qi",
+      "english": "pariente (es decir, familiar)"
+    },
+    {
+      "level": 4,
+      "hanzi": "轻",
+      "trad": "輕",
+      "pinyin": "qīng",
+      "pinyinNumeric": "qing1",
+      "english": "ligero; fácil; suave"
+    },
+    {
+      "level": 4,
+      "hanzi": "轻松",
+      "trad": "輕松",
+      "pinyin": "qīngsōng",
+      "pinyinNumeric": "qing1song1",
+      "english": "relajado; tranquilo; despreocupado"
+    },
+    {
+      "level": 4,
+      "hanzi": "情况",
+      "trad": "情況",
+      "pinyin": "qíngkuàng",
+      "pinyinNumeric": "qing2kuang4",
+      "english": "circumstance; state of affaires; situation"
+    },
+    {
+      "level": 4,
+      "hanzi": "穷",
+      "trad": "窮",
+      "pinyin": "qióng",
+      "pinyinNumeric": "qiong2",
+      "english": "pobre; agotado"
+    },
+    {
+      "level": 4,
+      "hanzi": "区别",
+      "trad": "區別",
+      "pinyin": "qūbié",
+      "pinyinNumeric": "qu1bie2",
+      "english": "diferencia; distinguir"
+    },
+    {
+      "level": 4,
+      "hanzi": "取",
+      "trad": "取",
+      "pinyin": "qǔ",
+      "pinyinNumeric": "qu3",
+      "english": "tomar; obtener; elegir"
+    },
+    {
+      "level": 4,
+      "hanzi": "全部",
+      "trad": "全部",
+      "pinyin": "quánbù",
+      "pinyinNumeric": "quan2bu4",
+      "english": "todo; entero; completo"
+    },
+    {
+      "level": 4,
+      "hanzi": "缺点",
+      "trad": "缺點",
+      "pinyin": "quēdiǎn",
+      "pinyinNumeric": "que1dian3",
+      "english": "punto débil; defecto; falta; carencia"
+    },
+    {
+      "level": 4,
+      "hanzi": "缺少",
+      "trad": "缺少",
+      "pinyin": "quēshǎo",
+      "pinyinNumeric": "que1shao3",
+      "english": "faltar; carecer de; ser deficiente en"
+    },
+    {
+      "level": 4,
+      "hanzi": "却",
+      "trad": "卻",
+      "pinyin": "què",
+      "pinyinNumeric": "que4",
+      "english": "pero; sin embargo; no obstante"
+    },
+    {
+      "level": 4,
+      "hanzi": "确实",
+      "trad": "確實",
+      "pinyin": "quèshí",
+      "pinyinNumeric": "que4shi2",
+      "english": "ciertamente; en verdad; fiable"
+    },
+    {
+      "level": 4,
+      "hanzi": "然而",
+      "trad": "然而",
+      "pinyin": "rán'ér",
+      "pinyinNumeric": "ran2'er2",
+      "english": "sin embargo; no obstante; pero"
+    },
+    {
+      "level": 4,
+      "hanzi": "热闹",
+      "trad": "熱鬧",
+      "pinyin": "rènao",
+      "pinyinNumeric": "ren4ao",
+      "english": "concurrido; animado; ajetreado"
+    },
+    {
+      "level": 4,
+      "hanzi": "任何",
+      "trad": "任何",
+      "pinyin": "rènhé",
+      "pinyinNumeric": "ren4he2",
+      "english": "cualquier; cualquiera; cualquier cosa"
+    },
+    {
+      "level": 4,
+      "hanzi": "任务",
+      "trad": "任務",
+      "pinyin": "rènwu",
+      "pinyinNumeric": "ren4wu",
+      "english": "misión; tarea; encargo"
+    },
+    {
+      "level": 4,
+      "hanzi": "扔",
+      "trad": "扔",
+      "pinyin": "rēng",
+      "pinyinNumeric": "reng1",
+      "english": "lanzar; tirar"
+    },
+    {
+      "level": 4,
+      "hanzi": "仍然",
+      "trad": "仍然",
+      "pinyin": "réngrán",
+      "pinyinNumeric": "reng2ran2",
+      "english": "todavía; aún"
+    },
+    {
+      "level": 4,
+      "hanzi": "日记",
+      "trad": "日記",
+      "pinyin": "rìjì",
+      "pinyinNumeric": "ri4ji4",
+      "english": "diario"
+    },
+    {
+      "level": 4,
+      "hanzi": "入口",
+      "trad": "入口",
+      "pinyin": "rùkǒu",
+      "pinyinNumeric": "ru4kou3",
+      "english": "entrada"
+    },
+    {
+      "level": 4,
+      "hanzi": "散步",
+      "trad": "散步",
+      "pinyin": "sàn bù",
+      "pinyinNumeric": "san4 bu4",
+      "english": "pasear; dar un paseo"
+    },
+    {
+      "level": 4,
+      "hanzi": "森林",
+      "trad": "森林",
+      "pinyin": "sēnlín",
+      "pinyinNumeric": "sen1lin2",
+      "english": "bosque"
+    },
+    {
+      "level": 4,
+      "hanzi": "沙发",
+      "trad": "沙發",
+      "pinyin": "shāfā",
+      "pinyinNumeric": "sha1fa1",
+      "english": "sofá"
+    },
+    {
+      "level": 4,
+      "hanzi": "伤心",
+      "trad": "傷心",
+      "pinyin": "shāngxīn",
+      "pinyinNumeric": "shang1xin1",
+      "english": "triste; afligirse; con el corazón roto"
+    },
+    {
+      "level": 4,
+      "hanzi": "商量",
+      "trad": "商量",
+      "pinyin": "shāngliang",
+      "pinyinNumeric": "shang1liang",
+      "english": "consultar; discutir; hablar"
+    },
+    {
+      "level": 4,
+      "hanzi": "稍微",
+      "trad": "稍微",
+      "pinyin": "shāowēi",
+      "pinyinNumeric": "shao1wei1",
+      "english": "un poco; ligeramente"
+    },
+    {
+      "level": 4,
+      "hanzi": "勺子",
+      "trad": "勺子",
+      "pinyin": "sháozi",
+      "pinyinNumeric": "shao2zi",
+      "english": "cuchara; cucharón"
+    },
+    {
+      "level": 4,
+      "hanzi": "社会",
+      "trad": "社會",
+      "pinyin": "shèhuì",
+      "pinyinNumeric": "she4hui4",
+      "english": "sociedad"
+    },
+    {
+      "level": 4,
+      "hanzi": "申请",
+      "trad": "申請",
+      "pinyin": "shēnqǐng",
+      "pinyinNumeric": "shen1qing3",
+      "english": "solicitar; solicitud"
+    },
+    {
+      "level": 4,
+      "hanzi": "深",
+      "trad": "深",
+      "pinyin": "shēn",
+      "pinyinNumeric": "shen1",
+      "english": "profundo; hondo; oscuro (de colores)"
+    },
+    {
+      "level": 4,
+      "hanzi": "甚至",
+      "trad": "甚至",
+      "pinyin": "shènzhì",
+      "pinyinNumeric": "shen4zhi4",
+      "english": "incluso (hasta el punto de); tanto que"
+    },
+    {
+      "level": 4,
+      "hanzi": "生活",
+      "trad": "生活",
+      "pinyin": "shēnghuó",
+      "pinyinNumeric": "sheng1huo2",
+      "english": "vida; medio de vida; vivir"
+    },
+    {
+      "level": 4,
+      "hanzi": "生命",
+      "trad": "生命",
+      "pinyin": "shēngmìng",
+      "pinyinNumeric": "sheng1ming4",
+      "english": "vida"
+    },
+    {
+      "level": 4,
+      "hanzi": "生意",
+      "trad": "生意",
+      "pinyin": "shēngyi",
+      "pinyinNumeric": "sheng1yi",
+      "english": "negocio; comercio"
+    },
+    {
+      "level": 4,
+      "hanzi": "省",
+      "trad": "省",
+      "pinyin": "shěng",
+      "pinyinNumeric": "sheng3",
+      "english": "ahorrar; economizar; omitir; provincia"
+    },
+    {
+      "level": 4,
+      "hanzi": "剩",
+      "trad": "剩",
+      "pinyin": "shèng",
+      "pinyinNumeric": "sheng4",
+      "english": "quedar; sobrar; excedente"
+    },
+    {
+      "level": 4,
+      "hanzi": "失败",
+      "trad": "失敗",
+      "pinyin": "shībài",
+      "pinyinNumeric": "shi1bai4",
+      "english": "ser derrotado; fracasar; perder"
+    },
+    {
+      "level": 4,
+      "hanzi": "失望",
+      "trad": "失望",
+      "pinyin": "shīwàng",
+      "pinyinNumeric": "shi1wang4",
+      "english": "decepcionado; perder la esperanza"
+    },
+    {
+      "level": 4,
+      "hanzi": "师傅",
+      "trad": "師傅",
+      "pinyin": "shīfu",
+      "pinyinNumeric": "shi1fu",
+      "english": "maestro; trabajador cualificado; profesor"
+    },
+    {
+      "level": 4,
+      "hanzi": "十分",
+      "trad": "十分",
+      "pinyin": "shífēn",
+      "pinyinNumeric": "shi2fen1",
+      "english": "muy; plenamente; 100%"
+    },
+    {
+      "level": 4,
+      "hanzi": "实际",
+      "trad": "實際",
+      "pinyin": "shíjì",
+      "pinyinNumeric": "shi2ji4",
+      "english": "real; realidad; práctica"
+    },
+    {
+      "level": 4,
+      "hanzi": "实在",
+      "trad": "實在",
+      "pinyin": "shízài",
+      "pinyinNumeric": "shi2zai4",
+      "english": "honesto; en realidad; sinceramente; ciertamente"
+    },
+    {
+      "level": 4,
+      "hanzi": "使",
+      "trad": "使",
+      "pinyin": "shǐ",
+      "pinyinNumeric": "shi3",
+      "english": "usar; hacer; causar; permitir; enviado; mensajero"
+    },
+    {
+      "level": 4,
+      "hanzi": "使用",
+      "trad": "使用",
+      "pinyin": "shǐyòng",
+      "pinyinNumeric": "shi3yong4",
+      "english": "usar; emplear; aplicar; administrar; manejar"
+    },
+    {
+      "level": 4,
+      "hanzi": "世纪",
+      "trad": "世紀",
+      "pinyin": "shìjì",
+      "pinyinNumeric": "shi4ji4",
+      "english": "siglo"
+    },
+    {
+      "level": 4,
+      "hanzi": "是否",
+      "trad": "是否",
+      "pinyin": "shìfǒu",
+      "pinyinNumeric": "shi4fou3",
+      "english": "si (o no); si"
+    },
+    {
+      "level": 4,
+      "hanzi": "适合",
+      "trad": "適合",
+      "pinyin": "shìhé",
+      "pinyinNumeric": "shi4he2",
+      "english": "convenir; quedar bien"
+    },
+    {
+      "level": 4,
+      "hanzi": "适应",
+      "trad": "適應",
+      "pinyin": "shìyìng",
+      "pinyinNumeric": "shi4ying4",
+      "english": "adaptarse; acomodarse"
+    },
+    {
+      "level": 4,
+      "hanzi": "收",
+      "trad": "收",
+      "pinyin": "shōu",
+      "pinyinNumeric": "shou1",
+      "english": "recibir; aceptar; recoger; cosechar"
+    },
+    {
+      "level": 4,
+      "hanzi": "收入",
+      "trad": "收入",
+      "pinyin": "shōurù",
+      "pinyinNumeric": "shou1ru4",
+      "english": "ingresos; renta"
+    },
+    {
+      "level": 4,
+      "hanzi": "收拾",
+      "trad": "收拾",
+      "pinyin": "shōushi",
+      "pinyinNumeric": "shou1shi",
+      "english": "to tidy; put in order; to repaire; to settle with; punish"
+    },
+    {
+      "level": 4,
+      "hanzi": "首都",
+      "trad": "首都",
+      "pinyin": "shǒudū",
+      "pinyinNumeric": "shou3du1",
+      "english": "capital (ciudad)"
+    },
+    {
+      "level": 4,
+      "hanzi": "首先",
+      "trad": "首先",
+      "pinyin": "shǒuxiān",
+      "pinyinNumeric": "shou3xian1",
+      "english": "en primer lugar; primero"
+    },
+    {
+      "level": 4,
+      "hanzi": "受不了",
+      "trad": "受不了",
+      "pinyin": "shòu bu liǎo",
+      "pinyinNumeric": "shou4 bu liao3",
+      "english": "no poder soportar; insoportable; no aguantar"
+    },
+    {
+      "level": 4,
+      "hanzi": "受到",
+      "trad": "受到",
+      "pinyin": "shòudào",
+      "pinyinNumeric": "shou4dao4",
+      "english": "recibir (influencia, restricción, etc.); verse sometido a"
+    },
+    {
+      "level": 4,
+      "hanzi": "售货员",
+      "trad": "售貨員",
+      "pinyin": "shòuhuòyuán",
+      "pinyinNumeric": "shou4huo4yuan2",
+      "english": "dependiente; vendedor"
+    },
+    {
+      "level": 4,
+      "hanzi": "输",
+      "trad": "輸",
+      "pinyin": "shū",
+      "pinyinNumeric": "shu1",
+      "english": "transportar; perder (un juego, etc.)"
+    },
+    {
+      "level": 4,
+      "hanzi": "熟悉",
+      "trad": "熟悉",
+      "pinyin": "shúxī",
+      "pinyinNumeric": "shu2xi1",
+      "english": "familiarizado con; conocer bien"
+    },
+    {
+      "level": 4,
+      "hanzi": "数量",
+      "trad": "數量",
+      "pinyin": "shùliàng",
+      "pinyinNumeric": "shu4liang4",
+      "english": "amount; quantity; número"
+    },
+    {
+      "level": 4,
+      "hanzi": "数字",
+      "trad": "數字",
+      "pinyin": "shùzì",
+      "pinyinNumeric": "shu4zi4",
+      "english": "número; numeral; figure; digit"
+    },
+    {
+      "level": 4,
+      "hanzi": "帅",
+      "trad": "帥",
+      "pinyin": "shuài",
+      "pinyinNumeric": "shuai4",
+      "english": "guapo; elegante; comandante en jefe"
+    },
+    {
+      "level": 4,
+      "hanzi": "顺便",
+      "trad": "順便",
+      "pinyin": "shùnbiàn",
+      "pinyinNumeric": "shun4bian4",
+      "english": "de paso; aprovechando; por cierto"
+    },
+    {
+      "level": 4,
+      "hanzi": "顺利",
+      "trad": "順利",
+      "pinyin": "shùnlì",
+      "pinyinNumeric": "shun4li4",
+      "english": "ir sobre ruedas; sin contratiempos; exitoso"
+    },
+    {
+      "level": 4,
+      "hanzi": "顺序",
+      "trad": "順序",
+      "pinyin": "shùnxù",
+      "pinyinNumeric": "shun4xu4",
+      "english": "secuencia; orden"
+    },
+    {
+      "level": 4,
+      "hanzi": "说明",
+      "trad": "說明",
+      "pinyin": "shuōmíng",
+      "pinyinNumeric": "shuo1ming2",
+      "english": "explicar; explicación; ilustrar; mostrar"
+    },
+    {
+      "level": 4,
+      "hanzi": "硕士",
+      "trad": "碩士",
+      "pinyin": "shuòshì",
+      "pinyinNumeric": "shuo4shi4",
+      "english": "máster; título de máster"
+    },
+    {
+      "level": 4,
+      "hanzi": "死",
+      "trad": "死",
+      "pinyin": "sǐ",
+      "pinyinNumeric": "si3",
+      "english": "morir; muerto; fijo; impasible; extremadamente"
+    },
+    {
+      "level": 4,
+      "hanzi": "速度",
+      "trad": "速度",
+      "pinyin": "sùdù",
+      "pinyinNumeric": "su4du4",
+      "english": "velocidad; ritmo"
+    },
+    {
+      "level": 4,
+      "hanzi": "塑料袋",
+      "trad": "塑料袋",
+      "pinyin": "sùliàodài",
+      "pinyinNumeric": "su4liao4dai4",
+      "english": "bolsa de plástico"
+    },
+    {
+      "level": 4,
+      "hanzi": "酸",
+      "trad": "酸",
+      "pinyin": "suān",
+      "pinyinNumeric": "suan1",
+      "english": "agrio; dolorido; dolor"
+    },
+    {
+      "level": 4,
+      "hanzi": "随便",
+      "trad": "隨便",
+      "pinyin": "suíbiàn",
+      "pinyinNumeric": "sui2bian4",
+      "english": "como uno quiera; informal; aleatorio; casual"
+    },
+    {
+      "level": 4,
+      "hanzi": "随着",
+      "trad": "隨著",
+      "pinyin": "suízhe",
+      "pinyinNumeric": "sui2zhe",
+      "english": "junto con; a medida que"
+    },
+    {
+      "level": 4,
+      "hanzi": "孙子",
+      "trad": "孫子",
+      "pinyin": "sūnzi",
+      "pinyinNumeric": "sun1zi",
+      "english": "nieto; hijo del hijo"
+    },
+    {
+      "level": 4,
+      "hanzi": "所有",
+      "trad": "所有",
+      "pinyin": "suǒyǒu",
+      "pinyinNumeric": "suo3you3",
+      "english": "todo; tener; poseer"
+    },
+    {
+      "level": 4,
+      "hanzi": "台",
+      "trad": "台",
+      "pinyin": "tái",
+      "pinyinNumeric": "tai2",
+      "english": "plataforma; Taiwán (abr.); escritorio; escenario; tifón; (clasificador para máquinas); (clásico) usted (en cartas)"
+    },
+    {
+      "level": 4,
+      "hanzi": "抬",
+      "trad": "擡",
+      "pinyin": "tái",
+      "pinyinNumeric": "tai2",
+      "english": "levantar; alzar (con las palmas hacia arriba); llevar (entre varios)"
+    },
+    {
+      "level": 4,
+      "hanzi": "态度",
+      "trad": "態度",
+      "pinyin": "tàidu",
+      "pinyinNumeric": "tai4du",
+      "english": "modales; porte; actitud"
+    },
+    {
+      "level": 4,
+      "hanzi": "谈",
+      "trad": "談",
+      "pinyin": "tán",
+      "pinyinNumeric": "tan2",
+      "english": "hablar; charlar; conversar"
+    },
+    {
+      "level": 4,
+      "hanzi": "弹钢琴",
+      "trad": "彈鋼琴",
+      "pinyin": "tán gāngqín",
+      "pinyinNumeric": "tan2 gang1qin2",
+      "english": "tocar el piano"
+    },
+    {
+      "level": 4,
+      "hanzi": "汤",
+      "trad": "湯",
+      "pinyin": "tāng",
+      "pinyinNumeric": "tang1",
+      "english": "sopa; caldo"
+    },
+    {
+      "level": 4,
+      "hanzi": "糖",
+      "trad": "糖",
+      "pinyin": "táng",
+      "pinyinNumeric": "tang2",
+      "english": "azúcar; caramelo; dulces"
+    },
+    {
+      "level": 4,
+      "hanzi": "躺",
+      "trad": "躺",
+      "pinyin": "tǎng",
+      "pinyinNumeric": "tang3",
+      "english": "recostarse; tumbarse (boca arriba o de lado)"
+    },
+    {
+      "level": 4,
+      "hanzi": "趟",
+      "trad": "趟",
+      "pinyin": "tàng, tāng",
+      "pinyinNumeric": "tang4, tang1",
+      "english": "(clasificador para viajes o veces) | vadear"
+    },
+    {
+      "level": 4,
+      "hanzi": "讨论",
+      "trad": "討論",
+      "pinyin": "tǎolùn",
+      "pinyinNumeric": "tao3lun4",
+      "english": "discutir; discusión; debatir"
+    },
+    {
+      "level": 4,
+      "hanzi": "讨厌",
+      "trad": "討厭",
+      "pinyin": "tǎoyàn",
+      "pinyinNumeric": "tao3yan4",
+      "english": "odiar; detestar; repugnante; molesto"
+    },
+    {
+      "level": 4,
+      "hanzi": "特点",
+      "trad": "特點",
+      "pinyin": "tèdiǎn",
+      "pinyinNumeric": "te4dian3",
+      "english": "característica; rasgo; peculiaridad"
+    },
+    {
+      "level": 4,
+      "hanzi": "提",
+      "trad": "提",
+      "pinyin": "tí",
+      "pinyinNumeric": "ti2",
+      "english": "llevar; levantar; plantear (un tema)"
+    },
+    {
+      "level": 4,
+      "hanzi": "提供",
+      "trad": "提供",
+      "pinyin": "tígōng",
+      "pinyinNumeric": "ti2gong1",
+      "english": "suministrar; proporcionar; facilitar"
+    },
+    {
+      "level": 4,
+      "hanzi": "提前",
+      "trad": "提前",
+      "pinyin": "tíqián",
+      "pinyinNumeric": "ti2qian2",
+      "english": "adelantar; anticipar; avanzar"
+    },
+    {
+      "level": 4,
+      "hanzi": "提醒",
+      "trad": "提醒",
+      "pinyin": "tíxǐng",
+      "pinyinNumeric": "ti2xing3",
+      "english": "recordar; llamar la atención; advertir"
+    },
+    {
+      "level": 4,
+      "hanzi": "填空",
+      "trad": "填空",
+      "pinyin": "tiánkòng",
+      "pinyinNumeric": "tian2kong4",
+      "english": "rellenar los espacios; cubrir una vacante"
+    },
+    {
+      "level": 4,
+      "hanzi": "条件",
+      "trad": "條件",
+      "pinyin": "tiáojiàn",
+      "pinyinNumeric": "tiao2jian4",
+      "english": "condición; circunstancias; requisito"
+    },
+    {
+      "level": 4,
+      "hanzi": "停",
+      "trad": "停",
+      "pinyin": "tíng",
+      "pinyinNumeric": "ting2",
+      "english": "parar; detenerse; aparcar (un coche)"
+    },
+    {
+      "level": 4,
+      "hanzi": "挺",
+      "trad": "挺",
+      "pinyin": "tǐng",
+      "pinyinNumeric": "ting3",
+      "english": "enderezarse; sobresalir; bastante (bueno); muy"
+    },
+    {
+      "level": 4,
+      "hanzi": "通过",
+      "trad": "通過",
+      "pinyin": "tōngguò",
+      "pinyinNumeric": "tong1guo4",
+      "english": "mediante; a través de (un método); pasar por; vía"
+    },
+    {
+      "level": 4,
+      "hanzi": "通知",
+      "trad": "通知",
+      "pinyin": "tōngzhī",
+      "pinyinNumeric": "tong1zhi1",
+      "english": "notificar; informar; aviso"
+    },
+    {
+      "level": 4,
+      "hanzi": "同情",
+      "trad": "同情",
+      "pinyin": "tóngqíng",
+      "pinyinNumeric": "tong2qing2",
+      "english": "compasión; simpatía"
+    },
+    {
+      "level": 4,
+      "hanzi": "同时",
+      "trad": "同時",
+      "pinyin": "tóngshí",
+      "pinyinNumeric": "tong2shi2",
+      "english": "al mismo tiempo; simultáneamente"
+    },
+    {
+      "level": 4,
+      "hanzi": "推",
+      "trad": "推",
+      "pinyin": "tuī",
+      "pinyinNumeric": "tui1",
+      "english": "empujar; raspar; rechazar; posponer; elegir"
+    },
+    {
+      "level": 4,
+      "hanzi": "推迟",
+      "trad": "推遲",
+      "pinyin": "tuīchí",
+      "pinyinNumeric": "tui1chi2",
+      "english": "posponer; aplazar"
+    },
+    {
+      "level": 4,
+      "hanzi": "脱",
+      "trad": "脫",
+      "pinyin": "tuō",
+      "pinyinNumeric": "tuo1",
+      "english": "quitarse; despojarse; escapar"
+    },
+    {
+      "level": 4,
+      "hanzi": "袜子",
+      "trad": "襪子",
+      "pinyin": "wàzi",
+      "pinyinNumeric": "wa4zi",
+      "english": "calcetines; medias"
+    },
+    {
+      "level": 4,
+      "hanzi": "完全",
+      "trad": "完全",
+      "pinyin": "wánquán",
+      "pinyinNumeric": "wan2quan2",
+      "english": "completo; entero; totalmente"
+    },
+    {
+      "level": 4,
+      "hanzi": "网球",
+      "trad": "網球",
+      "pinyin": "wǎngqiú",
+      "pinyinNumeric": "wang3qiu2",
+      "english": "tenis; pelota de tenis"
+    },
+    {
+      "level": 4,
+      "hanzi": "网站",
+      "trad": "網站",
+      "pinyin": "wǎngzhàn",
+      "pinyinNumeric": "wang3zhan4",
+      "english": "sitio web"
+    },
+    {
+      "level": 4,
+      "hanzi": "往往",
+      "trad": "往往",
+      "pinyin": "wǎngwǎng",
+      "pinyinNumeric": "wang3wang3",
+      "english": "a menudo; con frecuencia; las más de las veces"
+    },
+    {
+      "level": 4,
+      "hanzi": "危险",
+      "trad": "危險",
+      "pinyin": "wēixiǎn",
+      "pinyinNumeric": "wei1xian3",
+      "english": "peligro; peligroso; arriesgado"
+    },
+    {
+      "level": 4,
+      "hanzi": "卫生间",
+      "trad": "衛生間",
+      "pinyin": "wèishēngjiān",
+      "pinyinNumeric": "wei4sheng1jian1",
+      "english": "aseo; baño; servicio (WC)"
+    },
+    {
+      "level": 4,
+      "hanzi": "味道",
+      "trad": "味道",
+      "pinyin": "wèidao",
+      "pinyinNumeric": "wei4dao",
+      "english": "sabor; gusto"
+    },
+    {
+      "level": 4,
+      "hanzi": "温度",
+      "trad": "溫度",
+      "pinyin": "wēndù",
+      "pinyinNumeric": "wen1du4",
+      "english": "temperatura"
+    },
+    {
+      "level": 4,
+      "hanzi": "文章",
+      "trad": "文章",
+      "pinyin": "wénzhāng",
+      "pinyinNumeric": "wen2zhang1",
+      "english": "artículo; ensayo"
+    },
+    {
+      "level": 4,
+      "hanzi": "污染",
+      "trad": "汙染",
+      "pinyin": "wūrǎn",
+      "pinyinNumeric": "wu1ran3",
+      "english": "contaminación; polución"
+    },
+    {
+      "level": 4,
+      "hanzi": "无",
+      "trad": "無",
+      "pinyin": "wú",
+      "pinyinNumeric": "wu2",
+      "english": "no tener; sin; no (radical Kangxi 71)"
+    },
+    {
+      "level": 4,
+      "hanzi": "无聊",
+      "trad": "無聊",
+      "pinyin": "wúliáo",
+      "pinyinNumeric": "wu2liao2",
+      "english": "tonterías; aburrido; necio; estúpido"
+    },
+    {
+      "level": 4,
+      "hanzi": "无论",
+      "trad": "無論",
+      "pinyin": "wúlùn",
+      "pinyinNumeric": "wu2lun4",
+      "english": "sin importar qué; independientemente de si..."
+    },
+    {
+      "level": 4,
+      "hanzi": "误会",
+      "trad": "誤會",
+      "pinyin": "wùhuì",
+      "pinyinNumeric": "wu4hui4",
+      "english": "malinterpretar; confundir"
+    },
+    {
+      "level": 4,
+      "hanzi": "西红柿",
+      "trad": "西紅柿",
+      "pinyin": "xīhóngshì",
+      "pinyinNumeric": "xi1hong2shi4",
+      "english": "tomate"
+    },
+    {
+      "level": 4,
+      "hanzi": "吸引",
+      "trad": "吸引",
+      "pinyin": "xīyǐn",
+      "pinyinNumeric": "xi1yin3",
+      "english": "atraer (interés, inversión, etc.)"
+    },
+    {
+      "level": 4,
+      "hanzi": "咸",
+      "trad": "鹹",
+      "pinyin": "xián",
+      "pinyinNumeric": "xian2",
+      "english": "salado; en salazón; todo"
+    },
+    {
+      "level": 4,
+      "hanzi": "现金",
+      "trad": "現金",
+      "pinyin": "xiànjīn",
+      "pinyinNumeric": "xian4jin1",
+      "english": "efectivo"
+    },
+    {
+      "level": 4,
+      "hanzi": "羡慕",
+      "trad": "羨慕",
+      "pinyin": "xiànmù",
+      "pinyinNumeric": "xian4mu4",
+      "english": "envidiar; admirar"
+    },
+    {
+      "level": 4,
+      "hanzi": "相反",
+      "trad": "相反",
+      "pinyin": "xiāngfǎn",
+      "pinyinNumeric": "xiang1fan3",
+      "english": "opuesto; contrario"
+    },
+    {
+      "level": 4,
+      "hanzi": "相同",
+      "trad": "相同",
+      "pinyin": "xiāngtóng",
+      "pinyinNumeric": "xiang1tong2",
+      "english": "idéntico; mismo; parecido"
+    },
+    {
+      "level": 4,
+      "hanzi": "香",
+      "trad": "香",
+      "pinyin": "xiāng",
+      "pinyinNumeric": "xiang1",
+      "english": "fragante; sabroso (radical Kangxi 186)"
+    },
+    {
+      "level": 4,
+      "hanzi": "详细",
+      "trad": "詳細",
+      "pinyin": "xiángxì",
+      "pinyinNumeric": "xiang2xi4",
+      "english": "detallado; con detalle; minucioso"
+    },
+    {
+      "level": 4,
+      "hanzi": "响",
+      "trad": "響",
+      "pinyin": "xiǎng",
+      "pinyinNumeric": "xiang3",
+      "english": "hacer ruido; sonar; resonar"
+    },
+    {
+      "level": 4,
+      "hanzi": "橡皮",
+      "trad": "橡皮",
+      "pinyin": "xiàngpí",
+      "pinyinNumeric": "xiang4pi2",
+      "english": "goma; borrador"
+    },
+    {
+      "level": 4,
+      "hanzi": "消息",
+      "trad": "消息",
+      "pinyin": "xiāoxi",
+      "pinyinNumeric": "xiao1xi",
+      "english": "noticias; información"
+    },
+    {
+      "level": 4,
+      "hanzi": "小吃",
+      "trad": "小吃",
+      "pinyin": "xiǎochī",
+      "pinyinNumeric": "xiao3chi1",
+      "english": "tentempié; aperitivos"
+    },
+    {
+      "level": 4,
+      "hanzi": "小伙子",
+      "trad": "小夥子",
+      "pinyin": "xiǎohuǒzi",
+      "pinyinNumeric": "xiao3huo3zi",
+      "english": "joven; muchacho; chico"
+    },
+    {
+      "level": 4,
+      "hanzi": "小说",
+      "trad": "小說",
+      "pinyin": "xiǎoshuō",
+      "pinyinNumeric": "xiao3shuo1",
+      "english": "novela; ficción"
+    },
+    {
+      "level": 4,
+      "hanzi": "笑话",
+      "trad": "笑話",
+      "pinyin": "xiàohua",
+      "pinyinNumeric": "xiao4hua",
+      "english": "chiste; reírse de"
+    },
+    {
+      "level": 4,
+      "hanzi": "效果",
+      "trad": "效果",
+      "pinyin": "xiàoguǒ",
+      "pinyinNumeric": "xiao4guo3",
+      "english": "efecto; resultado"
+    },
+    {
+      "level": 4,
+      "hanzi": "心情",
+      "trad": "心情",
+      "pinyin": "xīnqíng",
+      "pinyinNumeric": "xin1qing2",
+      "english": "estado de ánimo; humor"
+    },
+    {
+      "level": 4,
+      "hanzi": "辛苦",
+      "trad": "辛苦",
+      "pinyin": "xīnkǔ",
+      "pinyinNumeric": "xin1ku3",
+      "english": "duro; agotador; penoso; laborioso"
+    },
+    {
+      "level": 4,
+      "hanzi": "信封",
+      "trad": "信封",
+      "pinyin": "xìnfēng",
+      "pinyinNumeric": "xin4feng1",
+      "english": "sobre"
+    },
+    {
+      "level": 4,
+      "hanzi": "信息",
+      "trad": "信息",
+      "pinyin": "xìnxī",
+      "pinyinNumeric": "xin4xi1",
+      "english": "información; noticias; mensaje"
+    },
+    {
+      "level": 4,
+      "hanzi": "信心",
+      "trad": "信心",
+      "pinyin": "xìnxīn",
+      "pinyinNumeric": "xin4xin1",
+      "english": "confianza; fe (en alguien o algo)"
+    },
+    {
+      "level": 4,
+      "hanzi": "兴奋",
+      "trad": "興奮",
+      "pinyin": "xīngfèn",
+      "pinyinNumeric": "xing1fen4",
+      "english": "emoción; estar emocionado"
+    },
+    {
+      "level": 4,
+      "hanzi": "行",
+      "trad": "行",
+      "pinyin": "xíng",
+      "pinyinNumeric": "xing2",
+      "english": "caminar; estar en curso; hacer; valer; vale"
+    },
+    {
+      "level": 4,
+      "hanzi": "醒",
+      "trad": "醒",
+      "pinyin": "xǐng",
+      "pinyinNumeric": "xing3",
+      "english": "despertar"
+    },
+    {
+      "level": 4,
+      "hanzi": "幸福",
+      "trad": "幸福",
+      "pinyin": "xìngfú",
+      "pinyinNumeric": "xing4fu2",
+      "english": "feliz; bendecido; afortunado"
+    },
+    {
+      "level": 4,
+      "hanzi": "性别",
+      "trad": "性別",
+      "pinyin": "xìngbié",
+      "pinyinNumeric": "xing4bie2",
+      "english": "género; sexo; distinción sexual"
+    },
+    {
+      "level": 4,
+      "hanzi": "性格",
+      "trad": "性格",
+      "pinyin": "xìnggé",
+      "pinyinNumeric": "xing4ge2",
+      "english": "naturaleza; personalidad; temperamento"
+    },
+    {
+      "level": 4,
+      "hanzi": "修理",
+      "trad": "修理",
+      "pinyin": "xiūlǐ",
+      "pinyinNumeric": "xiu1li3",
+      "english": "to repaire; perform maintenance; to overhaul"
+    },
+    {
+      "level": 4,
+      "hanzi": "许多",
+      "trad": "許多",
+      "pinyin": "xǔduō",
+      "pinyinNumeric": "xu3duo1",
+      "english": "muchos; mucho"
+    },
+    {
+      "level": 4,
+      "hanzi": "学期",
+      "trad": "學期",
+      "pinyin": "xuéqī",
+      "pinyinNumeric": "xue2qi1",
+      "english": "semestre; trimestre escolar"
+    },
+    {
+      "level": 4,
+      "hanzi": "压力",
+      "trad": "壓力",
+      "pinyin": "yālì",
+      "pinyinNumeric": "ya1li4",
+      "english": "presión; estrés"
+    },
+    {
+      "level": 4,
+      "hanzi": "呀",
+      "trad": "呀",
+      "pinyin": "ya",
+      "pinyinNumeric": "ya",
+      "english": "ah; oh; (used for 啊 after words ending with a, e, i, o, or ü)"
+    },
+    {
+      "level": 4,
+      "hanzi": "牙膏",
+      "trad": "牙膏",
+      "pinyin": "yágāo",
+      "pinyinNumeric": "ya2gao1",
+      "english": "pasta de dientes"
+    },
+    {
+      "level": 4,
+      "hanzi": "亚洲",
+      "trad": "亞洲",
+      "pinyin": "Yàzhōu",
+      "pinyinNumeric": "Ya4zhou1",
+      "english": "Asia"
+    },
+    {
+      "level": 4,
+      "hanzi": "严格",
+      "trad": "嚴格",
+      "pinyin": "yángé",
+      "pinyinNumeric": "yang2e2",
+      "english": "estricto; riguroso; severo"
+    },
+    {
+      "level": 4,
+      "hanzi": "严重",
+      "trad": "嚴重",
+      "pinyin": "yánzhòng",
+      "pinyinNumeric": "yan2zhong4",
+      "english": "grave; serio; crítico"
+    },
+    {
+      "level": 4,
+      "hanzi": "研究",
+      "trad": "研究",
+      "pinyin": "yánjiū",
+      "pinyinNumeric": "yan2jiu1",
+      "english": "estudiar; investigar"
+    },
+    {
+      "level": 4,
+      "hanzi": "盐",
+      "trad": "鹽",
+      "pinyin": "yán",
+      "pinyinNumeric": "yan2",
+      "english": "sal"
+    },
+    {
+      "level": 4,
+      "hanzi": "眼镜",
+      "trad": "眼鏡",
+      "pinyin": "yǎnjìng",
+      "pinyinNumeric": "yan3jing4",
+      "english": "gafas; anteojos"
+    },
+    {
+      "level": 4,
+      "hanzi": "演出",
+      "trad": "演出",
+      "pinyin": "yǎnchū",
+      "pinyinNumeric": "yan3chu1",
+      "english": "actuar (en una obra); interpretar; dar un espectáculo; actuación"
+    },
+    {
+      "level": 4,
+      "hanzi": "演员",
+      "trad": "演員",
+      "pinyin": "yǎnyuán",
+      "pinyinNumeric": "yan3yuan2",
+      "english": "actor o actriz; intérprete"
+    },
+    {
+      "level": 4,
+      "hanzi": "阳光",
+      "trad": "陽光",
+      "pinyin": "yángguāng",
+      "pinyinNumeric": "yang2guang1",
+      "english": "sol; luz solar"
+    },
+    {
+      "level": 4,
+      "hanzi": "养成",
+      "trad": "養成",
+      "pinyin": "yǎngchéng",
+      "pinyinNumeric": "yang3cheng2",
+      "english": "cultivar; adquirir; formar"
+    },
+    {
+      "level": 4,
+      "hanzi": "样子",
+      "trad": "樣子",
+      "pinyin": "yàngzi",
+      "pinyinNumeric": "yang4zi",
+      "english": "manner; aire; appearance; looks"
+    },
+    {
+      "level": 4,
+      "hanzi": "邀请",
+      "trad": "邀請",
+      "pinyin": "yāoqǐng",
+      "pinyinNumeric": "yao1qing3",
+      "english": "invitar"
+    },
+    {
+      "level": 4,
+      "hanzi": "要是",
+      "trad": "要是",
+      "pinyin": "yàoshi",
+      "pinyinNumeric": "yao4shi",
+      "english": "si; supongamos; en caso de que"
+    },
+    {
+      "level": 4,
+      "hanzi": "钥匙",
+      "trad": "鑰匙",
+      "pinyin": "yàoshi",
+      "pinyinNumeric": "yao4shi",
+      "english": "llave"
+    },
+    {
+      "level": 4,
+      "hanzi": "也许",
+      "trad": "也許",
+      "pinyin": "yěxǔ",
+      "pinyinNumeric": "ye3xu3",
+      "english": "quizás; probablemente; tal vez"
+    },
+    {
+      "level": 4,
+      "hanzi": "叶子",
+      "trad": "葉子",
+      "pinyin": "yèzi",
+      "pinyinNumeric": "ye4zi",
+      "english": "hojas"
+    },
+    {
+      "level": 4,
+      "hanzi": "页",
+      "trad": "頁",
+      "pinyin": "yè",
+      "pinyinNumeric": "ye4",
+      "english": "página; hoja (radical Kangxi 181)"
+    },
+    {
+      "level": 4,
+      "hanzi": "一切",
+      "trad": "一切",
+      "pinyin": "yíqiè",
+      "pinyinNumeric": "yi2qie4",
+      "english": "todo; cada; todas las cosas"
+    },
+    {
+      "level": 4,
+      "hanzi": "以",
+      "trad": "以",
+      "pinyin": "yǐ",
+      "pinyinNumeric": "yi3",
+      "english": "usar; según; para; por"
+    },
+    {
+      "level": 4,
+      "hanzi": "以为",
+      "trad": "以爲",
+      "pinyin": "yǐwéi",
+      "pinyinNumeric": "yi3wei2",
+      "english": "creer (erróneamente); considerar (que); pensar"
+    },
+    {
+      "level": 4,
+      "hanzi": "艺术",
+      "trad": "藝術",
+      "pinyin": "yìshù",
+      "pinyinNumeric": "yi4shu4",
+      "english": "arte"
+    },
+    {
+      "level": 4,
+      "hanzi": "意见",
+      "trad": "意見",
+      "pinyin": "yìjiàn",
+      "pinyinNumeric": "yi4jian4",
+      "english": "opinión; parecer; sugerencia; queja"
+    },
+    {
+      "level": 4,
+      "hanzi": "因此",
+      "trad": "因此",
+      "pinyin": "yīncǐ",
+      "pinyinNumeric": "yin1ci3",
+      "english": "por lo tanto; así; por eso; debido a esto"
+    },
+    {
+      "level": 4,
+      "hanzi": "引起",
+      "trad": "引起",
+      "pinyin": "yǐnqǐ",
+      "pinyinNumeric": "yin3qi3",
+      "english": "dar lugar a; provocar; causar; suscitar"
+    },
+    {
+      "level": 4,
+      "hanzi": "印象",
+      "trad": "印象",
+      "pinyin": "yìnxiàng",
+      "pinyinNumeric": "yin4xiang4",
+      "english": "impresión"
+    },
+    {
+      "level": 4,
+      "hanzi": "赢",
+      "trad": "贏",
+      "pinyin": "yíng",
+      "pinyinNumeric": "ying2",
+      "english": "ganar; vencer; beneficiarse"
+    },
+    {
+      "level": 4,
+      "hanzi": "应聘",
+      "trad": "應聘",
+      "pinyin": "yìngpìn",
+      "pinyinNumeric": "ying4pin4",
+      "english": "aceptar una oferta de trabajo; solicitar un empleo"
+    },
+    {
+      "level": 4,
+      "hanzi": "永远",
+      "trad": "永遠",
+      "pinyin": "yǒngyuǎn",
+      "pinyinNumeric": "yong3yuan3",
+      "english": "para siempre; eterno; siempre"
+    },
+    {
+      "level": 4,
+      "hanzi": "勇敢",
+      "trad": "勇敢",
+      "pinyin": "yǒnggǎn",
+      "pinyinNumeric": "yong3gan3",
+      "english": "valiente; intrépido"
+    },
+    {
+      "level": 4,
+      "hanzi": "优点",
+      "trad": "優點",
+      "pinyin": "yōudiǎn",
+      "pinyinNumeric": "you1dian3",
+      "english": "mérito; punto fuerte; ventaja; beneficio"
+    },
+    {
+      "level": 4,
+      "hanzi": "优秀",
+      "trad": "優秀",
+      "pinyin": "yōuxiù",
+      "pinyinNumeric": "you1xiu4",
+      "english": "sobresaliente; excelente"
+    },
+    {
+      "level": 4,
+      "hanzi": "幽默",
+      "trad": "幽默",
+      "pinyin": "yōumò",
+      "pinyinNumeric": "you1mo4",
+      "english": "gracioso; con humor"
+    },
+    {
+      "level": 4,
+      "hanzi": "尤其",
+      "trad": "尤其",
+      "pinyin": "yóuqí",
+      "pinyinNumeric": "you2qi2",
+      "english": "sobre todo; en particular"
+    },
+    {
+      "level": 4,
+      "hanzi": "由",
+      "trad": "由",
+      "pinyin": "yóu",
+      "pinyinNumeric": "you2",
+      "english": "seguir; desde; por; a través de"
+    },
+    {
+      "level": 4,
+      "hanzi": "由于",
+      "trad": "由于",
+      "pinyin": "yóuyú",
+      "pinyinNumeric": "you2yu2",
+      "english": "debido a; a causa de; gracias a"
+    },
+    {
+      "level": 4,
+      "hanzi": "邮局",
+      "trad": "郵局",
+      "pinyin": "yóujú",
+      "pinyinNumeric": "you2ju2",
+      "english": "oficina de correos"
+    },
+    {
+      "level": 4,
+      "hanzi": "友好",
+      "trad": "友好",
+      "pinyin": "yǒuhǎo",
+      "pinyinNumeric": "you3hao3",
+      "english": "amistoso (relaciones); amigos íntimos"
+    },
+    {
+      "level": 4,
+      "hanzi": "友谊",
+      "trad": "友誼",
+      "pinyin": "yǒuyì",
+      "pinyinNumeric": "you3yi4",
+      "english": "amistad; compañerismo"
+    },
+    {
+      "level": 4,
+      "hanzi": "有趣",
+      "trad": "有趣",
+      "pinyin": "yǒuqù",
+      "pinyinNumeric": "you3qu4",
+      "english": "interesante; fascinante; divertido"
+    },
+    {
+      "level": 4,
+      "hanzi": "于是",
+      "trad": "于是",
+      "pinyin": "yúshì",
+      "pinyinNumeric": "yu2shi4",
+      "english": "como resultado; así; por lo tanto"
+    },
+    {
+      "level": 4,
+      "hanzi": "愉快",
+      "trad": "愉快",
+      "pinyin": "yúkuài",
+      "pinyinNumeric": "yu2kuai4",
+      "english": "feliz; alegre; agradable"
+    },
+    {
+      "level": 4,
+      "hanzi": "与",
+      "trad": "與",
+      "pinyin": "yǔ",
+      "pinyinNumeric": "yu3",
+      "english": "(formal) y; dar; junto con; participar; partícula final que expresa duda o sorpresa"
+    },
+    {
+      "level": 4,
+      "hanzi": "羽毛球",
+      "trad": "羽毛球",
+      "pinyin": "yǔmáoqiú",
+      "pinyinNumeric": "yu3mao2qiu2",
+      "english": "bádminton"
+    },
+    {
+      "level": 4,
+      "hanzi": "语法",
+      "trad": "語法",
+      "pinyin": "yǔfǎ",
+      "pinyinNumeric": "yu3fa3",
+      "english": "gramática"
+    },
+    {
+      "level": 4,
+      "hanzi": "语言",
+      "trad": "語言",
+      "pinyin": "yǔyán",
+      "pinyinNumeric": "yu3yan2",
+      "english": "idioma; lengua"
+    },
+    {
+      "level": 4,
+      "hanzi": "预习",
+      "trad": "預習",
+      "pinyin": "yùxí",
+      "pinyinNumeric": "yu4xi2",
+      "english": "(de los estudiantes) preparar la lección antes de clase; previsualizar"
+    },
+    {
+      "level": 4,
+      "hanzi": "原来",
+      "trad": "原來",
+      "pinyin": "yuánlái",
+      "pinyinNumeric": "yuan2lai2",
+      "english": "original; anterior; resulta que"
+    },
+    {
+      "level": 4,
+      "hanzi": "原谅",
+      "trad": "原諒",
+      "pinyin": "yuánliàng",
+      "pinyinNumeric": "yuan2liang4",
+      "english": "disculpar; perdonar; indultar"
+    },
+    {
+      "level": 4,
+      "hanzi": "原因",
+      "trad": "原因",
+      "pinyin": "yuányīn",
+      "pinyinNumeric": "yuan2yin1",
+      "english": "causa; razón"
+    },
+    {
+      "level": 4,
+      "hanzi": "约会",
+      "trad": "約會",
+      "pinyin": "yuēhuì",
+      "pinyinNumeric": "yue1hui4",
+      "english": "cita; compromiso; encuentro"
+    },
+    {
+      "level": 4,
+      "hanzi": "阅读",
+      "trad": "閱讀",
+      "pinyin": "yuèdú",
+      "pinyinNumeric": "yue4du2",
+      "english": "leer; lectura"
+    },
+    {
+      "level": 4,
+      "hanzi": "云",
+      "trad": "雲",
+      "pinyin": "yún",
+      "pinyinNumeric": "yun2",
+      "english": "nube; provincia de Yunnan | decir; hablar"
+    },
+    {
+      "level": 4,
+      "hanzi": "允许",
+      "trad": "允許",
+      "pinyin": "yǔnxǔ",
+      "pinyinNumeric": "yun3xu3",
+      "english": "permitir; consentir"
+    },
+    {
+      "level": 4,
+      "hanzi": "杂志",
+      "trad": "雜志",
+      "pinyin": "zázhì",
+      "pinyinNumeric": "za2zhi4",
+      "english": "revista"
+    },
+    {
+      "level": 4,
+      "hanzi": "咱们",
+      "trad": "咱們",
+      "pinyin": "zánmen",
+      "pinyinNumeric": "zan2men",
+      "english": "nosotros (incluyendo al oyente); nos; nuestro"
+    },
+    {
+      "level": 4,
+      "hanzi": "暂时",
+      "trad": "暫時",
+      "pinyin": "zànshí",
+      "pinyinNumeric": "zan4shi2",
+      "english": "temporal; transitorio; por el momento"
+    },
+    {
+      "level": 4,
+      "hanzi": "脏",
+      "trad": "髒",
+      "pinyin": "zāng",
+      "pinyinNumeric": "zang1",
+      "english": "sucio; asqueroso"
+    },
+    {
+      "level": 4,
+      "hanzi": "责任",
+      "trad": "責任",
+      "pinyin": "zérèn",
+      "pinyinNumeric": "zer2en4",
+      "english": "responsabilidad; culpa; deber"
+    },
+    {
+      "level": 4,
+      "hanzi": "增加",
+      "trad": "增加",
+      "pinyin": "zēngjiā",
+      "pinyinNumeric": "zeng1jia1",
+      "english": "aumentar; subir; añadir"
+    },
+    {
+      "level": 4,
+      "hanzi": "占线",
+      "trad": "占線",
+      "pinyin": "zhànxiàn",
+      "pinyinNumeric": "zhan4xian4",
+      "english": "la línea (telefónica) está ocupada"
+    },
+    {
+      "level": 4,
+      "hanzi": "招聘",
+      "trad": "招聘",
+      "pinyin": "zhāopìn",
+      "pinyinNumeric": "zhao1pin4",
+      "english": "contratación; reclutar candidatos para un empleo"
+    },
+    {
+      "level": 4,
+      "hanzi": "照",
+      "trad": "照",
+      "pinyin": "zhào",
+      "pinyinNumeric": "zhao4",
+      "english": "iluminar; alumbrar; según"
+    },
+    {
+      "level": 4,
+      "hanzi": "真正",
+      "trad": "真正",
+      "pinyin": "zhēnzhèng",
+      "pinyinNumeric": "zhen1zheng4",
+      "english": "genuino; real; verdadero"
+    },
+    {
+      "level": 4,
+      "hanzi": "整理",
+      "trad": "整理",
+      "pinyin": "zhěnglǐ",
+      "pinyinNumeric": "zheng3li3",
+      "english": "ordenar; arreglar; recoger; hacer la maleta"
+    },
+    {
+      "level": 4,
+      "hanzi": "正常",
+      "trad": "正常",
+      "pinyin": "zhèngcháng",
+      "pinyinNumeric": "zheng4chang2",
+      "english": "normal; regular; ordinario"
+    },
+    {
+      "level": 4,
+      "hanzi": "正好",
+      "trad": "正好",
+      "pinyin": "zhènghǎo",
+      "pinyinNumeric": "zheng4hao3",
+      "english": "justo (a tiempo); perfecto; justo lo suficiente; dar la casualidad de; por casualidad"
+    },
+    {
+      "level": 4,
+      "hanzi": "正确",
+      "trad": "正確",
+      "pinyin": "zhèngquè",
+      "pinyinNumeric": "zheng4que4",
+      "english": "correcto; adecuado"
+    },
+    {
+      "level": 4,
+      "hanzi": "正式",
+      "trad": "正式",
+      "pinyin": "zhèngshì",
+      "pinyinNumeric": "zheng4shi4",
+      "english": "formal; oficial"
+    },
+    {
+      "level": 4,
+      "hanzi": "证明",
+      "trad": "證明",
+      "pinyin": "zhèngmíng",
+      "pinyinNumeric": "zheng4ming2",
+      "english": "prueba; atestiguar; confirmar; certificado"
+    },
+    {
+      "level": 4,
+      "hanzi": "之",
+      "trad": "之",
+      "pinyin": "zhī",
+      "pinyinNumeric": "zhi1",
+      "english": "(literary equivalent to 的); (pronoun); of"
+    },
+    {
+      "level": 4,
+      "hanzi": "支持",
+      "trad": "支持",
+      "pinyin": "zhīchí",
+      "pinyinNumeric": "zhi1chi2",
+      "english": "sustain; hold out; | support; stand by (e.g. internacional support)"
+    },
+    {
+      "level": 4,
+      "hanzi": "知识",
+      "trad": "知識",
+      "pinyin": "zhīshi",
+      "pinyinNumeric": "zhi1shi",
+      "english": "conocimiento; intelectual"
+    },
+    {
+      "level": 4,
+      "hanzi": "直接",
+      "trad": "直接",
+      "pinyin": "zhíjiē",
+      "pinyinNumeric": "zhi2jie1",
+      "english": "directo; inmediato"
+    },
+    {
+      "level": 4,
+      "hanzi": "值得",
+      "trad": "值得",
+      "pinyin": "zhíde",
+      "pinyinNumeric": "zhi2de",
+      "english": "valer la pena; merecer"
+    },
+    {
+      "level": 4,
+      "hanzi": "职业",
+      "trad": "職業",
+      "pinyin": "zhíyè",
+      "pinyinNumeric": "zhi2ye4",
+      "english": "profesión; ocupación"
+    },
+    {
+      "level": 4,
+      "hanzi": "植物",
+      "trad": "植物",
+      "pinyin": "zhíwù",
+      "pinyinNumeric": "zhi2wu4",
+      "english": "planta; botánico; vegetación"
+    },
+    {
+      "level": 4,
+      "hanzi": "只好",
+      "trad": "只好",
+      "pinyin": "zhǐhǎo",
+      "pinyinNumeric": "zhi3hao3",
+      "english": "no tener más remedio que; verse obligado a"
+    },
+    {
+      "level": 4,
+      "hanzi": "只要",
+      "trad": "只要",
+      "pinyin": "zhǐyào",
+      "pinyinNumeric": "zhi3yao4",
+      "english": "con tal de que; siempre que; si tan solo"
+    },
+    {
+      "level": 4,
+      "hanzi": "指",
+      "trad": "指",
+      "pinyin": "zhǐ",
+      "pinyinNumeric": "zhi3",
+      "english": "dedo; señalar (hacia, a); referirse a"
+    },
+    {
+      "level": 4,
+      "hanzi": "至少",
+      "trad": "至少",
+      "pinyin": "zhìshǎo",
+      "pinyinNumeric": "zhi4shao3",
+      "english": "al menos; como mínimo"
+    },
+    {
+      "level": 4,
+      "hanzi": "质量",
+      "trad": "質量",
+      "pinyin": "zhìliàng",
+      "pinyinNumeric": "zhi4liang4",
+      "english": "calidad; masa (física)"
+    },
+    {
+      "level": 4,
+      "hanzi": "重",
+      "trad": "重",
+      "pinyin": "zhòng",
+      "pinyinNumeric": "zhong4",
+      "english": "pesado; grave; importante"
+    },
+    {
+      "level": 4,
+      "hanzi": "重点",
+      "trad": "重點",
+      "pinyin": "zhòngdiǎn",
+      "pinyinNumeric": "zhong4dian3",
+      "english": "énfasis; punto principal"
+    },
+    {
+      "level": 4,
+      "hanzi": "重视",
+      "trad": "重視",
+      "pinyin": "zhòngshì",
+      "pinyinNumeric": "zhong4shi4",
+      "english": "valorar; tomar en serio"
+    },
+    {
+      "level": 4,
+      "hanzi": "周围",
+      "trad": "周圍",
+      "pinyin": "zhōuwéi",
+      "pinyinNumeric": "zhou1wei2",
+      "english": "alrededores; cercanías; entorno"
+    },
+    {
+      "level": 4,
+      "hanzi": "主意",
+      "trad": "主意",
+      "pinyin": "zhǔyi",
+      "pinyinNumeric": "zhu3yi",
+      "english": "plan; idea; decisión"
+    },
+    {
+      "level": 4,
+      "hanzi": "祝贺",
+      "trad": "祝賀",
+      "pinyin": "zhùhè",
+      "pinyinNumeric": "zhu4he4",
+      "english": "felicitar"
+    },
+    {
+      "level": 4,
+      "hanzi": "著名",
+      "trad": "著名",
+      "pinyin": "zhùmíng",
+      "pinyinNumeric": "zhu4ming2",
+      "english": "famoso; conocido; celebración"
+    },
+    {
+      "level": 4,
+      "hanzi": "专门",
+      "trad": "專門",
+      "pinyin": "zhuānmén",
+      "pinyinNumeric": "zhuan1men2",
+      "english": "especializado"
+    },
+    {
+      "level": 4,
+      "hanzi": "专业",
+      "trad": "專業",
+      "pinyin": "zhuānyè",
+      "pinyinNumeric": "zhuan1ye4",
+      "english": "profesión; campo de estudio especializado; carrera"
+    },
+    {
+      "level": 4,
+      "hanzi": "转",
+      "trad": "轉",
+      "pinyin": "zhuǎn, zhuàn",
+      "pinyinNumeric": "zhuan3, zhuan4",
+      "english": "girar; cambiar; pasar | dar vueltas; rotar"
+    },
+    {
+      "level": 4,
+      "hanzi": "赚",
+      "trad": "賺",
+      "pinyin": "zhuàn",
+      "pinyinNumeric": "zhuan4",
+      "english": "ganar; obtener beneficios"
+    },
+    {
+      "level": 4,
+      "hanzi": "准确",
+      "trad": "准確",
+      "pinyin": "zhǔnquè",
+      "pinyinNumeric": "zhun3que4",
+      "english": "exacto; preciso"
+    },
+    {
+      "level": 4,
+      "hanzi": "准时",
+      "trad": "准時",
+      "pinyin": "zhǔnshí",
+      "pinyinNumeric": "zhun3shi2",
+      "english": "puntualmente; a tiempo"
+    },
+    {
+      "level": 4,
+      "hanzi": "仔细",
+      "trad": "仔細",
+      "pinyin": "zǐxì",
+      "pinyinNumeric": "zi3xi4",
+      "english": "cuidadoso; atento; cauteloso"
+    },
+    {
+      "level": 4,
+      "hanzi": "自然",
+      "trad": "自然",
+      "pinyin": "zìrán",
+      "pinyinNumeric": "zi4ran2",
+      "english": "naturaleza; natural"
+    },
+    {
+      "level": 4,
+      "hanzi": "自信",
+      "trad": "自信",
+      "pinyin": "zìxìn",
+      "pinyinNumeric": "zi4xin4",
+      "english": "confianza en uno mismo"
+    },
+    {
+      "level": 4,
+      "hanzi": "总结",
+      "trad": "總結",
+      "pinyin": "zǒngjié",
+      "pinyinNumeric": "zong3jie2",
+      "english": "resumir; concluir"
+    },
+    {
+      "level": 4,
+      "hanzi": "租",
+      "trad": "租",
+      "pinyin": "zū",
+      "pinyinNumeric": "zu1",
+      "english": "alquilar"
+    },
+    {
+      "level": 4,
+      "hanzi": "最好",
+      "trad": "最好",
+      "pinyin": "zuìhǎo",
+      "pinyinNumeric": "zui4hao3",
+      "english": "lo mejor; más vale que...; sería lo mejor"
+    },
+    {
+      "level": 4,
+      "hanzi": "尊重",
+      "trad": "尊重",
+      "pinyin": "zūnzhòng",
+      "pinyinNumeric": "zun1zhong4",
+      "english": "estima; respetar; valorar; honrar"
+    },
+    {
+      "level": 4,
+      "hanzi": "左右",
+      "trad": "左右",
+      "pinyin": "zuǒyòu",
+      "pinyinNumeric": "zuo3you4",
+      "english": "alrededor de; aproximado; cerca de | izquierda y derecha"
+    },
+    {
+      "level": 4,
+      "hanzi": "作家",
+      "trad": "作家",
+      "pinyin": "zuòjiā",
+      "pinyinNumeric": "zuo4jia1",
+      "english": "autor; escritor"
+    },
+    {
+      "level": 4,
+      "hanzi": "作用",
+      "trad": "作用",
+      "pinyin": "zuòyòng",
+      "pinyinNumeric": "zuo4yong4",
+      "english": "acción; actividad; efecto"
+    },
+    {
+      "level": 4,
+      "hanzi": "作者",
+      "trad": "作者",
+      "pinyin": "zuòzhě",
+      "pinyinNumeric": "zuo4zhe3",
+      "english": "autor; escritor"
+    },
+    {
+      "level": 4,
+      "hanzi": "座",
+      "trad": "座",
+      "pinyin": "zuò",
+      "pinyinNumeric": "zuo4",
+      "english": "(clasificador para montañas, puentes, edificios altos, etc.); | asiento; base; soporte; constelación"
+    },
+    {
+      "level": 4,
+      "hanzi": "座位",
+      "trad": "座位",
+      "pinyin": "zuòwèi",
+      "pinyinNumeric": "zuo4wei4",
+      "english": "asiento; sitio"
+    }
+  ]
+}
