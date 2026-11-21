@@ -6,25 +6,29 @@ the fix: **the audio is pre-generated and shipped with the app**.
 
 - Output: `public/audio/<sha1(text)[:16]>.mp3` + `public/audio/index.json`
 - Generator: `scripts/build-audio.py`, driven by `scripts/audio/{setup,run}.sh`
-- Voice: **Kokoro-82M v1.1-zh**, speaker `zf_001` — Apache-2.0, see
+- Voice: **Kokoro-82M v1.1-zh** — Apache-2.0, see
   [`CREDITS.md` §8](../CREDITS.md) for the licence and the provenance of the
-  voices.
+  voices. **Two** speakers, so a dialogue's two people sound different:
+  `zf_001` (the default, used for speaker A and for every word/sentence) and
+  `zm_010` (speaker B, stored under the index-key prefix `b:`).
 
 ## What is shipped
 
 | | |
 | --- | --- |
-| Unique texts | 1 104 |
-| Audio files | 1 104 (one per text) |
-| Total size | **4.13 MB** (4 335 096 bytes; 5.9 MB of disk blocks) |
-| `index.json` | 37 KB, 1 104 entries |
-| Audio length | 1 290 s (21.5 min); mean 1.17 s, min 0.53 s, max 2.88 s |
+| Unique texts | 1 381 (1 245 default voice + 136 speaker-B) |
+| Audio files | 1 381 (one per text/voice) |
+| Total size | **6.21 MB** (6 515 396 bytes; 8.4 MB of disk blocks) |
+| `index.json` | 50 KB, 1 381 entries |
+| Audio length | 1 979 s (33.0 min); mean 1.43 s, min 0.53 s, max 4.30 s |
 | Format | MP3, mono, 24 kbps, 24 kHz, peak-normalised to −1 dBFS |
-| Budget | < 60 MB — used ~7 % |
+| Budget | < 60 MB — used ~10 % |
 
 Coverage: every word of HSK 1–3 (`public/data/hsk/{1,2,3}.json`), the example
-sentence of every lesson vocabulary entry (`public/data/lessons/{hsk1,hsk2,practical}/lesson-*.json`)
-and every word + phrase of the themes (`public/data/themes/theme-*.json`).
+sentence of every lesson vocabulary entry (`public/data/lessons/{hsk1,hsk2,practical}/lesson-*.json`),
+every word + phrase of the themes (`public/data/themes/theme-*.json`) and every
+line of every dialogue (`public/data/dialogues/dialogue-*.json`) — speaker A
+under the default voice, speaker B under the `b:` variant.
 
 MP3 rather than Ogg/Opus on purpose: it is the only low-bitrate voice codec that
 plays everywhere, including iOS Safari. A 1-second clip is ~4 KB, so a lesson
@@ -32,14 +36,19 @@ page costs a few tens of KB.
 
 ## `index.json` format
 
-A **flat map from the exact text to a bare file name**:
+A **flat map from a key to a bare file name**:
 
 ```json
-{"你好":"0e521a2bb52194a0.mp3","一":"d274eee8a175062a.mp3"}
+{"你好":"440ee0853ad1e99f.mp3","一":"d274eee8a175062a.mp3","b:你好！":"17ea5f507f1c9ab8.mp3"}
 ```
 
-- The key is the string the app passes to `speak()` (same punctuation, no
-  trimming by the consumer).
+- The key is the string the app passes to `speak()` — the **exact text** with the
+  same punctuation, no trimming by the consumer — for the **default voice**
+  (`zf_001`). A **non-default voice** is stored under a prefixed key:
+  `<voice>:<text>`, where `<voice>` is the variant name (`b` today, speaker B's
+  `zm_010`). So the same line can ship two voices side by side (`你好` for A and
+  `b:你好` for B) without either clobbering the other. Everything the app spoke
+  before keeps its bare-text key, unchanged.
 - The value is a **file name only**, relative to `index.json`'s own directory —
   there is no path and no leading slash, so the same file works at `/` and under
   a sub-path such as `/chino-app/`. Resolve it against the index URL, never
@@ -48,9 +57,15 @@ A **flat map from the exact text to a bare file name**:
 ```js
 const indexUrl = new URL('audio/index.json', document.baseURI);
 const index = await (await fetch(indexUrl)).json();
-const file = index[text];                       // 'abc123.mp3' | undefined
-if (file) audio.src = new URL(file, indexUrl).href;   // -> .../audio/abc123.mp3
+const key = voice && voice !== 'a' ? `${voice}:${text}` : text;  // 'a' = default
+const file = index[key];                            // 'abc123.mp3' | undefined
+if (file) audio.src = new URL(file, indexUrl).href; // -> .../audio/abc123.mp3
 ```
+
+`src/audio.js` does exactly this: `speak(text, { voice })` resolves the key,
+falling back to `speechSynthesis` when the text (or that voice) has no file. The
+dialogues pass `voice: 'b'` for a speaker-B line (`src/learn/dialogues.js`), so
+"play all" alternates the two voices.
 
 - A text that is **not** in the index has no file: the caller must fall back to
   `speechSynthesis` (see `src/audio.js`). The pipeline has no English voice, so
@@ -70,13 +85,20 @@ repository only ever gains `public/audio/*.mp3` and the index.
 
 ```sh
 scripts/audio/setup.sh          # once: venv + torch CPU + kokoro + misaki zh frontend
-scripts/audio/run.sh            # generate everything still missing
+scripts/audio/run.sh            # generate the default voice (everything still missing)
+scripts/audio/run.sh --voice b  # …then speaker B's second voice (zm_010)
 scripts/audio/run.sh --limit 100   # …in batches (resumable)
 scripts/audio/run.sh --dry-run  # list what would be generated
 scripts/audio/run.sh --force    # regenerate even existing files
 scripts/audio/run.sh --audit    # print the phonemes of the tone-sandhi probes
 npm run data:audio              # same as scripts/audio/run.sh
 ```
+
+`--voice a` (the default) writes the default-voice files and bare-text keys;
+`--voice b` writes the speaker-B files under `b:` keys. Both runs rebuild the
+whole `index.json`, so they are independent and each resumes on its own. Each
+downloads its voice file (`zf_001.pt` / `zm_010.pt`) from the model repo on the
+first run.
 
 The script is **idempotent**: a text whose file already exists and is non-empty
 is skipped, and the index is rewritten from what is actually on disk, so an
@@ -87,8 +109,10 @@ generation does nothing and takes 0.06 s).
 
 The homelab also runs a Minecraft server, so `run.sh` starts the job with
 `nice -n 19`, `ionice -c3` and `OMP_NUM_THREADS=2`; the script additionally calls
-`torch.set_num_threads(2)`. On a 16-core box the sustained load stays around
-0.2 cores, and a full 1 104-file run took **469 s** (≈0.4 s per clip, CPU-only).
+`torch.set_num_threads(2)`. On a 16-core box the sustained load stays low (the
+load average sat around 4–5 with Minecraft running, never near the 16 cores),
+and a clip takes ≈0.4 s CPU-only: a 70-file batch runs in ~70 s. Watch `uptime`
+between batches and pause if the load average climbs past ~6.
 
 ## Quality check
 

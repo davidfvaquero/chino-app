@@ -19,6 +19,9 @@
  */
 
 const DEFAULT_LANG = 'zh-CN';
+/** The default voice's index keys are the plain text; any other voice is
+ *  prefixed as `<voice>:<text>` (see docs/AUDIO.md, the dialogues' speaker B). */
+const DEFAULT_VOICE = 'a';
 
 /** The <audio> element currently playing, so a new speak() can cancel it. */
 let currentAudio = null;
@@ -81,10 +84,11 @@ function stopAudio() {
  *
  * @returns {Promise<{ok: true} | null>} null means "no file, use TTS".
  */
-async function speakFile(text, rate) {
+async function speakFile(text, rate, voice) {
   if (typeof globalThis.Audio !== 'function') return null;
   const index = await loadIndex();
-  const file = index && index[text];
+  const key = voice && voice !== DEFAULT_VOICE ? `${voice}:${text}` : text;
+  const file = index && index[key];
   if (!file) return null;
 
   let audio;
@@ -137,15 +141,15 @@ function speakTts(value, lang, rate) {
  * voice. Same signature and same result shape as before.
  *
  * @param {string} text
- * @param {{lang?: string, rate?: number}} [opts]
+ * @param {{lang?: string, rate?: number, voice?: string}} [opts]
  * @returns {Promise<{ok: true} | {ok: false, reason: 'unsupported'|'empty'|'error'}>}
  *          Resolves once the audio starts (or the utterance is queued).
  *          Never rejects, never throws.
  */
-export function speak(text, { lang = DEFAULT_LANG, rate } = {}) {
+export function speak(text, { lang = DEFAULT_LANG, rate, voice } = {}) {
   const value = text == null ? '' : String(text);
   if (!value.trim()) return Promise.resolve({ ok: false, reason: 'empty' });
-  return speakFile(value, rate).then((played) => played ?? speakTts(value, lang, rate));
+  return speakFile(value, rate, voice).then((played) => played ?? speakTts(value, lang, rate));
 }
 
 /**

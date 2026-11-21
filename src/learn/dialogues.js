@@ -384,7 +384,7 @@ async function renderDialogue(container, ctx, id) {
     playButton.setAttribute('aria-pressed', 'true');
     for (const line of lines) {
       if (!playing) break;
-      await speak(line.zh, { rate: rateFor(line) });
+      await speak(line.zh, { rate: rateFor(line), voice: line.speaker === 'B' ? 'b' : 'a' });
       if (!playing) break;
       await wait(400 + line.zh.length * 180);
     }
@@ -426,7 +426,7 @@ async function renderDialogue(container, ctx, id) {
         'data-action': 'play-line',
         'aria-label': t('dialogues.playLine'),
         text: line.zh,
-        onclick: () => speak(line.zh),
+        onclick: () => speak(line.zh, { voice: line.speaker === 'B' ? 'b' : 'a' }),
       }),
       h('p', { class: 'pinyin', html: pinyinHtml(line.pinyin) }),
       showTranslation ? h('p', { class: 'dlg-en', text: line.en }) : null,
