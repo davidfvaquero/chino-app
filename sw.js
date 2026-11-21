@@ -58,7 +58,11 @@ function dataStrategy(request) {
     .then((cached) => (cached && isImmutableData(new URL(request.url)) ? null : fetch(request)))
     .then((response) => {
       if (!response || !response.ok) return response ?? null;
-      return cachePromise.then((cache) => cache.put(request, response.clone())).then(() => response);
+      // A failed `put` (quota) must not hold back a response the network gave:
+      // the refresh is a bonus, not a condition.
+      return cachePromise
+        .then((cache) => cache.put(request, response.clone()))
+        .then(() => response, () => response);
     })
     .catch(() => null);
   const response = (async () => {

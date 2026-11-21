@@ -233,6 +233,70 @@ test('M1: the SW hands the refresh to waitUntil before respondWith settles', () 
   assert.deepEqual(order, ['waitUntil', 'respondWith'], 'waitUntil must come first');
 });
 
+/** Loads sw.js with a fake `caches`/`fetch` and returns the fetch listener plus
+ *  the response the fake network hands back. */
+function makeSwHarness({ put }) {
+  const src = fs
+    .readFileSync(path.join(ROOT, 'sw.js'), 'utf8')
+    .replace("const VERSION = 'dev';", "const VERSION = 'test';");
+  const listeners = {};
+  const cachesStub = {
+    open: async () => ({ put }),
+    match: async () => null,
+    keys: async () => [],
+    delete: async () => true,
+  };
+  const self = {
+    addEventListener: (type, fn) => { listeners[type] = fn; },
+    location: { origin: 'http://localhost' },
+    skipWaiting: async () => {},
+    clients: { claim: async () => {} },
+  };
+  const networkResponse = { ok: true, status: 200, fromNetwork: true, clone() { return this; } };
+  const fetchStub = async () => networkResponse;
+  const ResponseStub = { error: () => ({ error: true }) };
+  // eslint-disable-next-line no-new-func
+  new Function('self', 'caches', 'fetch', 'Response', 'URL', src)(self, cachesStub, fetchStub, ResponseStub, URL);
+  return { listeners, networkResponse };
+}
+
+test('I1: a failed cache.put does not fail the response the network gave', async () => {
+  // `put` fails on every shard once the origin quota is full (the chat keeps
+  // ~1 GB of WebLLM weights in the Cache API). The page must still get the
+  // network response, not Response.error().
+  const { listeners, networkResponse } = makeSwHarness({
+    put: async () => { throw new Error('QuotaExceededError'); },
+  });
+  let responded = null;
+  let network = null;
+  listeners.fetch({
+    request: { url: 'http://localhost/data/lessons/hsk1/lesson-01.json', method: 'GET' },
+    respondWith(promise) { responded = promise; },
+    waitUntil(promise) { network = promise; },
+  });
+  assert.equal(await responded, networkResponse, 'the network response reaches the page');
+  await network; // and the rejected put is swallowed by the waitUntil chain
+});
+
+test('I1: waitUntil still covers the cache write (the put is inside the chain)', async () => {
+  let releasePut;
+  const putDone = new Promise((resolve) => { releasePut = resolve; });
+  const { listeners } = makeSwHarness({ put: () => putDone });
+  let network = null;
+  listeners.fetch({
+    request: { url: 'http://localhost/data/lessons/hsk1/lesson-01.json', method: 'GET' },
+    respondWith() {},
+    waitUntil(promise) { network = promise; },
+  });
+  let settled = false;
+  network.then(() => { settled = true; });
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  assert.equal(settled, false, 'waitUntil waits for the cache write');
+  releasePut();
+  await network;
+  assert.equal(settled, true);
+});
+
 test('I1/M2: the SW reloads the page only when a controller already existed', async () => {
   const { registerServiceWorker } = await import('../src/pwa.js');
   const realNavigator = globalThis.navigator;
