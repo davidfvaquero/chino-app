@@ -148,52 +148,89 @@ test('C1: nextFreeModel never returns the current model or an empty id', () => {
   assert.equal(nextFreeModel([], ''), '');
 });
 
-test('C1: paint loads models before checking the provider', () => {
-  const src = fs.readFileSync(path.join(ROOT, 'src/extras/conversation.js'), 'utf8');
-  const paint = src.slice(src.indexOf('function paint()'), src.indexOf('async function loadModelsOnce'));
-  assert.match(paint, /loadModelsOnce\(\);\s*\n\s*const provider/);
-  const load = src.slice(src.indexOf('async function loadModelsOnce'));
-  assert.match(load, /initialModel\(state\.models\)/);
-});
-
 // ---------------------------------------------------------------- I2
-test('I2: Continue disables itself and Finalizar announces the lesson once', () => {
+// C1 and the lessons/tones half of I2 are covered by behaviour tests in
+// review3-critical.test.mjs ("with only the API key the model list unlocks the
+// chat", "a second click on Finish does not announce the lesson twice" and the
+// three I4 DOM cases). What has no screen-level test yet is the exercise
+// Continue button's own re-entrancy guard, so that one stays a source check.
+test('I2: the exercise Continue button disables itself', () => {
   const view = fs.readFileSync(path.join(ROOT, 'src/learn/exercise-view.js'), 'utf8');
   assert.match(view, /if \(button\.disabled\) return;/);
   assert.match(view, /button\.disabled = true;/);
-  const lessons = fs.readFileSync(path.join(ROOT, 'src/learn/lessons.js'), 'utf8');
-  assert.match(lessons, /let completed = false;/);
-  assert.match(lessons, /if \(completed\) return;/);
-  assert.match(lessons, /\.finally\(\(\) => \{/);
-  const tones = fs.readFileSync(path.join(ROOT, 'src/learn/tones.js'), 'utf8');
-  assert.match(tones, /if \(completed\) return;/);
-  assert.match(tones, /\.finally\(\(\) => \{/);
 });
 
 // ---------------------------------------------------------------- I4 + I7
-test('I7: the data cache is stamped from the data, not fixed (I4 kept)', async () => {
+test('I7/M2: the data cache is stamped from the data, not fixed (I4 kept)', async () => {
   const sw = fs.readFileSync(path.join(ROOT, 'sw.js'), 'utf8');
   assert.match(sw, /const DATA_CACHE = 'chino-data-dev'/, 'the source carries a stampable name');
   assert.match(sw, /isImmutableData/);
   assert.match(sw, /if \(cached && isImmutableData\(new URL\(request\.url\)\)\) return cached;/);
-  assert.match(sw, /event\.waitUntil\(cache\.put/, 'the refresh put is kept alive');
 
   const { dataCacheVersion } = await import('../scripts/lib/data-version.mjs');
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'chino-datav-'));
   try {
-    fs.mkdirSync(path.join(dir, 'dict'), { recursive: true });
-    fs.mkdirSync(path.join(dir, 'es', 'dict', 'shards'), { recursive: true });
-    fs.mkdirSync(path.join(dir, 'search-es'), { recursive: true });
-    fs.writeFileSync(path.join(dir, 'dict', 'manifest.json'), '{"a":1}');
-    fs.writeFileSync(path.join(dir, 'es', 'dict', 'shards', '000.json'), '[{"id":1}]');
-    fs.writeFileSync(path.join(dir, 'search-es', 'a.json'), '{}');
+    // Every source the SW serves cache-first must take part in the version.
+    const sources = [
+      'dict/shards/000.json',
+      'es/dict/shards/000.json',
+      'search-es/a.json',
+      'strokes/shards/000.json',
+    ];
+    for (const rel of sources) {
+      fs.mkdirSync(path.dirname(path.join(dir, rel)), { recursive: true });
+      fs.writeFileSync(path.join(dir, rel), '[{"id":1}]');
+    }
     const v1 = await dataCacheVersion(dir);
     assert.equal(await dataCacheVersion(dir), v1, 'same data -> same version (I4)');
-    fs.writeFileSync(path.join(dir, 'search-es', 'a.json'), '{"x":1}');
-    assert.notEqual(await dataCacheVersion(dir), v1, 'a changed shard rotates the cache (I7)');
+    for (const rel of sources) {
+      const original = fs.readFileSync(path.join(dir, rel), 'utf8');
+      fs.writeFileSync(path.join(dir, rel), `${original} `);
+      assert.notEqual(await dataCacheVersion(dir), v1, `${rel} rotates the cache (M2)`);
+      fs.writeFileSync(path.join(dir, rel), original);
+    }
+    assert.equal(await dataCacheVersion(dir), v1, 'restoring the data restores the version');
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test('M1: the SW hands the refresh to waitUntil before respondWith settles', () => {
+  // A `waitUntil` called from inside the refresh `.then` throws
+  // InvalidStateError in browsers that follow the spec (and the refresh is
+  // silently lost). The fake event fails if it is called after respondWith.
+  const src = fs
+    .readFileSync(path.join(ROOT, 'sw.js'), 'utf8')
+    .replace("const VERSION = 'dev';", "const VERSION = 'test';");
+  const listeners = {};
+  const cachesStub = {
+    open: async () => ({ put: async () => {} }),
+    match: async () => null,
+    keys: async () => [],
+    delete: async () => true,
+  };
+  const self = {
+    addEventListener: (type, fn) => { listeners[type] = fn; },
+    location: { origin: 'http://localhost' },
+    skipWaiting: async () => {},
+    clients: { claim: async () => {} },
+  };
+  const fetchStub = async () => ({ ok: true, status: 200, clone() { return this; } });
+  const ResponseStub = { error: () => ({ error: true }) };
+  // eslint-disable-next-line no-new-func
+  new Function('self', 'caches', 'fetch', 'Response', 'URL', src)(self, cachesStub, fetchStub, ResponseStub, URL);
+
+  const order = [];
+  const event = {
+    request: { url: 'http://localhost/data/dict/manifest.json', method: 'GET' },
+    respondWith() { this.responded = true; order.push('respondWith'); },
+    waitUntil() {
+      if (this.responded) throw new Error('waitUntil called after respondWith');
+      order.push('waitUntil');
+    },
+  };
+  listeners.fetch(event);
+  assert.deepEqual(order, ['waitUntil', 'respondWith'], 'waitUntil must come first');
 });
 
 test('I1/M2: the SW reloads the page only when a controller already existed', async () => {
