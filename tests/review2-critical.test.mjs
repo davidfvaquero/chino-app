@@ -179,9 +179,40 @@ test('I4: the data cache has a fixed name and keeps immutable data', () => {
   assert.match(sw, /if \(cached && isImmutableData\(new URL\(request\.url\)\)\) return cached;/);
 });
 
-test('M2: a new service worker reloads the page once', () => {
-  const pwa = fs.readFileSync(path.join(ROOT, 'src/pwa.js'), 'utf8');
-  assert.match(pwa, /controllerchange', \(\) => location\.reload\(\), \{ once: true \}/);
+test('I1/M2: the SW reloads the page only when a controller already existed', async () => {
+  const { registerServiceWorker } = await import('../src/pwa.js');
+  const realNavigator = globalThis.navigator;
+  const hadLocation = 'location' in globalThis;
+  const realLocation = globalThis.location;
+  const run = (hasController) => {
+    const listeners = {};
+    let reloads = 0;
+    Object.defineProperty(globalThis, 'navigator', {
+      configurable: true,
+      value: {
+        serviceWorker: {
+          controller: hasController ? {} : null,
+          register: async () => ({}),
+          addEventListener: (type, fn) => { listeners[type] = fn; },
+        },
+      },
+    });
+    Object.defineProperty(globalThis, 'location', {
+      configurable: true,
+      value: { protocol: 'https:', pathname: '/', search: '', reload: () => { reloads += 1; } },
+    });
+    registerServiceWorker();
+    listeners.controllerchange?.();
+    return reloads;
+  };
+  try {
+    assert.equal(run(false), 0, 'a first visit must not reload (I1)');
+    assert.equal(run(true), 1, 'a real update reloads once');
+  } finally {
+    Object.defineProperty(globalThis, 'navigator', { configurable: true, value: realNavigator });
+    if (hadLocation) Object.defineProperty(globalThis, 'location', { configurable: true, value: realLocation });
+    else delete globalThis.location;
+  }
 });
 
 // ---------------------------------------------------------------- I7
