@@ -24,6 +24,7 @@
 import { t } from './i18n.js';
 import { h } from './dom.js';
 import { pinyinHtml } from './tone.js';
+import { zhRuns } from './hanzi.js';
 
 /** Where the browser build serves the etymology shards from (next to `src/`). */
 export const DEFAULT_ETYMOLOGY_BASE = new URL('../data/etymology/', import.meta.url);
@@ -183,11 +184,11 @@ function etymologyParts(items) {
     if (i) out.push(' · ');
     const { pinyin, ...rest } = item.params;
     if (pinyin === undefined) {
-      out.push(t(item.key, item.params));
+      out.push(...zhRuns(t(item.key, item.params)));
       return;
     }
     const [before = '', after = ''] = t(item.key, { ...rest, pinyin: '\u0001' }).split('\u0001');
-    out.push(before, h('span', { class: 'py', html: pinyinHtml(pinyin) }), after);
+    out.push(...zhRuns(before), h('span', { class: 'py', html: pinyinHtml(pinyin) }), ...zhRuns(after));
   });
   return out;
 }

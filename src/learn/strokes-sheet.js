@@ -28,6 +28,7 @@ import { addToReview } from '../srs.js';
 import { pinyinHtml } from '../tone.js';
 import { loadStrokes, createStrokeAnimation, strokeDiagramSvg } from './strokes.js';
 import { renderEtymology } from '../etymology.js';
+import { zhRuns } from '../hanzi.js';
 
 export const titleKey = 'strokesSheet.title';
 export const MAX_CHARACTERS = 20;
@@ -315,7 +316,7 @@ export async function render(container, ctx = {}) {
       { class: 'sheet-head' },
       h('span', { class: 'sheet-char', lang: 'zh-Hans', text: card.character }),
       card.entry ? h('span', { class: 'sheet-pinyin', html: pinyinHtml(card.entry.pinyinTone) }) : null,
-      meaningText ? h('span', { class: 'sheet-meaning', text: meaningText }) : null,
+      meaningText ? h('span', { class: 'sheet-meaning' }, ...zhRuns(meaningText)) : null,
       card.hasData ? h('span', { class: 'sheet-count', text: t('strokesSheet.strokesCount', { count: card.strokes }) }) : null,
     );
     const node = h('article', { class: 'sheet-card' }, head);
