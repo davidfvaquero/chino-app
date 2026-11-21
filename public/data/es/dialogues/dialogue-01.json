@@ -1,0 +1,57 @@
+{
+  "id": "dialogue-01",
+  "title": "你好！",
+  "titleEn": "¡Hola!",
+  "topic": "Saludos",
+  "level": "hsk1",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好！",
+      "pinyin": "Nǐ hǎo!",
+      "en": "¡Hola!"
+    },
+    {
+      "speaker": "B",
+      "zh": "你好！",
+      "pinyin": "Nǐ hǎo!",
+      "en": "¡Hola!"
+    },
+    {
+      "speaker": "A",
+      "zh": "你叫什么名字？",
+      "pinyin": "Nǐ jiào shénme míngzi?",
+      "en": "¿Cómo te llamas?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我叫王明。你呢？",
+      "pinyin": "Wǒ jiào Wáng Míng. Nǐ ne?",
+      "en": "Me llamo Wang Ming. ¿Y tú?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我叫李华。很高兴认识你。",
+      "pinyin": "Wǒ jiào Lǐ Huá. Hěn gāoxìng rènshi nǐ.",
+      "en": "Me llamo Li Hua. Mucho gusto."
+    },
+    {
+      "speaker": "B",
+      "zh": "谢谢！你好吗？",
+      "pinyin": "Xièxie! Nǐ hǎo ma?",
+      "en": "¡Gracias! ¿Cómo estás?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我很好。你呢？",
+      "pinyin": "Wǒ hěn hǎo. Nǐ ne?",
+      "en": "Estoy bien. ¿Y tú?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我很好，再见！",
+      "pinyin": "Wǒ hěn hǎo, zàijiàn!",
+      "en": "Estoy bien, ¡adiós!"
+    }
+  ]
+}

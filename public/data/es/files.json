@@ -1,4 +1,6 @@
 [
+  "dialogues/dialogue-01.json",
+  "dialogues/index.json",
   "grammar/index.json",
   "grammar/measure-words.json",
   "grammar/pattern-01.json",
