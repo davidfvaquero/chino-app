@@ -168,7 +168,7 @@ function segmentBackward(text, wordSet) {
 // REVIEW-7 I4: traditional characters that the generic trad->simp map leaves
 // alone because they are also valid simplified characters. 乾 is kept in 乾隆 /
 // 乾坤 (names); 著 is kept before 名/作 and is the 着 particle elsewhere.
-const EXTRA_TRAD = { 於: '于', 乾: '干', 髪: '发', 顔: '颜', 犠: '牺', 兿: '艺' };
+const EXTRA_TRAD = { 於: '于', 乾: '干', 閒: '闲', 髪: '发', 顔: '颜', 犠: '牺', 兿: '艺' };
 
 /** Normalise a mixed traditional/simplified sentence to simplified. */
 function simplify(text, tradSimp) {
@@ -178,7 +178,10 @@ function simplify(text, tradSimp) {
     if (ch === '乾' && (text[i + 1] === '隆' || text[i + 1] === '坤')) { out += ch; continue; }
     if (ch === '著') {
       const next = text[i + 1];
-      out += next === '名' || next === '作' || next === '称' || /[显土昭卓原巨编论专遗拙]/.test(text[i - 1] ?? '') ? ch : '着';
+      // Compare the SIMPLIFIED previous char: 編著/論著/專著/遺著 (traditional
+      // sources) carry 编/论/专/遗, and 所著 ("written by") keeps 著 too.
+      const before = toSimplified(text[i - 1] ?? '', tradSimp);
+      out += next === '名' || next === '作' || next === '称' || /[显土昭卓原巨编论专遗拙所]/.test(before) ? ch : '着';
       continue;
     }
     out += EXTRA_TRAD[ch] ?? ch;
@@ -334,10 +337,13 @@ async function main() {
   // Index both forms so traditional dictionary entries are matched too; the
   // sentence text is simplified (simplify) before it is segmented.
   for (const e of dictEntries) { consider(e.simp, e); consider(e.trad, e); }
-  // REVIEW-7 I4: these four characters are polyphonic and the dictionary's
-  // scoring picks the wrong default. Pin the everyday reading.
+  // REVIEW-7 I4: polyphonic characters where the dictionary's scoring picks the
+  // wrong default. Pin the everyday reading.
   for (const [ch, py] of [['片', 'piàn'], ['作', 'zuò'], ['趟', 'tàng'], ['抢', 'qiǎng'],
-    ['宁', 'níng'], ['尽', 'jìn'], ['价', 'jià'], ['涌', 'yǒng'], ['广', 'guǎng'], ['柜', 'guì'], ['叶', 'yè']]) {
+    ['宁', 'níng'], ['尽', 'jìn'], ['价', 'jià'], ['涌', 'yǒng'], ['广', 'guǎng'], ['柜', 'guì'], ['叶', 'yè'],
+    // 著 only survives `simplify` in the zhù words (著名/著作/所著…); the 着
+    // particle is already written 着, so the bare character always reads zhù.
+    ['著', 'zhù']]) {
     wordPinyin.set(ch, py);
   }
   log(`examples: ${dictEntries.length} dictionary entries, ${wordSet.size} words`);

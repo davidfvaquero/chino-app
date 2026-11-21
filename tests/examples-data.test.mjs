@@ -245,6 +245,7 @@ test('I4: the simplified text has no 於/乾净 and no Japanese variants', () =>
   for (const e of allEntries()) {
     assert.ok(!e.zh.includes('於'), `${e.file} ${e.word}: ${e.zh} has 於`);
     assert.ok(!e.zh.includes('乾净'), `${e.file} ${e.word}: ${e.zh} has 乾净`);
+    assert.ok(!e.zh.includes('閒'), `${e.file} ${e.word}: ${e.zh} has 閒 (traditional; want 闲)`);
     for (const ch of ['髪', '顔', '犠', '兿', '貭']) {
       assert.ok(!e.zh.includes(ch), `${e.file} ${e.word}: ${e.zh} has ${ch}`);
     }
@@ -294,8 +295,10 @@ test('I4: 这/那只+(是|不|有|能|要|会) reads 只 as zhǐ (adverb), not z
 
 test('I4: 著 is never simplified to 着 (no 土着/显着/昭着)', () => {
   for (const e of allEntries()) {
-    for (const bad of ['土着', '显着', '昭着']) {
+    for (const bad of ['土着', '显着', '昭着', '所着']) {
       assert.ok(!e.zh.includes(bad), `${e.file} ${e.word}: ${e.zh} has ${bad}`);
     }
+    // 所著 ("written by") keeps 著, so it must also read zhù, not the 着 particle.
+    if (e.zh.includes('所著')) assert.match(e.pinyin.toLowerCase(), /suǒ zhù/, `${e.zh} -> ${e.pinyin}`);
   }
 });
