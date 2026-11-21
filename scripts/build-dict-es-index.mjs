@@ -109,9 +109,10 @@ export function buildSearchIndex(esDir, { hskDir } = {}) {
         for (const word of new Set(tokens)) {
           if (word.length < 2 || ES_STOPWORDS.has(word)) continue;
           // A definition whose first word is the query is the strongest hit
-          // ("comer" for 吃); everything else is a plain "contains". Position,
-          // HSK level, length and id then break the ties (REVIEW-3 I6).
-          const exact = normDef.startsWith(word) ? 0 : 1;
+          // ("comer" for 吃); a query that is only a prefix of the first word
+          // ("casa" inside "casado") is not. Position, HSK level, length and id
+          // then break the ties (REVIEW-3 I6, REVIEW-4 I2).
+          const exact = normDef === word || normDef.startsWith(`${word} `) ? 0 : 1;
           const rank = postingRank({
             level,
             exact,

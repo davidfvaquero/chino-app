@@ -55,6 +55,24 @@ export function repairEntry(en, entry) {
   return { defs, fixed: fixed + added, deduped };
 }
 
+/** One-off translation overrides the LLM pass missed. Applied on every run so
+ *  `npm run data:dict-es` reproduces the committed shards (not a hand edit of a
+ *  shard, which the next regeneration would drop). */
+const DEF_OVERRIDES = new Map([
+  // 家 (home/family): its Spanish def only said "hogar", so «casa» never found
+  // it. Add the word as its own segment so the index ranks it first (REVIEW-4 I2).
+  [32837, (defs) => (defs[0] === 'hogar' ? ['hogar; casa', ...defs.slice(1)] : defs)],
+]);
+
+/** @returns {string[]|null} the overridden defs, or null when nothing changes. */
+function applyOverride(entry) {
+  const fn = DEF_OVERRIDES.get(entry?.id);
+  if (!fn) return null;
+  const before = Array.isArray(entry.defs) ? entry.defs : [];
+  const next = fn(before);
+  return JSON.stringify(next) === JSON.stringify(before) ? null : next;
+}
+
 function loadOriginals(srcDir) {
   const byId = new Map();
   for (const f of fs.readdirSync(srcDir).filter((x) => x.endsWith('.json'))) {
@@ -78,6 +96,8 @@ function main(argv) {
       const en = originals.get(e.id);
       const r = repairEntry(en, e);
       if (r.fixed || r.deduped) { e.defs = r.defs; fixed += r.fixed; deduped += r.deduped; dirty = true; }
+      const override = applyOverride(e);
+      if (override) { e.defs = override; fixed += 1; dirty = true; }
       // Entries whose marker def still carries an English gloss need the LLM to
       // retranslate: record them so a later pass can pick them up (REVIEW-2 I6).
       if (en && englishTailLeaks(en, { defs: e.defs }).length) retranslate.add(e.id);
