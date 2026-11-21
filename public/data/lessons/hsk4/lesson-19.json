@@ -1,0 +1,395 @@
+{
+  "id": "hsk4-19",
+  "title": "Advanced Verbs & Connectors",
+  "intro": "Master advanced verbs and logical connectors: permissions, arrangements, proofs, professions, and conditional structures.",
+  "vocabulary": [
+    {
+      "hanzi": "约会",
+      "pinyin": "yuēhuì",
+      "english": "appointment; engagement; date",
+      "example": {
+        "hanzi": "我们有个约会",
+        "pinyin": "wǒmen yǒu gè yuēhuì",
+        "english": "we have a date"
+      }
+    },
+    {
+      "hanzi": "阅读",
+      "pinyin": "yuèdú",
+      "english": "read; reading",
+      "example": {
+        "hanzi": "我喜欢阅读",
+        "pinyin": "wǒ xǐhuan yuèdú",
+        "english": "I like reading"
+      }
+    },
+    {
+      "hanzi": "云",
+      "pinyin": "yún",
+      "english": "cloud; Yunnan province | say; speak",
+      "example": {
+        "hanzi": "天上有云",
+        "pinyin": "tiān shàng yǒu yún",
+        "english": "there are clouds in the sky"
+      }
+    },
+    {
+      "hanzi": "允许",
+      "pinyin": "yǔnxǔ",
+      "english": "to permit; allow",
+      "example": {
+        "hanzi": "不允许吸烟",
+        "pinyin": "bù yǔnxǔ xīyān",
+        "english": "smoking not permitted"
+      }
+    },
+    {
+      "hanzi": "杂志",
+      "pinyin": "zázhì",
+      "english": "magazine",
+      "example": {
+        "hanzi": "我在看杂志",
+        "pinyin": "wǒ zài kàn zázhì",
+        "english": "I am reading a magazine"
+      }
+    },
+    {
+      "hanzi": "咱们",
+      "pinyin": "zánmen",
+      "english": "we (including the listener); us; our",
+      "example": {
+        "hanzi": "咱们一起去",
+        "pinyin": "zánmen yīqǐ qù",
+        "english": "let's go together"
+      }
+    },
+    {
+      "hanzi": "暂时",
+      "pinyin": "zànshí",
+      "english": "temporary; transient; for the moment",
+      "example": {
+        "hanzi": "暂时不用了",
+        "pinyin": "zànshí bù yòng le",
+        "english": "not needed for now"
+      }
+    },
+    {
+      "hanzi": "脏",
+      "pinyin": "zāng",
+      "english": "filthy; dirty",
+      "example": {
+        "hanzi": "手太脏了",
+        "pinyin": "shǒu tài zāng le",
+        "english": "hands are too dirty"
+      }
+    },
+    {
+      "hanzi": "责任",
+      "pinyin": "zérèn",
+      "english": "responsibility; blame; duty",
+      "example": {
+        "hanzi": "这是我的责任",
+        "pinyin": "zhè shì wǒ de zérèn",
+        "english": "this is my responsibility"
+      }
+    },
+    {
+      "hanzi": "增加",
+      "pinyin": "zēngjiā",
+      "english": "to increase; to raise; add",
+      "example": {
+        "hanzi": "人数增加了",
+        "pinyin": "rénshù zēngjiā le",
+        "english": "the number of people increased"
+      }
+    },
+    {
+      "hanzi": "占线",
+      "pinyin": "zhànxiàn",
+      "english": "the (phone) line is busy",
+      "example": {
+        "hanzi": "电话占线",
+        "pinyin": "diànhuà zhànxiàn",
+        "english": "the phone line is busy"
+      }
+    },
+    {
+      "hanzi": "招聘",
+      "pinyin": "zhāopìn",
+      "english": "recruitment; take job applications for a job",
+      "example": {
+        "hanzi": "公司在招聘",
+        "pinyin": "gōngsī zài zhāopìn",
+        "english": "the company is hiring"
+      }
+    },
+    {
+      "hanzi": "照",
+      "pinyin": "zhào",
+      "english": "to shine; illuminate; according to",
+      "example": {
+        "hanzi": "阳光照在地上",
+        "pinyin": "yángguāng zhào zài dì shàng",
+        "english": "sunlight shines on the ground"
+      }
+    },
+    {
+      "hanzi": "真正",
+      "pinyin": "zhēnzhèng",
+      "english": "genuine; real; true",
+      "example": {
+        "hanzi": "这是真正朋友",
+        "pinyin": "zhè shì zhēnzhèng péngyou",
+        "english": "this is a true friend"
+      }
+    },
+    {
+      "hanzi": "整理",
+      "pinyin": "zhěnglǐ",
+      "english": "put in order; arrange; straighten up; to tidy; to pack (luggage)",
+      "example": {
+        "hanzi": "请整理房间",
+        "pinyin": "qǐng zhěnglǐ fángjiān",
+        "english": "please tidy the room"
+      }
+    },
+    {
+      "hanzi": "正常",
+      "pinyin": "zhèngcháng",
+      "english": "normal; regular; ordinary",
+      "example": {
+        "hanzi": "一切正常",
+        "pinyin": "yíqiè zhèngcháng",
+        "english": "everything is normal"
+      }
+    },
+    {
+      "hanzi": "正好",
+      "pinyin": "zhènghǎo",
+      "english": "just (in time); just right; just enough; happen to; by chance",
+      "example": {
+        "hanzi": "你来得正好",
+        "pinyin": "nǐ lái de zhènghǎo",
+        "english": "you came just in time"
+      }
+    },
+    {
+      "hanzi": "正确",
+      "pinyin": "zhèngquè",
+      "english": "correct; proper",
+      "example": {
+        "hanzi": "答案正确",
+        "pinyin": "dáàn zhèngquè",
+        "english": "the answer is correct"
+      }
+    },
+    {
+      "hanzi": "正式",
+      "pinyin": "zhèngshì",
+      "english": "formal; official",
+      "example": {
+        "hanzi": "正式会议开始",
+        "pinyin": "zhèngshì huìyì kāishǐ",
+        "english": "the formal meeting begins"
+      }
+    },
+    {
+      "hanzi": "证明",
+      "pinyin": "zhèngmíng",
+      "english": "proof; testify; confirm; certificate",
+      "example": {
+        "hanzi": "这能证明",
+        "pinyin": "zhè néng zhèngmíng",
+        "english": "this can prove it"
+      }
+    },
+    {
+      "hanzi": "之",
+      "pinyin": "zhī",
+      "english": "(literary equivalent to 的); (pronoun); of",
+      "example": {
+        "hanzi": "之子于归",
+        "pinyin": "zhī zǐ yú guī",
+        "english": "the maiden goes to her home"
+      }
+    },
+    {
+      "hanzi": "支持",
+      "pinyin": "zhīchí",
+      "english": "sustain; hold out; | support; stand by (e.g. international support)",
+      "example": {
+        "hanzi": "我支持你",
+        "pinyin": "wǒ zhīchí nǐ",
+        "english": "I support you"
+      }
+    },
+    {
+      "hanzi": "知识",
+      "pinyin": "zhīshi",
+      "english": "knowledge; intellectual",
+      "example": {
+        "hanzi": "知识改变命运",
+        "pinyin": "zhīshi gǎibiàn mìngyùn",
+        "english": "knowledge changes destiny"
+      }
+    },
+    {
+      "hanzi": "直接",
+      "pinyin": "zhíjiē",
+      "english": "direct; immediate",
+      "example": {
+        "hanzi": "直接告诉我",
+        "pinyin": "zhíjiē gàosu wǒ",
+        "english": "tell me directly"
+      }
+    },
+    {
+      "hanzi": "值得",
+      "pinyin": "zhíde",
+      "english": "be worth; deserve",
+      "example": {
+        "hanzi": "这值得做",
+        "pinyin": "zhè zhíde zuò",
+        "english": "this is worth doing"
+      }
+    },
+    {
+      "hanzi": "职业",
+      "pinyin": "zhíyè",
+      "english": "profession; occupation",
+      "example": {
+        "hanzi": "选好职业",
+        "pinyin": "xuǎn hǎo zhíyè",
+        "english": "choose a good profession"
+      }
+    },
+    {
+      "hanzi": "植物",
+      "pinyin": "zhíwù",
+      "english": "plant; botanical; vegetation",
+      "example": {
+        "hanzi": "那是植物",
+        "pinyin": "nà shì zhíwù",
+        "english": "that is a plant"
+      }
+    },
+    {
+      "hanzi": "只好",
+      "pinyin": "zhǐhǎo",
+      "english": "have to; be forced to",
+      "example": {
+        "hanzi": "我只好走了",
+        "pinyin": "wǒ zhǐhǎo zǒu le",
+        "english": "I had no choice but to leave"
+      }
+    },
+    {
+      "hanzi": "只要",
+      "pinyin": "zhǐyào",
+      "english": "so long as; if only; provided that",
+      "example": {
+        "hanzi": "只要你来",
+        "pinyin": "zhǐyào nǐ lái",
+        "english": "as long as you come"
+      }
+    },
+    {
+      "hanzi": "指",
+      "pinyin": "zhǐ",
+      "english": "finger; to point (at, to, out); refer to",
+      "example": {
+        "hanzi": "请指给我看",
+        "pinyin": "qǐng zhǐ gěi wǒ kàn",
+        "english": "please point it out to me"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "What does 允许 mean?",
+      "options": [
+        "to permit",
+        "magazine",
+        "temporary"
+      ],
+      "answer": "to permit"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which word means \"responsibility\"?",
+      "options": [
+        "责任",
+        "增加",
+        "招聘"
+      ],
+      "answer": "责任"
+    },
+    {
+      "type": "listen",
+      "audio": "证明",
+      "pinyin": "zhèngmíng",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "证明",
+        "直接",
+        "值得"
+      ],
+      "answer": "证明"
+    },
+    {
+      "type": "listen",
+      "audio": "职业",
+      "pinyin": "zhíyè",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "职业",
+        "植物",
+        "只要"
+      ],
+      "answer": "职业"
+    },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        {
+          "hanzi": "约会",
+          "english": "appointment"
+        },
+        {
+          "hanzi": "阅读",
+          "english": "reading"
+        },
+        {
+          "hanzi": "整理",
+          "english": "to tidy"
+        },
+        {
+          "hanzi": "正确",
+          "english": "correct"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Make the phrase \"just right\".",
+      "tokens": [
+        "正",
+        "好"
+      ],
+      "answer": "正好"
+    },
+    {
+      "type": "order",
+      "prompt": "Put the characters in order to say \"I support you\".",
+      "tokens": [
+        "我",
+        "支",
+        "持",
+        "你"
+      ],
+      "answer": "我支持你"
+    }
+  ]
+}
