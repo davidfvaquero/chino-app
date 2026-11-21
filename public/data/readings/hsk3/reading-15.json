@@ -5,54 +5,54 @@
   "topic": "City life",
   "lines": [
     {
-      "hanzi": "我住在大城市，生活很方便。",
-      "pinyin": "Wǒ zhù zài dà chéngshì, shēnghuó hěn fāngbiàn.",
-      "english": "I live in a big city, life is very convenient."
+      "hanzi": "我住在大城市，很方便。",
+      "pinyin": "Wǒ zhù zài dà chéngshì, hěn fāngbiàn.",
+      "english": "I live in a big city; it's very convenient."
     },
     {
       "hanzi": "家附近有超市、医院、银行、公园。",
       "pinyin": "Jiā fùjìn yǒu chāoshì, yīyuàn, yínháng, gōngyuán.",
-      "english": "Near home there are supermarkets, hospitals, banks, parks."
+      "english": "Near home there are supermarkets, hospitals, banks and parks."
     },
     {
       "hanzi": "出门坐地铁，去哪儿都很快。",
       "pinyin": "Chūmén zuò dìtiě, qù nǎr dōu hěn kuài.",
-      "english": "Go out take subway, go anywhere very fast."
+      "english": "I go out by subway; anywhere is quick."
     },
     {
       "hanzi": "城市里饭馆很多，什么菜都有。",
       "pinyin": "Chéngshì lǐ fànguǎn hěn duō, shénme cài dōu yǒu.",
-      "english": "In the city there are many restaurants, all kinds of dishes."
+      "english": "In the city there are many restaurants with all kinds of dishes."
     },
     {
-      "hanzi": "但是城市也有缺点。空气不如乡村好。",
-      "pinyin": "Dànshì chéngshì yě yǒu quēdiǎn. Kōngqì bùrú xiāngcūn hǎo.",
-      "english": "But the city also has shortcomings. Air not as good as countryside."
+      "hanzi": "但是城市也有不好的地方。空气不太好。",
+      "pinyin": "Dànshì chéngshì yě yǒu bù hǎo de dìfang. Kōngqì bù tài hǎo.",
+      "english": "But the city also has its bad sides. The air isn't very good."
     },
     {
-      "hanzi": "车太多，早晚高峰很堵车。",
-      "pinyin": "Chē tài duō, zǎowǎn gāofēng hěn dǔchē.",
-      "english": "Too many cars, rush hour very jammed."
+      "hanzi": "车太多，路上总是很忙。",
+      "pinyin": "Chē tài duō, lùshang zǒngshì hěn máng.",
+      "english": "Too many cars; the roads are always busy."
     },
     {
       "hanzi": "房子很贵，很多人买不起房。",
       "pinyin": "Fángzi hěn guì, hěn duō rén mǎi bu qǐ fáng.",
-      "english": "Houses very expensive, many people can't afford to buy."
+      "english": "Houses are very expensive; many people can't afford to buy."
     },
     {
-      "hanzi": "生活节奏快，压力大，容易累。",
-      "pinyin": "Shēnghuó jiézòu kuài, yālì dà, róngyì lèi.",
-      "english": "Life pace fast, pressure big, easy to get tired."
+      "hanzi": "每天都很忙，容易累。",
+      "pinyin": "Měitiān dōu hěn máng, róngyì lèi.",
+      "english": "Every day is busy, and it's easy to get tired."
     },
     {
       "hanzi": "不过我还是喜欢城市，机会多。",
       "pinyin": "Bùguò wǒ háishì xǐhuan chéngshì, jīhuì duō.",
-      "english": "But I still like the city, more opportunities."
+      "english": "But I still like the city; there are more opportunities."
     },
     {
-      "hanzi": "周末我常去公园散步，放松一下。",
-      "pinyin": "Zhōumò wǒ cháng qù gōngyuán sànbù, fàngsōng yīxià.",
-      "english": "Weekends I often go to the park for a walk, relax a bit."
+      "hanzi": "周末我常去公园走走，好好休息一下。",
+      "pinyin": "Zhōumò wǒ cháng qù gōngyuán zǒuzou, hǎohǎo xiūxi yīxià.",
+      "english": "On weekends I often walk in the park and rest well."
     }
   ]
 }

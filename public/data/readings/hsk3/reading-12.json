@@ -12,21 +12,21 @@
     },
     {
       "speaker": "B",
-      "hanzi": "是的，我上个星期辞职了。",
-      "pinyin": "Shì de, wǒ shàng gè xīngqí cízhí le.",
-      "english": "Yes, I quit last week."
+      "hanzi": "是的，我上个星期离开公司了。",
+      "pinyin": "Shì de, wǒ shàng gè xīngqí líkāi gōngsī le.",
+      "english": "Yes, I left the company last week."
     },
     {
       "speaker": "A",
-      "hanzi": "为什么辞职？",
-      "pinyin": "Wèishéme cízhí?",
-      "english": "Why did you quit?"
+      "hanzi": "为什么不工作了？",
+      "pinyin": "Wèishéme bù gōngzuò le?",
+      "english": "Why did you stop working?"
     },
     {
       "speaker": "B",
-      "hanzi": "工资太低，又太忙。我想找个更好的。",
-      "pinyin": "Gōngzī tài dī, yòu tài máng. Wǒ xiǎng zhǎo gè gèng hǎo de.",
-      "english": "Salary too low, and too busy. I want to find a better one."
+      "hanzi": "钱太少，又太忙。我想找个更好的。",
+      "pinyin": "Qián tài shǎo, yòu tài máng. Wǒ xiǎng zhǎo gè gèng hǎo de.",
+      "english": "The pay is too little and it's too busy. I want to find a better one."
     },
     {
       "speaker": "A",
@@ -42,21 +42,21 @@
     },
     {
       "speaker": "A",
-      "hanzi": "你投简历了吗？",
-      "pinyin": "Nǐ tóu jiǎnlì le ma?",
-      "english": "Did you send out resumes?"
+      "hanzi": "你开始找了吗？",
+      "pinyin": "Nǐ kāishǐ zhǎo le ma?",
+      "english": "Have you started looking?"
     },
     {
       "speaker": "B",
-      "hanzi": "投了几份。下个星期有两个面试。",
-      "pinyin": "Tóu le jǐ fèn. Xià gè xīngqí yǒu liǎng gè miànshì.",
-      "english": "Sent a few. Next week have two interviews."
+      "hanzi": "发了一些。下个星期有两个面试。",
+      "pinyin": "Fā le yīxiē. Xià gè xīngqí yǒu liǎng gè miànshì.",
+      "english": "I sent some out. Next week I have two interviews."
     },
     {
       "speaker": "A",
-      "hanzi": "祝你面试顺利，早日找到好工作！",
-      "pinyin": "Zhù nǐ miànshì shùnlì, zǎorì zhǎodào hǎo gōngzuò!",
-      "english": "Wishing you successful interviews, find a good job soon!"
+      "hanzi": "希望你的面试很好，早点找到好工作！",
+      "pinyin": "Xīwàng nǐ de miànshì hěn hǎo, zǎodiǎn zhǎodào hǎo gōngzuò!",
+      "english": "I hope your interviews go well and you find a good job soon!"
     }
   ]
 }

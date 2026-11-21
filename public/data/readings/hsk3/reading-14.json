@@ -6,15 +6,15 @@
   "lines": [
     {
       "speaker": "A",
-      "hanzi": "周末想去海边吗？",
-      "pinyin": "Zhōumò xiǎng qù hǎibiān ma?",
-      "english": "Want to go to the seaside this weekend?"
+      "hanzi": "周末想去水边吗？",
+      "pinyin": "Zhōumò xiǎng qù shuǐbiān ma?",
+      "english": "Want to go to the waterside this weekend?"
     },
     {
       "speaker": "B",
-      "hanzi": "好啊！天气预报说周末晴天。",
-      "pinyin": "Hǎo a! Tiānqì yùbào shuō zhōumò qíngtiān.",
-      "english": "Great! Weather forecast says weekend will be sunny."
+      "hanzi": "好啊！周末天气很好。",
+      "pinyin": "Hǎo a! Zhōumò tiānqì hěn hǎo.",
+      "english": "Great! The weather is nice this weekend."
     },
     {
       "speaker": "A",
@@ -26,37 +26,37 @@
       "speaker": "B",
       "hanzi": "开车去吧。两个小时就到。",
       "pinyin": "Kāichē qù ba. Liǎng gè xiǎoshí jiù dào.",
-      "english": "Drive there. Two hours to arrive."
+      "english": "Drive there. Two hours and we're there."
     },
     {
       "speaker": "A",
       "hanzi": "带什么东西？",
       "pinyin": "Dài shénme dōngxi?",
-      "english": "Bring what things?"
+      "english": "What should we bring?"
     },
     {
       "speaker": "B",
-      "hanzi": "泳衣、防晒霜、帽子、太阳镜。还有吃的。",
-      "pinyin": "Yǒngyī, fángshàishuāng, màozi, tàiyángjìng. Hái yǒu chī de.",
-      "english": "Swimsuit, sunscreen, hat, sunglasses. And food."
+      "hanzi": "水、帽子、水果。还有吃的。",
+      "pinyin": "Shuǐ, màozi, shuǐguǒ. Hái yǒu chī de.",
+      "english": "Water, a hat, fruit. And food."
     },
     {
       "speaker": "A",
-      "hanzi": "海边可以做什么？",
-      "pinyin": "Hǎibiān kěyǐ zuò shénme?",
-      "english": "What can we do at the seaside?"
+      "hanzi": "水边可以做什么？",
+      "pinyin": "Shuǐbiān kěyǐ zuò shénme?",
+      "english": "What can we do at the waterside?"
     },
     {
       "speaker": "B",
-      "hanzi": "游泳、晒太阳、捡贝壳、拍照。晚上吃海鲜。",
-      "pinyin": "Yóuyǒng, shài tàiyáng, jiǎn bèiké, pāizhào. Wǎnshang chī hǎixiān.",
-      "english": "Swim, sunbathe, collect shells, take photos. Eat seafood at night."
+      "hanzi": "游泳、跑步、看太阳。晚上吃好吃的。",
+      "pinyin": "Yóuyǒng, pǎobù, kàn tàiyáng. Wǎnshang chī hǎochī de.",
+      "english": "Swim, run, watch the sun. Eat something good in the evening."
     },
     {
       "speaker": "A",
       "hanzi": "听起来很有趣！那周末见。",
       "pinyin": "Tīng qǐlai hěn yǒuqù! Nà zhōumò jiàn.",
-      "english": "Sounds fun! See you weekend."
+      "english": "Sounds fun! See you this weekend."
     }
   ]
 }

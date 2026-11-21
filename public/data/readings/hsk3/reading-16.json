@@ -26,7 +26,7 @@
       "speaker": "B",
       "hanzi": "一个月一次吧。周末和朋友一起去。",
       "pinyin": "Yī gè yuè yī cì ba. Zhōumò hé péngyou yīqǐ qù.",
-      "english": "Once a month. Weekends go with friends."
+      "english": "Once a month. Weekends I go with friends."
     },
     {
       "speaker": "A",
@@ -36,27 +36,27 @@
     },
     {
       "speaker": "B",
-      "hanzi": "小说、历史书、科普书都看。",
-      "pinyin": "Xiǎoshuō, lìshǐ shū, kēpǔ shū dōu kàn.",
-      "english": "Novels, history books, popular science books, all read."
+      "hanzi": "小说、历史书、报纸都看。",
+      "pinyin": "Xiǎoshuō, lìshǐ shū, bàozhǐ dōu kàn.",
+      "english": "Novels, history books, newspapers - I read them all."
     },
     {
       "speaker": "A",
-      "hanzi": "听音乐喜欢什么类型？",
-      "pinyin": "Tīng yīnyuè xǐhuan shénme lèixíng?",
-      "english": "What type of music do you like?"
+      "hanzi": "听音乐，你喜欢什么？",
+      "pinyin": "Tīng yīnyuè, nǐ xǐhuan shénme?",
+      "english": "For music, what do you like?"
     },
     {
       "speaker": "B",
-      "hanzi": "轻音乐、民谣。让人安静、放心。",
-      "pinyin": "Qīng yīnyuè, mínyáo. Ràng rén ānjìng, fàngxīn.",
-      "english": "Light music, folk. Makes people quiet, at ease."
+      "hanzi": "老的音乐。让人安静、放心。",
+      "pinyin": "Lǎo de yīnyuè. Ràng rén ānjìng, fàngxīn.",
+      "english": "Old music. It makes people calm and at ease."
     },
     {
       "speaker": "A",
-      "hanzi": "爱好真多！生活一定很丰富。",
-      "pinyin": "Àihào zhēn duō! Shēnghuó yídìng hěn fēngfù.",
-      "english": "So many hobbies! Life must be very rich."
+      "hanzi": "爱好真多！你一定很开心。",
+      "pinyin": "Àihào zhēn duō! Nǐ yídìng hěn kāixīn.",
+      "english": "So many hobbies! You must be very happy."
     }
   ]
 }

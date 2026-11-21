@@ -12,9 +12,9 @@
     },
     {
       "speaker": "B",
-      "hanzi": "还没完全准备好。这几天在复习。",
-      "pinyin": "Hái méi wánquán zhǔnbèi hǎo. Zhè jǐ tiān zài fùxí.",
-      "english": "Not completely ready yet. These days I'm reviewing."
+      "hanzi": "还没准备好。这几天在复习。",
+      "pinyin": "Hái méi zhǔnbèi hǎo. Zhè jǐ tiān zài fùxí.",
+      "english": "Not ready yet. These days I'm reviewing."
     },
     {
       "speaker": "A",
@@ -24,9 +24,9 @@
     },
     {
       "speaker": "B",
-      "hanzi": "语法、词汇、听力，都要复习。",
-      "pinyin": "Yǔfǎ, cíhuì, tīnglì, dōu yào fùxí.",
-      "english": "Grammar, vocabulary, listening, all need to review."
+      "hanzi": "语法、词语、听力，都要复习。",
+      "pinyin": "Yǔfǎ, cíyǔ, tīnglì, dōu yào fùxí.",
+      "english": "Grammar, words, listening - all need review."
     },
     {
       "speaker": "A",
@@ -36,15 +36,15 @@
     },
     {
       "speaker": "B",
-      "hanzi": "听力最难。语速太快，听不懂。",
-      "pinyin": "Tīnglì zuì nán. Yǔsù tài kuài, tīng bù dǒng.",
-      "english": "Listening is hardest. Speech too fast, can't understand."
+      "hanzi": "听力最难。说得太快，听不懂。",
+      "pinyin": "Tīnglì zuì nán. Shuō de tài kuài, tīng bu dǒng.",
+      "english": "Listening is the hardest. People speak too fast, I can't understand."
     },
     {
       "speaker": "A",
-      "hanzi": "多听录音练习吧。我可以帮你。",
-      "pinyin": "Duō tīng lùyīn liànxí ba. Wǒ kěyǐ bāng nǐ.",
-      "english": "Listen to recordings more to practice. I can help you."
+      "hanzi": "多听，多练习吧。我可以帮你。",
+      "pinyin": "Duō tīng, duō liànxí ba. Wǒ kěyǐ bāng nǐ.",
+      "english": "Listen more, practice more. I can help you."
     },
     {
       "speaker": "B",
