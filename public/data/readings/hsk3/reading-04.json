@@ -1,0 +1,50 @@
+{
+  "id": "reading-04",
+  "title": "我的看法",
+  "type": "dialogue",
+  "topic": "My opinion",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你怎么看这件事？",
+      "pinyin": "Nǐ zěnme kàn zhè jiàn shì?",
+      "english": "What do you think about this matter?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我觉得不错。虽然有问题，但可以解决。",
+      "pinyin": "Wǒ juéde bùcuò. Suīrán yǒu wèntí, dàn kěyǐ jiějué.",
+      "english": "I think it's not bad. Although there are problems, they can be solved."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我也同意。不过需要时间。",
+      "pinyin": "Wǒ yě tóngyì. Bùguò xūyào shíjiān.",
+      "english": "I agree too. But it needs time."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "对。不能太着急。慢慢来比较好。",
+      "pinyin": "Duì. Bùnéng tài zháojí. Mànmàn lái bǐjiào hǎo.",
+      "english": "Right. Can't be too anxious. Taking it slow is better."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你觉得最重要是什么？",
+      "pinyin": "Nǐ juéde zuì zhòngyào shì shénme?",
+      "english": "What do you think is most important?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我认为沟通最重要。大家多谈谈。",
+      "pinyin": "Wǒ rènwéi gōutōng zuì zhòngyào. Dàjiā duō tántan.",
+      "english": "I think communication is most important. Everyone should talk more."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "有道理。我会注意的。",
+      "pinyin": "Yǒu dàoli. Wǒ huì zhùyì de.",
+      "english": "Makes sense. I'll pay attention."
+    }
+  ]
+}

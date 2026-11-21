@@ -1,0 +1,62 @@
+{
+  "id": "reading-02",
+  "title": "我的工作",
+  "type": "dialogue",
+  "topic": "My job",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你在哪儿工作？",
+      "pinyin": "Nǐ zài nǎr gōngzuò?",
+      "english": "Where do you work?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我在一家公司工作。",
+      "pinyin": "Wǒ zài yī jiā gōngsī gōngzuò.",
+      "english": "I work at a company."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你是做什么的？",
+      "pinyin": "Nǐ shì zuò shénme de?",
+      "english": "What do you do?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我是经理。每天开会，看文件。",
+      "pinyin": "Wǒ shì jīnglǐ. Měitiān kāihuì, kàn wénjiàn.",
+      "english": "I'm a manager. Every day I have meetings and read documents."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "工作忙吗？",
+      "pinyin": "Gōngzuò máng ma?",
+      "english": "Is work busy?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "很忙。但是我喜欢我的工作。",
+      "pinyin": "Hěn máng. Dànshì wǒ xǐhuan wǒ de gōngzuò.",
+      "english": "Very busy. But I like my job."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你的同事好吗？",
+      "pinyin": "Nǐ de tóngshì hǎo ma?",
+      "english": "Are your colleagues nice?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "他们很友好。我们常一起吃饭。",
+      "pinyin": "Tāmen hěn yǒuhǎo. Wǒmen cháng yīqǐ chīfàn.",
+      "english": "They're very friendly. We often eat together."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "真好！祝你工作顺利。",
+      "pinyin": "Zhēn hǎo! Zhù nǐ gōngzuò shùnlì.",
+      "english": "That's great! Wishing you smooth work."
+    }
+  ]
+}

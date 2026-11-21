@@ -1,0 +1,62 @@
+{
+  "id": "reading-03",
+  "title": "学习汉语",
+  "type": "dialogue",
+  "topic": "Studying Chinese",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你学习汉语多久了？",
+      "pinyin": "Nǐ xuéxí Hànyǔ duōjiǔ le?",
+      "english": "How long have you been studying Chinese?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我学了两年了。",
+      "pinyin": "Wǒ xué le liǎng nián le.",
+      "english": "I've studied for two years."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "汉语难不难？",
+      "pinyin": "Hànyǔ nán bu nán?",
+      "english": "Is Chinese difficult?"
+    },
+    {
+      "speaker": "B",
+      "pinyin": "有点儿难。写汉字最难。",
+      "hanzi": "有点儿难。写汉字最难。",
+      "english": "A little difficult. Writing characters is the hardest."
+    },
+    {
+      "speaker": "A",
+      "pinyin": "你怎么学习？",
+      "hanzi": "你怎么学习？",
+      "english": "How do you study?"
+    },
+    {
+      "speaker": "B",
+      "pinyin": "我上课，也自己复习。每天听录音。",
+      "hanzi": "我上课，也自己复习。每天听录音。",
+      "english": "I take classes and also review on my own. I listen to recordings every day."
+    },
+    {
+      "speaker": "A",
+      "pinyin": "你会说很多汉语吗？",
+      "hanzi": "你会说很多汉语吗？",
+      "english": "Can you speak a lot of Chinese?"
+    },
+    {
+      "speaker": "B",
+      "pinyin": "会说一些。但听不太懂快的语速。",
+      "hanzi": "会说一些。但听不太懂快的语速。",
+      "english": "I can speak some. But I can't understand fast speech well."
+    },
+    {
+      "speaker": "A",
+      "pinyin": "继续努力！你会进步的。",
+      "hanzi": "继续努力！你会进步的。",
+      "english": "Keep working hard! You'll improve."
+    }
+  ]
+}
