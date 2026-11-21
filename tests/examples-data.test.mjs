@@ -1,22 +1,29 @@
 // tests/examples-data.test.mjs
 // Derived from the committed data after `node scripts/build-examples.mjs`:
-//   words with examples: 13108
-//   total size:          7.55 MB (uncompressed), 64 shards, biggest shard ~141 KB
+//   words with examples: 13444
+//   total size:          7.55 MB (uncompressed), 64 shards, biggest shard ~142 KB
 //   examples of 好 (hǎo):
-//     我好胖哦。 — wǒ hǎo pàng o — "I'm so fat." / "Estoy tan gordo."
-//     其他的一切都好。 — qí tā de yī qiè dōu hǎo — "Everything else is fine."
+//     我好胖哦。 — Wǒ hǎo pàng o — "I'm so fat." / "Estoy tan gordo."
+//     其他的一切都好。 — Qí tā de yī qiè dōu hǎo — "Everything else is fine."
 //     即使他们有很好的酒单，我也不想在这里用餐。 — "Even if they have a good wine menu…"
-//     我觉得这个网站的概念非常好。 — "I really like the concept of this website."
+//     把你的自行车放好。 — "Put your bike away."
 //   examples of 银行 (yín háng):
-//     我在银行工作。 — wǒ zài yín háng gōng zuò — "I work in a bank." / "Trabajo en el banco."
-//     我不喜欢在银行工作. — "I don't like working at the bank."
+//     我在银行工作。 — Wǒ zài yín háng gōng zuò — "I work in a bank." / "Trabajo en el banco."
+//     我不喜欢在银行工作。 — "I don't like working at the bank."
 //     这是邮局，那是银行。 — "This is a post office and that is a bank."
-//     Taro在银行提了10000日元。 — "Taro drew 10,000 yen from the bank."
+//     他银行里有点钱。 — "He has some money in the bank."
 //   examples of 因为 (yīn wèi):
 //     "你为什么不去？""因为我不想去。" — "Why aren't you going?" "Because I don't want to."
 //     如果不是因为有你的帮助，我不可能完成了这个工作。 — "If it had not been for your help…"
-//     那是因为你是女生。 — nà shi yīn wèi nǐ shì nǚ shēng — "That's because you're a girl."
-//     因为我想成为翻译。 — "Because I want to be a translator."
+//     那是因为你是女生。 — Nà shi yīn wèi nǐ shì nǚ shēng — "That's because you're a girl."
+//     因为我想成为翻译。 — Yīn wèi wǒ xiǎng chéng wéi fān yì — "Because I want to be a translator."
+//
+// Pinyin normalisation (in scripts/build-examples.mjs): only the first syllable
+// is capitalised (CC-CEDICT surnames/abbreviations like Měi/Zhōu/Hànyǔ are
+// lowercased), erhua "r" is glued to the previous syllable (nà r -> nàr), and
+// sentences with latin letters/digits are dropped, as is a trailing ASCII '.'
+// (rewritten to 。). Polyphony is a known ceiling: one reading per word, no
+// context (行 xíng/háng, 还 hái/huán, 长, 重, 都).
 //
 // Schema of public/data/examples/shards/NNN.json: { "<word>": [ {id, zh, pinyin, en, es?} ] }
 // pinned here: the word is part of every zh, <= 4 sentences per word, the sizes

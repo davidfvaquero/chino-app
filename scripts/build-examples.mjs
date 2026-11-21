@@ -145,6 +145,11 @@ function segment(text, wordSet) {
   return out;
 }
 
+// ponytail: ceiling — one reading per word (wordPinyin), no context, so
+// polyphonic characters can be wrong: 行 xíng/háng, 还 hái/huán, 长 cháng/zhǎng,
+// 重 zhòng/chóng, 都 dōu/dū. "行与行之间…" gets xíng yǔ xíng, "我还了…" gets
+// hái le. Way out: a context-aware pass (segment + a small rules table, or a
+// pinyin library) over the segmented words; out of scope here.
 /** Pinyin for a sentence — same greedy routine as scripts/build-data.mjs. */
 function makeSentencePinyin(sentence, wordPinyin, maxWordLen) {
   const out = [];
@@ -157,7 +162,12 @@ function makeSentencePinyin(sentence, wordPinyin, maxWordLen) {
     }
     if (!matched) i += 1;
   }
-  return out.join(' ');
+  // ponytail: CC-CEDICT carries capitals on surnames/abbreviations (Měi, Zhōu,
+  // Hànyǔ) and writes erhua as a detached "r" (nà r, zhè r, yī huì r). Fix the
+  // output only: lowercase everything, glue a detached "r" to the previous
+  // syllable, then capitalise just the first syllable.
+  const s = out.join(' ').toLowerCase().replace(/ r(?= |$)/g, 'r');
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
 async function main() {
@@ -217,7 +227,12 @@ async function main() {
   let kept = 0;
   await forEachBz2Line(cmnFile, (line) => {
     const parsed = parseSentenceLine(line); if (!parsed) return;
-    const [id, text] = parsed;
+    let [id, text] = parsed;
+    // ponytail: sentences with latin letters or digits in the Chinese make
+    // garbage pinyin (the latin is skipped, digits vanish) — drop them.
+    if (/[A-Za-z0-9]/.test(text)) return;
+    // ponytail: normalise an ASCII full stop at the end to 。 (the Chinese one).
+    if (text.endsWith('.')) text = text.slice(0, -1) + '。';
     const len = [...text].length;
     if (len < MIN_CHARS || len > MAX_CHARS) return;
     if (isOffensive(text)) return;
