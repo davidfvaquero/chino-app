@@ -1,0 +1,44 @@
+{
+  "id": "reading-12",
+  "title": "迟到了",
+  "type": "dialogue",
+  "topic": "Llegar tarde",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "快点！我们要晚了。",
+      "pinyin": "Kuài diǎn! Wǒmen yào wǎn le.",
+      "english": "¡Rápido! Vamos a llegar tarde."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "现在几点？",
+      "pinyin": "Xiànzài jǐ diǎn?",
+      "english": "¿Qué hora es ahora?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "八点三十分。课八点开始。",
+      "pinyin": "Bā diǎn sānshí fēn. Kè bā diǎn kāishǐ.",
+      "english": "Las ocho y media. La clase empieza a las ocho."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "跑吧！",
+      "pinyin": "Pǎo ba!",
+      "english": "¡Corre!"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "跑到教室，很累。",
+      "pinyin": "Pǎo dào jiàoshì, hěn lèi.",
+      "english": "Corrimos hasta el aula, muy cansados."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "进去吧，老师还没来。",
+      "pinyin": "Jìn qù ba, lǎoshī hái méi lái.",
+      "english": "Entra, el profesor aún no ha venido."
+    }
+  ]
+}

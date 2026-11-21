@@ -1,0 +1,44 @@
+{
+  "id": "reading-20",
+  "title": "下个月的打算",
+  "type": "dialogue",
+  "topic": "Los planes del próximo mes",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "下个月你想做什么？",
+      "pinyin": "Xià ge yuè nǐ xiǎng zuò shénme?",
+      "english": "¿Qué quieres hacer el próximo mes?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我想去旅游，去北京玩。",
+      "pinyin": "Wǒ xiǎng qù lǚyóu, qù Běijīng wán.",
+      "english": "Quiero viajar, ir a Pekín de paseo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好。和谁一起去？",
+      "pinyin": "Hǎo. Hé shéi yīqǐ qù?",
+      "english": "Bien. ¿Con quién vas?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "和朋友一起去。你要去吗？",
+      "pinyin": "Hé péngyou yīqǐ qù. Nǐ yào qù ma?",
+      "english": "Con amigos. ¿Quieres ir?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我也想去，问问我朋友。",
+      "pinyin": "Wǒ yě xiǎng qù, wèn wen wǒ péngyou.",
+      "english": "Yo también quiero ir, preguntaré a mi amigo."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好，那我们下个月见。",
+      "pinyin": "Hǎo, nà wǒmen xià ge yuè jiàn.",
+      "english": "Bien, entonces nos vemos el próximo mes."
+    }
+  ]
+}

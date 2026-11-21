@@ -1,0 +1,53 @@
+{
+  "id": "reading-20",
+  "title": "我喜欢的城市",
+  "type": "text",
+  "topic": "Una ciudad que me gusta",
+  "lines": [
+    {
+      "hanzi": "我最喜欢的城市是北京。",
+      "pinyin": "Wǒ zuì xǐhuan de chéngshì shì Běijīng.",
+      "english": "Mi ciudad favorita es Pekín."
+    },
+    {
+      "hanzi": "北京是中国的大城市，很大。",
+      "pinyin": "Běijīng shì Zhōngguó de dà chéngshì, hěn dà.",
+      "english": "Pekín es una gran ciudad de China, muy grande."
+    },
+    {
+      "hanzi": "我去过两次，每次都住一周。",
+      "pinyin": "Wǒ qù guò liǎng cì, měi cì dōu zhù yī zhōu.",
+      "english": "He estado allí dos veces, y cada vez me quedé una semana."
+    },
+    {
+      "hanzi": "公园里走走，看花看树，很放心。",
+      "pinyin": "Gōngyuán lǐ zǒuzou, kàn huā kàn shù, hěn fàngxīn.",
+      "english": "Pasear por el parque, mirar las flores y los árboles, relaja mucho."
+    },
+    {
+      "hanzi": "那里的茶也很好，茶馆很多。",
+      "pinyin": "Nàlǐ de chá yě hěn hǎo, cháguǎn hěn duō.",
+      "english": "El té de allí también es bueno, y hay muchas casas de té."
+    },
+    {
+      "hanzi": "那里的菜好吃，我喜欢吃。",
+      "pinyin": "Nàlǐ de cài hǎochī, wǒ xǐhuan chī.",
+      "english": "La comida de allí está deliciosa, me gusta comerla."
+    },
+    {
+      "hanzi": "城市很干净，地铁方便，去哪儿都容易。",
+      "pinyin": "Chéngshì hěn gānjìng, dìtiě fāngbiàn, qù nǎr dōu róngyì.",
+      "english": "La ciudad es muy limpia, el metro es cómodo y llegar a cualquier sitio es fácil."
+    },
+    {
+      "hanzi": "人也很友好，说话很好听。",
+      "pinyin": "Rén yě hěn yǒuhǎo, shuōhuà hěn hǎotīng.",
+      "english": "La gente también es amable y habla muy bonito."
+    },
+    {
+      "hanzi": "希望以后有机会住在那里。",
+      "pinyin": "Xīwàng yǐhòu yǒu jīhuì zhù zài nàlǐ.",
+      "english": "Espero tener la oportunidad de vivir allí en el futuro."
+    }
+  ]
+}

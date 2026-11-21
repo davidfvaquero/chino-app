@@ -1,0 +1,62 @@
+{
+  "id": "reading-13",
+  "title": "考试以前",
+  "type": "dialogue",
+  "topic": "Antes del examen",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "考试快到了，你准备好了吗？",
+      "pinyin": "Kǎoshì kuài dào le, nǐ zhǔnbèi hǎo le ma?",
+      "english": "El examen se acerca, ¿estás preparado?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "还没准备好。这几天在复习。",
+      "pinyin": "Hái méi zhǔnbèi hǎo. Zhè jǐ tiān zài fùxí.",
+      "english": "Todavía no. Estos días estoy repasando."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你复习什么？",
+      "pinyin": "Nǐ fùxí shénme?",
+      "english": "¿Qué estás repasando?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "语法、词语、听力，都要复习。",
+      "pinyin": "Yǔfǎ, cíyǔ, tīnglì, dōu yào fùxí.",
+      "english": "Gramática, vocabulario, comprensión auditiva: todo hay que repasar."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "哪个最难？",
+      "pinyin": "Nǎ gè zuì nán?",
+      "english": "¿Qué es lo más difícil?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "听力最难。说得太快，听不懂。",
+      "pinyin": "Tīnglì zuì nán. Shuō de tài kuài, tīng bu dǒng.",
+      "english": "La comprensión auditiva es lo más difícil. Hablan muy rápido y no entiendo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "多听，多练习吧。我可以帮你。",
+      "pinyin": "Duō tīng, duō liànxí ba. Wǒ kěyǐ bāng nǐ.",
+      "english": "Escucha más y practica más. Yo puedo ayudarte."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "谢谢！我们一起复习吧。",
+      "pinyin": "Xièxie! Wǒmen yīqǐ fùxí ba.",
+      "english": "¡Gracias! Repasemos juntos."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好！相信我们都能考好。",
+      "pinyin": "Hǎo! Xiāngxìn wǒmen dōu néng kǎo hǎo.",
+      "english": "¡Bien! Confío en que los dos podemos hacerlo bien en el examen."
+    }
+  ]
+}

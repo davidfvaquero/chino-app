@@ -1,0 +1,44 @@
+{
+  "id": "reading-16",
+  "title": "买票",
+  "type": "dialogue",
+  "topic": "Comprar billetes",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你好，我想买两张火车票。",
+      "pinyin": "Nǐ hǎo, wǒ xiǎng mǎi liǎng zhāng huǒchē piào.",
+      "english": "Hola, quiero comprar dos billetes de tren."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "去哪儿？几号的？",
+      "pinyin": "Qù nǎr? Jǐ hào de?",
+      "english": "¿Adónde? ¿Para qué fecha?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "去北京，明天的。",
+      "pinyin": "Qù Běijīng, míngtiān de.",
+      "english": "A Pekín, para mañana."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "明天的票卖完了。后天有票。",
+      "pinyin": "Míngtiān de piào mài wán le. Hòutiān yǒu piào.",
+      "english": "Los billetes de mañana están agotados. Pasado mañana hay billetes."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "那买后天的吧。多少钱？",
+      "pinyin": "Nà mǎi hòutiān de ba. Duōshao qián?",
+      "english": "Entonces compra los de pasado mañana. ¿Cuánto cuestan?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "一张一百块，两张两百块。",
+      "pinyin": "Yī zhāng yībǎi kuài, liǎng zhāng liǎngbǎi kuài.",
+      "english": "Un billete cien, dos billetes doscientos."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "reading-03",
+  "title": "坐公共汽车",
+  "type": "dialogue",
+  "topic": "Tomar el autobús",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "这公共汽车去火车站吗？",
+      "pinyin": "Zhè gōnggòng qìchē qù huǒchēzhàn ma?",
+      "english": "¿Este autobús va a la estación de tren?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "去，上车请买票。",
+      "pinyin": "Qù, shàng chē qǐng mǎi piào.",
+      "english": "Sí, compre un billete al subir, por favor."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "一张票多少钱？",
+      "pinyin": "Yī zhāng piào duōshao qián?",
+      "english": "¿Cuánto cuesta un billete?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "两块钱。",
+      "pinyin": "Liǎng kuài qián.",
+      "english": "Dos yuanes."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好，给您两块钱。",
+      "pinyin": "Hǎo, gěi nín liǎng kuài qián.",
+      "english": "De acuerdo, aquí tiene dos yuanes."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "这是您的票，请坐。",
+      "pinyin": "Zhè shì nín de piào, qǐng zuò.",
+      "english": "Aquí está su billete, siéntese, por favor."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢，司机。",
+      "pinyin": "Xièxie, sījī.",
+      "english": "Gracias, conductor."
+    }
+  ]
+}

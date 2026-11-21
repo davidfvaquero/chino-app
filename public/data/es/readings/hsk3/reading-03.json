@@ -1,0 +1,62 @@
+{
+  "id": "reading-03",
+  "title": "学习汉语",
+  "type": "dialogue",
+  "topic": "Estudiar chino",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你学习汉语多久了？",
+      "pinyin": "Nǐ xuéxí Hànyǔ duōjiǔ le?",
+      "english": "¿Cuánto tiempo llevas estudiando chino?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我学了两年了。",
+      "pinyin": "Wǒ xué le liǎng nián le.",
+      "english": "Llevo dos años estudiando."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "汉语难不难？",
+      "pinyin": "Hànyǔ nán bu nán?",
+      "english": "¿Es difícil el chino?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "有点儿难。写汉字最难。",
+      "pinyin": "Yǒudiǎnr nán. Xiě Hànzì zuì nán.",
+      "english": "Un poco difícil. Escribir los caracteres es lo más difícil."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你怎么学习？",
+      "pinyin": "Nǐ zěnme xuéxí?",
+      "english": "¿Cómo estudias?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我上课，也自己复习。每天听中文。",
+      "pinyin": "Wǒ shàngkè, yě zìjǐ fùxí. Měitiān tīng Zhōngwén.",
+      "english": "Voy a clase y también repaso por mi cuenta. Escucho chino todos los días."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你会说很多汉语吗？",
+      "pinyin": "Nǐ huì shuō hěn duō Hànyǔ ma?",
+      "english": "¿Sabes hablar mucho chino?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "会说一些。但是太快我就听不懂。",
+      "pinyin": "Huì shuō yīxiē. Dànshì tài kuài wǒ jiù tīng bu dǒng.",
+      "english": "Sé hablar un poco. Pero si hablan muy rápido no entiendo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "努力吧！你会越来越好的。",
+      "pinyin": "Nǔlì ba! Nǐ huì yuè lái yuè hǎo de.",
+      "english": "¡Ánimo! Cada vez lo harás mejor."
+    }
+  ]
+}

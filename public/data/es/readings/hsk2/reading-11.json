@@ -1,0 +1,44 @@
+{
+  "id": "reading-11",
+  "title": "买水果",
+  "type": "dialogue",
+  "topic": "Comprar fruta",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你好，苹果多少钱一个？",
+      "pinyin": "Nǐ hǎo, píngguǒ duōshao qián yī ge?",
+      "english": "Hola, ¿cuánto cuesta una manzana?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "八块钱一个。要买几个？",
+      "pinyin": "Bā kuài qián yī ge. Yào mǎi jǐ ge?",
+      "english": "Ocho yuanes cada una. ¿Cuántas quieres?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "给我两个。还有西瓜吗？",
+      "pinyin": "Gěi wǒ liǎng ge. Hái yǒu xīguā ma?",
+      "english": "Dame dos. ¿Tienes sandía?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "有，十块钱一个。",
+      "pinyin": "Yǒu, shí kuài qián yī ge.",
+      "english": "Sí, diez yuanes cada una."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "也给我一个西瓜。",
+      "pinyin": "Yě gěi wǒ yī ge xīguā.",
+      "english": "Dame también una sandía."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好，一共二十六块钱。",
+      "pinyin": "Hǎo, yígòng èrshíliù kuài qián.",
+      "english": "De acuerdo, veintiséis yuanes en total."
+    }
+  ]
+}

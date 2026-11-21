@@ -1,0 +1,58 @@
+{
+  "id": "reading-15",
+  "title": "城市生活",
+  "type": "text",
+  "topic": "La vida en la ciudad",
+  "lines": [
+    {
+      "hanzi": "我住在大城市，很方便。",
+      "pinyin": "Wǒ zhù zài dà chéngshì, hěn fāngbiàn.",
+      "english": "Vivo en una ciudad grande; es muy cómodo."
+    },
+    {
+      "hanzi": "家附近有超市、医院、银行、公园。",
+      "pinyin": "Jiā fùjìn yǒu chāoshì, yīyuàn, yínháng, gōngyuán.",
+      "english": "Cerca de casa hay supermercados, hospitales, bancos y parques."
+    },
+    {
+      "hanzi": "出门坐地铁，去哪儿都很快。",
+      "pinyin": "Chūmén zuò dìtiě, qù nǎr dōu hěn kuài.",
+      "english": "Salgo en metro; a cualquier sitio se llega rápido."
+    },
+    {
+      "hanzi": "城市里饭馆很多，什么菜都有。",
+      "pinyin": "Chéngshì lǐ fànguǎn hěn duō, shénme cài dōu yǒu.",
+      "english": "En la ciudad hay muchos restaurantes con todo tipo de platos."
+    },
+    {
+      "hanzi": "但是城市也有不好的地方。空气不太好。",
+      "pinyin": "Dànshì chéngshì yě yǒu bù hǎo de dìfang. Kōngqì bù tài hǎo.",
+      "english": "Pero la ciudad también tiene cosas malas. El aire no es muy bueno."
+    },
+    {
+      "hanzi": "车太多，路上总是很忙。",
+      "pinyin": "Chē tài duō, lùshang zǒngshì hěn máng.",
+      "english": "Hay demasiados coches; las calles siempre están concurridas."
+    },
+    {
+      "hanzi": "房子很贵，很多人买不起房。",
+      "pinyin": "Fángzi hěn guì, hěn duō rén mǎi bu qǐ fáng.",
+      "english": "Las casas son muy caras; mucha gente no puede permitirse comprar una."
+    },
+    {
+      "hanzi": "每天都很忙，容易累。",
+      "pinyin": "Měitiān dōu hěn máng, róngyì lèi.",
+      "english": "Cada día es ajetreado y es fácil cansarse."
+    },
+    {
+      "hanzi": "不过我还是喜欢城市，机会多。",
+      "pinyin": "Bùguò wǒ háishì xǐhuan chéngshì, jīhuì duō.",
+      "english": "Pero aun así me gusta la ciudad; hay más oportunidades."
+    },
+    {
+      "hanzi": "周末我常去公园走走，好好休息一下。",
+      "pinyin": "Zhōumò wǒ cháng qù gōngyuán zǒuzou, hǎohǎo xiūxi yīxià.",
+      "english": "Los fines de semana a menudo paseo por el parque y descanso bien."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "reading-08",
+  "title": "看医生",
+  "type": "dialogue",
+  "topic": "En el médico",
+  "lines": [
+    {
+      "speaker": "医生",
+      "hanzi": "您好，身体不好？",
+      "pinyin": "Nín hǎo, shēntǐ bù hǎo?",
+      "english": "Hola, ¿no se siente bien?"
+    },
+    {
+      "speaker": "病人",
+      "hanzi": "医生，我生病了，身体不好。",
+      "pinyin": "Yīshēng, wǒ shēngbìng le, shēntǐ bù hǎo.",
+      "english": "Doctor, estoy enfermo, no me siento bien."
+    },
+    {
+      "speaker": "医生",
+      "hanzi": "吃药了吗？",
+      "pinyin": "Chī yào le ma?",
+      "english": "¿Ha tomado la medicina?"
+    },
+    {
+      "speaker": "病人",
+      "hanzi": "吃了，但是还是不好。",
+      "pinyin": "Chī le, dànshì háishi bù hǎo.",
+      "english": "La tomé, pero todavía no estoy bien."
+    },
+    {
+      "speaker": "医生",
+      "hanzi": "多喝水，多休息，一星期会好。",
+      "pinyin": "Duō hē shuǐ, duō xiūxi, yī xīngqī huì hǎo.",
+      "english": "Beba más agua, descanse más; en una semana estará bien."
+    },
+    {
+      "speaker": "病人",
+      "hanzi": "好的，谢谢医生。",
+      "pinyin": "Hǎo de, xièxie yīshēng.",
+      "english": "De acuerdo, gracias, doctor."
+    }
+  ]
+}

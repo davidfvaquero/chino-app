@@ -1,0 +1,58 @@
+{
+  "id": "reading-05",
+  "title": "我的一天",
+  "type": "text",
+  "topic": "Un día de mi vida",
+  "lines": [
+    {
+      "hanzi": "我每天早上七点起床。",
+      "pinyin": "Wǒ měitiān zǎoshang qī diǎn qǐchuáng.",
+      "english": "Me levanto a las siete cada mañana."
+    },
+    {
+      "hanzi": "先刷牙，洗脸，然后吃早饭。",
+      "pinyin": "Xiān shuāyá, xǐliǎn, ránhòu chī zǎofàn.",
+      "english": "Primero me lavo los dientes y la cara, luego desayuno."
+    },
+    {
+      "hanzi": "早饭我吃面包，喝牛奶。",
+      "pinyin": "Zǎofàn wǒ chī miànbāo, hē niúnǎi.",
+      "english": "Para desayunar como pan y bebo leche."
+    },
+    {
+      "hanzi": "八点半我坐地铁去上班。",
+      "pinyin": "Bā diǎn bàn wǒ zuò dìtiě qù shàngbān.",
+      "english": "A las ocho y media tomo el metro para ir a trabajar."
+    },
+    {
+      "hanzi": "中午十二点在公司吃饭。",
+      "pinyin": "Zhōngwǔ shí'èr diǎn zài gōngsī chīfàn.",
+      "english": "A mediodía como en la empresa."
+    },
+    {
+      "hanzi": "下午五点下班，回家的路上买菜。",
+      "pinyin": "Xiàwǔ wǔ diǎn xiàbān, huíjiā de lùshang mǎi cài.",
+      "english": "A las cinco salgo del trabajo y compro verduras de camino a casa."
+    },
+    {
+      "hanzi": "晚上七点做晚饭，大家一起吃。",
+      "pinyin": "Wǎnshang qī diǎn zuò wǎnfàn, dàjiā yīqǐ chī.",
+      "english": "A las siete preparo la cena; todos comemos juntos."
+    },
+    {
+      "hanzi": "饭后我看电视，或者看书。",
+      "pinyin": "Fàn hòu wǒ kàn diànshì, huòzhě kàn shū.",
+      "english": "Después de cenar veo la televisión o leo libros."
+    },
+    {
+      "hanzi": "十点半上床睡觉。",
+      "pinyin": "Shí diǎn bàn shàngchuáng shuìjiào.",
+      "english": "A las diez y media me acuesto y duermo."
+    },
+    {
+      "hanzi": "我的一天很忙，也很快乐。",
+      "pinyin": "Wǒ de yī tiān hěn máng, yě hěn kuàilè.",
+      "english": "Mi día es ajetreado, pero también muy feliz."
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "reading-01",
+    "title": "去旅行",
+    "pinyin": "qù lǚ xíng",
+    "topic": "Un viaje"
+  },
+  {
+    "id": "reading-02",
+    "title": "我的工作",
+    "pinyin": "wǒ de gōng zuò",
+    "topic": "Mi trabajo"
+  },
+  {
+    "id": "reading-03",
+    "title": "学习汉语",
+    "pinyin": "xué xí hàn yǔ",
+    "topic": "Estudiar chino"
+  },
+  {
+    "id": "reading-04",
+    "title": "我的看法",
+    "pinyin": "wǒ de kàn fǎ",
+    "topic": "Mi opinión"
+  },
+  {
+    "id": "reading-05",
+    "title": "我的一天",
+    "pinyin": "wǒ de yī tiān",
+    "topic": "Un día de mi vida"
+  },
+  {
+    "id": "reading-06",
+    "title": "坐火车去南方",
+    "pinyin": "zuò huǒ chē qù nán fāng",
+    "topic": "En tren al sur"
+  },
+  {
+    "id": "reading-07",
+    "title": "新的工作",
+    "pinyin": "xīn de gōng zuò",
+    "topic": "Un trabajo nuevo"
+  },
+  {
+    "id": "reading-08",
+    "title": "在学校",
+    "pinyin": "zài xué xiào",
+    "topic": "En la escuela"
+  },
+  {
+    "id": "reading-09",
+    "title": "你怎么看",
+    "pinyin": "nǐ zěn me kàn",
+    "topic": "¿Tú qué piensas?"
+  },
+  {
+    "id": "reading-10",
+    "title": "我的房间",
+    "pinyin": "wǒ de fáng jiān",
+    "topic": "Mi habitación"
+  },
+  {
+    "id": "reading-11",
+    "title": "出差",
+    "pinyin": "chū chāi",
+    "topic": "Un viaje de negocios"
+  },
+  {
+    "id": "reading-12",
+    "title": "找工作",
+    "pinyin": "zhǎo gōng zuò",
+    "topic": "Buscar trabajo"
+  },
+  {
+    "id": "reading-13",
+    "title": "考试以前",
+    "pinyin": "kǎo shì yǐ qián",
+    "topic": "Antes del examen"
+  },
+  {
+    "id": "reading-14",
+    "title": "去海边",
+    "pinyin": "qù hǎi biān",
+    "topic": "En la orilla del mar"
+  },
+  {
+    "id": "reading-15",
+    "title": "城市生活",
+    "pinyin": "chéng shì shēng huó",
+    "topic": "La vida en la ciudad"
+  },
+  {
+    "id": "reading-16",
+    "title": "我的爱好",
+    "pinyin": "wǒ de ài hào",
+    "topic": "Mis aficiones"
+  },
+  {
+    "id": "reading-17",
+    "title": "同事之间",
+    "pinyin": "tóng shì zhī jiān",
+    "topic": "Entre compañeros"
+  },
+  {
+    "id": "reading-18",
+    "title": "学一门外语",
+    "pinyin": "xué yī mén wài yǔ",
+    "topic": "Aprender un idioma extranjero"
+  },
+  {
+    "id": "reading-19",
+    "title": "天气和季节",
+    "pinyin": "tiān qì hé jì jié",
+    "topic": "El tiempo y las estaciones"
+  },
+  {
+    "id": "reading-20",
+    "title": "我喜欢的城市",
+    "pinyin": "wǒ xǐ huān de chéng shì",
+    "topic": "Una ciudad que me gusta"
+  }
+]

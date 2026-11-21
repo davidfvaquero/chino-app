@@ -1,0 +1,53 @@
+{
+  "id": "reading-10",
+  "title": "我的房间",
+  "type": "text",
+  "topic": "Mi habitación",
+  "lines": [
+    {
+      "hanzi": "我的房间不大，但很干净。",
+      "pinyin": "Wǒ de fángjiān bù dà, dàn hěn gānjìng.",
+      "english": "Mi habitación no es grande, pero está muy limpia."
+    },
+    {
+      "hanzi": "床在房间里面，旁边有一个小桌子。",
+      "pinyin": "Chuáng zài fángjiān lǐmiàn, pángbiān yǒu yī gè xiǎo zhuōzi.",
+      "english": "La cama está dentro de la habitación; al lado hay un escritorio pequeño."
+    },
+    {
+      "hanzi": "桌子上有电脑，灯和几本书。",
+      "pinyin": "Zhuōzi shang yǒu diànnǎo, dēng hé jǐ běn shū.",
+      "english": "Sobre el escritorio hay un ordenador, una lámpara y unos cuantos libros."
+    },
+    {
+      "hanzi": "房间里有一张地图和几张照片。",
+      "pinyin": "Fángjiān lǐ yǒu yī zhāng dìtú hé jǐ zhāng zhàopiàn.",
+      "english": "En la habitación hay un mapa y unas cuantas fotos."
+    },
+    {
+      "hanzi": "门旁边有很多衣服。",
+      "pinyin": "Mén pángbiān yǒu hěn duō yīfu.",
+      "english": "Junto a la puerta hay mucha ropa."
+    },
+    {
+      "hanzi": "房间里的东西不多，很简单。",
+      "pinyin": "Fángjiān lǐ de dōngxi bù duō, hěn jiǎndān.",
+      "english": "No hay muchas cosas en la habitación; es muy sencilla."
+    },
+    {
+      "hanzi": "我喜欢在房间里看书，听音乐。",
+      "pinyin": "Wǒ xǐhuan zài fángjiān lǐ kàn shū, tīng yīnyuè.",
+      "english": "Me gusta leer libros y escuchar música en mi habitación."
+    },
+    {
+      "hanzi": "晚上睡觉以前，我总是打扫一下房间。",
+      "pinyin": "Wǎnshang shuìjiào yǐqián, wǒ zǒngshì dǎsǎo yīxià fángjiān.",
+      "english": "Antes de dormir por la noche, siempre ordeno un poco la habitación."
+    },
+    {
+      "hanzi": "这是我最喜欢的地方，让我感到放心。",
+      "pinyin": "Zhè shì wǒ zuì xǐhuan de dìfang, ràng wǒ gǎndào fàngxīn.",
+      "english": "Este es mi lugar favorito; me hace sentir tranquilo."
+    }
+  ]
+}

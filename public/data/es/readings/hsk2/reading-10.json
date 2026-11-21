@@ -1,0 +1,44 @@
+{
+  "id": "reading-10",
+  "title": "坐飞机",
+  "type": "dialogue",
+  "topic": "En el aeropuerto",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "飞机几点起飞？",
+      "pinyin": "Fēijī jǐ diǎn qǐfēi?",
+      "english": "¿A qué hora despega el avión?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "两点三十分。我们要去机场。",
+      "pinyin": "Liǎng diǎn sānshí fēn. Wǒmen yào qù jīchǎng.",
+      "english": "A las dos y media. Tenemos que ir al aeropuerto."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "现在几点？",
+      "pinyin": "Xiànzài jǐ diǎn?",
+      "english": "¿Qué hora es ahora?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "十一点。坐出租车去。",
+      "pinyin": "Shíyī diǎn. Zuò chūzūchē qù.",
+      "english": "Las once. Vamos en taxi."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "出租车多少钱？",
+      "pinyin": "Chūzūchē duōshao qián?",
+      "english": "¿Cuánto cuesta el taxi?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "一百块左右。快走！",
+      "pinyin": "Yībǎi kuài zuǒyòu. Kuài zǒu!",
+      "english": "Alrededor de cien yuanes. ¡Date prisa!"
+    }
+  ]
+}

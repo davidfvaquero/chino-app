@@ -1,0 +1,50 @@
+{
+  "id": "reading-04",
+  "title": "我的看法",
+  "type": "dialogue",
+  "topic": "Mi opinión",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你怎么看这件事？",
+      "pinyin": "Nǐ zěnme kàn zhè jiàn shì?",
+      "english": "¿Qué opinas de este asunto?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我觉得不错。虽然有问题，但可以解决。",
+      "pinyin": "Wǒ juéde bùcuò. Suīrán yǒu wèntí, dàn kěyǐ jiějué.",
+      "english": "Creo que no está mal. Aunque hay problemas, se pueden resolver."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我也同意。不过需要时间。",
+      "pinyin": "Wǒ yě tóngyì. Bùguò xūyào shíjiān.",
+      "english": "Yo también estoy de acuerdo. Pero hace falta tiempo."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "对。不能太着急。慢慢来比较好。",
+      "pinyin": "Duì. Bùnéng tài zháojí. Mànmàn lái bǐjiào hǎo.",
+      "english": "Cierto. No hay que tener prisa. Es mejor ir poco a poco."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你觉得最重要是什么？",
+      "pinyin": "Nǐ juéde zuì zhòngyào shì shénme?",
+      "english": "¿Qué crees que es lo más importante?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我认为聊天最重要。大家可以多聊天。",
+      "pinyin": "Wǒ rènwéi liáotiān zuì zhòngyào. Dàjiā kěyǐ duō liáotiān.",
+      "english": "Creo que lo más importante es conversar. Todos podemos conversar más."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "有道理。我会注意的。",
+      "pinyin": "Yǒu dàoli. Wǒ huì zhùyì de.",
+      "english": "Tiene sentido. Lo tendré en cuenta."
+    }
+  ]
+}

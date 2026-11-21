@@ -1,0 +1,44 @@
+{
+  "id": "reading-15",
+  "title": "时间不够",
+  "type": "dialogue",
+  "topic": "No hay tiempo suficiente",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "我们要做完这个吗？",
+      "pinyin": "Wǒmen yào zuò wán zhège ma?",
+      "english": "¿Tenemos que terminar esto?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是，但是时间不多了。",
+      "pinyin": "Shì, dànshì shíjiān bù duō le.",
+      "english": "Sí, pero ya queda poco tiempo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "还有多少时间？",
+      "pinyin": "Hái yǒu duōshao shíjiān?",
+      "english": "¿Cuánto tiempo queda?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "十分钟。快一点！",
+      "pinyin": "Shí fēnzhōng. Kuài yīdiǎn!",
+      "english": "Diez minutos. ¡Más rápido!"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我做得很快，别想太多。",
+      "pinyin": "Wǒ zuò de hěn kuài, bié xiǎng tài duō.",
+      "english": "Lo hago muy rápido, no pienses demasiado."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好，快点！",
+      "pinyin": "Hǎo, kuài diǎn!",
+      "english": "Bien, ¡más rápido!"
+    }
+  ]
+}

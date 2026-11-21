@@ -1,0 +1,50 @@
+{
+  "id": "reading-01",
+  "title": "去旅行",
+  "type": "dialogue",
+  "topic": "Un viaje",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "放假了，你打算去哪儿旅行？",
+      "pinyin": "Fàngjià le, nǐ dǎsuàn qù nǎr lǚxíng?",
+      "english": "Están las vacaciones: ¿adónde piensas viajar?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我想去南方。那边天气很好。",
+      "pinyin": "Wǒ xiǎng qù nánfāng. Nàbiān tiānqì hěn hǎo.",
+      "english": "Quiero ir al sur. Allí hace muy buen tiempo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你准备坐火车还是坐飞机？",
+      "pinyin": "Nǐ zhǔnbèi zuò huǒchē háishi zuò fēijī?",
+      "english": "¿Vas a ir en tren o en avión?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "坐火车。虽然时间长，但是可以看很多地方。",
+      "pinyin": "Zuò huǒchē. Suīrán shíjiān cháng, dànshì kěyǐ kàn hěn duō dìfang.",
+      "english": "En tren. Aunque tarda más, puedo ver muchos lugares."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "一个人去吗？",
+      "pinyin": "Yī gè rén qù ma?",
+      "english": "¿Vas solo?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "不，我和同事一起去。我们已经找到宾馆了。",
+      "pinyin": "Bù, wǒ hé tóngshì yīqǐ qù. Wǒmen yǐjīng zhǎodào bīnguǎn le.",
+      "english": "No, voy con un compañero de trabajo. Ya hemos encontrado un hotel."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "太好了！希望你旅行快乐！",
+      "pinyin": "Tài hǎo le! Xīwàng nǐ lǚxíng kuàilè!",
+      "english": "¡Qué bien! ¡Espero que tengas un buen viaje!"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "reading-12",
+  "title": "找工作",
+  "type": "dialogue",
+  "topic": "Buscar trabajo",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你在找工作吗？",
+      "pinyin": "Nǐ zài zhǎo gōngzuò ma?",
+      "english": "¿Estás buscando trabajo?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，我上个星期离开公司了。",
+      "pinyin": "Shì de, wǒ shàng gè xīngqí líkāi gōngsī le.",
+      "english": "Sí, dejé la empresa la semana pasada."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "为什么不工作了？",
+      "pinyin": "Wèishéme bù gōngzuò le?",
+      "english": "¿Por qué dejaste de trabajar?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "钱太少，又太忙。我想找个更好的。",
+      "pinyin": "Qián tài shǎo, yòu tài máng. Wǒ xiǎng zhǎo gè gèng hǎo de.",
+      "english": "El sueldo es muy bajo y hay demasiado trabajo. Quiero encontrar algo mejor."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你想做什么工作？",
+      "pinyin": "Nǐ xiǎng zuò shénme gōngzuò?",
+      "english": "¿Qué tipo de trabajo quieres?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我想在大公司做经理。或者做老师也可以。",
+      "pinyin": "Wǒ xiǎng zài dà gōngsī zuò jīnglǐ. Huòzhě zuò lǎoshī yě kěyǐ.",
+      "english": "Quiero ser gerente en una empresa grande. O también podría ser profesor."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你开始找了吗？",
+      "pinyin": "Nǐ kāishǐ zhǎo le ma?",
+      "english": "¿Has empezado a buscar?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "发了一些。下个星期有两个面试。",
+      "pinyin": "Fā le yīxiē. Xià gè xīngqí yǒu liǎng gè miànshì.",
+      "english": "He enviado algunos. La semana que viene tengo dos entrevistas."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "希望你的面试很好，早点找到好工作！",
+      "pinyin": "Xīwàng nǐ de miànshì hěn hǎo, zǎodiǎn zhǎodào hǎo gōngzuò!",
+      "english": "¡Espero que tus entrevistas vayan bien y encuentres pronto un buen trabajo!"
+    }
+  ]
+}

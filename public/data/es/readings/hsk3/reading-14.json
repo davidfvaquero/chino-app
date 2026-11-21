@@ -1,0 +1,62 @@
+{
+  "id": "reading-14",
+  "title": "去海边",
+  "type": "dialogue",
+  "topic": "En la orilla del mar",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "周末想去水边吗？",
+      "pinyin": "Zhōumò xiǎng qù shuǐbiān ma?",
+      "english": "¿Quieres ir a la orilla del agua este fin de semana?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好啊！周末天气很好。",
+      "pinyin": "Hǎo a! Zhōumò tiānqì hěn hǎo.",
+      "english": "¡Vale! El tiempo es bueno este fin de semana."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我们怎么去？",
+      "pinyin": "Wǒmen zěnme qù?",
+      "english": "¿Cómo vamos?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "开车去吧。两个小时就到。",
+      "pinyin": "Kāichē qù ba. Liǎng gè xiǎoshí jiù dào.",
+      "english": "Vamos en coche. En dos horas llegamos."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "带什么东西？",
+      "pinyin": "Dài shénme dōngxi?",
+      "english": "¿Qué llevamos?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "水、帽子、水果。还有吃的。",
+      "pinyin": "Shuǐ, màozi, shuǐguǒ. Hái yǒu chī de.",
+      "english": "Agua, un sombrero y fruta. Y comida."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "水边可以做什么？",
+      "pinyin": "Shuǐbiān kěyǐ zuò shénme?",
+      "english": "¿Qué podemos hacer en la orilla del agua?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "游泳、跑步、看太阳。晚上吃好吃的。",
+      "pinyin": "Yóuyǒng, pǎobù, kàn tàiyáng. Wǎnshang chī hǎochī de.",
+      "english": "Nadar, correr y ver el sol. Por la noche comer algo rico."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "听起来很有趣！那周末见。",
+      "pinyin": "Tīng qǐlai hěn yǒuqù! Nà zhōumò jiàn.",
+      "english": "¡Suena divertido! Nos vemos el fin de semana."
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "reading-19",
+  "title": "天气和季节",
+  "type": "dialogue",
+  "topic": "El tiempo y las estaciones",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你最喜欢哪个季节？",
+      "pinyin": "Nǐ zuì xǐhuan nǎ gè jìjié?",
+      "english": "¿Qué estación te gusta más?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我最喜欢春天。不冷不热，花开得好看。",
+      "pinyin": "Wǒ zuì xǐhuan chūntiān. Bù lěng bù rè, huā kāi de hǎokàn.",
+      "english": "La que más me gusta es la primavera. Ni frío ni calor, y las flores lucen preciosas."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "春天真好。可是春天常有风。",
+      "pinyin": "Chūntiān zhēn hǎo. Kěshì chūntiān cháng yǒu fēng.",
+      "english": "La primavera es muy agradable. Pero en primavera a menudo hace viento."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "夏天呢？你喜欢夏天吗？",
+      "pinyin": "Xiàtiān ne? Nǐ xǐhuan xiàtiān ma?",
+      "english": "¿Y el verano? ¿Te gusta el verano?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "夏天太热了。但可以游泳，吃冷饮。",
+      "pinyin": "Xiàtiān tài rè le. Dàn kěyǐ yóuyǒng, chī lěngyǐn.",
+      "english": "El verano hace demasiado calor. Pero puedo nadar y tomar bebidas frías."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "秋天最舒服。天气不冷不热，水果也多。",
+      "pinyin": "Qiūtiān zuì shūfu. Tiānqì bù lěng bù rè, shuǐguǒ yě duō.",
+      "english": "El otoño es lo más agradable. Ni frío ni calor, y hay mucha fruta."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "冬天冷，但可以看雪，过年也开心。",
+      "pinyin": "Dōngtiān lěng, dàn kěyǐ kàn xuě, guònián yě kāixīn.",
+      "english": "El invierno es frío, pero puedes ver la nieve y disfrutar del Año Nuevo."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "每个季节都有好。习惯就好。",
+      "pinyin": "Měi gè jìjié dōu yǒu hǎo. Xíguàn jiù hǎo.",
+      "english": "Cada estación tiene su lado bueno. Solo hay que acostumbrarse."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "说得对。现在天气怎么样？",
+      "pinyin": "Shuō de duì. Xiànzài tiānqì zěnmeyàng?",
+      "english": "Bien dicho. ¿Qué tiempo hace ahora?"
+    }
+  ]
+}

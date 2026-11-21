@@ -1,0 +1,62 @@
+{
+  "id": "reading-06",
+  "title": "坐火车去南方",
+  "type": "dialogue",
+  "topic": "En tren al sur",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你这次去南方怎么去？",
+      "pinyin": "Nǐ zhè cì qù nánfāng zěnme qù?",
+      "english": "¿Cómo vas al sur esta vez?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我坐火车去。火车票不贵。",
+      "pinyin": "Wǒ zuò huǒchē qù. Huǒchē piào bù guì.",
+      "english": "Voy en tren. Los billetes de tren no son caros."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "坐火车要多长时间？",
+      "pinyin": "Zuò huǒchē yào duō cháng shíjiān?",
+      "english": "¿Cuánto tarda el tren?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "可能二十个小时。虽然长，但可以看很多地方。",
+      "pinyin": "Kěnéng èrshí gè xiǎoshí. Suīrán cháng, dàn kěyǐ kàn hěn duō dìfang.",
+      "english": "Quizá veinte horas. Aunque es largo, puedo ver muchos lugares."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你带吃的了吗？",
+      "pinyin": "Nǐ dài chī de le ma?",
+      "english": "¿Has traído comida?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "带了。面包、水果、饮料都有。",
+      "pinyin": "Dài le. Miànbāo, shuǐguǒ, yǐnliào dōu yǒu.",
+      "english": "Sí. Pan, fruta y bebidas: lo tengo todo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "火车上能睡觉吗？",
+      "pinyin": "Huǒchē shang néng shuìjiào ma?",
+      "english": "¿Se puede dormir en el tren?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "可以。我买了火车票，睡得很舒服。",
+      "pinyin": "Kěyǐ. Wǒ mǎi le huǒchē piào, shuì de hěn shūfu.",
+      "english": "Sí. Compré un billete de tren y duermo muy cómodo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "希望你好好休息，早点回来！",
+      "pinyin": "Xīwàng nǐ hǎohǎo xiūxi, zǎodiǎn huílai!",
+      "english": "¡Espero que descanses bien y vuelvas pronto!"
+    }
+  ]
+}

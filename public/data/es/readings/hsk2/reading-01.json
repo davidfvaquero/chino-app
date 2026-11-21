@@ -1,0 +1,50 @@
+{
+  "id": "reading-01",
+  "title": "买新衣服",
+  "type": "dialogue",
+  "topic": "Comprar ropa",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你好，我想买一件衣服。",
+      "pinyin": "Nǐ hǎo, wǒ xiǎng mǎi yī jiàn yīfu.",
+      "english": "Hola, quiero comprar una prenda de ropa."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "您喜欢什么颜色？",
+      "pinyin": "Nín xǐhuan shénme yánsè?",
+      "english": "¿Qué color le gusta?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我喜欢黑色。这件多少钱？",
+      "pinyin": "Wǒ xǐhuan hēisè. Zhè jiàn duōshao qián?",
+      "english": "Me gusta el negro. ¿Cuánto cuesta esta?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "一百二十块。",
+      "pinyin": "Yībǎi èrshí kuài.",
+      "english": "Ciento veinte yuanes."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "太贵了，可以便宜一点儿吗？",
+      "pinyin": "Tài guì le, kěyǐ piányi yīdiǎnr ma?",
+      "english": "Es demasiado caro. ¿Puede ser un poco más barato?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好，一百块。",
+      "pinyin": "Hǎo, yībǎi kuài.",
+      "english": "De acuerdo, cien yuanes."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "谢谢！我要这件。",
+      "pinyin": "Xièxie! Wǒ yào zhè jiàn.",
+      "english": "¡Gracias! Me llevo esta."
+    }
+  ]
+}

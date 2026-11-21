@@ -1,0 +1,62 @@
+{
+  "id": "reading-11",
+  "title": "出差",
+  "type": "dialogue",
+  "topic": "Un viaje de negocios",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "下个星期你要出差吗？",
+      "pinyin": "Xià gè xīngqí nǐ yào chūchāi ma?",
+      "english": "¿Vas de viaje de negocios la semana que viene?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，去北京开会。",
+      "pinyin": "Shì de, qù Běijīng kāihuì.",
+      "english": "Sí, voy a Pekín a una reunión."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "坐飞机去还是坐高铁？",
+      "pinyin": "Zuò fēijī qù háishi zuò gāotiě?",
+      "english": "¿Vas en avión o en tren de alta velocidad?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "坐高铁。只要四个小时，很方便。",
+      "pinyin": "Zuò gāotiě. Zhǐyào sì gè xiǎoshí, hěn fāngbiàn.",
+      "english": "En tren de alta velocidad. Solo cuatro horas, muy cómodo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "要去几天？",
+      "pinyin": "Yào qù jǐ tiān?",
+      "english": "¿Cuántos días vas?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "三天。开完会就回来。",
+      "pinyin": "Sān tiān. Kāi wán huì jiù huílai.",
+      "english": "Tres días. Vuelvo después de la reunión."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "找到宾馆了吗？",
+      "pinyin": "Zhǎodào bīnguǎn le ma?",
+      "english": "¿Has encontrado hotel?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "找到了。离会议地点很近，走路五分钟。",
+      "pinyin": "Zhǎodào le. Lí huìyì dìdiǎn hěn jìn, zǒulù wǔ fēnzhōng.",
+      "english": "Sí. Muy cerca del lugar de la reunión, a cinco minutos andando."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "希望你出差平安回来！",
+      "pinyin": "Xīwàng nǐ chūchāi píng'ān huílai!",
+      "english": "¡Espero que tengas un buen viaje de negocios y vuelvas sin problemas!"
+    }
+  ]
+}

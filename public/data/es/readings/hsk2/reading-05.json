@@ -1,0 +1,44 @@
+{
+  "id": "reading-05",
+  "title": "周末的计划",
+  "type": "dialogue",
+  "topic": "Planes de fin de semana",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "这个星期天你想做什么？",
+      "pinyin": "Zhège xīngqītiān nǐ xiǎng zuò shénme?",
+      "english": "¿Qué quieres hacer este domingo?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我想去学校跑步，你呢？",
+      "pinyin": "Wǒ xiǎng qù xuéxiào pǎobù, nǐ ne?",
+      "english": "Quiero ir a la escuela a correr. ¿Y tú?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我要和朋友一起看电影。",
+      "pinyin": "Wǒ yào hé péngyou yīqǐ kàn diànyǐng.",
+      "english": "Voy a ver una película con amigos."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "听起来很好。星期天要不要一起吃饭？",
+      "pinyin": "Tīng qǐlái hěn hǎo. Xīngqītiān yào bu yào yīqǐ chīfàn?",
+      "english": "Suena bien. ¿Quieres que comamos juntos el domingo?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好，那我们星期天见。",
+      "pinyin": "Hǎo, nà wǒmen xīngqītiān jiàn.",
+      "english": "Bien, entonces nos vemos el domingo."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "没问题，星期天见！",
+      "pinyin": "Méi wèntí, xīngqītiān jiàn!",
+      "english": "¡No hay problema, hasta el domingo!"
+    }
+  ]
+}

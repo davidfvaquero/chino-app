@@ -1,0 +1,122 @@
+[
+  {
+    "id": "reading-01",
+    "title": "买新衣服",
+    "pinyin": "mǎi xīn yī fu",
+    "topic": "Comprar ropa"
+  },
+  {
+    "id": "reading-02",
+    "title": "现在几点",
+    "pinyin": "xiàn zài jǐ diǎn",
+    "topic": "Decir la hora"
+  },
+  {
+    "id": "reading-03",
+    "title": "坐公共汽车",
+    "pinyin": "zuò gōng gòng qì chē",
+    "topic": "Tomar el autobús"
+  },
+  {
+    "id": "reading-04",
+    "title": "我生病了",
+    "pinyin": "wǒ shēng bìng le",
+    "topic": "Estar enfermo"
+  },
+  {
+    "id": "reading-05",
+    "title": "周末的计划",
+    "pinyin": "zhōu mò de jì huà",
+    "topic": "Planes de fin de semana"
+  },
+  {
+    "id": "reading-06",
+    "title": "在商店",
+    "pinyin": "zài shāng diàn",
+    "topic": "En la tienda"
+  },
+  {
+    "id": "reading-07",
+    "title": "等火车",
+    "pinyin": "děng huǒ chē",
+    "topic": "Esperar el tren"
+  },
+  {
+    "id": "reading-08",
+    "title": "看医生",
+    "pinyin": "kàn yī shēng",
+    "topic": "En el médico"
+  },
+  {
+    "id": "reading-09",
+    "title": "明天做什么",
+    "pinyin": "míng tiān zuò shén me",
+    "topic": "Los planes de mañana"
+  },
+  {
+    "id": "reading-10",
+    "title": "坐飞机",
+    "pinyin": "zuò fēi jī",
+    "topic": "En el aeropuerto"
+  },
+  {
+    "id": "reading-11",
+    "title": "买水果",
+    "pinyin": "mǎi shuǐ guǒ",
+    "topic": "Comprar fruta"
+  },
+  {
+    "id": "reading-12",
+    "title": "迟到了",
+    "pinyin": "chí dào le",
+    "topic": "Llegar tarde"
+  },
+  {
+    "id": "reading-13",
+    "title": "去医院",
+    "pinyin": "qù yī yuàn",
+    "topic": "Ir al hospital"
+  },
+  {
+    "id": "reading-14",
+    "title": "去北京旅游",
+    "pinyin": "qù běi jīng lǚ yóu",
+    "topic": "Un viaje a Pekín"
+  },
+  {
+    "id": "reading-15",
+    "title": "时间不够",
+    "pinyin": "shí jiān bú gòu",
+    "topic": "No hay tiempo suficiente"
+  },
+  {
+    "id": "reading-16",
+    "title": "买票",
+    "pinyin": "mǎi piào",
+    "topic": "Comprar billetes"
+  },
+  {
+    "id": "reading-17",
+    "title": "身体不舒服",
+    "pinyin": "shēn tǐ bù shū fu",
+    "topic": "No sentirse bien"
+  },
+  {
+    "id": "reading-18",
+    "title": "我的周末",
+    "pinyin": "wǒ de zhōu mò",
+    "topic": "Mi fin de semana"
+  },
+  {
+    "id": "reading-19",
+    "title": "打车回家",
+    "pinyin": "dǎ chē huí jiā",
+    "topic": "Un taxi a casa"
+  },
+  {
+    "id": "reading-20",
+    "title": "下个月的打算",
+    "pinyin": "xià gè yuè de dǎ suàn",
+    "topic": "Los planes del próximo mes"
+  }
+]

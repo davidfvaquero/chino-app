@@ -1,0 +1,62 @@
+{
+  "id": "reading-16",
+  "title": "我的爱好",
+  "type": "dialogue",
+  "topic": "Mis aficiones",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你有什么爱好？",
+      "pinyin": "Nǐ yǒu shénme àihào?",
+      "english": "¿Qué aficiones tienes?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我喜欢看书，听音乐，还喜欢爬山。",
+      "pinyin": "Wǒ xǐhuan kàn shū, tīng yīnyuè, hái xǐhuan páshān.",
+      "english": "Me gusta leer, escuchar música y también subir a la montaña."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "爬山？多久爬一次？",
+      "pinyin": "Páshān? Duōjiǔ pá yī cì?",
+      "english": "¿Subir a la montaña? ¿Con qué frecuencia?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "一个月一次吧。周末和朋友一起去。",
+      "pinyin": "Yī gè yuè yī cì ba. Zhōumò hé péngyou yīqǐ qù.",
+      "english": "Una vez al mes. Los fines de semana voy con amigos."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "看书看什么书？",
+      "pinyin": "Kàn shū kàn shénme shū?",
+      "english": "¿Qué libros lees?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "小说、历史书、报纸都看。",
+      "pinyin": "Xiǎoshuō, lìshǐ shū, bàozhǐ dōu kàn.",
+      "english": "Novelas, libros de historia, periódicos: leo de todo."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "听音乐，你喜欢什么？",
+      "pinyin": "Tīng yīnyuè, nǐ xǐhuan shénme?",
+      "english": "En cuanto a la música, ¿qué te gusta?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "老的音乐。让人安静、放心。",
+      "pinyin": "Lǎo de yīnyuè. Ràng rén ānjìng, fàngxīn.",
+      "english": "Música antigua. Tranquiliza y relaja."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "爱好真多！你一定很开心。",
+      "pinyin": "Àihào zhēn duō! Nǐ yídìng hěn kāixīn.",
+      "english": "¡Cuántas aficiones! Debes de ser muy feliz."
+    }
+  ]
+}

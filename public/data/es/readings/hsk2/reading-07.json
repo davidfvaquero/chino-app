@@ -1,0 +1,44 @@
+{
+  "id": "reading-07",
+  "title": "等火车",
+  "type": "dialogue",
+  "topic": "Esperar el tren",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "火车几点来？",
+      "pinyin": "Huǒchē jǐ diǎn lái?",
+      "english": "¿A qué hora viene el tren?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "十点三十分。还要等二十分钟。",
+      "pinyin": "Shí diǎn sānshí fēn. Hái yào děng èrshí fēnzhōng.",
+      "english": "A las diez y media. Todavía hay que esperar veinte minutos."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我们可以坐下来休息。",
+      "pinyin": "Wǒmen kěyǐ zuò xiàlai xiūxi.",
+      "english": "Podemos sentarnos a descansar."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好。我累了。",
+      "pinyin": "Hǎo. Wǒ lèi le.",
+      "english": "Bien. Estoy cansado."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "火车来了！快上车。",
+      "pinyin": "Huǒchē lái le! Kuài shàng chē.",
+      "english": "¡El tren ya llegó! Sube rápido."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "走，上车吧。",
+      "pinyin": "Zǒu, shàng chē ba.",
+      "english": "Vamos, sube al tren."
+    }
+  ]
+}

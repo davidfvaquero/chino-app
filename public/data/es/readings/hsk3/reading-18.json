@@ -1,0 +1,53 @@
+{
+  "id": "reading-18",
+  "title": "学一门外语",
+  "type": "text",
+  "topic": "Aprender un idioma extranjero",
+  "lines": [
+    {
+      "hanzi": "学一门外语很有用，也很有趣。",
+      "pinyin": "Xué yī mén wàiyǔ hěn yǒuyòng, yě hěn yǒuqù.",
+      "english": "Aprender un idioma extranjero es muy útil y también muy interesante."
+    },
+    {
+      "hanzi": "我学中文学了很多年。",
+      "pinyin": "Wǒ xué Zhōngwén xué le hěn duō nián.",
+      "english": "Llevo muchos años estudiando chino."
+    },
+    {
+      "hanzi": "开始很难，单词记不住，语法不懂。",
+      "pinyin": "Kāishǐ hěn nán, dāncí jì bu zhù, yǔfǎ bu dǒng.",
+      "english": "Al principio era muy difícil: no recordaba las palabras, no entendía la gramática."
+    },
+    {
+      "hanzi": "后来我每天努力听、说、读、写。",
+      "pinyin": "Hòulái wǒ měitiān nǔlì tīng, shuō, dú, xiě.",
+      "english": "Después me esforcé cada día en escuchar, hablar, leer y escribir."
+    },
+    {
+      "hanzi": "看中文电影，听中文歌，和外国朋友说话。",
+      "pinyin": "Kàn Zhōngwén diànyǐng, tīng Zhōngwén gē, hé wàiguó péngyou shuōhuà.",
+      "english": "Veía películas chinas, escuchaba canciones chinas y hablaba con amigos extranjeros."
+    },
+    {
+      "hanzi": "现在我能和外国人用中文说话了。",
+      "pinyin": "Xiànzài wǒ néng hé wàiguórén yòng Zhōngwén shuōhuà le.",
+      "english": "Ahora puedo hablar chino con extranjeros."
+    },
+    {
+      "hanzi": "学外语不但能找好工作，还能了解世界。",
+      "pinyin": "Xué wàiyǔ bùdàn néng zhǎo hǎo gōngzuò, hái néng liǎojiě shìjiè.",
+      "english": "Aprender un idioma extranjero no solo ayuda a encontrar un buen trabajo, sino también a entender el mundo."
+    },
+    {
+      "hanzi": "我想再学一门外语，比如日语。",
+      "pinyin": "Wǒ xiǎng zài xué yī mén wàiyǔ, bǐrú Rìyǔ.",
+      "english": "Quiero aprender otro idioma extranjero, por ejemplo japonés."
+    },
+    {
+      "hanzi": "学哪门外语，努力都很重要。",
+      "pinyin": "Xué nǎ mén wàiyǔ, nǔlì dōu hěn zhòngyào.",
+      "english": "Sea cual sea el idioma extranjero que aprendas, el esfuerzo siempre es importante."
+    }
+  ]
+}

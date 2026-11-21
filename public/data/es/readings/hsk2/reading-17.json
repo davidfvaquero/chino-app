@@ -1,0 +1,44 @@
+{
+  "id": "reading-17",
+  "title": "身体不舒服",
+  "type": "dialogue",
+  "topic": "No sentirse bien",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你看起来不好，怎么了？",
+      "pinyin": "Nǐ kàn qǐlái bù hǎo, zěnme le?",
+      "english": "No tienes buen aspecto, ¿qué te pasa?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我身体不好，想睡觉。",
+      "pinyin": "Wǒ shēntǐ bù hǎo, xiǎng shuìjiào.",
+      "english": "No me siento bien, quiero dormir."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "吃药了吗？",
+      "pinyin": "Chī yào le ma?",
+      "english": "¿Tomaste la medicina?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "还没吃，不想吃药。",
+      "pinyin": "Hái méi chī, bù xiǎng chī yào.",
+      "english": "Todavía no, no quiero tomar medicina."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "快吃药，多喝水。",
+      "pinyin": "Kuài chī yào, duō hē shuǐ.",
+      "english": "Toma la medicina rápido y bebe más agua."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好的，我现在去吃。",
+      "pinyin": "Hǎo de, wǒ xiànzài qù chī.",
+      "english": "De acuerdo, ahora voy a tomarla."
+    }
+  ]
+}

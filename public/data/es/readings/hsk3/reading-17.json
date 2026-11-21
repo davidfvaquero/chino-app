@@ -1,0 +1,62 @@
+{
+  "id": "reading-17",
+  "title": "同事之间",
+  "type": "dialogue",
+  "topic": "Entre compañeros",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "中午一起吃饭吗？",
+      "pinyin": "Zhōngwǔ yīqǐ chīfàn ma?",
+      "english": "¿Comemos juntos a mediodía?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好啊！去哪儿吃？",
+      "pinyin": "Hǎo a! Qù nǎr chī?",
+      "english": "¡Vale! ¿Dónde comemos?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "天气不错，去外面那家饭馆吧。",
+      "pinyin": "Tiānqì bùcuò, qù wàimiàn nà jiā fànguǎn ba.",
+      "english": "Hace buen tiempo, vamos a ese restaurante de fuera."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "行。叫上老王和小李一起？",
+      "pinyin": "Xíng. Jiào shang Lǎo Wáng hé Xiǎo Lǐ yīqǐ?",
+      "english": "De acuerdo. ¿Llamamos también a Lao Wang y a Xiao Li?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好主意。他们在开会，开完叫他们。",
+      "pinyin": "Hǎo zhǔyì. Tāmen zài kāihuì, kāi wán jiào tāmen.",
+      "english": "Buena idea. Están en una reunión; los llamo cuando terminen."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我们聊聊工作的事吧。最近特别忙。",
+      "pinyin": "Wǒmen liáoliao gōngzuò de shì ba. Zuìjìn tèbié máng.",
+      "english": "Hablemos del trabajo. Últimamente hay mucho lío."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "是啊。但是大家都很努力，做得很快。",
+      "pinyin": "Shì a. Dànshì dàjiā dōu hěn nǔlì, zuò de hěn kuài.",
+      "english": "Sí. Pero todos se esfuerzan mucho y avanza rápido."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "下个星期工作结束，大家可以休息一下。",
+      "pinyin": "Xià gè xīngqí gōngzuò jiéshù, dàjiā kěyǐ xiūxi yīxià.",
+      "english": "La semana que viene termina el trabajo; todos podremos descansar un poco."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "太好了！现在先去吃饭。",
+      "pinyin": "Tài hǎo le! Xiànzài xiān qù chīfàn.",
+      "english": "¡Qué bien! Ahora vamos primero a comer."
+    }
+  ]
+}
