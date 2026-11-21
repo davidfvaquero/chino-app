@@ -141,4 +141,4 @@ export const withClass = (root, ...names) =>
   root.querySelectorAll(`.${names.join('.')}`);
 
 export const byText = (root, text) =>
-  root.descendants().find((node) => node.textContent.trim() === text);
+  root.descendants().findLast((node) => node.textContent.trim() === text);
