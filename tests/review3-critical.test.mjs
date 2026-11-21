@@ -42,6 +42,7 @@ afterEach(async () => {
   await storage.remove('meta', 'openrouterKey');
   await storage.remove('settings', 'openrouterModel');
   await storage.remove('settings', 'conversationHistory');
+  await storage.remove('gamification', 'conversationRewardDay');
 });
 
 const FREE_MODELS = [
@@ -399,6 +400,9 @@ test('I3: aborting mid-stream does not persist a partial reply', async () => {
 
     const history = await storage.get('settings', 'conversationHistory');
     assert.ok(Array.isArray(history));
+    // The user message and the partial reply are both discarded: nothing is
+    // persisted on abort (not even an empty or partial `zh`).
+    assert.equal(history.length, 1, `nothing new persisted: ${JSON.stringify(history)}`);
     assert.ok(
       !history.some((m) => m.role === 'assistant' && String(m.zh || '').includes('{')),
       `a partial reply was persisted: ${JSON.stringify(history)}`,
@@ -489,5 +493,41 @@ test('I3: Frases shows the offline message instead of rejecting', async () => {
   }
 });
 
-// keep the imported constant referenced (used by the report's wording)
-void CONV;
+test('I3: the daily conversation reward fires once, even after a new conversation', async () => {
+  const dom = installFakeDom();
+  const realFetch = globalThis.fetch;
+  try {
+    const { container } = await mountConversation(dom, () => ({
+      ok: true,
+      status: 200,
+      body: new ReadableStream({
+        start(c) {
+          c.enqueue(new TextEncoder().encode(sseChunk('{"zh":"你好","pinyin":"nǐ hǎo","en":"hi"}')));
+          c.close();
+        },
+      }),
+    }));
+    const sendFive = async () => {
+      for (let i = 0; i < 5; i += 1) {
+        const form = container.querySelector('.conv-compose');
+        form.querySelector('textarea').value = `你好${i}`;
+        form.dispatch('submit');
+        await settle(dom, 8);
+      }
+    };
+    const rewards = () => dom.events.filter((e) => e.type === 'chino:lesson_done').length;
+
+    await sendFive();
+    assert.equal(rewards(), 1, 'the fifth message awards the day once');
+
+    // "New conversation" resets the message count; five more the same day must
+    // not farm a second reward.
+    byText(container, CONV.newChat).click();
+    await settle(dom);
+    await sendFive();
+    assert.equal(rewards(), 1, 'a second round the same day does not reward again');
+  } finally {
+    globalThis.fetch = realFetch;
+    dom.restore();
+  }
+});
