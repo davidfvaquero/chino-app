@@ -269,7 +269,7 @@ async function searchHanzi(q) {
 const MAX_SHARDS = 8;
 const capShards = (ids) => [...new Set(ids)].slice(0, MAX_SHARDS);
 
-async function searchPinyin(q) {
+async function searchPinyin(q, { maxShards = MAX_SHARDS, mixed = false } = {}) {
   const key = tonelessKey(q);
   const letter = letterOf(key);
   if (!letter) return [];
@@ -287,11 +287,14 @@ async function searchPinyin(q) {
       if (k.startsWith(key)) ids.push(...list);
     }
   }
-  const entries = await shardsFor(capShards(ids));
+  const entries = await shardsFor([...new Set(ids)].slice(0, maxShards));
   const out = [];
   for (const e of entries) {
     const ek = tonelessKey(e.pinyinNumeric || '');
-    if (ek === key) out.push({ e, score: 100 });
+    // An HSK entry outranks the rest of its shard: without a frequency signal
+    // 我/好/人 stayed buried under rare names (REVIEW-4 I1).
+    const hskScore = e.hsk ? 10 - e.hsk : 0;
+    if (ek === key) out.push({ e, score: mixed ? (e.hsk ? 2000 - e.hsk : 100) : 100 + hskScore });
     else if (ek.startsWith(key)) out.push({ e, score: 70 - Math.min(30, ek.length - key.length) });
   }
   return out;
@@ -335,13 +338,10 @@ async function searchEnglish(q) {
 /**
  * Spanish-word search using the derivative index (word -> shards): look the
  * query word up there, then keep the entries whose Spanish defs contain it.
- * Scores sit above the English ones so a Spanish query surfaces Spanish hits
- * first. Returns [] when there is no Spanish index (feature simply off).
+ * Returns [] when there is no Spanish index (feature simply off).
  *
- * ES_MAX_SHARDS caps the shards one word pulls in: 4 keeps every query under
- * the C3/I6 request budget. Raising it breaks that budget (REVIEW-3 I6, the
- * "postings preview" idea); ranking for wo/hao and casa/agua lower on this file
- * also needs the committed indices regenerated (see docs/REVIEW-3.md note).
+ * ES_MAX_SHARDS caps the shards one word pulls in, which is what keeps a query
+ * spread over many shards (e.g. "agua", 18 of them) inside the request budget.
  */
 const ES_MAX_SHARDS = 4;
 
@@ -379,8 +379,17 @@ async function searchSpanish(q) {
       }
     }
     // Relevance (exact/prefix, position, HSK, length, id) is already encoded in
-    // the postings order; `best` only nudges within an equal order (REVIEW-3 I6).
-    out.push({ e, score: 1000 - order.get(e.id) + Math.min(50, best) / 100 });
+    // the postings order; `best` only nudges within an equal order.
+    // A definition segment that is exactly the query ("casa" in "hogar; casa")
+    // is the strongest hit and outranks the pinyin tier below (REVIEW-4 I1/I2).
+    const exactDef = defs.some((d) =>
+      String(d)
+        .split(/[;,]/)
+        .some((seg) => {
+          const t = esTokens(seg);
+          return t.length === 1 && t[0] === primary;
+        }));
+    out.push({ e, score: (exactDef ? 3000 : 1000) - order.get(e.id) + Math.min(50, best) / 100 });
   }
   return out;
 }
@@ -404,10 +413,12 @@ export async function search(query, { limit = 20, spanish = false } = {}) {
     // pinyin syllable, the pinyin search together: pinyin without tones is the
     // most common way a student types, so it must not be a last resort
     // (REVIEW-3 I5). "ñ" is never pinyin, so that exception stays.
+    // The pinyin side is capped to 2 shards here: both searches run at once, and
+    // the mixed path must stay inside the request budget (REVIEW-4 I1).
     const exactPinyin = !/ñ/i.test(q) && (await hasExactPinyin(q));
     const [es, py] = await Promise.all([
       searchSpanish(q),
-      exactPinyin ? searchPinyin(q) : Promise.resolve([]),
+      exactPinyin ? searchPinyin(q, { maxShards: 2, mixed: true }) : Promise.resolve([]),
     ]);
     if (es.length || py.length) hits = [...es, ...py];
     else hits = await searchEnglish(q);

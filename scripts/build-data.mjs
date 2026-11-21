@@ -153,6 +153,27 @@ function packSequential(items, maxBytes = MAX_SHARD) {
 
 const pad3 = (n) => String(n).padStart(3, '0');
 
+/**
+ * Official HSK vocabulary as `simp\0pinyinNumeric` -> best level (1..6), read
+ * from the cached lists (downloading them first so a fresh clone reproduces).
+ * The level rides on the dict entries and orders the pinyin index, so a common
+ * word like 我/好 is what a tone-less pinyin search finds first (REVIEW-4 I1).
+ */
+async function loadHskLevels() {
+  const levels = new Map();
+  for (let level = 1; level <= 6; level += 1) {
+    const file = await cached(SOURCES.hsk.url.replace('{level}', String(level)), `hsk${level}.txt`);
+    const text = fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, '');
+    for (const raw of text.split('\n')) {
+      const cells = raw.replace(/\r$/, '').split('\t');
+      if (cells.length < 4) continue;
+      const key = `${cells[0]}\u0000${cells[2].replace(/\s+/g, '').toLowerCase()}`;
+      if (!levels.has(key)) levels.set(key, level);
+    }
+  }
+  return levels;
+}
+
 // ---------------------------------------------------------------------------
 // 1. CC-CEDICT -> dict/shards + search indices
 // ---------------------------------------------------------------------------
@@ -179,7 +200,7 @@ function parseCedict(text) {
   return entries;
 }
 
-async function buildDict(entries) {
+async function buildDict(entries, hskLevels) {
   log(`dict: ${entries.length} CC-CEDICT entries`);
   const groups = new Map(); // first simplified char -> entries
   for (const e of entries) {
@@ -193,6 +214,7 @@ async function buildDict(entries) {
   const charShards = new Map();   // simplified first char -> Set(shardIdx)
   const tradShards = new Map();   // traditional first char -> Set(shardIdx)
   const pinyinIdx = new Map();    // toneless key -> Set(shardIdx)
+  const pinyinHsk = new Map();    // toneless key -> Map(shardIdx -> best HSK level)
   const englishIdx = new Map();   // english word -> Set(shardIdx)
 
   const add = (map, key, s) => { if (!map.has(key)) map.set(key, new Set()); map.get(key).add(s); };
@@ -203,7 +225,12 @@ async function buildDict(entries) {
   for (const ch of chars) {
     for (const e of groups.get(ch)) {
       const out = { id: e.id, simp: e.simp, trad: e.trad, pinyin: e.pinyin, pinyinNumeric: e.pinyinNumeric, defs: e.defs };
+      // The shard size is measured WITHOUT `hsk`: the Spanish shards mirror the
+      // English shard numbering, so adding a field must not move the boundaries
+      // (it would orphan every translated def).
       const b = Buffer.byteLength(JSON.stringify(out)) + 1;
+      const hsk = hskLevels.get(`${e.simp}\u0000${e.pinyinNumeric.replace(/\s+/g, '').toLowerCase()}`);
+      if (hsk) out.hsk = hsk; // frequency signal for the client ranking
       if (!cur || (cur.entries.length && cur.bytes + b > MAX_SHARD)) newShard();
       const s = shards.length - 1;
       cur.entries.push(out);
@@ -211,7 +238,14 @@ async function buildDict(entries) {
       add(charShards, ch, s);
       add(tradShards, e.trad[0], s);
       const pk = tonelessKey(e.pinyinNumeric);
-      if (pk) add(pinyinIdx, pk, s);
+      if (pk) {
+        add(pinyinIdx, pk, s);
+        if (hsk) {
+          if (!pinyinHsk.has(pk)) pinyinHsk.set(pk, new Map());
+          const byShard = pinyinHsk.get(pk);
+          if (!byShard.has(s) || hsk < byShard.get(s)) byShard.set(s, hsk);
+        }
+      }
       for (const d of e.defs) {
         const words = d.toLowerCase().match(/[a-z][a-z'-]*/g);
         if (!words) continue;
@@ -235,20 +269,27 @@ async function buildDict(entries) {
   writeJson(path.join(OUT, 'dict', 'index-hanzi.json'), { type: 'simplified', chars: simpMap });
   writeJson(path.join(OUT, 'dict', 'index-hanzi-trad.json'), { type: 'traditional', chars: tradMap });
 
-  // pinyin + english indices split by first letter for lazy loading
-  const writeLetterIndex = (map, subdir) => {
+  // pinyin + english indices split by first letter for lazy loading.
+  // `rankOf(key)` gives the comparator for one key's shard list: the pinyin
+  // index puts the shards holding an HSK entry of that syllable first (best
+  // level), so a capped fetch reaches 我/好 before rare names (REVIEW-4 I1).
+  const writeLetterIndex = (map, subdir, rankOf) => {
     const byLetter = new Map();
     for (const [k, set] of map) {
       const letter = /^[a-z]/.test(k) ? k[0] : '_';
       if (!byLetter.has(letter)) byLetter.set(letter, {});
-      byLetter.get(letter)[k] = [...set].sort((a, b) => a - b);
+      byLetter.get(letter)[k] = [...set].sort(rankOf ? rankOf(k) : (a, b) => a - b);
     }
     for (const [letter, obj] of byLetter) {
       writeJson(path.join(OUT, 'dict', subdir, `${letter}.json`), obj);
     }
     return byLetter.size;
   };
-  const pnFiles = writeLetterIndex(pinyinIdx, 'index-pinyin');
+  const pinyinRank = (key) => {
+    const byShard = pinyinHsk.get(key);
+    return (a, b) => (byShard?.get(a) ?? 99) - (byShard?.get(b) ?? 99) || a - b;
+  };
+  const pnFiles = writeLetterIndex(pinyinIdx, 'index-pinyin', pinyinRank);
   const enFiles = writeLetterIndex(englishIdx, 'index-english');
 
   const manifest = {
@@ -324,7 +365,7 @@ function makeSentencePinyin(sentence, wordPinyin, maxWordLen) {
   return out.join(' ');
 }
 
-async function buildSentences(dictEntries) {
+async function buildSentences(dictEntries, hskLevels) {
   const cmnFile = await cached(SOURCES.tatoebaCmn.url, 'cmn_sentences.tsv.bz2');
   const engFile = await cached(SOURCES.tatoebaEng.url, 'eng_sentences.tsv.bz2');
   const linkFile = await cached(SOURCES.tatoebaLinks.url, 'cmn-eng_links.tsv.bz2');
@@ -369,19 +410,7 @@ async function buildSentences(dictEntries) {
   const NEUTRAL_PARTICLES = new Set('了的吗呢吧啊呀着得地过们子头嘛哦哎'.split(''));
   // HSK vocabulary (simplified hanzi + reading) gets a bonus, so a common word
   // is read with its standard pronunciation (fixes 要 -> yào, REVIEW-2 I16/#38).
-  const hskKeys = new Set();
-  for (let level = 1; level <= 6; level += 1) {
-    try {
-      const text = fs.readFileSync(path.join(RAW, `hsk${level}.txt`), 'utf8').replace(/^\uFEFF/, '');
-      for (const raw of text.split('\n')) {
-        const cells = raw.replace(/\r$/, '').split('\t');
-        if (cells.length < 4) continue;
-        hskKeys.add(`${cells[0]}\u0000${cells[2].replace(/\s+/g, '').toLowerCase()}`);
-      }
-    } catch {
-      /* list not cached — skip the bonus */
-    }
-  }
+  const hskKeys = new Set(hskLevels.keys());
   const scoreOf = (e) => {
     let sc = 0;
     const d0 = (e.defs[0] || '').toLowerCase();
@@ -502,9 +531,13 @@ async function main() {
   const cedictText = zlib.gunzipSync(fs.readFileSync(cedictGz)).toString('utf8');
   const entries = parseCedict(cedictText);
 
-  const dict = await buildDict(entries);
+  // Read the HSK lists first: buildDict stamps each entry with its level, and
+  // buildSentences uses the same map for its reading bonus.
+  const hskLevels = await loadHskLevels();
+
+  const dict = await buildDict(entries, hskLevels);
   const strokes = await buildStrokes();
-  const sentences = await buildSentences(entries);
+  const sentences = await buildSentences(entries, hskLevels);
   const hsk = await buildHsk();
 
   // walk output for the global manifest
