@@ -1,0 +1,45 @@
+{
+  "dialogues": {
+    "title": "Short dialogues",
+    "levelLabel": "Level",
+    "level": {
+      "hsk1": "HSK 1",
+      "hsk2": "HSK 2",
+      "hsk3": "HSK 3"
+    },
+    "listIntro": "Everyday conversations between two people. Tap one to listen, read it line by line, or practise.",
+    "empty": "No dialogues at this level yet.",
+    "loadError": "Could not load the dialogues. Check your connection and try again.",
+    "back": "All dialogues",
+    "soon": "This dialogue is not written yet. Come back later.",
+    "playAll": "Play all",
+    "stop": "Stop",
+    "showTranslation": "Show translation",
+    "hideTranslation": "Hide translation",
+    "speaker": "Speaker {name}",
+    "playLine": "Play the line",
+    "modesLabel": "Practice mode",
+    "mode": {
+      "read": "Read",
+      "b": "You are B",
+      "order": "Order the dialogue"
+    },
+    "youAreBIntro": "The B lines are hidden. For each turn, choose the reply B would give.",
+    "noB": "This dialogue has no B turns to practise.",
+    "yourTurn": "What does B say?",
+    "correct": "Correct! B says: {answer}",
+    "wrong": "Not quite. B says: {answer}",
+    "score": "Score: {correct} / {total}",
+    "orderIntro": "Tap the lines in the order they are spoken.",
+    "orderEmpty": "Your dialogue will appear here.",
+    "yourOrder": "Your order",
+    "check": "Check",
+    "orderIncomplete": "Place every line first.",
+    "orderCorrect": "Correct order!",
+    "orderWrong": "Not in the right order yet.",
+    "addWords": "Add words to review",
+    "addedWords": "Added {added} new cards ({total} words).",
+    "markDone": "Mark as done",
+    "done": "Done ✓"
+  }
+}

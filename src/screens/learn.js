@@ -26,6 +26,7 @@ const AREAS = [
   'pinyin-chart',
   'strokes',
   'sentences',
+  'dialogues',
   'themes',
   'dictation',
   'games',
@@ -43,14 +44,14 @@ const load = (area) => import(`../learn/${area}.js`);
  *  P2-1: kept to <= 4 tiles per block (chunking), so "Practice" is split. */
 const GROUPS = [
   { key: 'start', areas: ['lessons', 'tones', 'pinyin-chart', 'strokes'] },
-  { key: 'practice', areas: ['sentences', 'themes', 'dictation', 'games'] },
-  { key: 'more', areas: ['hardwords', 'radicals', 'exam', 'typing'] },
-  { key: 'deepen', areas: ['grammar', 'plan'] },
+  { key: 'practice', areas: ['sentences', 'dialogues', 'themes', 'dictation'] },
+  { key: 'more', areas: ['games', 'hardwords', 'radicals', 'typing'] },
+  { key: 'deepen', areas: ['grammar', 'exam', 'plan'] },
 ];
 
 /** Hanzi emblem per area (styles.css owns the old ones; the new areas get
  *  theirs here because that file is frozen). One line per area. */
-const EMBLEMS = { plan: '计', exam: '考', typing: '打' };
+const EMBLEMS = { plan: '计', exam: '考', typing: '打', dialogues: '话' };
 let emblemsAdded = false;
 function addEmblems() {
   if (emblemsAdded || typeof document === 'undefined') return;

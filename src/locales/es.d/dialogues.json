@@ -1,0 +1,45 @@
+{
+  "dialogues": {
+    "title": "Diálogos cortos",
+    "levelLabel": "Nivel",
+    "level": {
+      "hsk1": "HSK 1",
+      "hsk2": "HSK 2",
+      "hsk3": "HSK 3"
+    },
+    "listIntro": "Conversaciones del día a día entre dos personas. Toca una para escucharla, leerla línea a línea o practicar.",
+    "empty": "Todavía no hay diálogos en este nivel.",
+    "loadError": "No se pudieron cargar los diálogos. Comprueba tu conexión e inténtalo de nuevo.",
+    "back": "Todos los diálogos",
+    "soon": "Este diálogo aún no está escrito. Vuelve más tarde.",
+    "playAll": "Reproducir todo",
+    "stop": "Parar",
+    "showTranslation": "Mostrar traducción",
+    "hideTranslation": "Ocultar traducción",
+    "speaker": "Voz {name}",
+    "playLine": "Reproducir la línea",
+    "modesLabel": "Modo de práctica",
+    "mode": {
+      "read": "Leer",
+      "b": "Tú eres B",
+      "order": "Ordena el diálogo"
+    },
+    "youAreBIntro": "Las líneas de B están ocultas. En cada turno, elige la respuesta que daría B.",
+    "noB": "Este diálogo no tiene turnos de B para practicar.",
+    "yourTurn": "¿Qué dice B?",
+    "correct": "¡Correcto! B dice: {answer}",
+    "wrong": "Casi. B dice: {answer}",
+    "score": "Puntuación: {correct} / {total}",
+    "orderIntro": "Toca las líneas en el orden en que se dicen.",
+    "orderEmpty": "Tu diálogo aparecerá aquí.",
+    "yourOrder": "Tu orden",
+    "check": "Comprobar",
+    "orderIncomplete": "Coloca todas las líneas primero.",
+    "orderCorrect": "¡Orden correcto!",
+    "orderWrong": "Todavía no está en el orden correcto.",
+    "addWords": "Añadir palabras al repaso",
+    "addedWords": "Añadidas {added} tarjetas nuevas ({total} palabras).",
+    "markDone": "Marcar como hecho",
+    "done": "Hecho ✓"
+  }
+}
