@@ -387,11 +387,42 @@ test('streak: crossing midnight extends it and resets the daily counter', async 
 test('streak: a clock that moves backwards does not break it', async () => {
   const { g, tick } = setup();
   await g.record('review_done');
-  tick(-DAY); // the device clock jumps a day back
-  const back = await g.record('review_done');
-  assert.equal(back.streak, 1, 'a backwards clock keeps the streak');
-  tick(2 * DAY); // the clock catches up past the last real study day
+  tick(DAY);
   assert.equal((await g.record('review_done')).streak, 2);
+  tick(-DAY); // the device clock jumps a day back
+  assert.equal((await g.record('review_done')).streak, 2, 'a backwards clock keeps the streak');
+  tick(2 * DAY); // the clock catches up past the last real study day
+  assert.equal((await g.record('review_done')).streak, 3);
+});
+
+test('weekStartNumber: Monday starts the week and Sunday still belongs to it', () => {
+  const mon = dayIndex(at(2026, 1, 5));
+  assert.equal(weekStartNumber(mon), mon);
+  assert.equal(weekStartNumber(mon + 6), mon, 'Sunday is the last day of the same week');
+  assert.equal(weekStartNumber(mon + 7), mon + 7, 'the next Monday opens a new week');
+});
+
+test('snapshot: a skipped day with a leftover freeze keeps the streak alive', async () => {
+  const { g, tick } = setup();
+  await g.record('review_done'); // day 0
+  tick(DAY);
+  await g.record('review_done'); // day 1
+  tick(2 * DAY); // day 2 skipped, we are on day 3
+  const stats = await g.getStats();
+  assert.equal(stats.streak, 2, 'the leftover freeze still covers yesterday');
+  assert.equal(stats.streakAtRisk, true, 'Home must warn that studying today saves it');
+  assert.equal((await g.record('review_done')).streak, 3, 'the freeze is spent and the streak grows');
+});
+
+test('snapshot: a skipped day after the freeze is spent breaks the streak', async () => {
+  const { g, tick } = setup();
+  await g.record('review_done'); // Mon
+  tick(2 * DAY);
+  await g.record('review_done'); // Wed, freeze spent this week
+  tick(2 * DAY); // Thu skipped, we are on day 4 (Fri)
+  const stats = await g.getStats();
+  assert.equal(stats.streak, 0, 'no freeze left this week');
+  assert.equal(stats.streakAtRisk, false, 'an unrecoverable streak is not "at risk"');
 });
 
 /* ------------------------------------------------ level achievements --- */

@@ -177,9 +177,13 @@ export function createGamification({
 
   const snapshot = (state, list, at) => {
     const today = dayIndex(at);
-    // A streak only survives if the last study day is today or yesterday (a
-    // clock that moved backwards also keeps it: the difference goes negative).
-    const alive = state.lastDay != null && today - state.lastDay <= 1;
+    // A streak survives if the last study day is today or yesterday, or the
+    // day before that when the missing day can still be covered by the free
+    // freeze of that week (a clock that moved backwards also keeps it: the
+    // difference goes negative).
+    const gap = state.lastDay == null ? Infinity : today - state.lastDay;
+    const freezeLeft = !(state.freezesUsed ?? []).some((f) => f.week === weekStartNumber(today - 1));
+    const alive = gap <= 1 || (gap === 2 && freezeLeft);
     const points = state.points;
     const into = points % POINTS_PER_LEVEL;
     const daysStudied = [];
@@ -199,7 +203,9 @@ export function createGamification({
         previous: weekTotals(state, today, 1),
       },
       nextLevel: { points: into, needed: POINTS_PER_LEVEL - into, pct: Math.round((into / POINTS_PER_LEVEL) * 100) },
-      streakAtRisk: (state.days?.[today] ?? 0) === 0 && (state.days?.[today - 1] ?? 0) > 0,
+      streakAtRisk:
+        (state.days?.[today] ?? 0) === 0 &&
+        ((state.days?.[today - 1] ?? 0) > 0 || (alive && gap === 2)),
       freezesUsed: state.freezesUsed ?? [],
       achievements: list.map((def) => ({
         ...def,
