@@ -22,6 +22,7 @@ import { summarize } from './exercises.js';
 import {
   getProgress as lessonGetProgress,
   saveProgress as lessonSaveProgress,
+  saveProgressSafe as lessonSaveProgressSafe,
   progressKey as lessonProgressKey,
 } from './lessons.js';
 import { exerciseView } from './exercise-view.js';
@@ -53,6 +54,9 @@ export const getProgress = (opts = {}) => lessonGetProgress('hsk1', LESSON_ID, o
 
 /** Merges `patch` into the stored tones progress record and returns it. */
 export const saveProgress = (patch = {}, opts = {}) => lessonSaveProgress('hsk1', LESSON_ID, patch, opts);
+
+/** Same, but never throws (a failed write must not block the finish). */
+export const saveProgressSafe = (patch = {}, opts = {}) => lessonSaveProgressSafe('hsk1', LESSON_ID, patch, opts);
 
 /** Inline text that works whether the lesson gives a key ('tones...') or a literal. */
 const label = (value) => (typeof value === 'string' && value ? t(value) : '');
@@ -220,16 +224,12 @@ export async function render(container, ctx) {
           completed = true;
           event.currentTarget.disabled = true;
           // A failed save must not block the finish (REVIEW-3 I4).
-          try {
-            await saveProgress({
-              score: summary.correct,
-              total: exercises.length,
-              answered: exercises.length,
-              completed: true,
-            });
-          } catch (err) {
-            console.warn('lesson: save failed', err);
-          }
+          await saveProgressSafe({
+            score: summary.correct,
+            total: exercises.length,
+            answered: exercises.length,
+            completed: true,
+          });
           window.dispatchEvent(
             new CustomEvent('chino:lesson_done', {
               detail: { level: 'hsk1', lessonId: LESSON_ID, score: summary.correct, total: exercises.length },

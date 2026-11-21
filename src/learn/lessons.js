@@ -158,6 +158,20 @@ export async function saveProgress(level, lessonId, patch = {}, { store = storag
   return record;
 }
 
+/**
+ * `saveProgress` that never throws: a failed write (full quota, closed
+ * IndexedDB) must not block the finish, the lesson still ends and the reward
+ * still fires (REVIEW-3 I4). Shared by the lesson engine and the tones lesson.
+ */
+export async function saveProgressSafe(level, lessonId, patch = {}, opts = {}) {
+  try {
+    return await saveProgress(level, lessonId, patch, opts);
+  } catch (err) {
+    console.warn('lesson: save failed', err);
+    return null;
+  }
+}
+
 /** Inline text that works whether the lesson gives a key ('learn...') or a literal. */
 const label = (value) => (typeof value === 'string' && value ? t(value) : '');
 
@@ -551,16 +565,12 @@ async function renderLesson(container, ctx, lessonId, level) {
       for (const button of section.querySelectorAll('button')) button.disabled = true;
       // A failed save (full quota, closed IndexedDB) must not block the finish:
       // the lesson still ends and the reward still fires (REVIEW-3 I4).
-      try {
-        await saveProgress(index.level, lesson.id, {
-          score: summary.correct,
-          total: exercises.length,
-          answered: exercises.length,
-          completed: true,
-        });
-      } catch (err) {
-        console.warn('lesson: save failed', err);
-      }
+      await saveProgressSafe(index.level, lesson.id, {
+        score: summary.correct,
+        total: exercises.length,
+        answered: exercises.length,
+        completed: true,
+      });
       window.dispatchEvent(
         new CustomEvent('chino:lesson_done', {
           detail: { level: index.level, lessonId: lesson.id, score: summary.correct, total: exercises.length },
