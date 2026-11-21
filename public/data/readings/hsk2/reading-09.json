@@ -1,0 +1,44 @@
+{
+  "id": "reading-09",
+  "title": "明天做什么",
+  "type": "dialogue",
+  "topic": "Tomorrow's plans",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "明天你想做什么？",
+      "pinyin": "Míngtiān nǐ xiǎng zuò shénme?",
+      "english": "What do you want to do tomorrow?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我想去商店买东西。",
+      "pinyin": "Wǒ xiǎng qù shāngdiàn mǎi dōngxi.",
+      "english": "I want to go to the shop to buy things."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "买什么？",
+      "pinyin": "Mǎi shénme?",
+      "english": "Buy what?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "买水果和菜。你要去吗？",
+      "pinyin": "Mǎi shuǐguǒ hé cài. Nǐ yào qù ma?",
+      "english": "Buy fruit and vegetables. Do you want to go?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好，我和你一起去。",
+      "pinyin": "Hǎo, wǒ hé nǐ yīqǐ qù.",
+      "english": "Good, I'll go with you."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "那我们明天早上九点见。",
+      "pinyin": "Nà wǒmen míngtiān zǎoshang jiǔ diǎn jiàn.",
+      "english": "Then we meet tomorrow morning at nine."
+    }
+  ]
+}

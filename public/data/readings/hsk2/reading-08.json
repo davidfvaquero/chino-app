@@ -1,0 +1,44 @@
+{
+  "id": "reading-08",
+  "title": "看医生",
+  "type": "dialogue",
+  "topic": "At the doctor",
+  "lines": [
+    {
+      "speaker": "医生",
+      "hanzi": "您好，身体不好？",
+      "pinyin": "Nín hǎo, shēntǐ bù hǎo?",
+      "english": "Hello, body not good?"
+    },
+    {
+      "speaker": "病人",
+      "hanzi": "医生，我生病了，身体不好。",
+      "pinyin": "Yīshēng, wǒ shēngbìng le, shēntǐ bù hǎo.",
+      "english": "Doctor, I'm sick, body not good."
+    },
+    {
+      "speaker": "医生",
+      "hanzi": "吃药了吗？",
+      "pinyin": "Chī yào le ma?",
+      "english": "Have you taken medicine?"
+    },
+    {
+      "speaker": "病人",
+      "hanzi": "吃了，但是还是不好。",
+      "pinyin": "Chī le, dànshì háishi bù hǎo.",
+      "english": "Took it, but still not good."
+    },
+    {
+      "speaker": "医生",
+      "hanzi": "多喝水，多休息，一星期会好。",
+      "pinyin": "Duō hē shuǐ, duō xiūxi, yī xīngqī huì hǎo.",
+      "english": "Drink more water, rest more, will be good in a week."
+    },
+    {
+      "speaker": "病人",
+      "hanzi": "好的，谢谢医生。",
+      "pinyin": "Hǎo de, xièxie yīshēng.",
+      "english": "Okay, thank you doctor."
+    }
+  ]
+}
