@@ -189,7 +189,7 @@ function goalCard(goal, dailyGoal, onPick) {
     h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(goal.goal), 'aria-valuenow': String(Math.min(goal.done, goal.goal)) }, h('span', { style: `width:${goal.pct}%` })),
     h(
       'div',
-      { class: 'cluster', 'data-role': 'goal-options' },
+      { class: 'cluster home-goal-options' },
       ...DAILY_GOAL_OPTIONS.map((count) =>
         h('button', {
           type: 'button',

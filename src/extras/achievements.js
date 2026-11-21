@@ -82,6 +82,7 @@ function group(titleKey, defs) {
   if (!defs.length) return null;
   return h(
     'section',
+    {},
     h('h2', { class: 'achievements-group-title', text: t(titleKey) }),
     h('div', { class: 'achievements-list' }, ...defs.map(tile)),
   );

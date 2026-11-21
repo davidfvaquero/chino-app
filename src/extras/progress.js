@@ -146,7 +146,7 @@ function calendarCard(rows, daysStudied) {
 
 function summaryCard(week = {}) {
   const cmp = weekComparison(week.current, week.previous);
-  const delta = cmp.delta > 0 ? `+${cmp.delta}` : String(cmp.delta);
+  const delta = String(cmp.delta);
   return h(
     'section',
     { class: 'card', 'data-role': 'week-summary' },
@@ -186,7 +186,7 @@ export async function render(container, ctx) {
   reset(container);
   const root = h(
     'section',
-    { class: 'screen progress' },
+    { class: 'screen progress-screen' },
     calendarCard(calendarRows(daysStudied, today), daysStudied),
     summaryCard(stats.week),
     freezeCard(stats.freezesUsed, today),
