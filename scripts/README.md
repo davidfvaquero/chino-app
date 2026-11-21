@@ -11,6 +11,10 @@ SENTENCE_LIMIT=5000 npm run data  # keep more Tatoeba sentences (default 3000)
 npm run test:data                 # sanity checks on the generated JSON
 ```
 
+> **Nota:** tras tocar `scripts/build-data.mjs`, corre `npm run data` y commitea el diff.
+> El paso de CI (`pages.yml`) usa `git status --porcelain public/data` y falla si hay
+> archivos nuevos o modificados sin commitear.
+
 Raw downloads are cached in `.cache/` (git-ignored) so repeat runs are fast and
 offline. The build only needs Node.js and the system `bunzip2` — no `npm install`.
 
