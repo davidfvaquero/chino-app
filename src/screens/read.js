@@ -63,11 +63,20 @@ async function renderList(container, ctx) {
 }
 
 async function renderReader(container, ctx, id) {
-  // Pre-defined id whose file has not been written yet: announce it, do not throw.
-  const raw = await loadReading(id).catch(() => null);
+  // A pre-defined id whose file has not been written yet is normal ("coming
+  // soon"); a network failure offline is not, and saying "coming soon" would be
+  // a lie (REVIEW-3 I9). fetchData throws a TypeError only when the fetch itself
+  // fails, so that is the offline case.
+  let raw = null;
+  let offline = false;
+  try {
+    raw = await loadReading(id);
+  } catch (err) {
+    offline = err instanceof TypeError;
+  }
   if (!raw) {
     reset(container).append(
-      h('p', { class: 'muted', text: t('common.comingSoon') }),
+      h('p', { class: offline ? 'error' : 'muted', text: t(offline ? 'common.offline' : 'common.comingSoon') }),
       h('button', { type: 'button', class: 'btn', text: t('read.back'), onclick: () => ctx.navigate('read') }),
     );
     return;

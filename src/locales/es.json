@@ -17,7 +17,8 @@
   },
   "common": {
     "comingSoon": "Próximamente",
-    "loading": "Cargando…"
+    "loading": "Cargando…",
+    "offline": "Sin conexión. Vuelve a conectarte e inténtalo de nuevo."
   },
   "screens": {
     "dictionary": {

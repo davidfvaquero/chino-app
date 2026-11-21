@@ -199,7 +199,15 @@ export async function render(container, ctx) {
 
   ensureStyles();
 
-  await loadSentences();
+  // Offline on a cold visit: say so instead of leaving a blank screen with an
+  // uncaught "Failed to fetch" (REVIEW-3 I9).
+  try {
+    await loadSentences();
+  } catch (err) {
+    console.error('sentences load', err);
+    reset(container).append(h('p', { class: 'error', text: t('common.offline') }));
+    return () => {};
+  }
   filtered = [...allSentences];
   currentPage = 0;
 

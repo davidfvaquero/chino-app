@@ -8,7 +8,7 @@
  * test can pin it (docs/REVIEW-2.md I19, REVIEW #7: #/learn/lessons/* showed
  * "Failed to fetch" offline when the lessons were missing from the precache).
  */
-export const SHELL_ASSET_RE = /^(src|icons|fonts)\/|^data\/(es\/)?lessons\/|^data\/(es\/)?files\.json$|^data\/manifest\.json$/;
+export const SHELL_ASSET_RE = /^(src|icons|fonts)\/|^data\/(es\/)?lessons\/|^data\/(es\/)?(readings|themes|grammar|plan)\/|^data\/(achievements|pinyin-chart)\.json$|^data\/(es\/)?files\.json$|^data\/manifest\.json$/;
 
 /** True for a file (dist-relative path) that belongs in the SW precache. */
 export function isShellAsset(file) {

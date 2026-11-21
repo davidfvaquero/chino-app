@@ -27,6 +27,11 @@ test('#7 precache: the shell assets include the lesson content, not the dictiona
   assert.equal(isShellAsset('data/lessons/hsk1/index.json'), true);
   assert.equal(isShellAsset('data/lessons/hsk1/lesson-01.json'), true);
   assert.equal(isShellAsset('data/es/lessons/hsk1/index.json'), true);
+  assert.equal(isShellAsset('data/readings/hsk1/index.json'), true);
+  assert.equal(isShellAsset('data/es/readings/hsk1/index.json'), true);
+  assert.equal(isShellAsset('data/themes/index.json'), true);
+  assert.equal(isShellAsset('data/grammar/index.json'), true);
+  assert.equal(isShellAsset('data/achievements.json'), true);
   assert.equal(isShellAsset('data/files.json'), true);
   assert.equal(isShellAsset('data/manifest.json'), true);
   // The big data stays in the runtime cache (a preview avoiding ~25 MB here).
@@ -43,6 +48,20 @@ test('#7 precache: the shell assets include the lesson content, not the dictiona
   const build = src('scripts/build.mjs');
   assert.match(build, /isShellAsset/);
   assert.match(build, /SHELL_ASSETS = /);
+});
+
+// --------------------------------------------------------------- REVIEW-3 I9
+test('I9: the precache carries the small content; offline screens say so', () => {
+  assert.equal(isShellAsset('data/readings/hsk1/reading-01.json'), true);
+  assert.equal(isShellAsset('data/dict/manifest.json'), false);
+  assert.equal(isShellAsset('data/search-es/a.json'), false);
+  // sentences stay in the runtime cache (the report's fallback), but the screen
+  // must say "offline", never "coming soon".
+  assert.equal(isShellAsset('data/sentences/shards/000.json'), false);
+  assert.match(src('src/learn/sentences.js'), /common\.offline/);
+  const read = src('src/screens/read.js');
+  assert.match(read, /err instanceof TypeError/);
+  assert.match(read, /common\.offline/);
 });
 
 // --------------------------------------------------------------- REVIEW #18

@@ -17,7 +17,8 @@
   },
   "common": {
     "comingSoon": "Coming soon",
-    "loading": "Loading…"
+    "loading": "Loading…",
+    "offline": "You are offline. Reconnect and try again."
   },
   "screens": {
     "dictionary": {
