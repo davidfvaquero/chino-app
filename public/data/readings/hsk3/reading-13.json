@@ -1,0 +1,62 @@
+{
+  "id": "reading-13",
+  "title": "考试以前",
+  "type": "dialogue",
+  "topic": "Before the exam",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "考试快到了，你准备好了吗？",
+      "pinyin": "Kǎoshì kuài dào le, nǐ zhǔnbèi hǎo le ma?",
+      "english": "The exam is coming soon, are you ready?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "还没完全准备好。这几天在复习。",
+      "pinyin": "Hái méi wánquán zhǔnbèi hǎo. Zhè jǐ tiān zài fùxí.",
+      "english": "Not completely ready yet. These days I'm reviewing."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你复习什么？",
+      "pinyin": "Nǐ fùxí shénme?",
+      "english": "What are you reviewing?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "语法、词汇、听力，都要复习。",
+      "pinyin": "Yǔfǎ, cíhuì, tīnglì, dōu yào fùxí.",
+      "english": "Grammar, vocabulary, listening, all need to review."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "哪个最难？",
+      "pinyin": "Nǎ gè zuì nán?",
+      "english": "Which is the hardest?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "听力最难。语速太快，听不懂。",
+      "pinyin": "Tīnglì zuì nán. Yǔsù tài kuài, tīng bù dǒng.",
+      "english": "Listening is hardest. Speech too fast, can't understand."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "多听录音练习吧。我可以帮你。",
+      "pinyin": "Duō tīng lùyīn liànxí ba. Wǒ kěyǐ bāng nǐ.",
+      "english": "Listen to recordings more to practice. I can help you."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "谢谢！我们一起复习吧。",
+      "pinyin": "Xièxie! Wǒmen yīqǐ fùxí ba.",
+      "english": "Thanks! Let's review together."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好！相信我们都能考好。",
+      "pinyin": "Hǎo! Xiāngxìn wǒmen dōu néng kǎo hǎo.",
+      "english": "Good! Believe we can both do well on the exam."
+    }
+  ]
+}

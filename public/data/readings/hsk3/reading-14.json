@@ -1,0 +1,62 @@
+{
+  "id": "reading-14",
+  "title": "去海边",
+  "type": "dialogue",
+  "topic": "At the seaside",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "周末想去海边吗？",
+      "pinyin": "Zhōumò xiǎng qù hǎibiān ma?",
+      "english": "Want to go to the seaside this weekend?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好啊！天气预报说周末晴天。",
+      "pinyin": "Hǎo a! Tiānqì yùbào shuō zhōumò qíngtiān.",
+      "english": "Great! Weather forecast says weekend will be sunny."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我们怎么去？",
+      "pinyin": "Wǒmen zěnme qù?",
+      "english": "How do we go?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "开车去吧。两个小时就到。",
+      "pinyin": "Kāichē qù ba. Liǎng gè xiǎoshí jiù dào.",
+      "english": "Drive there. Two hours to arrive."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "带什么东西？",
+      "pinyin": "Dài shénme dōngxi?",
+      "english": "Bring what things?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "泳衣、防晒霜、帽子、太阳镜。还有吃的。",
+      "pinyin": "Yǒngyī, fángshàishuāng, màozi, tàiyángjìng. Hái yǒu chī de.",
+      "english": "Swimsuit, sunscreen, hat, sunglasses. And food."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "海边可以做什么？",
+      "pinyin": "Hǎibiān kěyǐ zuò shénme?",
+      "english": "What can we do at the seaside?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "游泳、晒太阳、捡贝壳、拍照。晚上吃海鲜。",
+      "pinyin": "Yóuyǒng, shài tàiyáng, jiǎn bèiké, pāizhào. Wǎnshang chī hǎixiān.",
+      "english": "Swim, sunbathe, collect shells, take photos. Eat seafood at night."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "听起来很有趣！那周末见。",
+      "pinyin": "Tīng qǐlai hěn yǒuqù! Nà zhōumò jiàn.",
+      "english": "Sounds fun! See you weekend."
+    }
+  ]
+}

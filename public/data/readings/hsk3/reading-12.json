@@ -1,0 +1,62 @@
+{
+  "id": "reading-12",
+  "title": "找工作",
+  "type": "dialogue",
+  "topic": "Looking for a job",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你在找工作吗？",
+      "pinyin": "Nǐ zài zhǎo gōngzuò ma?",
+      "english": "Are you looking for a job?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，我上个星期辞职了。",
+      "pinyin": "Shì de, wǒ shàng gè xīngqí cízhí le.",
+      "english": "Yes, I quit last week."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "为什么辞职？",
+      "pinyin": "Wèishéme cízhí?",
+      "english": "Why did you quit?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "工资太低，又太忙。我想找个更好的。",
+      "pinyin": "Gōngzī tài dī, yòu tài máng. Wǒ xiǎng zhǎo gè gèng hǎo de.",
+      "english": "Salary too low, and too busy. I want to find a better one."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你想做什么工作？",
+      "pinyin": "Nǐ xiǎng zuò shénme gōngzuò?",
+      "english": "What kind of job do you want?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我想在大公司做经理。或者做老师也可以。",
+      "pinyin": "Wǒ xiǎng zài dà gōngsī zuò jīnglǐ. Huòzhě zuò lǎoshī yě kěyǐ.",
+      "english": "I want to be a manager at a big company. Or being a teacher is also okay."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "你投简历了吗？",
+      "pinyin": "Nǐ tóu jiǎnlì le ma?",
+      "english": "Did you send out resumes?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "投了几份。下个星期有两个面试。",
+      "pinyin": "Tóu le jǐ fèn. Xià gè xīngqí yǒu liǎng gè miànshì.",
+      "english": "Sent a few. Next week have two interviews."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "祝你面试顺利，早日找到好工作！",
+      "pinyin": "Zhù nǐ miànshì shùnlì, zǎorì zhǎodào hǎo gōngzuò!",
+      "english": "Wishing you successful interviews, find a good job soon!"
+    }
+  ]
+}
