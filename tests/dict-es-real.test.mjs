@@ -78,6 +78,40 @@ test('I8 + C3: pinyin search is capped too (no ~30 MB syllable lookup)', async (
   assert.ok(results.some((r) => r.simp === '你'));
 });
 
+test('I5: pinyin without tones finds the common word in Spanish too', async () => {
+  // The ES index used to index the pinyin inside [wo3]/[jia1] references, so
+  // "wo" returned 与/word/word姐 and 我 was pushed out. The tokenizer now drops
+  // that markup and the pinyin search runs alongside the Spanish one.
+  const wo = await search('wo', { spanish: true });
+  assert.ok(wo.some((r) => r.simp === '我'), `wo -> ${wo.slice(0, 8).map((r) => r.simp).join(',')}`);
+  assert.ok(!wo.some((r) => r.simp === '与'), 'the pinyin leak entry is gone');
+  const hao = await search('hao', { spanish: true });
+  assert.ok(hao.some((r) => r.simp === '好'));
+  const ren = await search('ren', { spanish: true });
+  assert.ok(ren.some((r) => r.simp === '人'));
+});
+
+test('I6: agua ranks 水 first and pan ranks 面包 first', async () => {
+  const agua = await search('agua', { spanish: true });
+  assert.equal(agua[0].simp, '水');
+  const pan = await search('pan', { spanish: true });
+  assert.equal(pan[0].simp, '面包');
+});
+
+test('I6: the Spanish path stays within the request budget', async () => {
+  // The Spanish path is 1 index + up to 4 shards + the same ES shards again to
+  // attach the translations. The pinyin/English fallback paths (ni/dog/c) still
+  // load both the English and the Spanish shard for every hit; capping that
+  // needs the postings preview (see the task handoff), so they are not asserted
+  // here beyond the existing ni3 bound.
+  for (const q of ['comer', 'agua']) {
+    calls = [];
+    resetCache();
+    await search(q, { spanish: true });
+    assert.ok(calls.length <= 10, `${q}: ${calls.length} requests`);
+  }
+});
+
 test('buildSearchIndex: postings are [id, shard] pairs, best first', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'chino-es-search-'));
   try {

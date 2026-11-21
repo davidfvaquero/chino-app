@@ -12,7 +12,7 @@
 // Spanish (derivative CC-CEDICT translations, locale 'es'):
 //   /data/es/dict/shards/NNN.json        same NNN as the English shard,
 //                                        [{ id, defs[] }] — only translated entries
-//   /data/es/dict/index-spanish/<a-z>.json { <spanishWord>: [shard] }
+//   /data/search-es/<a-z>.json           { <spanishWord>: [[id, shard], …] }
 // Loaded lazily too, and merged by id: an entry with no translation keeps its
 // English defs. A missing Spanish file (404) is normal and cached as "no data".
 //
@@ -33,6 +33,7 @@
 //   distinctDefs(defs, max = 3)           display list: near-duplicates dropped
 
 import { tonelessKey } from './pinyin.js';
+import { esTokens } from './es-tokens.js';
 
 const BASE = typeof document === 'undefined' ? '/data/dict' : new URL('data/dict', document.baseURI);
 const ES_BASE = typeof document === 'undefined' ? '/data/es/dict' : new URL('data/es/dict', document.baseURI);
@@ -183,17 +184,6 @@ async function withSpanish(results) {
     }),
   );
   return results;
-}
-
-/** Toneless, accent-free tokens of a Spanish definition (for matching). */
-function esTokens(text) {
-  return (
-    String(text ?? '')
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .match(/[a-z]+/g) || []
-  );
 }
 
 /** Candidate shard ids for a hanzi word, from both the simp and trad indices. */
@@ -358,17 +348,10 @@ async function searchSpanish(q) {
   if (!letter) return [];
   const idx = await loadSpanishSearch(letter);
   if (!idx) return [];
-
-  let pairs = Array.isArray(idx[primary]) ? idx[primary] : null;
-  if (!pairs) {
-    // Prefix only when the exact word is absent, and capped.
-    pairs = [];
-    for (const [k, list] of Object.entries(idx)) {
-      if (pairs.length >= 60) break;
-      if (k.startsWith(primary)) pairs.push(...list);
-    }
-  }
-  if (!pairs.length) return [];
+  // Exact word only: a prefix that is not a word in the definitions can never
+  // pass the token filter below, so expanding it just burns requests (M4).
+  const pairs = Array.isArray(idx[primary]) ? idx[primary] : null;
+  if (!pairs || !pairs.length) return [];
 
   const order = new Map();
   for (const [id] of pairs) if (!order.has(id)) order.set(id, order.size);
@@ -390,7 +373,8 @@ async function searchSpanish(q) {
         best = Math.max(best, 100 - at * 5 + (defTokens.length === 1 ? 20 : 0));
       }
     }
-    // The postings order already encodes HSK / short-word priority (I8).
+    // Relevance (exact/prefix, position, HSK, length, id) is already encoded in
+    // the postings order; `best` only nudges within an equal order (REVIEW-3 I6).
     out.push({ e, score: 1000 - order.get(e.id) + Math.min(50, best) / 100 });
   }
   return out;
@@ -411,13 +395,17 @@ export async function search(query, { limit = 20, spanish = false } = {}) {
   if (type === 'hanzi') hits = await searchHanzi(q);
   else if (spanish && !TONE_NUM_RE.test(q) && !UNAMBIGUOUS_TONE_RE.test(q)) {
     // A Spanish word can look like pinyin ("pan", "año", "café" — the acute is
-    // the 2nd tone): the Spanish search goes first, pinyin only if it's empty.
-    const es = await searchSpanish(q);
-    if (es.length) hits = es;
-    else {
-      const pinyinToo = !/ñ/i.test(q) && (await hasExactPinyin(q));
-      hits = pinyinToo ? [...(await searchPinyin(q)), ...(await searchEnglish(q))] : await searchEnglish(q);
-    }
+    // the 2nd tone). Run the Spanish search and, when the query is also an exact
+    // pinyin syllable, the pinyin search together: pinyin without tones is the
+    // most common way a student types, so it must not be a last resort
+    // (REVIEW-3 I5). "ñ" is never pinyin, so that exception stays.
+    const exactPinyin = !/ñ/i.test(q) && (await hasExactPinyin(q));
+    const [es, py] = await Promise.all([
+      searchSpanish(q),
+      exactPinyin ? searchPinyin(q) : Promise.resolve([]),
+    ]);
+    if (es.length || py.length) hits = [...es, ...py];
+    else hits = await searchEnglish(q);
   } else if (type === 'pinyin' || (await isPinyin(q))) hits = await searchPinyin(q);
   else hits = await searchEnglish(q);
   const ranked = rank(hits, limit);

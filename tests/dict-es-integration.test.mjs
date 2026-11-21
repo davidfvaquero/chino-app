@@ -10,7 +10,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { search, lookup, configure, resetCache } from '../src/dictionary.js';
-import { buildIndex, esTokens, ES_STOPWORDS } from '../scripts/build-dict-es-index.mjs';
+import { esTokens, ES_STOPWORDS } from '../src/es-tokens.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = path.join(ROOT, 'public', 'data');
@@ -129,42 +129,20 @@ test('Spanish index missing: a Latin query behaves as before (English only)', as
   assert.ok(esCalls().some((url) => url.endsWith('/data/search-es/h.json')), 'it tried the es index');
 });
 
-test('buildIndex: word -> shards, accents stripped, stop-words dropped', () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'chino-es-idx-'));
-  try {
-    fs.mkdirSync(path.join(dir, 'shards'), { recursive: true });
-    fs.writeFileSync(
-      path.join(dir, 'shards', '007.json'),
-      JSON.stringify([{ id: 1, defs: ['saludo', 'ir al mercado', 'el árbol'] }]),
-    );
-    const out = buildIndex(dir);
-    assert.equal(out.shards, 1);
-    const index = JSON.parse(fs.readFileSync(path.join(dir, 'index-spanish', 'i.json'), 'utf8'));
-    assert.deepEqual(index.ir, [7], 'infinitives are indexed');
-    assert.ok(!('al' in JSON.parse(fs.readFileSync(path.join(dir, 'index-spanish', 'a.json'), 'utf8'))), 'stop-word dropped');
-    const m = JSON.parse(fs.readFileSync(path.join(dir, 'index-spanish', 'm.json'), 'utf8'));
-    assert.deepEqual(m.mercado, [7]);
-    const a = JSON.parse(fs.readFileSync(path.join(dir, 'index-spanish', 'a.json'), 'utf8'));
-    assert.deepEqual(a.arbol, [7], 'accents stripped (árbol -> arbol)');
-  } finally {
-    fs.rmSync(dir, { recursive: true, force: true });
-  }
-});
-
-test('buildIndex: no shards dir is a no-op', () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'chino-es-empty-'));
-  try {
-    assert.deepEqual(buildIndex(dir), { shards: 0, words: 0, letters: 0 });
-    assert.ok(!fs.existsSync(path.join(dir, 'index-spanish')));
-  } finally {
-    fs.rmSync(dir, { recursive: true, force: true });
-  }
-});
-
 test('esTokens / ES_STOPWORDS sanity', () => {
   assert.deepEqual(esTokens('El árbol de la vida'), ['el', 'arbol', 'de', 'la', 'vida']);
   assert.ok(ES_STOPWORDS.has('el') && ES_STOPWORDS.has('de'));
   assert.ok(!ES_STOPWORDS.has('arbol'));
+});
+
+test('esTokens drops CC-CEDICT reference markup (REVIEW-3 I5)', () => {
+  // The pinyin in brackets and the hanzi|hanzi variant refs are not Spanish
+  // words; indexing them used to make "wo"/"jia" surface random entries.
+  assert.deepEqual(esTokens('clasificador:家[jia1]'), []);
+  assert.deepEqual(esTokens('río Wo en Shanxi'), ['rio', 'wo', 'en', 'shanxi']);
+  assert.deepEqual(esTokens('(formal) con; de (p. ej. 與他握手|与他握手[yu3 ta1 wo4 shou3] "estrechar")'), [
+    'formal', 'con', 'de', 'p', 'ej', 'estrechar',
+  ]);
 });
 
 test('the dictionary screen opts into Spanish only for locale es', () => {

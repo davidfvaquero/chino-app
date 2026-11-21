@@ -146,7 +146,7 @@ propia tubería, no lo lee `data-url.js` y sus shards **no** se anuncian en
 ```
 public/data/dict/shards/NNN.json        original inglés (no se toca)
 public/data/es/dict/shards/NNN.json     [{id, defs:[...]}] traducción por id
-public/data/es/dict/index-spanish/<a-z>.json   palabra es -> shards (búsqueda es)
+public/data/search-es/<a-z>.json        palabra es -> [[id, shard], …] (búsqueda es)
 ```
 
 - **Traducción:** `scripts/dict-priority.mjs` ordena las entradas por
@@ -166,12 +166,13 @@ public/data/es/dict/index-spanish/<a-z>.json   palabra es -> shards (búsqueda e
   (Las notas parentéticas tipo `(onom.)`, `(golf)` o `(c. 1200-1300)` son
   avisos, no errores.)
 - **Índice de búsqueda:** `node scripts/build-dict-es-index.mjs` (lo ejecuta
-  `npm run build` si hay shards es) genera `index-spanish/`: palabra española
-  (sin acentos, sin palabras vacías) → shards. La búsqueda en español la usa
-  primero y luego cae al inglés (ver `src/dictionary.js`).
+  `npm run build` si hay shards es) genera `public/data/search-es/`: palabra
+  española (sin acentos, sin palabras vacías, sin las referencias `[pinyin]` de
+  CC-CEDICT) → `[[id, shard], …]`, mejor primero. La búsqueda en español la usa
+  y mezcla con el pinyin/inglés (ver `src/dictionary.js`).
 
 ```sh
 node scripts/fix-dict-es.mjs          # reparación determinista (opcional)
 node scripts/validate-dict-es.mjs     # 0 errores antes de comitear
-node scripts/build-dict-es-index.mjs  # regenera index-spanish/
+node scripts/build-dict-es-index.mjs  # regenera public/data/search-es/
 ```

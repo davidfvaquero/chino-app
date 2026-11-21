@@ -13,7 +13,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { manifestFromLocale } from './manifest.mjs';
 import { listLocaleCodes, loadMergedLocale } from './build-locales.mjs';
-import { buildIndex, buildSearchIndex } from './build-dict-es-index.mjs';
+import { buildSearchIndex } from './build-dict-es-index.mjs';
 import { isShellAsset } from './lib/shell-assets.mjs';
 
 const root = new URL('../', import.meta.url);
@@ -59,13 +59,11 @@ if (await exists(new URL('CREDITS.md', root))) {
   await cp(new URL('CREDITS.md', root), new URL('CREDITS.md', dist));
 }
 
-// 3b. Spanish dictionary index: generated from the translated shards that were
-//     just copied, and only when some exist. With none it is a no-op and the
-//     Spanish search stays off. (Never precached — the shards load on demand.)
+// 3b. Spanish dictionary search index: generated from the translated shards that
+//     were just copied, and only when some exist. With none it is a no-op and
+//     the Spanish search stays off. (Never precached — the shards load on demand.)
 const esDictDir = resolve(outDir, 'data/es/dict');
 if (await exists(`${esDictDir}/shards/`)) {
-  const { shards, words, letters } = buildIndex(esDictDir);
-  console.log(`build: dict-es index — ${shards} shards, ${words} words in ${letters} letters`);
   const search = buildSearchIndex(esDictDir, { hskDir: resolve(outDir, 'data/hsk') });
   console.log(`build: dict-es search — ${search.shards} shards, ${search.words} words in ${search.letters} letters`);
 }

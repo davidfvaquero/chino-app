@@ -40,9 +40,9 @@ are untouched.
 
 The translated shards are checked by `scripts/validate-dict-es.mjs` (a small
 list of justified exceptions lives in `scripts/dict-es-exceptions.json`). The
-Spanish search index (`public/data/es/dict/index-spanish/`) is generated from
-these shards by `scripts/build-dict-es-index.mjs` (run by `npm run build` when
-Spanish shards exist).
+Spanish search index (`public/data/search-es/`) is generated from these shards
+by `scripts/build-dict-es-index.mjs` (run by `npm run build` when Spanish shards
+exist).
 
 ## 2. Make Me a Hanzi — stroke data (`public/data/strokes/`)
 
