@@ -9,6 +9,10 @@
         "name": "Century reviewer",
         "desc": "Review 100 cards."
       },
+      "reviews_500": {
+        "name": "Word collector",
+        "desc": "Review 500 cards."
+      },
       "first_lesson": {
         "name": "First lesson",
         "desc": "Finish your first lesson."
@@ -21,6 +25,14 @@
         "name": "Reader",
         "desc": "Finish 5 readings."
       },
+      "readings_10": {
+        "name": "Bookworm",
+        "desc": "Finish 10 readings."
+      },
+      "dialogues_10": {
+        "name": "Conversationalist",
+        "desc": "Finish 10 dialogues."
+      },
       "strokes_50": {
         "name": "Steady hand",
         "desc": "Practice 50 strokes."
@@ -28,6 +40,10 @@
       "drawings_10": {
         "name": "Sketchbook",
         "desc": "Draw 10 characters."
+      },
+      "drawings_50": {
+        "name": "Illustrator",
+        "desc": "Draw 50 characters."
       },
       "spoken_20": {
         "name": "Speaker",
@@ -41,17 +57,49 @@
         "name": "One-week streak",
         "desc": "Practise 7 days in a row."
       },
+      "streak_14": {
+        "name": "Two-week streak",
+        "desc": "Practise 14 days in a row."
+      },
       "streak_30": {
         "name": "One-month streak",
         "desc": "Practise 30 days in a row."
+      },
+      "streak_100": {
+        "name": "Century streak",
+        "desc": "Practise 100 days in a row."
       },
       "points_100": {
         "name": "100 points",
         "desc": "Earn 100 points."
       },
+      "points_500": {
+        "name": "500 points",
+        "desc": "Earn 500 points."
+      },
       "points_1000": {
         "name": "1000 points",
         "desc": "Earn 1000 points."
+      },
+      "points_2000": {
+        "name": "2000 points",
+        "desc": "Earn 2000 points."
+      },
+      "hsk1": {
+        "name": "HSK 1 complete",
+        "desc": "Finish every HSK 1 lesson."
+      },
+      "hsk2": {
+        "name": "HSK 2 complete",
+        "desc": "Finish every HSK 2 lesson."
+      },
+      "hsk3": {
+        "name": "HSK 3 complete",
+        "desc": "Finish every HSK 3 lesson."
+      },
+      "hsk4": {
+        "name": "HSK 4 complete",
+        "desc": "Finish every HSK 4 lesson."
       }
     }
   }

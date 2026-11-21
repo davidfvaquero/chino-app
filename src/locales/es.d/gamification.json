@@ -9,6 +9,10 @@
         "name": "Repasador centenario",
         "desc": "Repasa 100 tarjetas."
       },
+      "reviews_500": {
+        "name": "Coleccionista de palabras",
+        "desc": "Repasa 500 tarjetas."
+      },
       "first_lesson": {
         "name": "Primera lección",
         "desc": "Termina tu primera lección."
@@ -21,6 +25,14 @@
         "name": "Lector",
         "desc": "Termina 5 lecturas."
       },
+      "readings_10": {
+        "name": "Ratón de biblioteca",
+        "desc": "Termina 10 lecturas."
+      },
+      "dialogues_10": {
+        "name": "Conversador",
+        "desc": "Termina 10 diálogos."
+      },
       "strokes_50": {
         "name": "Pulso firme",
         "desc": "Practica 50 trazos."
@@ -28,6 +40,10 @@
       "drawings_10": {
         "name": "Cuaderno de bocetos",
         "desc": "Dibuja 10 caracteres."
+      },
+      "drawings_50": {
+        "name": "Ilustrador",
+        "desc": "Dibuja 50 caracteres."
       },
       "spoken_20": {
         "name": "Locutor",
@@ -41,17 +57,49 @@
         "name": "Racha de una semana",
         "desc": "Practica 7 días seguidos."
       },
+      "streak_14": {
+        "name": "Racha de dos semanas",
+        "desc": "Practica 14 días seguidos."
+      },
       "streak_30": {
         "name": "Racha de un mes",
         "desc": "Practica 30 días seguidos."
+      },
+      "streak_100": {
+        "name": "Racha de cien días",
+        "desc": "Practica 100 días seguidos."
       },
       "points_100": {
         "name": "100 puntos",
         "desc": "Gana 100 puntos."
       },
+      "points_500": {
+        "name": "500 puntos",
+        "desc": "Gana 500 puntos."
+      },
       "points_1000": {
         "name": "1000 puntos",
         "desc": "Gana 1000 puntos."
+      },
+      "points_2000": {
+        "name": "2000 puntos",
+        "desc": "Gana 2000 puntos."
+      },
+      "hsk1": {
+        "name": "HSK 1 completo",
+        "desc": "Termina todas las lecciones de HSK 1."
+      },
+      "hsk2": {
+        "name": "HSK 2 completo",
+        "desc": "Termina todas las lecciones de HSK 2."
+      },
+      "hsk3": {
+        "name": "HSK 3 completo",
+        "desc": "Termina todas las lecciones de HSK 3."
+      },
+      "hsk4": {
+        "name": "HSK 4 completo",
+        "desc": "Termina todas las lecciones de HSK 4."
       }
     }
   }
