@@ -1,0 +1,395 @@
+{
+  "id": "hsk4-18",
+  "title": "Society, Politics & Economy",
+  "intro": "Discuss society, politics, and economy: art, opinions, responsibility, work, and formal communication.",
+  "vocabulary": [
+    {
+      "hanzi": "以为",
+      "pinyin": "yǐwéi",
+      "english": "think (mistakenly); consider (that); believe",
+      "example": {
+        "hanzi": "我以为你走了",
+        "pinyin": "wǒ yǐwéi nǐ zǒu le",
+        "english": "I thought you had left"
+      }
+    },
+    {
+      "hanzi": "艺术",
+      "pinyin": "yìshù",
+      "english": "art",
+      "example": {
+        "hanzi": "我喜欢艺术",
+        "pinyin": "wǒ xǐhuan yìshù",
+        "english": "I like art"
+      }
+    },
+    {
+      "hanzi": "意见",
+      "pinyin": "yìjiàn",
+      "english": "opinion; view; suggestion; complaint",
+      "example": {
+        "hanzi": "你的意见很好",
+        "pinyin": "nǐ de yìjiàn hěn hǎo",
+        "english": "your opinion is very good"
+      }
+    },
+    {
+      "hanzi": "因此",
+      "pinyin": "yīncǐ",
+      "english": "therefore; thus; that is why; because of this",
+      "example": {
+        "hanzi": "因此他没来",
+        "pinyin": "yīncǐ tā méi lái",
+        "english": "therefore he didn't come"
+      }
+    },
+    {
+      "hanzi": "引起",
+      "pinyin": "yǐnqǐ",
+      "english": "give rise to; lead to; to cause; arouse",
+      "example": {
+        "hanzi": "这事引起注意",
+        "pinyin": "zhè shì yǐnqǐ zhùyì",
+        "english": "this matter attracted attention"
+      }
+    },
+    {
+      "hanzi": "印象",
+      "pinyin": "yìnxiàng",
+      "english": "impression",
+      "example": {
+        "hanzi": "第一印象很重要",
+        "pinyin": "dì yī yìnxiàng hěn zhòngyào",
+        "english": "first impression is very important"
+      }
+    },
+    {
+      "hanzi": "赢",
+      "pinyin": "yíng",
+      "english": "to win; to beat; to profit",
+      "example": {
+        "hanzi": "我们赢了",
+        "pinyin": "wǒmen yíng le",
+        "english": "we won"
+      }
+    },
+    {
+      "hanzi": "应聘",
+      "pinyin": "yìngpìn",
+      "english": "accept a job offer; to apply for a job",
+      "example": {
+        "hanzi": "他应聘成功了",
+        "pinyin": "tā yìngpìn chénggōng le",
+        "english": "his job application succeeded"
+      }
+    },
+    {
+      "hanzi": "永远",
+      "pinyin": "yǒngyuǎn",
+      "english": "forever; eternal; always",
+      "example": {
+        "hanzi": "我永远爱你",
+        "pinyin": "wǒ yǒngyuǎn ài nǐ",
+        "english": "I will love you forever"
+      }
+    },
+    {
+      "hanzi": "勇敢",
+      "pinyin": "yǒnggǎn",
+      "english": "brave; courageous",
+      "example": {
+        "hanzi": "你很勇敢",
+        "pinyin": "nǐ hěn yǒnggǎn",
+        "english": "you are very brave"
+      }
+    },
+    {
+      "hanzi": "优点",
+      "pinyin": "yōudiǎn",
+      "english": "merit; good point; a strength; a benefit",
+      "example": {
+        "hanzi": "这东西有优点",
+        "pinyin": "zhè dōngxi yǒu yōudiǎn",
+        "english": "this thing has merits"
+      }
+    },
+    {
+      "hanzi": "优秀",
+      "pinyin": "yōuxiù",
+      "english": "outstanding; excellent",
+      "example": {
+        "hanzi": "他是优秀学生",
+        "pinyin": "tā shì yōuxiù xuésheng",
+        "english": "he is an excellent student"
+      }
+    },
+    {
+      "hanzi": "幽默",
+      "pinyin": "yōumò",
+      "english": "humorous",
+      "example": {
+        "hanzi": "他很幽默",
+        "pinyin": "tā hěn yōumò",
+        "english": "he is very humorous"
+      }
+    },
+    {
+      "hanzi": "尤其",
+      "pinyin": "yóuqí",
+      "english": "especially; particularly",
+      "example": {
+        "hanzi": "我尤其喜欢这个",
+        "pinyin": "wǒ yóuqí xǐhuan zhège",
+        "english": "I especially like this one"
+      }
+    },
+    {
+      "hanzi": "由",
+      "pinyin": "yóu",
+      "english": "follow; from; by; through",
+      "example": {
+        "hanzi": "由他决定",
+        "pinyin": "yóu tā juédìng",
+        "english": "decided by him"
+      }
+    },
+    {
+      "hanzi": "由于",
+      "pinyin": "yóuyú",
+      "english": "due to; owing to; as a result of; thanks to",
+      "example": {
+        "hanzi": "由于下雨取消",
+        "pinyin": "yóuyú xiàyǔ qǔxiāo",
+        "english": "cancelled due to rain"
+      }
+    },
+    {
+      "hanzi": "邮局",
+      "pinyin": "yóujú",
+      "english": "post office",
+      "example": {
+        "hanzi": "邮局在前面",
+        "pinyin": "yóujú zài qiánmiàn",
+        "english": "the post office is ahead"
+      }
+    },
+    {
+      "hanzi": "友好",
+      "pinyin": "yǒuhǎo",
+      "english": "friendly (relations); close friends",
+      "example": {
+        "hanzi": "我们很友好",
+        "pinyin": "wǒmen hěn yǒuhǎo",
+        "english": "we are very friendly"
+      }
+    },
+    {
+      "hanzi": "友谊",
+      "pinyin": "yǒuyì",
+      "english": "friendship; companionship",
+      "example": {
+        "hanzi": "友谊长存",
+        "pinyin": "yǒuyì chángcún",
+        "english": "friendship lasts forever"
+      }
+    },
+    {
+      "hanzi": "有趣",
+      "pinyin": "yǒuqù",
+      "english": "interesting; fascinating; amusing",
+      "example": {
+        "hanzi": "这书很有趣",
+        "pinyin": "zhè shū hěn yǒuqù",
+        "english": "this book is very interesting"
+      }
+    },
+    {
+      "hanzi": "于是",
+      "pinyin": "yúshì",
+      "english": "as a result; thus; therefore",
+      "example": {
+        "hanzi": "于是他走了",
+        "pinyin": "yúshì tā zǒu le",
+        "english": "then he left"
+      }
+    },
+    {
+      "hanzi": "愉快",
+      "pinyin": "yúkuài",
+      "english": "happy; cheerful; delightful",
+      "example": {
+        "hanzi": "周末很愉快",
+        "pinyin": "zhōumò hěn yúkuài",
+        "english": "the weekend was very pleasant"
+      }
+    },
+    {
+      "hanzi": "与",
+      "pinyin": "yǔ",
+      "english": "(formal) and; to give; together with; participate; final particle expressing doubt or surprise",
+      "example": {
+        "hanzi": "我和你一起去",
+        "pinyin": "wǒ hé nǐ yīqǐ qù",
+        "english": "I go together with you"
+      }
+    },
+    {
+      "hanzi": "羽毛球",
+      "pinyin": "yǔmáoqiú",
+      "english": "badminton",
+      "example": {
+        "hanzi": "我会打羽毛球",
+        "pinyin": "wǒ huì dǎ yǔmáoqiú",
+        "english": "I can play badminton"
+      }
+    },
+    {
+      "hanzi": "语法",
+      "pinyin": "yǔfǎ",
+      "english": "grammar",
+      "example": {
+        "hanzi": "中文语法不难",
+        "pinyin": "zhōngwén yǔfǎ bù nán",
+        "english": "Chinese grammar is not hard"
+      }
+    },
+    {
+      "hanzi": "语言",
+      "pinyin": "yǔyán",
+      "english": "language",
+      "example": {
+        "hanzi": "语言很重要",
+        "pinyin": "yǔyán hěn zhòngyào",
+        "english": "language is very important"
+      }
+    },
+    {
+      "hanzi": "预习",
+      "pinyin": "yùxí",
+      "english": "(of students) prepare a lesson before class; preview",
+      "example": {
+        "hanzi": "请预习课文",
+        "pinyin": "qǐng yùxí kèwén",
+        "english": "please preview the text"
+      }
+    },
+    {
+      "hanzi": "原来",
+      "pinyin": "yuánlái",
+      "english": "original; former; as it turns out",
+      "example": {
+        "hanzi": "原来你在这儿",
+        "pinyin": "yuánlái nǐ zài zhèr",
+        "english": "so you are here"
+      }
+    },
+    {
+      "hanzi": "原谅",
+      "pinyin": "yuánliàng",
+      "english": "to excuse; forgive; to pardon",
+      "example": {
+        "hanzi": "请原谅我",
+        "pinyin": "qǐng yuánliàng wǒ",
+        "english": "please forgive me"
+      }
+    },
+    {
+      "hanzi": "原因",
+      "pinyin": "yuányīn",
+      "english": "cause; reason",
+      "example": {
+        "hanzi": "这是什么原因",
+        "pinyin": "zhè shì shénme yuányīn",
+        "english": "what is the reason for this"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "What does 艺术 mean?",
+      "options": [
+        "art",
+        "opinion",
+        "therefore"
+      ],
+      "answer": "art"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which word means \"responsibility\"?",
+      "options": [
+        "责任",
+        "增加",
+        "招聘"
+      ],
+      "answer": "责任"
+    },
+    {
+      "type": "listen",
+      "audio": "印象",
+      "pinyin": "yìnxiàng",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "印象",
+        "赢",
+        "应聘"
+      ],
+      "answer": "印象"
+    },
+    {
+      "type": "listen",
+      "audio": "友谊",
+      "pinyin": "yǒuyì",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "友谊",
+        "友好",
+        "有趣"
+      ],
+      "answer": "友谊"
+    },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        {
+          "hanzi": "意见",
+          "english": "opinion"
+        },
+        {
+          "hanzi": "勇敢",
+          "english": "brave"
+        },
+        {
+          "hanzi": "优秀",
+          "english": "excellent"
+        },
+        {
+          "hanzi": "邮局",
+          "english": "post office"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Make the phrase \"forever\".",
+      "tokens": [
+        "永",
+        "远"
+      ],
+      "answer": "永远"
+    },
+    {
+      "type": "order",
+      "prompt": "Put the characters in order to say \"please forgive me\".",
+      "tokens": [
+        "请",
+        "原",
+        "谅",
+        "我"
+      ],
+      "answer": "请原谅我"
+    }
+  ]
+}
