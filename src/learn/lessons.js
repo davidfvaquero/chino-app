@@ -38,7 +38,18 @@ import {
 } from './exercises.js';
 import { ensureExerciseStyles } from './exercise-ui.css.js';
 import { exerciseView, finish, feedbackBox, progressBar, pinyinForText, pinyinLine } from './exercise-view.js';
+import { shuffle } from '../random.js';
 import { fetchData } from '../data-url.js';
+
+/**
+ * Tokens for an «order» exercise, shuffled so the exercise is not pre-solved.
+ * If the shuffle happens to reproduce the answer, rotate it by one.
+ */
+export function orderPool(tokens, answer, rng = Math.random) {
+  const pool = Array.isArray(tokens) ? shuffle(tokens, rng) : [];
+  if (pool.length > 1 && pool.join('') === answer) pool.push(pool.shift());
+  return pool;
+}
 
 const STYLE_ID = 'lessons-layout-style';
 
@@ -375,7 +386,7 @@ async function renderLesson(container, ctx, lessonId, level) {
   }
 
   function orderBody(exercise, box, onContinue) {
-    const pool = Array.isArray(exercise.tokens) ? [...exercise.tokens] : [];
+    const pool = orderPool(exercise.tokens, exercise.answer);
     const answer = [];
     const answerRow = h('div', { class: 'answer-row' });
     const poolRow = h('div', { class: 'pool-row' });
