@@ -232,7 +232,7 @@ export async function render(container, ctx) {
           });
           window.dispatchEvent(
             new CustomEvent('chino:lesson_done', {
-              detail: { level: 'hsk1', lessonId: LESSON_ID, score: summary.correct, total: exercises.length },
+              detail: { level: 'tones', lessonId: LESSON_ID, score: summary.correct, total: exercises.length },
             }),
           );
           // Same route as the current one ('learn/tones') would be a no-op and

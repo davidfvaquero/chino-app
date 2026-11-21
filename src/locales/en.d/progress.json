@@ -2,8 +2,14 @@
   "progress": {
     "calendar": {
       "title": "Last 12 weeks",
-      "group": "Study calendar: {days} days studied in the last 12 weeks",
-      "day": "{date}: {count} events",
+      "group": {
+        "one": "Study calendar: 1 day studied in the last 12 weeks",
+        "other": "Study calendar: {days} days studied in the last 12 weeks"
+      },
+      "day": {
+        "one": "{date}: 1 event",
+        "other": "{date}: {count} events"
+      },
       "empty": "No study recorded yet. Your calendar fills up as you practise.",
       "legend": {
         "less": "Less",

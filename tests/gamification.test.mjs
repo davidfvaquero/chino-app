@@ -395,6 +395,17 @@ test('streak: a clock that moves backwards does not break it', async () => {
   assert.equal((await g.record('review_done')).streak, 3);
 });
 
+test('streak: a clock that jumped forward and came back resumes the next real day', async () => {
+  const { g, tick } = setup({ start: at(2026, 0, 5, 10) });
+  await g.record('review_done'); // day 0, streak 1
+  tick(10 * DAY); // clock jumps ten days forward
+  assert.equal((await g.record('review_done')).streak, 1, 'the jump breaks the streak');
+  tick(-9 * DAY); // clock comes back to day 1
+  assert.equal((await g.record('review_done')).streak, 1, 'the future lastDay earns nothing');
+  tick(DAY); // day 2, the next real day
+  assert.equal((await g.record('review_done')).streak, 2, 'the streak resumes immediately');
+});
+
 test('weekStartNumber: Monday starts the week and Sunday still belongs to it', () => {
   const mon = dayIndex(at(2026, 1, 5));
   assert.equal(weekStartNumber(mon), mon);

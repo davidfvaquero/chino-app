@@ -12,7 +12,7 @@
  *
  * Events and their points (see EVENTS): review_done 10, lesson_done 50,
  * reading_done 20, dialogue_done 20, stroke_done 2, draw_used 1, speak_done 5,
- * example_played 1 (capped at DAILY_CAPS.example_played points per natural day).
+ * example_played 1 (capped at DAILY_CAPS.example_played events per natural day).
  * Any other event throws. `payload` is optional; the only field read today is
  * `{ level, lessonId }` on lesson_done (to track level completion).
  *
@@ -59,7 +59,7 @@ export const EVENTS = {
   example_played: 1,
 };
 
-/** Events capped to a number of *points* per natural day. */
+/** Events capped to a number of *events* per natural day. */
 export const DAILY_CAPS = {
   example_played: 10,
 };
@@ -271,7 +271,9 @@ export function createGamification({
         }
         state.lastDay = today;
       }
-      // today < lastDay: a clock that moved backwards keeps the streak as-is.
+      // today < lastDay: a clock that moved backwards keeps the streak as-is,
+      // but lastDay must follow the real day so the next day can extend it.
+      if (today < state.lastDay) state.lastDay = today;
       if (state.streak > state.bestStreak) state.bestStreak = state.streak;
     }
 

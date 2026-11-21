@@ -31,6 +31,11 @@ test('#7 precache: the shell assets include the lesson content, not the dictiona
   assert.equal(isShellAsset('data/es/readings/hsk1/index.json'), true);
   assert.equal(isShellAsset('data/themes/index.json'), true);
   assert.equal(isShellAsset('data/grammar/index.json'), true);
+  // REVIEW-7 M1: dialogues are small (128 KB per tree) and must work offline
+  // on a cold visit, so they belong in the precache too.
+  assert.equal(isShellAsset('data/dialogues/index.json'), true);
+  assert.equal(isShellAsset('data/dialogues/dialogue-01.json'), true);
+  assert.equal(isShellAsset('data/es/dialogues/index.json'), true);
   assert.equal(isShellAsset('data/achievements.json'), true);
   assert.equal(isShellAsset('data/files.json'), true);
   assert.equal(isShellAsset('data/manifest.json'), true);

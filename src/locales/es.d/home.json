@@ -56,7 +56,10 @@
       "hsk1": "HSK 1",
       "practical": "Práctico",
       "current": "Nivel {level} · {points} puntos",
-      "toNext": "Faltan {needed} puntos para el siguiente nivel"
+      "toNext": {
+        "one": "Falta 1 punto para el siguiente nivel",
+        "other": "Faltan {needed} puntos para el siguiente nivel"
+      }
     }
   }
 }

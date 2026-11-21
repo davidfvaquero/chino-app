@@ -14,7 +14,10 @@ const EVENT_MAP = Object.fromEntries(Object.keys(EVENTS).map((name) => [`chino:$
 /** Announce each freshly unlocked achievement through the shell toast (reduced
  *  motion handled by styles.css; the toast sits above the tab bar). */
 function announceUnlocked(unlocked) {
-  for (const def of unlocked ?? []) notice('achievements.unlockedToast', { name: t(def.nameKey) });
+  if (unlocked?.length) {
+    const names = unlocked.map((def) => t(def.nameKey)).join(', ');
+    notice('achievements.unlockedToast', { name: names });
+  }
 }
 
 function attach() {

@@ -120,7 +120,7 @@ function calendarCard(rows, daysStudied) {
       class: 'progress-grid',
       role: 'group',
       'data-role': 'calendar',
-      'aria-label': t('progress.calendar.group', { days: daysStudied.length }),
+      'aria-label': t(pluralKey('progress.calendar.group', daysStudied.length), { days: daysStudied.length }),
     },
     ...rows.flat().map((cell) =>
       h('span', {
@@ -129,7 +129,7 @@ function calendarCard(rows, daysStudied) {
         'data-future': String(cell.future),
         'data-today': String(cell.today),
         role: 'img',
-        'aria-label': t('progress.calendar.day', { date: cell.date, count: cell.count }),
+        'aria-label': t(pluralKey('progress.calendar.day', cell.count), { date: cell.date, count: cell.count }),
       }),
     ),
   );

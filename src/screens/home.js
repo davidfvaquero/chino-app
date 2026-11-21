@@ -213,7 +213,7 @@ function levelCard(stats) {
     h('h2', { text: t('home.level.title') }),
     h('p', { class: 'home-muted', 'data-role': 'level-current', text: t('home.level.current', { level: stats.level ?? 1, points: stats.points ?? 0 }) }),
     h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(next.pct) }, h('span', { style: `width:${next.pct}%` })),
-    h('p', { class: 'home-muted', 'data-role': 'level-next', text: t('home.level.toNext', { points: next.points, needed: next.needed }) }),
+    h('p', { class: 'home-muted', 'data-role': 'level-next', text: t(pluralKey('home.level.toNext', next.needed), { points: next.points, needed: next.needed }) }),
   );
 }
 
