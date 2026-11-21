@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-26",
+  "title": "道歉",
+  "titleEn": "Saying sorry",
+  "topic": "Apologising",
+  "level": "hsk3",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "小李，对不起。",
+      "pinyin": "Xiǎo Lǐ, duìbuqǐ.",
+      "en": "Xiao Li, I am sorry."
+    },
+    {
+      "speaker": "B",
+      "zh": "怎么了？",
+      "pinyin": "Zěnme le?",
+      "en": "What happened?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我昨天忘了给你打电话。",
+      "pinyin": "Wǒ zuótiān wàng le gěi nǐ dǎ diànhuà.",
+      "en": "I forgot to call you yesterday."
+    },
+    {
+      "speaker": "B",
+      "zh": "没关系，我也很忙。",
+      "pinyin": "Méi guānxi, wǒ yě hěn máng.",
+      "en": "It's fine, I was busy too."
+    },
+    {
+      "speaker": "A",
+      "zh": "真的对不起，我应该早点儿说。",
+      "pinyin": "Zhēn de duìbuqǐ, wǒ yīnggāi zǎo diǎnr shuō.",
+      "en": "I am really sorry, I should have said so earlier."
+    },
+    {
+      "speaker": "B",
+      "zh": "别放在心里，我们不用说这个。",
+      "pinyin": "Bié fàng zài xīnli, wǒmen bú yòng shuō zhège.",
+      "en": "Don't worry about it, we don't need to talk about this."
+    },
+    {
+      "speaker": "A",
+      "zh": "谢谢你能理解我。",
+      "pinyin": "Xièxie nǐ néng lǐjiě wǒ.",
+      "en": "Thank you for understanding me."
+    },
+    {
+      "speaker": "B",
+      "zh": "我们是朋友，这很正常。",
+      "pinyin": "Wǒmen shì péngyou, zhè hěn zhèngcháng.",
+      "en": "We're friends, it's normal."
+    },
+    {
+      "speaker": "A",
+      "zh": "下次我一定不会忘。",
+      "pinyin": "Xià cì wǒ yídìng bú huì wàng.",
+      "en": "I definitely won't forget next time."
+    },
+    {
+      "speaker": "B",
+      "zh": "好，我相信你。",
+      "pinyin": "Hǎo, wǒ xiāngxìn nǐ.",
+      "en": "Okay, I believe you."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-27",
+  "title": "周末计划",
+  "titleEn": "Weekend plans",
+  "topic": "Plans",
+  "level": "hsk3",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "这个周末你想做什么？",
+      "pinyin": "Zhège zhōumò nǐ xiǎng zuò shénme?",
+      "en": "What do you want to do this weekend?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我想在家休息，你呢？",
+      "pinyin": "Wǒ xiǎng zài jiā xiūxi, nǐ ne?",
+      "en": "I want to rest at home, and you?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我想去公园跑步。",
+      "pinyin": "Wǒ xiǎng qù gōngyuán pǎobù.",
+      "en": "I want to go running in the park."
+    },
+    {
+      "speaker": "B",
+      "zh": "天气怎么样？会很冷吗？",
+      "pinyin": "Tiānqì zěnme yàng? Huì hěn lěng ma?",
+      "en": "How's the weather? Will it be cold?"
+    },
+    {
+      "speaker": "A",
+      "zh": "不会，这几天都很晴。",
+      "pinyin": "Bú huì, zhè jǐ tiān dōu hěn qíng.",
+      "en": "No, it's been sunny these days."
+    },
+    {
+      "speaker": "B",
+      "zh": "那我跟你一起去吧。",
+      "pinyin": "Nà wǒ gēn nǐ yìqǐ qù ba.",
+      "en": "Then I'll go with you."
+    },
+    {
+      "speaker": "A",
+      "zh": "好啊，我们几点去？",
+      "pinyin": "Hǎo a, wǒmen jǐ diǎn qù?",
+      "en": "Great, what time do we go?"
+    },
+    {
+      "speaker": "B",
+      "zh": "早上八点，可以吗？",
+      "pinyin": "Zǎoshang bā diǎn, kěyǐ ma?",
+      "en": "Eight in the morning, okay?"
+    },
+    {
+      "speaker": "A",
+      "zh": "可以，那我们公园门口见。",
+      "pinyin": "Kěyǐ, nà wǒmen gōngyuán ménkǒu jiàn.",
+      "en": "Okay, let's meet at the park entrance."
+    },
+    {
+      "speaker": "B",
+      "zh": "好，到时候叫我。",
+      "pinyin": "Hǎo, dào shíhou jiào wǒ.",
+      "en": "Okay, call me when it is time."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-29",
+  "title": "锻炼身体",
+  "titleEn": "Keeping fit",
+  "topic": "Health",
+  "level": "hsk3",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你每天都锻炼身体吗？",
+      "pinyin": "Nǐ měitiān dōu duànliàn shēntǐ ma?",
+      "en": "Do you exercise every day?"
+    },
+    {
+      "speaker": "B",
+      "zh": "差不多，早上我都去跑步。",
+      "pinyin": "Chàbuduō, zǎoshang wǒ dōu qù pǎobù.",
+      "en": "Mostly, I go running in the morning."
+    },
+    {
+      "speaker": "A",
+      "zh": "跑步对身体很好。",
+      "pinyin": "Pǎobù duì shēntǐ hěn hǎo.",
+      "en": "Running is very good for your health."
+    },
+    {
+      "speaker": "B",
+      "zh": "对，你也喜欢运动吗？",
+      "pinyin": "Duì, nǐ yě xǐhuan yùndòng ma?",
+      "en": "Right, do you like sports too?"
+    },
+    {
+      "speaker": "A",
+      "zh": "喜欢，但是我太忙了。",
+      "pinyin": "Xǐhuan, dànshì wǒ tài máng le.",
+      "en": "I do, but I'm too busy."
+    },
+    {
+      "speaker": "B",
+      "zh": "忙也要注意身体。",
+      "pinyin": "Máng yě yào zhùyì shēntǐ.",
+      "en": "Even when busy, look after your health."
+    },
+    {
+      "speaker": "A",
+      "zh": "你说得对。我可以游泳吗？",
+      "pinyin": "Nǐ shuō de duì. Wǒ kěyǐ yóuyǒng ma?",
+      "en": "You're right. Can I go swimming?"
+    },
+    {
+      "speaker": "B",
+      "zh": "当然，游泳也是很好的运动。",
+      "pinyin": "Dāngrán, yóuyǒng yě shì hěn hǎo de yùndòng.",
+      "en": "Of course, swimming is a great sport too."
+    },
+    {
+      "speaker": "A",
+      "zh": "那周末我们一起去游泳吧。",
+      "pinyin": "Nà zhōumò wǒmen yìqǐ qù yóuyǒng ba.",
+      "en": "Then let's go swimming together this weekend."
+    },
+    {
+      "speaker": "B",
+      "zh": "好，我等你。",
+      "pinyin": "Hǎo, wǒ děng nǐ.",
+      "en": "Okay, I'll wait for you."
+    }
+  ]
+}

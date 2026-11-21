@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-28",
+  "title": "旅行计划",
+  "titleEn": "Planes de viaje",
+  "topic": "Viajes",
+  "level": "hsk3",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "假期你想去哪儿旅行？",
+      "pinyin": "Jiàqī nǐ xiǎng qù nǎr lǚxíng?",
+      "en": "¿Adónde quieres viajar en las vacaciones?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我想去南方。",
+      "pinyin": "Wǒ xiǎng qù nánfāng.",
+      "en": "Quiero ir al sur."
+    },
+    {
+      "speaker": "A",
+      "zh": "为什么想去南方？",
+      "pinyin": "Wèishénme xiǎng qù nánfāng?",
+      "en": "¿Por qué quieres ir al sur?"
+    },
+    {
+      "speaker": "B",
+      "zh": "因为那儿不冷，天气也好。",
+      "pinyin": "Yīnwèi nàr bù lěng, tiānqì yě hǎo.",
+      "en": "Porque ahí no hace frío y el tiempo es bueno."
+    },
+    {
+      "speaker": "A",
+      "zh": "你要去几天？",
+      "pinyin": "Nǐ yào qù jǐ tiān?",
+      "en": "¿Cuántos días vas?"
+    },
+    {
+      "speaker": "B",
+      "zh": "一个星期吧。",
+      "pinyin": "Yí ge xīngqī ba.",
+      "en": "Una semana, más o menos."
+    },
+    {
+      "speaker": "A",
+      "zh": "坐飞机还是坐火车？",
+      "pinyin": "Zuò fēijī háishì zuò huǒchē?",
+      "en": "¿En avión o en tren?"
+    },
+    {
+      "speaker": "B",
+      "zh": "坐火车，路上也很舒服。",
+      "pinyin": "Zuò huǒchē, lùshang yě hěn shūfu.",
+      "en": "En tren, también se va cómodo por el camino."
+    },
+    {
+      "speaker": "A",
+      "zh": "一个人去吗？",
+      "pinyin": "Yí ge rén qù ma?",
+      "en": "¿Vas solo?"
+    },
+    {
+      "speaker": "B",
+      "zh": "不是，我想跟朋友一起去。",
+      "pinyin": "Bú shì, wǒ xiǎng gēn péngyou yìqǐ qù.",
+      "en": "No, quiero ir con un amigo."
+    }
+  ]
+}

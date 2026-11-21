@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-30",
+  "title": "将来的打算",
+  "titleEn": "Future plans",
+  "topic": "Plans",
+  "level": "hsk3",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你以后想做什么？",
+      "pinyin": "Nǐ yǐhòu xiǎng zuò shénme?",
+      "en": "What do you want to do in the future?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我想开一家小饭馆。",
+      "pinyin": "Wǒ xiǎng kāi yì jiā xiǎo fànguǎn.",
+      "en": "I want to open a small restaurant."
+    },
+    {
+      "speaker": "A",
+      "zh": "真的吗？为什么？",
+      "pinyin": "Zhēn de ma? Wèishénme?",
+      "en": "Really? Why?"
+    },
+    {
+      "speaker": "B",
+      "zh": "因为我喜欢做菜，也喜欢跟人聊天。",
+      "pinyin": "Yīnwèi wǒ xǐhuan zuò cài, yě xǐhuan gēn rén liáotiān.",
+      "en": "Because I like cooking and chatting with people."
+    },
+    {
+      "speaker": "A",
+      "zh": "那你要先学做菜吧？",
+      "pinyin": "Nà nǐ yào xiān xué zuò cài ba?",
+      "en": "Then you have to learn to cook first?"
+    },
+    {
+      "speaker": "B",
+      "zh": "对，我现在每周末都在学。",
+      "pinyin": "Duì, wǒ xiànzài měi zhōumò dōu zài xué.",
+      "en": "Yes, now I study every weekend."
+    },
+    {
+      "speaker": "A",
+      "zh": "需要很多钱吗？",
+      "pinyin": "Xūyào hěn duō qián ma?",
+      "en": "Do you need a lot of money?"
+    },
+    {
+      "speaker": "B",
+      "zh": "需要，所以我还在努力。",
+      "pinyin": "Xūyào, suǒyǐ wǒ hái zài nǔlì.",
+      "en": "Yes, so I'm still working hard."
+    },
+    {
+      "speaker": "A",
+      "zh": "你一定可以的，我相信你。",
+      "pinyin": "Nǐ yídìng kěyǐ de, wǒ xiāngxìn nǐ.",
+      "en": "You can definitely do it, I believe in you."
+    },
+    {
+      "speaker": "B",
+      "zh": "谢谢，到时候请你吃饭！",
+      "pinyin": "Xièxie, dào shíhou qǐng nǐ chīfàn!",
+      "en": "Thank you, I'll treat you to a meal then!"
+    }
+  ]
+}

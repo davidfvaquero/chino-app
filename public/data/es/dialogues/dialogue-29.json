@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-29",
+  "title": "锻炼身体",
+  "titleEn": "Mantenerse en forma",
+  "topic": "Salud",
+  "level": "hsk3",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你每天都锻炼身体吗？",
+      "pinyin": "Nǐ měitiān dōu duànliàn shēntǐ ma?",
+      "en": "¿Haces ejercicio todos los días?"
+    },
+    {
+      "speaker": "B",
+      "zh": "差不多，早上我都去跑步。",
+      "pinyin": "Chàbuduō, zǎoshang wǒ dōu qù pǎobù.",
+      "en": "Casi siempre, por la mañana voy a correr."
+    },
+    {
+      "speaker": "A",
+      "zh": "跑步对身体很好。",
+      "pinyin": "Pǎobù duì shēntǐ hěn hǎo.",
+      "en": "Correr es muy bueno para la salud."
+    },
+    {
+      "speaker": "B",
+      "zh": "对，你也喜欢运动吗？",
+      "pinyin": "Duì, nǐ yě xǐhuan yùndòng ma?",
+      "en": "Sí, ¿a ti también te gusta el deporte?"
+    },
+    {
+      "speaker": "A",
+      "zh": "喜欢，但是我太忙了。",
+      "pinyin": "Xǐhuan, dànshì wǒ tài máng le.",
+      "en": "Sí, pero estoy muy ocupado."
+    },
+    {
+      "speaker": "B",
+      "zh": "忙也要注意身体。",
+      "pinyin": "Máng yě yào zhùyì shēntǐ.",
+      "en": "Aunque estés ocupado, cuida tu salud."
+    },
+    {
+      "speaker": "A",
+      "zh": "你说得对。我可以游泳吗？",
+      "pinyin": "Nǐ shuō de duì. Wǒ kěyǐ yóuyǒng ma?",
+      "en": "Tienes razón. ¿Puedo ir a nadar?"
+    },
+    {
+      "speaker": "B",
+      "zh": "当然，游泳也是很好的运动。",
+      "pinyin": "Dāngrán, yóuyǒng yě shì hěn hǎo de yùndòng.",
+      "en": "Claro, nadar también es un gran deporte."
+    },
+    {
+      "speaker": "A",
+      "zh": "那周末我们一起去游泳吧。",
+      "pinyin": "Nà zhōumò wǒmen yìqǐ qù yóuyǒng ba.",
+      "en": "Entonces vamos a nadar juntos el fin de semana."
+    },
+    {
+      "speaker": "B",
+      "zh": "好，我等你。",
+      "pinyin": "Hǎo, wǒ děng nǐ.",
+      "en": "Vale, te espero."
+    }
+  ]
+}
