@@ -1,0 +1,62 @@
+{
+  "id": "reading-07",
+  "title": "新的工作",
+  "type": "dialogue",
+  "topic": "A new job",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "听说你找到新工作了？",
+      "pinyin": "Tīngshuō nǐ zhǎodào xīn gōngzuò le?",
+      "english": "Heard you found a new job?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "是的，上个星期开始的。",
+      "pinyin": "Shì de, shàng gè xīngqí kāishǐ de.",
+      "english": "Yes, started last week."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "新工作怎么样？",
+      "pinyin": "Xīn gōngzuò zěnmeyàng?",
+      "english": "How's the new job?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "挺好的。工资比以前高，离家也近。",
+      "pinyin": "Tǐng hǎo de. Gōngzī bǐ yǐqián gāo, lí jiā yě jìn.",
+      "english": "Pretty good. Salary is higher than before, and it's closer to home."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "做什么工作？",
+      "pinyin": "Zuò shénme gōngzuò?",
+      "english": "What kind of work?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "还是经理。但这家公司比较大。",
+      "pinyin": "Háishì jīnglǐ. Dàn zhè jiā gōngsī bǐjiào dà.",
+      "english": "Still a manager. But this company is bigger."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "新同事友好吗？",
+      "pinyin": "Xīn tóngshì yǒuhǎo ma?",
+      "english": "Are the new colleagues friendly?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "很好。大家都很热情，帮我适应新环境。",
+      "pinyin": "Hěn hǎo. Dàjiā dōu hěn rèqíng, bāng wǒ shìyìng xīn huánjìng.",
+      "english": "Very good. Everyone is enthusiastic, helping me adapt to the new environment."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "恭喜你！祝你在新工作顺利。",
+      "pinyin": "Gōngxǐ nǐ! Zhù nǐ zài xīn gōngzuò shùnlì.",
+      "english": "Congratulations! Wishing you success in the new job."
+    }
+  ]
+}

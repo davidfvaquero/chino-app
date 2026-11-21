@@ -1,0 +1,53 @@
+{
+  "id": "reading-10",
+  "title": "我的房间",
+  "type": "text",
+  "topic": "My room",
+  "lines": [
+    {
+      "hanzi": "我的房间不大，但很干净。",
+      "pinyin": "Wǒ de fángjiān bù dà, dàn hěn gānjìng.",
+      "english": "My room isn't big, but it's very clean."
+    },
+    {
+      "hanzi": "床在靠窗的地方，旁边有一个小桌子。",
+      "pinyin": "Chuáng zài kào chuāng de dìfang, pángbiān yǒu yī gè xiǎo zhuōzi.",
+      "english": "The bed is by the window, next to it is a small desk."
+    },
+    {
+      "hanzi": "桌子上有电脑，台灯和几本书。",
+      "pinyin": "Zhuōzi shang yǒu diànnǎo, tái dēng hé jǐ běn shū.",
+      "english": "On the desk there's a computer, a desk lamp and a few books."
+    },
+    {
+      "hanzi": "墙上挂着一张地图和几张照片。",
+      "pinyin": "Qiáng shang guàzhe yī zhāng dìtú hé jǐ zhāng zhàopiàn.",
+      "english": "On the wall hangs a map and a few photos."
+    },
+    {
+      "hanzi": "衣柜在门口，里面挂着衣服。",
+      "pinyin": "Yīguì zài ménkǒu, lǐmiàn guàzhe yīfu.",
+      "english": "The wardrobe is by the door, inside hang clothes."
+    },
+    {
+      "hanzi": "地上铺着蓝色的地毯，很舒服。",
+      "pinyin": "Dì shang pūzhe lán sè de dìtǎn, hěn shūfu.",
+      "english": "The floor has a blue carpet, very comfortable."
+    },
+    {
+      "hanzi": "我喜欢在房间里看书，听音乐。",
+      "pinyin": "Wǒ xǐhuan zài fángjiān lǐ kàn shū, tīng yīnyuè.",
+      "english": "I like to read books and listen to music in my room."
+    },
+    {
+      "hanzi": "晚上睡觉前，我总是整理一下房间。",
+      "pinyin": "Wǎnshang shuìjiào qián, wǒ zǒngshì zhěnglǐ yīxià fángjiān.",
+      "english": "Before sleeping at night, I always tidy up the room a bit."
+    },
+    {
+      "hanzi": "这是我最喜欢的地方，让我感到放心。",
+      "pinyin": "Zhè shì wǒ zuì xǐhuan de dìfang, ràng wǒ gǎndào fàngxīn.",
+      "english": "This is my favorite place, it makes me feel at ease."
+    }
+  ]
+}

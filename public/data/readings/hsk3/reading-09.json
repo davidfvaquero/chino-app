@@ -1,0 +1,56 @@
+{
+  "id": "reading-09",
+  "title": "你怎么看",
+  "type": "dialogue",
+  "topic": "What do you think?",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "这部电影你怎么看？",
+      "pinyin": "Zhè bù diànyǐng nǐ zěnme kàn?",
+      "english": "What do you think of this movie?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我觉得很有意思。故事简单但感人。",
+      "pinyin": "Wǒ juéde hěn yǒu yìsi. Gùshi jiǎndān dàn gǎnrén.",
+      "english": "I think it's very interesting. The story is simple but moving."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "演员演得好吗？",
+      "pinyin": "Yǎnyuán yǎn de hǎo ma?",
+      "english": "Did the actors perform well?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "演得很好。特别是主角，很自然。",
+      "pinyin": "Yǎn de hěn hǎo. Tèbié shì zhǔjué, hěn zìrán.",
+      "english": "Performed very well. Especially the lead, very natural."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "音乐怎么样？",
+      "pinyin": "Yīnyuè zěnmeyàng?",
+      "english": "How's the music?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "音乐也不错。听了让人放心。",
+      "pinyin": "Yīnyuè yě bùcuò. Tīng le ràng rén fàngxīn.",
+      "english": "The music is also good. Listening makes people feel at ease."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "那我明天也去看看。",
+      "pinyin": "Nà wǒ míngtiān yě qù kànkan.",
+      "english": "Then I'll go watch it tomorrow too."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好主意！看完告诉我你怎么看。",
+      "pinyin": "Hǎo zhǔyì! Kàn wán gàosu wǒ nǐ zěnme kàn.",
+      "english": "Good idea! After watching tell me what you think."
+    }
+  ]
+}
