@@ -30,3 +30,15 @@ export async function migrateSecrets(storage) {
   }
   return moved;
 }
+
+/**
+ * Move the legacy secrets out of `settings` and tombstone the server rows they
+ * left behind, so a later pull cannot bring them back into a synced store.
+ * Called once at boot (src/main.js), before sync attaches; kept as one seam so
+ * the sync regression test drives the same wiring the shell does.
+ */
+export async function retireLegacySecrets(storage, sync) {
+  const moved = await migrateSecrets(storage);
+  for (const key of moved) await sync.enqueueDelete('settings', key);
+  return moved;
+}

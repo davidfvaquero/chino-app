@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 
 import { WEBLLM_CDN_URL } from '../src/chat/webllm-provider.js';
 import { createStorage, memoryDriver } from '../src/storage.js';
-import { migrateSecrets } from '../src/secrets.js';
+import { migrateSecrets, retireLegacySecrets } from '../src/secrets.js';
 import { createSync } from '../src/sync/client.js';
 import { importAll } from '../src/backup.js';
 
@@ -36,8 +36,9 @@ test('I1: the CSP allows WebLLM (jsDelivr + wasm) and any https host (Ollama)', 
   const connectSrc = directive('connect-src');
   assert.ok(connectSrc.includes('https:'), `connect-src allows https hosts (got "${connectSrc}")`);
   assert.ok(connectSrc.includes("'self'"), `connect-src keeps 'self' (got "${connectSrc}")`);
-  // The stroke check compares bitmaps through fetch('data:image/png;base64,…').
-  assert.ok(connectSrc.includes('data:'), `connect-src allows data: URLs (got "${connectSrc}")`);
+  // The app never fetches a data: URL: the stroke check decodes its bitmaps
+  // through a Blob (scripts/check-strokes-orient.mjs), so connect-src stays clean.
+  assert.ok(!connectSrc.includes('data:'), `connect-src does not need data: (got "${connectSrc}")`);
 });
 
 // ------------------------------------------------- I2: private history sync
@@ -77,9 +78,10 @@ test('I2: a synced device tombstones the old settings row instead of resurrectin
   };
   const sync = createSync({ fetch: fetchImpl, storage, config: { url: 'https://x.test', anonKey: 'k' } });
 
-  const moved = await migrateSecrets(storage);
+  // Drive the real boot seam (src/main.js uses the same call), then attach so
+  // a later pull-merge-push is exercised.
+  await retireLegacySecrets(storage, sync);
   sync.attach();
-  for (const key of moved) await sync.enqueueDelete('settings', key);
   const res = await sync.syncNow();
 
   assert.equal(res.ok, true);

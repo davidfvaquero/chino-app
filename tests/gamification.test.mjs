@@ -455,6 +455,16 @@ test('evaluateAchievements: covers the level rule', () => {
   assert.deepEqual(evaluateAchievements({ levels: { hsk2: 2 } }, defs).map((d) => d.id), ['h']);
 });
 
+test('achievements: the final exam does not count as a lesson of its level', async () => {
+  const defs = [{ id: 'h1', nameKey: 'k.n', descKey: 'k.d', rule: { level: 'hsk1', count: 1 } }];
+  const { g } = setup({ definitions: defs });
+  // exam.js sends `examLevel` (not `level`), so the exam alone never completes HSK1.
+  const exam = await g.record('lesson_done', { lessonId: 'exam', examLevel: 'hsk1' });
+  assert.deepEqual(exam.unlocked, [], 'the HSK1 exam alone must not unlock «HSK 1 completo»');
+  const lesson = await g.record('lesson_done', { level: 'hsk1', lessonId: 'hsk1-01' });
+  assert.deepEqual(lesson.unlocked.map((d) => d.id), ['h1'], 'a real HSK1 lesson still counts');
+});
+
 test('achievements.json: the new set is present and level counts match the lesson index', async () => {
   const fetchJson = async (url) => JSON.parse(await readFile(url, 'utf8'));
   const defs = await loadAchievements({

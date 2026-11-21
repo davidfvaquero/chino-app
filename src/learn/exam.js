@@ -14,7 +14,9 @@
  * data, DOM, audio and the review deck.
  *
  * Fires `chino:lesson_done` once per finished exam with
- * `{lessonId, level, seed, score, total, percent, timed, seconds}`.
+ * `{lessonId, examLevel, seed, score, total, percent, timed, seconds}`.
+ * `examLevel` (not `level`) keeps the exam out of the per-level lesson count
+ * that gamification tracks, so it does not tick the «HSK n completo» achievement.
  *
  * Public API: titleKey, LESSON_ID, render(), and the pure re-exports used by
  * tests (buildExam, gradeExam, ...) live in src/learn/exam-gen.js.
@@ -286,7 +288,7 @@ export async function render(container, ctx = {}) {
         new CustomEvent('chino:lesson_done', {
           detail: {
             lessonId: LESSON_ID,
-            level: state.level,
+            examLevel: state.level,
             seed: state.seed,
             score: state.result.correct,
             total: state.result.total,

@@ -9,8 +9,15 @@ import { t } from './i18n.js';
 export function notice(key, params) {
   const el = globalThis.document?.getElementById?.('app-status');
   if (!el) return;
-  el.textContent = t(key, params);
+  // Make the region visible first, then set the text in the next frame: a
+  // screen reader only announces an aria-live region whose content changes
+  // after it is already in the accessibility tree.
   el.hidden = false;
+  el.textContent = '';
+  const raf = globalThis.requestAnimationFrame ?? ((fn) => setTimeout(fn, 0));
+  raf(() => {
+    el.textContent = t(key, params);
+  });
   clearTimeout(notice.timer);
   notice.timer = setTimeout(() => {
     el.hidden = true;

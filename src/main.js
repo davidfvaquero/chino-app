@@ -18,7 +18,7 @@ import {
   subscribe,
 } from './i18n.js';
 import storage from './storage.js';
-import { migrateSecrets } from './secrets.js';
+import { retireLegacySecrets } from './secrets.js';
 import { h } from './dom.js';
 import { icon } from './icons.js';
 import { createRouter, navigate } from './router.js';
@@ -131,15 +131,13 @@ async function boot() {
   applySettings();
   attachStats();
   // The legacy OpenRouter key and conversation history may still live in
-  // `settings`; move them to `meta` before sync can see (and re-write) them.
-  const movedSecrets = await migrateSecrets(storage);
+  // `settings`; move them to `meta` and tombstone their server rows before sync
+  // can see (and re-write) them, so a pull cannot bring the history back.
+  await retireLegacySecrets(storage, sync);
   // Sync stays off unless src/sync/config.js has a URL + anon key; then every
   // local write is queued and a pull-merge-push runs on open.
   if (isConfigured()) {
     sync.attach();
-    // Tombstone the server rows the migration emptied, so a pull cannot bring
-    // the history back into `settings`.
-    for (const key of movedSecrets) await sync.enqueueDelete('settings', key);
     sync.syncNow().catch(() => {});
     // Re-sync when the network returns and as the app goes to the background
     // (docs/REVIEW-2.md I17).

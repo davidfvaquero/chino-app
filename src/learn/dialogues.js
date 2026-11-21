@@ -25,6 +25,7 @@
  */
 import { t, getLocale } from '../i18n.js';
 import { h, reset } from '../dom.js';
+import { shuffle } from '../random.js';
 import storage from '../storage.js';
 import { speak } from '../audio.js';
 import { addToReview } from '../srs.js';
@@ -86,15 +87,9 @@ export function normalizeDialogue(raw = {}) {
   };
 }
 
-/** Fisher–Yates shuffle; `rng` is injected so tests stay deterministic. */
-export function shuffle(items, rng = Math.random) {
-  const out = [...(Array.isArray(items) ? items : [])];
-  for (let i = out.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(rng() * (i + 1));
-    [out[i], out[j]] = [out[j], out[i]];
-  }
-  return out;
-}
+/** Fisher–Yates shuffle; `rng` is injected so tests stay deterministic. The one
+ * implementation lives in src/random.js. */
+export { shuffle };
 
 /** Indices of the B turns (the ones the student answers in "You are B"). */
 export function bLineIndices(lines) {

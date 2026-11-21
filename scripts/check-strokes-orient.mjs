@@ -106,7 +106,7 @@ const PAGE_LIB = `(() => {
     if (!s || !r) return { ok: false, reason: 'empty mask' };
     return { up: corr(s, r), flipV: corr(s, flip(r, 'v')), flipH: corr(s, flip(r, 'h')) };
   };
-  const bitmapFrom = async (b64) => createImageBitmap(await (await fetch('data:image/png;base64,' + b64)).blob());
+  const bitmapFrom = async (b64) => createImageBitmap(new Blob([Uint8Array.from(atob(b64), (c) => c.charCodeAt(0))], { type: 'image/png' }));
   return { compare, bitmapFrom };
 })()`;
 

@@ -15,6 +15,28 @@ const DATA = path.join(ROOT, 'public', 'data');
 const READINGS = path.join(DATA, 'readings');
 
 const HANZI = /[\u3400-\u9fff]/;
+const LATIN = /[A-Za-z]/;
+
+// --- Pinyin syllable counting (REVIEW-8 M6): a hanzi and a pinyin syllable
+// must line up one to one, so a dropped syllable (很好玩 -> "Hěn wán") is
+// caught. Count vowel nuclei; apostrophes/tones are stripped first. Two written
+// exceptions keep the count fair and are spelled out (no magic allowlist):
+//   - erhua: a 儿 that folds into the previous syllable's "r" (哪儿 nǎr);
+//   - the reduced 一 of 看一看 (kànkan) and the phone-number 一 read yāo.
+const stripTones = (text) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const pinyinSyllables = (pinyin) =>
+  (stripTones(pinyin).replace(/[.,!?;:，。！？；：、"'“”‘’「」（）()\-—…]/g, ' ')
+    .match(/[aeiouü]+/gi) || []).length;
+const erhuaCount = (hanzi, pinyin) => {
+  const n = (hanzi.match(/儿/g) || []).length;
+  return n ? Math.max(0, n - (pinyin.match(/ér/gi) || []).length) : 0;
+};
+const reducedYiCount = (hanzi, pinyin) => {
+  const n = (hanzi.match(/一/g) || []).length;
+  return n ? Math.max(0, n - (stripTones(pinyin).match(/yi|yao/gi) || []).length) : 0;
+};
+const expectedSyllables = (hanzi, pinyin) =>
+  pinyinSyllables(pinyin) + erhuaCount(hanzi, pinyin) + reducedYiCount(hanzi, pinyin);
 
 async function fileFetch(url) {
   const rel = url.replace(/^\/data\//, '');
@@ -113,6 +135,16 @@ for (const level of LEVELS) {
         }
       }
       assert.deepEqual([...bad], [], `${meta.id} uses characters outside HSK ${level.slice(3)}: ${[...bad].join('')}`);
+    });
+
+    test(`readings/${level}/${meta.id}: hanzi and pinyin syllables line up`, opts, () => {
+      const raw = readJson(file);
+      raw.lines.forEach((line, i) => {
+        if (LATIN.test(line.hanzi)) return; // e.g. "WiFi密码": latin has no syllable
+        const hanzi = [...line.hanzi].filter((c) => HANZI.test(c)).length;
+        assert.equal(hanzi, expectedSyllables(line.hanzi, line.pinyin),
+          `${meta.id} line ${i}: "${line.hanzi}" (${hanzi} hanzi) vs "${line.pinyin}"`);
+      });
     });
   }
 }
