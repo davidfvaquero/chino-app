@@ -29,6 +29,8 @@ jobs:
           node-version: 20
       - name: Run tests
         run: npm test
+      - name: Validate the Spanish dictionary
+        run: npm run data:dict-es
 
   deploy:
     needs: test

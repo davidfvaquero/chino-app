@@ -1,0 +1,29 @@
+{
+  "note": "Entradas con una cola en inglés tras el marcador (p. ej. \"variante de 念[nian4], to read aloud\"). Necesitan retraducción con el LLM; el validador las marca como aviso. Lo escribe scripts/fix-dict-es.mjs.",
+  "ids": [
+    5469,
+    10067,
+    14389,
+    22124,
+    23345,
+    30549,
+    31228,
+    37704,
+    39807,
+    43016,
+    45224,
+    49202,
+    49954,
+    65090,
+    65878,
+    70341,
+    72707,
+    73410,
+    73781,
+    80605,
+    85932,
+    88488,
+    96007,
+    100511
+  ]
+}

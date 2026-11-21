@@ -14,7 +14,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validateEntry, parentheticalLeaks } from './lib/dict-es.mjs';
+import { validateEntry, parentheticalLeaks, englishTailLeaks } from './lib/dict-es.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'public', 'data', 'dict', 'shards');
@@ -83,6 +83,7 @@ async function main(argv) {
       if (reason) { for (const m of msgs) excused.push({ id: es.id, file: f, msg: m, reason }); }
       else add(es.id, f, msgs);
       warn(es.id, f, parentheticalLeaks(en, es));
+      warn(es.id, f, englishTailLeaks(en, es));
       if (es.defs.length < en.defs.length) merged++;
     }
   }

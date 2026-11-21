@@ -12,7 +12,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { fixLeakedMarkers, templateDefToEs } from './lib/dict-es.mjs';
+import { fixLeakedMarkers, templateDefToEs, englishTailLeaks } from './lib/dict-es.mjs';
 
 const norm = (s) => String(s ?? '').toLowerCase().replace(/[^a-z0-9\u00e0-\u00ff]+/g, ' ').trim();
 
@@ -69,17 +69,28 @@ function main(argv) {
   if (!fs.existsSync(shardsDir)) { console.log(`fix-dict-es: no shards in ${dir}`); return 0; }
   const originals = loadOriginals(fileURLToPath(new URL('../public/data/dict/shards/', import.meta.url)));
   let fixed = 0, deduped = 0, changed = 0;
+  const retranslate = new Set();
   for (const f of fs.readdirSync(shardsDir).filter((x) => x.endsWith('.json')).sort()) {
     const p = path.join(shardsDir, f);
     const list = JSON.parse(fs.readFileSync(p, 'utf8'));
     let dirty = false;
     for (const e of list) {
-      const r = repairEntry(originals.get(e.id), e);
+      const en = originals.get(e.id);
+      const r = repairEntry(en, e);
       if (r.fixed || r.deduped) { e.defs = r.defs; fixed += r.fixed; deduped += r.deduped; dirty = true; }
+      // Entries whose marker def still carries an English gloss need the LLM to
+      // retranslate: record them so a later pass can pick them up (REVIEW-2 I6).
+      if (en && englishTailLeaks(en, { defs: e.defs }).length) retranslate.add(e.id);
     }
     if (dirty) { const tmp = `${p}.tmp`; fs.writeFileSync(tmp, `${JSON.stringify(list)}\n`); fs.renameSync(tmp, p); changed++; }
   }
-  console.log(`fix-dict-es: ${fixed} defs reparadas, ${deduped} defs duplicadas quitadas (${changed} shards escritos)`);
+  const listPath = fileURLToPath(new URL('./dict-es-retranslate.json', import.meta.url));
+  const ids = [...retranslate].sort((a, b) => a - b);
+  fs.writeFileSync(listPath, `${JSON.stringify({
+    note: 'Entradas con una cola en inglés tras el marcador (p. ej. "variante de 念[nian4], to read aloud"). Necesitan retraducción con el LLM; el validador las marca como aviso. Lo escribe scripts/fix-dict-es.mjs.',
+    ids,
+  }, null, 2)}\n`);
+  console.log(`fix-dict-es: ${fixed} defs reparadas, ${deduped} defs duplicadas quitadas (${changed} shards escritos); ${ids.length} ids para retraducir`);
   return 0;
 }
 

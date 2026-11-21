@@ -212,3 +212,50 @@ test('parseArgs: Claude defaults to 30-entry batches, openrouter to 40', () => {
   assert.equal(parseArgs(['--provider', 'openrouter']).batch, 40);
   assert.equal(parseArgs(['--batch', '50']).batch, 50);
 });
+
+// ------------------------------------------------------------------ I6 real
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { repairEntry } from '../scripts/fix-dict-es.mjs';
+import { englishTailLeaks } from '../scripts/lib/dict-es.mjs';
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const readShards = (dir) => {
+  const out = [];
+  for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.json'))) {
+    for (const e of JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'))) out.push(e);
+  }
+  return out;
+};
+
+test('I6: the real Spanish shards validate clean and fix-dict-es is idempotent', () => {
+  const originals = new Map(readShards(path.join(ROOT, 'public', 'data', 'dict', 'shards')).map((e) => [e.id, e]));
+  const exceptions = new Set(
+    Object.keys(JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts', 'dict-es-exceptions.json'), 'utf8')).entries),
+  );
+  const shards = readShards(path.join(ROOT, 'public', 'data', 'es', 'dict', 'shards'));
+  assert.ok(shards.length > 100000, `all translations checked (got ${shards.length})`);
+  let errors = 0;
+  let drifting = 0;
+  let tails = 0;
+  for (const es of shards) {
+    const en = originals.get(es.id);
+    if (!exceptions.has(String(es.id)) && validateEntry(en, es).length) errors += 1;
+    if (JSON.stringify(repairEntry(en, es).defs) !== JSON.stringify(es.defs)) drifting += 1;
+    tails += englishTailLeaks(en, es).length;
+  }
+  assert.equal(errors, 0, 'no validation errors in the real shards');
+  assert.equal(drifting, 0, 'fix-dict-es would change nothing (idempotent)');
+  assert.ok(tails <= 40, `the English-tail warnings are listed for retranslation (${tails})`);
+});
+
+test('I6: exprimer and Taiwán pronunciación are gone from the real shards', () => {
+  const text = fs.readFileSync(path.join(ROOT, 'public', 'data', 'es', 'dict', 'shards', '016.json'), 'utf8');
+  assert.equal(/exprimer/.test(text), false);
+  const all = readShards(path.join(ROOT, 'public', 'data', 'es', 'dict', 'shards'))
+    .map((e) => e.defs.join(' '))
+    .join(' ');
+  assert.equal(/exprimer/.test(all), false);
+  assert.equal(/Taiwán pronunciación/.test(all), false);
+});

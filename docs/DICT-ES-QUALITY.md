@@ -59,82 +59,27 @@
 
 ---
 
-## 4. Script de corrección automática (para deepseek)
+## 4. Corrección automática (implementada)
 
-Los tres tipos de error son corregibles con un script determinista tipo `fix-dict-es.mjs`. Aquí la especificación exacta:
+La reparación determinista vive en **`scripts/fix-dict-es.mjs`** (no en un
+`fix-dict-es-quality.mjs` que nunca existió): traduce los marcadores/notas
+inglesas que se colaron, arregla `Taiwán pronunciación` → `pronunciación en
+Taiwán` y `exprimer` → `ex primer`, quita defs duplicadas y **escribe la lista
+de entradas que aún necesitan retraducción con el LLM**
+(`scripts/dict-es-retranslate.json`), p. ej. las que dejan una glosa inglesa tras
+el marcador (`variante de 念[nian4], to read aloud`). Es idempotente: una segunda
+pasada no cambia nada.
 
-```javascript
-// scripts/fix-dict-es-quality.mjs
-// Corrección post-traducción de los 3 patrones sistemáticos detectados en DICT-ES-QUALITY.md
+**Uso:**
 
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SHARDS_DIR = path.join(ROOT, 'public', 'data', 'es', 'dict', 'shards');
-
-// 1. Normalizar "Taiwán pronunciación" → "pronunciación en Taiwán"
-const FIX_TAIWAN_PR = /Taiwán pronunciación\s*(\[.*?\])/g;
-const REPL_TAIWAN_PR = 'pronunciación en Taiwán $1';
-
-// 2. Separar prefijo "ex" pegado a palabra siguiente (ex primer, ex presidente, etc.)
-const FIX_EX_PREFIX = /\bex([A-ZÁÉÍÓÚÑa-záéíóúñ])/g;
-const REPL_EX_PREFIX = 'ex $1';
-
-// 3. Traducir glosas residuales en plantillas "variant of X, <english>"
-//    Patrón: "variante de X, <palabra_inglés>" → "variante de X, <traducción>"
-const TEMPLATE_GLOSS = {
-  'to engrave': 'grabar',
-  // añadir más según glosario de lib/dict-es.mjs
-};
-
-function fixShard(file) {
-  const p = path.join(SHARDS_DIR, file);
-  const data = JSON.parse(fs.readFileSync(p, 'utf8'));
-  let changed = false;
-
-  for (const entry of data) {
-    for (let i = 0; i < entry.defs.length; i++) {
-      let d = entry.defs[i];
-      const orig = d;
-
-      // 1. Taiwan pr.
-      d = d.replace(FIX_TAIWAN_PR, REPL_TAIWAN_PR);
-
-      // 2. ex prefijo
-      d = d.replace(FIX_EX_PREFIX, REPL_EX_PREFIX);
-
-      // 3. Glosas residuales en plantillas
-      for (const [en, es] of Object.entries(TEMPLATE_GLOSS)) {
-        const re = new RegExp(`variante de ([^,]+),\\s*${en.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-        d = d.replace(re, `variante de $1, ${es}`);
-      }
-
-      if (d !== orig) {
-        entry.defs[i] = d;
-        changed = true;
-      }
-    }
-  }
-
-  if (changed) {
-    fs.writeFileSync(p, JSON.stringify(data, null, 2));
-    console.log(`  fix: ${file}`);
-  }
-  return changed;
-}
-
-// Ejecutar
-let total = 0;
-for (const f of fs.readdirSync(SHARDS_DIR).filter(x => x.endsWith('.json')).sort()) {
-  if (fixShard(f)) total++;
-}
-console.log(`Shards modificados: ${total}`);
+```sh
+npm run data:dict-es   # fix-dict-es -> validate-dict-es -> build-dict-es-index
 ```
 
-**Uso:** `node scripts/fix-dict-es-quality.mjs`  
-**Efecto:** corrige los 3 patrones en todas las shards sin tocar datos válidos. Requiere validación posterior con `node scripts/validate-dict-es.mjs`.
+`validate-dict-es.mjs` es el que decide: sale con código ≠ 0 si hay cualquier
+error, y ahora también marca como **aviso** la cola inglesa tras un marcador
+(`englishTailLeaks`). El pipeline entero está en `package.json`
+(`data:dict-es`) y en CI (`.github/workflows/pages.yml`).
 
 ---
 
@@ -171,7 +116,7 @@ console.log(`Shards modificados: ${total}`);
 | Cálculo porcentajes por estrato y global | **Hecho** | Ver §1 |
 | Veredicto APTO / NO APTO | **Hecho** | **APTO** (99,69 % ≥ 90 %, 0,31 % ≤ 2 %) |
 | Errores sistemáticos con ejemplos | **Hecho** | 3 categorías, 7 instancias (§3) |
-| Script de corrección para deepseek | **Hecho** | `scripts/fix-dict-es-quality.mjs` especificado (§4) |
+| Script de corrección para deepseek | **Hecho** | `scripts/fix-dict-es.mjs` + `scripts/dict-es-retranslate.json` (§4) |
 | Entrega `docs/DICT-ES-QUALITY.md` | **Hecho** | Este archivo |
 | Commit solo del informe | **Pendiente** | `git add docs/DICT-ES-QUALITY.md && git commit -m "docs: calidad diccionario ES — muestreo 320 entradas, veredicto APTO"` |
 | Verificación en clon limpio (`npm test`, `check-es-data`, `build`) | **Pendiente** | Requiere commit previo |
@@ -186,4 +131,7 @@ La traducción del diccionario al español **supera holgadamente** el umbral de 
 2. **Fusión de sentidos en una sola definición** (2 casos) — mejora de estilo, no error semántico.
 3. **Un error tipográfico `ex` pegado** (1 caso, 0,31 %) — corregible con regex simple.
 
-**Recomendación:** ejecutar `fix-dict-es-quality.mjs` antes de la siguiente release, volver a pasar `validate-dict-es.mjs` y confirmar 0 errores. El diccionario está listo para producción.
+**Recomendación:** ejecutar `npm run data:dict-es` (usa `scripts/fix-dict-es.mjs`),
+volver a pasar `validate-dict-es.mjs` y confirmar 0 errores. Las entradas con cola
+inglesa quedan listadas en `scripts/dict-es-retranslate.json` para retraducir con
+el LLM. El diccionario está listo para producción.

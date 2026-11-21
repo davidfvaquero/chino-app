@@ -82,6 +82,11 @@ const LEAK_FIXES = [
   [/\balso pr\./g, 'también se pronuncia'],
   [/\bpronunciación alternativa\b/g, 'también se pronuncia'],
   [/\bvéase también pronunciación\b/g, 'también se pronuncia'],
+  // Word-order/word mistakes the LLM produced (REVIEW-2 I6): "Taiwán
+  // pronunciación" instead of the glossary's "pronunciación en Taiwán", and the
+  // French-looking "exprimer" for "ex primer" (ex-minister).
+  [/Taiwán pronunciación/g, 'pronunciación en Taiwán'],
+  [/\bexprimer\b/g, 'ex primer'],
   [/\(jerga\)/g, '(coloquial)'],
   [/\bsurname\b/g, 'apellido'],
   [/\bused in\b/g, 'se usa en'],
@@ -158,9 +163,12 @@ export function templateDefToEs(def) {
   return note(d);
 }
 
-/** Is a single definition a pure marker template (resolvable without the LLM)? */
+/** Is a single definition a pure marker template (resolvable without the LLM)?
+ *  Only a bare reference counts: "variant of 好[hao3]" / "CL:個|个[ge4]" /
+ *  "surname Wang". A marker followed by a real gloss ("variant of 念[nian4],
+ *  to read aloud") is NOT a template — it needs the LLM (REVIEW-2 I6). */
 export function isTemplateDef(def) {
-  return /^(surname|old variant of|erhua variant of|variant of|CL:)\s*\S/.test(String(def ?? ''));
+  return /^(surname|old variant of|erhua variant of|variant of|CL:)\s*\S+(\[[^\]]+\])?(\s*\([^)]*\))?$/.test(String(def ?? ''));
 }
 
 /** An entry is a "template" entry when EVERY one of its definitions is pure. */
@@ -295,6 +303,11 @@ export function validateEntry(en, es) {
     }
   }
 
+  // Stray English/French words and the mangled Taiwan marker that the glossary
+  // pass turns into Spanish (REVIEW-2 I6). fix-dict-es repairs both.
+  if (/\bexprimer\b/.test(esText)) errs.push('palabra sin traducir "exprimer" (debe ser "ex primer")');
+  if (/Taiwán pronunciación/.test(esText)) errs.push('marcador "Taiwán pronunciación" mal ordenado (debe ser "pronunciación en Taiwán")');
+
   en.defs.forEach((d, i) => {
     if (i >= es.defs.length) return; // merged away into an earlier def (rules 6/10)
     const sd = es.defs[i] || '';
@@ -350,9 +363,34 @@ export function parentheticalLeaks(en, es) {
   return out;
 }
 
+/** Lead of a translated marker def, so we can inspect what follows the reference. */
+const MARKER_LEAD = /^(variante(?: antigua| erhua)? de|apellido|clasificador:|se usa en|véase(?: también)?|abreviatura de|también se pronuncia|pronunciación en Taiwán|se usa como)\b/u;
+
+/**
+ * An English gloss left after the hanzi/pinyin reference of a marker def, e.g.
+ * "variante de 念[nian4], to read aloud" (REVIEW-2 I6). A WARNING: they need the
+ * LLM to retranslate, so fix-dict-es lists them (scripts/dict-es-retranslate.json)
+ * instead of guessing the Spanish. Detected by an English function word (or an
+ * "and given name" tail) in the text after the first comma.
+ * @returns {string[]} warning messages
+ */
+export function englishTailLeaks(en, es) {
+  const out = [];
+  (es.defs || []).forEach((d, i) => {
+    if (!MARKER_LEAD.test(d)) return;
+    const comma = d.search(/[,;]/);
+    if (comma === -1) return;
+    const tail = d.slice(comma + 1).trim();
+    if (!/[a-z]/i.test(tail)) return;
+    if (LEAK_FN.test(` ${norm(tail)} `) || /\band given name\b/.test(tail) || /^full name\b/.test(tail)) {
+      out.push(`def ${i}: cola en inglés tras el marcador ("${tail.slice(0, 40)}")`);
+    }
+  });
+  return out;
+}
+
 /** Rough token estimate from characters (4 chars ≈ 1 token) + per-entry overhead. */
 export const estimateTokens = (chars, entries) => Math.ceil(chars / 4) + entries * 12;
-
 /** Price per 1M tokens for deepseek/deepseek-v4.1-flash (OpenRouter, nov 2026). */
 export const PRICE = { in: 0.3, out: 1.2 };
 
