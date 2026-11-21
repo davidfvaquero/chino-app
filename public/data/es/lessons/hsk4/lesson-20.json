@@ -1,0 +1,375 @@
+{
+  "id": "hsk4-20",
+  "title": "Palabras y expresiones finales",
+  "intro": "Completa tu recorrido por el HSK 4 con palabras finales esenciales: calidad, respeto, alquiler, resúmenes y expresiones cotidianas.",
+  "vocabulary": [
+    {
+      "hanzi": "至少",
+      "pinyin": "zhìshǎo",
+      "english": "al menos; por lo menos",
+      "example": {
+        "hanzi": "至少要试试",
+        "pinyin": "zhìshǎo yào shì shì",
+        "english": "al menos inténtalo"
+      }
+    },
+    {
+      "hanzi": "质量",
+      "pinyin": "zhìliàng",
+      "english": "calidad; masa (física)",
+      "example": {
+        "hanzi": "质量很好",
+        "pinyin": "zhìliàng hěn hǎo",
+        "english": "la calidad es muy buena"
+      }
+    },
+    {
+      "hanzi": "重",
+      "pinyin": "zhòng",
+      "english": "pesado; grave; importante",
+      "example": {
+        "hanzi": "箱子很重",
+        "pinyin": "xiāngzi hěn zhòng",
+        "english": "la caja es muy pesada"
+      }
+    },
+    {
+      "hanzi": "重点",
+      "pinyin": "zhòngdiǎn",
+      "english": "énfasis; punto principal",
+      "example": {
+        "hanzi": "重点在中文",
+        "pinyin": "zhòngdiǎn zài zhōngwén",
+        "english": "el enfoque está en el chino"
+      }
+    },
+    {
+      "hanzi": "重视",
+      "pinyin": "zhòngshì",
+      "english": "valorar; tomar en serio",
+      "example": {
+        "hanzi": "要重视学习",
+        "pinyin": "yào zhòngshì xuéxí",
+        "english": "hay que valorar el estudio"
+      }
+    },
+    {
+      "hanzi": "周围",
+      "pinyin": "zhōuwéi",
+      "english": "alrededores; entorno; proximidad",
+      "example": {
+        "hanzi": "环境很安静",
+        "pinyin": "huánjìng hěn ānjìng",
+        "english": "el entorno es muy tranquilo"
+      }
+    },
+    {
+      "hanzi": "主意",
+      "pinyin": "zhǔyi",
+      "english": "plan; idea; decisión",
+      "example": {
+        "hanzi": "我有个主意",
+        "pinyin": "wǒ yǒu gè zhǔyi",
+        "english": "tengo una idea"
+      }
+    },
+    {
+      "hanzi": "祝贺",
+      "pinyin": "zhùhè",
+      "english": "felicitar",
+      "example": {
+        "hanzi": "祝贺你成功",
+        "pinyin": "zhùhè nǐ chénggōng",
+        "english": "felicidades por tu éxito"
+      }
+    },
+    {
+      "hanzi": "著名",
+      "pinyin": "zhùmíng",
+      "english": "famoso; célebre",
+      "example": {
+        "hanzi": "他是著名医生",
+        "pinyin": "tā shì zhùmíng yīshēng",
+        "english": "él es un médico famoso"
+      }
+    },
+    {
+      "hanzi": "专门",
+      "pinyin": "zhuānmén",
+      "english": "especializado; expresamente",
+      "example": {
+        "hanzi": "专门为你做的",
+        "pinyin": "zhuānmén wèi nǐ zuò de",
+        "english": "hecho especialmente para ti"
+      }
+    },
+    {
+      "hanzi": "专业",
+      "pinyin": "zhuānyè",
+      "english": "profesión; especialidad; carrera",
+      "example": {
+        "hanzi": "我的专业是中文",
+        "pinyin": "wǒ de zhuānyè shì zhōngwén",
+        "english": "mi carrera es el chino"
+      }
+    },
+    {
+      "hanzi": "转",
+      "pinyin": "zhuǎn, zhuàn",
+      "english": "girar; cambiar; transmitir | dar vueltas; rotar",
+      "example": {
+        "hanzi": "请转告他",
+        "pinyin": "qǐng zhuǎn gào tā",
+        "english": "por favor transmítele el mensaje"
+      }
+    },
+    {
+      "hanzi": "赚",
+      "pinyin": "zhuàn",
+      "english": "ganar; obtener beneficios",
+      "example": {
+        "hanzi": "他赚了很多钱",
+        "pinyin": "tā zhuàn le hěn duō qián",
+        "english": "ganó mucho dinero"
+      }
+    },
+    {
+      "hanzi": "准确",
+      "pinyin": "zhǔnquè",
+      "english": "exacto; preciso",
+      "example": {
+        "hanzi": "时间准确",
+        "pinyin": "shíjiān zhǔnquè",
+        "english": "la hora es exacta"
+      }
+    },
+    {
+      "hanzi": "准时",
+      "pinyin": "zhǔnshí",
+      "english": "puntual; a tiempo",
+      "example": {
+        "hanzi": "他很准时",
+        "pinyin": "tā hěn zhǔnshí",
+        "english": "él es muy puntual"
+      }
+    },
+    {
+      "hanzi": "仔细",
+      "pinyin": "zǐxì",
+      "english": "cuidadoso; atento; minucioso",
+      "example": {
+        "hanzi": "请仔细听",
+        "pinyin": "qǐng zǐxì tīng",
+        "english": "por favor escucha con atención"
+      }
+    },
+    {
+      "hanzi": "自然",
+      "pinyin": "zìrán",
+      "english": "naturaleza; natural",
+      "example": {
+        "hanzi": "这是自然的",
+        "pinyin": "zhè shì zìrán de",
+        "english": "esto es natural"
+      }
+    },
+    {
+      "hanzi": "自信",
+      "pinyin": "zìxìn",
+      "english": "confianza en uno mismo",
+      "example": {
+        "hanzi": "要有自信",
+        "pinyin": "yào yǒu zìxìn",
+        "english": "hay que tener confianza en uno mismo"
+      }
+    },
+    {
+      "hanzi": "总结",
+      "pinyin": "zǒngjié",
+      "english": "resumir; concluir",
+      "example": {
+        "hanzi": "最后总结一下",
+        "pinyin": "zuìhòu zǒngjié yīxià",
+        "english": "para terminar, resume brevemente"
+      }
+    },
+    {
+      "hanzi": "租",
+      "pinyin": "zū",
+      "english": "alquilar",
+      "example": {
+        "hanzi": "我租了房子",
+        "pinyin": "wǒ zū le fángzi",
+        "english": "alquilé una casa"
+      }
+    },
+    {
+      "hanzi": "最好",
+      "pinyin": "zuìhǎo",
+      "english": "lo mejor; más vale que; sería mejor",
+      "example": {
+        "hanzi": "你最好早点睡",
+        "pinyin": "nǐ zuìhǎo zǎo diǎn shuì",
+        "english": "más vale que duermas temprano"
+      }
+    },
+    {
+      "hanzi": "尊重",
+      "pinyin": "zūnzhòng",
+      "english": "estima; respetar; valorar; honrar",
+      "example": {
+        "hanzi": "我们要尊重他",
+        "pinyin": "wǒmen yào zūnzhòng tā",
+        "english": "debemos respetarlo"
+      }
+    },
+    {
+      "hanzi": "左右",
+      "pinyin": "zuǒyòu",
+      "english": "alrededor de; aproximadamente | izquierda y derecha",
+      "example": {
+        "hanzi": "左右各十个",
+        "pinyin": "zuǒyòu gè shí gè",
+        "english": "unos diez a cada lado"
+      }
+    },
+    {
+      "hanzi": "作家",
+      "pinyin": "zuòjiā",
+      "english": "escritor; autor",
+      "example": {
+        "hanzi": "他是作家",
+        "pinyin": "tā shì zuòjiā",
+        "english": "él es escritor"
+      }
+    },
+    {
+      "hanzi": "作用",
+      "pinyin": "zuòyòng",
+      "english": "efecto; función; acción",
+      "example": {
+        "hanzi": "这有作用",
+        "pinyin": "zhè yǒu zuòyòng",
+        "english": "esto tiene efecto"
+      }
+    },
+    {
+      "hanzi": "作者",
+      "pinyin": "zuòzhě",
+      "english": "autor; escritor",
+      "example": {
+        "hanzi": "作者是谁",
+        "pinyin": "zuòzhě shì shéi",
+        "english": "¿quién es el autor?"
+      }
+    },
+    {
+      "hanzi": "座",
+      "pinyin": "zuò",
+      "english": "(clasificador para montañas, puentes, edificios altos, etc.); | asiento; base; soporte; constelación",
+      "example": {
+        "hanzi": "一座大山",
+        "pinyin": "yī zuò dà shān",
+        "english": "una gran montaña"
+      }
+    },
+    {
+      "hanzi": "座位",
+      "pinyin": "zuòwèi",
+      "english": "asiento; sitio",
+      "example": {
+        "hanzi": "请坐好座位",
+        "pinyin": "qǐng zuò hǎo zuòwèi",
+        "english": "por favor siéntate bien en tu asiento"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "¿Qué significa 质量?",
+      "options": [
+        "calidad",
+        "pesado",
+        "énfasis"
+      ],
+      "answer": "calidad"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué palabra significa «respetar»?",
+      "options": [
+        "尊重",
+        "左右",
+        "作家"
+      ],
+      "answer": "尊重"
+    },
+    {
+      "type": "listen",
+      "audio": "准时",
+      "pinyin": "zhǔnshí",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "准时",
+        "准确",
+        "仔细"
+      ],
+      "answer": "准时"
+    },
+    {
+      "type": "listen",
+      "audio": "租",
+      "pinyin": "zū",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "租",
+        "最好",
+        "尊重"
+      ],
+      "answer": "租"
+    },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        {
+          "hanzi": "至少",
+          "english": "al menos"
+        },
+        {
+          "hanzi": "重视",
+          "english": "valorar"
+        },
+        {
+          "hanzi": "总结",
+          "english": "resumir"
+        },
+        {
+          "hanzi": "座位",
+          "english": "asiento"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Forma la frase «a tiempo».",
+      "tokens": [
+        "准",
+        "时"
+      ],
+      "answer": "准时"
+    },
+    {
+      "type": "order",
+      "prompt": "Ordena los caracteres para decir «él es escritor».",
+      "tokens": [
+        "他",
+        "是",
+        "作",
+        "家"
+      ],
+      "answer": "他是作家"
+    }
+  ]
+}

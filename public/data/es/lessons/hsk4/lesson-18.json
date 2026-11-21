@@ -1,0 +1,395 @@
+{
+  "id": "hsk4-18",
+  "title": "Sociedad, política y economía",
+  "intro": "Habla de sociedad, política y economía: arte, opiniones, responsabilidad, trabajo y comunicación formal.",
+  "vocabulary": [
+    {
+      "hanzi": "以为",
+      "pinyin": "yǐwéi",
+      "english": "creer (equivocadamente); pensar (que); suponer",
+      "example": {
+        "hanzi": "我以为你走了",
+        "pinyin": "wǒ yǐwéi nǐ zǒu le",
+        "english": "creía que te habías ido"
+      }
+    },
+    {
+      "hanzi": "艺术",
+      "pinyin": "yìshù",
+      "english": "arte",
+      "example": {
+        "hanzi": "我喜欢艺术",
+        "pinyin": "wǒ xǐhuan yìshù",
+        "english": "me gusta el arte"
+      }
+    },
+    {
+      "hanzi": "意见",
+      "pinyin": "yìjiàn",
+      "english": "opinión; punto de vista; sugerencia; queja",
+      "example": {
+        "hanzi": "你的意见很好",
+        "pinyin": "nǐ de yìjiàn hěn hǎo",
+        "english": "tu opinión es muy buena"
+      }
+    },
+    {
+      "hanzi": "因此",
+      "pinyin": "yīncǐ",
+      "english": "por lo tanto; así que; por eso",
+      "example": {
+        "hanzi": "因此他没来",
+        "pinyin": "yīncǐ tā méi lái",
+        "english": "por eso no vino"
+      }
+    },
+    {
+      "hanzi": "引起",
+      "pinyin": "yǐnqǐ",
+      "english": "provocar; causar; suscitar",
+      "example": {
+        "hanzi": "这事引起注意",
+        "pinyin": "zhè shì yǐnqǐ zhùyì",
+        "english": "este asunto llamó la atención"
+      }
+    },
+    {
+      "hanzi": "印象",
+      "pinyin": "yìnxiàng",
+      "english": "impresión",
+      "example": {
+        "hanzi": "第一印象很重要",
+        "pinyin": "dì yī yìnxiàng hěn zhòngyào",
+        "english": "la primera impresión es muy importante"
+      }
+    },
+    {
+      "hanzi": "赢",
+      "pinyin": "yíng",
+      "english": "ganar; vencer; obtener beneficio",
+      "example": {
+        "hanzi": "我们赢了",
+        "pinyin": "wǒmen yíng le",
+        "english": "ganamos"
+      }
+    },
+    {
+      "hanzi": "应聘",
+      "pinyin": "yìngpìn",
+      "english": "aceptar una oferta de trabajo; solicitar un empleo",
+      "example": {
+        "hanzi": "他应聘成功了",
+        "pinyin": "tā yìngpìn chénggōng le",
+        "english": "su solicitud de empleo tuvo éxito"
+      }
+    },
+    {
+      "hanzi": "永远",
+      "pinyin": "yǒngyuǎn",
+      "english": "para siempre; eterno; siempre",
+      "example": {
+        "hanzi": "我永远爱你",
+        "pinyin": "wǒ yǒngyuǎn ài nǐ",
+        "english": "te amaré para siempre"
+      }
+    },
+    {
+      "hanzi": "勇敢",
+      "pinyin": "yǒnggǎn",
+      "english": "valiente; audaz",
+      "example": {
+        "hanzi": "你很勇敢",
+        "pinyin": "nǐ hěn yǒnggǎn",
+        "english": "eres muy valiente"
+      }
+    },
+    {
+      "hanzi": "优点",
+      "pinyin": "yōudiǎn",
+      "english": "mérito; punto fuerte; ventaja",
+      "example": {
+        "hanzi": "这东西有优点",
+        "pinyin": "zhè dōngxi yǒu yōudiǎn",
+        "english": "esta cosa tiene sus ventajas"
+      }
+    },
+    {
+      "hanzi": "优秀",
+      "pinyin": "yōuxiù",
+      "english": "sobresaliente; excelente",
+      "example": {
+        "hanzi": "他是优秀学生",
+        "pinyin": "tā shì yōuxiù xuésheng",
+        "english": "es un estudiante excelente"
+      }
+    },
+    {
+      "hanzi": "幽默",
+      "pinyin": "yōumò",
+      "english": "con sentido del humor; divertido",
+      "example": {
+        "hanzi": "他很幽默",
+        "pinyin": "tā hěn yōumò",
+        "english": "tiene mucho sentido del humor"
+      }
+    },
+    {
+      "hanzi": "尤其",
+      "pinyin": "yóuqí",
+      "english": "especialmente; sobre todo",
+      "example": {
+        "hanzi": "我尤其喜欢这个",
+        "pinyin": "wǒ yóuqí xǐhuan zhège",
+        "english": "este me gusta especialmente"
+      }
+    },
+    {
+      "hanzi": "由",
+      "pinyin": "yóu",
+      "english": "seguir; desde; por; a través de",
+      "example": {
+        "hanzi": "由他决定",
+        "pinyin": "yóu tā juédìng",
+        "english": "decidido por él"
+      }
+    },
+    {
+      "hanzi": "由于",
+      "pinyin": "yóuyú",
+      "english": "debido a; a causa de; gracias a",
+      "example": {
+        "hanzi": "由于下雨取消",
+        "pinyin": "yóuyú xiàyǔ qǔxiāo",
+        "english": "cancelado por la lluvia"
+      }
+    },
+    {
+      "hanzi": "邮局",
+      "pinyin": "yóujú",
+      "english": "oficina de correos",
+      "example": {
+        "hanzi": "邮局在前面",
+        "pinyin": "yóujú zài qiánmiàn",
+        "english": "la oficina de correos está más adelante"
+      }
+    },
+    {
+      "hanzi": "友好",
+      "pinyin": "yǒuhǎo",
+      "english": "amistoso (relaciones); amigos cercanos",
+      "example": {
+        "hanzi": "我们很友好",
+        "pinyin": "wǒmen hěn yǒuhǎo",
+        "english": "somos muy amistosos"
+      }
+    },
+    {
+      "hanzi": "友谊",
+      "pinyin": "yǒuyì",
+      "english": "amistad; compañerismo",
+      "example": {
+        "hanzi": "友谊长存",
+        "pinyin": "yǒuyì chángcún",
+        "english": "la amistad dura para siempre"
+      }
+    },
+    {
+      "hanzi": "有趣",
+      "pinyin": "yǒuqù",
+      "english": "interesante; fascinante; divertido",
+      "example": {
+        "hanzi": "这书很有趣",
+        "pinyin": "zhè shū hěn yǒuqù",
+        "english": "este libro es muy interesante"
+      }
+    },
+    {
+      "hanzi": "于是",
+      "pinyin": "yúshì",
+      "english": "así que; por lo tanto; entonces",
+      "example": {
+        "hanzi": "于是他走了",
+        "pinyin": "yúshì tā zǒu le",
+        "english": "entonces se fue"
+      }
+    },
+    {
+      "hanzi": "愉快",
+      "pinyin": "yúkuài",
+      "english": "feliz; alegre; agradable",
+      "example": {
+        "hanzi": "周末很愉快",
+        "pinyin": "zhōumò hěn yúkuài",
+        "english": "el fin de semana fue muy agradable"
+      }
+    },
+    {
+      "hanzi": "与",
+      "pinyin": "yǔ",
+      "english": "(formal) y; dar; junto con; participar; partícula final que expresa duda o sorpresa",
+      "example": {
+        "hanzi": "我和你一起去",
+        "pinyin": "wǒ hé nǐ yīqǐ qù",
+        "english": "voy junto contigo"
+      }
+    },
+    {
+      "hanzi": "羽毛球",
+      "pinyin": "yǔmáoqiú",
+      "english": "bádminton",
+      "example": {
+        "hanzi": "我会打羽毛球",
+        "pinyin": "wǒ huì dǎ yǔmáoqiú",
+        "english": "sé jugar al bádminton"
+      }
+    },
+    {
+      "hanzi": "语法",
+      "pinyin": "yǔfǎ",
+      "english": "gramática",
+      "example": {
+        "hanzi": "中文语法不难",
+        "pinyin": "zhōngwén yǔfǎ bù nán",
+        "english": "la gramática china no es difícil"
+      }
+    },
+    {
+      "hanzi": "语言",
+      "pinyin": "yǔyán",
+      "english": "idioma; lengua",
+      "example": {
+        "hanzi": "语言很重要",
+        "pinyin": "yǔyán hěn zhòngyào",
+        "english": "el idioma es muy importante"
+      }
+    },
+    {
+      "hanzi": "预习",
+      "pinyin": "yùxí",
+      "english": "(de los estudiantes) preparar una lección antes de clase; previsualizar",
+      "example": {
+        "hanzi": "请预习课文",
+        "pinyin": "qǐng yùxí kèwén",
+        "english": "por favor, previsualiza el texto"
+      }
+    },
+    {
+      "hanzi": "原来",
+      "pinyin": "yuánlái",
+      "english": "original; anterior; resulta que",
+      "example": {
+        "hanzi": "原来你在这儿",
+        "pinyin": "yuánlái nǐ zài zhèr",
+        "english": "así que estás aquí"
+      }
+    },
+    {
+      "hanzi": "原谅",
+      "pinyin": "yuánliàng",
+      "english": "disculpar; perdonar",
+      "example": {
+        "hanzi": "请原谅我",
+        "pinyin": "qǐng yuánliàng wǒ",
+        "english": "por favor, perdóname"
+      }
+    },
+    {
+      "hanzi": "原因",
+      "pinyin": "yuányīn",
+      "english": "causa; motivo; razón",
+      "example": {
+        "hanzi": "这是什么原因",
+        "pinyin": "zhè shì shénme yuányīn",
+        "english": "¿cuál es el motivo de esto?"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "¿Qué significa 艺术?",
+      "options": [
+        "arte",
+        "opinión",
+        "por lo tanto"
+      ],
+      "answer": "arte"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué palabra significa «responsabilidad»?",
+      "options": [
+        "责任",
+        "增加",
+        "招聘"
+      ],
+      "answer": "责任"
+    },
+    {
+      "type": "listen",
+      "audio": "印象",
+      "pinyin": "yìnxiàng",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "印象",
+        "赢",
+        "应聘"
+      ],
+      "answer": "印象"
+    },
+    {
+      "type": "listen",
+      "audio": "友谊",
+      "pinyin": "yǒuyì",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "友谊",
+        "友好",
+        "有趣"
+      ],
+      "answer": "友谊"
+    },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        {
+          "hanzi": "意见",
+          "english": "opinión"
+        },
+        {
+          "hanzi": "勇敢",
+          "english": "valiente"
+        },
+        {
+          "hanzi": "优秀",
+          "english": "excelente"
+        },
+        {
+          "hanzi": "邮局",
+          "english": "oficina de correos"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Forma la frase «para siempre».",
+      "tokens": [
+        "永",
+        "远"
+      ],
+      "answer": "永远"
+    },
+    {
+      "type": "order",
+      "prompt": "Ordena los caracteres para decir «por favor, perdóname».",
+      "tokens": [
+        "请",
+        "原",
+        "谅",
+        "我"
+      ],
+      "answer": "请原谅我"
+    }
+  ]
+}

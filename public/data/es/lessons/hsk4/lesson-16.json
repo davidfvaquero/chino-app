@@ -1,0 +1,399 @@
+{
+  "id": "hsk4-16",
+  "title": "Salud, cuerpo y términos médicos",
+  "intro": "Aprende vocabulario sobre la salud, las partes del cuerpo y las situaciones médicas: la temperatura, las enfermedades, los síntomas y la atención médica.",
+  "vocabulary": [
+    {
+      "hanzi": "温度",
+      "pinyin": "wēndù",
+      "english": "temperatura",
+      "example": {
+        "hanzi": "我量了体温度",
+        "pinyin": "wǒ liáng le tǐ wēndù",
+        "english": "me tomé la temperatura"
+      }
+    },
+    {
+      "hanzi": "文章",
+      "pinyin": "wénzhāng",
+      "english": "artículo; ensayo",
+      "example": {
+        "hanzi": "这篇文章很好",
+        "pinyin": "zhè piān wénzhāng hěn hǎo",
+        "english": "este artículo es muy bueno"
+      }
+    },
+    {
+      "hanzi": "污染",
+      "pinyin": "wūrǎn",
+      "english": "contaminación; polución",
+      "example": {
+        "hanzi": "空气污染很严重",
+        "pinyin": "kōngqì wūrǎn hěn yánzhòng",
+        "english": "la contaminación del aire es muy grave"
+      }
+    },
+    {
+      "hanzi": "无",
+      "pinyin": "wú",
+      "english": "no tener; sin; no (radical de Kangxi 71)",
+      "example": {
+        "hanzi": "这事无关紧要",
+        "pinyin": "zhè shì wú guān jǐnyào",
+        "english": "este asunto no tiene importancia"
+      }
+    },
+    {
+      "hanzi": "无聊",
+      "pinyin": "wúliáo",
+      "english": "aburrido; sin sentido; tonto",
+      "example": {
+        "hanzi": "我觉得很无聊",
+        "pinyin": "wǒ juéde hěn wúliáo",
+        "english": "me siento muy aburrido"
+      }
+    },
+    {
+      "hanzi": "无论",
+      "pinyin": "wúlùn",
+      "english": "sin importar; no importa si...",
+      "example": {
+        "hanzi": "无论下雨我都去",
+        "pinyin": "wúlùn xiàyǔ wǒ dōu qù",
+        "english": "pase lo que pase, voy"
+      }
+    },
+    {
+      "hanzi": "误会",
+      "pinyin": "wùhuì",
+      "english": "malinterpretar; equivocarse",
+      "example": {
+        "hanzi": "这是个误会",
+        "pinyin": "zhè shì gè wùhuì",
+        "english": "esto es un malentendido"
+      }
+    },
+    {
+      "hanzi": "西红柿",
+      "pinyin": "xīhóngshì",
+      "english": "tomate",
+      "example": {
+        "hanzi": "我爱吃西红柿",
+        "pinyin": "wǒ ài chī xīhóngshì",
+        "english": "me encanta comer tomates"
+      }
+    },
+    {
+      "hanzi": "吸引",
+      "pinyin": "xīyǐn",
+      "english": "atraer (interés, inversión, etc.)",
+      "example": {
+        "hanzi": "这个地方很吸引人",
+        "pinyin": "zhège dìfang hěn xīyǐn rén",
+        "english": "este lugar atrae a la gente"
+      }
+    },
+    {
+      "hanzi": "咸",
+      "pinyin": "xián",
+      "english": "salado; con sal",
+      "example": {
+        "hanzi": "汤太咸了",
+        "pinyin": "tāng tài xián le",
+        "english": "la sopa está demasiado salada"
+      }
+    },
+    {
+      "hanzi": "现金",
+      "pinyin": "xiànjīn",
+      "english": "efectivo",
+      "example": {
+        "hanzi": "我用现金付钱",
+        "pinyin": "wǒ yòng xiànjīn fù qián",
+        "english": "pago en efectivo"
+      }
+    },
+    {
+      "hanzi": "羡慕",
+      "pinyin": "xiànmù",
+      "english": "envidiar; admirar",
+      "example": {
+        "hanzi": "我很羡慕你",
+        "pinyin": "wǒ hěn xiànmù nǐ",
+        "english": "te envidio mucho"
+      }
+    },
+    {
+      "hanzi": "相反",
+      "pinyin": "xiāngfǎn",
+      "english": "opuesto; contrario",
+      "example": {
+        "hanzi": "结果和我想的相反",
+        "pinyin": "jiéguǒ hé wǒ xiǎng de xiāngfǎn",
+        "english": "el resultado es contrario a lo que pensaba"
+      }
+    },
+    {
+      "hanzi": "相同",
+      "pinyin": "xiāngtóng",
+      "english": "idéntico; igual; parecido",
+      "example": {
+        "hanzi": "我们想法相同",
+        "pinyin": "wǒmen xiǎngfǎ xiāngtóng",
+        "english": "tenemos la misma idea"
+      }
+    },
+    {
+      "hanzi": "香",
+      "pinyin": "xiāng",
+      "english": "fragante; aromático (radical de Kangxi 186)",
+      "example": {
+        "hanzi": "花香很好闻",
+        "pinyin": "huā xiāng hěn hǎowén",
+        "english": "el aroma de las flores huele bien"
+      }
+    },
+    {
+      "hanzi": "详细",
+      "pinyin": "xiángxì",
+      "english": "detallado; con detalle; minucioso",
+      "example": {
+        "hanzi": "请详细说明",
+        "pinyin": "qǐng xiángxì shuōmíng",
+        "english": "por favor explica con detalle"
+      }
+    },
+    {
+      "hanzi": "响",
+      "pinyin": "xiǎng",
+      "english": "sonar; hacer ruido; resonar",
+      "example": {
+        "hanzi": "电话响了",
+        "pinyin": "diànhuà xiǎng le",
+        "english": "sonó el teléfono"
+      }
+    },
+    {
+      "hanzi": "橡皮",
+      "pinyin": "xiàngpí",
+      "english": "goma; borrador",
+      "example": {
+        "hanzi": "我买了块橡皮",
+        "pinyin": "wǒ mǎi le kuài xiàngpí",
+        "english": "compré un borrador"
+      }
+    },
+    {
+      "hanzi": "消息",
+      "pinyin": "xiāoxi",
+      "english": "noticia; información",
+      "example": {
+        "hanzi": "我收到消息了",
+        "pinyin": "wǒ shōudào xiāoxi le",
+        "english": "recibí la noticia"
+      }
+    },
+    {
+      "hanzi": "小吃",
+      "pinyin": "xiǎochī",
+      "english": "tentempié; aperitivo",
+      "example": {
+        "hanzi": "我们吃点小吃吧",
+        "pinyin": "wǒmen chī diǎn xiǎochī ba",
+        "english": "comamos algo de picoteo"
+      }
+    },
+    {
+      "hanzi": "小伙子",
+      "pinyin": "xiǎohuǒzi",
+      "english": "joven; muchacho; chico",
+      "example": {
+        "hanzi": "那个小伙子很高",
+        "pinyin": "nàgè xiǎohuǒzi hěn gāo",
+        "english": "ese muchacho es muy alto"
+      }
+    },
+    {
+      "hanzi": "小说",
+      "pinyin": "xiǎoshuō",
+      "english": "novela; ficción",
+      "example": {
+        "hanzi": "我在看小说",
+        "pinyin": "wǒ zài kàn xiǎoshuō",
+        "english": "estoy leyendo una novela"
+      }
+    },
+    {
+      "hanzi": "笑话",
+      "pinyin": "xiàohua",
+      "english": "chiste; broma; reírse de",
+      "example": {
+        "hanzi": "他说了个笑话",
+        "pinyin": "tā shuō le gè xiàohua",
+        "english": "contó un chiste"
+      }
+    },
+    {
+      "hanzi": "效果",
+      "pinyin": "xiàoguǒ",
+      "english": "efecto; resultado",
+      "example": {
+        "hanzi": "药的效果很好",
+        "pinyin": "yào de xiàoguǒ hěn hǎo",
+        "english": "la medicina funciona muy bien"
+      }
+    },
+    {
+      "hanzi": "心情",
+      "pinyin": "xīnqíng",
+      "english": "estado de ánimo; humor",
+      "example": {
+        "hanzi": "我今天心情不好",
+        "pinyin": "wǒ jīntiān xīnqíng bù hǎo",
+        "english": "hoy estoy de mal humor"
+      }
+    },
+    {
+      "hanzi": "辛苦",
+      "pinyin": "xīnkǔ",
+      "english": "duro; agotador; penoso",
+      "example": {
+        "hanzi": "工作很辛苦",
+        "pinyin": "gōngzuò hěn xīnkǔ",
+        "english": "el trabajo es muy duro"
+      }
+    },
+    {
+      "hanzi": "信封",
+      "pinyin": "xìnfēng",
+      "english": "sobre",
+      "example": {
+        "hanzi": "请把信放进信封",
+        "pinyin": "qǐng bǎ xìn fàng jìn xìnfēng",
+        "english": "por favor pon la carta en el sobre"
+      }
+    },
+    {
+      "hanzi": "信息",
+      "pinyin": "xìnxī",
+      "english": "información; noticia; mensaje",
+      "example": {
+        "hanzi": "这个信息很重要",
+        "pinyin": "zhège xìnxī hěn zhòngyào",
+        "english": "esta información es muy importante"
+      }
+    },
+    {
+      "hanzi": "信心",
+      "pinyin": "xìnxīn",
+      "english": "confianza; fe (en alguien o algo)",
+      "example": {
+        "hanzi": "我对你有信心",
+        "pinyin": "wǒ duì nǐ yǒu xìnxīn",
+        "english": "confío en ti"
+      }
+    },
+    {
+      "hanzi": "兴奋",
+      "pinyin": "xīngfèn",
+      "english": "emoción; estar emocionado",
+      "example": {
+        "hanzi": "他太兴奋了",
+        "pinyin": "tā tài xīngfèn le",
+        "english": "está demasiado emocionado"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "¿Qué significa 温度?",
+      "options": [
+        "temperatura",
+        "artículo",
+        "contaminación"
+      ],
+      "answer": "temperatura"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué palabra significa «malentendido»?",
+      "options": [
+        "误会",
+        "无聊",
+        "西红柿"
+      ],
+      "answer": "误会"
+    },
+    {
+      "type": "listen",
+      "audio": "现金",
+      "pinyin": "xiànjīn",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "现金",
+        "羡慕",
+        "相反"
+      ],
+      "answer": "现金"
+    },
+    {
+      "type": "listen",
+      "audio": "小吃",
+      "pinyin": "xiǎochī",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "小吃",
+        "小说",
+        "笑话"
+      ],
+      "answer": "小吃"
+    },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        {
+          "hanzi": "污染",
+          "english": "contaminación"
+        },
+        {
+          "hanzi": "吸引",
+          "english": "atraer"
+        },
+        {
+          "hanzi": "详细",
+          "english": "detallado"
+        },
+        {
+          "hanzi": "信心",
+          "english": "confianza"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Forma la frase «tomar la temperatura».",
+      "tokens": [
+        "量",
+        "体",
+        "温",
+        "度"
+      ],
+      "answer": "量体温度"
+    },
+    {
+      "type": "order",
+      "prompt": "Ordena los caracteres para decir «recibí la noticia».",
+      "tokens": [
+        "我",
+        "收",
+        "到",
+        "消",
+        "息",
+        "了"
+      ],
+      "answer": "我收到消息了"
+    }
+  ]
+}

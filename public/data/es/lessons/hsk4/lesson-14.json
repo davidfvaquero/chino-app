@@ -1,0 +1,406 @@
+{
+  "id": "hsk4-14",
+  "title": "Cultura, arte e historia",
+  "intro": "Descubre vocabulario sobre el patrimonio cultural, la expresión artística, conceptos históricos y las costumbres tradicionales de la sociedad china.",
+  "vocabulary": [
+    {
+      "hanzi": "收入",
+      "pinyin": "shōurù",
+      "english": "ingresos; renta",
+      "example": {
+        "hanzi": "他的收入很高",
+        "pinyin": "tā de shōurù hěn gāo",
+        "english": "sus ingresos son muy altos"
+      }
+    },
+    {
+      "hanzi": "收拾",
+      "pinyin": "shōushi",
+      "english": "ordenar; recoger; arreglar",
+      "example": {
+        "hanzi": "请收拾一下房间",
+        "pinyin": "qǐng shōushi yīxià fángjiān",
+        "english": "ordena la habitación, por favor"
+      }
+    },
+    {
+      "hanzi": "首都",
+      "pinyin": "shǒudū",
+      "english": "capital (ciudad)",
+      "example": {
+        "hanzi": "北京是中国的首都",
+        "pinyin": "běijīng shì zhōngguó de shǒudū",
+        "english": "Pekín es la capital de China"
+      }
+    },
+    {
+      "hanzi": "首先",
+      "pinyin": "shǒuxiān",
+      "english": "en primer lugar; primero",
+      "example": {
+        "hanzi": "首先我们要认识彼此",
+        "pinyin": "shǒuxiān wǒmen yào rènshi bǐcǐ",
+        "english": "primero tenemos que conocernos"
+      }
+    },
+    {
+      "hanzi": "受不了",
+      "pinyin": "shòu bu liǎo",
+      "english": "no aguantar; insoportable",
+      "example": {
+        "hanzi": "这天气我受不了",
+        "pinyin": "zhè tiānqì wǒ shòu bu liǎo",
+        "english": "no aguanto este tiempo"
+      }
+    },
+    {
+      "hanzi": "受到",
+      "pinyin": "shòudào",
+      "english": "recibir (una influencia); ser objeto de",
+      "example": {
+        "hanzi": "他受到了表扬",
+        "pinyin": "tā shòudào le biǎoyáng",
+        "english": "recibió elogios"
+      }
+    },
+    {
+      "hanzi": "售货员",
+      "pinyin": "shòuhuòyuán",
+      "english": "dependiente; vendedor",
+      "example": {
+        "hanzi": "售货员很热情",
+        "pinyin": "shòuhuòyuán hěn rèqíng",
+        "english": "el dependiente es muy atento"
+      }
+    },
+    {
+      "hanzi": "输",
+      "pinyin": "shū",
+      "english": "transportar; perder (un juego)",
+      "example": {
+        "hanzi": "我们输了比赛",
+        "pinyin": "wǒmen shū le bǐsài",
+        "english": "perdimos el partido"
+      }
+    },
+    {
+      "hanzi": "熟悉",
+      "pinyin": "shúxī",
+      "english": "conocer bien; estar familiarizado con",
+      "example": {
+        "hanzi": "我熟悉这条路",
+        "pinyin": "wǒ shúxī zhè tiáo lù",
+        "english": "conozco bien esta carretera"
+      }
+    },
+    {
+      "hanzi": "数量",
+      "pinyin": "shùliàng",
+      "english": "cantidad; número",
+      "example": {
+        "hanzi": "数量不够",
+        "pinyin": "shùliàng bù gòu",
+        "english": "la cantidad no es suficiente"
+      }
+    },
+    {
+      "hanzi": "数字",
+      "pinyin": "shùzì",
+      "english": "número; cifra; dígito",
+      "example": {
+        "hanzi": "请输入数字",
+        "pinyin": "qǐng shūrù shùzì",
+        "english": "introduce el número, por favor"
+      }
+    },
+    {
+      "hanzi": "帅",
+      "pinyin": "shuài",
+      "english": "guapo; elegante; comandante",
+      "example": {
+        "hanzi": "他长得很帅",
+        "pinyin": "tā zhǎng de hěn shuài",
+        "english": "es muy guapo"
+      }
+    },
+    {
+      "hanzi": "顺便",
+      "pinyin": "shùnbiàn",
+      "english": "de paso; aprovechando la ocasión",
+      "example": {
+        "hanzi": "顺便买点水果",
+        "pinyin": "shùnbiàn mǎi diǎn shuǐguǒ",
+        "english": "compra algo de fruta de paso"
+      }
+    },
+    {
+      "hanzi": "顺利",
+      "pinyin": "shùnlì",
+      "english": "ir bien; salir bien",
+      "example": {
+        "hanzi": "考试很顺利",
+        "pinyin": "kǎoshì hěn shùnlì",
+        "english": "el examen salió bien"
+      }
+    },
+    {
+      "hanzi": "顺序",
+      "pinyin": "shùnxù",
+      "english": "secuencia; orden",
+      "example": {
+        "hanzi": "按顺序排好",
+        "pinyin": "àn shùnxù pái hǎo",
+        "english": "colócalos en orden"
+      }
+    },
+    {
+      "hanzi": "说明",
+      "pinyin": "shuōmíng",
+      "english": "explicar; explicación; aclarar",
+      "example": {
+        "hanzi": "请说明原因",
+        "pinyin": "qǐng shuōmíng yuányīn",
+        "english": "explica la razón, por favor"
+      }
+    },
+    {
+      "hanzi": "硕士",
+      "pinyin": "shuòshì",
+      "english": "máster; maestría",
+      "example": {
+        "hanzi": "他读硕士",
+        "pinyin": "tā dú shuòshì",
+        "english": "está haciendo un máster"
+      }
+    },
+    {
+      "hanzi": "死",
+      "pinyin": "sǐ",
+      "english": "morir; muerto; fijo; extremadamente",
+      "example": {
+        "hanzi": "别死记硬背",
+        "pinyin": "bié sǐ jì yìng bèi",
+        "english": "no memorices de forma mecánica"
+      }
+    },
+    {
+      "hanzi": "速度",
+      "pinyin": "sùdù",
+      "english": "velocidad; ritmo",
+      "example": {
+        "hanzi": "网速很快",
+        "pinyin": "wǎng sùdù hěn kuài",
+        "english": "la velocidad de internet es muy rápida"
+      }
+    },
+    {
+      "hanzi": "塑料袋",
+      "pinyin": "sùliàodài",
+      "english": "bolsa de plástico",
+      "example": {
+        "hanzi": "少用塑料袋",
+        "pinyin": "shǎo yòng sùliàodài",
+        "english": "usa menos bolsas de plástico"
+      }
+    },
+    {
+      "hanzi": "酸",
+      "pinyin": "suān",
+      "english": "agrio; dolorido",
+      "example": {
+        "hanzi": "这个柠檬很酸",
+        "pinyin": "zhège níngméng hěn suān",
+        "english": "este limón es muy ácido"
+      }
+    },
+    {
+      "hanzi": "随便",
+      "pinyin": "suíbiàn",
+      "english": "como quieras; informal; al azar",
+      "example": {
+        "hanzi": "随便坐",
+        "pinyin": "suíbiàn zuò",
+        "english": "siéntate donde quieras"
+      }
+    },
+    {
+      "hanzi": "随着",
+      "pinyin": "suízhe",
+      "english": "a medida que; con",
+      "example": {
+        "hanzi": "随着时间推移",
+        "pinyin": "suízhe shíjiān tuīyí",
+        "english": "a medida que pasa el tiempo"
+      }
+    },
+    {
+      "hanzi": "孙子",
+      "pinyin": "sūnzi",
+      "english": "nieto; hijo del hijo",
+      "example": {
+        "hanzi": "爷爷抱孙子",
+        "pinyin": "yéye bào sūnzi",
+        "english": "el abuelo sostiene a su nieto"
+      }
+    },
+    {
+      "hanzi": "所有",
+      "pinyin": "suǒyǒu",
+      "english": "todo; tener; poseer",
+      "example": {
+        "hanzi": "所有的人都来了",
+        "pinyin": "suǒyǒu de rén dōu lái le",
+        "english": "ha venido todo el mundo"
+      }
+    },
+    {
+      "hanzi": "台",
+      "pinyin": "tái",
+      "english": "plataforma; escritorio; escenario; Taiwán (abrev.); clasificador para máquinas",
+      "example": {
+        "hanzi": "一台电脑",
+        "pinyin": "yī tái diànnǎo",
+        "english": "un ordenador"
+      }
+    },
+    {
+      "hanzi": "抬",
+      "pinyin": "tái",
+      "english": "levantar; alzar; llevar entre varios",
+      "example": {
+        "hanzi": "两个人抬桌子",
+        "pinyin": "liǎng gè rén tái zhuōzi",
+        "english": "dos personas llevan la mesa"
+      }
+    },
+    {
+      "hanzi": "态度",
+      "pinyin": "tàidu",
+      "english": "actitud; talante",
+      "example": {
+        "hanzi": "工作态度很好",
+        "pinyin": "gōngzuò tàidu hěn hǎo",
+        "english": "su actitud en el trabajo es muy buena"
+      }
+    },
+    {
+      "hanzi": "谈",
+      "pinyin": "tán",
+      "english": "hablar; charlar; conversar",
+      "example": {
+        "hanzi": "我们谈谈吧",
+        "pinyin": "wǒmen tán tan ba",
+        "english": "hablemos un poco"
+      }
+    },
+    {
+      "hanzi": "弹钢琴",
+      "pinyin": "tán gāngqín",
+      "english": "tocar el piano",
+      "example": {
+        "hanzi": "妹妹会弹钢琴",
+        "pinyin": "mèimei huì tán gāngqín",
+        "english": "mi hermana sabe tocar el piano"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "¿Qué significa 首都?",
+      "options": [
+        "capital (ciudad)",
+        "ingresos",
+        "actitud"
+      ],
+      "answer": "capital (ciudad)"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué palabra significa «máster»?",
+      "options": [
+        "硕士",
+        "售货员",
+        "数量"
+      ],
+      "answer": "硕士"
+    },
+    {
+      "type": "listen",
+      "audio": "塑料袋",
+      "pinyin": "sùliàodài",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "塑料袋",
+        "速度",
+        "酸"
+      ],
+      "answer": "塑料袋"
+    },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        {
+          "hanzi": "顺利",
+          "english": "ir bien"
+        },
+        {
+          "hanzi": "孙子",
+          "english": "nieto"
+        },
+        {
+          "hanzi": "态度",
+          "english": "actitud"
+        },
+        {
+          "hanzi": "收拾",
+          "english": "ordenar"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Forma la frase «dos personas llevan la mesa».",
+      "tokens": [
+        "人",
+        "两个",
+        "桌子",
+        "抬"
+      ],
+      "answer": "两个人抬桌子"
+    },
+    {
+      "type": "order",
+      "prompt": "Ordena los caracteres para decir «el abuelo sostiene a su nieto».",
+      "tokens": [
+        "抱",
+        "孙子",
+        "爷爷"
+      ],
+      "answer": "爷爷抱孙子"
+    },
+    {
+      "type": "listen",
+      "audio": "弹钢琴",
+      "pinyin": "tán gāngqín",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "弹钢琴",
+        "谈",
+        "台"
+      ],
+      "answer": "弹钢琴"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué carácter significa «todo»?",
+      "options": [
+        "所有",
+        "随便",
+        "随着"
+      ],
+      "answer": "所有"
+    }
+  ]
+}

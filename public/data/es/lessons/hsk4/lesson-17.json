@@ -1,0 +1,397 @@
+{
+  "id": "hsk4-17",
+  "title": "Emociones, psicología y relaciones",
+  "intro": "Expresa emociones, rasgos de personalidad y relaciones sociales: felicidad, presión, género y dinámicas interpersonales.",
+  "vocabulary": [
+    {
+      "hanzi": "行",
+      "pinyin": "xíng",
+      "english": "caminar; estar en vigor; hacer; servir; vale",
+      "example": {
+        "hanzi": "这个办法行",
+        "pinyin": "zhège bànfǎ xíng",
+        "english": "este método funciona"
+      }
+    },
+    {
+      "hanzi": "醒",
+      "pinyin": "xǐng",
+      "english": "despertarse",
+      "example": {
+        "hanzi": "我七点醒了",
+        "pinyin": "wǒ qī diǎn xǐng le",
+        "english": "me desperté a las siete"
+      }
+    },
+    {
+      "hanzi": "幸福",
+      "pinyin": "xìngfú",
+      "english": "feliz; dichoso; afortunado",
+      "example": {
+        "hanzi": "祝你幸福",
+        "pinyin": "zhù nǐ xìngfú",
+        "english": "te deseo felicidad"
+      }
+    },
+    {
+      "hanzi": "性别",
+      "pinyin": "xìngbié",
+      "english": "género; sexo; distinción sexual",
+      "example": {
+        "hanzi": "请填写性别",
+        "pinyin": "qǐng tiánxiě xìngbié",
+        "english": "por favor, indica tu género"
+      }
+    },
+    {
+      "hanzi": "性格",
+      "pinyin": "xìnggé",
+      "english": "carácter; personalidad; temperamento",
+      "example": {
+        "hanzi": "他性格很开朗",
+        "pinyin": "tā xìnggé hěn kāilǎng",
+        "english": "tiene una personalidad alegre"
+      }
+    },
+    {
+      "hanzi": "修理",
+      "pinyin": "xiūlǐ",
+      "english": "reparar; hacer mantenimiento; revisar",
+      "example": {
+        "hanzi": "我修理了自行车",
+        "pinyin": "wǒ xiūlǐ le zìxíngchē",
+        "english": "reparé la bicicleta"
+      }
+    },
+    {
+      "hanzi": "许多",
+      "pinyin": "xǔduō",
+      "english": "muchos; mucho",
+      "example": {
+        "hanzi": "这里有许多书",
+        "pinyin": "zhèlǐ yǒu xǔduō shū",
+        "english": "aquí hay muchos libros"
+      }
+    },
+    {
+      "hanzi": "学期",
+      "pinyin": "xuéqī",
+      "english": "semestre; período escolar",
+      "example": {
+        "hanzi": "新学期开始了",
+        "pinyin": "xīn xuéqī kāishǐ le",
+        "english": "el nuevo semestre ha empezado"
+      }
+    },
+    {
+      "hanzi": "压力",
+      "pinyin": "yālì",
+      "english": "presión; estrés",
+      "example": {
+        "hanzi": "工作压力很大",
+        "pinyin": "gōngzuò yālì hěn dà",
+        "english": "la presión del trabajo es muy alta"
+      }
+    },
+    {
+      "hanzi": "呀",
+      "pinyin": "ya",
+      "english": "ah; oh; (se usa en lugar de 啊 tras palabras terminadas en a, e, i, o o ü)",
+      "example": {
+        "hanzi": "好呀我们去",
+        "pinyin": "hǎo ya wǒmen qù",
+        "english": "vale, vamos"
+      }
+    },
+    {
+      "hanzi": "牙膏",
+      "pinyin": "yágāo",
+      "english": "pasta de dientes",
+      "example": {
+        "hanzi": "我买了牙膏",
+        "pinyin": "wǒ mǎi le yágāo",
+        "english": "compré pasta de dientes"
+      }
+    },
+    {
+      "hanzi": "亚洲",
+      "pinyin": "Yàzhōu",
+      "english": "Asia",
+      "example": {
+        "hanzi": "亚洲很大",
+        "pinyin": "yàzhōu hěn dà",
+        "english": "Asia es muy grande"
+      }
+    },
+    {
+      "hanzi": "严格",
+      "pinyin": "yángé",
+      "english": "estricto; riguroso; severo",
+      "example": {
+        "hanzi": "老师很严格",
+        "pinyin": "lǎoshī hěn yángé",
+        "english": "el profesor es muy estricto"
+      }
+    },
+    {
+      "hanzi": "严重",
+      "pinyin": "yánzhòng",
+      "english": "grave; serio; crítico",
+      "example": {
+        "hanzi": "情况很严重",
+        "pinyin": "qíngkuàng hěn yánzhòng",
+        "english": "la situación es muy grave"
+      }
+    },
+    {
+      "hanzi": "研究",
+      "pinyin": "yánjiū",
+      "english": "estudiar; investigar",
+      "example": {
+        "hanzi": "他在研究中文",
+        "pinyin": "tā zài yánjiū zhōngwén",
+        "english": "está investigando el chino"
+      }
+    },
+    {
+      "hanzi": "盐",
+      "pinyin": "yán",
+      "english": "sal",
+      "example": {
+        "hanzi": "菜里盐太多",
+        "pinyin": "cài lǐ yán tài duō",
+        "english": "hay demasiada sal en el plato"
+      }
+    },
+    {
+      "hanzi": "眼镜",
+      "pinyin": "yǎnjìng",
+      "english": "gafas; lentes",
+      "example": {
+        "hanzi": "我戴眼镜",
+        "pinyin": "wǒ dài yǎnjìng",
+        "english": "llevo gafas"
+      }
+    },
+    {
+      "hanzi": "演出",
+      "pinyin": "yǎnchū",
+      "english": "actuar (en una obra); representar; montar un espectáculo; espectáculo",
+      "example": {
+        "hanzi": "今晚有演出",
+        "pinyin": "jīnwǎn yǒu yǎnchū",
+        "english": "esta noche hay una función"
+      }
+    },
+    {
+      "hanzi": "演员",
+      "pinyin": "yǎnyuán",
+      "english": "actor o actriz; intérprete",
+      "example": {
+        "hanzi": "他是演员",
+        "pinyin": "tā shì yǎnyuán",
+        "english": "es actor"
+      }
+    },
+    {
+      "hanzi": "阳光",
+      "pinyin": "yángguāng",
+      "english": "sol; luz del sol",
+      "example": {
+        "hanzi": "阳光真好",
+        "pinyin": "yángguāng zhēn hǎo",
+        "english": "el sol es muy agradable"
+      }
+    },
+    {
+      "hanzi": "养成",
+      "pinyin": "yǎngchéng",
+      "english": "cultivar; adquirir; formar",
+      "example": {
+        "hanzi": "养成好习惯",
+        "pinyin": "yǎngchéng hǎo xíguàn",
+        "english": "cultiva buenos hábitos"
+      }
+    },
+    {
+      "hanzi": "样子",
+      "pinyin": "yàngzi",
+      "english": "aspecto; aire; apariencia",
+      "example": {
+        "hanzi": "他样子很累",
+        "pinyin": "tā yàngzi hěn lèi",
+        "english": "tiene aspecto de estar muy cansado"
+      }
+    },
+    {
+      "hanzi": "邀请",
+      "pinyin": "yāoqǐng",
+      "english": "invitar",
+      "example": {
+        "hanzi": "我邀请你吃饭",
+        "pinyin": "wǒ yāoqǐng nǐ chīfàn",
+        "english": "te invito a comer"
+      }
+    },
+    {
+      "hanzi": "要是",
+      "pinyin": "yàoshi",
+      "english": "si; supongamos que; en caso de que",
+      "example": {
+        "hanzi": "要是下雨我不去",
+        "pinyin": "yàoshi xiàyǔ wǒ bù qù",
+        "english": "si llueve, no iré"
+      }
+    },
+    {
+      "hanzi": "钥匙",
+      "pinyin": "yàoshi",
+      "english": "llave",
+      "example": {
+        "hanzi": "钥匙在桌上",
+        "pinyin": "yàoshi zài zhuō shàng",
+        "english": "la llave está sobre la mesa"
+      }
+    },
+    {
+      "hanzi": "也许",
+      "pinyin": "yěxǔ",
+      "english": "quizá; probablemente; tal vez",
+      "example": {
+        "hanzi": "也许他会来",
+        "pinyin": "yěxǔ tā huì lái",
+        "english": "tal vez venga"
+      }
+    },
+    {
+      "hanzi": "叶子",
+      "pinyin": "yèzi",
+      "english": "hojas",
+      "example": {
+        "hanzi": "叶子绿了",
+        "pinyin": "yèzi lǜ le",
+        "english": "las hojas se pusieron verdes"
+      }
+    },
+    {
+      "hanzi": "页",
+      "pinyin": "yè",
+      "english": "página; hoja (radical 181 de Kangxi)",
+      "example": {
+        "hanzi": "翻到第六页",
+        "pinyin": "fān dào dì liù yè",
+        "english": "pasa a la página seis"
+      }
+    },
+    {
+      "hanzi": "一切",
+      "pinyin": "yíqiè",
+      "english": "todo; cada cosa",
+      "example": {
+        "hanzi": "一切都好了",
+        "pinyin": "yíqiè dōu hǎo le",
+        "english": "ahora todo está bien"
+      }
+    },
+    {
+      "hanzi": "以",
+      "pinyin": "yǐ",
+      "english": "usar; según; para; por",
+      "example": {
+        "hanzi": "以此为例",
+        "pinyin": "yǐ cǐ wéi lì",
+        "english": "toma esto como ejemplo"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "¿Qué significa 幸福?",
+      "options": [
+        "feliz",
+        "género",
+        "personalidad"
+      ],
+      "answer": "feliz"
+    },
+    {
+      "type": "choose",
+      "prompt": "¿Qué palabra significa «presión»?",
+      "options": [
+        "压力",
+        "研究",
+        "盐"
+      ],
+      "answer": "压力"
+    },
+    {
+      "type": "listen",
+      "audio": "眼镜",
+      "pinyin": "yǎnjìng",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "眼镜",
+        "演出",
+        "演员"
+      ],
+      "answer": "眼镜"
+    },
+    {
+      "type": "listen",
+      "audio": "钥匙",
+      "pinyin": "yàoshi",
+      "prompt": "Escucha y elige lo que oyes.",
+      "options": [
+        "钥匙",
+        "要是",
+        "也许"
+      ],
+      "answer": "钥匙"
+    },
+    {
+      "type": "match",
+      "prompt": "Une cada palabra con su significado.",
+      "pairs": [
+        {
+          "hanzi": "性别",
+          "english": "género"
+        },
+        {
+          "hanzi": "性格",
+          "english": "personalidad"
+        },
+        {
+          "hanzi": "修理",
+          "english": "reparar"
+        },
+        {
+          "hanzi": "阳光",
+          "english": "sol"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Forma la frase «despertarse».",
+      "tokens": [
+        "醒",
+        "了"
+      ],
+      "answer": "醒了"
+    },
+    {
+      "type": "order",
+      "prompt": "Ordena los caracteres para decir «te invito a comer».",
+      "tokens": [
+        "我",
+        "邀",
+        "请",
+        "你",
+        "吃",
+        "饭"
+      ],
+      "answer": "我邀请你吃饭"
+    }
+  ]
+}
