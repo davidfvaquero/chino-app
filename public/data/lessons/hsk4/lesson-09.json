@@ -1,0 +1,407 @@
+{
+  "id": "hsk4-09",
+  "title": "Actions, qualities & connectors",
+  "intro": "Explore action verbs, quality adjectives and logical connectors to build complex sentences.",
+  "vocabulary": [
+    {
+      "hanzi": "拒绝",
+      "pinyin": "jùjué",
+      "english": "to refuse; to decline; to reject",
+      "example": {
+        "hanzi": "拒绝邀请",
+        "pinyin": "jùjué yāoqǐng",
+        "english": "decline the invitation"
+      }
+    },
+    {
+      "hanzi": "距离",
+      "pinyin": "jùlí",
+      "english": "distance; be apart; away from",
+      "example": {
+        "hanzi": "距离不远",
+        "pinyin": "jùlí bù yuǎn",
+        "english": "the distance is not far"
+      }
+    },
+    {
+      "hanzi": "聚会",
+      "pinyin": "jùhuì",
+      "english": "hold a meeting; get together; a party",
+      "example": {
+        "hanzi": "参加聚会",
+        "pinyin": "cānjiā jùhuì",
+        "english": "attend a gathering"
+      }
+    },
+    {
+      "hanzi": "开玩笑",
+      "pinyin": "kāi wánxiào",
+      "english": "joke; play a joke; make fun of",
+      "example": {
+        "hanzi": "别开玩笑",
+        "pinyin": "bié kāi wánxiào",
+        "english": "don't joke"
+      }
+    },
+    {
+      "hanzi": "开心",
+      "pinyin": "kāixīn",
+      "english": "feel happy; have a great time; make fun of somebody",
+      "example": {
+        "hanzi": "我很开心",
+        "pinyin": "wǒ hěn kāixīn",
+        "english": "I am very happy"
+      }
+    },
+    {
+      "hanzi": "看法",
+      "pinyin": "kànfǎ",
+      "english": "point of view; opinion",
+      "example": {
+        "hanzi": "我的看法",
+        "pinyin": "wǒ de kànfǎ",
+        "english": "my opinion"
+      }
+    },
+    {
+      "hanzi": "考虑",
+      "pinyin": "kǎolǜ",
+      "english": "think over; consider",
+      "example": {
+        "hanzi": "考虑一下",
+        "pinyin": "kǎolǜ yīxià",
+        "english": "consider it"
+      }
+    },
+    {
+      "hanzi": "烤鸭",
+      "pinyin": "kǎoyā",
+      "english": "roast duck",
+      "example": {
+        "hanzi": "吃烤鸭",
+        "pinyin": "chī kǎoyā",
+        "english": "eat roast duck"
+      }
+    },
+    {
+      "hanzi": "科学",
+      "pinyin": "kēxué",
+      "english": "science; scientific knowledge",
+      "example": {
+        "hanzi": "科学进步",
+        "pinyin": "kēxué jìnbù",
+        "english": "scientific progress"
+      }
+    },
+    {
+      "hanzi": "棵",
+      "pinyin": "kē",
+      "english": "(mw for plants)",
+      "example": {
+        "hanzi": "两棵树",
+        "pinyin": "liǎng kē shù",
+        "english": "two trees"
+      }
+    },
+    {
+      "hanzi": "咳嗽",
+      "pinyin": "késou",
+      "english": "to cough",
+      "example": {
+        "hanzi": "他在咳嗽",
+        "pinyin": "tā zài késou",
+        "english": "he is coughing"
+      }
+    },
+    {
+      "hanzi": "可怜",
+      "pinyin": "kělián",
+      "english": "pitiful; poor; pathetic",
+      "example": {
+        "hanzi": "很可怜",
+        "pinyin": "hěn kělián",
+        "english": "very pitiful"
+      }
+    },
+    {
+      "hanzi": "可是",
+      "pinyin": "kěshì",
+      "english": "but; however",
+      "example": {
+        "hanzi": "可是我不去",
+        "pinyin": "kěshì wǒ bù qù",
+        "english": "but I'm not going"
+      }
+    },
+    {
+      "hanzi": "可惜",
+      "pinyin": "kěxī",
+      "english": "it's a pity; regrettable; too bad",
+      "example": {
+        "hanzi": "真可惜",
+        "pinyin": "zhēn kěxī",
+        "english": "what a pity"
+      }
+    },
+    {
+      "hanzi": "客厅",
+      "pinyin": "kètīng",
+      "english": "living room; parlor",
+      "example": {
+        "hanzi": "在客厅",
+        "pinyin": "zài kètīng",
+        "english": "in the living room"
+      }
+    },
+    {
+      "hanzi": "肯定",
+      "pinyin": "kěndìng",
+      "english": "sure; definite; affirm; approve",
+      "example": {
+        "hanzi": "我肯定去",
+        "pinyin": "wǒ kěndìng qù",
+        "english": "I will definitely go"
+      }
+    },
+    {
+      "hanzi": "空",
+      "pinyin": "kōng, kòng",
+      "english": "empty; sky | leave blank; leisure",
+      "example": {
+        "hanzi": "房间是空的",
+        "pinyin": "fángjiān shì kōng de",
+        "english": "the room is empty"
+      }
+    },
+    {
+      "hanzi": "空气",
+      "pinyin": "kōngqì",
+      "english": "air",
+      "example": {
+        "hanzi": "空气很好",
+        "pinyin": "kōngqì hěn hǎo",
+        "english": "the air is very good"
+      }
+    },
+    {
+      "hanzi": "恐怕",
+      "pinyin": "kǒngpà",
+      "english": "be afraid; to fear; I'm afraid that...",
+      "example": {
+        "hanzi": "恐怕不行",
+        "pinyin": "kǒngpà bù xíng",
+        "english": "I'm afraid it won't work"
+      }
+    },
+    {
+      "hanzi": "苦",
+      "pinyin": "kǔ",
+      "english": "bitter; miserable",
+      "example": {
+        "hanzi": "药很苦",
+        "pinyin": "yào hěn kǔ",
+        "english": "the medicine is bitter"
+      }
+    },
+    {
+      "hanzi": "矿泉水",
+      "pinyin": "kuàngquánshuǐ",
+      "english": "mineral water",
+      "example": {
+        "hanzi": "喝矿泉水",
+        "pinyin": "hē kuàngquánshuǐ",
+        "english": "drink mineral water"
+      }
+    },
+    {
+      "hanzi": "困",
+      "pinyin": "kùn",
+      "english": "sleepy; surround; hard-pressed",
+      "example": {
+        "hanzi": "我很困",
+        "pinyin": "wǒ hěn kùn",
+        "english": "I am very sleepy"
+      }
+    },
+    {
+      "hanzi": "困难",
+      "pinyin": "kùnnan",
+      "english": "difficulty; difficult; problem",
+      "example": {
+        "hanzi": "有困难",
+        "pinyin": "yǒu kùnnan",
+        "english": "have difficulties"
+      }
+    },
+    {
+      "hanzi": "垃圾桶",
+      "pinyin": "lājītǒng",
+      "english": "garbage can",
+      "example": {
+        "hanzi": "扔垃圾桶",
+        "pinyin": "rēng lājītǒng",
+        "english": "throw in the trash"
+      }
+    },
+    {
+      "hanzi": "拉",
+      "pinyin": "lā",
+      "english": "to pull; to play (string instruments); to drag",
+      "example": {
+        "hanzi": "拉门",
+        "pinyin": "lā mén",
+        "english": "pull the door"
+      }
+    },
+    {
+      "hanzi": "辣",
+      "pinyin": "là",
+      "english": "hot (spicy)",
+      "example": {
+        "hanzi": "很好吃不辣",
+        "pinyin": "hěn hǎochī bù là",
+        "english": "delicious not spicy"
+      }
+    },
+    {
+      "hanzi": "来不及",
+      "pinyin": "lái bu jí",
+      "english": "there's not enough time (to do something); it's too late",
+      "example": {
+        "hanzi": "来不及了",
+        "pinyin": "lái bu jí le",
+        "english": "it's too late now"
+      }
+    },
+    {
+      "hanzi": "来得及",
+      "pinyin": "lái de jí",
+      "english": "there's still time",
+      "example": {
+        "hanzi": "还来得及",
+        "pinyin": "hái lái de jí",
+        "english": "still have time"
+      }
+    },
+    {
+      "hanzi": "来自",
+      "pinyin": "láizì",
+      "english": "come from (a place)",
+      "example": {
+        "hanzi": "来自北京",
+        "pinyin": "láizì běijīng",
+        "english": "come from Beijing"
+      }
+    },
+    {
+      "hanzi": "懒",
+      "pinyin": "lǎn",
+      "english": "lazy",
+      "example": {
+        "hanzi": "别懒",
+        "pinyin": "bié lǎn",
+        "english": "don't be lazy"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "type": "choose",
+      "prompt": "What does 拒绝 mean?",
+      "options": [
+        "refuse",
+        "distance",
+        "gathering"
+      ],
+      "answer": "refuse"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which word means 'opinion'?",
+      "options": [
+        "看法",
+        "考虑",
+        "可怜"
+      ],
+      "answer": "看法"
+    },
+    {
+      "type": "listen",
+      "audio": "开心",
+      "pinyin": "kāixīn",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "开心",
+        "科学",
+        "咳嗽"
+      ],
+      "answer": "开心"
+    },
+    {
+      "type": "match",
+      "prompt": "Match each word to its meaning.",
+      "pairs": [
+        {
+          "hanzi": "烤鸭",
+          "english": "roast duck"
+        },
+        {
+          "hanzi": "可惜",
+          "english": "what a pity"
+        },
+        {
+          "hanzi": "客厅",
+          "english": "living room"
+        },
+        {
+          "hanzi": "空气",
+          "english": "air"
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "prompt": "Make the phrase 'don't joke'.",
+      "tokens": [
+        "玩",
+        "笑",
+        "开",
+        "别"
+      ],
+      "answer": "别开玩笑"
+    },
+    {
+      "type": "order",
+      "prompt": "Put the characters in order to say 'I will definitely go'.",
+      "tokens": [
+        "去",
+        "定",
+        "肯",
+        "我"
+      ],
+      "answer": "我肯定去"
+    },
+    {
+      "type": "listen",
+      "audio": "矿泉水",
+      "pinyin": "kuàngquánshuǐ",
+      "prompt": "Listen and choose what you hear.",
+      "options": [
+        "矿泉水",
+        "困难",
+        "垃圾桶"
+      ],
+      "answer": "矿泉水"
+    },
+    {
+      "type": "choose",
+      "prompt": "Which character means 'lazy'?",
+      "options": [
+        "懒",
+        "拉",
+        "辣"
+      ],
+      "answer": "懒"
+    }
+  ]
+}
