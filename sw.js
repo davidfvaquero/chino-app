@@ -20,12 +20,25 @@ const SHELL_ASSETS = [
   './index.html',
 ];
 
+/** Entry points: without them the app cannot boot offline, so their failure
+ *  must fail the install (the browser retries later) instead of activating a
+ *  service worker that serves a half-filled shell. */
+const isEssential = (url) => url === './' || /(^|\/)index\.html$/.test(url) || url.endsWith('manifest.webmanifest');
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(SHELL_CACHE);
+      const add = (url) => cache.add(new Request(url, { cache: 'reload' }));
+      const settle = (urls) =>
+        Promise.allSettled(urls.map(add)).then((results) => urls.filter((_, i) => results[i].status === 'rejected'));
       // Individual adds: one missing optional file must not break install.
-      await Promise.allSettled(SHELL_ASSETS.map((url) => cache.add(new Request(url, { cache: 'reload' }))));
+      // Retry the failures once (a transient blip must not leave a half-filled
+      // precache), then fail the install if an essential is still missing.
+      let failed = await settle(SHELL_ASSETS);
+      if (failed.length) failed = await settle(failed);
+      const missing = failed.filter(isEssential);
+      if (missing.length) throw new Error(`precache failed: ${missing.join(', ')}`);
       await self.skipWaiting();
     })(),
   );
