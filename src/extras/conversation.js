@@ -274,9 +274,13 @@ export function render(container, ctx = {}) {
     } else {
       wrap.append(h('p', { class: 'conv-hint', text: t('conversation.loadingModels') }));
     }
-    modelSelect.addEventListener('change', () => {
+    modelSelect.addEventListener('change', async () => {
       cfg.openrouterModel = modelSelect.value;
-      storage.set('settings', CONFIG_KEYS.openrouterModel, cfg.openrouterModel);
+      await storage.set('settings', CONFIG_KEYS.openrouterModel, cfg.openrouterModel);
+      // The provider captures `model` when it is created, so without rebuilding
+      // the list the change never reaches the request body (REVIEW-3 I3).
+      await reloadProviders();
+      if (!state.disposed) paint();
     });
     wrap.append(h('label', {}, t('conversation.model'), modelSelect));
     return wrap;
@@ -521,11 +525,13 @@ async function sendMessage(provider, rawText, textarea, sendBtn, list) {
     box.insertBefore(h('div', { class: 'conv-row' },
       h('button', {
         type: 'button', class: 'btn conv-switch', text: t('conversation.switchModel'),
-        onclick: () => {
+        onclick: async () => {
           const next = nextFreeModel(state.models || [], state.config.openrouterModel);
           state.config.openrouterModel = next;
-          storage.set('settings', CONFIG_KEYS.openrouterModel, next);
-          paint();
+          await storage.set('settings', CONFIG_KEYS.openrouterModel, next);
+          // Rebuild the providers so the new model is the one actually sent.
+          await reloadProviders();
+          if (!state.disposed) paint();
         },
       }),
     ), status);
