@@ -1,18 +1,17 @@
 /**
  * reading/data.js — fetch the readings JSON (no DOM, fetch injectable for tests).
  *
- * Language-aware by default: with locale 'es' it loads
- * `data/es/readings/hsk1/...` when that file is translated and falls back to
- * English without an error (see src/data-url.js). The level is `hsk1`.
+ * Multilevel: every loader takes the HSK level (`hsk1` by default). Files live
+ * per level, at `public/data/readings/<level>/`, and the load stays
+ * language-aware: with locale 'es' it reads `data/es/readings/<level>/...` when
+ * translated and falls back to English without an error (src/data-url.js).
  */
 
 import { fetchData } from '../data-url.js';
 
-const LEVEL = 'hsk1';
-const BASE =
-  typeof document === 'undefined'
-    ? `/data/readings/${LEVEL}`
-    : new URL(`data/readings/${LEVEL}`, document.baseURI);
+/** Levels with a reading index. hsk1 is the original, default one. */
+export const LEVELS = ['hsk1', 'hsk2', 'hsk3'];
+export const DEFAULT_LEVEL = 'hsk1';
 
 async function getJSON(url, fetchImpl) {
   const doFetch = fetchImpl ?? globalThis.fetch;
@@ -21,19 +20,35 @@ async function getJSON(url, fetchImpl) {
   return res.json();
 }
 
-/** Injected fetch (tests) keeps the plain-URL contract; otherwise language-aware. */
-function loadJson(relPath, { base = BASE, fetch: fetchImpl } = {}) {
-  return fetchImpl ? getJSON(`${base}/${relPath}`, fetchImpl) : fetchData(`readings/${LEVEL}/${relPath}`);
+/** A selectable level name, or the default when unknown. */
+export function normalizeLevel(level) {
+  return LEVELS.includes(level) ? level : DEFAULT_LEVEL;
 }
 
-/** Index of available readings: `[{ id, title, topic }]`. */
-export async function loadIndex(opts = {}) {
-  const data = await loadJson('index.json', opts);
+/** Injected fetch (tests) keeps the plain-URL contract; otherwise language-aware. */
+function loadJson(level, relPath, { base, fetch: fetchImpl } = {}) {
+  if (fetchImpl) {
+    const root = base ?? (typeof document === 'undefined' ? `/data/readings/${level}` : new URL(`data/readings/${level}`, document.baseURI));
+    return getJSON(`${root}/${relPath}`, fetchImpl);
+  }
+  return fetchData(`readings/${level}/${relPath}`);
+}
+
+/**
+ * Index of available readings: `[{ id, title, topic }]`.
+ * `loadIndex(level, opts)` — the old `loadIndex(opts)` (hsk1) still works.
+ */
+export async function loadIndex(level = DEFAULT_LEVEL, opts = {}) {
+  if (level && typeof level === 'object') {
+    opts = level;
+    level = opts.level ?? DEFAULT_LEVEL;
+  }
+  const data = await loadJson(normalizeLevel(level), 'index.json', opts);
   if (Array.isArray(data)) return data;
   return Array.isArray(data?.readings) ? data.readings : [];
 }
 
-/** One reading by id (the index id doubles as the file name). */
+/** One reading by id (the index id doubles as the file name) at `opts.level`. */
 export async function loadReading(id, opts = {}) {
-  return loadJson(`${id}.json`, opts);
+  return loadJson(normalizeLevel(opts.level), `${id}.json`, opts);
 }

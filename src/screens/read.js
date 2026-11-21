@@ -14,32 +14,74 @@ import * as dictionary from '../dictionary.js';
 import { addToReview } from '../srs.js';
 import { speak, isTtsAvailable } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
-import { pinyinToggle } from '../settings.js';
+import { pinyinToggle, getSettings, setSetting } from '../settings.js';
 import { normalizeReading, tokenizeLine, wordPanel, reviewEntryFrom } from '../reading/model.js';
-import { loadIndex, loadReading } from '../reading/data.js';
+import { loadIndex, loadReading, LEVELS, DEFAULT_LEVEL, normalizeLevel } from '../reading/data.js';
 
 export const titleKey = 'screens.read.title';
+
+/** Picker labels per level; unknown levels use `home.level.<name>`. */
+const LEVEL_LABEL_KEYS = { hsk2: 'hsk2.level', hsk3: 'hsk3.level' };
+
+/** Hash path for the list (`read`) or one reading, keeping the level. */
+const readPath = (level, id) => {
+  const path = id ? `read/${id}` : 'read';
+  return level === DEFAULT_LEVEL ? path : `${path}?level=${level}`;
+};
+
+/**
+ * Level for this render: `?level=` wins (and is remembered), else the stored
+ * `readingLevel`, else hsk1 — so old `#/read` and `#/read/<id>` links work.
+ */
+async function resolveLevel(ctx) {
+  const requested = ctx?.route?.params?.level;
+  if (LEVELS.includes(requested)) {
+    setSetting('readingLevel', requested).catch(() => {});
+    return requested;
+  }
+  try {
+    return normalizeLevel((await getSettings()).readingLevel);
+  } catch {
+    return DEFAULT_LEVEL;
+  }
+}
 
 export async function render(container, ctx) {
   const id = ctx?.route?.segments?.[0];
   reset(container).append(h('p', { class: 'muted', text: t('read.loading') }));
   try {
-    if (id) await renderReader(container, ctx, id);
-    else await renderList(container, ctx);
+    const level = await resolveLevel(ctx);
+    if (id) await renderReader(container, ctx, id, level);
+    else await renderList(container, ctx, level);
   } catch (err) {
     console.error('read screen', err);
     reset(container).append(h('p', { class: 'error', text: t('read.error') }));
   }
 }
 
-async function renderList(container, ctx) {
-  const readings = await loadIndex();
+async function renderList(container, ctx, level) {
+  const readings = await loadIndex(level);
   reset(container);
+  const picker = h(
+    'div',
+    { class: 'level-picker', role: 'group', 'aria-label': t('home.level.label') },
+    ...LEVELS.map((name) =>
+      h('button', {
+        type: 'button',
+        class: 'btn option',
+        'data-level': name,
+        'aria-pressed': String(name === level),
+        text: t(LEVEL_LABEL_KEYS[name] ?? `home.level.${name}`),
+        onclick: () => ctx.navigate(`read?level=${name}`),
+      }),
+    ),
+  );
   if (!readings.length) {
-    container.append(h('p', { class: 'muted', text: t('read.empty') }));
+    container.append(picker, h('p', { class: 'muted', text: t('read.empty') }));
     return;
   }
   container.append(
+    picker,
     h(
       'section',
       { class: 'menu', 'aria-label': t(titleKey) },
@@ -50,7 +92,7 @@ async function renderList(container, ctx) {
             type: 'button',
             class: 'card field',
             'data-reading': reading.id,
-            onclick: () => ctx.navigate(`read/${reading.id}`),
+            onclick: () => ctx.navigate(readPath(level, reading.id)),
           },
           h('span', { class: 'card-title', text: reading.title }),
           ...(reading.pinyin ? [h('span', { class: 'hint', html: pinyinHtml(reading.pinyin) })] : []),
@@ -62,7 +104,7 @@ async function renderList(container, ctx) {
   container.focus({ preventScroll: true });
 }
 
-async function renderReader(container, ctx, id) {
+async function renderReader(container, ctx, id, level) {
   // A pre-defined id whose file has not been written yet is normal ("coming
   // soon"); a network failure offline is not, and saying "coming soon" would be
   // a lie (REVIEW-3 I9). fetchData throws a TypeError only when the fetch itself
@@ -70,14 +112,14 @@ async function renderReader(container, ctx, id) {
   let raw = null;
   let offline = false;
   try {
-    raw = await loadReading(id);
+    raw = await loadReading(id, { level });
   } catch (err) {
     offline = err instanceof TypeError;
   }
   if (!raw) {
     reset(container).append(
       h('p', { class: offline ? 'error' : 'muted', text: t(offline ? 'common.offline' : 'common.comingSoon') }),
-      h('button', { type: 'button', class: 'btn', text: t('read.back'), onclick: () => ctx.navigate('read') }),
+      h('button', { type: 'button', class: 'btn', text: t('read.back'), onclick: () => ctx.navigate(readPath(level)) }),
     );
     return;
   }
@@ -178,7 +220,7 @@ async function renderReader(container, ctx, id) {
           class: 'btn ghost sm',
           'data-action': 'back',
           text: t('read.back'),
-          onclick: () => ctx.navigate('read'),
+          onclick: () => ctx.navigate(readPath(level)),
         }),
         pinyinButton,
         ttsOk
@@ -202,10 +244,10 @@ async function renderReader(container, ctx, id) {
         onclick: () => {
           window.dispatchEvent(
             new CustomEvent('chino:reading_done', {
-              detail: { id: reading.id, title: reading.title },
+              detail: { id: reading.id, title: reading.title, level },
             }),
           );
-          ctx.navigate('read');
+          ctx.navigate(readPath(level));
         },
       }),
     ),

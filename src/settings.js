@@ -15,6 +15,8 @@
  * Pinyin: boolean (default true = shown). Off sets <html data-pinyin="off">,
  *   which hides every .py element (see styles.css).
  * Daily goal: integer (default 20)
+ * Reading level: 'hsk1' | 'hsk2' | 'hsk3' (default 'hsk1'), the last level
+ *   opened on the Read screen
  *
  * This module owns NO colours. It only sets two things on <html>:
  *   data-theme="light|dark"   -> src/styles.css switches its light-dark() tokens
@@ -32,6 +34,7 @@ export const DEFAULTS = {
   toneColors: true,
   pinyin: true,
   dailyGoal: 20,
+  readingLevel: 'hsk1',
 };
 
 const ALLOWED = {
@@ -40,6 +43,7 @@ const ALLOWED = {
   toneColors: [true, false],
   pinyin: [true, false],
   dailyGoal: [10, 20, 30, 50],
+  readingLevel: ['hsk1', 'hsk2', 'hsk3'],
 };
 
 /** Storage keys (single 'settings' store, one key per setting). */
