@@ -173,6 +173,7 @@ test('I7/M2: the data cache is stamped from the data, not fixed (I4 kept)', asyn
     // Every source the SW serves cache-first must take part in the version.
     const sources = [
       'dict/shards/000.json',
+      'dict/index-pinyin/a.json',
       'es/dict/shards/000.json',
       'search-es/a.json',
       'strokes/shards/000.json',
@@ -190,6 +191,15 @@ test('I7/M2: the data cache is stamped from the data, not fixed (I4 kept)', asyn
       fs.writeFileSync(path.join(dir, rel), original);
     }
     assert.equal(await dataCacheVersion(dir), v1, 'restoring the data restores the version');
+
+    // No cache-first data (a build without a dictionary) is a hard error, not a
+    // silent empty hash that would pin every client to a broken build.
+    const empty = fs.mkdtempSync(path.join(os.tmpdir(), 'chino-datav-empty-'));
+    try {
+      await assert.rejects(() => dataCacheVersion(empty), 'an empty data dir throws');
+    } finally {
+      fs.rmSync(empty, { recursive: true, force: true });
+    }
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
