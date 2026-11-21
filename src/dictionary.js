@@ -179,6 +179,9 @@ function loadSpanishSearch(letter) {
 async function withSpanish(results) {
   await Promise.all(
     results.map(async (r) => {
+      // The Spanish search already resolved `defsEs` (or deliberately left it,
+      // to stay inside the request budget): do not fetch those shards again.
+      if (r.esDone) return;
       const defs = (await esShardDefs(r.shard))?.get(r.id);
       if (defs && defs.length) r.defsEs = defs;
     }),
@@ -246,9 +249,16 @@ function rank(list, limit) {
   const seen = new Set();
   return list
     .filter((h) => (seen.has(h.e.id) ? false : seen.add(h.e.id)))
-    .sort((a, b) => b.score - a.score || a.e.simp.length - b.e.simp.length)
+    // Equal score: the shorter word wins (咖啡 over 咖啡屋), then the lower id
+    // (好 over 号, both HSK1 pinyin readings of "hao").
+    .sort((a, b) => b.score - a.score || a.e.simp.length - b.e.simp.length || a.e.id - b.e.id)
     .slice(0, Math.max(0, limit))
-    .map((h) => toResult(h.e));
+    .map((h) => {
+      const r = toResult(h.e);
+      if (h.defsEs) r.defsEs = h.defsEs;
+      if (h.esDone) r.esDone = true;
+      return r;
+    });
 }
 
 async function searchHanzi(q) {
@@ -341,8 +351,12 @@ async function searchEnglish(q) {
  *
  * ES_MAX_SHARDS caps the shards one word pulls in, which is what keeps a query
  * spread over many shards (e.g. "agua", 18 of them) inside the request budget.
+ * Each shard costs two requests (the English one for the entry and the Spanish
+ * one for its defs), so the Spanish-shard budget stays one below the English
+ * one: the entries of the last shard still rank by the postings order but keep
+ * their English defs.
  */
-const ES_MAX_SHARDS = 4;
+const ES_MAX_SHARDS = 5;
 
 async function searchSpanish(q) {
   const words = esTokens(q);
@@ -361,36 +375,47 @@ async function searchSpanish(q) {
   for (const [id] of pairs) if (!order.has(id)) order.set(id, order.size);
   const shards = [...new Set(pairs.map(([, shard]) => shard))].slice(0, ES_MAX_SHARDS);
   const entries = await shardsFor(shards);
+  // Each shard costs two requests (the English entry + the Spanish defs). Keep
+  // the Spanish-shard budget two below the English one so a query that also
+  // runs the pinyin search stays inside the request budget; the entries of the
+  // last shards still rank by the postings order but keep their English defs.
+  const esShards = new Set(shards.slice(0, ES_MAX_SHARDS - 2));
   const wanted = new Set(words);
   const out = [];
   for (const e of entries) {
     if (!order.has(e.id)) continue;
-    const defs = (await esShardDefs(shardOf.get(e)))?.get(e.id) || [];
-    const tokens = new Set(defs.flatMap(esTokens));
-    if (!words.every((w) => tokens.has(w))) continue;
+    const shard = shardOf.get(e);
+    let exactDef = false;
     let best = 0;
-    for (const def of defs) {
-      const defTokens = esTokens(def);
-      for (const w of wanted) {
-        const at = defTokens.indexOf(w);
-        if (at === -1) continue;
-        best = Math.max(best, 100 - at * 5 + (defTokens.length === 1 ? 20 : 0));
+    let defsEs;
+    if (esShards.has(shard)) {
+      const defs = (await esShardDefs(shard))?.get(e.id) || [];
+      const tokens = new Set(defs.flatMap(esTokens));
+      if (!words.every((w) => tokens.has(w))) continue;
+      for (const def of defs) {
+        const defTokens = esTokens(def);
+        for (const w of wanted) {
+          const at = defTokens.indexOf(w);
+          if (at === -1) continue;
+          best = Math.max(best, 100 - at * 5 + (defTokens.length === 1 ? 20 : 0));
+        }
       }
+      // A definition segment that is exactly the query ("casa" in "hogar; casa")
+      // is the strongest hit and outranks the pinyin tier below. Split on `;`
+      // only (a comma is not a sense separator) and ignore a parenthetical
+      // qualifier, so "(préstamo) café" still counts as exactly "café".
+      exactDef = defs.some((d) =>
+        String(d)
+          .split(';')
+          .some((seg) => {
+            const t = esTokens(String(seg).replace(/\([^)]*\)/g, ' '));
+            return t.length === 1 && t[0] === primary;
+          }));
+      if (defs.length) defsEs = defs;
     }
     // Relevance (exact/prefix, position, HSK, length, id) is already encoded in
     // the postings order; `best` only nudges within an equal order.
-    // A definition segment that is exactly the query ("casa" in "hogar; casa")
-    // is the strongest hit and outranks the pinyin tier below. Split on `;`
-    // only: a comma is not a sense separator, and cutting on it let a proper
-    // name ("Shi, name of river") win as an exact hit.
-    const exactDef = defs.some((d) =>
-      String(d)
-        .split(';')
-        .some((seg) => {
-          const t = esTokens(seg);
-          return t.length === 1 && t[0] === primary;
-        }));
-    out.push({ e, score: (exactDef ? 3000 : 1000) - order.get(e.id) + Math.min(50, best) / 100 });
+    out.push({ e, exact: exactDef, defsEs, esDone: true, score: (exactDef ? 3000 : 1000) - order.get(e.id) + Math.min(50, best) / 100 });
   }
   return out;
 }
@@ -410,19 +435,33 @@ export async function search(query, { limit = 20, spanish = false } = {}) {
   if (type === 'hanzi') hits = await searchHanzi(q);
   else if (spanish && !TONE_NUM_RE.test(q) && !UNAMBIGUOUS_TONE_RE.test(q)) {
     // A Spanish word can look like pinyin ("pan", "año", "café" — the acute is
-    // the 2nd tone). Run the Spanish search and, when the query is also an exact
-    // pinyin syllable, the pinyin search together: pinyin without tones is the
-    // most common way a student types, so it must not be a last resort
-    // (REVIEW-3 I5). "ñ" is never pinyin, so that exception stays.
-    // The pinyin side is capped to 2 shards here: both searches run at once, and
-    // the combined path must stay inside the request budget.
-    const exactPinyin = !/ñ/i.test(q) && (await hasExactPinyin(q));
-    const [es, py] = await Promise.all([
-      searchSpanish(q),
-      exactPinyin ? searchPinyin(q, { maxShards: 2 }) : Promise.resolve([]),
-    ]);
-    if (es.length || py.length) hits = [...es, ...py];
-    else hits = await searchEnglish(q);
+    // the 2nd tone). Try the Spanish index first: a definition that IS the query
+    // is a strong enough hit that neither the pinyin nor the English reading is
+    // needed, which also keeps the request budget (each extra search is a
+    // request). Otherwise the query is either a pinyin syllable ("zhong") or a
+    // word that only appears inside an untranslated English fragment
+    // ("Hello Kitty", "Water Margin"); the English exact match of a common word
+    // ("hello", "water") must win over those.
+    const es = await searchSpanish(q);
+    const strongEs = es.some((h) => h.exact);
+    if (strongEs) {
+      hits = es;
+    } else if (!/ñ/i.test(q) && (await hasExactPinyin(q))) {
+      // No exact Spanish definition: a hit whose pinyin IS the query (中 for
+      // "zhong") is a stronger match than a Spanish hit that only contains the
+      // word inside a proper name ("Guan Zhong"), so lift it into the pinyin
+      // tier. Without an HSK level it still beats the Spanish non-exact tier.
+      const key = tonelessKey(q);
+      const boosted = es.map((h) => {
+        if (tonelessKey(h.e.pinyinNumeric || '') !== key) return h;
+        const score = h.e.hsk ? 2000 - h.e.hsk : 1500;
+        return { ...h, score: Math.max(h.score, score) };
+      });
+      hits = [...boosted, ...(await searchPinyin(q, { maxShards: 2 }))];
+    } else {
+      const en = await searchEnglish(q);
+      hits = en.length ? en : es;
+    }
   } else if (type === 'pinyin' || (await isPinyin(q))) hits = await searchPinyin(q);
   else hits = await searchEnglish(q);
   const ranked = rank(hits, limit);
