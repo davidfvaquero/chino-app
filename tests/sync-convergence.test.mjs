@@ -449,7 +449,7 @@ test('I12: a local write does not wait for a slow push', async () => {
 
   // A key that was ALREADY in the in-flight batch, rewritten before it lands:
   // it must stay queued (the dequeue compares the stamp that was sent) and the
-  // next push must carry the new value (REVIEW-4 M5). The clock advances so the
+  // next push must carry the new value. The clock advances so the
   // rewrite is a genuinely newer stamp, not a deduplicated retry.
   A.clock.t = 1500;
   await A.store.set('settings', 'theme', 'light');

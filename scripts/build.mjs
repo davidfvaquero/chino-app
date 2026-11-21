@@ -113,8 +113,7 @@ const swSource = await readFile(new URL('sw.js', root), 'utf8');
 const swStamped = swSource.replace("const VERSION = 'dev';", `const VERSION = '${version}';`);
 if (swStamped === swSource) throw new Error('build: could not stamp sw.js (VERSION marker missing)');
 // Data cache name: a hash of the cache-first data the site actually serves, so
-// a corrected shard rotates the data cache while a code-only change keeps it
-// (REVIEW-3 I7 / REVIEW-2 I4, REVIEW-4 M2).
+// a corrected shard rotates the data cache while a code-only change keeps it.
 const dataVersion = await dataCacheVersion(resolve(outDir, 'data'));
 const swData = swStamped.replace("const DATA_CACHE = 'chino-data-dev';", `const DATA_CACHE = 'chino-data-${dataVersion}';`);
 if (swData === swStamped) throw new Error('build: could not stamp DATA_CACHE in sw.js');

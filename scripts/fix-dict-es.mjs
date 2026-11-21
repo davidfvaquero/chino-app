@@ -60,7 +60,7 @@ export function repairEntry(en, entry) {
  *  shard, which the next regeneration would drop). */
 const DEF_OVERRIDES = new Map([
   // 家 (home/family): its Spanish def only said "hogar", so «casa» never found
-  // it. Add the word as its own segment so the index ranks it first (REVIEW-4 I2).
+  // it. Add the word as its own segment so the index ranks it first.
   [32837, (defs) => (defs[0] === 'hogar' ? ['hogar; casa', ...defs.slice(1)] : defs)],
 ]);
 

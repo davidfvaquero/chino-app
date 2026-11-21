@@ -101,7 +101,7 @@ test('I1: pinyin without tones finds the common word in the top 3 without Spanis
 
 test('I1: the mixed Spanish+pinyin path stays inside the request budget', async () => {
   // Both searches run at once, so the pinyin side is capped to 2 shards: without
-  // it "pan" downloaded 26 shards / 3.1 MB (REVIEW-4 I1, the C3 regression).
+  // it "pan" downloaded 26 shards / 3.1 MB (the C3 regression).
   for (const q of ['pan', 'wo', 'hao', 'mi']) {
     calls = [];
     bytes = 0;

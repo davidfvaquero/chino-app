@@ -157,7 +157,7 @@ const pad3 = (n) => String(n).padStart(3, '0');
  * Official HSK vocabulary as `simp\0pinyinNumeric` -> best level (1..6), read
  * from the cached lists (downloading them first so a fresh clone reproduces).
  * The level rides on the dict entries and orders the pinyin index, so a common
- * word like 我/好 is what a tone-less pinyin search finds first (REVIEW-4 I1).
+ * word like 我/好 is what a tone-less pinyin search finds first.
  */
 async function loadHskLevels() {
   const levels = new Map();
@@ -272,7 +272,7 @@ async function buildDict(entries, hskLevels) {
   // pinyin + english indices split by first letter for lazy loading.
   // `rankOf(key)` gives the comparator for one key's shard list: the pinyin
   // index puts the shards holding an HSK entry of that syllable first (best
-  // level), so a capped fetch reaches 我/好 before rare names (REVIEW-4 I1).
+  // level), so a capped fetch reaches 我/好 before rare names.
   const writeLetterIndex = (map, subdir, rankOf) => {
     const byLetter = new Map();
     for (const [k, set] of map) {

@@ -102,7 +102,7 @@ self.addEventListener('fetch', (event) => {
 
   if (isDataRequest(url)) {
     const { response, network } = dataStrategy(request);
-    // Called synchronously, before respondWith settles (REVIEW-4 M1).
+    // Called synchronously, before respondWith settles.
     event.waitUntil(network);
     event.respondWith(response);
     return;

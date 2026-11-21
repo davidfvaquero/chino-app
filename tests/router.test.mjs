@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createRouter, href, parseRoute } from '../src/router.js';
 
 // Several tests below assign globalThis.location; restore it so a later test
-// never inherits another's hash (REVIEW-4 M6).
+// ever inherits another's hash.
 const realLocation = globalThis.location;
 afterEach(() => {
   if (realLocation === undefined) delete globalThis.location;
@@ -151,7 +151,7 @@ test('I2: the route slot is programmatically focusable (tabindex=-1)', async () 
 
 test('M3: the router focuses the slot when the screen does not', async () => {
   // strokes-sheet, themes, hardwords… never call container.focus(), so without
-  // the router fallback the focus lands on <body> (REVIEW-4 M3).
+  // the router fallback the focus lands on <body>.
   const makeNode = () => ({
     children: [],
     className: '',
