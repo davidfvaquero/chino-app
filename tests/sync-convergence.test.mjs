@@ -447,9 +447,17 @@ test('I12: a local write does not wait for a slow push', async () => {
   assert.ok(elapsed < 50, `the write waited ${elapsed}ms for the push`);
   assert.equal((await A.store.get('srs', 'card-1')).id, 'card-1');
 
+  // A key that was ALREADY in the in-flight batch, rewritten before it lands:
+  // it must stay queued (the dequeue compares the stamp that was sent) and the
+  // next push must carry the new value (REVIEW-4 M5). The clock advances so the
+  // rewrite is a genuinely newer stamp, not a deduplicated retry.
+  A.clock.t = 1500;
+  await A.store.set('settings', 'theme', 'light');
+
   release();
   assert.equal((await syncing).ok, true);
-  assert.equal((await A.sync.pending()) >= 1, true, 'the mid-push write stays queued');
+  assert.equal((await A.sync.pending()) >= 2, true, 'the mid-push writes stay queued');
   assert.equal((await A.sync.syncNow()).ok, true);
   assert.equal(server.rows.get(idOf('srs', 'card-1')).value.reviews, 1);
+  assert.equal(server.rows.get(idOf('settings', 'theme')).value, 'light', 'the rewrite was pushed');
 });
