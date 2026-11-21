@@ -317,13 +317,13 @@
     },
     {
       "type": "choose",
-      "prompt": "Which word means \"responsibility\"?",
+      "prompt": "Which word means \"to be worth\"?",
       "options": [
-        "责任",
-        "增加",
-        "招聘"
+        "值得",
+        "正确",
+        "职业"
       ],
-      "answer": "责任"
+      "answer": "值得"
     },
     {
       "type": "listen",

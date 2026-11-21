@@ -317,13 +317,13 @@
     },
     {
       "type": "choose",
-      "prompt": "¿Qué palabra significa «responsabilidad»?",
+      "prompt": "¿Qué palabra significa «valer la pena»?",
       "options": [
-        "责任",
-        "增加",
-        "招聘"
+        "值得",
+        "正确",
+        "职业"
       ],
-      "answer": "责任"
+      "answer": "值得"
     },
     {
       "type": "listen",
