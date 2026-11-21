@@ -1,0 +1,122 @@
+[
+  {
+    "id": "reading-01",
+    "title": "去旅行",
+    "pinyin": "qù lǚ xíng",
+    "topic": "A trip"
+  },
+  {
+    "id": "reading-02",
+    "title": "我的工作",
+    "pinyin": "wǒ de gōng zuò",
+    "topic": "My job"
+  },
+  {
+    "id": "reading-03",
+    "title": "学习汉语",
+    "pinyin": "xué xí hàn yǔ",
+    "topic": "Studying Chinese"
+  },
+  {
+    "id": "reading-04",
+    "title": "我的看法",
+    "pinyin": "wǒ de kàn fǎ",
+    "topic": "My opinion"
+  },
+  {
+    "id": "reading-05",
+    "title": "我的一天",
+    "pinyin": "wǒ de yī tiān",
+    "topic": "A day in my life"
+  },
+  {
+    "id": "reading-06",
+    "title": "坐火车去南方",
+    "pinyin": "zuò huǒ chē qù nán fāng",
+    "topic": "A train to the south"
+  },
+  {
+    "id": "reading-07",
+    "title": "新的工作",
+    "pinyin": "xīn de gōng zuò",
+    "topic": "A new job"
+  },
+  {
+    "id": "reading-08",
+    "title": "在学校",
+    "pinyin": "zài xué xiào",
+    "topic": "At school"
+  },
+  {
+    "id": "reading-09",
+    "title": "你怎么看",
+    "pinyin": "nǐ zěn me kàn",
+    "topic": "What do you think?"
+  },
+  {
+    "id": "reading-10",
+    "title": "我的房间",
+    "pinyin": "wǒ de fáng jiān",
+    "topic": "My room"
+  },
+  {
+    "id": "reading-11",
+    "title": "出差",
+    "pinyin": "chū chāi",
+    "topic": "A business trip"
+  },
+  {
+    "id": "reading-12",
+    "title": "找工作",
+    "pinyin": "zhǎo gōng zuò",
+    "topic": "Looking for a job"
+  },
+  {
+    "id": "reading-13",
+    "title": "考试以前",
+    "pinyin": "kǎo shì yǐ qián",
+    "topic": "Before the exam"
+  },
+  {
+    "id": "reading-14",
+    "title": "去海边",
+    "pinyin": "qù hǎi biān",
+    "topic": "At the seaside"
+  },
+  {
+    "id": "reading-15",
+    "title": "城市生活",
+    "pinyin": "chéng shì shēng huó",
+    "topic": "City life"
+  },
+  {
+    "id": "reading-16",
+    "title": "我的爱好",
+    "pinyin": "wǒ de ài hào",
+    "topic": "My hobbies"
+  },
+  {
+    "id": "reading-17",
+    "title": "同事之间",
+    "pinyin": "tóng shì zhī jiān",
+    "topic": "With colleagues"
+  },
+  {
+    "id": "reading-18",
+    "title": "学一门外语",
+    "pinyin": "xué yī mén wài yǔ",
+    "topic": "Learning a foreign language"
+  },
+  {
+    "id": "reading-19",
+    "title": "天气和季节",
+    "pinyin": "tiān qì hé jì jié",
+    "topic": "Weather and seasons"
+  },
+  {
+    "id": "reading-20",
+    "title": "我喜欢的城市",
+    "pinyin": "wǒ xǐ huān de chéng shì",
+    "topic": "A city I like"
+  }
+]
