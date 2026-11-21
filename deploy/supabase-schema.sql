@@ -43,6 +43,11 @@ returns trigger
 language plpgsql
 as $$
 begin
+  -- Cap a client's clock: a device with a badly skewed clock cannot stamp a row
+  -- years ahead and block it for everyone (REVIEW-2 I17).
+  if new.updated_at > now() + interval '5 minutes' then
+    new.updated_at := now() + interval '5 minutes';
+  end if;
   if new.updated_at < old.updated_at then
     return old;
   end if;

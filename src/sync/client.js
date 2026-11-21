@@ -49,6 +49,36 @@ export function createSync({
 } = {}) {
   /** Suppresses the write hook while we are applying pulled data. */
   let applying = false;
+  /**
+   * Every read-modify-write of `syncState` runs through this one promise chain,
+   * so two concurrent enqueue/push/pull calls can never load the same state and
+   * save over each other's change (docs/REVIEW-2.md I17).
+   */
+  let stateChain = Promise.resolve();
+  const mutate = (fn) => {
+    const run = stateChain.then(async () => {
+      const state = await loadState();
+      const out = await fn(state);
+      await saveState(state);
+      return out;
+    });
+    // Keep the chain alive even if this step rejects.
+    stateChain = run.then(() => undefined, () => undefined);
+    return run;
+  };
+  /** Debounced push after a local write (I17): one sync a few seconds later. */
+  let pushTimer = null;
+  const PUSH_DEBOUNCE_MS = 5000;
+  function schedulePush() {
+    if (!configured() || typeof setTimeout !== 'function') return;
+    if (pushTimer) clearTimeout(pushTimer);
+    pushTimer = setTimeout(() => {
+      pushTimer = null;
+      syncNow().catch(() => {});
+    }, PUSH_DEBOUNCE_MS);
+    // Do not let the debounce timer keep a Node process (tests) alive.
+    pushTimer?.unref?.();
+  }
 
   const configured = () => isConfigured(config);
   const base = () => String(config.url ?? '').replace(/\/+$/, '');
@@ -199,33 +229,37 @@ export function createSync({
     const session = await getSession();
     if (!session?.access_token) return { ok: false, reason: 'not-signed-in' };
 
-    const state = await loadState();
-    const rows = (await collectLocal(state, true)).map((record) => ({
-      store: record.store,
-      key: record.key,
-      value: record.value,
-      deleted: record.deleted,
-      updated_at: new Date(record.updated_at).toISOString(),
-    }));
+    return mutate(async (state) => {
+      const collected = await collectLocal(state, true);
+      const rows = collected.map((record) => ({
+        store: record.store,
+        key: record.key,
+        value: record.value,
+        deleted: record.deleted,
+        updated_at: new Date(record.updated_at).toISOString(),
+      }));
+      // Ids sent in this batch: only these leave the queue (a write that landed
+      // while the request was in flight stays queued, I17).
+      const sentIds = new Set(collected.map((record) => idOf(record.store, record.key)));
 
-    if (rows.length) {
-      try {
-        const sent = await authedFetch(`${base()}/rest/v1/${TABLE}`, {
-          method: 'POST',
-          headers: { Prefer: 'resolution=merge-duplicates' },
-          body: JSON.stringify(rows),
-        });
-        if (!sent.ok) return sent;
-        if (!sent.response.ok) return { ok: false, reason: 'http', status: sent.response.status };
-      } catch (error) {
-        return { ok: false, reason: 'offline', error };
+      if (rows.length) {
+        try {
+          const sent = await authedFetch(`${base()}/rest/v1/${TABLE}`, {
+            method: 'POST',
+            headers: { Prefer: 'resolution=merge-duplicates' },
+            body: JSON.stringify(rows),
+          });
+          if (!sent.ok) return sent;
+          if (!sent.response.ok) return { ok: false, reason: 'http', status: sent.response.status };
+        } catch (error) {
+          return { ok: false, reason: 'offline', error };
+        }
       }
-    }
 
-    state.queue = [];
-    state.lastSync = now();
-    await saveState(state);
-    return { ok: true, pushed: rows.length };
+      state.queue = state.queue.filter((item) => !sentIds.has(idOf(item.store, item.key)));
+      state.lastSync = now();
+      return { ok: true, pushed: rows.length };
+    });
   }
 
   /** Fetches the remote rows, merges and applies the winners locally. */
@@ -244,9 +278,9 @@ export function createSync({
       return { ok: false, reason: 'offline', error };
     }
 
-    const state = await loadState();
-    const local = await collectLocal(state);
-    const localById = new Map(local.map((record) => [idOf(record.store, record.key), record]));
+    const localById = new Map();
+    const remoteById = new Map();
+
     const rows = (Array.isArray(remote) ? remote : [])
       .filter((row) => SYNC_STORES.includes(row?.store))
       .filter((row) => !isSecret(row.store, row.key))
@@ -257,38 +291,51 @@ export function createSync({
         updated_at: row.updated_at ? Date.parse(row.updated_at) : 0,
         deleted: Boolean(row.deleted),
       }));
-    const merged = mergeAll(local, rows);
+    for (const row of rows) remoteById.set(idOf(row.store, row.key), row);
 
-    applying = true;
-    let applied = 0;
-    try {
-      for (const record of merged) {
-        const id = idOf(record.store, record.key);
-        const previous = localById.get(id);
-        if (record.deleted) {
-          if (previous) {
-            await store.remove(record.store, record.key);
-            applied += 1;
+    return mutate(async (state) => {
+      const local = await collectLocal(state);
+      for (const record of local) localById.set(idOf(record.store, record.key), record);
+      const merged = mergeAll(local, rows);
+
+      applying = true;
+      let applied = 0;
+      try {
+        for (const record of merged) {
+          const id = idOf(record.store, record.key);
+          const previous = localById.get(id);
+          const remoteRow = remoteById.get(id);
+          if (record.deleted) {
+            if (previous) {
+              await store.remove(record.store, record.key);
+              applied += 1;
+            }
+            delete state.updatedAt[id];
+            state.deleted[id] = record.updated_at;
+          } else {
+            if (!previous || JSON.stringify(previous.value) !== JSON.stringify(record.value)) {
+              await store.set(record.store, record.key, record.value);
+              applied += 1;
+            }
+            // A record only we have gets a fresh stamp so the next push carries it.
+            let stamp = record.updated_at === 0 ? now() : record.updated_at;
+            // If our copy won but the server row is NEWER (e.g. an srs card with
+            // more reviews and an older clock), restamp past it so the next push
+            // is not dropped by the keep-newer trigger (docs/REVIEW-2.md I17).
+            if (previous && remoteRow && record.updated_at < remoteRow.updated_at) {
+              stamp = Math.max(now(), remoteRow.updated_at + 1);
+            }
+            state.updatedAt[id] = stamp;
+            delete state.deleted[id];
           }
-          delete state.updatedAt[id];
-          state.deleted[id] = record.updated_at;
-        } else {
-          if (!previous || JSON.stringify(previous.value) !== JSON.stringify(record.value)) {
-            await store.set(record.store, record.key, record.value);
-            applied += 1;
-          }
-          // A record only we have gets a fresh stamp so the next push carries it.
-          state.updatedAt[id] = record.updated_at === 0 ? now() : record.updated_at;
-          delete state.deleted[id];
         }
+      } finally {
+        applying = false;
       }
-    } finally {
-      applying = false;
-    }
 
-    state.lastSync = now();
-    await saveState(state);
-    return { ok: true, applied, total: merged.length };
+      state.lastSync = now();
+      return { ok: true, applied, total: merged.length };
+    });
   }
 
   /** Pull remote changes and merge them locally, THEN push the merged state.
@@ -306,28 +353,32 @@ export function createSync({
   async function enqueue(change) {
     if (!configured() || applying) return NOT_CONFIGURED;
     if (!SYNC_STORES.includes(change?.store)) return { ok: false, reason: 'store-not-synced' };
-    const state = await loadState();
-    const id = idOf(change.store, change.key);
-    state.updatedAt[id] = now();
-    delete state.deleted[id];
-    state.queue = state.queue.filter((item) => idOf(item.store, item.key) !== id);
-    state.queue.push({ store: change.store, key: change.key, value: change.value });
-    await saveState(state);
-    return { ok: true, pending: state.queue.length };
+    const pending = await mutate((state) => {
+      const id = idOf(change.store, change.key);
+      state.updatedAt[id] = now();
+      delete state.deleted[id];
+      state.queue = state.queue.filter((item) => idOf(item.store, item.key) !== id);
+      state.queue.push({ store: change.store, key: change.key, value: change.value });
+      return state.queue.length;
+    });
+    schedulePush();
+    return { ok: true, pending };
   }
 
   /** Records a local deletion (tombstone) so it propagates to other devices. */
   async function enqueueDelete(name, key) {
     if (!configured() || applying) return NOT_CONFIGURED;
     if (!SYNC_STORES.includes(name)) return { ok: false, reason: 'store-not-synced' };
-    const state = await loadState();
-    const id = idOf(name, key);
-    delete state.updatedAt[id];
-    state.deleted[id] = now();
-    state.queue = state.queue.filter((item) => idOf(item.store, item.key) !== id);
-    state.queue.push({ store: name, key, deleted: true });
-    await saveState(state);
-    return { ok: true, pending: state.queue.length };
+    const pending = await mutate((state) => {
+      const id = idOf(name, key);
+      delete state.updatedAt[id];
+      state.deleted[id] = now();
+      state.queue = state.queue.filter((item) => idOf(item.store, item.key) !== id);
+      state.queue.push({ store: name, key, deleted: true });
+      return state.queue.length;
+    });
+    schedulePush();
+    return { ok: true, pending };
   }
 
   /** Deletes every synced row this user owns on the server (RLS scopes it). */

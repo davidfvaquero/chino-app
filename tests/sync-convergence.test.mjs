@@ -15,11 +15,13 @@ const SEP = '\u0000';
 const idOf = (store, key) => `${store}${SEP}${key}`;
 
 /** In-memory stand-in for Supabase: auth, upsert, list and scoped delete. */
-function createServer() {
+function createServer({ now = () => Date.now() } = {}) {
   const rows = new Map();
   const requests = [];
   const respond = (json, status = 200) => ({ ok: status < 400, status, json: async () => json });
-  const server = { rows, requests, onGet: null, fetchFor: null };
+  const server = { rows, requests, onGet: null, onPost: null, fetchFor: null, now };
+  // BEFORE UPDATE trigger cap (deploy/supabase-schema.sql, REVIEW-2 I17).
+  const FUTURE_CAP_MS = 5 * 60 * 1000;
 
   const fetchFor = (label) => async (url, options = {}) => {
     const u = new URL(url);
@@ -39,12 +41,17 @@ function createServer() {
       // An upsert that conflicts becomes an UPDATE, and the BEFORE UPDATE
       // trigger on sync_blobs keeps the row with the NEWER updated_at — a stale
       // device cannot overwrite a newer server row (deploy/supabase-schema.sql).
+      // A clock more than 5 minutes ahead is capped, so a skewed clock cannot
+      // block a row for long (REVIEW-2 I17).
       for (const row of body) {
         const key = idOf(row.store, row.key);
         const prev = rows.get(key);
-        if (prev && Date.parse(row.updated_at) < Date.parse(prev.updated_at)) continue;
-        rows.set(key, { ...row, user_id: 'u1' });
+        let stamp = Date.parse(row.updated_at);
+        if (stamp > now() + FUTURE_CAP_MS) stamp = now() + FUTURE_CAP_MS;
+        if (prev && stamp < Date.parse(prev.updated_at)) continue;
+        rows.set(key, { ...row, updated_at: new Date(stamp).toISOString(), user_id: 'u1' });
       }
+      if (server.onPost) await server.onPost(label);
       return respond({}, 201);
     }
     if (method === 'DELETE') {
@@ -322,4 +329,68 @@ test('an expired token is refreshed once and the request retried', async () => {
   const finalPost = server.requests.filter((r) => r.method === 'POST' && r.path === '/rest/v1/sync_blobs').at(-1);
   assert.equal(finalPost.headers.Authorization, 'Bearer T-A-new');
   assert.equal((await sync.getSession()).refresh_token, 'R-A-new');
+});
+// --------------------------------------------------------------------------
+// REVIEW-2 I17: races in syncState, srs convergence, skewed clocks.
+// --------------------------------------------------------------------------
+
+test('I17: an srs card with more reviews wins and both devices converge (6/6/6)', async () => {
+  const server = createServer();
+  const A = await ready(server, 'A', 1000);
+  const B = await ready(server, 'B', 900);
+
+  // A has the newer clock but fewer reviews; B studied more with an older clock.
+  A.clock.t = 1000;
+  await A.store.set('srs', 'd1', { id: 'd1', reviews: 5 });
+  assert.equal((await A.sync.syncNow()).ok, true);
+  assert.equal((await B.sync.syncNow()).ok, true);
+
+  B.clock.t = 900;
+  await B.store.set('srs', 'd1', { id: 'd1', reviews: 6 });
+  assert.equal((await B.sync.syncNow()).ok, true);
+  A.clock.t = 1100;
+  assert.equal((await A.sync.syncNow()).ok, true);
+  assert.equal((await B.sync.syncNow()).ok, true);
+
+  assert.equal((await A.store.get('srs', 'd1')).reviews, 6);
+  assert.equal((await B.store.get('srs', 'd1')).reviews, 6);
+  assert.equal(server.rows.get(idOf('srs', 'd1')).value.reviews, 6);
+});
+
+test('I17: a write during a push is not lost (serialized state)', async () => {
+  const server = createServer();
+  const A = await ready(server, 'A', 1000);
+
+  await A.store.set('settings', 'theme', 'dark');
+  let writeDuringPush = null;
+  server.onPost = () => {
+    if (writeDuringPush) return;
+    // Fires while the push POST is in flight; must not be overwritten by push.
+    writeDuringPush = A.store.set('settings', 'fontScale', 1.2);
+  };
+  assert.equal((await A.sync.syncNow()).ok, true);
+  await writeDuringPush;
+
+  assert.equal(await A.store.get('settings', 'fontScale'), 1.2);
+  assert.equal((await A.sync.pending()) >= 1, true, 'the mid-push write is still queued');
+  assert.equal((await A.sync.syncNow()).ok, true);
+  assert.equal(server.rows.get(idOf('settings', 'fontScale')).value, 1.2);
+});
+
+test('I17: a clock a year ahead is capped by the server and does not block', async () => {
+  const base = 1_000_000;
+  const server = createServer({ now: () => base });
+  const A = await ready(server, 'A', base + 365 * 24 * 3600 * 1000);
+
+  await A.store.set('settings', 'theme', 'dark');
+  assert.equal((await A.sync.syncNow()).ok, true);
+  const stamp = Date.parse(server.rows.get(idOf('settings', 'theme')).updated_at);
+  assert.ok(stamp <= base + 5 * 60 * 1000, `capped to +5 min (got +${(stamp - base) / 1000}s)`);
+
+  // A sane device editing after the cap still wins.
+  const B = await ready(server, 'B', base);
+  B.clock.t = base + 6 * 60 * 1000;
+  await B.store.set('settings', 'theme', 'light');
+  assert.equal((await B.sync.syncNow()).ok, true);
+  assert.equal(server.rows.get(idOf('settings', 'theme')).value, 'light');
 });

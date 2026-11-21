@@ -15,7 +15,7 @@
  */
 import { t, subscribe } from '../i18n.js';
 import { h, reset } from '../dom.js';
-import { createSync } from '../sync/client.js';
+import { sync } from '../sync/client.js';
 import { isConfigured, SYNC_CONFIG } from '../sync/config.js';
 
 export const titleKey = 'account.title';
@@ -51,7 +51,6 @@ function formatWhen(ts) {
 
 export function render(container, ctx = {}) {
   ensureStyles(document);
-  const sync = createSync();
   let unsubscribe = null;
   let message = '';
   let awaitingCode = false;

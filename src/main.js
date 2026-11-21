@@ -138,6 +138,12 @@ async function boot() {
   if (isConfigured()) {
     sync.attach();
     sync.syncNow().catch(() => {});
+    // Re-sync when the network returns and as the app goes to the background
+    // (docs/REVIEW-2.md I17).
+    window.addEventListener('online', () => sync.syncNow().catch(() => {}));
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') sync.syncNow().catch(() => {});
+    });
   }
   renderChrome();
   await router.start();
