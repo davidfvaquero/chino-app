@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-07",
+  "title": "在宾馆",
+  "titleEn": "At the hotel",
+  "topic": "Hotel",
+  "level": "hsk1",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好！我住这儿。",
+      "pinyin": "Nǐ hǎo! Wǒ zhù zhèr.",
+      "en": "Hello! I'm staying here."
+    },
+    {
+      "speaker": "B",
+      "zh": "你好！你住几号？",
+      "pinyin": "Nǐ hǎo! Nǐ zhù jǐ hào?",
+      "en": "Hello! Which room are you in?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我住八号。",
+      "pinyin": "Wǒ zhù bā hào.",
+      "en": "I'm in room eight."
+    },
+    {
+      "speaker": "B",
+      "zh": "好，八号在这儿。",
+      "pinyin": "Hǎo, bā hào zài zhèr.",
+      "en": "OK, room eight is over here."
+    },
+    {
+      "speaker": "A",
+      "zh": "谢谢！有水吗？",
+      "pinyin": "Xièxie! Yǒu shuǐ ma?",
+      "en": "Thank you! Is there water?"
+    },
+    {
+      "speaker": "B",
+      "zh": "有。这是水。",
+      "pinyin": "Yǒu. Zhè shì shuǐ.",
+      "en": "Yes. Here's water."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，谢谢！几点吃饭？",
+      "pinyin": "Hǎo, xièxie! Jǐ diǎn chīfàn?",
+      "en": "OK, thanks! What time is dinner?"
+    },
+    {
+      "speaker": "B",
+      "zh": "七点。",
+      "pinyin": "Qī diǎn.",
+      "en": "Seven o'clock."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，谢谢！再见！",
+      "pinyin": "Hǎo, xièxie! Zàijiàn!",
+      "en": "OK, thanks! Goodbye!"
+    },
+    {
+      "speaker": "B",
+      "zh": "再见！",
+      "pinyin": "Zàijiàn!",
+      "en": "Goodbye!"
+    }
+  ]
+}

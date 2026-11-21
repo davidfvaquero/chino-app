@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-07",
+  "title": "在宾馆",
+  "titleEn": "En el hotel",
+  "topic": "Hotel",
+  "level": "hsk1",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好！我住这儿。",
+      "pinyin": "Nǐ hǎo! Wǒ zhù zhèr.",
+      "en": "¡Hola! Me alojo aquí."
+    },
+    {
+      "speaker": "B",
+      "zh": "你好！你住几号？",
+      "pinyin": "Nǐ hǎo! Nǐ zhù jǐ hào?",
+      "en": "¡Hola! ¿En qué habitación estás?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我住八号。",
+      "pinyin": "Wǒ zhù bā hào.",
+      "en": "Estoy en la habitación ocho."
+    },
+    {
+      "speaker": "B",
+      "zh": "好，八号在这儿。",
+      "pinyin": "Hǎo, bā hào zài zhèr.",
+      "en": "Vale, la habitación ocho está por aquí."
+    },
+    {
+      "speaker": "A",
+      "zh": "谢谢！有水吗？",
+      "pinyin": "Xièxie! Yǒu shuǐ ma?",
+      "en": "¡Gracias! ¿Hay agua?"
+    },
+    {
+      "speaker": "B",
+      "zh": "有。这是水。",
+      "pinyin": "Yǒu. Zhè shì shuǐ.",
+      "en": "Sí. Aquí tienes agua."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，谢谢！几点吃饭？",
+      "pinyin": "Hǎo, xièxie! Jǐ diǎn chīfàn?",
+      "en": "Vale, ¡gracias! ¿A qué hora es la cena?"
+    },
+    {
+      "speaker": "B",
+      "zh": "七点。",
+      "pinyin": "Qī diǎn.",
+      "en": "A las siete."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，谢谢！再见！",
+      "pinyin": "Hǎo, xièxie! Zàijiàn!",
+      "en": "Vale, ¡gracias! ¡Adiós!"
+    },
+    {
+      "speaker": "B",
+      "zh": "再见！",
+      "pinyin": "Zàijiàn!",
+      "en": "¡Adiós!"
+    }
+  ]
+}

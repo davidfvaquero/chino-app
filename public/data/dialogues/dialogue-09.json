@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-09",
+  "title": "几点了？",
+  "titleEn": "What time is it?",
+  "topic": "Time & appointments",
+  "level": "hsk1",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "现在几点了？",
+      "pinyin": "Xiànzài jǐ diǎn le?",
+      "en": "What time is it now?"
+    },
+    {
+      "speaker": "B",
+      "zh": "现在八点。",
+      "pinyin": "Xiànzài bā diǎn.",
+      "en": "It's eight o'clock."
+    },
+    {
+      "speaker": "A",
+      "zh": "今天星期几？",
+      "pinyin": "Jīntiān xīngqī jǐ?",
+      "en": "What day is it today?"
+    },
+    {
+      "speaker": "B",
+      "zh": "今天星期三。",
+      "pinyin": "Jīntiān xīngqī sān.",
+      "en": "It's Wednesday."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，我们去学校。",
+      "pinyin": "Hǎo, wǒmen qù xuéxiào.",
+      "en": "OK, let's go to school."
+    },
+    {
+      "speaker": "B",
+      "zh": "中午吃什么？",
+      "pinyin": "Zhōngwǔ chī shénme?",
+      "en": "What shall we eat at noon?"
+    },
+    {
+      "speaker": "A",
+      "zh": "吃米饭和菜。",
+      "pinyin": "Chī mǐfàn hé cài.",
+      "en": "Rice and a dish."
+    },
+    {
+      "speaker": "B",
+      "zh": "下午去看电影吗？",
+      "pinyin": "Xiàwǔ qù kàn diànyǐng ma?",
+      "en": "Shall we go see a movie this afternoon?"
+    },
+    {
+      "speaker": "A",
+      "zh": "好！下午见！",
+      "pinyin": "Hǎo! Xiàwǔ jiàn!",
+      "en": "Sure! See you this afternoon!"
+    },
+    {
+      "speaker": "B",
+      "zh": "下午见！",
+      "pinyin": "Xiàwǔ jiàn!",
+      "en": "See you this afternoon!"
+    }
+  ]
+}

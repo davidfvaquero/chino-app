@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-10",
+  "title": "今天天气",
+  "titleEn": "Today's weather",
+  "topic": "Weather",
+  "level": "hsk1",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "今天天气怎么样？",
+      "pinyin": "Jīntiān tiānqì zěnmeyàng?",
+      "en": "How's the weather today?"
+    },
+    {
+      "speaker": "B",
+      "zh": "今天很冷。",
+      "pinyin": "Jīntiān hěn lěng.",
+      "en": "It's very cold today."
+    },
+    {
+      "speaker": "A",
+      "zh": "下雨吗？",
+      "pinyin": "Xià yǔ ma?",
+      "en": "Is it raining?"
+    },
+    {
+      "speaker": "B",
+      "zh": "不，不下雨。",
+      "pinyin": "Bù, bú xià yǔ.",
+      "en": "No, it's not raining."
+    },
+    {
+      "speaker": "A",
+      "zh": "好。明天天气怎么样？",
+      "pinyin": "Hǎo. Míngtiān tiānqì zěnmeyàng?",
+      "en": "OK. How's the weather tomorrow?"
+    },
+    {
+      "speaker": "B",
+      "zh": "明天很热。",
+      "pinyin": "Míngtiān hěn rè.",
+      "en": "It'll be very hot tomorrow."
+    },
+    {
+      "speaker": "A",
+      "zh": "我们去哪儿？",
+      "pinyin": "Wǒmen qù nǎr?",
+      "en": "Where shall we go?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我们去学校。",
+      "pinyin": "Wǒmen qù xuéxiào.",
+      "en": "Let's go to school."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，明天见！",
+      "pinyin": "Hǎo, míngtiān jiàn!",
+      "en": "OK, see you tomorrow!"
+    },
+    {
+      "speaker": "B",
+      "zh": "明天见！",
+      "pinyin": "Míngtiān jiàn!",
+      "en": "See you tomorrow!"
+    }
+  ]
+}

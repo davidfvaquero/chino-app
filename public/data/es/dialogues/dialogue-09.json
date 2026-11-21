@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-09",
+  "title": "几点了？",
+  "titleEn": "¿Qué hora es?",
+  "topic": "Hora y citas",
+  "level": "hsk1",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "现在几点了？",
+      "pinyin": "Xiànzài jǐ diǎn le?",
+      "en": "¿Qué hora es ahora?"
+    },
+    {
+      "speaker": "B",
+      "zh": "现在八点。",
+      "pinyin": "Xiànzài bā diǎn.",
+      "en": "Son las ocho."
+    },
+    {
+      "speaker": "A",
+      "zh": "今天星期几？",
+      "pinyin": "Jīntiān xīngqī jǐ?",
+      "en": "¿Qué día es hoy?"
+    },
+    {
+      "speaker": "B",
+      "zh": "今天星期三。",
+      "pinyin": "Jīntiān xīngqī sān.",
+      "en": "Hoy es miércoles."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，我们去学校。",
+      "pinyin": "Hǎo, wǒmen qù xuéxiào.",
+      "en": "Vale, vamos a la escuela."
+    },
+    {
+      "speaker": "B",
+      "zh": "中午吃什么？",
+      "pinyin": "Zhōngwǔ chī shénme?",
+      "en": "¿Qué comemos al mediodía?"
+    },
+    {
+      "speaker": "A",
+      "zh": "吃米饭和菜。",
+      "pinyin": "Chī mǐfàn hé cài.",
+      "en": "Arroz y un plato."
+    },
+    {
+      "speaker": "B",
+      "zh": "下午去看电影吗？",
+      "pinyin": "Xiàwǔ qù kàn diànyǐng ma?",
+      "en": "¿Vamos a ver una película esta tarde?"
+    },
+    {
+      "speaker": "A",
+      "zh": "好！下午见！",
+      "pinyin": "Hǎo! Xiàwǔ jiàn!",
+      "en": "¡Vale! ¡Hasta esta tarde!"
+    },
+    {
+      "speaker": "B",
+      "zh": "下午见！",
+      "pinyin": "Xiàwǔ jiàn!",
+      "en": "¡Hasta esta tarde!"
+    }
+  ]
+}

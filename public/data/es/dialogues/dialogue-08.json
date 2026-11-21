@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-08",
+  "title": "打电话",
+  "titleEn": "Una llamada",
+  "topic": "Teléfono",
+  "level": "hsk1",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "喂，你好！",
+      "pinyin": "Wéi, nǐ hǎo!",
+      "en": "¿Diga? ¡Hola!"
+    },
+    {
+      "speaker": "B",
+      "zh": "你好！你在哪儿？",
+      "pinyin": "Nǐ hǎo! Nǐ zài nǎr?",
+      "en": "¡Hola! ¿Dónde estás?"
+    },
+    {
+      "speaker": "A",
+      "zh": "我在学校。你呢？",
+      "pinyin": "Wǒ zài xuéxiào. Nǐ ne?",
+      "en": "Estoy en la escuela. ¿Y tú?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我在家。",
+      "pinyin": "Wǒ zài jiā.",
+      "en": "Estoy en casa."
+    },
+    {
+      "speaker": "A",
+      "zh": "你现在工作吗？",
+      "pinyin": "Nǐ xiànzài gōngzuò ma?",
+      "en": "¿Trabajas ahora?"
+    },
+    {
+      "speaker": "B",
+      "zh": "不，我现在学习汉语。",
+      "pinyin": "Bù, wǒ xiànzài xuéxí Hànyǔ.",
+      "en": "No, ahora estudio chino."
+    },
+    {
+      "speaker": "A",
+      "zh": "好。你什么时候来学校？",
+      "pinyin": "Hǎo. Nǐ shénme shíhou lái xuéxiào?",
+      "en": "Vale. ¿Cuándo vienes a la escuela?"
+    },
+    {
+      "speaker": "B",
+      "zh": "明天上午。",
+      "pinyin": "Míngtiān shàngwǔ.",
+      "en": "Mañana por la mañana."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，明天见！",
+      "pinyin": "Hǎo, míngtiān jiàn!",
+      "en": "Vale, ¡hasta mañana!"
+    },
+    {
+      "speaker": "B",
+      "zh": "好，再见！",
+      "pinyin": "Hǎo, zàijiàn!",
+      "en": "Vale, ¡adiós!"
+    }
+  ]
+}
