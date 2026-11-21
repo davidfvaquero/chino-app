@@ -111,7 +111,7 @@ error, y ahora también marca como **aviso** la cola inglesa tras un marcador
 
 | Hallazgo | Estado | Comentario |
 |----------|--------|------------|
-| Muestreo aleatorio estratificado (100/100/100/20) | **Hecho** | `scripts/sample_quality.mjs` + `scripts/extract_sample.mjs` |
+| Muestreo aleatorio estratificado (100/100/100/20) | **Hecho** | `scripts/tools/sample_quality.mjs` + `scripts/tools/extract_sample.mjs` |
 | Evaluación nativa ES + conocimiento CH | **Hecho** | 320 entradas revisadas una a una |
 | Cálculo porcentajes por estrato y global | **Hecho** | Ver §1 |
 | Veredicto APTO / NO APTO | **Hecho** | **APTO** (99,69 % ≥ 90 %, 0,31 % ≤ 2 %) |
