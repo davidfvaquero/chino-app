@@ -461,3 +461,36 @@ test('I12: a local write does not wait for a slow push', async () => {
   assert.equal(server.rows.get(idOf('srs', 'card-1')).value.reviews, 1);
   assert.equal(server.rows.get(idOf('settings', 'theme')).value, 'light', 'the rewrite was pushed');
 });
+
+test('M5: a key deleted while the push is in flight is not resurrected', async () => {
+  const server = createServer();
+  const A = await ready(server, 'A', 1000);
+
+  // A first version on the server, so a resurrection would overwrite it.
+  await A.store.set('srs', 'card-del', { id: 'card-del', reviews: 1 });
+  assert.equal((await A.sync.syncNow()).ok, true);
+  assert.equal(server.rows.get(idOf('srs', 'card-del')).value.reviews, 1);
+
+  let release;
+  const gate = new Promise((resolve) => { release = resolve; });
+  let postStarted;
+  const started = new Promise((resolve) => { postStarted = resolve; });
+  server.onPost = async () => { postStarted(); await gate; };
+
+  A.clock.t = 1500;
+  await A.store.set('srs', 'card-del', { id: 'card-del', reviews: 2 });
+  const syncing = A.sync.syncNow();
+  await started; // the POST is now held open, carrying reviews:2
+
+  // A key of the in-flight batch is deleted before it lands: the tombstone is
+  // newer, so the deletion must win, not the value that is still on the wire.
+  A.clock.t = 2000;
+  await A.store.remove('srs', 'card-del');
+  release();
+  assert.equal((await syncing).ok, true);
+  assert.equal((await A.sync.pending()) >= 1, true, 'the deletion stays queued');
+  assert.equal((await A.sync.syncNow()).ok, true);
+
+  assert.equal(server.rows.get(idOf('srs', 'card-del')).deleted, true, 'the deletion reaches the server');
+  assert.equal(await A.store.get('srs', 'card-del'), undefined, 'the deletion is not undone locally');
+});
