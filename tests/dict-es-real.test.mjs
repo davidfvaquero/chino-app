@@ -123,6 +123,16 @@ test('I2: casa finds 家, not just 宾馆', async () => {
   assert.ok(simpTop(await search('café', { spanish: true }), 3).includes('咖啡'));
 });
 
+test('M2: a proper name with a comma does not beat the common reading', async () => {
+  // CC-CEDICT writes many names as "Shi, name of a river". Cutting exactDef on
+  // the comma made that name an exact hit in es (shi -> 浉, guo -> 虢), ahead of
+  // the HSK pinyin tier. Splitting on `;` only leaves 是/十 and 过 on top.
+  const shi = await search('shi', { spanish: true });
+  assert.ok(['是', '十'].includes(shi[0].simp), `shi -> ${shi.slice(0, 5).map((r) => r.simp).join(',')}`);
+  const guo = await search('guo', { spanish: true });
+  assert.ok(['过', '锅'].includes(guo[0].simp), `guo -> ${guo.slice(0, 5).map((r) => r.simp).join(',')}`);
+});
+
 test('I6: agua ranks 水 first and pan ranks 面包 first', async () => {
   const agua = await search('agua', { spanish: true });
   assert.equal(agua[0].simp, '水');

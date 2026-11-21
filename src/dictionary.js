@@ -380,10 +380,12 @@ async function searchSpanish(q) {
     // Relevance (exact/prefix, position, HSK, length, id) is already encoded in
     // the postings order; `best` only nudges within an equal order.
     // A definition segment that is exactly the query ("casa" in "hogar; casa")
-    // is the strongest hit and outranks the pinyin tier below (REVIEW-4 I1/I2).
+    // is the strongest hit and outranks the pinyin tier below. Split on `;`
+    // only: a comma is not a sense separator, and cutting on it let a proper
+    // name ("Shi, name of river") win as an exact hit.
     const exactDef = defs.some((d) =>
       String(d)
-        .split(/[;,]/)
+        .split(';')
         .some((seg) => {
           const t = esTokens(seg);
           return t.length === 1 && t[0] === primary;
