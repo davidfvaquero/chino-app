@@ -14,6 +14,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { manifestFromLocale } from './manifest.mjs';
 import { listLocaleCodes, loadMergedLocale } from './build-locales.mjs';
 import { buildIndex, buildSearchIndex } from './build-dict-es-index.mjs';
+import { isShellAsset } from './lib/shell-assets.mjs';
 
 const root = new URL('../', import.meta.url);
 const outDir = resolve(process.env.OUT_DIR ?? fileURLToPath(new URL('../dist/', import.meta.url)));
@@ -108,7 +109,7 @@ const shellAssets = [
   './',
   'index.html',
   'manifest.webmanifest',
-  ...(await list(dist)).filter((f) => /^(src|icons|fonts)\/|^data\/(es\/)?lessons\/|^data\/(es\/)?files\.json$|^data\/manifest\.json$/.test(f)),
+  ...(await list(dist)).filter(isShellAsset),
 ];
 const swSource = await readFile(new URL('sw.js', root), 'utf8');
 const swStamped = swSource.replace("const VERSION = 'dev';", `const VERSION = '${version}';`);
