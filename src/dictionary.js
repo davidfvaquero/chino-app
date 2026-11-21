@@ -568,6 +568,83 @@ export async function segment(text) {
   return out;
 }
 
+// ---------------------------------------------------------------- examples
+
+/**
+ * Base of the Tatoeba example-sentence shards (public/data/examples). Like the
+ * dictionary shards these are NOT precached: a shard is fetched on demand the
+ * first time a word's examples are asked for, and cached for the session.
+ */
+const EXAMPLES_BASE =
+  typeof document === 'undefined' ? '/data/examples' : new URL('data/examples', document.baseURI);
+/** Word -> shard count; same constant as scripts/build-examples.mjs. */
+export const EXAMPLE_SHARDS = 64;
+
+/**
+ * Deterministic shard id for a word: `sum(codepoint*(position+1)) % shards`.
+ * The exact hash the data builder and tests/examples-data.test.mjs use, so the
+ * screen never has to fetch the index to find a word's shard.
+ */
+export function exampleShardOf(word, shards = EXAMPLE_SHARDS) {
+  let h = 0;
+  let i = 0;
+  for (const ch of String(word ?? '')) {
+    h = (h + ch.codePointAt(0) * (i + 1)) % 1073741824;
+    i += 1;
+  }
+  return h % shards;
+}
+
+/**
+ * Up to 4 Tatoeba example sentences for `word`, from the one shard its hash
+ * points to. Returns [] when the word has no examples (a missing key, or an
+ * empty/absent shard); a network failure rejects so the caller can degrade.
+ * @returns {Promise<Array<{id:number, zh:string, pinyin:string, en:string, es?:string}>>}
+ */
+export async function examplesFor(word) {
+  const w = String(word ?? '').trim();
+  if (!w) return [];
+  const file = `shards/${String(exampleShardOf(w)).padStart(3, '0')}.json`;
+  const bucket = await getJSON(file, EXAMPLES_BASE);
+  const list = bucket && bucket[w];
+  return Array.isArray(list) ? list : [];
+}
+
+/**
+ * Split `zh` around every occurrence of `word`, so the screen can mark the
+ * target word with a non-colour-only cue (bold + underline). Returns
+ * `[{ text, hit }]` (`hit: true` on the matched word). Never throws: an empty
+ * or absent word yields the whole string as one non-hit part.
+ */
+export function highlightWord(zh, word) {
+  const text = String(zh ?? '');
+  const w = String(word ?? '');
+  if (!w) return [{ text, hit: false }];
+  const parts = [];
+  let i = 0;
+  while (i <= text.length) {
+    const at = text.indexOf(w, i);
+    if (at === -1) {
+      if (i < text.length) parts.push({ text: text.slice(i), hit: false });
+      break;
+    }
+    if (at > i) parts.push({ text: text.slice(i, at), hit: false });
+    parts.push({ text: w, hit: true });
+    i = at + w.length;
+  }
+  return parts.length ? parts : [{ text, hit: false }];
+}
+
+/**
+ * The example's translation for a locale: Spanish when the sentence carries one
+ * (`es`), otherwise the English original (the schema always has `en`).
+ */
+export function exampleTranslation(sentence, locale = 'en') {
+  const s = sentence ?? {};
+  if (locale === 'es' && typeof s.es === 'string' && s.es) return s.es;
+  return typeof s.en === 'string' ? s.en : '';
+}
+
 /** Words dropped when comparing two definitions ("to thank" ≈ "thank you"). */
 const DEF_STOPWORDS = new Set([
   'a', 'an', 'the', 'to', 'of', 'for', 'in', 'on', 'be', 'is', 'are', 'you', 'it', 'that', 'this',

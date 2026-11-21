@@ -23,6 +23,13 @@
     "addToReview": "Añadir al repaso",
     "added": "Añadida ✓",
     "addedToReview": "{hanzi} añadida a tu repaso.",
-    "addError": "No se pudo añadir la palabra a tu repaso."
+    "addError": "No se pudo añadir la palabra a tu repaso.",
+    "examples": "Ejemplos",
+    "examplesLoading": "Cargando…",
+    "examplesNone": "Sin ejemplos.",
+    "examplesAttribution": "Frases de ejemplo de Tatoeba (CC BY 2.0 FR).",
+    "examplesCredits": "Créditos",
+    "exampleAudioFor": "Reproducir el ejemplo: {zh}",
+    "exampleAlreadyInReview": "Ese ejemplo ya está en tu repaso."
   }
 }

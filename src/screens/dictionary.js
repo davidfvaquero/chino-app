@@ -10,13 +10,15 @@
  *   container.dataset.state  = 'empty' | 'loading' | 'none' | 'results' | 'error'
  *   .dict-row[data-id]       one per result, data-added="true" when in the deck
  *   .dict-add[data-added]    the "Add to review" button
+ *   .dict-examples           <details> per row; lazy-loads the word's Tatoeba
+ *                            shard on first open (Cargando… / Sin ejemplos)
  */
 import { t, getLocale } from '../i18n.js';
 import { h, reset } from '../dom.js';
 import { href } from '../router.js';
-import { search, distinctDefs } from '../dictionary.js';
+import { search, distinctDefs, examplesFor, highlightWord, exampleTranslation } from '../dictionary.js';
 import { addToReview, listCards, cardId } from '../srs.js';
-import { speak } from '../audio.js';
+import { speak, isTtsAvailable } from '../audio.js';
 import { pinyinHtml } from '../tone.js';
 import { fetchData } from '../data-url.js';
 
@@ -26,6 +28,30 @@ export const titleKey = 'screens.dictionary.title';
 export const DEBOUNCE_MS = 250;
 /** Max results shown for one query. */
 export const RESULT_LIMIT = 20;
+
+/** Layout-only CSS for the per-word "Examples" disclosure (reuses shell vars). */
+const STYLE_ID = 'dict-examples-style';
+const CSS = `
+.dict-examples { margin-top: 0.35rem; }
+.dict-examples > summary { display: flex; align-items: center; min-height: 44px; cursor: pointer; color: var(--accent); font-weight: 600; }
+.dict-examples-body { padding-top: 0.35rem; }
+.dict-examples-list { display: grid; gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
+.dict-example { display: grid; gap: 0.15rem; }
+.dict-example-zh { margin: 0; font-size: var(--fs-md); line-height: 1.5; }
+.dict-example-hit { font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+.dict-example-pinyin { margin: 0; color: var(--ink-soft); }
+.dict-example-tr { margin: 0; color: var(--ink-soft); line-height: 1.4; }
+.dict-example-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.15rem; }
+.dict-examples-attribution { margin: 0.5rem 0 0; }
+`;
+
+function ensureStyles() {
+  if (document.getElementById(STYLE_ID)) return;
+  const style = document.createElement('style');
+  style.id = STYLE_ID;
+  style.textContent = CSS;
+  document.head.append(style);
+}
 
 /** HSK levels whose Spanish word lists carry a gloss per hanzi. */
 const GLOSS_LEVELS = [1, 2, 3];
@@ -61,6 +87,7 @@ async function deckIds() {
 }
 
 export function render(container, ctx = {}) {
+  ensureStyles();
   const state = { seq: 0, timer: null, alive: true };
 
   const input = h('input', {
@@ -110,6 +137,118 @@ export function render(container, ctx = {}) {
     status.textContent = key ? t(key, params) : '';
     status.hidden = !key;
   };
+
+  /** One example sentence: highlighted zh, pinyin, translation, audio, add. */
+  function exampleItem(sentence, word) {
+    const zh = h(
+      'p',
+      { class: 'dict-example-zh', lang: 'zh-Hans' },
+      ...highlightWord(sentence.zh, word).map((part) =>
+        part.hit
+          ? h('strong', { class: 'dict-example-hit', text: part.text })
+          : document.createTextNode(part.text),
+      ),
+    );
+
+    const actions = [];
+    // No browser voice for Chinese -> no audio button (and never an error).
+    if (isTtsAvailable()) {
+      const audio = h('button', {
+        type: 'button',
+        class: 'btn ghost sm',
+        text: t('dict.audio'),
+        'aria-label': t('dict.exampleAudioFor', { zh: sentence.zh }),
+        onclick: async () => {
+          const result = await speak(sentence.zh);
+          if (!result.ok) audio.remove(); // a missing voice/file hides it, silently
+        },
+      });
+      actions.push(audio);
+    }
+    actions.push(
+      h('button', {
+        type: 'button',
+        class: 'btn sm',
+        text: t('dict.addToReview'),
+        'aria-label': t('dict.addToReview'),
+        onclick: async (event) => {
+          const button = event.currentTarget;
+          button.disabled = true;
+          try {
+            // Same shape as the phrases screen; `ex` keeps the id out of the
+            // dictionary entry id space (both are small integers).
+            const result = await addToReview({
+              id: `ex${sentence.id}`,
+              hanzi: sentence.zh,
+              pinyin: sentence.pinyin,
+              english: sentence.en,
+              source: 'sentences',
+            });
+            button.textContent = t('dict.added');
+            setStatus(result.created ? 'dict.addedToReview' : 'dict.exampleAlreadyInReview', {
+              hanzi: sentence.zh,
+            });
+          } catch (err) {
+            console.error('dictionary: add example to review failed', err);
+            button.disabled = false;
+            setStatus('dict.addError');
+          }
+        },
+      }),
+    );
+
+    return h(
+      'li',
+      { class: 'dict-example' },
+      zh,
+      h('p', { class: 'dict-example-pinyin', html: pinyinHtml(sentence.pinyin) }),
+      h('p', { class: 'dict-example-tr', text: exampleTranslation(sentence, getLocale()) }),
+      h('div', { class: 'dict-example-actions' }, ...actions),
+    );
+  }
+
+  /**
+   * The per-word "Examples" disclosure. The shard is fetched on first open only
+   * (never on search), shows "Cargando…", and degrades to "Sin ejemplos" on an
+   * empty word or any failure — offline without cache included.
+   */
+  function examplesBlock(word) {
+    const body = h('div', { class: 'dict-examples-body' });
+    const details = h('details', { class: 'dict-examples' }, h('summary', { text: t('dict.examples') }), body);
+    let loaded = false;
+    details.addEventListener('toggle', async () => {
+      if (!details.open || loaded) return;
+      loaded = true;
+      body.replaceChildren(h('p', { class: 'hint', text: t('dict.examplesLoading') }));
+      let list = [];
+      try {
+        list = await examplesFor(word);
+      } catch {
+        list = []; // silent: offline with no cache, or a missing shard
+      }
+      if (!list.length) {
+        body.replaceChildren(h('p', { class: 'hint', text: t('dict.examplesNone') }));
+        return;
+      }
+      body.replaceChildren(
+        h('ul', { class: 'dict-examples-list' }, ...list.map((s) => exampleItem(s, word))),
+        h(
+          'p',
+          { class: 'hint dict-examples-attribution' },
+          t('dict.examplesAttribution'),
+          ' ',
+          h('a', {
+            class: 'licence-link',
+            href: 'CREDITS.md',
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            text: t('dict.examplesCredits'),
+          }),
+        ),
+      );
+    });
+    return details;
+  }
 
   /** One result row: hanzi (simp/trad), pinyin, meanings, audio, strokes, add. */
   function row(entry, isAdded, gloss = '') {
@@ -225,6 +364,7 @@ export function render(container, ctx = {}) {
       // English CC-CEDICT ones; the English list stays, labelled.
       ...(gloss ? [h('p', { class: 'dict-gloss', text: gloss })] : []),
       ...defsBlock,
+      examplesBlock(hanzi),
       h('div', { class: 'dict-actions' }, h('span', { class: 'hint dict-strokes-label', text: t('dict.strokesLabel') }), ...strokes, add),
     );
     return node;

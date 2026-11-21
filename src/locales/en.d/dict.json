@@ -23,6 +23,13 @@
     "addToReview": "Add to review",
     "added": "Added ✓",
     "addedToReview": "{hanzi} added to your review deck.",
-    "addError": "Could not add the word to your review deck."
+    "addError": "Could not add the word to your review deck.",
+    "examples": "Examples",
+    "examplesLoading": "Loading…",
+    "examplesNone": "No examples.",
+    "examplesAttribution": "Example sentences from Tatoeba (CC BY 2.0 FR).",
+    "examplesCredits": "Credits",
+    "exampleAudioFor": "Play the example: {zh}",
+    "exampleAlreadyInReview": "That example is already in your review deck."
   }
 }
