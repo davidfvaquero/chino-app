@@ -1,0 +1,44 @@
+{
+  "id": "reading-19",
+  "title": "打车回家",
+  "type": "dialogue",
+  "topic": "A taxi home",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "司机，去火车站。",
+      "pinyin": "Sījī, qù huǒchēzhàn.",
+      "english": "Driver, to the train station."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好，上车吧。",
+      "pinyin": "Hǎo, shàng chē ba.",
+      "english": "Okay, get in."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "多少钱到火车站？",
+      "pinyin": "Duōshao qián dào huǒchēzhàn?",
+      "english": "How much to the train station?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "三十块钱左右。",
+      "pinyin": "Sānshí kuài qián zuǒyòu.",
+      "english": "Around thirty yuan."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "快一点，我时间不多。",
+      "pinyin": "Kuài yīdiǎn, wǒ shíjiān bù duō.",
+      "english": "Faster, I don't have much time."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "到了，三十块钱。",
+      "pinyin": "Dào le, sānshí kuài qián.",
+      "english": "Arrived, thirty yuan."
+    }
+  ]
+}

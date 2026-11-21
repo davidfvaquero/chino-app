@@ -1,0 +1,44 @@
+{
+  "id": "reading-20",
+  "title": "下个月的打算",
+  "type": "dialogue",
+  "topic": "Next month's plans",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "下个月你想做什么？",
+      "pinyin": "Xià ge yuè nǐ xiǎng zuò shénme?",
+      "english": "What do you want to do next month?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "我想去旅游，去北京玩。",
+      "pinyin": "Wǒ xiǎng qù lǚyóu, qù Běijīng wán.",
+      "english": "I want to travel, go to Beijing for fun."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好。和谁一起去？",
+      "pinyin": "Hǎo. Hé shéi yīqǐ qù?",
+      "english": "Good. Going with who?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "和朋友一起去。你要去吗？",
+      "pinyin": "Hé péngyou yīqǐ qù. Nǐ yào qù ma?",
+      "english": "Going with friends. Do you want to go?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我也想去，问问我朋友。",
+      "pinyin": "Wǒ yě xiǎng qù, wèn wen wǒ péngyou.",
+      "english": "I also want to go, ask my friend."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好，那我们下个月见。",
+      "pinyin": "Hǎo, nà wǒmen xià ge yuè jiàn.",
+      "english": "Good, then we meet next month."
+    }
+  ]
+}

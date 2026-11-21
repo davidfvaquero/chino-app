@@ -1,0 +1,50 @@
+{
+  "id": "reading-18",
+  "title": "我的周末",
+  "type": "text",
+  "topic": "My weekend",
+  "lines": [
+    {
+      "speaker": "",
+      "hanzi": "上个星期天我去了北京。",
+      "pinyin": "Shàng ge xīngqītiān wǒ qù le Běijīng.",
+      "english": "Last Sunday I went to Beijing."
+    },
+    {
+      "speaker": "",
+      "hanzi": "星期六上午我坐火车去的。",
+      "pinyin": "Xīngqīliù shàngwǔ wǒ zuò huǒchē qù de.",
+      "english": "Saturday morning I went by train."
+    },
+    {
+      "speaker": "",
+      "hanzi": "到了北京，我先去了王明家。",
+      "pinyin": "Dào le Běijīng, wǒ xiān qù le Wáng Míng jiā.",
+      "english": "Arrived in Beijing, I first went to Wang Ming's home."
+    },
+    {
+      "speaker": "",
+      "hanzi": "我们一起吃了饭，喝了茶。",
+      "pinyin": "Wǒmen yīqǐ chī le fàn, hē le chá.",
+      "english": "We ate together, drank tea."
+    },
+    {
+      "speaker": "",
+      "hanzi": "星期天我们去学校跑步。",
+      "pinyin": "Xīngqītiān wǒmen qù xuéxiào pǎobù.",
+      "english": "Sunday we went to the school to run."
+    },
+    {
+      "speaker": "",
+      "hanzi": "下午四点我坐火车回家。",
+      "pinyin": "Xiàwǔ sì diǎn wǒ zuò huǒchē huí jiā.",
+      "english": "At four PM I took the train home."
+    },
+    {
+      "speaker": "",
+      "hanzi": "这个星期天很高兴。",
+      "pinyin": "Zhège xīngqītiān hěn gāoxìng.",
+      "english": "This Sunday was very happy."
+    }
+  ]
+}
