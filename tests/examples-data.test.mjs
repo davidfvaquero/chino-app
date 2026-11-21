@@ -213,3 +213,61 @@ test('particle 了 reads le, not liǎo (到了 is dào le, no liǎo shì / zhī 
   assert.ok(liaojie > 0, `the dataset still exercises 了解 (found ${liaojie})`);
   assert.ok(legit > 0, `the dataset still exercises legit liǎo readings (found ${legit})`);
 });
+
+// ------------------------------------------------ REVIEW-7 I3/I4 regressions
+
+const allEntries = () => {
+  const out = [];
+  for (const { file, words: bucket } of shards) {
+    for (const [word, list] of Object.entries(bucket)) {
+      for (const e of list) out.push({ file, word, ...e });
+    }
+  }
+  return out;
+};
+
+test('I3: greedy false positives are gone (去火/请安/会安/白汤/的哥)', () => {
+  const keys = new Set();
+  for (const { words: bucket } of shards) for (const word of Object.keys(bucket)) keys.add(word);
+  for (const word of ['去火', '请安', '会安', '白汤', '的哥']) {
+    assert.ok(!keys.has(word), `${word} is not used as an example key`);
+  }
+});
+
+test('I3: no sentence with 我的哥哥 reads 的 as dī', () => {
+  for (const e of allEntries()) {
+    if (!e.zh.includes('我的哥哥')) continue;
+    assert.ok(!/dī/.test(e.pinyin), `${e.zh} -> ${e.pinyin}`);
+  }
+});
+
+test('I4: the simplified text has no 於/乾净 and no Japanese variants', () => {
+  for (const e of allEntries()) {
+    assert.ok(!e.zh.includes('於'), `${e.file} ${e.word}: ${e.zh} has 於`);
+    assert.ok(!e.zh.includes('乾净'), `${e.file} ${e.word}: ${e.zh} has 乾净`);
+    for (const ch of ['髪', '顔', '犠', '兿', '貭']) {
+      assert.ok(!e.zh.includes(ch), `${e.file} ${e.word}: ${e.zh} has ${ch}`);
+    }
+  }
+});
+
+test('I4: 只 after a numeral/demonstrative reads zhī, and default readings are fixed', () => {
+  const NUMERAL = /[一二三四五六七八九十百千万两几这那每]/;
+  for (const e of allEntries()) {
+    const py = e.pinyin.toLowerCase();
+    const hanzi = [...e.zh].filter((ch) => /[\u3400-\u9fff]/.test(ch));
+    const tokens = e.pinyin.split(' ');
+    if (hanzi.length === tokens.length) {
+      for (let i = 0; i < hanzi.length - 1; i += 1) {
+        if (NUMERAL.test(hanzi[i]) && hanzi[i + 1] === '只') {
+          assert.notEqual(tokens[i + 1].toLowerCase(), 'zhǐ',
+            `${e.zh} -> ${e.pinyin} (want zhī after ${hanzi[i]})`);
+        }
+      }
+    }
+    if (e.zh.includes('一片')) assert.ok(!/yī piān/.test(py), `${e.zh} -> ${e.pinyin} (want piàn)`);
+    if (e.zh.includes('之作')) assert.ok(!/zuō/.test(py), `${e.zh} -> ${e.pinyin} (want zuò)`);
+    if (e.zh.includes('这趟')) assert.ok(!/tāng/.test(py), `${e.zh} -> ${e.pinyin} (want tàng)`);
+    if (e.zh.includes('抢')) assert.ok(!/qiāng/.test(py), `${e.zh} -> ${e.pinyin} (want qiǎng)`);
+  }
+});

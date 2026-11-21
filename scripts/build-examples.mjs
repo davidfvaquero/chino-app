@@ -145,6 +145,47 @@ function segment(text, wordSet) {
   return out;
 }
 
+/**
+ * Same greedy longest-match, but from the end. Forward matching attaches a
+ * sentence to a word the sentence does not contain (我的哥哥 -> 的哥); backward
+ * matching keeps the word the reader sees (哥哥). Returns words in text order.
+ */
+function segmentBackward(text, wordSet) {
+  const out = [];
+  for (let end = text.length; end > 0;) {
+    if (!hanzi(text[end - 1])) { end -= 1; continue; }
+    let matched = null;
+    for (let start = Math.max(0, end - MAX_WORD_LEN); start < end; start++) {
+      const cand = text.slice(start, end);
+      if (wordSet.has(cand)) { matched = cand; break; }
+    }
+    if (matched) { out.push(matched); end -= matched.length; }
+    else end -= 1;
+  }
+  return out.reverse();
+}
+
+// REVIEW-7 I4: traditional characters that the generic trad->simp map leaves
+// alone because they are also valid simplified characters. 乾 is kept in 乾隆 /
+// 乾坤 (names); 著 is kept before 名/作 and is the 着 particle elsewhere.
+const EXTRA_TRAD = { 於: '于', 乾: '干', 髪: '发', 顔: '颜', 犠: '牺', 兿: '艺' };
+
+/** Normalise a mixed traditional/simplified sentence to simplified. */
+function simplify(text, tradSimp) {
+  let out = '';
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === '乾' && (text[i + 1] === '隆' || text[i + 1] === '坤')) { out += ch; continue; }
+    if (ch === '著') {
+      const next = text[i + 1];
+      out += next === '名' || next === '作' ? ch : '着';
+      continue;
+    }
+    out += EXTRA_TRAD[ch] ?? ch;
+  }
+  return toSimplified(out, tradSimp);
+}
+
 // ponytail: ceiling — one reading per word (wordPinyin), no context, so
 // polyphonic characters can be wrong: 行 xíng/háng, 还 hái/huán, 长 cháng/zhǎng,
 // 重 zhòng/chóng, 都 dōu/dū. "行与行之间…" gets xíng yǔ xíng, "我还了…" gets
@@ -187,38 +228,62 @@ const LIAO_WORDS = new Set([
 const VERB_SUFFIX_LIAO = { '不了': 'bù liǎo' };
 const isLiaoReading = (w) => LIAO_WORDS.has(w) || /^.不了$/.test(w) || /^.得了$/.test(w);
 
-/** Pinyin for a sentence — same greedy routine as scripts/build-data.mjs. */
+/** Pinyin for a sentence — same greedy pass as scripts/build-data.mjs. */
 function makeSentencePinyin(sentence, wordPinyin, maxWordLen) {
-  // Positions that begin a forced word: the greedy match must not consume a
-  // character that belongs to one (so 不了 can't steal the 了 of 不了解).
-  const forced = FORCED_READING.filter((w) => wordPinyin.has(w));
-  const pinned = new Set();
-  for (let i = 0; i < sentence.length; i++) {
-    for (const w of forced) if (sentence.startsWith(w, i)) pinned.add(i);
-  }
+  // Forward greedy over-splits some compounds (去火 in 去火车站); backward greedy
+  // over-splits others (面的 in 见面的). Pick the segmentation with the fewest
+  // words; on a tie prefer the backward one. That keeps 见面 + 的 and
+  // 去 + 火车站 while rejecting 去火.
+  const forward = segment(sentence, wordPinyin);
+  const backward = segmentBackward(sentence, wordPinyin);
+  let words;
+  if (forward.join('') === backward.join('')) words = forward;
+  else if (backward.length < forward.length) words = backward;
+  else if (forward.length < backward.length) words = forward;
+  else words = backward;
+
   const out = [];
-  let i = 0;
-  while (i < sentence.length) {
-    let fw = null;
-    for (const w of forced) if (sentence.startsWith(w, i) && (!fw || w.length > fw.length)) fw = w;
-    if (fw) { out.push(wordPinyin.get(fw)); i += fw.length; continue; }
-    let limit = maxWordLen;
-    for (const p of pinned) if (p > i) limit = Math.min(limit, p - i);
-    let matched = 0;
-    for (let j = Math.min(limit, sentence.length - i); j >= 1; j--) {
-      const w = sentence.slice(i, i + j);
-      const py = wordPinyin.get(w);
-      if (py === undefined) continue;
-      // A word that starts or ends in 了 must not force 'liǎo' unless it is a
-      // documented whole-word reading (see isLiaoReading); skip it and let the
-      // greedy pass try a shorter match so 了 reads 'le'.
-      const edgeLiao = w[0] === '了' || w[w.length - 1] === '了';
-      if (edgeLiao && /liǎo/.test(py) && !isLiaoReading(w)) continue;
-      // V不了 / V得了: a split-off 不了/得了 right after a verb reads 'liǎo'.
-      const reading = VERB_SUFFIX_LIAO[w] && i > 0 && hanzi(sentence[i - 1]) ? VERB_SUFFIX_LIAO[w] : py;
-      out.push(reading); i += j; matched = j; break;
+  let pos = 0;
+  for (const w of words) {
+    const at = sentence.indexOf(w, pos);
+    const start = at === -1 ? pos : at;
+    const prev = sentence[start - 1] ?? '';
+    const next = sentence[start + w.length] ?? '';
+    // Split a forced word out of a larger match (在那儿 -> 在 + 那儿).
+    let parts = [w];
+    for (const forced of FORCED_READING) {
+      if (w !== forced && w.includes(forced)) {
+        const idx = w.indexOf(forced);
+        parts = [w.slice(0, idx), forced, w.slice(idx + forced.length)].filter(Boolean);
+        break;
+      }
     }
-    if (!matched) i += 1;
+    // 的哥 is a real word, but 的哥哥 is the kinship phrase.
+    if (w === '的哥' && next === '哥') parts = ['的', '哥'];
+    // 只是/这只 after a numeral or demonstrative: 只 is the measure word.
+    if (w.length > 1 && w[0] === '只' && /[一二三四五六七八九十百千万两几这那每]/.test(prev)) parts = ['只', w.slice(1)];
+
+    for (const part of parts) {
+      const py = wordPinyin.get(part);
+      if (py === undefined) continue;
+      const edgeLiao = part[0] === '了' || part[part.length - 1] === '了';
+      if (edgeLiao && /liǎo/.test(py) && !isLiaoReading(part)) {
+        for (const ch of part) {
+          const chPy = wordPinyin.get(ch);
+          if (chPy !== undefined) out.push(chPy);
+        }
+        continue;
+      }
+      let reading = VERB_SUFFIX_LIAO[part] && start > 0 && hanzi(sentence[start - 1])
+        ? VERB_SUFFIX_LIAO[part]
+        : py;
+      const partPrev = part === w ? prev : sentence[start - 1] ?? '';
+      if (part === '只' && /[一二三四五六七八九十百千万两几这那每]/.test(partPrev)) reading = 'zhī';
+      if (part === '空' && /[有没]/.test(partPrev)) reading = 'kòng';
+      if (part === '得' && /[就还也]/.test(partPrev)) reading = 'děi';
+      out.push(reading);
+    }
+    pos = start + w.length;
   }
   // ponytail: CC-CEDICT carries capitals on surnames/abbreviations (Měi, Zhōu,
   // Hànyǔ) and writes erhua as a detached "r" (nà r, zhè r, yī huì r). Fix the
@@ -264,6 +329,11 @@ async function main() {
   };
   // Both forms: pinyin is generated from the ORIGINAL (possibly traditional) text.
   for (const e of dictEntries) { consider(e.simp, e); consider(e.trad, e); }
+  // REVIEW-7 I4: these four characters are polyphonic and the dictionary's
+  // scoring picks the wrong default. Pin the everyday reading.
+  for (const [ch, py] of [['片', 'piàn'], ['作', 'zuò'], ['趟', 'tàng'], ['抢', 'qiǎng']]) {
+    wordPinyin.set(ch, py);
+  }
   log(`examples: ${dictEntries.length} dictionary entries, ${wordSet.size} words`);
 
   // ---- HSK priority (word -> best level 1..6) ------------------------------
@@ -288,18 +358,25 @@ async function main() {
     let [id, text] = parsed;
     // ponytail: sentences with latin letters or digits in the Chinese make
     // garbage pinyin (the latin is skipped, digits vanish) — drop them.
-    if (/[A-Za-z0-9]/.test(text)) return;
+    if (/[A-Za-z0-9Ａ-Ｚａ-ｚ０-９]/.test(text)) return;
     // ponytail: normalise an ASCII full stop at the end to 。 (the Chinese one).
     if (text.endsWith('.')) text = text.slice(0, -1) + '。';
     const len = [...text].length;
     if (len < MIN_CHARS || len > MAX_CHARS) return;
     if (isOffensive(text)) return;
+    if (text.includes('貭')) return;
     kept++;
-    const simp = toSimplified(text, tradSimp);
+    const simp = simplify(text, tradSimp);
     keepText.set(id, text);
     for (const ch of simp) if (hanzi(ch)) charFreq.set(ch, (charFreq.get(ch) || 0) + 1);
     const seen = new Set();
+    const backward = new Set(segmentBackward(simp, wordSet));
     for (const w of segment(simp, wordSet)) {
+      // Keep only words both passes agree on: a false word from greedy forward
+      // matching is not an example of 去火.
+      if (!backward.has(w)) continue;
+      // 的哥 is a real word, but 的哥哥 is the kinship phrase.
+      if (w === '的哥' && simp.includes('的哥哥')) continue;
       wordFreq.set(w, (wordFreq.get(w) || 0) + 1);
       if (seen.has(w)) continue;
       seen.add(w);
@@ -384,7 +461,7 @@ async function main() {
       const text = keepText.get(id);
       const eng = engOf(id);
       if (!text || !eng) continue;                 // schema requires an English field
-      const simp = toSimplified(text, tradSimp);
+      const simp = simplify(text, tradSimp);
       let fsum = 0, fcount = 0;
       for (const ch of simp) if (hanzi(ch)) { fsum += charFreq.get(ch) || 0; fcount++; }
       const es = spaOf(id, engByCmn.get(id) || []);
@@ -401,7 +478,7 @@ async function main() {
     for (const c of cands) {
       if (seenZh.has(c.simp)) continue;
       seenZh.add(c.simp);
-      const entry = { id: c.id, zh: c.simp, pinyin: makeSentencePinyin(c.text, wordPinyin, maxWordLen), en: c.en };
+      const entry = { id: c.id, zh: c.simp, pinyin: makeSentencePinyin(c.simp, wordPinyin, maxWordLen), en: c.en };
       if (c.es) entry.es = c.es;
       picked.push(entry);
       if (picked.length >= MAX_PER_WORD) break;
