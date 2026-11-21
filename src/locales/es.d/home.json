@@ -35,13 +35,28 @@
     "goal": {
       "title": "Meta diaria",
       "progress": "{done} / {goal} tarjetas hoy",
-      "reached": "Meta alcanzada: {done} / {goal} tarjetas hoy"
+      "reached": "Meta alcanzada: {done} / {goal} tarjetas hoy",
+      "set": "Meta diaria: {count} tarjetas"
     },
-    "streak": "Racha: {n} días",
+    "streak": {
+      "title": "Racha",
+      "days": {
+        "one": "{n} día",
+        "other": "{n} días"
+      },
+      "best": "Mejor racha: {n}",
+      "risk": {
+        "one": "Estudia hoy para mantener tu racha de 1 día",
+        "other": "Estudia hoy para mantener tu racha de {n} días"
+      }
+    },
     "level": {
+      "title": "Nivel",
       "label": "Nivel",
       "hsk1": "HSK 1",
-      "practical": "Práctico"
+      "practical": "Práctico",
+      "current": "Nivel {level} · {points} puntos",
+      "toNext": "{points} de {needed} puntos para el siguiente nivel"
     }
   }
 }

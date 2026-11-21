@@ -35,13 +35,28 @@
     "goal": {
       "title": "Daily goal",
       "progress": "{done} / {goal} cards today",
-      "reached": "Goal reached: {done} / {goal} cards today"
+      "reached": "Goal reached: {done} / {goal} cards today",
+      "set": "Daily goal: {count} cards"
     },
-    "streak": "Day streak: {n}",
+    "streak": {
+      "title": "Streak",
+      "days": {
+        "one": "{n} day",
+        "other": "{n} days"
+      },
+      "best": "Best streak: {n}",
+      "risk": {
+        "one": "Study today to keep your 1-day streak",
+        "other": "Study today to keep your {n}-day streak"
+      }
+    },
     "level": {
+      "title": "Level",
       "label": "Level",
       "hsk1": "HSK 1",
-      "practical": "Practical"
+      "practical": "Practical",
+      "current": "Level {level} · {points} points",
+      "toNext": "{points} of {needed} points to the next level"
     }
   }
 }

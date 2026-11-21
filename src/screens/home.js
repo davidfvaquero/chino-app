@@ -15,7 +15,7 @@ import { pinyinHtml } from '../tone.js';
 import { hanziCell } from '../hanzi.js';
 import { getDay } from '../stats.js';
 import { getStats } from '../gamification.js';
-import { getSettings, DEFAULTS } from '../settings.js';
+import { getSettings, setSetting, DEFAULTS } from '../settings.js';
 import { getHardWords } from '../hardwords.js';
 import { loadIndex as loadLessonIndex, getProgress } from '../learn/lessons.js';
 import { loadIndex as loadReadingIndex } from '../reading/data.js';
@@ -45,6 +45,25 @@ export function goalProgress(done, goal) {
   const g = Math.max(1, Number(goal) || DEFAULTS.dailyGoal);
   return { done: d, goal: g, pct: Math.min(100, Math.round((d / g) * 100)), reached: d >= g };
 }
+
+/** Daily-goal choices offered on Home (same set src/settings.js validates). */
+export const DAILY_GOAL_OPTIONS = [10, 20, 30, 50];
+
+/** `<base>.one` / `<base>.other`: the app has no ICU plurals, just two strings. */
+export function pluralKey(base, n) {
+  return `${base}.${Number(n) === 1 ? 'one' : 'other'}`;
+}
+
+/** Fallback stats so Home still renders when gamification is unavailable. */
+const EMPTY_STATS = Object.freeze({
+  streak: 0,
+  bestStreak: 0,
+  points: 0,
+  level: 1,
+  todayDone: 0,
+  streakAtRisk: false,
+  nextLevel: { points: 0, needed: 100, pct: 0 },
+});
 
 /** First lesson of an index whose progress is not completed, or null. */
 export async function findNextLesson(index, progressOf) {
@@ -80,7 +99,7 @@ async function gather(now) {
     safe(countDue(), 0),
     safe(getHardWords(), []),
     safe(getDay(dayKey(now)), { reviews: 0 }),
-    safe(getStats(), { streak: 0 }),
+    safe(getStats(), EMPTY_STATS),
     safe(getSettings(), DEFAULTS),
     safe(loadWordList(), []),
     safe(findNextLesson(lessonIndex, (id) => getProgress('hsk1', id)), null),
@@ -96,7 +115,8 @@ async function gather(now) {
     next: chooseNextStep({ due, lesson, reading }),
     hard: hard.length,
     goal: goalProgress(day.reviews, settings.dailyGoal),
-    streak: stats.streak ?? 0,
+    dailyGoal: settings.dailyGoal,
+    stats,
     word: pickWordOfDay(words, now),
     plan: planInfo,
   };
@@ -137,6 +157,66 @@ function wordCard(word) {
   );
 }
 
+function streakCard(stats) {
+  const streak = stats.streak ?? 0;
+  const card = h(
+    'section',
+    { class: 'card home-streak', 'data-role': 'streak-card' },
+    h('h2', { text: t('home.streak.title') }),
+    h(
+      'div',
+      { class: 'streak-display' },
+      h('span', { class: 'streak-value', 'data-role': 'streak-value', text: String(streak) }),
+      h('span', { class: 'streak-label', text: t(pluralKey('home.streak.days', streak), { n: streak }) }),
+    ),
+    h('p', { class: 'home-muted', 'data-role': 'streak-best', text: t('home.streak.best', { n: stats.bestStreak ?? 0 }) }),
+  );
+  // Gentle nudge, never guilt: only when yesterday was studied and today is not yet.
+  if (stats.streakAtRisk) {
+    card.append(
+      h('p', { class: 'home-muted', 'data-role': 'streak-risk', text: t(pluralKey('home.streak.risk', streak), { n: streak }) }),
+    );
+  }
+  return card;
+}
+
+function goalCard(goal, dailyGoal, onPick) {
+  return h(
+    'section',
+    { class: 'home-goal', 'data-role': 'goal' },
+    h('h2', { text: t('home.goal.title') }),
+    h('p', { class: 'home-muted', 'data-role': 'goal-progress', text: t(goal.reached ? 'home.goal.reached' : 'home.goal.progress', { done: goal.done, goal: goal.goal }) }),
+    h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(goal.goal), 'aria-valuenow': String(Math.min(goal.done, goal.goal)) }, h('span', { style: `width:${goal.pct}%` })),
+    h(
+      'div',
+      { class: 'cluster', 'data-role': 'goal-options' },
+      ...DAILY_GOAL_OPTIONS.map((count) =>
+        h('button', {
+          type: 'button',
+          class: 'chip',
+          'data-goal': String(count),
+          'aria-pressed': String(count === dailyGoal),
+          'aria-label': t('home.goal.set', { count }),
+          text: String(count),
+          onclick: () => onPick(count),
+        }),
+      ),
+    ),
+  );
+}
+
+function levelCard(stats) {
+  const next = stats.nextLevel ?? { points: 0, needed: 100, pct: 0 };
+  return h(
+    'section',
+    { class: 'card home-level', 'data-role': 'level' },
+    h('h2', { text: t('home.level.title') }),
+    h('p', { class: 'home-muted', 'data-role': 'level-current', text: t('home.level.current', { level: stats.level ?? 1, points: stats.points ?? 0 }) }),
+    h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(next.pct) }, h('span', { style: `width:${next.pct}%` })),
+    h('p', { class: 'home-muted', 'data-role': 'level-next', text: t('home.level.toNext', { points: next.points, needed: next.needed }) }),
+  );
+}
+
 export async function render(container, ctx = {}) {
   const go = (path) => (typeof ctx.navigate === 'function' ? ctx.navigate(path) : (location.hash = `#/${path}`));
   reset(container).append(h('p', { class: 'home-muted', text: t('common.loading') }));
@@ -149,7 +229,7 @@ export async function render(container, ctx = {}) {
     return;
   }
 
-  const { next, hard, goal, streak, word, plan } = state;
+  const { next, hard, goal, stats, dailyGoal, word, plan } = state;
   const nextCard = h(
     'section',
     { class: 'home-next', 'data-role': 'next', 'data-kind': next.kind },
@@ -162,15 +242,6 @@ export async function render(container, ctx = {}) {
     );
   }
 
-  const goalCard = h(
-    'section',
-    { class: 'home-goal', 'data-role': 'goal' },
-    h('h2', { text: t('home.goal.title') }),
-    h('p', { class: 'home-muted', text: t(goal.reached ? 'home.goal.reached' : 'home.goal.progress', { done: goal.done, goal: goal.goal }) }),
-    h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(goal.goal), 'aria-valuenow': String(Math.min(goal.done, goal.goal)) }, h('span', { style: `width:${goal.pct}%` })),
-    h('p', { class: 'home-muted', 'data-role': 'streak', text: t('home.streak', { n: streak }) }),
-  );
-
   const planCard = plan
     ? h(
         'section',
@@ -181,6 +252,22 @@ export async function render(container, ctx = {}) {
       )
     : null;
 
-  reset(container).append(h('div', { class: 'home' }, nextCard, planCard, goalCard, word ? wordCard(word) : null));
+  const onPick = async (count) => {
+    await setSetting('dailyGoal', count);
+    render(container, ctx);
+  };
+
+  reset(container).append(
+    h(
+      'div',
+      { class: 'home' },
+      nextCard,
+      planCard,
+      streakCard(stats),
+      goalCard(goal, dailyGoal, onPick),
+      levelCard(stats),
+      word ? wordCard(word) : null,
+    ),
+  );
   container.focus({ preventScroll: true });
 }
