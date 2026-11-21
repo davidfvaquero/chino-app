@@ -189,7 +189,9 @@ export async function render(container, ctx) {
       ' · ',
       link('https://www.mdbg.net/chinese/dictionary?page=cc-cedict', 'sourceName'),
       ' · ',
-      link('data/es/dict/LICENSE.md', 'licenceFile')));
+      link('data/es/dict/LICENSE.md', 'licenceFile'),
+      ' · ',
+      link('CREDITS.md', 'creditsFile')));
     return section;
   }
 
