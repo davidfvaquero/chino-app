@@ -379,3 +379,15 @@ Resumen de la tabla (45): 14 corregidos (10 de verdad y 4 sin test), 3 corregido
   1. **I1:** en la primera visita la app se recarga sola y pierde lo que hizo el usuario.
   2. **I5 + I6:** en español, el pinyin sin tonos no encuentra 我/好/人, y la búsqueda española devuelve unos 4 resultados mal ordenados (casa sin 家).
   3. **I3 + I10:** tras un 429, cambiar de modelo no sirve de nada, y las correcciones 🔴 de la conversación y de las lecciones siguen sin un test de comportamiento.
+
+---
+
+## Nota del corrector (t_46219f72) — I5/I6 pendientes de índice
+
+I4 (Repasar y Terminar de Tonos) quedó corregido y con test de comportamiento (`tests/review3-critical.test.mjs`). I5 e I6 **no** se pueden cerrar solo con código de cliente: dependen del **índice/ traducciones commiteados** (`public/data/...`), que esta tarea deja intactos por indicación («no tocar datos ni sync»). Evidencia con datos reales (probe sobre `src/dictionary.js` + `public/data`):
+
+- **casa → 家 no puede aparecer:** la def ES de 家 (id 9613) es «se usa en 傢伙|家伙…», **no** contiene el token `casa`; por eso el test bajó a `hogar`. Ningún reordenamiento de cliente lo recupera: la entrada no está en las postings de `casa` (`search-es/c.json`). Arreglo = regenerar `es/dict` (traducción de 家) + `search-es` → datos.
+- **wo/hao → 我/好 fuera del top 5:** el orden sale del índice de pinyin `dict/index-pinyin/<letra>.json` (p. ej. `wo` → `[11,19,26,33,…,43938(我)…]`), que no prioriza HSK/comunes. El cliente no tiene la señal de HSK para desempatar. Arreglo = rankear al construir el índice de pinyin + regenerar → datos.
+- **agua ≥ 8:** subir `ES_MAX_SHARDS` 4→8 sí da 11 resultados, pero rompe C3/I6 (18 peticiones > 10 y ~1,6 MB). Requiere la «vista previa en las postings» que ya propone la corrección de I6 → solo código+datos.
+
+Ruta exacta ya descrita en este informe (I5 → I8 regenerar índices → I6). Fuera del alcance de un ciclo sin tocar datos.

@@ -337,6 +337,11 @@ async function searchEnglish(q) {
  * query word up there, then keep the entries whose Spanish defs contain it.
  * Scores sit above the English ones so a Spanish query surfaces Spanish hits
  * first. Returns [] when there is no Spanish index (feature simply off).
+ *
+ * ES_MAX_SHARDS caps the shards one word pulls in: 4 keeps every query under
+ * the C3/I6 request budget. Raising it breaks that budget (REVIEW-3 I6, the
+ * "postings preview" idea); ranking for wo/hao and casa/agua lower on this file
+ * also needs the committed indices regenerated (see docs/REVIEW-3.md note).
  */
 const ES_MAX_SHARDS = 4;
 
