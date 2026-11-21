@@ -521,9 +521,11 @@ test('I3: the daily conversation reward fires once, even after a new conversatio
     assert.equal(rewards(), 1, 'the fifth message awards the day once');
 
     // "New conversation" resets the message count; five more the same day must
-    // not farm a second reward.
-    byText(container, CONV.newChat).click();
+    // not farm a second reward. Click the real button: byText would return the
+    // .conv-row wrapper (same text, no handler) and the click would do nothing.
+    container.querySelectorAll('button').find((b) => b.textContent === CONV.newChat).click();
     await settle(dom);
+    assert.equal((await storage.get('settings', 'conversationHistory')).length, 1, 'new conversation resets the history');
     await sendFive();
     assert.equal(rewards(), 1, 'a second round the same day does not reward again');
   } finally {
