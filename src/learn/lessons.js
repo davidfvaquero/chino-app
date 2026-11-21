@@ -549,12 +549,18 @@ async function renderLesson(container, ctx, lessonId, level) {
       completed = true;
       // A second click while the save is in flight would double the reward.
       for (const button of section.querySelectorAll('button')) button.disabled = true;
-      await saveProgress(index.level, lesson.id, {
-        score: summary.correct,
-        total: exercises.length,
-        answered: exercises.length,
-        completed: true,
-      });
+      // A failed save (full quota, closed IndexedDB) must not block the finish:
+      // the lesson still ends and the reward still fires (REVIEW-3 I4).
+      try {
+        await saveProgress(index.level, lesson.id, {
+          score: summary.correct,
+          total: exercises.length,
+          answered: exercises.length,
+          completed: true,
+        });
+      } catch (err) {
+        console.warn('lesson: save failed', err);
+      }
       window.dispatchEvent(
         new CustomEvent('chino:lesson_done', {
           detail: { level: index.level, lessonId: lesson.id, score: summary.correct, total: exercises.length },

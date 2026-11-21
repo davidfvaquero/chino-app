@@ -219,12 +219,17 @@ export async function render(container, ctx) {
           if (completed) return;
           completed = true;
           event.currentTarget.disabled = true;
-          await saveProgress({
-            score: summary.correct,
-            total: exercises.length,
-            answered: exercises.length,
-            completed: true,
-          });
+          // A failed save must not block the finish (REVIEW-3 I4).
+          try {
+            await saveProgress({
+              score: summary.correct,
+              total: exercises.length,
+              answered: exercises.length,
+              completed: true,
+            });
+          } catch (err) {
+            console.warn('lesson: save failed', err);
+          }
           window.dispatchEvent(
             new CustomEvent('chino:lesson_done', {
               detail: { level: 'hsk1', lessonId: LESSON_ID, score: summary.correct, total: exercises.length },
