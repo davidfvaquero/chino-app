@@ -1,0 +1,44 @@
+{
+  "id": "reading-16",
+  "title": "买票",
+  "type": "dialogue",
+  "topic": "Buying tickets",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你好，我想买两张火车票。",
+      "pinyin": "Nǐ hǎo, wǒ xiǎng mǎi liǎng zhāng huǒchē piào.",
+      "english": "Hello, I want to buy two train tickets."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "去哪儿？几号的？",
+      "pinyin": "Qù nǎr? Jǐ hào de?",
+      "english": "Where to? Which date?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "去北京，明天的。",
+      "pinyin": "Qù Běijīng, míngtiān de.",
+      "english": "To Beijing, tomorrow's."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "明天的票卖完了。后天有票。",
+      "pinyin": "Míngtiān de piào mài wán le. Hòutiān yǒu piào.",
+      "english": "Tomorrow's tickets sold out. Day after tomorrow has tickets."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "那买后天的吧。多少钱？",
+      "pinyin": "Nà mǎi hòutiān de ba. Duōshao qián?",
+      "english": "Then buy day after tomorrow's. How much?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "一张一百块，两张两百块。",
+      "pinyin": "Yī zhāng yībǎi kuài, liǎng zhāng liǎngbǎi kuài.",
+      "english": "One ticket one hundred, two tickets two hundred."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "reading-13",
+  "title": "去医院",
+  "type": "dialogue",
+  "topic": "Going to hospital",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你去哪儿？",
+      "pinyin": "Nǐ qù nǎr?",
+      "english": "Where are you going?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "去医院。我身体不好。",
+      "pinyin": "Qù yīyuàn. Wǒ shēntǐ bù hǎo.",
+      "english": "Going to the hospital. My body is not good."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "没事吗？要不要我和你一起去？",
+      "pinyin": "Méi shì ma? Yào bu yào wǒ hé nǐ yīqǐ qù?",
+      "english": "No problem? Do you want me to go with you?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "没事，不要。我一个人去。",
+      "pinyin": "Méi shì, bù yào. Wǒ yī ge rén qù.",
+      "english": "No problem, don't want. I'll go alone."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "那慢点走，早点回来。",
+      "pinyin": "Nà màn diǎn zǒu, zǎo diǎn huílái.",
+      "english": "Then walk slowly, come back early."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "好的，谢谢。",
+      "pinyin": "Hǎo de, xièxie.",
+      "english": "Okay, thanks."
+    }
+  ]
+}

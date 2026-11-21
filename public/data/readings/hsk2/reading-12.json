@@ -1,0 +1,44 @@
+{
+  "id": "reading-12",
+  "title": "迟到了",
+  "type": "dialogue",
+  "topic": "Running late",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "快点！我们要晚了。",
+      "pinyin": "Kuài diǎn! Wǒmen yào wǎn le.",
+      "english": "Hurry! We're going to be late."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "现在几点？",
+      "pinyin": "Xiànzài jǐ diǎn?",
+      "english": "What time is it now?"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "八点三十分。课八点开始。",
+      "pinyin": "Bā diǎn sānshí fēn. Kè bā diǎn kāishǐ.",
+      "english": "Eight thirty. Class starts at eight."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "跑吧！",
+      "pinyin": "Pǎo ba!",
+      "english": "Run!"
+    },
+    {
+      "speaker": "A",
+      "hanzi": "跑到教室，很累。",
+      "pinyin": "Pǎo dào jiàoshì, hěn lèi.",
+      "english": "Ran to the classroom, very tired."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "进去吧，老师还没来。",
+      "pinyin": "Jìn qù ba, lǎoshī hái méi lái.",
+      "english": "Go in, teacher hasn't come yet."
+    }
+  ]
+}

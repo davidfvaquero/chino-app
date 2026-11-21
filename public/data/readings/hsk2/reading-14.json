@@ -1,0 +1,44 @@
+{
+  "id": "reading-14",
+  "title": "去北京旅游",
+  "type": "dialogue",
+  "topic": "A trip to Beijing",
+  "lines": [
+    {
+      "speaker": "A",
+      "hanzi": "你去过北京吗？",
+      "pinyin": "Nǐ qù guo Běijīng ma?",
+      "english": "Have you been to Beijing?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "去过，去年去的。很好玩。",
+      "pinyin": "Qù guo, qùnián qù de. Hěn wán.",
+      "english": "Yes, went last year. Very fun."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "我也想去。什么时候去好？",
+      "pinyin": "Wǒ yě xiǎng qù. Shénme shíhou qù hǎo?",
+      "english": "I also want to go. When is good to go?"
+    },
+    {
+      "speaker": "B",
+      "hanzi": "九月去最好。不冷不热。",
+      "pinyin": "Jiǔyuè qù zuì hǎo. Bù lěng bù rè.",
+      "english": "September is best. Not cold, not hot."
+    },
+    {
+      "speaker": "A",
+      "hanzi": "好，我准备九月去。",
+      "pinyin": "Hǎo, wǒ zhǔnbèi jiǔyuè qù.",
+      "english": "Good, I'll prepare to go in September."
+    },
+    {
+      "speaker": "B",
+      "hanzi": "希望你一路高兴！",
+      "pinyin": "Xīwàng nǐ yī lù gāoxìng!",
+      "english": "Hope you have a happy journey!"
+    }
+  ]
+}
