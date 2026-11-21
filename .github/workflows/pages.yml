@@ -33,9 +33,10 @@ jobs:
         run: |
           npm run data:dict-es
           # The committed data must equal what the scripts produce: the scripts
-          # run in CI (a repair before validating), so this diff is the only
-          # guard that the shipped files are not stale.
-          git diff --exit-code public/data
+          # run in CI (a repair before validating), so this is the only guard
+          # that the shipped files are not stale. Use `git status --porcelain`
+          # (not `git diff`) so an uncommitted new file fails the build too.
+          test -z "$(git status --porcelain public/data)" || { git status --porcelain public/data; exit 1; }
 
   deploy:
     needs: test
