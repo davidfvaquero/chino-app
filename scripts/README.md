@@ -8,12 +8,13 @@ and is **committed on purpose** so the app works with no network.
 npm run data        # download (cached in .cache/) + rebuild public/data/
 FORCE=1 npm run data              # ignore the cache and re-download
 SENTENCE_LIMIT=5000 npm run data  # keep more Tatoeba sentences (default 3000)
+npm run data:examples             # Tatoeba example sentences per dictionary word
 npm run test:data                 # sanity checks on the generated JSON
 ```
 
 > **Nota:** tras tocar `scripts/build-data.mjs`, corre `npm run data` y commitea el diff.
 > El paso de CI (`pages.yml`) usa `git status --porcelain public/data` y falla si hay
-> archivos nuevos o modificados sin commitear.
+> archivos nuevos o modificados sin commitear. Lo mismo aplica a `npm run data:examples`.
 
 Raw downloads are cached in `.cache/` (git-ignored) so repeat runs are fast and
 offline. The build only needs Node.js and the system `bunzip2` — no `npm install`.
@@ -46,6 +47,9 @@ public/data/
   sentences/
     index.json                  shard list + sentence count
     shards/NNN.json             {id, zh, pinyin, en} pairs
+  examples/
+    index.json                  word count + shard list + hash scheme
+    shards/NNN.json             {word: [{id, zh, pinyin, en, es?}]} per word, < 150KB
   hsk/
     index.json                   levels + counts
     1.json … 6.json               {level, hanzi, trad, pinyin, pinyinNumeric, english}
@@ -68,6 +72,28 @@ public/data/
 
 Every shard is JSON **and** small (< 200KB) so it is cheap to fetch and parse on
 a phone. The service worker can cache shards on first use for offline access.
+
+### Dictionary examples (`npm run data:examples`)
+
+`scripts/build-examples.mjs` downloads the Tatoeba `cmn`/`eng`/`spa` sentence
+exports plus the `cmn-eng`/`cmn-spa`/`eng-spa` link tables (cached in
+`data-work/examples/`, git-ignored) and writes `public/data/examples/`: for each
+simplified dictionary word it keeps up to **4** sentences of **5-25** characters
+that contain the word as a *word* (greedy longest-match segmentation against the
+dictionary, so a word inside a longer word does not count), preferring those with
+both an English and a Spanish translation and common characters, with no
+duplicates and a short reject list for offensive content. Pinyin uses the same
+routine as `build-data.mjs`. Words are sharded by hash (64 shards,
+`{word: [...]}`), HSK 1-6 first then the most frequent corpus words, under a
+total size cap (~8 MB). Each entry keeps the Tatoeba `id`.
+
+```bash
+npm run data:examples                    # download (cached) + rebuild public/data/examples/
+node scripts/build-examples.mjs --dry-run  # offline, cache only, no write
+```
+
+The examples are **not** precached by the service worker: like `dict/`, they load
+on demand into the runtime data cache (`tests/examples-data.test.mjs` pins this).
 
 ## Notes / limitations
 

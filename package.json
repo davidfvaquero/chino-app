@@ -13,6 +13,7 @@
     "data": "node scripts/build-data.mjs",
     "data:dict-es": "node scripts/fix-dict-es.mjs && node scripts/validate-dict-es.mjs && node scripts/build-dict-es-index.mjs",
     "data:sentences-es": "node scripts/build-sentences-es.mjs",
+    "data:examples": "node scripts/build-examples.mjs",
     "data:radicals": "node scripts/build-radicals.mjs",
     "data:audio": "sh scripts/audio/run.sh",
     "test:data": "node --test tests/data-sanity.test.mjs",
