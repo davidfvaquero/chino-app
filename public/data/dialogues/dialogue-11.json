@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-11",
+  "title": "我的家人",
+  "titleEn": "My family",
+  "topic": "Family",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你家有几个人？",
+      "pinyin": "Nǐ jiā yǒu jǐ ge rén?",
+      "en": "How many people are in your family?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我家有四个人。爸爸、妈妈、姐姐和我。",
+      "pinyin": "Wǒ jiā yǒu sì ge rén. Bàba, māma, jiějie hé wǒ.",
+      "en": "There are four of us: my dad, my mum, my older sister and me."
+    },
+    {
+      "speaker": "A",
+      "zh": "你有哥哥吗？",
+      "pinyin": "Nǐ yǒu gēge ma?",
+      "en": "Do you have an older brother?"
+    },
+    {
+      "speaker": "B",
+      "zh": "没有，我有一个姐姐。她在外面上班。",
+      "pinyin": "Méiyǒu, wǒ yǒu yī ge jiějie. Tā zài wàimiàn shàngbān.",
+      "en": "No. I have an older sister. She works outside the home."
+    },
+    {
+      "speaker": "A",
+      "zh": "她做什么工作？",
+      "pinyin": "Tā zuò shénme gōngzuò?",
+      "en": "What does she do?"
+    },
+    {
+      "speaker": "B",
+      "zh": "她是医生。",
+      "pinyin": "Tā shì yīshēng.",
+      "en": "She's a doctor."
+    },
+    {
+      "speaker": "A",
+      "zh": "真不错！我弟弟也想做医生。",
+      "pinyin": "Zhēn bùcuò! Wǒ dìdi yě xiǎng zuò yīshēng.",
+      "en": "That's great! My younger brother wants to be a doctor too."
+    },
+    {
+      "speaker": "B",
+      "zh": "那很好。你妈妈呢？",
+      "pinyin": "Nà hěn hǎo. Nǐ māma ne?",
+      "en": "That's good. And your mum?"
+    },
+    {
+      "speaker": "A",
+      "zh": "她是老师，她让我好好学习。",
+      "pinyin": "Tā shì lǎoshī, tā ràng wǒ hǎohǎo xuéxí.",
+      "en": "She's a teacher, and she tells me to study hard."
+    },
+    {
+      "speaker": "B",
+      "zh": "大家都一样。",
+      "pinyin": "Dàjiā dōu yīyàng.",
+      "en": "It's the same in every family."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-12",
+  "title": "你的爱好",
+  "titleEn": "Your hobbies",
+  "topic": "Hobbies",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你休息的时候做什么？",
+      "pinyin": "Nǐ xiūxi de shíhou zuò shénme?",
+      "en": "What do you do when you have time off?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我喜欢游泳，也爱打篮球。",
+      "pinyin": "Wǒ xǐhuan yóuyǒng, yě ài dǎ lánqiú.",
+      "en": "I like swimming, and I love playing basketball."
+    },
+    {
+      "speaker": "A",
+      "zh": "游泳？我一点儿也不会。",
+      "pinyin": "Yóuyǒng? Wǒ yīdiǎnr yě bú huì.",
+      "en": "Swimming? I can't do it at all."
+    },
+    {
+      "speaker": "B",
+      "zh": "我可以教你。",
+      "pinyin": "Wǒ kěyǐ jiāo nǐ.",
+      "en": "I can teach you."
+    },
+    {
+      "speaker": "A",
+      "zh": "真的吗？太好了！你每星期去几次？",
+      "pinyin": "Zhēn de ma? Tài hǎo le! Nǐ měi xīngqī qù jǐ cì?",
+      "en": "Really? Great! How many times a week do you go?"
+    },
+    {
+      "speaker": "B",
+      "zh": "两次，星期六和星期天。",
+      "pinyin": "Liǎng cì, xīngqīliù hé xīngqītiān.",
+      "en": "Twice, on Saturday and Sunday."
+    },
+    {
+      "speaker": "A",
+      "zh": "在哪儿游泳？",
+      "pinyin": "Zài nǎr yóuyǒng?",
+      "en": "Where do you swim?"
+    },
+    {
+      "speaker": "B",
+      "zh": "在学校旁边，很近。",
+      "pinyin": "Zài xuéxiào pángbiān, hěn jìn.",
+      "en": "Next to the school, it's very close."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，这个星期六我们一起去吧。",
+      "pinyin": "Hǎo, zhège xīngqīliù wǒmen yīqǐ qù ba.",
+      "en": "OK, let's go together this Saturday."
+    },
+    {
+      "speaker": "B",
+      "zh": "好，一起去。",
+      "pinyin": "Hǎo, yīqǐ qù.",
+      "en": "OK, let's go together."
+    }
+  ]
+}

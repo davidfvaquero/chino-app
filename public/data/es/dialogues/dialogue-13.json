@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-13",
+  "title": "坐公共汽车",
+  "titleEn": "Tomar el autobús",
+  "topic": "Transporte",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "请问，去火车站坐几路车？",
+      "pinyin": "Qǐngwèn, qù huǒchēzhàn zuò jǐ lù chē?",
+      "en": "Perdone, ¿qué autobús va a la estación de tren?"
+    },
+    {
+      "speaker": "B",
+      "zh": "坐三路，很快。",
+      "pinyin": "Zuò sān lù, hěn kuài.",
+      "en": "Tome el tres, es rápido."
+    },
+    {
+      "speaker": "A",
+      "zh": "远吗？",
+      "pinyin": "Yuǎn ma?",
+      "en": "¿Está lejos?"
+    },
+    {
+      "speaker": "B",
+      "zh": "不远，十分钟就到。",
+      "pinyin": "Bù yuǎn, shí fēnzhōng jiù dào.",
+      "en": "No, en diez minutos llega."
+    },
+    {
+      "speaker": "A",
+      "zh": "多少钱？",
+      "pinyin": "Duōshao qián?",
+      "en": "¿Cuánto cuesta?"
+    },
+    {
+      "speaker": "B",
+      "zh": "两块。",
+      "pinyin": "Liǎng kuài.",
+      "en": "Dos yuanes."
+    },
+    {
+      "speaker": "A",
+      "zh": "在哪儿买票？",
+      "pinyin": "Zài nǎr mǎi piào?",
+      "en": "¿Dónde compro el billete?"
+    },
+    {
+      "speaker": "B",
+      "zh": "在车上买，给司机两块钱。",
+      "pinyin": "Zài chē shàng mǎi, gěi sījī liǎng kuài qián.",
+      "en": "En el autobús. Dele dos yuanes al conductor."
+    },
+    {
+      "speaker": "A",
+      "zh": "好的，谢谢！",
+      "pinyin": "Hǎo de, xièxie!",
+      "en": "Vale, ¡gracias!"
+    },
+    {
+      "speaker": "B",
+      "zh": "不客气。",
+      "pinyin": "Bú kèqi.",
+      "en": "De nada."
+    }
+  ]
+}

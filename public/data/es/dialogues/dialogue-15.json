@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-15",
+  "title": "买衣服",
+  "titleEn": "Comprar ropa",
+  "topic": "Compras",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好，我想买件衣服。",
+      "pinyin": "Nǐ hǎo, wǒ xiǎng mǎi jiàn yīfu.",
+      "en": "Hola, quiero comprar una prenda."
+    },
+    {
+      "speaker": "B",
+      "zh": "您要什么颜色的？",
+      "pinyin": "Nín yào shénme yánsè de?",
+      "en": "¿De qué color la quiere?"
+    },
+    {
+      "speaker": "A",
+      "zh": "黑色的。",
+      "pinyin": "Hēisè de.",
+      "en": "Negra."
+    },
+    {
+      "speaker": "B",
+      "zh": "这件怎么样？",
+      "pinyin": "Zhè jiàn zěnmeyàng?",
+      "en": "¿Qué tal esta?"
+    },
+    {
+      "speaker": "A",
+      "zh": "太长了吧。有大一点儿的吗？",
+      "pinyin": "Tài cháng le ba. Yǒu dà yīdiǎnr de ma?",
+      "en": "Es un poco larga. ¿Tiene una más grande?"
+    },
+    {
+      "speaker": "B",
+      "zh": "有，您试一下。",
+      "pinyin": "Yǒu, nín shì yīxià.",
+      "en": "Sí, pruébesela."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，这件很好。多少钱？",
+      "pinyin": "Hǎo, zhè jiàn hěn hǎo. Duōshao qián?",
+      "en": "Bien, esta está bien. ¿Cuánto cuesta?"
+    },
+    {
+      "speaker": "B",
+      "zh": "三百块。",
+      "pinyin": "Sānbǎi kuài.",
+      "en": "Trescientos yuanes."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，我买了。给您钱。",
+      "pinyin": "Hǎo, wǒ mǎi le. Gěi nín qián.",
+      "en": "Vale, me la llevo. Aquí tiene el dinero."
+    },
+    {
+      "speaker": "B",
+      "zh": "谢谢您！",
+      "pinyin": "Xièxie nín!",
+      "en": "¡Gracias!"
+    }
+  ]
+}

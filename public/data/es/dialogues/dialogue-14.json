@@ -1,0 +1,63 @@
+{
+  "id": "dialogue-14",
+  "title": "在银行",
+  "titleEn": "En el banco",
+  "topic": "Banco",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好，我要一千块钱。",
+      "pinyin": "Nǐ hǎo, wǒ yào yīqiān kuài qián.",
+      "en": "Hola, quiero mil yuanes."
+    },
+    {
+      "speaker": "B",
+      "zh": "好的。您的号是多少？",
+      "pinyin": "Hǎo de. Nín de hào shì duōshao?",
+      "en": "Muy bien. ¿Cuál es su número?"
+    },
+    {
+      "speaker": "A",
+      "zh": "九号。",
+      "pinyin": "Jiǔ hào.",
+      "en": "El nueve."
+    },
+    {
+      "speaker": "B",
+      "zh": "请等一下。",
+      "pinyin": "Qǐng děng yīxià.",
+      "en": "Espere un momento, por favor."
+    },
+    {
+      "speaker": "A",
+      "zh": "我可以要一百的吗？",
+      "pinyin": "Wǒ kěyǐ yào yībǎi de ma?",
+      "en": "¿Puede darme billetes de cien?"
+    },
+    {
+      "speaker": "B",
+      "zh": "可以，给您。",
+      "pinyin": "Kěyǐ, gěi nín.",
+      "en": "Claro, aquí tiene."
+    },
+    {
+      "speaker": "A",
+      "zh": "还要别的吗？",
+      "pinyin": "Hái yào bié de ma?",
+      "en": "¿Algo más?"
+    },
+    {
+      "speaker": "B",
+      "zh": "不要了，谢谢。",
+      "pinyin": "Bú yào le, xièxie.",
+      "en": "Nada más, gracias."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，再见。",
+      "pinyin": "Hǎo, zàijiàn.",
+      "en": "Bien, adiós."
+    }
+  ]
+}

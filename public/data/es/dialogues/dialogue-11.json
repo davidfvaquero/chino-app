@@ -1,0 +1,69 @@
+{
+  "id": "dialogue-11",
+  "title": "我的家人",
+  "titleEn": "Mi familia",
+  "topic": "Familia",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你家有几个人？",
+      "pinyin": "Nǐ jiā yǒu jǐ ge rén?",
+      "en": "¿Cuántas personas hay en tu familia?"
+    },
+    {
+      "speaker": "B",
+      "zh": "我家有四个人。爸爸、妈妈、姐姐和我。",
+      "pinyin": "Wǒ jiā yǒu sì ge rén. Bàba, māma, jiějie hé wǒ.",
+      "en": "Somos cuatro: mi padre, mi madre, mi hermana mayor y yo."
+    },
+    {
+      "speaker": "A",
+      "zh": "你有哥哥吗？",
+      "pinyin": "Nǐ yǒu gēge ma?",
+      "en": "¿Tienes un hermano mayor?"
+    },
+    {
+      "speaker": "B",
+      "zh": "没有，我有一个姐姐。她在外面上班。",
+      "pinyin": "Méiyǒu, wǒ yǒu yī ge jiějie. Tā zài wàimiàn shàngbān.",
+      "en": "No. Tengo una hermana mayor. Trabaja fuera de casa."
+    },
+    {
+      "speaker": "A",
+      "zh": "她做什么工作？",
+      "pinyin": "Tā zuò shénme gōngzuò?",
+      "en": "¿A qué se dedica?"
+    },
+    {
+      "speaker": "B",
+      "zh": "她是医生。",
+      "pinyin": "Tā shì yīshēng.",
+      "en": "Es médica."
+    },
+    {
+      "speaker": "A",
+      "zh": "真不错！我弟弟也想做医生。",
+      "pinyin": "Zhēn bùcuò! Wǒ dìdi yě xiǎng zuò yīshēng.",
+      "en": "¡Qué bien! Mi hermano pequeño también quiere ser médico."
+    },
+    {
+      "speaker": "B",
+      "zh": "那很好。你妈妈呢？",
+      "pinyin": "Nà hěn hǎo. Nǐ māma ne?",
+      "en": "Qué bien. ¿Y tu madre?"
+    },
+    {
+      "speaker": "A",
+      "zh": "她是老师，她让我好好学习。",
+      "pinyin": "Tā shì lǎoshī, tā ràng wǒ hǎohǎo xuéxí.",
+      "en": "Es profesora y me dice que estudie bien."
+    },
+    {
+      "speaker": "B",
+      "zh": "大家都一样。",
+      "pinyin": "Dàjiā dōu yīyàng.",
+      "en": "En todas las familias pasa lo mismo."
+    }
+  ]
+}

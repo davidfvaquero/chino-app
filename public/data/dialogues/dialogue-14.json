@@ -1,0 +1,63 @@
+{
+  "id": "dialogue-14",
+  "title": "在银行",
+  "titleEn": "At the bank",
+  "topic": "Bank",
+  "level": "hsk2",
+  "lines": [
+    {
+      "speaker": "A",
+      "zh": "你好，我要一千块钱。",
+      "pinyin": "Nǐ hǎo, wǒ yào yīqiān kuài qián.",
+      "en": "Hello, I'd like a thousand yuan."
+    },
+    {
+      "speaker": "B",
+      "zh": "好的。您的号是多少？",
+      "pinyin": "Hǎo de. Nín de hào shì duōshao?",
+      "en": "Certainly. What is your number?"
+    },
+    {
+      "speaker": "A",
+      "zh": "九号。",
+      "pinyin": "Jiǔ hào.",
+      "en": "Number nine."
+    },
+    {
+      "speaker": "B",
+      "zh": "请等一下。",
+      "pinyin": "Qǐng děng yīxià.",
+      "en": "One moment, please."
+    },
+    {
+      "speaker": "A",
+      "zh": "我可以要一百的吗？",
+      "pinyin": "Wǒ kěyǐ yào yībǎi de ma?",
+      "en": "Can I have them in hundreds?"
+    },
+    {
+      "speaker": "B",
+      "zh": "可以，给您。",
+      "pinyin": "Kěyǐ, gěi nín.",
+      "en": "Sure, here you are."
+    },
+    {
+      "speaker": "A",
+      "zh": "还要别的吗？",
+      "pinyin": "Hái yào bié de ma?",
+      "en": "Anything else?"
+    },
+    {
+      "speaker": "B",
+      "zh": "不要了，谢谢。",
+      "pinyin": "Bú yào le, xièxie.",
+      "en": "That's all, thank you."
+    },
+    {
+      "speaker": "A",
+      "zh": "好，再见。",
+      "pinyin": "Hǎo, zàijiàn.",
+      "en": "OK, goodbye."
+    }
+  ]
+}
