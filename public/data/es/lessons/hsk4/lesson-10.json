@@ -139,7 +139,7 @@
       "english": "incluso; incluyendo; unir",
       "example": {
         "hanzi": "他连我也不认识",
-        "pinyin": "tā lián wǒ yě bù rènshi",
+        "pinyin": "tā lián wǒ yě bú rènshi",
         "english": "él ni siquiera me conoce"
       }
     },
@@ -279,7 +279,7 @@
       "english": "pelo; piel; pluma; diez centavos (radical Kangxi 82)",
       "example": {
         "hanzi": "一毛钱",
-        "pinyin": "yī máo qián",
+        "pinyin": "yì máo qián",
         "english": "diez centavos"
       }
     },

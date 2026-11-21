@@ -139,7 +139,7 @@
       "english": "even; including; join",
       "example": {
         "hanzi": "他连我也不认识",
-        "pinyin": "tā lián wǒ yě bù rènshi",
+        "pinyin": "tā lián wǒ yě bú rènshi",
         "english": "he doesn't even know me"
       }
     },
@@ -279,7 +279,7 @@
       "english": "hair; fur; feather; dime (Kangxi radical 82)",
       "example": {
         "hanzi": "一毛钱",
-        "pinyin": "yī máo qián",
+        "pinyin": "yì máo qián",
         "english": "one dime"
       }
     },

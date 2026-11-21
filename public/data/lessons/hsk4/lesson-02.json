@@ -19,7 +19,7 @@
       "english": "part; share; section",
       "example": {
         "hanzi": "这是一部分",
-        "pinyin": "zhè shì yī bùfen",
+        "pinyin": "zhè shì yí bùfen",
         "english": "this is a part"
       }
     },
@@ -129,7 +129,7 @@
       "english": "place; field; (mw for events)",
       "example": {
         "hanzi": "一场比赛",
-        "pinyin": "yī chǎng bǐsài",
+        "pinyin": "yì chǎng bǐsài",
         "english": "a match"
       }
     },
@@ -139,7 +139,7 @@
       "english": "surpass; exceed; outstrip",
       "example": {
         "hanzi": "超过一百",
-        "pinyin": "chāoguò yībǎi",
+        "pinyin": "chāoguò yìbǎi",
         "english": "exceeds one hundred"
       }
     },

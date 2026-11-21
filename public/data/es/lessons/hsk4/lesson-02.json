@@ -19,7 +19,7 @@
       "english": "parte; parte; sección",
       "example": {
         "hanzi": "这是一部分",
-        "pinyin": "zhè shì yī bùfen",
+        "pinyin": "zhè shì yí bùfen",
         "english": "esto es una parte"
       }
     },
@@ -129,7 +129,7 @@
       "english": "lugar; campo; (clasificador para eventos)",
       "example": {
         "hanzi": "一场比赛",
-        "pinyin": "yī chǎng bǐsài",
+        "pinyin": "yì chǎng bǐsài",
         "english": "un partido"
       }
     },
@@ -139,7 +139,7 @@
       "english": "superar; exceder; sobrepasar",
       "example": {
         "hanzi": "超过一百",
-        "pinyin": "chāoguò yībǎi",
+        "pinyin": "chāoguò yìbǎi",
         "english": "supera cien"
       }
     },
