@@ -36,6 +36,8 @@ test('I1: the CSP allows WebLLM (jsDelivr + wasm) and any https host (Ollama)', 
   const connectSrc = directive('connect-src');
   assert.ok(connectSrc.includes('https:'), `connect-src allows https hosts (got "${connectSrc}")`);
   assert.ok(connectSrc.includes("'self'"), `connect-src keeps 'self' (got "${connectSrc}")`);
+  // The stroke check compares bitmaps through fetch('data:image/png;base64,…').
+  assert.ok(connectSrc.includes('data:'), `connect-src allows data: URLs (got "${connectSrc}")`);
 });
 
 // ------------------------------------------------- I2: private history sync
